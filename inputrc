@@ -1,0 +1,12 @@
+# Make Tab autocomplete regardless of filename case
+set completion-ignore-case on
+
+# Append a slash when autocompleting symbolic links to directories
+set mark-symlinked-directories on
+
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+
+# http://www.reddit.com/r/commandline/comments/kbeoe/you_can_make_readline_and_bash_much_more_user/
+Control-j: menu-complete
+Control-k: menu-complete-backward
