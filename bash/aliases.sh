@@ -15,7 +15,7 @@ alias redot='cd ~/.dotfiles && gpp && rake install; cd -'
 # List all files colorized in long format, including dot files
 alias ls="ls -G"
 alias la="ls -Gla"
-alias lsd='ls -l | grep "^d"'
+alias lsd="ls -Gl | grep '^d'"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
