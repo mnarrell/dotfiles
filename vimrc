@@ -21,9 +21,11 @@ set autoread 		   " Reload file without prompting
 
 let mapleader = ","
 
-" Tab/shift-tab to indent/outdent in visual mode.
+" Tab/shift-Tab or Command-][ to increase/decrease indentation in visual mode.
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+vmap <D-]> >gv
+vmap <D-[> <gv
 
 " Save a file as root.
 cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
@@ -47,7 +49,8 @@ map <leader>N :NERDTreeFind<CR>
 
 " NERDCommenter
 let g:NERDCreateDefaultMappings=0
-map <leader>c <Plug>NERDCommenterToggle
+map <D-/> <plug>NERDCommenterToggle<CR>
+imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
 " Command-T config
 let g:CommandTMaxHeight=20
