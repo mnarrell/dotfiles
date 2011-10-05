@@ -17,17 +17,33 @@ set laststatus=2           " Always show status bar.
 set modelines=1            " Use modeline overrides.
 set showcmd                " Show partially typed command sequences.
 set scrolloff=3            " Minimal number of lines to always show above/below the caret.
+set autoread 		   " Reload file without prompting
+
+let mapleader = ","
+
+" Tab/shift-tab to indent/outdent in visual mode.
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
+" Save a file as root.
+cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
+
+" Quicker filetype setting:
+"   :F html
+" instead of
+"   :set ft=html
+" Can tab-complete filetype.
+command! -nargs=1 -complete=filetype F set filetype=<args>
 
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
-" Save a file as root.
-cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
-
 " NERDTree config
 let NERDTreeIgnore=['\.rbc$', '\~$']
 let g:NERDMenuMode=0
+map <leader>n :NERDTreeToggle<CR>
+map <leader>N :NERDTreeFind<CR>
 
 " NERDCommenter
 let g:NERDCreateDefaultMappings=0
