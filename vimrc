@@ -1,23 +1,23 @@
-set nocompatible  
-set encoding=utf-8 
+set nocompatible
+set encoding=utf-8
 
 " pathogem.vim to load plugins in ~/.vim/bundle.
 " filetype off and then on for ftdetect files to work properly.
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-filetype plugin indent on  
+filetype plugin indent on
 
-syntax on                  
-color blackboard           
+syntax on
+color blackboard
 
-set number                
-set ruler                
-set laststatus=2        
-set modelines=1        
-set showcmd           
-set scrolloff=3      
-set autoread 	
+set number
+set ruler
+set laststatus=2
+set modelines=1
+set showcmd
+set scrolloff=3
+set autoread
 set softtabstop=4
 set shiftwidth=4
 set expandtab
@@ -44,27 +44,27 @@ vmap <C-Down> ]egv
 map <leader>j !python -m json.tool<CR>
 
 "" Create a split on the given side.
-" http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/ 
+" http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
 nmap <leader><left> :leftabove vsp<CR>
 nmap <leader><right> :rightbelow vsp<CR>
 nmap <leader><up> :leftabove sp<CR>
 nmap <leader><down> :rightbelow sp<CR>
 
-" Formatting niceties 
+" Formatting niceties
 " http://vimcasts.org/episodes/tidying-whitespace/
 function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    execute a:command
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
 endfunction
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
-nmap _= :call Preserve("normal gg=G")<CR>
+nmap _+ :call Preserve("normal gg=G")<CR>
 
 " Save a file as root.
 cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
@@ -88,7 +88,7 @@ au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ft=markdown
 " add json syntax highlighting
 au BufNewFile,BufRead *.json set ft=javascript
 
-" NERDTree 
+" NERDTree
 let NERDTreeIgnore=['\.rbc$', '\~$']
 let g:NERDMenuMode=0
 map <leader>n :NERDTreeToggle<CR>
@@ -100,7 +100,7 @@ map <D-/> <plug>NERDCommenterToggle<CR>
 imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
 " Hammer
- map <buffer> <leader>p :Hammer<CR>
+map <buffer> <leader>p :Hammer<CR>
 
 " Command-T
 let g:CommandTMaxHeight=20
@@ -110,14 +110,14 @@ let g:CommandTMatchWindowAtTop=1
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=1
 
-" gist-vim 
+" gist-vim
 if has("mac")
-  let g:gist_clip_command = 'pbcopy'
+    let g:gist_clip_command = 'pbcopy'
 elseif has("unix")
-  let g:gist_clip_command = 'xclip -selection clipboard'
+    let g:gist_clip_command = 'xclip -selection clipboard'
 endif
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 
-" ZoomWin 
+" ZoomWin
 map <Leader><Leader> :ZoomWin<CR>
