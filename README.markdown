@@ -2,9 +2,9 @@
 
 Inspired by:
 
-* https://github.com/tpope/tpope
-* https://raw.github.com/henrik/
-* https://github.com/mathiasbynens/dotfiles
-* https://github.com/carlhuda/janus
+* [tpope/tpope](https://github.com/tpope/tpope)
+* [henrik/dotfiles](https://github.com/henrik/dotfiles)
+* [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
+* [carlhuda/janus](https://github.com/carlhuda/janus)
 
 ... and much less impressive than all of them.
