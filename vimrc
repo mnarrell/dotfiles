@@ -1,54 +1,87 @@
+" Basic de-suck settings
 set nocompatible
-set encoding=utf-8
-
-" pathogem.vim to load plugins in ~/.vim/bundle.
-" filetype off and then on for ftdetect files to work properly.
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin indent on
-
-syntax on
-color blackboard
-
-set number
 set ruler
 set laststatus=2
-set modelines=1
-set showcmd
 set scrolloff=3
+set showcmd
+set showmode
+set modelines=1
+set number
+set shortmess=atI
+set visualbell
 set autoread
+
+syntax on
+filetype plugin indent on
+
+color blackboard
+
+" Change <Leader>
+let mapleader = ","
+
+" Search
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+
+" Tabs & Indenting
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set listchars=nbsp:·,tab:▸\ ,trail:·
+
+" Catch tabs/trailing spaces
+set listchars=tab:▸\ ,trail:·
 set list!
+
+" Bash-like filename completion
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.o,*.fasl
+
+" Fix backspace
+set backspace=indent,eol,start
+
+" Switch buffers without saving
+set hidden
+
+" Directories
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
-set noea
 
-let mapleader = ","
+" Managing splits
+" http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
+set noeqaulsalways
+nmap <leader><left> :leftabove vsp<CR>
+nmap <leader><right> :rightbelow vsp<CR>
+nmap <leader><up> :leftabove sp<CR>
+nmap <leader><down> :rightbelow sp<CR>
+
+" Swap ` and '
+nnoremap ' `
+nnoremap ` '
+
+" Fix command typos 
+nmap ; :
 
 " Tab/shift-Tab to increase/decrease indentation in visual mode.
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
-" Move single lines.
+" Control-up/down to move lines.
 nmap <C-Up> [e
 nmap <C-Down> ]e
-" Move multiple lines.
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
 " format JSON
 map <leader>j !python -m json.tool<CR>
 
-"" Create a split on the given side.
-" http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
-nmap <leader><left> :leftabove vsp<CR>
-nmap <leader><right> :rightbelow vsp<CR>
-nmap <leader><up> :leftabove sp<CR>
-nmap <leader><down> :rightbelow sp<CR>
+" Filetype stuff
+au FileType make set noexpandtab
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ft=markdown
+au BufNewFile,BufRead *.json set ft=javascript
 
 " Formatting niceties
 " http://vimcasts.org/episodes/tidying-whitespace/
@@ -76,17 +109,11 @@ cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 " Can tab-complete filetype.
 command! -nargs=1 -complete=filetype F set filetype=<args>
 
-" Make use real tabs
-au FileType make set noexpandtab
+" PLUGINS
 
-" Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-
-" md, markdown, and mk are markdown and define buffer-local preview
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ft=markdown
-
-" add json syntax highlighting
-au BufNewFile,BufRead *.json set ft=javascript
+" pathogem.vim to load plugins in ~/.vim/bundle.
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
 " NERDTree
 let NERDTreeIgnore=['\.rbc$', '\~$']
