@@ -51,7 +51,7 @@ set directory=~/.vim/backup
 
 " Managing splits
 " http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
-set noeqaulsalways
+set noea
 nmap <leader><left> :leftabove vsp<CR>
 nmap <leader><right> :rightbelow vsp<CR>
 nmap <leader><up> :leftabove sp<CR>
