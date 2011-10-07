@@ -1,57 +1,63 @@
 [submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
+    path = vim/bundle/nerdtree
+    url = git://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
-	url = git://git.wincent.com/command-t.git
+    path = vim/bundle/command-t
+    url = git://git.wincent.com/command-t.git
 [submodule "vim/bundle/vim-indent-object"]
-	path = vim/bundle/vim-indent-object
-	url = git://github.com/michaeljsmith/vim-indent-object.git
+    path = vim/bundle/vim-indent-object
+    url = git://github.com/michaeljsmith/vim-indent-object.git
 [submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
+    path = vim/bundle/vim-javascript
+    url = git://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/vim-markdown"]
-	path = vim/bundle/vim-markdown
-	url = git://github.com/tpope/vim-markdown.git
+    path = vim/bundle/vim-markdown
+    url = git://github.com/tpope/vim-markdown.git
 [submodule "vim/bundle/vim-git"]
-	path = vim/bundle/vim-git
-	url = git://github.com/tpope/vim-git.git
+    path = vim/bundle/vim-git
+    url = git://github.com/tpope/vim-git.git
+    ignore = untracked
 [submodule "vim/bundle/vim-conque"]
-	path = vim/bundle/vim-conque
-	url = git://github.com/rson/vim-conque.git
+    path = vim/bundle/vim-conque
+    url = git://github.com/rson/vim-conque.git
+    ignore = untracked
 [submodule "vim/bundle/AutoClose"]
-	path = vim/bundle/AutoClose
-	url = git://github.com/vim-scripts/AutoClose.git
+    path = vim/bundle/AutoClose
+    url = git://github.com/vim-scripts/AutoClose.git
 [submodule "vim/bundle/nerdcommenter"]
-	path = vim/bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
+    path = vim/bundle/nerdcommenter
+    url = git://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/bundle/ack"]
-	path = vim/bundle/ack
-	url = git://github.com/mileszs/ack.vim.git
+    path = vim/bundle/ack
+    url = git://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = git://github.com/ervandew/supertab.git
+    path = vim/bundle/supertab
+    url = git://github.com/ervandew/supertab.git
 [submodule "vim/bundle/ZoomWin"]
-	path = vim/bundle/ZoomWin
-	url = git://github.com/vim-scripts/ZoomWin.git
+    path = vim/bundle/ZoomWin
+    url = git://github.com/vim-scripts/ZoomWin.git
+    ignore = untracked
 [submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+    path = vim/bundle/vim-fugitive
+    url = git://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/vim-unimpaired"]
-	path = vim/bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
+    path = vim/bundle/vim-unimpaired
+    url = git://github.com/tpope/vim-unimpaired.git
+    ignore = untracked
 [submodule "vim/bundle/hammer"]
-	path = vim/bundle/hammer
-	url = https://github.com/robgleeson/hammer.vim.git
+    path = vim/bundle/hammer
+    url = https://github.com/robgleeson/hammer.vim.git
 [submodule "vim/bundle/delimitMate"]
-	path = vim/bundle/delimitMate
-	url = git://github.com/Raimondi/delimitMate.git
+    path = vim/bundle/delimitMate
+    url = git://github.com/Raimondi/delimitMate.git
 [submodule "vim/bundle/vim-indexed-search"]
-	path = vim/bundle/vim-indexed-search
-	url = git://github.com/henrik/vim-indexed-search.git
+    path = vim/bundle/vim-indexed-search
+    url = git://github.com/henrik/vim-indexed-search.git
 [submodule "vim/bundle/snipmate"]
-	path = vim/bundle/snipmate
-	url = git://github.com/msanders/snipmate.vim.git
+    path = vim/bundle/snipmate
+    url = git://github.com/msanders/snipmate.vim.git
+    ignore = untracked
 [submodule "vim/bundle/vim-ragtag"]
-	path = vim/bundle/vim-ragtag
-	url = git://github.com/tpope/vim-ragtag.git
+    path = vim/bundle/vim-ragtag
+    url = git://github.com/tpope/vim-ragtag.git
+    ignore = untracked
