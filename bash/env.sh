@@ -1,25 +1,18 @@
 # PATH
 export PATH=/usr/local/bin:$PATH
 
+# I still prefer the older bash-completion-lib to bash-completion
 # https://code.google.com/p/bash-completion-lib/
-if [ -f /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib ]; then
-  . /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib 
-fi
+[[ -s /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib ]] && source /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib
 
 # git completion
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-  . /usr/local/etc/bash_completion.d/git-completion.bash
-fi
+[[ -s /usr/local/etc/bash_completion.d/git-completion.bash ]] && source /usr/local/etc/bash_completion.d/git-completion.bash
 
 # https://github.com/joelthelion/autojump
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
-fi
+[[ -s /usr/local/etc/autojump.bash ]] && source /usr/local/etc/autojump.bash
 
 # rvm
-if [ -f ~/.rvm/scripts/rvm ]; then
-    . ~/.rvm/scripts/rvm
-fi
+[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
 
 export EDITOR="vim"
 

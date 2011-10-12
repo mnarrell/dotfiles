@@ -10,7 +10,6 @@ alias text='mvim ~/Dropbox/PlainText'
 # Management
 alias dots="mvim ~/.dotfiles"
 alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
-alias redot='cd ~/.dotfiles && gpp && rake install; cd -'
 
 # List all files colorized in long format, including dot files
 alias ls="ls -G"

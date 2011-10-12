@@ -1,5 +1,3 @@
-# git completion
-
 function __git_prompt() {
   GIT_PS1_SHOWDIRTYSTATE=1
   __git_ps1 " [%s]" | sed 's/ \([+*]\{1,\}\)$/\1/'

@@ -64,7 +64,7 @@ nnoremap ` '
 " Fix command typos 
 nmap ; :
 
-" Tab/shift-Tab to increase/decrease indentation in visual mode.
+" Tab/shift-Tab to increase/decrease indentation.
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
