@@ -2,7 +2,8 @@
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Enable the 2D Dock
-defaults write com.apple.dock no-glass -bool true
+# defaults write com.apple.dock no-glass -bool true
+defaults write com.apple.dock no-glass -bool false
 
 # Disable menu bar transparency
 defaults write -g AppleEnableMenuBarTransparency -bool false

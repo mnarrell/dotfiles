@@ -1,3 +1,5 @@
+# git completion
+
 function __git_prompt() {
   GIT_PS1_SHOWDIRTYSTATE=1
   __git_ps1 " [%s]" | sed 's/ \([+*]\{1,\}\)$/\1/'
@@ -25,9 +27,10 @@ function bash_prompt() {
   local BW="\[\033[1;37m\]"
 
   # reset
-  local RESET="\[\033[0;37m\]"
+  # local RESET="\[\033[0;37m\]"
+  local RESET=$G
 
-  PS1="$Y\u@\h$W:$BC\w$M\$(__git_prompt)$RESET $ "
+  PS1="$Y\u@\h$W:$BC\W$M\$(__git_prompt)$RESET $ "
 }
 
 bash_prompt

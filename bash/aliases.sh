@@ -10,9 +10,10 @@ alias text='mvim ~/Dropbox/PlainText'
 # Management
 alias dots="mvim ~/.dotfiles"
 alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
+alias redot='cd ~/.dotfiles && rake install; cd -'
 
 # List all files colorized in long format, including dot files
-alias ls="ls -G"
+alias ls="ls -Gh"
 alias la="ls -Gla"
 alias lsd="ls -Gl | grep '^d'"
 
@@ -40,6 +41,13 @@ alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-request -m '$method'"; done
 
-alias hosts='sudo vim /etc/hosts'
+alias hosts='sudo mvim /etc/hosts'
 
+alias grep='grep --color=auto'
+alias ann='annotate -p before -m -i -e tests -e fixtures'
+alias ssh_beta='ssh -L 2478:localhost:3306 ubuntu@beta.apricotrem.com'
+alias this='cd ~/dev/java/this'
+alias apricot='cd ~/dev/ruby/apricotrem'
+alias ss='svn up && svn st'
+alias shelf='cd ~/Library/Preferences/IntelliJIdea10/shelf'
 

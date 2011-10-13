@@ -59,7 +59,8 @@ set visualbell
 " Start without the toolbar
 set guioptions-=T
 
-set guifont=Inconsolata:h12
+" set guifont=Inconsolata:h12
+set guifont=Monaco:h12
 
 " Default gui color scheme
 color blackboard

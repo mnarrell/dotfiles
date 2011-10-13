@@ -1,18 +1,31 @@
-# PATH
-export PATH=/usr/local/bin:$PATH
+export M2_HOME=/usr/local/maven
+export M2=$M2_HOME/bin
+export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops" 
+export MONGODB_HOME=/usr/local/mongo
+export JYTHON_HOME=/usr/local/jython
 
-# I still prefer the older bash-completion-lib to bash-completion
+# PATH
+export PATH=~/bin:/usr/local/bin:$M2:$PATH:/usr/local/mysql/bin:$MONGODB_HOME/bin:$JYTHON_HOME/bin
+
 # https://code.google.com/p/bash-completion-lib/
-[[ -s /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib ]] && source /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib
+if [ -f /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib ]; then
+  . /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib 
+fi
 
 # git completion
-[[ -s /usr/local/etc/bash_completion.d/git-completion.bash ]] && source /usr/local/etc/bash_completion.d/git-completion.bash
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+  . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
 
 # https://github.com/joelthelion/autojump
-[[ -s /usr/local/etc/autojump.bash ]] && source /usr/local/etc/autojump.bash
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
 
 # rvm
-[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
+if [ -f ~/.rvm/scripts/rvm ]; then
+    . ~/.rvm/scripts/rvm
+fi
 
 export EDITOR="vim"
 
@@ -23,6 +36,3 @@ export MANPAGER="less -X"
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
-
-# maven defaults
-export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128M -XX:+UseCompressedOops"

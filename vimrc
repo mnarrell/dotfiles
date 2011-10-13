@@ -1,15 +1,18 @@
 " Basic de-suck settings
 set nocompatible
-set ruler
+" set ruler
 set laststatus=2
 set scrolloff=3
 set showcmd
 set showmode
 set modelines=1
-set number
+" set number
 set shortmess=atI
 set visualbell
 set autoread
+
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set nowrap
 
 syntax on
 filetype plugin indent on
@@ -21,7 +24,7 @@ let mapleader = ","
 
 " Search
 set incsearch
-set ignorecase
+"set ignorecase
 set smartcase
 set hlsearch
 
@@ -64,7 +67,7 @@ nnoremap ` '
 " Fix command typos 
 nmap ; :
 
-" Tab/shift-Tab to increase/decrease indentation.
+" Tab/shift-Tab to increase/decrease indentation in visual mode.
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
@@ -148,3 +151,33 @@ let g:gist_open_browser_after_post = 1
 
 " ZoomWin
 map <Leader><Leader> :ZoomWin<CR>
+
+
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
