@@ -15,6 +15,7 @@
   ui = auto
 [github]
   user = mnarrell
+  token = <.replace github-token>
 [alias]
   who = shortlog -s -n --no-merges
   today = shortlog --since=midnight

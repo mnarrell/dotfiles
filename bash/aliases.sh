@@ -13,9 +13,17 @@ alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
 alias redot='cd ~/.dotfiles && rake install; cd -'
 
 # List all files colorized in long format, including dot files
-alias ls="ls -Gh"
-alias la="ls -Gla"
-alias lsd="ls -Gl | grep '^d'"
+shopt -s nocasematch;
+if [[ $OSTYPE =~ ^darwin.*$ ]]; then
+    alias ls="ls -Gh"
+    alias la="ls -Gla"
+    alias lsd="ls -Gl | grep '^d'"
+elif [[ $OSTYPE =~ ^linux.*$ ]]; then
+    alias ls="ls -h --color"
+    alias la="ls -lah --color"
+    alias lsd="ls -l --color | grep '^d'"
+fi
+shopt -u nocasematch;
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
