@@ -12,6 +12,8 @@ alias dots="mvim ~/.dotfiles"
 alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
 alias redot='cd ~/.dotfiles && rake install; cd -'
 
+alias status="mvim ~/Dropbox/PlainText/status.txt"
+
 # List all files colorized in long format, including dot files
 shopt -s nocasematch;
 if [[ $OSTYPE =~ ^darwin.*$ ]]; then
