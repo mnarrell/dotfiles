@@ -13,6 +13,7 @@ alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
 alias redot='cd ~/.dotfiles && rake install; cd -'
 
 alias status="mvim ~/Dropbox/PlainText/status.txt"
+alias sshconfig="mvim ~/.ssh/config"
 
 # List all files colorized in long format, including dot files
 shopt -s nocasematch;

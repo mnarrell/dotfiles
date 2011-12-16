@@ -63,7 +63,8 @@ set guioptions-=T
 set guifont=Monaco:h12
 
 " Default gui color scheme
-color blackboard
+" color blackboard
+color jellybeans
 
 " ConqueTerm wrapper
 function StartTerm()

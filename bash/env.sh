@@ -18,8 +18,11 @@ if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
 fi
 
 # https://github.com/joelthelion/autojump
-if [ -f `brew --prefix`/etc/autojump ]; then
-  . `brew --prefix`/etc/autojump
+if [[ $OSTYPE =~ ^darwin.*$ ]]; 
+then
+  if [ -f `brew --prefix`/etc/autojump ]; then
+    . `brew --prefix`/etc/autojump
+  fi
 fi
 
 # rvm

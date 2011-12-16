@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/jeff/.dotfiles'
-let g:netrw_dirhist_2='/Users/matt/.dotfiles'
-let g:netrw_dirhist_3='/Volumes/Spare/java/velocity-core/src/core/com/cauldron/dragonfly/audit'
-let g:netrw_dirhist_4='/Users/matt/Dropbox/PlainText'
-let g:netrw_dirhist_5='/Users/matt/.dotfiles'
