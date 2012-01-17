@@ -30,7 +30,11 @@ if [ -f ~/.rvm/scripts/rvm ]; then
     . ~/.rvm/scripts/rvm
 fi
 
-export EDITOR="vim"
+if [[ $OSTYPE =~ ^darwin.*$ ]]; then
+  export EDITOR="mvim"
+elif [[ $OSTYPE =~ ^linux.*$ ]]; then
+  export EDITOR="vim"
+fi
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"

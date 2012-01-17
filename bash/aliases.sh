@@ -5,15 +5,15 @@ alias ....="cd ../../.."
 alias cdd="cd -"
 
 # http://www.hogbaysoftware.com/products/plaintext
-alias text='mvim ~/Dropbox/PlainText'
+alias text='${EDITOR} ~/Dropbox/PlainText'
 
 # Management
-alias dots="mvim ~/.dotfiles"
+alias dots="${EDITOR} ~/.dotfiles"
 alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
 alias redot='cd ~/.dotfiles && rake install; cd -'
 
-alias status="mvim ~/Dropbox/PlainText/status.txt"
-alias sshconfig="mvim ~/.ssh/config"
+alias status="${EDITOR} ~/Dropbox/PlainText/status.txt"
+alias sshconfig="${EDITOR} ~/.ssh/config"
 
 # List all files colorized in long format, including dot files
 shopt -s nocasematch;
@@ -52,7 +52,7 @@ alias rot13='tr a-zA-Z n-za-mN-ZA-M'
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-request -m '$method'"; done
 
-alias hosts='sudo mvim /etc/hosts'
+alias hosts='sudo ${EDITOR} /etc/hosts'
 
 alias grep='grep --color=auto'
 alias ann='annotate -p before -m -i -e tests -e fixtures'
