@@ -1,11 +1,13 @@
 export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin
 export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops" 
-export MONGODB_HOME=/usr/local/mongo
+# export MONGODB_HOME=/usr/local/mongo
 export JYTHON_HOME=/usr/local/jython
+export JMETER_HOME=/usr/local/jmeter
 
 # PATH
-export PATH=~/bin:/usr/local/bin:$M2:$PATH:/usr/local/mysql/bin:$MONGODB_HOME/bin:$JYTHON_HOME/bin
+# export PATH=~/bin:/usr/local/bin:$M2:$MONGODB_HOME/bin:$JYTHON_HOME/bin:$PATH
+export PATH=~/bin:/usr/local/bin:$M2:$JMETER_HOME/bin:$JYTHON_HOME/bin:$PATH
 
 # https://code.google.com/p/bash-completion-lib/
 if [ -f /usr/local/etc/bash_completion_lib-1.3.1/bash_completion_lib ]; then
