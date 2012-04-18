@@ -58,6 +58,9 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+# Show hidden files
+defaults write com.apple.finder AppleShowAllFiles TRUE
+
 # kill / restart apps 
 echo "Changed defaults. Restarting apps…"
 for app in Safari Finder Dock Mail; do killall "$app"; done

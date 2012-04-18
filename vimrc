@@ -94,6 +94,7 @@ vmap <C-Down> ]egv
 
 " format JSON
 map <leader>j !python -m json.tool<CR>
+map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " Filetype stuff
 au FileType make set noexpandtab
