@@ -59,7 +59,8 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 chflags nohidden ~/Library
 
 # Show hidden files
-defaults write com.apple.finder AppleShowAllFiles TRUE
+# defaults write com.apple.finder AppleShowAllFiles TRUE
+defaults write com.apple.finder AppleShowAllFiles FALSE
 
 # kill / restart apps 
 echo "Changed defaults. Restarting apps…"

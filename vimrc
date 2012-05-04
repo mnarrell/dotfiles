@@ -28,15 +28,6 @@ set incsearch
 set smartcase
 set hlsearch
 
-"let g:fuf_autoPreview = 0
-"let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|pyc|sw[po])$|(^|[/\\])(\.(hg|git|bzr|egg-info)|build|dist)($|[/\\])'
-
-map <Leader>t :FufTag<CR>
-map <Leader>f :FufFile<CR>
-map <Leader>F :FufTaggedFile<CR>
-map <Leader>b :FufBuffer<CR>
-map <Leader>l :FufLine<CR>
-
 nmap <Leader>NL :set invnumber<CR>
 
 " Tabs & Indenting

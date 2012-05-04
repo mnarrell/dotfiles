@@ -1,5 +1,8 @@
 Bundle 'gmarik/vundle'
 Bundle 'L9'
-Bundle 'FuzzyFinder'
+" Bundle 'FuzzyFinder'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+
+" non github repos
+Bundle 'git://git.wincent.com/command-t.git'

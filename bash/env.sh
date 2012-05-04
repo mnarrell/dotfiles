@@ -45,3 +45,4 @@ export MANPAGER="less -X"
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
+export HISTTIMEFORMAT="%m/%d/%y - %H:%M:%S "
