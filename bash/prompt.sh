@@ -33,9 +33,11 @@ function bash_prompt() {
   local BC="\[\033[1;36m\]"
   local BW="\[\033[1;37m\]"
 
+  local OFF="\[\033[0;0m\]"
+
   # reset
   # local RESET="\[\033[0;37m\]"
-  local RESET=$G
+  local RESET=$OFF
 
   PS1="$Y\u@\h$W:$BC\W$M\$(__git_prompt)\$(__svn_prompt)$RESET $ "
 }
