@@ -146,3 +146,7 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
+
+
+nmap <f7> :tabp<CR>
+nmap <f8> :tabn<CR>
