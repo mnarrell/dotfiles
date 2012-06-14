@@ -4,6 +4,7 @@ export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops"
 # export MONGODB_HOME=/usr/local/mongo
 export JYTHON_HOME=/usr/local/jython
 export JMETER_HOME=/usr/local/jmeter
+export JAVA_HOME=`/usr/libexec/java_home`
 
 # PATH
 # export PATH=~/bin:/usr/local/bin:$M2:$MONGODB_HOME/bin:$JYTHON_HOME/bin:$PATH
