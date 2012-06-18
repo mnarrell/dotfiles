@@ -1,0 +1,11 @@
+#source ~/.bash/env.bash
+#source ~/.bash/aliases.bash
+#source ~/.bash/functions.bash
+#source ~/.bash/prompt.bash
+
+[[ -f ~/.localrc ]] && source ~/.localrc
+
+for config_file in `find $DOTFILES -name *.bash`
+do
+    source "$config_file"
+done

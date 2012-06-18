@@ -1,0 +1,13 @@
+# load config and system specific
+[[ -f ~/.localrc ]] && source ~/.localrc
+
+for config_file ($DOTFILES/**/*.zsh) source $config_file
+
+for bin ($DOTFILES/**/bin) export PATH=$PATH:$bin
+
+autoload -U compinit
+compinit
+
+# matches case insensitive for lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
