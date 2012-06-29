@@ -9,24 +9,19 @@ alias text='${EDITOR} ~/Dropbox/PlainText'
 
 # Management
 alias dots='${EDITOR} ~/.dotfiles'
-alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
+alias reload='source ~/.zshrc && echo "sourced ~/.zshrc"'
 alias redot='cd ~/.dotfiles && rake install; cd -'
 
 alias status='${EDITOR} ~/Dropbox/PlainText/status.txt'
 alias sshconfig='${EDITOR} ~/.ssh/config'
+alias -g ls="ls -h"
+alias -g ll="ls -l"
+alias -g la="ll -a"
 
-# List all files colorized in long format, including dot files
-shopt -s nocasematch;
-if [[ $OSTYPE =~ ^darwin.*$ ]]; then
-    alias ls="ls -Gh"
-    alias la="ls -Gla"
-    alias lsd="ls -Gl | grep '^d'"
-elif [[ $OSTYPE =~ ^linux.*$ ]]; then
-    alias ls="ls -h --color"
-    alias la="ls -lah --color"
-    alias lsd="ls -l --color | grep '^d'"
-fi
-shopt -u nocasematch;
+alias -s xml='${EDITOR}'
+alias -s txt='${EDITOR}'
+
+alias _="sudo"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -46,19 +41,12 @@ alias server="open http://localhost:8080/ && python -m SimpleHTTPServer 8080"
 # File size
 alias fs="stat -f \"%z bytes\""
 
-# ROT13-encode text. Works for decoding, too! ;)
-alias rot13='tr a-zA-Z n-za-mN-ZA-M'
-
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-request -m '$method'"; done
 
 alias hosts='sudo ${EDITOR} /etc/hosts'
-
 alias grep='grep --color=auto'
-alias ann='annotate -p before -m -i -e tests -e fixtures'
-alias ssh_beta='ssh -L 2478:localhost:3306 ubuntu@beta.apricotrem.com'
 alias this='cd ~/dev/java/this'
-alias apricot='cd ~/dev/ruby/apricotrem'
 alias ss='svn up && svn st'
-alias shelf='cd ~/Library/Preferences/IntelliJIdea10/shelf'
+
 

@@ -11,3 +11,5 @@ compinit
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

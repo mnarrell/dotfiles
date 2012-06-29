@@ -5,4 +5,4 @@ setopt promptsubst
 # Load the prompt theme system
 autoload -U promptinit
 promptinit
-prompt jfred
+prompt mn
