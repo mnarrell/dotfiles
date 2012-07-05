@@ -10,6 +10,8 @@ antigen-bundle terminalapp
 antigen-bundle mvn
 #antigen-bundle history-substring-search
 antigen-bundle autojump
+antigen-bundle vagrant
+antigen-bundle knife
 
 # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting

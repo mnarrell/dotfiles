@@ -10,13 +10,11 @@ alias text='${EDITOR} ~/Dropbox/PlainText'
 # Management
 alias dots='${EDITOR} ~/.dotfiles'
 alias reload='source ~/.zshrc && echo "sourced ~/.zshrc"'
-alias redot='cd ~/.dotfiles && rake install; cd -'
 
 alias status='${EDITOR} ~/Dropbox/PlainText/status.txt'
 alias sshconfig='${EDITOR} ~/.ssh/config'
-alias -g ls="ls -h"
-alias -g ll="ls -l"
-alias -g la="ll -a"
+alias -g ll="ls -lh"
+alias -g la="ls -lah"
 
 alias -s xml='${EDITOR}'
 alias -s txt='${EDITOR}'
