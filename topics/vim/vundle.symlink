@@ -1,8 +1,8 @@
 Bundle 'gmarik/vundle'
 Bundle 'L9'
-" Bundle 'FuzzyFinder'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'sukima/xmledit'
 
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
