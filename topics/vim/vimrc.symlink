@@ -1,4 +1,3 @@
-" Basic de-suck settings
 set nocompatible
 " set ruler
 set laststatus=2
@@ -83,8 +82,17 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
+
 " format JSON
-map <leader>j !python -m json.tool<CR>
+"map <leader>j !python -m json.tool<CR>
 map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
 
 " Filetype stuff
@@ -125,28 +133,27 @@ function! DoPrettyXML()
   " delete the xml header if it exists. This will
   " permit us to surround the document with fake tags
   " without creating invalid xml.
-  1s/<?xml .*?>//e
+  "1s/<?xml .*?>//e
   " insert fake tags around the entire document.
   " This will permit us to pretty-format excerpts of
   " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
+  "0put ='<PrettyXML>'
+  "$put ='</PrettyXML>'
   silent %!xmllint --format -
   " xmllint will insert an <?xml?> header. it's easy enough to delete
   " if you don't want it.
   " delete the fake tags
-  2d
-  $d
+  "2d
+  "$d
   " restore the 'normal' indentation, which is one extra level
   " too deep due to the extra tags we wrapped around the document.
-  silent %<
+  "silent %<
   " back to home
   1
   " restore the filetype
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
-
 
 nmap <f7> :tabp<CR>
 nmap <f8> :tabn<CR>

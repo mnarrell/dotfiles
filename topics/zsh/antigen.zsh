@@ -16,5 +16,8 @@ antigen-bundle knife
 # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting
 
+# History search bundle
+antigen-bundle zsh-users/zsh-history-substring-search
+
 # Tell antigen that you're done.
 antigen-apply

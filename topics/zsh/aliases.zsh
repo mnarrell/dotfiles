@@ -20,6 +20,7 @@ alias -s xml='${EDITOR}'
 alias -s txt='${EDITOR}'
 
 alias _="sudo"
+alias clear="echo 'NO!'"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
