@@ -16,7 +16,7 @@ set nowrap
 syntax on
 filetype plugin indent on
 
-color blackboard
+color dante
 
 " Change <Leader>
 let mapleader = ","

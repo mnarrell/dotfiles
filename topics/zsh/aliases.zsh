@@ -48,4 +48,15 @@ alias grep='grep --color=auto'
 alias this='cd ~/dev/java/this'
 alias ss='svn up && svn st'
 
+function jc {
+  jmx_host=$1
+  jmx_port=${2:-6060}
+  proxy_host=${3:-aws_gateway}
+  proxy_port=${4:-8123}
+
+  echo "connecting jconsole to $jmx_host:$jmx_port via SOCKS proxy $proxy_host using local port $proxy_port"
+  ssh -f -ND $proxy_port $proxy_host
+  jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=${proxy_port} service:jmx:rmi:///jndi/rmi://${jmx_host}:${jmx_port}/jmxrmi
+  kill $(ps ax | grep "[s]sh -f -ND $proxy_port" | awk '{print $1}')
+}
 

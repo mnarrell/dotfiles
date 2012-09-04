@@ -22,6 +22,7 @@
   br = branch
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  scrub = gc --aggressive --prune=now
 [merge]
   tool = opendiff
 [diff]
