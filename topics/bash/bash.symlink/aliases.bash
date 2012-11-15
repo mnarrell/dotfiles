@@ -56,9 +56,7 @@ alias hosts='sudo ${EDITOR} /etc/hosts'
 
 alias grep='grep --color=auto'
 alias ann='annotate -p before -m -i -e tests -e fixtures'
-alias ssh_beta='ssh -L 2478:localhost:3306 ubuntu@beta.apricotrem.com'
-alias this='cd ~/dev/java/this'
-alias apricot='cd ~/dev/ruby/apricotrem'
+alias this='cd ~/dev/this'
 alias ss='svn up && svn st'
 alias shelf='cd ~/Library/Preferences/IntelliJIdea10/shelf'
 

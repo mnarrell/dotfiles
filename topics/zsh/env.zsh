@@ -33,4 +33,7 @@ export EC2_PRIVATE_KEY=~/.ec2/mn-keypair.pem
 export EC2_CERT=~/.ec2/cert.pem
 export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
 export EC2_AMITOOL_HOME="/usr/local/Library/LinkedKegs/ec2-ami-tools/jars"
+export KITCHEN_HOME="/Users/matt/dev/this/utilities/kitchen"
+
+[[ -f `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 

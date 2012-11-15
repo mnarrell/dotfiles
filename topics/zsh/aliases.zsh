@@ -18,6 +18,7 @@ alias -g la="ls -lah"
 
 alias -s xml='${EDITOR}'
 alias -s txt='${EDITOR}'
+alias -s js='${EDITOR}'
 
 alias _="sudo"
 alias clear="echo 'NO!'"
@@ -45,13 +46,17 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-re
 
 alias hosts='sudo ${EDITOR} /etc/hosts'
 alias grep='grep --color=auto'
-alias this='cd ~/dev/java/this'
+alias this='cd ~/dev/this'
 alias ss='svn up && svn st'
+alias vu="vagrant up"
+alias vd="vagrant destroy"
+alias vh="vagrant halt"
+alias vs="vagrant ssh"
 
 function jc {
   jmx_host=$1
   jmx_port=${2:-6060}
-  proxy_host=${3:-aws_gateway}
+  proxy_host=${3:-aws_west_gateway}
   proxy_port=${4:-8123}
 
   echo "connecting jconsole to $jmx_host:$jmx_port via SOCKS proxy $proxy_host using local port $proxy_port"

@@ -1,46 +1,24 @@
 # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# Enable the 2D Dock
-# defaults write com.apple.dock no-glass -bool true
-#defaults write com.apple.dock no-glass -bool false
-
-# Disable menu bar transparency
-#defaults write -g AppleEnableMenuBarTransparency -bool false
-
 # Expand save panel by default
 defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
 
 # Expand print panel by default
 defaults write -g PMPrintingExpandedStateForPrint -bool true
 
-# Disable shadow in screenshots
-# defaults write com.apple.screencapture disable-shadow -bool true
-#defaults write com.apple.screencapture disable-shadow -bool false
+# Always show scrollbars
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
-# Enable highlight hover effect for the grid view of a stack (Dock)
-#defaults write com.apple.dock mouse-over-hilte-stack -bool true
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Enable spring loading for all Dock items
-#defaults write enable-spring-load-actions-on-all-items -bool true
-
-# Disable press-and-hold for keys in favor of key repeat
-#defaults write -g ApplePressAndHoldEnabled -bool false
-
-# Disable auto-correct
-#defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-# Disable window animations
-#defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-
-# Disable disk image verification
-#defaults write com.apple.frameworks.diskimages skip-verify -bool true
-#defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-#defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+# Enable HiDPI display modes (requires restart)
+sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 # Automatically open a new Finder window when a volume is mounted
-#defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-#defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -52,14 +30,31 @@ defaults write com.apple.Safari IncludeDebugMenu -bool true
 #defaults write com.apple.Mail DisableReplyAnimations -bool true
 #defaults write com.apple.Mail DisableSendAnimations -bool true
 
+# Finder: show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Finder: show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Finder: allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
 # Display full POSIX path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
 # Show hidden files
- #defaults write com.apple.finder AppleShowAllFiles TRUE
 defaults write com.apple.finder AppleShowAllFiles FALSE
 
 # kill / restart apps 
