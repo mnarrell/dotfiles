@@ -16,7 +16,7 @@ set nowrap
 syntax on
 filetype plugin indent on
 
-color dante
+color jellybeans
 
 " Change <Leader>
 let mapleader = ","

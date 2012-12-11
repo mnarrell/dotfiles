@@ -44,7 +44,7 @@ alias fs="stat -f \"%z bytes\""
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-request -m '$method'"; done
 
-alias hosts='sudo ${EDITOR} /etc/hosts'
+alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias grep='grep --color=auto'
 alias this='cd ~/dev/this'
 alias ss='svn up && svn st'
