@@ -10,15 +10,12 @@ export VIM_APP_DIR=/usr/local/Cellar/macvim/HEAD
 cdpath=( ~/dev ~/dev/this /usr/local)
 
 bindkey -v
+bindkey -M vicmd '?' history-incremental-search-backward
 
 # PATH
 export PATH=~/bin:/usr/local/bin:$M2:$JMETER_HOME/bin:$JYTHON_HOME/bin:$PATH
 
-if [[ $OSTYPE =~ ^darwin.*$ ]]; then
-  export EDITOR="mvim"
-elif [[ $OSTYPE =~ ^linux.*$ ]]; then
-  export EDITOR="vim"
-fi
+export EDITOR="mvim"
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"

@@ -4,5 +4,13 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'sukima/xmledit'
 
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'Zenburn'
+Bundle 'kien/ctrlp.vim'
+
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+
 " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
+" Bundle 'git://git.wincent.com/command-t.git'

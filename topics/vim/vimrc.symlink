@@ -1,61 +1,73 @@
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+source ~/.vundle
+
 set nocompatible
-" set ruler
 set laststatus=2
 set scrolloff=3
 set showcmd
 set showmode
 set modelines=1
-" set number
 set shortmess=atI
 set visualbell
 set autoread
-
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set nowrap
+set incsearch
+set smartcase
+set hlsearch
+
+" Invisible characters *******************************************************
+set listchars=trail:.,tab:>-,eol:$
+set nolist
+:noremap <Leader>i :set list!<CR> " Toggle invisible chars
+
+" Tabs ***********************************************************************
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set smarttab
+
+" Indents ********************************************************************
+set autoindent
+set smartindent
+set cindent
+set copyindent
+
+set hidden            " allow for editied buffers in the background
+set cursorline
+set nowrap
+set ruler             " show the cursor position all the time
+set showcmd           " display incomplete commands
+set showmatch
+
+set foldlevelstart=20 " Don't start folded
+set history=1000      " keep 50 lines of command line history
+set undolevels=1000
+set wildmode=list:longest
+set wildignore=*.swp,*.bak,*.pyc,*.class,target
+
+set nobackup          " do not keep a backup file, use versions instead
+set noswapfile
+
+" Fix backspace
+set backspace=indent,eol,start
+
+" Status line
+set laststatus=2
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 syntax on
 filetype plugin indent on
 
 color jellybeans
 
+let g:Powerline_symbols = 'fancy'
+
 " Change <Leader>
 let mapleader = ","
 
-" Search
-set incsearch
-"set ignorecase
-set smartcase
-set hlsearch
-
 nmap <Leader>NL :set invnumber<CR>
-
-" Tabs & Indenting
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-
-" Catch tabs/trailing spaces
-set listchars=tab:▸\ ,trail:·
-set list!
-
-" Bash-like filename completion
-set wildmenu
-set wildmode=list:longest
-set wildignore=*.o,*.fasl
-
-" Fix backspace
-set backspace=indent,eol,start
-
-" Switch buffers without saving
-set hidden
-
-" Directories
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-source ~/.vundle
 
 " Managing splits
 " http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
@@ -65,22 +77,12 @@ nmap <leader><right> :rightbelow vsp<CR>
 nmap <leader><up> :leftabove sp<CR>
 nmap <leader><down> :rightbelow sp<CR>
 
-" Swap ` and '
-nnoremap ' `
-nnoremap ` '
-
 " Fix command typos 
 nmap ; :
 
 " Tab/shift-Tab to increase/decrease indentation in visual mode.
 vmap <Tab> >gv
 vmap <S-Tab> <gv
-
-" Control-up/down to move lines.
-nmap <C-Up> [e
-nmap <C-Down> ]e
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
 
 noremap  <Up> ""
 noremap! <Up> <Esc>
@@ -122,35 +124,11 @@ let g:NERDCreateDefaultMappings=0
 map <D-/> <plug>NERDCommenterToggle<CR>
 imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
 
-" Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
-
 function! DoPrettyXML()
-  " save the filetype so we can restore it later
   let l:origft = &ft
   set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  "1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  "0put ='<PrettyXML>'
-  "$put ='</PrettyXML>'
   silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  "2d
-  "$d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  "silent %<
-  " back to home
   1
-  " restore the filetype
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
