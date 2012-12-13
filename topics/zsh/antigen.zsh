@@ -9,7 +9,6 @@ antigen-bundle brew
 antigen-bundle terminalapp
 antigen-bundle mvn
 #antigen-bundle history-substring-search
-antigen-bundle autojump
 antigen-bundle vagrant
 antigen-bundle knife
 

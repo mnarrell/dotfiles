@@ -7,6 +7,10 @@ export JAVA_HOME=`/usr/libexec/java_home`
 export GROOVY_HOME=/usr/local/Cellar/groovy/2.0.1/libexec
 export VIM_APP_DIR=/usr/local/Cellar/macvim/HEAD
 
+cdpath=( ~/dev ~/dev/this /usr/local)
+
+bindkey -v
+
 # PATH
 export PATH=~/bin:/usr/local/bin:$M2:$JMETER_HOME/bin:$JYTHON_HOME/bin:$PATH
 
@@ -24,5 +28,3 @@ export EC2_CERT=~/.ec2/cert.pem
 export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
 export EC2_AMITOOL_HOME="/usr/local/Library/LinkedKegs/ec2-ami-tools/jars"
 export KITCHEN_HOME="/Users/matt/dev/this/utilities/kitchen"
-
-[[ -f `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
