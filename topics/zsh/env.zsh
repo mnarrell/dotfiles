@@ -7,10 +7,6 @@ export JAVA_HOME=`/usr/libexec/java_home`
 export GROOVY_HOME=/usr/local/Cellar/groovy/2.0.1/libexec
 export VIM_APP_DIR=/usr/local/Cellar/macvim/HEAD
 
-cdpath=( ~/dev ~/dev/this /usr/local)
-
-bindkey -v
-bindkey -M vicmd '?' history-incremental-search-backward
 
 # PATH
 export PATH=~/bin:/usr/local/bin:$M2:$JMETER_HOME/bin:$JYTHON_HOME/bin:$PATH
