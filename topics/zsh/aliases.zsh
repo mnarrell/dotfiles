@@ -52,6 +52,7 @@ alias vu="vagrant up"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
 alias vs="vagrant ssh"
+alias mgr="~/Applications/Manager-7.0/Manager.sh &"
 
 function jc {
   jmx_host=$1
