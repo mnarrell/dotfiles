@@ -13,8 +13,6 @@ alias reload='source ~/.zshrc && echo "sourced ~/.zshrc"'
 
 alias status='${EDITOR} ~/Dropbox/PlainText/status.txt'
 alias sshconfig='${EDITOR} ~/.ssh/config'
-alias -g ll="ls -lh"
-alias -g la="ls -lah"
 
 alias -s xml='${EDITOR}'
 alias -s txt='${EDITOR}'
@@ -52,17 +50,4 @@ alias vu="vagrant up"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
 alias vs="vagrant ssh"
-alias mgr="~/Applications/Manager-7.0/Manager.sh &"
-
-function jc {
-  jmx_host=$1
-  jmx_port=${2:-6060}
-  proxy_host=${3:-aws_west_gateway}
-  proxy_port=${4:-8123}
-
-  echo "connecting jconsole to $jmx_host:$jmx_port via SOCKS proxy $proxy_host using local port $proxy_port"
-  ssh -f -ND $proxy_port $proxy_host
-  jconsole -J-DsocksProxyHost=localhost -J-DsocksProxyPort=${proxy_port} service:jmx:rmi:///jndi/rmi://${jmx_host}:${jmx_port}/jmxrmi
-  kill $(ps ax | grep "[s]sh -f -ND $proxy_port" | awk '{print $1}')
-}
-
+alias mgr="sh ~/Applications/Manager-7.0/Manager.sh > /dev/null &"

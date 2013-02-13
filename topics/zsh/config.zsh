@@ -5,7 +5,7 @@ colors
 autoload -U select-word-style
 select-word-style bash
 
-cdpath=(. ~/dev ~/dev/this /usr/local)
+cdpath=( . ~/dev ~/dev/this /usr/local )
 
 # term colors
 export CLICOLOR=1

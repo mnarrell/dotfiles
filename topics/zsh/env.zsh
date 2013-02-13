@@ -4,12 +4,14 @@ export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops"
 export JYTHON_HOME=/usr/local/jython
 export JMETER_HOME=/usr/local/jmeter
 export JAVA_HOME=`/usr/libexec/java_home`
-export GROOVY_HOME=/usr/local/Cellar/groovy/2.0.1/libexec
+export GROOVY_HOME=/usr/local/Cellar/groovy/2.1.1/libexec
 export VIM_APP_DIR=/usr/local/Cellar/macvim/HEAD
+export KEYS=/Users/matt/dev/this/utilities/pems
 
 
 # PATH
-export PATH=~/bin:/usr/local/bin:$M2:$JMETER_HOME/bin:$JYTHON_HOME/bin:$PATH
+export PATH=~/bin:/usr/local/bin:$JAVA_HOME/bin:$M2:$JMETER_HOME/bin:$JYTHON_HOME/bin:$HOME/.rvm/bin:$PATH
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR="mvim"
 

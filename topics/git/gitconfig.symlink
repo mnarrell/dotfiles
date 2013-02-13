@@ -13,6 +13,8 @@
   diff = auto
   branch = auto
   ui = auto
+  grep = auto
+  showbranch = auto
 [alias]
   who = shortlog -s -n --no-merges
   today = shortlog --since=midnight

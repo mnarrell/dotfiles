@@ -11,6 +11,3 @@ Bundle 'kien/ctrlp.vim'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-
-" non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
