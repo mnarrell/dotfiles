@@ -6,9 +6,7 @@ antigen-lib
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen-bundle git
 antigen-bundle brew
-antigen-bundle terminalapp
 antigen-bundle mvn
-#antigen-bundle history-substring-search
 antigen-bundle vagrant
 antigen-bundle knife
 
