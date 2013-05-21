@@ -32,3 +32,5 @@
   tool = opendiff
 [svn]
   rmdir = true
+[push]
+	default = simple
