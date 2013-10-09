@@ -1,6 +1,6 @@
 export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin
-export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops" 
+export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true" 
 export JYTHON_HOME=/usr/local/jython
 export JMETER_HOME=/usr/local/jmeter
 export JAVA_HOME=`/usr/libexec/java_home`
@@ -11,7 +11,6 @@ export KEYS=/Users/matt/dev/this/utilities/pems
 
 # PATH
 export PATH=~/bin:/usr/local/bin:$JAVA_HOME/bin:$M2:$JMETER_HOME/bin:$JYTHON_HOME/bin:$HOME/.rvm/bin:$PATH
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export EDITOR="mvim"
 
@@ -23,3 +22,5 @@ export EC2_CERT=~/.ec2/cert.pem
 export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
 export EC2_AMITOOL_HOME="/usr/local/Library/LinkedKegs/ec2-ami-tools/jars"
 export KITCHEN_HOME="/Users/matt/dev/this/utilities/kitchen"
+export VAGRANT_HOME=/Users/matt/.vagrant.d/
+export VBOX_USER_HOME=/Users/matt/.VirtualBox/
