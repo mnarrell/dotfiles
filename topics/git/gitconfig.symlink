@@ -7,7 +7,7 @@
   excludesfile = ~/.gitignore
   ignorecase = false
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-  editor = mvim -f --nomru
+  editor = vim
 [color]
   status = auto
   diff = auto

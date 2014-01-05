@@ -17,6 +17,11 @@ alias sshconfig='${EDITOR} ~/.ssh/config'
 alias -s xml='${EDITOR}'
 alias -s txt='${EDITOR}'
 alias -s js='${EDITOR}'
+alias -s zip="unzip -l"
+alias -s rar="unrar l"
+alias -s tar="tar tf"
+alias -s tar.gz="echo "
+alias -s ace="unace l"
 
 alias _="sudo"
 alias clear="echo 'NO!'"

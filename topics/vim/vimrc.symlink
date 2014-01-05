@@ -114,15 +114,15 @@ cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 command! -nargs=1 -complete=filetype F set filetype=<args>
 
 " NERDTree
-let NERDTreeIgnore=['\.rbc$', '\~$']
-let g:NERDMenuMode=0
-map <leader>n :NERDTreeToggle<CR>
-map <leader>N :NERDTreeFind<CR>
+" let NERDTreeIgnore=['\.rbc$', '\~$']
+" let g:NERDMenuMode=0
+" map <leader>n :NERDTreeToggle<CR>
+" map <leader>N :NERDTreeFind<CR>
 
 " NERDCommenter
-let g:NERDCreateDefaultMappings=0
-map <D-/> <plug>NERDCommenterToggle<CR>
-imap <D-/> <Esc><plug>NERDCommenterToggle<CR>i
+" let g:NERDCreateDefaultMappings=0
+map <leader>/ <plug>NERDCommenterToggle<CR>
+imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
 
 function! DoPrettyXML()
   let l:origft = &ft
@@ -135,3 +135,5 @@ command! PrettyXML call DoPrettyXML()
 
 nmap <f7> :tabp<CR>
 nmap <f8> :tabn<CR>
+
+set pastetoggle=<F2>

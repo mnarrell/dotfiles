@@ -9,6 +9,9 @@ antigen-bundle brew
 antigen-bundle mvn
 antigen-bundle vagrant
 antigen-bundle knife
+antigen-bundle extract
+antigen-bundle rsync
+antigen-bundle vundle
 
 # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting
