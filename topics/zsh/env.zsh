@@ -7,11 +7,16 @@ export GROOVY_HOME=/usr/local/Cellar/groovy/2.1.1/libexec
 export VIM_APP_DIR=/usr/local/Cellar/macvim/HEAD
 export KEYS=/Users/matt/dev/this/utilities/pems
 
+# Enable syntax-highlighting in less.
+# brew install source-highlight
+export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+export LESS=" -R "
+
 
 # PATH
-export PATH=~/bin:/usr/local/bin:$JAVA_HOME/bin:$JYTHON_HOME/bin:$HOME/.rvm/bin:$PATH
+export PATH=~/bin:/usr/local/bin:/usr/bin:/usr/sbin/:bin:/sbin:$JAVA_HOME/bin:$JYTHON_HOME/bin:$HOME/.rvm/bin:$PATH
 
-export EDITOR="mvim"
+export EDITOR="vim"
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
@@ -23,3 +28,7 @@ export EC2_AMITOOL_HOME="/usr/local/Library/LinkedKegs/ec2-ami-tools/jars"
 export KITCHEN_HOME="/Users/matt/dev/this/utilities/kitchen"
 export VAGRANT_HOME=/Users/matt/.vagrant.d/
 export VBOX_USER_HOME=/Users/matt/.VirtualBox/
+
+export CATALINA_OPTS="-XX:MaxPermSize=256m -Xms3g -Xmx6g"
+export CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+export CATALINA_OPTS="$CATALINA_OPTS -Xdebug -Xdebug -Xrunjdwp:transport=dt_socket,address=58512,suspend=n,server=y"

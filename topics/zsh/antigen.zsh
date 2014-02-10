@@ -12,6 +12,7 @@ antigen-bundle knife
 antigen-bundle extract
 antigen-bundle rsync
 antigen-bundle vundle
+antigen-bundle sudo
 
 # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting

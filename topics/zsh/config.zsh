@@ -5,7 +5,7 @@ colors
 autoload -U select-word-style
 select-word-style bash
 
-cdpath=( . ~/dev ~/dev/this /usr/local )
+cdpath=( . ~/dev ~/dev/this /usr/local /usr/local/tomcat)
 
 # term colors
 export CLICOLOR=1
