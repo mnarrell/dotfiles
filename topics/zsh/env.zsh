@@ -2,7 +2,7 @@ export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin
 export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true" 
 export JYTHON_HOME=/usr/local/jython
-export JAVA_HOME=`/usr/libexec/java_home`
+export JAVA_HOME=`/usr/libexec/java_home -v '1.7*'`
 export GROOVY_HOME=/usr/local/Cellar/groovy/2.1.1/libexec
 export VIM_APP_DIR=/usr/local/Cellar/macvim/HEAD
 export KEYS=/Users/matt/dev/this/utilities/pems
