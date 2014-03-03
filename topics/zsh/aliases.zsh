@@ -4,14 +4,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cdd="cd -"
 
-# http://www.hogbaysoftware.com/products/plaintext
-alias text='${EDITOR} ~/Dropbox/PlainText'
-
 # Management
 alias dots='${EDITOR} ~/.dotfiles'
 alias reload='source ~/.zshrc && echo "sourced ~/.zshrc"'
 
-alias status='${EDITOR} ~/Dropbox/PlainText/status.txt'
 alias sshconfig='${EDITOR} ~/.ssh/config'
 
 alias -s xml='${EDITOR}'
@@ -23,6 +19,7 @@ alias -s tar="tar tf"
 alias -s tar.gz="echo "
 alias -s ace="unace l"
 
+alias vi="vim"
 alias _="sudo"
 alias clear="echo 'NO!'"
 
@@ -56,4 +53,5 @@ alias vd="vagrant destroy"
 alias vh="vagrant halt"
 alias vs="vagrant ssh"
 alias mgr="sh ~/Applications/Manager-7.0/Manager.sh > /dev/null &"
+alias restclient="java -jar ~/Applications/restclient-ui-3.2.2-jar-with-dependencies.jar > /dev/null &"
 alias tcat="tail -f /usr/local/tomcat/logs/catalina.out"
