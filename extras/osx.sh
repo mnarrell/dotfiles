@@ -63,6 +63,9 @@ defaults write com.apple.Preview NSQuitAlwaysKeepsWindows -bool false
 # Disable Quicktime auto restore last viewed video
 defaults write com.apple.QuickTimePlayerX NSQuitAlwaysKeepsWindows -bool false
 
+# Disable the OSX Dashboard
+defaults write com.apple.dashboard mcx-disabled -boolean true
+
 # kill / restart apps 
 echo "Changed defaults. Restarting apps…"
 for app in Safari Finder Dock Mail; do killall "$app"; done

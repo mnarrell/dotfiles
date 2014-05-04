@@ -13,6 +13,7 @@ antigen-bundle extract
 antigen-bundle rsync
 antigen-bundle vundle
 antigen-bundle sudo
+antigen-bundle docker
 
 # Syntax highlighting bundle.
 antigen-bundle zsh-users/zsh-syntax-highlighting

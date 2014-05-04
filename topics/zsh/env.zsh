@@ -29,6 +29,3 @@ export KITCHEN_HOME="/Users/matt/dev/this/utilities/kitchen"
 export VAGRANT_HOME=/Users/matt/.vagrant.d/
 export VBOX_USER_HOME=/Users/matt/.VirtualBox/
 
-export CATALINA_OPTS="-XX:MaxPermSize=256m -Xms3g -Xmx6g"
-export CATALINA_OPTS="$CATALINA_OPTS -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
-export CATALINA_OPTS="$CATALINA_OPTS -Xdebug -Xdebug -Xrunjdwp:transport=dt_socket,address=58512,suspend=n,server=y"
