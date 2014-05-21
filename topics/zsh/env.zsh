@@ -14,7 +14,7 @@ export LESS=" -R "
 
 
 # PATH
-export PATH=~/bin:/usr/local/bin:/usr/bin:/usr/sbin/:bin:/sbin:$JAVA_HOME/bin:$JYTHON_HOME/bin:$HOME/.rvm/bin:$PATH
+export PATH=~/bin:/usr/local/bin:/usr/bin:/usr/sbin:bin:/sbin:$JAVA_HOME/bin:$JYTHON_HOME/bin:$HOME/.rvm/bin:$PATH
 
 export EDITOR="vim"
 
