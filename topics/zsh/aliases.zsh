@@ -48,7 +48,7 @@ alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias grep='grep --color=auto'
 alias this='cd ~/dev/this'
 alias ss='svn up && svn st'
-alias vu="vagrant up"
+alias vu="vagrant up --no-provision && vagrant provision"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
 alias vs="vagrant ssh"

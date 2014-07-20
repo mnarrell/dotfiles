@@ -2,11 +2,15 @@ Bundle 'gmarik/vundle'
 Bundle 'L9'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'sukima/xmledit'
-
+Bundle 'derekwyatt/vim-scala'
+Bundle 'rodjek/vim-puppet'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'corntrace/bufexplorer'
+Bundle 'mattn/gist-vim'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-vinegar'
+Bundle 'tpope/vim-surround'
+
