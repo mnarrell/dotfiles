@@ -22,6 +22,7 @@ alias -s ace="unace l"
 alias vi="vim"
 alias _="sudo"
 alias clear="echo 'NO!'"
+alias please='sudo $(fc -nl -1)'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -47,7 +48,6 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-re
 alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias grep='grep --color=auto'
 alias this='cd ~/dev/this'
-alias ss='svn up && svn st'
 alias vu="vagrant up --no-provision && vagrant provision"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"

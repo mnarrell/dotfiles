@@ -9,12 +9,10 @@ export VIM_APP_DIR=/usr/local/Cellar/macvim/HEAD
 export KEYS=/Users/matt/dev/this/utilities/pems
 export SBT_OPTS=-XX:MaxPermSize=256m
 export MANPAGER="less -X"
-export KITCHEN_HOME="/Users/matt/dev/this/utilities/kitchen"
 export PUPPET_HOME="/Users/matt/dev/this/devops/puppet"
 export VAGRANT_HOME=/Users/matt/.vagrant.d/
 export VBOX_USER_HOME=/Users/matt/.VirtualBox/
 export DOCKER_HOST=tcp://127.0.0.1:2375
-export SPARK_HOME=/usr/local/Cellar/apache-spark/1.0.0/libexec
 #
 # Enable syntax-highlighting in less.
 # brew install source-highlight
@@ -22,4 +20,4 @@ export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
 # PATH
-export PATH=~/bin:/usr/local/bin:/usr/bin:/usr/sbin:bin:/sbin:$JAVA_HOME/bin:$JYTHON_HOME/bin:$HOME/.rvm/bin:$PATH
+export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:bin:/sbin:$JAVA_HOME/bin:$JYTHON_HOME/bin:$HOME/.rvm/bin:$PATH
