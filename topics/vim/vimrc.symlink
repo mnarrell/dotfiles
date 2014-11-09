@@ -62,7 +62,9 @@ filetype plugin indent on
 
 color jellybeans
 
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='powerlineish'
 
 " Change <Leader>
 let mapleader = ","

@@ -14,6 +14,3 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # Need to redefined these aliases at this point as they get trampled by plugins
 alias -g ll="ls -lh"
 alias -g la="ls -lah"
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

@@ -39,9 +39,6 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 # Start an HTTP server from a directory
 alias server="open http://localhost:8080/ && python -m SimpleHTTPServer 8080"
 
-# File size
-alias fs="stat -f \"%z bytes\""
-
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-request -m '$method'"; done
 
@@ -52,5 +49,3 @@ alias vu="vagrant up --no-provision && vagrant provision"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
 alias vs="vagrant ssh"
-alias mgr="sh ~/Applications/Manager-7.0/Manager.sh > /dev/null &"
-alias tcat="tail -f /usr/local/tomcat/logs/catalina.out"
