@@ -1,20 +1,29 @@
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-source ~/.vundle
-
 set nocompatible
-set laststatus=2
-set scrolloff=3
-set showcmd
-set showmode
-set modelines=1
-set shortmess=atI
+
+set encoding=utf-8
+
+source $DOTFILES/topics/vim/plugins.vim
+
+filetype plugin on
+
+set backspace=indent,eol,start
+
+let mapleader = ","
+nmap ; :
+
+" set scrolloff=3
+" set showcmd
+" set showmode
+" set modelines=1
+" set shortmess=atI
 set visualbell
-set autoread
+" set autoread
 set nowrap
 set incsearch
-set smartcase
-set hlsearch
+" set smartcase
+set nohlsearch
+
+" set clipboard=unnamed
 
 " Invisible characters *******************************************************
 set listchars=trail:.,tab:>-,eol:$
@@ -50,26 +59,35 @@ set wildignore=*.swp,*.bak,*.pyc,*.class,target
 set nobackup          " do not keep a backup file, use versions instead
 set noswapfile
 
-" Fix backspace
-set backspace=indent,eol,start
+" Eyecandy
+syntax on
+filetype plugin indent on
 
 " Status line
 set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-syntax on
-filetype plugin indent on
+set background=dark
+colorscheme jellybeans
 
-color jellybeans
-
-"let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
 
-" Change <Leader>
-let mapleader = ","
 
-nmap <Leader>NL :set invnumber<CR>
+
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <C-u> :Unite -toggle -auto-resize -buffer-name=mixed -start-insert file_rec/async:! buffer<cr>
+" nnoremap <Leader>F :Unite -no-split -buffer-name=files  -start-insert file<CR>
+nnoremap <Leader>f :Unite -no-split -buffer-name=files  -start-insert file_rec/async:!<CR>
+nnoremap <Leader>r :Unite -no-split -buffer-name=files  file_mru<CR>
+nnoremap <Leader>y :Unite -no-split -buffer-name=yank   history/yank<CR>
+" nnoremap <Leader>b :Unite -no-split -buffer-name=buffer buffer<CR>
+nnoremap <Leader>g :Unite -no-split -buffer-name=grep   grep:.<CR>
+
+let g:unite_source_file_rec_ignore_pattern=
+ \'\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|ba\?k\|sw[po]\|tmp\)$\|\%(^\|/\)\.\%(hg\|git\|bzr\|svn\|jruby\|idea\|vagrant\)\%($\|/\)\|node_modules'
+
 
 " Managing splits
 " http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
@@ -78,13 +96,6 @@ nmap <leader><left> :leftabove vsp<CR>
 nmap <leader><right> :rightbelow vsp<CR>
 nmap <leader><up> :leftabove sp<CR>
 nmap <leader><down> :rightbelow sp<CR>
-
-" Fix command typos 
-nmap ; :
-
-" Tab/shift-Tab to increase/decrease indentation in visual mode.
-vmap <Tab> >gv
-vmap <S-Tab> <gv
 
 noremap  <Up> ""
 noremap! <Up> <Esc>
@@ -95,9 +106,28 @@ noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
 
-" format JSON
-"map <leader>j !python -m json.tool<CR>
-map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+" Ctrl-D to quit buffer
+nnoremap <C-D> :bd!<CR>
+
+" Toggle line numbers
+nmap <Leader>NL :set invnumber<CR>
+
+map <silent> <C-S> :set invhlsearch<CR>
+
+set pastetoggle=<F2>
+
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+
+" Programmery ***************************************************************
+
+let g:syntastic_check_on_open=0
+let g:syntastic_enable_balloons=0
+let g:syntastic_enable_signs=1
+
+" gitv
+nnoremap <Leader>gV :Gitv --all<CR>
+nnoremap <Leader>gv :Gitv! --all<CR>
 
 " Filetype stuff
 au FileType make set noexpandtab
@@ -115,17 +145,18 @@ cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 " Can tab-complete filetype.
 command! -nargs=1 -complete=filetype F set filetype=<args>
 
-" NERDTree
-" let NERDTreeIgnore=['\.rbc$', '\~$']
-" let g:NERDMenuMode=0
-" map <leader>n :NERDTreeToggle<CR>
-" map <leader>N :NERDTreeFind<CR>
-
 " NERDCommenter
 " let g:NERDCreateDefaultMappings=0
+let NERDSpaceDelims=1
 map <leader>/ <plug>NERDCommenterToggle<CR>
 imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
+map <Leader>[ <plug>NERDCommenterAlignLeft
+map <Leader>] <plug>NERDCommenterUncomment
 
+" format JSON
+map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+
+" Format XML
 function! DoPrettyXML()
   let l:origft = &ft
   set ft=
@@ -134,8 +165,3 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
-
-nmap <f7> :tabp<CR>
-nmap <f8> :tabn<CR>
-
-set pastetoggle=<F2>

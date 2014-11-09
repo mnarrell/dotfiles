@@ -11,7 +11,6 @@ antigen-bundle vagrant
 antigen-bundle knife
 antigen-bundle extract
 antigen-bundle rsync
-antigen-bundle vundle
 antigen-bundle sudo
 antigen-bundle docker
 

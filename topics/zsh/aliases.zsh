@@ -5,22 +5,13 @@ alias ....="cd ../../.."
 alias cdd="cd -"
 
 # Management
-alias dots='${EDITOR} ~/.dotfiles'
+alias dots='cd ~/.dotfiles'
 alias reload='source ~/.zshrc && echo "sourced ~/.zshrc"'
 
-alias sshconfig='${EDITOR} ~/.ssh/config'
-
-alias -s xml='${EDITOR}'
-alias -s txt='${EDITOR}'
-alias -s js='${EDITOR}'
-alias -s zip="unzip -l"
-alias -s rar="unrar l"
-alias -s tar="tar tf"
-alias -s tar.gz="echo "
-alias -s ace="unace l"
-
 alias vi="vim"
-alias _="sudo"
+alias grep='grep --color=auto'
+alias hosts='sudo -E ${EDITOR} /etc/hosts'
+alias sshconfig='${EDITOR} ~/.ssh/config'
 alias clear="echo 'NO!'"
 alias please='sudo $(fc -nl -1)'
 
@@ -42,9 +33,7 @@ alias server="open http://localhost:8080/ && python -m SimpleHTTPServer 8080"
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-request -m '$method'"; done
 
-alias hosts='sudo -E ${EDITOR} /etc/hosts'
-alias grep='grep --color=auto'
-alias this='cd ~/dev/this'
+# Vagrant
 alias vu="vagrant up --no-provision && vagrant provision"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
