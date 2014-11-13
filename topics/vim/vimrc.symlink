@@ -28,7 +28,7 @@ set nohlsearch
 " Invisible characters *******************************************************
 set listchars=trail:.,tab:>-,eol:$
 set nolist
-:noremap <Leader>i :set list!<CR> " Toggle invisible chars
+noremap <Leader>i :set list!<CR> " Toggle invisible chars
 
 " Tabs ***********************************************************************
 set softtabstop=2
@@ -112,7 +112,7 @@ nnoremap <C-D> :bd!<CR>
 " Toggle line numbers
 nmap <Leader>NL :set invnumber<CR>
 
-map <silent> <C-S> :set invhlsearch<CR>
+map <silent> <C-H> :set invhlsearch<CR>
 
 set pastetoggle=<F2>
 

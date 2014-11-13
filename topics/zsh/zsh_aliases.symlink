@@ -1,3 +1,5 @@
+# vi: ft=zsh
+
 # Nav
 alias ..="cd .."
 alias ...="cd ../.."

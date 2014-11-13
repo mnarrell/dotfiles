@@ -1,7 +1,9 @@
+# vi: ft=zsh
+
 export EDITOR="vim"
 export M2_HOME=/usr/local/maven
 export M2=$M2_HOME/bin
-export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true" 
+export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"
 export JAVA_HOME=`/usr/libexec/java_home -v '1.7*'`
 export KEYS=/Users/matt/dev/this/utilities/pems
 export SBT_OPTS=-XX:MaxPermSize=256m

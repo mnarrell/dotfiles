@@ -1,16 +1,44 @@
+# vi: ft=zsh
+
 # load config and system specific
-[[ -f ~/.localrc ]] && source ~/.localrc
+[ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
+[ -e "${HOME}/.zsh_aliases" ] && source "${HOME}/.zsh_aliases"
 
-for config_file ($DOTFILES/**/*.zsh) source $config_file
+source "${HOME}/.antigen/antigen.zsh"
 
-for bin ($DOTFILES/**/bin) export PATH=$PATH:$bin
+antigen-use oh-my-zsh
 
-autoload -U compinit
-compinit
+antigen bundles <<BUNDLES
+  rsync
+  sudo
+  brew
+  git
+  sbt
+  mvn
+  vagrant
+  docker
 
-# matches case insensitive for lowercase
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+BUNDLES
 
-# Need to redefined these aliases at this point as they get trampled by plugins
-alias -g ll="ls -lh"
-alias -g la="ls -lah"
+antigen-theme ${DOTFILES}/topics/zsh mn.zsh-theme
+# antigen-theme simple
+
+antigen-apply
+
+cdpath=( . ~/dev ~/dev/this /usr/local)
+
+# fpath=(~/.zsh/functions $fpath)
+autoload -U select-word-style
+select-word-style bash
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt AUTO_CD
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt share_history # share command history data
+
