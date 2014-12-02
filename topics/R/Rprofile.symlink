@@ -1,0 +1,5 @@
+options(stringsAsFactors=FALSE)
+options(editor="vim")
+options(width=200)
+
+library("colorout")

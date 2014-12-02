@@ -96,6 +96,10 @@ nmap <leader><left> :leftabove vsp<CR>
 nmap <leader><right> :rightbelow vsp<CR>
 nmap <leader><up> :leftabove sp<CR>
 nmap <leader><down> :rightbelow sp<CR>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 noremap  <Up> ""
 noremap! <Up> <Esc>
@@ -112,7 +116,7 @@ nnoremap <C-D> :bd!<CR>
 " Toggle line numbers
 nmap <Leader>NL :set invnumber<CR>
 
-map <silent> <C-H> :set invhlsearch<CR>
+nmap <Leader>HL :set invhlsearch<CR>
 
 set pastetoggle=<F2>
 

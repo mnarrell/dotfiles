@@ -4,9 +4,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias cdd="cd -"
 
-# http://www.hogbaysoftware.com/products/plaintext
-alias text='${EDITOR} ~/Dropbox/PlainText'
-
 # Management
 alias dots='${EDITOR} ~/.dotfiles'
 alias reload='source ~/.bash_profile && echo "sourced ~/.bash_profile"'
@@ -55,8 +52,4 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do alias "$method"="lwp-re
 alias hosts='sudo ${EDITOR} /etc/hosts'
 
 alias grep='grep --color=auto'
-alias ann='annotate -p before -m -i -e tests -e fixtures'
-alias this='cd ~/dev/this'
-alias ss='svn up && svn st'
-alias shelf='cd ~/Library/Preferences/IntelliJIdea10/shelf'
 

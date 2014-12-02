@@ -5,13 +5,6 @@ function __git_prompt() {
   __git_ps1 " [%s]" | sed 's/ \([+*]\{1,\}\)$/\1/'
 }
 
-function __svn_prompt() {
-    if [[ -d ./.svn ]]; then
-       local S=`svn info | grep '^URL:' | egrep -o '(tags|branches)/[^/]+|trunk' | egrep -o '[^/]+$'`
-       echo " (${S})"
-    fi
-}
-
 function bash_prompt() {
   # regular colors
   local K="\[\033[0;30m\]"    # black
@@ -39,7 +32,7 @@ function bash_prompt() {
   # local RESET="\[\033[0;37m\]"
   local RESET=$OFF
 
-  PS1="$Y\u@\h$W:$BC\W$M\$(__git_prompt)\$(__svn_prompt)$RESET $ "
+  PS1="$Y\u@\h$W:$BC\W$M\$(__git_prompt)$RESET $ "
 }
 
 bash_prompt
