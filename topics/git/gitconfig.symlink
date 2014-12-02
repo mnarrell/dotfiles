@@ -33,4 +33,4 @@
 [svn]
   rmdir = true
 [push]
-	default = simple
+	default = nothing

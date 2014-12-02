@@ -110,18 +110,20 @@ noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
 
-" Ctrl-D to quit buffer
-nnoremap <C-D> :bd!<CR>
-
 " Toggle line numbers
 nmap <Leader>NL :set invnumber<CR>
 
+" Toggle search highlights
 nmap <Leader>HL :set invhlsearch<CR>
 
 set pastetoggle=<F2>
 
+" GitV mappings.  Awesome
 nnoremap <S-h> gT
 nnoremap <S-l> gt
+
+" Ctrl-D to quit buffer
+nnoremap <C-D> :bd!<CR>
 
 " Programmery ***************************************************************
 
@@ -147,7 +149,11 @@ cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 " instead of
 "   :set ft=html
 " Can tab-complete filetype.
-command! -nargs=1 -complete=filetype F set filetype=<args>
+if version < 730
+  command! -nargs=1 F set filetype=<args>
+else
+  command! -nargs=1 -complete=filetype F set filetype=<args>
+endif
 
 " NERDCommenter
 " let g:NERDCreateDefaultMappings=0
