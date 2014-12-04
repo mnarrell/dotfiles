@@ -8,6 +8,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'corntrace/bufexplorer'
 Plug 'kien/ctrlp.vim'
 Plug 'Shougo/unite.vim'
+Plug 'fweep/vim-tabber'
 
 Plug 'sukima/xmledit'
 Plug 'derekwyatt/vim-scala'
