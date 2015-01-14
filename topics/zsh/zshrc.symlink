@@ -27,6 +27,11 @@ antigen-theme ${DOTFILES}/topics/zsh mn.zsh-theme
 
 antigen-apply
 
+# Make the up/down arrows search through history.
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
 cdpath=( . ~/dev ~/dev/this /usr/local)
 
 # fpath=(~/.zsh/functions $fpath)
