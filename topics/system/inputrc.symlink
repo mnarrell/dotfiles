@@ -12,8 +12,8 @@ set show-all-if-ambiguous on
 # Control-k: menu-complete-backward
 set completion-prefix-display-length 2
 
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
 "\e[1~": beginning-of-line
