@@ -44,3 +44,6 @@ alias vu="vagrant up --no-provision && vagrant provision"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
 alias vs="vagrant ssh"
+
+alias showfiles="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
+alias hidefiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
