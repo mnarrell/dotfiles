@@ -26,6 +26,7 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   scrub = gc --aggressive --prune=now
   this = config user.email "matt@thistech.com"
+  fetch = fetch -p
 [merge]
   tool = opendiff
 [diff]

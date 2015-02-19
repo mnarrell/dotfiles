@@ -16,6 +16,8 @@ alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias sshconfig='${EDITOR} ~/.ssh/config'
 alias clear="echo 'NO!'"
 alias please='sudo $(fc -nl -1)'
+alias -g ll="ls -lh"
+alias -g la="ls -lah"
 
 if [[ "$(uname)" = "Darwin" ]]; then
     alias tmux='tmux -f ~/.tmux_osx.conf'
