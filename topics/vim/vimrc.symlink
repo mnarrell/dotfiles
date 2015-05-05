@@ -17,7 +17,7 @@ nmap ; :
 " set modelines=1
 " set shortmess=atI
 set visualbell
-" set autoread
+set autoread
 set nowrap
 set incsearch
 " set smartcase
