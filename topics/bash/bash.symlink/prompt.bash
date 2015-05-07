@@ -33,7 +33,7 @@ function bash_prompt() {
   local RESET=$OFF
 
   # PS1="$Y\u@\h$W:$BC\W$M\$(__git_prompt)$RESET $ "
-  PS1="$Y\u@\h$W:$ "
+  PS1="$Y\u@\h$W: $BC\W$RESET $ "
 }
 
 bash_prompt
