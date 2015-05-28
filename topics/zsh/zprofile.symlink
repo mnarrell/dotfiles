@@ -10,6 +10,8 @@ export PUPPET_HOME="/Users/matt/dev/this/devops/puppet"
 export VAGRANT_HOME=/Users/matt/.vagrant.d/
 export VBOX_USER_HOME=/Users/matt/.VirtualBox/
 export DOCKER_HOST=tcp://127.0.0.1:2375
+export HADOOP_HOME=/usr/local/opt/hadoop/libexec
+
 #
 # Enable syntax-highlighting in less.
 # brew install source-highlight
