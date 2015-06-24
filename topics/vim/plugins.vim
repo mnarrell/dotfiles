@@ -10,6 +10,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'corntrace/bufexplorer'
 Plug 'Shougo/unite.vim'
 Plug 'fweep/vim-tabber'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
 
 Plug 'sukima/xmledit'
 Plug 'derekwyatt/vim-scala'

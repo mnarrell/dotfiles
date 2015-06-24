@@ -1,6 +1,8 @@
 [user]
   name = Matt Narrell
   email = mnarrell@gmail.com
+[github]
+  user = mnarrell
 [apply]
   whitespace = fix
 [core]
