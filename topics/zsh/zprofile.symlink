@@ -4,15 +4,14 @@ export EDITOR="vim"
 export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=256m -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"
 # export JAVA_HOME=`/usr/libexec/java_home -v '1.7*'`
 export JAVA_HOME=`/usr/libexec/java_home`
-export KEYS=/Users/matt/dev/this/utilities/pems
+export KEYS="/Users/matt/dev/this/utilities/pems"
 export MANPAGER="less -X"
 export PUPPET_HOME="/Users/matt/dev/this/devops/puppet"
-export VAGRANT_HOME=/Users/matt/.vagrant.d/
-export VBOX_USER_HOME=/Users/matt/.VirtualBox/
-export DOCKER_HOST=tcp://127.0.0.1:2375
-export HADOOP_HOME=/usr/local/opt/hadoop/libexec
+export VAGRANT_HOME="/Users/matt/.vagrant.d/"
+export VBOX_USER_HOME="/Users/matt/.VirtualBox/"
+export HADOOP_HOME="/usr/local/opt/hadoop/libexec"
+export PROJECT_HOME="/Users/matt/dev"
 
-#
 # Enable syntax-highlighting in less.
 # brew install source-highlight
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"

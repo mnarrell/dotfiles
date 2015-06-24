@@ -13,10 +13,16 @@ antigen bundles <<BUNDLES
   sudo
   brew
   git
+  git-extras
   sbt
   mvn
   vagrant
   docker
+  pip
+  python
+  pylint
+  virtualenv
+  virtualenvwrapper
 
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-history-substring-search
