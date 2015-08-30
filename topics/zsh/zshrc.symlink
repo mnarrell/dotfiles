@@ -1,8 +1,6 @@
-# vi: ft=zsh
-
 # load config and system specific
 [ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
-[ -e "${HOME}/.zsh_aliases" ] && source "${HOME}/.zsh_aliases"
+[ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
 
 source "${HOME}/.antigen/antigen.zsh"
 

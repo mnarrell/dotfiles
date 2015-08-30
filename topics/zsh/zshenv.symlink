@@ -18,4 +18,4 @@ export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
 # PATH
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$JAVA_HOME/bin:$HOME/.rvm/bin:$PATH
+export PATH=~/bin:$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$JAVA_HOME/bin:$PATH

@@ -1,3 +1,4 @@
+set nocompatible
 call plug#begin('~/.vim/plugged')
 
 Plug 'L9'

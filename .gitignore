@@ -1,6 +1,6 @@
-topics/vim/vim.symlink/bundle/
 topics/vim/vim.symlink/plugged/
 topics/vim/vim.symlink/autoload/
 topics/vim/vim.symlink/backup/
 topics/vim/vim.symlink/.netrwhist
 topics/vim/vim.symlink/.netrwbook
+.DS_Store

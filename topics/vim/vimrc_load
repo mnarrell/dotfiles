@@ -1,9 +1,0 @@
-set nocompatible
-
-filetype off
-
-source plugins.vim
-
-filetype plugin on
-
-let mapleader = ","

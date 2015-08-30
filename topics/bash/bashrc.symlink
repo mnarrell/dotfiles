@@ -1,9 +1,21 @@
-# git completion
+# vi: ft=sh
 
-function __git_prompt() {
-  GIT_PS1_SHOWDIRTYSTATE=1
-  __git_ps1 " [%s]" | sed 's/ \([+*]\{1,\}\)$/\1/'
-}
+[ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
+[ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
+
+
+export PATH=~/bin:/usr/local/bin:$PATH
+export EDITOR="vim"
+
+# Don’t clear the screen after quitting a manual page
+export MANPAGER="less -X"
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+export HISTTIMEFORMAT="%m/%d/%y - %H:%M:%S "
+
 
 function bash_prompt() {
   # regular colors
@@ -28,12 +40,7 @@ function bash_prompt() {
 
   local OFF="\[\033[0;0m\]"
 
-  # reset
-  # local RESET="\[\033[0;37m\]"
-  local RESET=$OFF
-
-  # PS1="$Y\u@\h$W:$BC\W$M\$(__git_prompt)$RESET $ "
-  PS1="$Y\u@\h$W: $BC\W$RESET $ "
+  PS1="$Y\u@\h$W: $BC\W$OFF $ "
 }
 
 bash_prompt

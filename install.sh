@@ -1,17 +1,4 @@
 #!/usr/bin/env bash
-INTER=1
-if [ ! "_$1" == "_" ]; then
-    if [ "_$1" == "_-i" ]; then
-        INTER=0
-    fi
-    if [ "_$1" == "_--interactive" ]; then
-        INTER=0
-    fi
-    if [ "_$1" == "_-h" ]; then
-        echo "usage: $0 [-i|--interactive]"
-        exit 0
-    fi
-fi
 
 confirm(){
     echo -n "$@ "
@@ -41,15 +28,9 @@ mklink(){
         if [ $? -eq 1 ]; then
             return 1
         fi
-    elif [ ${INTER} -eq 0 ]; then
-        confirm "Create link ${link_file}? (y/N)"
-        if [ $? -eq 1 ]; then
-            return 1
-        fi
     fi
     echo ln -fs $orig_file $link_file
     ln -fs $orig_file $link_file
-    echo "$orig_file linked as $link_file"
 }
 
 # Create base config
@@ -57,17 +38,20 @@ if [ ! -f ~/.localrc ]; then
     echo "export DOTFILES=`pwd`" >> ~/.localrc
 fi
 
-# Create links
-LINKS=`find . -name '*.symlink'`
-for filename in ${LINKS}; do
-    mklink "$filename"
+for topic in topics/*; do
+    topic_name=`echo ${topic} | sed 's/.*\///'`
+    confirm "Installing ${topic_name} (y/N)"
+    [ $? -eq 1 ] && continue;
+
+    # Handle pre-up hooks
+    [ -e ${topic}/pre-up ] && ${topic}/pre-up
+
+    # Make symlinks
+    for filename in ${topic}/*.symlink; do
+        mklink "$filename"
+    done
+
+    # Handle post-up hooks
+    [ -e ${topic}/post-up ] && ${topic}/post-up
 done
 
-# Run installs
-LINKS=`find topics -name 'install.sh'`
-for filename in ${LINKS}; do
-    confirm "Execute ${filename}? (y/N)"
-    if [ $? -eq 0 ]; then
-        ${filename}
-    fi
-done
