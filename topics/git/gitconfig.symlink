@@ -27,7 +27,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset : %C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   scrub = gc --aggressive --prune=now
-  this = config user.email "matt@thistech.com"
+  cmcsa = config user.email "matthew_narrell@cable.comcast.com"
   fetch = fetch -p
 [merge]
   tool = opendiff
