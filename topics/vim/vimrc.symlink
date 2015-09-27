@@ -124,8 +124,8 @@ nmap <Leader>HL :set invhlsearch<CR>
 set pastetoggle=<F2>
 
 " GitV mappings.  Awesome
-" nnoremap <S-h> gT
-" nnoremap <S-l> gt
+nnoremap <S-h> gT
+nnoremap <S-l> gt
 
 " Ctrl-D to quit buffer
 nnoremap <C-D> :bd!<CR>

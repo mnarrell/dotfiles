@@ -18,8 +18,6 @@ Plug 'sukima/xmledit'
 Plug 'derekwyatt/vim-scala'
 Plug 'rodjek/vim-puppet'
 Plug 'scrooloose/syntastic'
-Plug 'klen/python-mode'
-Plug 'jmcantrell/vim-virtualenv'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/gitv'
