@@ -1,5 +1,7 @@
 # vi: ft=zsh
 
+setopt no_global_rcs
+
 export EDITOR="vim"
 export M2_HOME="/opt/apache-maven-3.3.3"
 export MAVEN_OPTS="-Xmx1g -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"

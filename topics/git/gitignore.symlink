@@ -2,3 +2,4 @@
 *.swp
 *.iml
 .idea/
+.autoenv.zsh

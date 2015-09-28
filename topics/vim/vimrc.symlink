@@ -169,7 +169,8 @@ map <Leader>[ <plug>NERDCommenterAlignLeft
 map <Leader>] <plug>NERDCommenterUncomment
 
 " format JSON
-map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+" map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+nmap =j :%!python -m json.tool<CR>
 
 " Format XML
 function! DoPrettyXML()

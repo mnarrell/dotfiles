@@ -2,6 +2,8 @@
 [ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
 [ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
 
+AUTOENV_AUTH_FILE=~/.env_auth
+
 source "${HOME}/.antigen/antigen.zsh"
 
 antigen-use oh-my-zsh
@@ -11,13 +13,15 @@ antigen bundles <<BUNDLES
   sudo
   brew
   git
+  git-extras
   sbt
   mvn
   vagrant
-  docker
+  jump
 
   zsh-users/zsh-syntax-highlighting
   zsh-users/zsh-history-substring-search
+  Tarrasch/zsh-autoenv
 BUNDLES
 
 antigen-theme ${DOTFILES}/topics/zsh mn.zsh-theme
@@ -30,9 +34,11 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-cdpath=( . ~/dev ~/dev/this /usr/local)
+cdpath=( . $HOME/dev $HOME/dev/cmcsa /usr/local)
 
-# fpath=(~/.zsh/functions $fpath)
+fpath=( $HOME/.zfunc $fpath )
+autoload ~/.zfunc/*(:t)
+
 autoload -U select-word-style
 select-word-style bash
 
@@ -49,3 +55,19 @@ setopt no_share_history
 # Need to redefined these aliases at this point as they get trampled by plugins
 alias -g ll="ls -lh"
 alias -g la="ls -lah"
+
+# use /etc/hosts and known_hosts for hostname completion
+[ -r ~/.ssh/config ] && _ssh_hosts+=(${=${${(M)${(f)"$(<~/.ssh/config)"}:#Host*}#Host }:#*\**}) || _ssh_hosts=()
+[ -r /etc/ssh/ssh_known_hosts ] && _global_known_hosts=(${${${${(f)"$(</etc/ssh/ssh_known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _global_known_hosts=()
+[ -r ~/.ssh/known_hosts ] && _known_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _known_hosts=()
+[ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
+hosts=(
+  "$_ssh_hosts[@]"
+  "$_global_known_hosts[@]"
+  "$_known_hosts[@]"
+  "$_etc_hosts[@]"
+  "$HOST"
+  localhost
+)
+zstyle ':completion:*:hosts' hosts $hosts
+
