@@ -78,21 +78,9 @@ colorscheme jellybeans
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
 
-
-
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <C-u> :Unite -toggle -auto-resize -buffer-name=mixed -start-insert file_rec/async:! buffer<cr>
-" nnoremap <Leader>F :Unite -no-split -buffer-name=files  -start-insert file<CR>
-nnoremap <Leader>f :Unite -no-split -buffer-name=files  -start-insert file_rec/async:!<CR>
-nnoremap <Leader>r :Unite -no-split -buffer-name=files  file_mru<CR>
-nnoremap <Leader>y :Unite -no-split -buffer-name=yank   history/yank<CR>
-" nnoremap <Leader>b :Unite -no-split -buffer-name=buffer buffer<CR>
-nnoremap <Leader>g :Unite -no-split -buffer-name=grep   grep:.<CR>
-
-let g:unite_source_file_rec_ignore_pattern=
- \'\%(^\|/\)\.$\|\~$\|\.\%(o\|exe\|dll\|ba\?k\|sw[po]\|tmp\)$\|\%(^\|/\)\.\%(hg\|git\|bzr\|svn\|jruby\|idea\|vagrant\)\%($\|/\)\|node_modules'
-
+" Ctrl-P
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " Managing splits
 " http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/

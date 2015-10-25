@@ -34,7 +34,7 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-cdpath=( . $HOME/dev $HOME/dev/cmcsa /usr/local)
+cdpath=( . $HOME/dev $HOME/dev/viper /usr/local)
 
 fpath=( $HOME/.zfunc $fpath )
 autoload ~/.zfunc/*(:t)

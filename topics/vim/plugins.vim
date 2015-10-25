@@ -9,7 +9,7 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdcommenter'
 Plug 'corntrace/bufexplorer'
-Plug 'Shougo/unite.vim'
+Plug 'kien/ctrlp.vim'
 Plug 'fweep/vim-tabber'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
