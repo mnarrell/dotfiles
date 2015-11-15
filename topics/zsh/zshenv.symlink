@@ -3,7 +3,7 @@
 setopt no_global_rcs
 
 export EDITOR="vim"
-export M2_HOME="/opt/apache-maven-3.3.3"
+export M2_HOME="/usr/local/maven"
 export MAVEN_OPTS="-Xmx1g -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"
 # export JAVA_HOME=`/usr/libexec/java_home -v '1.7*'`
 export JAVA_HOME=`/usr/libexec/java_home`

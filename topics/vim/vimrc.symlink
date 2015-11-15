@@ -73,10 +73,11 @@ set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 set background=dark
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme solarized
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
 
 " Ctrl-P
 let g:ctrlp_map = '<c-p>'
