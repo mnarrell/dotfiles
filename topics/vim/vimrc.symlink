@@ -1,89 +1,106 @@
-set nocompatible
-
-set encoding=utf-8
-
 source $DOTFILES/topics/vim/plugins.vim
 
-filetype plugin on
-
+" General Behavior* ************************************************************
+set nocompatible
+set encoding=utf-8
+set pastetoggle=<F2>
 set backspace=indent,eol,start
-
-let mapleader = ","
-nmap ; :
-
-" set scrolloff=3
-" set showcmd
-" set showmode
-" set modelines=1
-" set shortmess=atI
-set visualbell
-set autoread
-set nowrap
-set incsearch
-" set smartcase
-set nohlsearch
-
-" set clipboard=unnamed
-
-" Invisible characters *******************************************************
-set listchars=trail:.,tab:>-,eol:$
-set nolist
-noremap <Leader>i :set list!<CR> " Toggle invisible chars
-
-" Tabs ***********************************************************************
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
-set expandtab
-set smarttab
-
-" Indents ********************************************************************
-set autoindent
-set smartindent
-set cindent
-set copyindent
-
 set hidden            " allow for editied buffers in the background
 set cursorline
 set nowrap
 set ruler             " show the cursor position all the time
 set showcmd           " display incomplete commands
 set showmatch
-
-set foldlevelstart=20 " Don't start folded
 set history=1000      " keep 50 lines of command line history
 set undolevels=1000
 set wildmode=list:longest
 set wildignore=*.swp,*.bak,*.pyc,*.class,target
-
 set nobackup          " do not keep a backup file, use versions instead
 set noswapfile
+set visualbell
+set autoread
+set nowrap
 
-" Eyecandy
+let mapleader = ","
+nmap ; :
+nmap <Leader>NL :set invnumber<CR> " Toggle line numbers
+" nnoremap <C-D> :bd!<CR>  " Ctrl-D to quit buffer
+nnoremap <leader>sv :source $MYVIMRC<CR>
+map <leader>bd :Bclose<cr> " Close the current buffer
+map <leader>ba :1,1000 bd!<cr> " Close all the buffers
+" This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
+" inoremap jj <Esc>
+
+" Discipline *******************************************************************
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
+
+" Invisible characters *********************************************************
+set listchars=trail:.,tab:>-,eol:$
+set nolist
+noremap <Leader>i :set list!<CR> " Toggle invisible chars
+
+" Tabs *************************************************************************
+set softtabstop=2
+set shiftwidth=2
+set tabstop=2
+set expandtab
+set smarttab
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+" Next Tab
+nnoremap <S-l> :tabnext<CR>
+" Previous Tab
+nnoremap <silent> <S-h> :tabprevious<CR>
+" New Tab
+" nnoremap <silent> <S-l> :tabnew<CR>
+
+" Indents **********************************************************************
+set autoindent
+set smartindent
+set cindent
+set copyindent
+
+" Search ***********************************************************************
+nmap <Leader>HL :set invhlsearch<CR>
+set incsearch
+set nohlsearch
+
+" Eyecandy *********************************************************************
 syntax on
 filetype plugin indent on
+set background=dark
+colorscheme solarized
 
-" Tab line
+" Tab line *********************************************************************
 set tabline=%!tabber#TabLine()
 let g:tabber_filename_style = 'relative'
 nnoremap <C-t> :tabnew<CR>
 
-" Status line
+" Status line ******************************************************************
 set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
-set background=dark
-" colorscheme jellybeans
-colorscheme solarized
-
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
 
-" Ctrl-P
+" Ctrl-P******************************************************************
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-" Managing splits
+" Toggle GUndo******************************************************************
+
+nnoremap <leader>u :GundoToggle<CR>
+
+" Splits ***********************************************************************
 " http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
 set noea
 nmap <leader><left> :leftabove vsp<CR>
@@ -95,47 +112,30 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-noremap  <Up> ""
-noremap! <Up> <Esc>
-noremap  <Down> ""
-noremap! <Down> <Esc>
-noremap  <Left> ""
-noremap! <Left> <Esc>
-noremap  <Right> ""
-noremap! <Right> <Esc>
+" File types ******************************************************************
+augroup configgroup
+  autocmd!
+  autocmd VimEnter * highlight clear SignColumn
+  autocmd FileType java setlocal noexpandtab
+  autocmd FileType java setlocal list
+  autocmd FileType java setlocal listchars=tab:+\ ,eol:-
+  autocmd FileType java setlocal formatprg=par\ -w80\ -T4
+  autocmd FileType ruby setlocal tabstop=2
+  autocmd FileType ruby setlocal shiftwidth=2
+  autocmd FileType ruby setlocal softtabstop=2
+  autocmd FileType ruby setlocal commentstring=#\ %s
+  autocmd FileType python setlocal commentstring=#\ %s
+  autocmd BufEnter *.cls setlocal filetype=java
+  autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+  autocmd BufEnter Makefile setlocal noexpandtab
+  autocmd BufEnter *.sh setlocal tabstop=2
+  autocmd BufEnter *.sh setlocal shiftwidth=2
+  autocmd BufEnter *.sh setlocal softtabstop=2
+	" autocmd BufEnter *.{md,markdown,mdown,mkd,mkdn} set ft=markdown
+	" autocmd BufEnter *.json set ft=javascript
+augroup END
 
-" Toggle line numbers
-nmap <Leader>NL :set invnumber<CR>
-
-" Toggle search highlights
-nmap <Leader>HL :set invhlsearch<CR>
-
-set pastetoggle=<F2>
-
-" GitV mappings.  Awesome
-nnoremap <S-h> gT
-nnoremap <S-l> gt
-
-" Ctrl-D to quit buffer
-nnoremap <C-D> :bd!<CR>
-
-" Programmery ***************************************************************
-
-let g:syntastic_check_on_open=0
-let g:syntastic_enable_balloons=0
-let g:syntastic_enable_signs=1
-
-" gitv
-nnoremap <Leader>gV :Gitv --all<CR>
-nnoremap <Leader>gv :Gitv! --all<CR>
-
-" Filetype stuff
-au FileType make set noexpandtab
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set ft=markdown
-au BufNewFile,BufRead *.json set ft=javascript
-
-" Save a file as root.
+" Save a file as root. ********************************************************
 cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 
 " Quicker filetype setting:
@@ -149,16 +149,19 @@ else
   command! -nargs=1 -complete=filetype F set filetype=<args>
 endif
 
+" Programmery *****************************************************************
+let g:syntastic_check_on_open=0
+let g:syntastic_enable_balloons=0
+let g:syntastic_enable_signs=1
+
 " NERDCommenter
-" let g:NERDCreateDefaultMappings=0
 let NERDSpaceDelims=1
 map <leader>/ <plug>NERDCommenterToggle<CR>
 imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
 map <Leader>[ <plug>NERDCommenterAlignLeft
 map <Leader>] <plug>NERDCommenterUncomment
 
-" format JSON
-" map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR>
+" Format JSON
 nmap =j :%!python -m json.tool<CR>
 
 " Format XML
@@ -169,10 +172,11 @@ function! DoPrettyXML()
   1
   exe "set ft=" . l:origft
 endfunction
-command! PrettyXML call DoPrettyXML()
+nmap =x :call DoPrettyXML()<CR>
 
-" vim-gist
+" VIM-Gist ********************************************************************
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_show_privates = 1
 let g:gist_post_private = 1
+
