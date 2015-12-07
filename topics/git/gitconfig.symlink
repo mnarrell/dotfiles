@@ -27,7 +27,6 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset : %C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   scrub = gc --aggressive --prune=now
-  cmcsa = config user.email "matthew_narrell@cable.comcast.com"
   fetch = fetch -p
 [merge]
   tool = opendiff
@@ -37,3 +36,5 @@
   rmdir = true
 [push]
 	default = nothing
+[init]
+	templatedir = ~/.git_templates
