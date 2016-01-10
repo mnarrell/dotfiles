@@ -13,6 +13,7 @@ export VBOX_USER_HOME="/Users/matt/.VirtualBox/"
 export HADOOP_HOME="/opt/hadoop-2.5.0-cdh5.3.3"
 export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
 export PROJECT_HOME="/Users/matt/dev"
+export LIQUIBASE_HOME="/usr/local/Cellar/liquibase/3.4.2/libexec"
 
 # Enable syntax-highlighting in less.
 # brew install source-highlight
