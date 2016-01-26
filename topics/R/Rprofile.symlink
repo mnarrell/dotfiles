@@ -1,4 +1,4 @@
-options("repos" = c(CRAN = "http://rweb.quant.ku.edu/cran/"))
+options("repos" = c(CRAN = "https://rweb.quant.ku.edu/cran/"))
 options(stringsAsFactors=FALSE)
 options(editor="vim")
 options(width=200)

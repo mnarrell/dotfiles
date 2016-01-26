@@ -34,7 +34,7 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-cdpath=( . $HOME/dev $HOME/dev/viper /usr/local)
+cdpath=( . $HOME/src $HOME/src/viper /usr/local)
 
 fpath=( $HOME/.zfunc $fpath )
 autoload ~/.zfunc/*(:t)
@@ -53,6 +53,7 @@ setopt no_share_history
 # setopt share_history # share command history data
 
 # Need to redefined these aliases at this point as they get trampled by plugins
+alias -g ls="ls --color=tty --quoting=literal"
 alias -g ll="ls -lh"
 alias -g la="ls -lah"
 
