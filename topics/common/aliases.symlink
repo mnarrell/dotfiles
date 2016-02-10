@@ -21,7 +21,7 @@ alias please='sudo $(fc -nl -1)'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias java7="export JAVA_HOME=`/usr/libexec/java_home -v '1.7*'`"
+# alias java7="export JAVA_HOME=`/usr/libexec/java_home -v '1.7*'`"
 
 # Vagrant
 alias vu="vagrant up --no-provision && vagrant provision"
