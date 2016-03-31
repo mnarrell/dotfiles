@@ -3,6 +3,7 @@ source $DOTFILES/topics/vim/plugins.vim
 " General Behavior* ************************************************************
 set nocompatible
 set encoding=utf-8
+set ff=unix
 set pastetoggle=<F2>
 set backspace=indent,eol,start
 set hidden            " allow for editied buffers in the background
@@ -131,6 +132,7 @@ augroup configgroup
   autocmd BufEnter *.sh setlocal tabstop=2
   autocmd BufEnter *.sh setlocal shiftwidth=2
   autocmd BufEnter *.sh setlocal softtabstop=2
+  autocmd BufEnter *.avsc setlocal filetype=javascript
 	" autocmd BufEnter *.{md,markdown,mdown,mkd,mkdn} set ft=markdown
 	" autocmd BufEnter *.json set ft=javascript
 augroup END
@@ -161,8 +163,8 @@ imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
 map <Leader>[ <plug>NERDCommenterAlignLeft
 map <Leader>] <plug>NERDCommenterUncomment
 
-" Format JSON
-nmap =j :%!python -m json.tool<CR>
+" Format JSON with yajl
+nmap =j :%!json_reformat<CR>
 
 " Format XML
 function! DoPrettyXML()
@@ -180,3 +182,5 @@ let g:gist_open_browser_after_post = 1
 let g:gist_show_privates = 1
 let g:gist_post_private = 1
 
+
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
