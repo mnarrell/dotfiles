@@ -10,10 +10,9 @@ export JAVA_HOME=`/usr/libexec/java_home`
 export MANPAGER="less -X"
 export VAGRANT_HOME="/Users/matt/.vagrant.d/"
 export VBOX_USER_HOME="/Users/matt/.VirtualBox/"
-export HADOOP_HOME="/opt/hadoop-2.5.0-cdh5.3.3"
+export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
 export PROJECT_HOME="/Users/matt/dev"
-export LIQUIBASE_HOME="/usr/local/Cellar/liquibase/3.4.2/libexec"
 
 # Enable syntax-highlighting in less.
 # brew install source-highlight
@@ -21,4 +20,4 @@ export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
 # PATH
-export PATH=~/bin:$JAVA_HOME/bin:$M2_HOME/bin:$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
+export PATH=~/bin:$JAVA_HOME/bin:$M2_HOME/bin:$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$HADOOP_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
