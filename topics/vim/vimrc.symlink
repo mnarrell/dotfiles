@@ -41,6 +41,8 @@ noremap  <Left> ""
 noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
+inoremap kj <Esc>
+vnoremap kj <Esc>
 
 " Invisible characters *********************************************************
 set listchars=trail:.,tab:>-,eol:$
@@ -126,6 +128,7 @@ augroup configgroup
   autocmd FileType ruby setlocal softtabstop=2
   autocmd FileType ruby setlocal commentstring=#\ %s
   autocmd FileType python setlocal commentstring=#\ %s
+  autocmd FileType yaml setlocal noexpandtab
   autocmd BufEnter *.cls setlocal filetype=java
   autocmd BufEnter *.zsh-theme setlocal filetype=zsh
   autocmd BufEnter Makefile setlocal noexpandtab
@@ -133,8 +136,6 @@ augroup configgroup
   autocmd BufEnter *.sh setlocal shiftwidth=2
   autocmd BufEnter *.sh setlocal softtabstop=2
   autocmd BufEnter *.avsc setlocal filetype=javascript
-	" autocmd BufEnter *.{md,markdown,mdown,mkd,mkdn} set ft=markdown
-	" autocmd BufEnter *.json set ft=javascript
 augroup END
 
 " Save a file as root. ********************************************************
@@ -182,5 +183,6 @@ let g:gist_open_browser_after_post = 1
 let g:gist_show_privates = 1
 let g:gist_post_private = 1
 
-
-vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+" Ansible
+let g:ansible_attribute_highlight = "ab"
+let g:ansible_name_highlight = 'b'

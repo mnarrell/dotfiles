@@ -38,6 +38,12 @@ if [ ! -f ~/.localrc ]; then
     echo "export DOTFILES=`pwd`" >> ~/.localrc
 fi
 
+confirm "Installing bin (y/N)"
+if [ $? -eq 0 ]; then 
+    if [ ! -d "${HOME}/bin" ]; then mkdir ${HOME}/bin; fi
+    cp bin/* ${HOME}/bin
+fi;
+
 for topic in topics/*; do
     topic_name=`echo ${topic} | sed 's/.*\///'`
     confirm "Installing ${topic_name} (y/N)"

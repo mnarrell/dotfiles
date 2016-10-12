@@ -72,3 +72,7 @@ hosts=(
 )
 zstyle ':completion:*:hosts' hosts $hosts
 
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+COMPLETION_WAITING_DOTS="true"

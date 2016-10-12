@@ -5,7 +5,6 @@ setopt no_global_rcs
 export EDITOR="vim"
 export M2_HOME="/usr/local/maven"
 export MAVEN_OPTS="-Xmx1g -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"
-# export JAVA_HOME=`/usr/libexec/java_home -v '1.7*'`
 export JAVA_HOME=`/usr/libexec/java_home`
 export MANPAGER="less -X"
 export VAGRANT_HOME="/Users/matt/.vagrant.d/"
@@ -13,6 +12,7 @@ export VBOX_USER_HOME="/Users/matt/.VirtualBox/"
 export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
 export PROJECT_HOME="/Users/matt/dev"
+export DOCKER_HOST="unix:///var/run/docker.sock"
 
 # Enable syntax-highlighting in less.
 # brew install source-highlight

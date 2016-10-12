@@ -20,6 +20,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'sukima/xmledit'
 Plug 'derekwyatt/vim-scala'
 " Plug 'rodjek/vim-puppet'
+Plug 'pearofducks/ansible-vim'
 Plug 'lepture/vim-jinja'
 Plug 'scrooloose/syntastic'
 

@@ -1,0 +1,13 @@
+# -*- mode: sh -*-
+# vi: set ft=sh :
+
+#! /bin/bash
+
+for dir in ${HOME}/src/*/; do 
+    cd "$dir"; 
+    mvn clean; 
+    git fetch
+    git scrub; 
+    cd ..;
+done
+
