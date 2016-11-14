@@ -2,38 +2,14 @@
 [ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
 [ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
 
-AUTOENV_AUTH_FILE=~/.env_auth
-
-source "${HOME}/.antigen/antigen.zsh"
-
-antigen-use oh-my-zsh
-
-antigen bundles <<BUNDLES
-  rsync
-  sudo
-  git
-  git-extras
-  sbt
-  mvn
-  vagrant
-  jump
-
-  zsh-users/zsh-syntax-highlighting
-  zsh-users/zsh-history-substring-search
-  Tarrasch/zsh-autoenv
-BUNDLES
-
-antigen-theme ${DOTFILES}/topics/zsh mn.zsh-theme
-# antigen-theme simple
-
-antigen-apply
+source ${HOME}/.zplug/init.zsh
 
 # Make the up/down arrows search through history.
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-cdpath=( . $HOME/src $HOME/src/viper /usr/local)
+cdpath=( . $HOME/src /usr/local)
 
 fpath=( $HOME/.zfunc $fpath )
 autoload ~/.zfunc/*(:t)
@@ -41,33 +17,17 @@ autoload ~/.zfunc/*(:t)
 autoload -U select-word-style
 select-word-style bash
 
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-
 setopt AUTO_CD
-setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_all_dups # ignore duplication command history list
 setopt hist_ignore_space
 setopt no_share_history
-# setopt share_history # share command history data
+setopt share_history # share command history data
 
 # Need to redefined these aliases at this point as they get trampled by plugins
 alias -g ls="ls --color=tty --quoting=literal"
 alias -g ll="ls -lh"
 alias -g la="ls -lah"
 
-# use /etc/hosts and known_hosts for hostname completion
-[ -r ~/.ssh/config ] && _ssh_hosts+=(${=${${(M)${(f)"$(<~/.ssh/config)"}:#Host*}#Host }:#*\**}) || _ssh_hosts=()
-[ -r ~/.ssh/known_hosts ] && _known_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _known_hosts=()
-[ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
-hosts=(
-  "$_ssh_hosts[@]"
-  "$_known_hosts[@]"
-  "$_etc_hosts[@]"
-  "$HOST"
-  localhost
-)
-zstyle ':completion:*:hosts' hosts $hosts
+source ${HOME}/.zsh_completions
 
-
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

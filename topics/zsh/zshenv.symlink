@@ -1,17 +1,22 @@
-# vi: ft=zsh
-
 setopt no_global_rcs
+
+export ZPLUG_LOADFILE=${HOME}/.zsh_packages
+
+export AUTOENV_AUTH_FILE=~/.env_auth
+
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 export EDITOR="vim"
 export M2_HOME="/usr/local/maven"
 export MAVEN_OPTS="-Xmx1g -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"
 export JAVA_HOME=`/usr/libexec/java_home`
 export MANPAGER="less -X"
-export VAGRANT_HOME="/Users/matt/.vagrant.d/"
-export VBOX_USER_HOME="/Users/matt/.VirtualBox/"
+export VAGRANT_HOME="$HOME/.vagrant.d/"
+export VBOX_USER_HOME="$HOME/.VirtualBox/"
 export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
-export PROJECT_HOME="/Users/matt/dev"
 export DOCKER_HOST="unix:///var/run/docker.sock"
 
 # Enable syntax-highlighting in less.
@@ -23,3 +28,6 @@ export GNU_BIN=$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$(/usr/l
 
 # PATH
 export PATH=~/bin:$JAVA_HOME/bin:$M2_HOME/bin:$GNU_BIN:$HADOOP_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
+ 
+# vi: ft=zsh
+

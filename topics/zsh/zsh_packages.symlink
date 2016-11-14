@@ -1,0 +1,22 @@
+# oh-my-zsh
+zplug "robbyrussell/oh-my-zsh", use:"lib/{compfix,completion,theme-and-appearance,key-bindings}.zsh"
+zplug "robbyrussell/oh-my-zsh", use:"plugins/{rsync,sudo,git,git-extras,sbt,mvn,vagrant,jump}"
+
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+
+zplug "k4rthik/git-cal", as:command
+zplug "supercrabtree/k"
+zplug "Tarrasch/zsh-autoenv"
+
+zplug "${DOTFILES}/topics/zsh", from:local, use:"mn.zsh-theme", defer:2
+
+if ! zplug check --verbose; then
+  printf "Install? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load --verbose
+# zplug load
