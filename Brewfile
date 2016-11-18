@@ -75,11 +75,10 @@ brew 'zsh'
 
 cask_args appdir: '/Applications'
 
-cask 'launchrocket'
+cask 'macupdate-desktop'
 cask 'xquartz'
 cask 'better-window-manager'
 cask 'mysqlworkbench'
-cask 'rowanj-gitx'
 cask 'monolingual'
 cask 'intellij-idea'
 cask 'vlc'
@@ -98,10 +97,24 @@ cask 'omnigraffle'
 cask 'box-sync'
 cask 'omnidisksweeper'
 cask '1password'
+cask 'colloquy'
+cask 'rowanj-gitx'
+cask 'carbon-copy-cloner'
+cask 'onyx'
+cask 'firefox'
+cask 'microsoft-office'
+cask 'visualvm'
+cask 'logitech-myharmony'
+cask 'powerphotos'
 
 cask 'font-source-code-pro'
 cask 'font-meslo-lg-for-powerline'
 
 
+mas 'Microsoft Remote Desktop (8.0.27228)', id: 715768417
+mas 'TrackSift (1.2.3)', id: 435371243
+mas 'Paprika Recipe Manager (2.2.0)', id: 451907568
+mas 'Xcode (8.1)', id: 497799835
+mas 'Slack (2.3.1)', id: 803453959
 mas 'Caffeine (1.1.1)', id: 411246225
-mas 'Clocks (1.2.6)', id: 414554506
+mas 'Tweetbot (2.4.4)', id: 557168941
