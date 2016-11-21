@@ -1,11 +1,7 @@
 # vim: set filetype=gitconfig : 
 
-[user]
-  name = Matt Narrell
-  email = mnarrell@gmail.com
-
-[github]
-  user = mnarrell
+[include]
+  path = ~/.gitconfig.local
 
 [apply]
   whitespace = fix
@@ -26,12 +22,6 @@
   grep = auto
   showbranch = auto
 
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
-
 [alias]
   who = shortlog -s -n --no-merges
   today = shortlog --since=midnight
@@ -43,19 +33,20 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   scrub = gc --aggressive --prune=now
   fetch = fetch -p
+  patch = --no-pager diff --no-color
 
 [merge]
   ff = only
-  ; tool = opendiff
-  tool = vimdiff
-	conflictstyle = diff3
+  tool = opendiff
 
 [mergetool]
-	prompt = false
+  prompt = false
 
 [diff]
-  ; tool = opendiff
-  tool = vimdiff
+  tool = opendiff
+
+[diff "bin"]
+  textconv = hexdump -v -C
 
 [svn]
   rmdir = true
@@ -70,15 +61,6 @@
   diff = diff-so-fancy | less --tabs=4 -RFX
   show = diff-so-fancy | less --tabs=4 -RFX
 
-[diff "bin"]
-  textconv = hexdump -v -C
-
-[include]
-  path = ~/.gitconfig.local
-
 [fetch]
   prune = true
-
-[alias]
-  patch = --no-pager diff --no-color
 
