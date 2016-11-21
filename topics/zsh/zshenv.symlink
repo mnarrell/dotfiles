@@ -19,5 +19,7 @@ export DOCKER_HOST="unix:///var/run/docker.sock"
 export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
+export GNU_BIN=$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$(/usr/local/bin/brew --prefix gnu-sed)/libexec/gnubin
+
 # PATH
-export PATH=~/bin:$JAVA_HOME/bin:$M2_HOME/bin:$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$HADOOP_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
+export PATH=~/bin:$JAVA_HOME/bin:$M2_HOME/bin:$GNU_BIN:$HADOOP_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH

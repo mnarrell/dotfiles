@@ -26,7 +26,7 @@ echo "Restart automatically if the computer freezes"
 sudo systemsetup -setrestartfreeze on
 
 echo "Disable Notification Center and remove the menu bar icon"
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 echo "Disable smart quotes"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -43,11 +43,6 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 echo "Disable the sudden motion sensor as it’s not useful for SSDs"
 sudo pmset -a sms 0
 
-echo "Trackpad: enable tap to click for this user and for the login screen"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
 echo "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
@@ -61,10 +56,25 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 echo "Finder: show status bar"
-defaults write com.apple.finder ShowStatusBar -bool true
+#defaults write com.apple.finder ShowStatusBar -bool true
 
 echo "Finder: show path bar"
 defaults write com.apple.finder ShowPathbar -bool true
+
+echo "Finder: allow text selection in Quick Look"
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+echo "Display full POSIX path as Finder window title"
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+echo "When performing a search, search the current folder by default"
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+echo "Disable the warning when changing a file extension"
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+echo "Show the ~/Library folder"
+chflags nohidden ~/Library
 
 echo "Avoid creating .DS_Store files on network or USB volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -84,7 +94,7 @@ echo "Expand print panel by default"
 defaults write -g PMPrintingExpandedStateForPrint -bool true
 
 echo "Always show scrollbars"
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+# defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 echo "Automatically quit printer app once the print jobs complete"
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -95,25 +105,6 @@ defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 
 echo "Finder: show all filename extensions"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
-echo "Finder: show status bar"
-defaults write com.apple.finder ShowStatusBar -bool true
-
-echo "Finder: allow text selection in Quick Look"
-defaults write com.apple.finder QLEnableTextSelection -bool true
-
-echo "Display full POSIX path as Finder window title"
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-
-echo "When performing a search, search the current folder by default"
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
-echo "Disable the warning when changing a file extension"
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
-echo "Show the ~/Library folder"
-chflags nohidden ~/Library
-
 echo "Disable Preview auto restore last viewed document"
 defaults write com.apple.Preview NSQuitAlwaysKeepsWindows -bool false
 
@@ -124,7 +115,7 @@ echo "Disable local Time Machine backups"
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 # Disable the OSX Dashboard
-# defaults write com.apple.dashboard mcx-disabled -boolean true
+defaults write com.apple.dashboard mcx-disabled -boolean true
 
 # kill / restart apps 
 echo "Changed defaults. Restarting apps…"
