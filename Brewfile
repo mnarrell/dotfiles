@@ -10,6 +10,8 @@ tap 'caskroom/fonts'
 cask_args appdir: '/Applications'
 
 cask 'java'
+cask 'atom'
+cask 'docker'
 cask 'macupdate-desktop'
 cask 'xquartz'
 cask 'better-window-manager'
