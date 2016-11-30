@@ -1,38 +1,38 @@
+" Load the plugins **************************************************************************************************** 
 source $DOTFILES/topics/vim/plugins.vim
 
-" General Behavior* ************************************************************
-set nocompatible
-set encoding=utf-8
-set ff=unix
-set pastetoggle=<F2>
-set backspace=indent,eol,start
-set hidden            " allow for editied buffers in the background
-set cursorline
-set nowrap
-set ruler             " show the cursor position all the time
-set showcmd           " display incomplete commands
-set showmatch
-set history=1000      " keep 50 lines of command line history
-set undolevels=1000
-set wildmode=list:longest
-set wildignore=*.swp,*.bak,*.pyc,*.class,target
-set nobackup          " do not keep a backup file, use versions instead
-set noswapfile
-set visualbell
-set autoread
-set nowrap
-
 let mapleader = ","
-nmap ; :
-nmap <Leader>NL :set invnumber<CR> " Toggle line numbers
-" nnoremap <C-D> :bd!<CR>  " Ctrl-D to quit buffer
-nnoremap <leader>sv :source $MYVIMRC<CR>
-map <leader>bd :Bclose<cr> " Close the current buffer
-map <leader>ba :1,1000 bd!<cr> " Close all the buffers
-" This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
-" inoremap jj <Esc>
 
-" Discipline *******************************************************************
+" General Behavior ****************************************************************************************************
+set nocompatible                                  " VIM only, don't regress to VI
+set relativenumber                                " Sanity for motions
+set number                                        " Show the current line number in the gutter
+set encoding=utf-8                                " Default character endoding 
+set ff=unix                                       " UNIX EOL characters
+set pastetoggle=<F2>                              " Toggle paste mode
+set backspace=indent,eol,start                    " Make the backspace key sane
+set hidden                                        " allow for unsaved buffers in the background
+set cursorline                                    " Highlight the entire line the cursor is on
+set nowrap                                        " Do not wrap lines by default
+set ruler                                         " Show the cursor position all the time
+set showcmd                                       " Display incomplete commands
+set showmatch                                     " Show matching braces, parens, etc.
+set history=1000                                  " History size 
+set undolevels=1000                               " Undo memory size
+set wildmode=list:longest,full                    " Wildcard suggestion modes
+" set wildmode=list:longest                         " Wildcard suggestion modes
+set wildignore=*.swp,*.bak,*.pyc,*.class,target   " Ignore these patterns in wildcard matches
+set wildmenu                                      " Display all the wildcard matches
+set path+=**                                      " Allow for fuzzy-like finding without plugins
+set nobackup                                      " Do not make backups
+set noswapfile                                    " Do not use swap files
+set visualbell                                    " Use visual bell instead of beeping
+set autoread                                      " Load buffers modified outside of VIM
+" set nolist                                        " 
+set nojoinspaces																  " Use one space, not two, after punctuation.
+set diffopt+=vertical															" Always use vertical diffs
+
+" Discipline **********************************************************************************************************
 noremap  <Up> ""
 noremap! <Up> <Esc>
 noremap  <Down> ""
@@ -44,78 +44,73 @@ noremap! <Right> <Esc>
 inoremap kj <Esc>
 vnoremap kj <Esc>
 
-" Invisible characters *********************************************************
-set listchars=trail:.,tab:>-,eol:$
-set nolist
-noremap <Leader>i :set list!<CR> " Toggle invisible chars
+" moving up and down work as you would expect
+nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> ^ g^
+nnoremap <silent> $ g$
 
-" Tabs *************************************************************************
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
-set expandtab
-set smarttab
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-" Next Tab
-nnoremap <S-l> :tabnext<CR>
-" Previous Tab
-nnoremap <silent> <S-h> :tabprevious<CR>
-" New Tab
-" nnoremap <silent> <S-l> :tabnew<CR>
+" scroll the viewport faster
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
 
-" Indents **********************************************************************
-set autoindent
-set smartindent
-set cindent
-set copyindent
+" Tab characters  ****************************************************************************************************
+set softtabstop=2                                 " Tabs are two spaces
+set tabstop=2                                     " Tabs are two spaces
+set shiftwidth=2                                  " Default indents are two spaces
+set expandtab                                     " Insert spaces as the tab characters
+set smarttab                                      " Treats tabs as single characters (regardless of expandtab)
 
-" Search ***********************************************************************
+" Indents *************************************************************************************************************
+set autoindent                                    " Retain indents when moving to new line
+set smartindent                                   " Intelligently indent based on syntax
+set copyindent                                    " Copy the structure of the indent
+
+" Search **************************************************************************************************************
 nmap <Leader>HL :set invhlsearch<CR>
-set incsearch
-set nohlsearch
+set incsearch                                     " Incremental search
+set nohlsearch                                    " Stop search highlighting
 
-" Eyecandy *********************************************************************
+" Eyecandy ************************************************************************************************************
 syntax on
 filetype plugin indent on
 set background=dark
 colorscheme solarized
 
-" Tab line *********************************************************************
+" Tab line *************************************************************************************************************
 set tabline=%!tabber#TabLine()
 let g:tabber_filename_style = 'relative'
 nnoremap <C-t> :tabnew<CR>
 
-" Status line ******************************************************************
+" Status line **********************************************************************************************************
 set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
 
-" Ctrl-P******************************************************************
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-" Toggle GUndo******************************************************************
-
-nnoremap <leader>u :GundoToggle<CR>
-
-" Splits ***********************************************************************
+" Splits ***************************************************************************************************************
 " http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
 set noea
 nmap <leader><left> :leftabove vsp<CR>
 nmap <leader><right> :rightbelow vsp<CR>
 nmap <leader><up> :leftabove sp<CR>
 nmap <leader><down> :rightbelow sp<CR>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
-" File types ******************************************************************
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" resize panes
+nnoremap <silent> <C-w><Right> :vertical resize +5<cr>
+nnoremap <silent> <C-w><Left> :vertical resize -5<cr>
+nnoremap <silent> <C-w><Up> :resize +5<cr>
+nnoremap <silent> <C-w><Down> :resize -5<cr>
+
+" File types **********************************************************************************************************
 augroup configgroup
   autocmd!
   autocmd VimEnter * highlight clear SignColumn
@@ -136,9 +131,10 @@ augroup configgroup
   autocmd BufEnter *.sh setlocal shiftwidth=2
   autocmd BufEnter *.sh setlocal softtabstop=2
   autocmd BufEnter *.avsc setlocal filetype=javascript
+  autocmd FocusLost,WinLeave * :silent! wa " Save whenever switching windows or leaving vim.
 augroup END
 
-" Save a file as root. ********************************************************
+" Save a file as root. ************************************************************************************************
 cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
 
 " Quicker filetype setting:
@@ -152,20 +148,19 @@ else
   command! -nargs=1 -complete=filetype F set filetype=<args>
 endif
 
-" Programmery *****************************************************************
+" Programmery *********************************************************************************************************
 let g:syntastic_check_on_open=0
 let g:syntastic_enable_balloons=0
 let g:syntastic_enable_signs=1
 
-" NERDCommenter
-let NERDSpaceDelims=1
-map <leader>/ <plug>NERDCommenterToggle<CR>
-imap <leader>/ <Esc><plug>NERDCommenterToggle<CR>i
-map <Leader>[ <plug>NERDCommenterAlignLeft
-map <Leader>] <plug>NERDCommenterUncomment
-
-" Format JSON with yajl
-nmap =j :%!json_reformat<CR>
+" Format JSON with jq
+" nmap =j :%!json_reformat<CR>
+function! PrettyJSON()
+  %!jq .
+  set filetype=json
+endfunction
+nmap =j :call PrettyJSON()<CR>
+let g:vim_json_syntax_conceal = 0
 
 " Format XML
 function! DoPrettyXML()
@@ -177,12 +172,20 @@ function! DoPrettyXML()
 endfunction
 nmap =x :call DoPrettyXML()<CR>
 
-" VIM-Gist ********************************************************************
+" Comments  ***********************************************************************************************************
+nmap cm <Plug>Commentary
+
+" VIM-Gist ************************************************************************************************************
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 let g:gist_show_privates = 1
 let g:gist_post_private = 1
 
-" Ansible
+" Ansible ************************************************************************************************************* 
+set cindent
 let g:ansible_attribute_highlight = "ab"
 let g:ansible_name_highlight = 'b'
+
+" Misc **************************************************************************************************************** 
+nmap <leader>, :w<cr>                             " Shortcut to save
+

@@ -24,8 +24,6 @@ alias ....="cd ../../.."
 alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias weather="curl -4 http://wttr.in"
 
-alias k="kubectl"
-
 # Vagrant
 alias vu="vagrant up --no-provision && vagrant provision"
 alias vd="vagrant destroy"
@@ -36,3 +34,4 @@ alias showfiles="defaults write com.apple.finder AppleShowAllFiles TRUE; killall
 alias hidefiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
 alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
 alias sc="find . -name target | xargs rm -r"
+
