@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'L9'
 
+Plug 'takac/vim-hardtime'
+
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
