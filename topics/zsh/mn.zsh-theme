@@ -1,14 +1,24 @@
-# vi: ft=zsh
+# Because right prompts are dumb
+unset RPS1
 
-function git_prompt() {
-  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$(git_prompt_status)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-  fi
+MODE=" (%{$fg_bold[red]%}Normal%{$reset_color%})"
+
+function vi_mode_prompt() {
+	echo "${${KEYMAP/vicmd/$MODE}/(main|viins)/}"
 }
 
-PROMPT='%{$fg[green]%}felix%{$fg[white]%}:%c%{$reset_color%}$(git_prompt)%{$fg_bold[yellow]%} $ %{$reset_color%}'
+function git_prompt() {
+	if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]; then
+		ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+			ref=$(command git rev-parse --short HEAD 2> /dev/null) || return 0
+		echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$(git_prompt_status)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+	fi
+}
+
+# PROMPT='%{$fg[green]%}felix%{$fg[white]%}:%c%{$reset_color%}$(git_prompt)%{$fg_bold[yellow]%} $ %{$reset_color%}'
+PROMPT='%{$fg[green]%}felix%{$fg[white]%}:%c%{$reset_color%}$(git_prompt)$(vi_mode_prompt)%{$fg_bold[yellow]%} $ %{$reset_color%}'
+
+
 ZSH_THEME_GIT_PROMPT_PREFIX=" (%{$fg_bold[cyan]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%})"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg_bold[red]%}✗%{$fg_bold[cyan]%}"
@@ -19,3 +29,6 @@ ZSH_THEME_GIT_PROMPT_DELETED="%{$fg_bold[red]%}✖"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg_bold[blue]%}▴"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[cyan]%}§"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}…"
+
+# vi: ft=zsh
+
