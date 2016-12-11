@@ -1,5 +1,3 @@
-setopt no_global_rcs
-
 export ZPLUG_LOADFILE=${HOME}/.zsh_packages
 
 export AUTOENV_AUTH_FILE=~/.env_auth
@@ -13,16 +11,9 @@ export M2_HOME="/usr/local/maven"
 export MAVEN_OPTS="-Xmx1g -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"
 export JAVA_HOME=`/usr/libexec/java_home`
 export MANPAGER="less -X"
-export VAGRANT_HOME="$HOME/.vagrant.d/"
-export VBOX_USER_HOME="$HOME/.VirtualBox/"
 export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="$HADOOP_HOME/etc/hadoop"
 export DOCKER_HOST="unix:///var/run/docker.sock"
-
-# Enable syntax-highlighting in less.
-# brew install source-highlight
-export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
-export LESS=" -R "
 
 export GNU_BIN=$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$(/usr/local/bin/brew --prefix gnu-sed)/libexec/gnubin
 

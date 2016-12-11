@@ -8,6 +8,7 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "k4rthik/git-cal", as:command
 zplug "supercrabtree/k"
 zplug "Tarrasch/zsh-autoenv"
+zplug "zsh-users/zsh-autosuggestions"
 
 zplug "${DOTFILES}/topics/zsh", from:local, use:"mn.zsh-theme", defer:2
 
