@@ -1,5 +1,6 @@
-# load config and system specific
-[ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
+export DOTFILES=/Users/matt/.dotfiles
+
+# Load generic aliases
 [ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
 
 source ${HOME}/.zplug/init.zsh
@@ -26,11 +27,14 @@ setopt share_history # share command history data
 setopt no_global_rcs
 
 # Need to redefined these aliases at this point as they get trampled by plugins
-alias -g ls="ls --color=tty --quoting=literal"
+alias -g ls="gls --color=tty --quoting-style=literal"
 alias -g ll="ls -lh"
 alias -g la="ls -lah"
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=22"
+
+# load config and system specific
+[ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
 
 # vi: ft=zsh
 

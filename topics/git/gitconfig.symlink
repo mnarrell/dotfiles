@@ -34,6 +34,7 @@
   scrub = gc --aggressive --prune=now
   fetch = fetch -p
   patch = --no-pager diff --no-color
+  conflicted = !vim +Conflicted
 
 [merge]
   ff = only

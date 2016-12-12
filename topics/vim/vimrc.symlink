@@ -1,36 +1,38 @@
 " Load the plugins **************************************************************************************************** 
 source $DOTFILES/topics/vim/plugins.vim
 
-let mapleader = ","
+" let mapleader = ","
+let mapleader = "\<Space>"
 
 " General Behavior ****************************************************************************************************
-set nocompatible                                  " VIM only, don't regress to VI
-set relativenumber                                " Sanity for motions
-set number                                        " Show the current line number in the gutter
-set encoding=utf-8                                " Default character endoding 
-set ff=unix                                       " UNIX EOL characters
-set pastetoggle=<F2>                              " Toggle paste mode
+set autoread                                      " Load buffers modified outside of VIM
 set backspace=indent,eol,start                    " Make the backspace key sane
-set hidden                                        " allow for unsaved buffers in the background
 set cursorline                                    " Highlight the entire line the cursor is on
+set diffopt+=vertical															" Always use vertical diffs
+set encoding=utf-8                                " Default character encoding 
+set ff=unix                                       " UNIX EOL characters
+set hidden                                        " allow for unsaved buffers in the background
+set history=1000                                  " History size 
+set nobackup                                      " Do not make backups
+set nocompatible                                  " VIM only, don't regress to VI
+set nojoinspaces																  " Use one space, not two, after punctuation.
+set noshowmode                                    " Don't show mode (because of airline)
+set noswapfile                                    " Do not use swap files
 set nowrap                                        " Do not wrap lines by default
+set number                                        " Show the current line number in the gutter
+set pastetoggle=<F2>                              " Toggle paste mode
+set path+=**                                      " Allow for fuzzy-like finding without plugins
+set relativenumber                                " Sanity for motions
 set ruler                                         " Show the cursor position all the time
 set showcmd                                       " Display incomplete commands
 set showmatch                                     " Show matching braces, parens, etc.
-set history=1000                                  " History size 
+set spellfile=$HOME/.vim/spell/en.utf-8.add       " Identify the additional spelling dictionary
+set spelllang=en_us                               " Identify the default spelling language
 set undolevels=1000                               " Undo memory size
-set wildmode=list:longest,full                    " Wildcard suggestion modes
-" set wildmode=list:longest                         " Wildcard suggestion modes
+set visualbell                                    " Use visual bell instead of beeping
 set wildignore=*.swp,*.bak,*.pyc,*.class,target   " Ignore these patterns in wildcard matches
 set wildmenu                                      " Display all the wildcard matches
-set path+=**                                      " Allow for fuzzy-like finding without plugins
-set nobackup                                      " Do not make backups
-set noswapfile                                    " Do not use swap files
-set visualbell                                    " Use visual bell instead of beeping
-set autoread                                      " Load buffers modified outside of VIM
-" set nolist                                        " 
-set nojoinspaces																  " Use one space, not two, after punctuation.
-set diffopt+=vertical															" Always use vertical diffs
+set wildmode=list:longest,full                    " Wildcard suggestion modes
 
 " Discipline **********************************************************************************************************
 noremap  <Up> ""
@@ -55,16 +57,16 @@ nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
 
 " Tab characters  ****************************************************************************************************
+set expandtab                                     " Insert spaces as the tab characters
+set shiftwidth=2                                  " Default indents are two spaces
+set smarttab                                      " Treats tabs as single characters (regardless of expandtab)
 set softtabstop=2                                 " Tabs are two spaces
 set tabstop=2                                     " Tabs are two spaces
-set shiftwidth=2                                  " Default indents are two spaces
-set expandtab                                     " Insert spaces as the tab characters
-set smarttab                                      " Treats tabs as single characters (regardless of expandtab)
 
 " Indents *************************************************************************************************************
 set autoindent                                    " Retain indents when moving to new line
-set smartindent                                   " Intelligently indent based on syntax
 set copyindent                                    " Copy the structure of the indent
+set smartindent                                   " Intelligently indent based on syntax
 
 " Search **************************************************************************************************************
 nmap <Leader>HL :set invhlsearch<CR>
@@ -116,25 +118,20 @@ nnoremap <silent> <C-w><Down> :resize -5<cr>
 " File types **********************************************************************************************************
 augroup configgroup
   autocmd!
-  autocmd VimEnter * highlight clear SignColumn
-  autocmd FileType java setlocal noexpandtab
+  autocmd BufEnter *.avsc setlocal filetype=json
+  autocmd BufEnter *.cls setlocal filetype=java
+  autocmd BufEnter *.md setlocal filetype=markdown
+  autocmd BufEnter *.md setlocal spell 
+  autocmd BufEnter Makefile setlocal noexpandtab
+  autocmd FileType java setlocal formatprg=par\ -w80\ -T4
   autocmd FileType java setlocal list
   autocmd FileType java setlocal listchars=tab:+\ ,eol:-
-  autocmd FileType java setlocal formatprg=par\ -w80\ -T4
-  autocmd FileType ruby setlocal tabstop=2
-  autocmd FileType ruby setlocal shiftwidth=2
-  autocmd FileType ruby setlocal softtabstop=2
   autocmd FileType ruby setlocal commentstring=#\ %s
-  autocmd FileType python setlocal commentstring=#\ %s
   autocmd FileType yaml setlocal noexpandtab
-  autocmd BufEnter *.cls setlocal filetype=java
-  autocmd BufEnter *.zsh-theme setlocal filetype=zsh
-  autocmd BufEnter Makefile setlocal noexpandtab
-  autocmd BufEnter *.sh setlocal tabstop=2
-  autocmd BufEnter *.sh setlocal shiftwidth=2
-  autocmd BufEnter *.sh setlocal softtabstop=2
-  autocmd BufEnter *.avsc setlocal filetype=javascript
   autocmd FocusLost,WinLeave * :silent! wa " Save whenever switching windows or leaving vim.
+  autocmd VimEnter * highlight clear SignColumn
+  autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardTimeOn()
+  autocmd FileType netrw silent! call HardTimeOff()
 augroup END
 
 " Save a file as root. ************************************************************************************************
@@ -181,22 +178,25 @@ nmap cm <Plug>Commentary
 " VIM-Gist ************************************************************************************************************
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
-let g:gist_show_privates = 1
 let g:gist_post_private = 1
+let g:gist_show_privates = 1
 
 " Ansible ************************************************************************************************************* 
-set cindent
+" set cindent
 let g:ansible_attribute_highlight = "ab"
 let g:ansible_name_highlight = 'b'
 
 " Misc **************************************************************************************************************** 
-nmap <leader>, :w<cr>                             " Shortcut to save
+vnoremap . :normal .<CR>                          " allow the . to execute once for each line of a visual selection
 
 "Create new line without entering insert mode
 map <Leader>o o<ESC>
 map <Leader>O O<ESC>
 
-" Command Aliases  ****************************************************************************************************
-"https://stackoverflow.com/questions/3878692/aliasing-a-command-in-vim
-cnoreabbrev Q q
-cnoreabbrev W w
+" HardTime ************************************************************************************************************
+map <silent> <leader>ht :HardTimeToggle<CR>
+let g:hardtime_timeout = 3000
+" let g:hardtime_showmsg = 1
+let g:list_of_normal_keys = ["h", "j", "k", "l", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+let g:list_of_visual_keys = ["h", "j", "k", "l", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+
