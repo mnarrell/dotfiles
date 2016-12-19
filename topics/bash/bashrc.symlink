@@ -1,5 +1,3 @@
-# vi: ft=sh
-
 [ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
 [ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
 
@@ -45,3 +43,6 @@ function bash_prompt() {
 
 bash_prompt
 unset bash_prompt
+
+# vi: ft=sh
+
