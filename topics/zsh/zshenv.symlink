@@ -1,4 +1,4 @@
-export ZPLUG_LOADFILE=${HOME}/.zsh_packages
+export ZPLUG_LOADFILE=${HOME}/.zsh/packages
 
 export AUTOENV_AUTH_FILE=~/.env_auth
 

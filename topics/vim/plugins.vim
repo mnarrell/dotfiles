@@ -5,6 +5,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'L9'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
+Plug 'chriskempson/base16-vim'
+
 " Core
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-commentary'

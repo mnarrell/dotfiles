@@ -77,7 +77,8 @@ set nohlsearch                                    " Stop search highlighting
 syntax on
 filetype plugin indent on
 set background=dark
-colorscheme solarized
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-ocean
 
 " Tab line *************************************************************************************************************
 set tabline=%!tabber#TabLine()

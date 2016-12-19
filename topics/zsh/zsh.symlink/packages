@@ -21,7 +21,7 @@ zplug "supercrabtree/k"
 zplug "Tarrasch/zsh-autoenv"
 zplug "zsh-users/zsh-autosuggestions"
 
-zplug "${DOTFILES}/topics/zsh", from:local, use:"mn.zsh-theme", defer:2
+zplug "${HOME}/.zsh/", from:local, use:"mn.zsh-theme", defer:2
 
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
