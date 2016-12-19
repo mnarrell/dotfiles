@@ -32,3 +32,6 @@ fi
 
 # zplug load --verbose
 zplug load
+
+# vi: ft=zsh
+

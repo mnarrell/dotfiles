@@ -1,0 +1,6 @@
+[submodule "topics/zsh/--force"]
+	path = topics/zsh/--force
+	url = git@github.com:chriskempson/base16-shell
+[submodule "topics/zsh/zsh.symlink/base16-shell"]
+	path = topics/zsh/zsh.symlink/base16-shell
+	url = git@github.com:chriskempson/base16-shell
