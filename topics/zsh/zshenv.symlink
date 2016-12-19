@@ -1,5 +1,7 @@
 export ZPLUG_LOADFILE=${HOME}/.zsh/packages
 
+export BASE16_SHELL=$HOME/.zsh/base16-shell/
+
 export AUTOENV_AUTH_FILE=~/.env_auth
 
 export HISTFILE=$HOME/.zsh_history
@@ -18,7 +20,23 @@ export DOCKER_HOST="unix:///var/run/docker.sock"
 export GNU_BIN=$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$(/usr/local/bin/brew --prefix gnu-sed)/libexec/gnubin
 
 # PATH
-export PATH=~/bin:$JAVA_HOME/bin:$M2_HOME/bin:$GNU_BIN:$HADOOP_HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$PATH
+SYSTEM_PATH=$PATH
+unset PATH
+
+PATH=~/bin
+PATH=$PATH:$JAVA_HOME/bin
+PATH=$PATH:$M2_HOME/bin
+PATH=$PATH:$GNU_BIN
+PATH=$PATH:$HADOOP_HOME/bin
+PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/local/sbin
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/sbin
+PATH=$PATH:/bin
+PATH=$PATH:/sbin
+PATH=$PATH:$PATH
  
+export PATH
+
 # vi: ft=zsh
 

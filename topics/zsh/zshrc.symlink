@@ -36,7 +36,6 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=22"
 # load config and system specific
 [ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
 
-BASE16_SHELL=$HOME/.zsh/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 # vi: ft=zsh
