@@ -8,6 +8,11 @@ noremap  <Left> ""
 noremap  <Right> ""
 " noremap! <Right> <Esc>
 
+nnoremap Q <nop>
+nnoremap K <nop>
+
+noremap Y y$
+
 " moving up and down work as you would expect
 nnoremap <silent> j gj
 nnoremap <silent> k gk
@@ -37,3 +42,4 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 " scroll the viewport faster
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
+

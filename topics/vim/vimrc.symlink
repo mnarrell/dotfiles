@@ -3,15 +3,6 @@ source $DOTFILES/topics/vim/plugins.vim
 
 let mapleader = "\<Space>"
 
-
-
-" Comments  ***********************************************************************************************************
-nmap cm <Plug>Commentary
-
-
-
-" Misc ****************************************************************************************************************
-vnoremap . :normal .<CR>                          " allow the . to execute once for each line of a visual selection
-
-
+filetype indent plugin on
+syntax on
 
