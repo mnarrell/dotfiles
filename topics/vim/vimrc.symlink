@@ -1,7 +1,6 @@
 " Load the plugins ****************************************************************************************************
 source $DOTFILES/topics/vim/plugins.vim
 
-" let mapleader = ","
 let mapleader = "\<Space>"
 
 " General Behavior ****************************************************************************************************
@@ -119,53 +118,14 @@ nnoremap <silent> <C-w><Down> :resize -5<cr>
 " File types **********************************************************************************************************
 augroup configgroup
   autocmd!
-  " autocmd BufEnter *.avsc setlocal filetype=json
-  autocmd FileType java setlocal formatprg=par\ -w80\ -T4
-  autocmd FileType java setlocal list
-  autocmd FileType java setlocal listchars=tab:+\ ,eol:-
-  autocmd FileType ruby setlocal commentstring=#\ %s
-  autocmd FileType yaml setlocal noexpandtab
   autocmd FocusLost,WinLeave * :silent! wa " Save whenever switching windows or leaving vim.
   autocmd VimEnter * highlight clear SignColumn
 augroup END
-
-" Save a file as root. ************************************************************************************************
-cabbrev w!! w !sudo tee % > /dev/null<CR>:e!<CR><CR>
-
-" Quicker filetype setting:
-"   :F html
-" instead of
-"   :set ft=html
-" Can tab-complete filetype.
-if version < 730
-  command! -nargs=1 F set filetype=<args>
-else
-  command! -nargs=1 -complete=filetype F set filetype=<args>
-endif
 
 " Programmery *********************************************************************************************************
 let g:syntastic_check_on_open=0
 let g:syntastic_enable_balloons=0
 let g:syntastic_enable_signs=1
-
-" Format JSON with jq
-" nmap =j :%!json_reformat<CR>
-function! PrettyJSON()
-  %!jq .
-  set filetype=json
-endfunction
-nmap =j :call PrettyJSON()<CR>
-let g:vim_json_syntax_conceal = 0
-
-" Format XML
-function! DoPrettyXML()
-  let l:origft = &ft
-  set ft=
-  silent %!xmllint --format -
-  1
-  exe "set ft=" . l:origft
-endfunction
-nmap =x :call DoPrettyXML()<CR>
 
 " Comments  ***********************************************************************************************************
 nmap cm <Plug>Commentary
