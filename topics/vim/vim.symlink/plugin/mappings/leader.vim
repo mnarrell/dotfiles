@@ -9,3 +9,14 @@ nmap <leader><down> :rightbelow sp<CR>
 map <Leader>o o<ESC>
 map <Leader>O O<ESC>
 
+" Zap trailing whitespace in the current buffer.
+nnoremap <silent> <Leader>zz :call mappings#leader#zap()<CR>
+
+nnoremap <Leader>o :only<CR>
+nnoremap <Leader>q :quit<CR>
+nnoremap <Leader>w :write<CR>
+nnoremap <Leader>x :xit<CR>
+
+" <Leader>r -- Cycle through relativenumber + number, number (only), and no
+" numbering (mnemonic: relative).
+nnoremap <silent> <Leader>r :call mappings#leader#cycle_numbering()<CR>

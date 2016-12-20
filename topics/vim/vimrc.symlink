@@ -3,37 +3,12 @@ source $DOTFILES/topics/vim/plugins.vim
 
 let mapleader = "\<Space>"
 
-" Eyecandy ************************************************************************************************************
-syntax on
-filetype indent plugin on
-set background=dark
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-default-dark
 
-" Tab line *************************************************************************************************************
-set tabline=%!tabber#TabLine()
-let g:tabber_filename_style = 'relative'
-nnoremap <C-t> :tabnew<CR>
-
-" Status line **********************************************************************************************************
-set laststatus=2
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
-
-" Programmery *********************************************************************************************************
-let g:syntastic_check_on_open=0
-let g:syntastic_enable_balloons=0
-let g:syntastic_enable_signs=1
 
 " Comments  ***********************************************************************************************************
 nmap cm <Plug>Commentary
 
 
-" Ansible *************************************************************************************************************
-" set cindent
-let g:ansible_attribute_highlight = "ab"
-let g:ansible_name_highlight = 'b'
 
 " Misc ****************************************************************************************************************
 vnoremap . :normal .<CR>                          " allow the . to execute once for each line of a visual selection

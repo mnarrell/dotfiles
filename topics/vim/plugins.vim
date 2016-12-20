@@ -8,6 +8,8 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'chriskempson/base16-vim'
 
 Plug 'wincent/command-t', { 'do': 'rake make' }
+Plug 'wincent/loupe'
+Plug 'wincent/pinnacle'
 Plug 'wincent/terminus'
 
 " Core
@@ -24,18 +26,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Text objects
-Plug 'christoomey/vim-sort-motion'
-Plug 'elzr/vim-json'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-user'
+Plug 'christoomey/vim-sort-motion'  | Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'      | Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
 
 " Syntax
-Plug 'derekwyatt/vim-scala'
-Plug 'lepture/vim-jinja'
-Plug 'pearofducks/ansible-vim'
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'scrooloose/syntastic'
-Plug 'sukima/xmledit'
+Plug 'sukima/xmledit', { 'for': 'xml'}
 
 " Git things
 Plug 'airblade/vim-gitgutter'
