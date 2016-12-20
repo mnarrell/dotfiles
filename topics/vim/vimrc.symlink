@@ -3,75 +3,6 @@ source $DOTFILES/topics/vim/plugins.vim
 
 let mapleader = "\<Space>"
 
-" General Behavior ****************************************************************************************************
-set autoread                                      " Load buffers modified outside of VIM
-set backspace=indent,eol,start                    " Make the backspace key sane
-set cursorline                                    " Highlight the entire line the cursor is on
-set diffopt+=vertical															" Always use vertical diffs
-set encoding=utf-8                                " Default character encoding
-set ff=unix                                       " UNIX EOL characters
-set hidden                                        " allow for unsaved buffers in the background
-set history=1000                                  " History size
-set nobackup                                      " Do not make backups
-set nocompatible                                  " VIM only, don't regress to VI
-set nojoinspaces																  " Use one space, not two, after punctuation.
-set noshowmode                                    " Don't show mode (because of airline)
-set noswapfile                                    " Do not use swap files
-set nowrap                                        " Do not wrap lines by default
-set number                                        " Show the current line number in the gutter
-set pastetoggle=<F2>                              " Toggle paste mode
-set path+=**                                      " Allow for fuzzy-like finding without plugins
-set relativenumber                                " Sanity for motions
-set ruler                                         " Show the cursor position all the time
-set showcmd                                       " Display incomplete commands
-set showmatch                                     " Show matching braces, parens, etc.
-" set spellfile=$HOME/.vim/spell/en.utf-8.add       " Identify the additional spelling dictionary
-" set spelllang=en_us                               " Identify the default spelling language
-set undolevels=1000                               " Undo memory size
-set visualbell                                    " Use visual bell instead of beeping
-set wildignore=*.swp,*.bak,*.pyc,*.class,target   " Ignore these patterns in wildcard matches
-set wildmenu                                      " Display all the wildcard matches
-set wildmode=list:longest,full                    " Wildcard suggestion modes
-
-" Discipline **********************************************************************************************************
-noremap  <Up> ""
-noremap! <Up> <Esc>
-noremap  <Down> ""
-noremap! <Down> <Esc>
-noremap  <Left> ""
-noremap! <Left> <Esc>
-noremap  <Right> ""
-noremap! <Right> <Esc>
-inoremap kj <Esc>
-vnoremap kj <Esc>
-
-" moving up and down work as you would expect
-nnoremap <silent> j gj
-nnoremap <silent> k gk
-nnoremap <silent> ^ g^
-nnoremap <silent> $ g$
-
-" scroll the viewport faster
-nnoremap <C-e> 5<C-e>
-nnoremap <C-y> 5<C-y>
-
-" Tab characters  ****************************************************************************************************
-set expandtab                                     " Insert spaces as the tab characters
-set shiftwidth=2                                  " Default indents are two spaces
-set smarttab                                      " Treats tabs as single characters (regardless of expandtab)
-set softtabstop=2                                 " Tabs are two spaces
-set tabstop=2                                     " Tabs are two spaces
-
-" Indents *************************************************************************************************************
-set autoindent                                    " Retain indents when moving to new line
-set copyindent                                    " Copy the structure of the indent
-set smartindent                                   " Intelligently indent based on syntax
-
-" Search **************************************************************************************************************
-nmap <Leader>HL :set invhlsearch<CR>
-set incsearch                                     " Incremental search
-set nohlsearch                                    " Stop search highlighting
-
 " Eyecandy ************************************************************************************************************
 syntax on
 filetype indent plugin on
@@ -90,38 +21,6 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
 
-" Splits ***************************************************************************************************************
-" http://technotales.wordpress.com/2010/04/29/vim-splits-a-guide-to-doing-exactly-what-you-want/
-set noea
-set splitbelow
-set splitright
-
-nmap <leader><left> :leftabove vsp<CR>
-nmap <leader><right> :rightbelow vsp<CR>
-nmap <leader><up> :leftabove sp<CR>
-nmap <leader><down> :rightbelow sp<CR>
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
-
-" resize panes
-nnoremap <silent> <C-w><Right> :vertical resize +5<cr>
-nnoremap <silent> <C-w><Left> :vertical resize -5<cr>
-nnoremap <silent> <C-w><Up> :resize +5<cr>
-nnoremap <silent> <C-w><Down> :resize -5<cr>
-
-" File types **********************************************************************************************************
-augroup configgroup
-  autocmd!
-  autocmd FocusLost,WinLeave * :silent! wa " Save whenever switching windows or leaving vim.
-  autocmd VimEnter * highlight clear SignColumn
-augroup END
-
 " Programmery *********************************************************************************************************
 let g:syntastic_check_on_open=0
 let g:syntastic_enable_balloons=0
@@ -130,11 +29,6 @@ let g:syntastic_enable_signs=1
 " Comments  ***********************************************************************************************************
 nmap cm <Plug>Commentary
 
-" VIM-Gist ************************************************************************************************************
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-let g:gist_post_private = 1
-let g:gist_show_privates = 1
 
 " Ansible *************************************************************************************************************
 " set cindent
@@ -144,8 +38,5 @@ let g:ansible_name_highlight = 'b'
 " Misc ****************************************************************************************************************
 vnoremap . :normal .<CR>                          " allow the . to execute once for each line of a visual selection
 
-"Create new line without entering insert mode
-map <Leader>o o<ESC>
-map <Leader>O O<ESC>
 
 

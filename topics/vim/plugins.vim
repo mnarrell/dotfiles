@@ -7,6 +7,9 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'chriskempson/base16-vim'
 
+Plug 'wincent/command-t', { 'do': 'rake make' }
+Plug 'wincent/terminus'
+
 " Core
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-commentary'
