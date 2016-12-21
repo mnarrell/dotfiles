@@ -1,4 +1,4 @@
-# vim: set filetype=gitconfig : 
+# vim: set filetype=gitconfig :
 
 [include]
   path = ~/.gitconfig.local

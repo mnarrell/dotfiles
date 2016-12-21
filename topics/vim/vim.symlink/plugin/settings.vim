@@ -96,7 +96,9 @@ set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~
 set wildcharm=<C-z>                   " substitute for 'wildchar' (<Tab>) in macros
 
 if has('wildignore')
-  set wildignore+=*.o,*.rej           " patterns to ignore during file-navigation
+  set wildignore+=*/.git             " patterns to ignore during file-navigation
+  set wildignore+=*/tmp/backup
+  set wildignore+=*/tmp/swap
 endif
 
 if has('wildmenu')
