@@ -48,6 +48,7 @@ cask 'font-source-code-pro'
 cask 'font-meslo-lg-for-powerline'
 
 
+brew 'openssl'
 brew 'ack'
 brew 'ansible'
 brew 'apache-spark'
@@ -84,7 +85,6 @@ brew 'lzop'
 brew 'mas'
 brew 'mysql'
 brew 'nmap'
-brew 'openssl'
 brew 'ossp-uuid'
 brew 'pcre'
 brew 'perl'
@@ -112,7 +112,6 @@ brew 'zookeeper'
 brew 'zsh'
 
 
-mas 'Caffeine (1.1.1)', id: 411246225
 mas 'Microsoft Remote Desktop (8.0.27228)', id: 715768417
 mas 'Paprika Recipe Manager (2.2.0)', id: 451907568
 mas 'Slack (2.3.1)', id: 803453959
