@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 rm -rf ${HOME}/.vim
-rm -rf ${HOME}/.dotfiles/topics/vim/vim.symlink/autoload
+rm -rf ${HOME}/.dotfiles/topics/vim/vim.symlink/autoload/plug.vim
 rm -rf ${HOME}/.dotfiles/topics/vim/vim.symlink/plugged

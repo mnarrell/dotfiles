@@ -30,10 +30,10 @@ nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
 " resize panes
-nnoremap <silent> <C-w><Right> :vertical resize +5<cr>
-nnoremap <silent> <C-w><Left> :vertical resize -5<cr>
-nnoremap <silent> <C-w><Up> :resize +5<cr>
-nnoremap <silent> <C-w><Down> :resize -5<cr>
+" nnoremap <silent> <C-w><Right> :vertical resize +5<cr>
+" nnoremap <silent> <C-w><Left> :vertical resize -5<cr>
+" nnoremap <silent> <C-w><Up> :resize +5<cr>
+" nnoremap <silent> <C-w><Down> :resize -5<cr>
 
 " Store relative line number jumps in the jumplist if they exceed a threshold.
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
