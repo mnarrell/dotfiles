@@ -38,8 +38,8 @@ cask 'onyx'
 cask 'powerphotos'
 cask 'rowanj-gitx'
 cask 'slack'
-cask 'textmate'
-cask 'virtualbox'
+# cask 'textmate'
+# cask 'virtualbox'
 cask 'visualvm'
 cask 'vlc'
 cask 'xquartz'
@@ -101,6 +101,7 @@ brew 'source-highlight'
 brew 'sqlite'
 brew 'ssh-copy-id'
 brew 'storm'
+brew 'tig'
 brew 'tmux'
 brew 'tree'
 brew 'utf8proc'
@@ -112,9 +113,13 @@ brew 'zookeeper'
 brew 'zsh'
 
 
+mas 'Clocks', id: 414554506 
+mas 'Deliveries: a package tracker', id: 924726344 
 mas 'Microsoft Remote Desktop (8.0.27228)', id: 715768417
 mas 'Paprika Recipe Manager (2.2.0)', id: 451907568
 mas 'Slack (2.3.1)', id: 803453959
+mas 'Swackett® — a different kind of weather app', id: 412558550 
 mas 'TrackSift (1.2.3)', id: 435371243
 mas 'Tweetbot (2.4.4)', id: 557168941
 mas 'Xcode (8.1)', id: 497799835
+mas 'feedly. Read more, know more.', id: 865500966 
