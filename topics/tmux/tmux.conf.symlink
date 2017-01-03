@@ -1,31 +1,22 @@
-# Use something easier to type as the prefix.
-set -g prefix C-a
+source-file -q ${HOME}/.tmux/tmuxline
+
+# Set prefix to space.
 unbind C-b
-bind C-a send-prefix
+set -g prefix C-Space
 
-# Relax!
-set -sg escape-time 0
-set -sg repeat-time 600
-
-# Less stretching to get to the first item.
-set -g base-index 1
-setw -g pane-base-index 1
-
-set-option -g renumber-windows on
-
-# bind m command-prompt -p "move window to:"  "run-shell 'tmux.number.sh %%'"
-
-# Screen habits
-bind C-a last-window
-bind a send-keys C-a
-
-# Reload the config.
-bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+# Open new/split panes with the path of the current pane.
+unbind c
+bind c new-window -c '#{pane_current_path}'
+unbind %
+bind % split-window -h -c '#{pane_current_path}'
+unbind '"'
+bind '"' split-window -v -c '#{pane_current_path}'i
 
 # Split windows
 unbind %
-bind | split-window -h -c "#{pane_current_path}"
-bind - split-window -v -c "#{pane_current_path}"
+bind | split-window -h -c '#{pane_current_path}'
+bind \ split-window -h -c '#{pane_current_path}'
+bind - split-window -v -c '#{pane_current_path}'
 
 # Pane movement
 bind h select-pane -L
@@ -33,66 +24,84 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# Pane resizing
-bind -r Left  resize-pane -L 2
-bind -r Down  resize-pane -D 2
-bind -r Up    resize-pane -U 2
-bind -r Right resize-pane -R 2
+# # Pane resizing
+unbind Left
+bind -r Left resize-pane -L 5
+unbind Right
+bind -r Right resize-pane -R 5
+unbind Down
+bind -r Down resize-pane -D 5
+unbind Up
+bind -r Up resize-pane -U 5
 
-# Window movement
-bind -r , select-window -t :-
-bind -r . select-window -t :+
-bind ) swap-window -t +
-bind ( swap-window -t -
+set -g mouse on
 
-# 256 colors please
-#set -g default-terminal "xterm-256color"
-set -g default-terminal "screen-256color"
+# Automatically renumber window numbers on closing a pane (tmux >= 1.7).
+set -g renumber-windows on
 
-# Activity
-setw -g monitor-activity on
-set -g visual-activity off
+# Mouse can be used to select panes, select windows (by clicking on the status
+# bar), resize panes. For default bindings see `tmux list-keys`.
+set -g mouse on
 
-# Autorename sanely.
-setw -g automatic-rename on
+# Stay in copy mode on drag end.
+# (Would use `bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X
+# stop-selection` but it is a bit glitchy.)
+# unbind-key -T copy-mode-vi MouseDragEnd1Pane
 
-# Better name management
-bind c new-window \; command-prompt "rename-window '%%'"
-bind C new-window
-bind , command-prompt "rename-window '%%'"
+# # Window movement
+# bind -r , select-window -t :-
+# bind -r . select-window -t :+
+# bind ) swap-window -t +
+# bind ( swap-window -t -
 
-# zoom / maximize
-unbind x
-# bind x run ". ~/.tmux/zoom"
+# For those times when C-c and q are not enough.
+bind-key -T copy-mode-vi Escape send-keys cancel
+# bind-key -T copy-mode-vi Escape send-keys -X cancel
 
-# Copy mode
-setw -g mode-keys vi
-bind [ copy-mode
-unbind p
-bind p paste-buffer
-bind -t vi-copy v begin-selection
-bind -t vi-copy y copy-selection
+set -g default-terminal "xterm-256color"
+# set -g default-terminal "tmux-256color"
+set -ga terminal-overrides ',xterm-256color:Tc'
 
-# Mouse
-set-option -g mouse-select-pane on
-set-option -g mouse-resize-pane on
-set-option -g mouse-select-window on
-set-window-option -g mode-mouse off
+set -g history-limit 262144
 
-# Status line - from https://github.com/zolrath/wemux/wiki/Status-Line
-set -g status-left-length 32
-set -g status-right-length 150
+# Start window and pane numbering at 1, (0 is too hard to reach).
+set -g base-index 0
+set -g pane-base-index 1
 
-set -g status-fg white
-set -g status-bg colour234
-set -g window-status-activity-attr bold
-set -g pane-border-fg colour245
-set -g pane-active-border-fg colour39
-set -g message-fg colour16
-set -g message-bg colour221
-set -g message-attr bold
+# Don't wait for an escape sequence after seeing C-a.
+set -s escape-time 0
 
-set -g status-left '#[fg=colour235,bg=colour252,bold] ❐ #S #[fg=colour252,bg=colour238,nobold]⮀#[fg=colour245,bg=colour238,bold] #(whoami) #[fg=colour238,bg=colour234,nobold]⮀'
-set -g window-status-format "#[fg=white,bg=colour234] #I #W "
-set -g window-status-current-format "#[fg=colour234,bg=colour39]⮀#[fg=colour25,bg=colour39,noreverse,bold] #I ⮁ #W #[fg=colour39,bg=colour234,nobold]⮀"
-set -g status-right "#(wemux status_users)"
+# Dynamically update iTerm tab and window titles.
+set -g set-titles on
+
+# Needed as on tmux 1.9 and up (defaults to off).
+# Added in tmux commit c7a121cfc0137c907b7bfb.
+set -g focus-events on
+
+# But don't change tmux's own window titles.
+set -w -g automatic-rename off
+
+# #T      = standard window title (last command, see ~/.bash_profile)
+# #h      = short hostname
+# #S      = session name
+# #W      = tmux window name
+#
+# (Would love to include #(pwd) here as well, but that would only print the
+# current working directory relative to the session -- ie. always the starting
+# cwd -- which is not very interesting).
+set -g set-titles-string "#T : #h > #S > #W"
+
+# Show bells in window titles.
+set -g window-status-bell-style fg=yellow,bold,underscore
+
+# Turn off distracting border highlight: the background highlighting is probably
+# enough. Default value of 8 comes from "pane-border-fg" in tmux's
+# options-table.c.
+set -g pane-active-border-fg 8
+
+# Clipper.
+bind-key y run-shell "tmux save-buffer - | nc -U ~/.clipper.sock"
+
+# "copy-pipe" requires tmux >= 1.8
+bind-key -T copy-mode-vi Enter send-keys copy-pipe-and-cancel "nc -U ~/.clipper.sock"
+

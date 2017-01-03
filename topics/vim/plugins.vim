@@ -7,10 +7,11 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'chriskempson/base16-vim'
 
-Plug 'wincent/command-t', { 'do': 'rake make' }
-Plug 'wincent/loupe'
-Plug 'wincent/pinnacle'
-Plug 'wincent/terminus'
+Plug 'wincent/command-t', { 'do': 'rake make' } " Fuzzy finder
+Plug 'wincent/loupe'                            " Better in-file search
+Plug 'wincent/pinnacle'                         " Search highlighting
+Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
+Plug 'wincent/vim-clipper'                      " Make system clipboard work like a real app
 
 " Core
 Plug 'mileszs/ack.vim'
@@ -24,6 +25,7 @@ Plug 'corntrace/bufexplorer'
 Plug 'fweep/vim-tabber'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
 
 " Text objects
 Plug 'kana/vim-textobj-user'

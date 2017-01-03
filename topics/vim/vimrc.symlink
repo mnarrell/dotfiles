@@ -2,6 +2,7 @@
 source $DOTFILES/topics/vim/plugins.vim
 
 let mapleader = "\<Space>"
+let maplocalleader="\\"
 
 filetype indent plugin on
 syntax on

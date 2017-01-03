@@ -1,12 +1,9 @@
-# vi: ft=sh
-
 alias ls="ls -h --color"
 alias la="ls -lah --color"
 alias lsd="ls -l --color | grep '^d'"
 alias ll="ls -lh"
 alias la="ls -lah"
-alias vi='vim'
-alias dots='cd ~/.dotfiles && $EDITOR .'
+alias dots='cd ~/.dotfiles && ${EDITOR} .'
 alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias grep='grep --color=auto'
 alias sshconfig='${EDITOR} ~/.ssh/config'
@@ -21,8 +18,9 @@ alias please='sudo $(fc -nl -1)'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 alias weather="curl -4 http://wttr.in"
+
+alias t='tmux'
 
 # Vagrant
 alias vu="vagrant up --no-provision && vagrant provision"
@@ -36,3 +34,6 @@ alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Framew
 alias sc="find . -name target | xargs rm -r"
 
 alias k="k -h"
+
+# vi: ft=sh
+
