@@ -1,0 +1,1 @@
+command! PU PlugUpdate | PlugUpgrade

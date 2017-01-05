@@ -14,7 +14,7 @@ Plug 'wincent/terminus'                         " Make terminal VIM work like a 
 Plug 'wincent/vim-clipper'                      " Make system clipboard work like a real app
 
 " Core
-Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -25,8 +25,7 @@ Plug 'corntrace/bufexplorer'
 Plug 'fweep/vim-tabber'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
-
+Plug 'edkolev/tmuxline.vim', { 'on': [] }
 " Text objects
 Plug 'kana/vim-textobj-user'
 Plug 'christoomey/vim-sort-motion'  | Plug 'kana/vim-textobj-user'
