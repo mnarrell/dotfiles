@@ -26,6 +26,7 @@ Plug 'fweep/vim-tabber'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim', { 'on': [] }
+
 " Text objects
 Plug 'kana/vim-textobj-user'
 Plug 'christoomey/vim-sort-motion'  | Plug 'kana/vim-textobj-user'
@@ -38,6 +39,7 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'scrooloose/syntastic'
 Plug 'sukima/xmledit', { 'for': 'xml'}
+Plug 'keith/tmux.vim'
 
 " Git things
 Plug 'airblade/vim-gitgutter'
