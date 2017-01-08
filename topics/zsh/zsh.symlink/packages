@@ -1,23 +1,19 @@
-zplug "lib/compfix", from:oh-my-zsh
-zplug "lib/completion", from:oh-my-zsh
-zplug "lib/theme-and-appearance", from:oh-my-zsh
-zplug "lib/key-bindings", from:oh-my-zsh
+zplug "lib/compfix", from:oh-my-zsh                 # Completion fixes?
+zplug "lib/completion", from:oh-my-zsh              # Fancy completions
+zplug "lib/theme-and-appearance", from:oh-my-zsh    # Allow for theme shorthand
+zplug "lib/key-bindings", from:oh-my-zsh            # Use ZLE for command line niceties
 
 zplug "plugins/rsync", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/git-extras", from:oh-my-zsh
 zplug "plugins/sbt", from:oh-my-zsh
 zplug "plugins/mvn", from:oh-my-zsh
-zplug "plugins/vagrant", from:oh-my-zsh
-zplug "plugins/jump", from:oh-my-zsh
-zplug "plugins/vi-mode", from:oh-my-zsh
+# zplug "plugins/vagrant", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh, defer:2
 
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting"           # Command line syntax highlighting
+zplug "zsh-users/zsh-history-substring-search"      # Search history with cursor keys
 
-zplug "k4rthik/git-cal", as:command
-zplug "supercrabtree/k"
+zplug "supercrabtree/k"                             # k is the new l
 zplug "Tarrasch/zsh-autoenv"
 zplug "zsh-users/zsh-autosuggestions"
 

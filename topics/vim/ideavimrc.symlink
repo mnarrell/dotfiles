@@ -1,0 +1,20 @@
+let mapleader = " "
+let maplocalleader="\\"
+
+set clipboard+=unnamed
+
+set showmode
+
+set number
+set relativenumber                  " show relative numbers in gutter
+
+nnoremap <silent> <Leader>o :only<CR>
+nnoremap <silent> <Leader>q :quit<CR>
+nnoremap <silent> <Leader>w :write<CR>
+nnoremap <silent> <Leader>x :xit<CR>
+
+" Split navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l

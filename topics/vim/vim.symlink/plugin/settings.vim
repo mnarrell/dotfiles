@@ -33,6 +33,7 @@ set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION M
 set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
 set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
+set number                            " show line numbers in gutter
 
 if exists('+relativenumber')
   set relativenumber                  " show relative numbers in gutter

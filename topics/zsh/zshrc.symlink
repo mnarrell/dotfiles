@@ -1,4 +1,4 @@
-export DOTFILES=/Users/matt/.dotfiles
+export DOTFILES=${HOME}/.dotfiles
 
 # Load generic aliases
 [ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
