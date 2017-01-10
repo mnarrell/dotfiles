@@ -75,3 +75,7 @@ bind generic ca !?@git commit --amend --no-edit
 bind generic K view-help
 bind generic <C-w><C-w> view-next
 
+set line-graphics = utf-8
+
+set main-view = id:yes date:relative author:full commit-title:yes,graph,refs,overflow=no
+

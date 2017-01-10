@@ -40,6 +40,7 @@ Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'scrooloose/syntastic'
 Plug 'sukima/xmledit', { 'for': 'xml'}
 Plug 'keith/tmux.vim'
+Plug 'GEverding/vim-hocon', { 'for': 'hocon' }
 
 " Git things
 Plug 'airblade/vim-gitgutter'
