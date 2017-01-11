@@ -10,7 +10,7 @@ bind c new-window -c '#{pane_current_path}'
 unbind %
 bind % split-window -h -c '#{pane_current_path}'
 unbind '"'
-bind '"' split-window -v -c '#{pane_current_path}'i
+bind '"' split-window -v -c '#{pane_current_path}'
 
 # Split windows
 unbind %
@@ -24,7 +24,7 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# # Pane resizing
+# Pane resizing
 unbind Left
 bind -r Left resize-pane -L 5
 unbind Right
@@ -33,8 +33,6 @@ unbind Down
 bind -r Down resize-pane -D 5
 unbind Up
 bind -r Up resize-pane -U 5
-
-set -g mouse on
 
 # Automatically renumber window numbers on closing a pane (tmux >= 1.7).
 set -g renumber-windows on
@@ -46,50 +44,32 @@ set -g mouse on
 # Stay in copy mode on drag end.
 # (Would use `bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X
 # stop-selection` but it is a bit glitchy.)
-# unbind-key -T copy-mode-vi MouseDragEnd1Pane
+unbind-key -t vi-copy MouseDragEnd1Pane
 
-# # Window movement
-# bind -r , select-window -t :-
-# bind -r . select-window -t :+
-# bind ) swap-window -t +
-# bind ( swap-window -t -
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
 
-# For those times when C-c and q are not enough.
-bind-key -T copy-mode-vi Escape send-keys cancel
-# bind-key -T copy-mode-vi Escape send-keys -X cancel
+# Window movement
+bind -r , select-window -t :-
+bind -r . select-window -t :+
+bind ) swap-window -t +
+bind ( swap-window -t -
 
 set -g default-terminal "xterm-256color"
-# set -g default-terminal "tmux-256color"
 set -ga terminal-overrides ',xterm-256color:Tc'
 
 set -g history-limit 262144
 
 # Start window and pane numbering at 1, (0 is too hard to reach).
-set -g base-index 0
+set -g base-index 1
 set -g pane-base-index 1
 
 # Don't wait for an escape sequence after seeing C-a.
 set -s escape-time 0
 
-# Dynamically update iTerm tab and window titles.
-set -g set-titles on
-
 # Needed as on tmux 1.9 and up (defaults to off).
 # Added in tmux commit c7a121cfc0137c907b7bfb.
 set -g focus-events on
-
-# But don't change tmux's own window titles.
-set -w -g automatic-rename off
-
-# #T      = standard window title (last command, see ~/.bash_profile)
-# #h      = short hostname
-# #S      = session name
-# #W      = tmux window name
-#
-# (Would love to include #(pwd) here as well, but that would only print the
-# current working directory relative to the session -- ie. always the starting
-# cwd -- which is not very interesting).
-set -g set-titles-string "#T : #h > #S > #W"
 
 # Show bells in window titles.
 set -g window-status-bell-style fg=yellow,bold,underscore
