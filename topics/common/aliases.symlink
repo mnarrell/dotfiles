@@ -3,7 +3,6 @@ alias la="ls -lah --color"
 alias lsd="ls -l --color | grep '^d'"
 alias ll="ls -lh"
 alias la="ls -lah"
-alias dots='cd ~/.dotfiles && ${EDITOR} .'
 alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias grep='grep --color=auto'
 alias sshconfig='${EDITOR} ~/.ssh/config'
@@ -20,7 +19,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias weather="curl -4 http://wttr.in"
 
-alias t='tmux'
 alias git='hub'
 
 # Vagrant

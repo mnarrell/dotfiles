@@ -5,15 +5,16 @@ export DOTFILES=${HOME}/.dotfiles
 
 source ${HOME}/.zplug/init.zsh
 source ${HOME}/.zsh/completions
+source ${HOME}/.zsh/functions
 
 # Make the up/down arrows search through history.
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-cdpath=( . $HOME/src/work /usr/local)
+cdpath=( . ${HOME}/src/work /usr/local)
 
-fpath=( $HOME/.zsh/functions $fpath )
+fpath=( ${HOME}/.zsh/functions $fpath )
 # autoload $HOME/.zsh/functions/*(:t)
 
 autoload -U select-word-style

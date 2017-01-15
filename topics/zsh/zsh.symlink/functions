@@ -11,5 +11,23 @@ show_colors() {
   for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
 }
 
+# Imbued tmux alias with session creation
+t() {
+  if [[ -z $@ && (-e ./.tmuxp.yaml || -e ./.tmuxp.json) ]]; then
+    tmuxp load .
+  else
+    tmux "$@"
+  fi
+}
+
+dots() {
+  cd $DOTFILES && t
+}
+
+# clunk
+reload_zshrc() {
+  source ${HOME}/.zshrc
+}
+
 # vi: ft=zsh
 

@@ -1,0 +1,13 @@
+session_name: dots
+windows:
+- focus: 'true'
+  layout: 706b,327x83,0,0{200x83,0,0,0,126x83,201,0[126x57,201,0,1,126x25,201,58,2]}
+  options: {}
+  panes:
+    - shell_command:
+      - vim .
+      focus: True
+    - pane
+    - tig --all
+  start_directory: $DOTFILES/
+  window_name: dots

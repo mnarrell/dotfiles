@@ -39,7 +39,7 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
 Plug 'scrooloose/syntastic'
 Plug 'sukima/xmledit', { 'for': 'xml'}
-Plug 'keith/tmux.vim'
+Plug 'keith/tmux.vim', { 'for': 'tmux' }
 Plug 'GEverding/vim-hocon', { 'for': 'hocon' }
 
 " Git things
