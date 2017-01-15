@@ -21,6 +21,7 @@ alias ....="cd ../../.."
 alias weather="curl -4 http://wttr.in"
 
 alias t='tmux'
+alias git='hub'
 
 # Vagrant
 alias vu="vagrant up --no-provision && vagrant provision"
