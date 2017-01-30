@@ -24,7 +24,6 @@ setopt AUTO_CD
 setopt hist_ignore_all_dups # ignore duplication command history list
 setopt hist_ignore_space
 setopt no_share_history
-setopt share_history # share command history data
 setopt no_global_rcs
 
 # Need to redefined these aliases at this point as they get trampled by plugins

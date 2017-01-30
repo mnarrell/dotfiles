@@ -43,3 +43,9 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
 
+" Make Q repeat the last macro.
+nnoremap Q @@
+
+" Create newlines without entering insert mode
+nnoremap go o<Esc>k
+nnoremap gO O<Esc>j

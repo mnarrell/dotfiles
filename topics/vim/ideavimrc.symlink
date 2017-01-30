@@ -5,6 +5,8 @@ set clipboard+=unnamed
 
 set showmode
 
+set surround
+
 set number
 set relativenumber                  " show relative numbers in gutter
 

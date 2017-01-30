@@ -5,10 +5,6 @@ nmap <leader><right> :rightbelow vsp<CR>
 nmap <leader><up> :leftabove sp<CR>
 nmap <leader><down> :rightbelow sp<CR>
 
-" Create new line without entering insert mode
-map <LocalLeader>o o<ESC>
-map <LocalLeader>O O<ESC>
-
 " Zap trailing whitespace in the current buffer.
 nnoremap <silent> <Leader>zz :call mappings#leader#zap()<CR>
 

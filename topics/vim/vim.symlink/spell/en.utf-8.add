@@ -1,1 +1,7 @@
 config
+HttpEvents
+Avro
+SDP
+VPA
+EnrichedEvent
+JSON
