@@ -48,6 +48,17 @@ set -g mouse on
 # stop-selection` but it is a bit glitchy.)
 unbind-key -t vi-copy MouseDragEnd1Pane
 
+# set-window-option -g mode-keys vi
+
+setw -g mode-keys vi
+set -g status-keys vi
+bind-key -t vi-edit Up   history-up
+bind-key -t vi-edit Down history-down
+
+unbind [
+bind Escape copy-mode
+unbind p
+bind p paste-buffer
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
 

@@ -21,7 +21,7 @@ t() {
 }
 
 dots() {
-  cd $DOTFILES && t
+  cd ${DOTFILES} && t
 }
 
 # clunk
