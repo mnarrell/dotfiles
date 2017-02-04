@@ -1,15 +1,14 @@
 " Discipline **********************************************************************************************************
-noremap  <Up> ""
-" noremap! <Up> <Esc>
-noremap  <Down> ""
-" noremap! <Down> <Esc>
-noremap  <Left> ""
-" noremap! <Left> <Esc>
-noremap  <Right> ""
-" noremap! <Right> <Esc>
+noremap <silent> <Up> :cprevious<CR>
+noremap <silent> <Down> :cnext<CR>
+noremap <silent> <Left> :cpfile<CR>
+noremap <silent> <Right> :cnfile<CR>
 
 nnoremap Q <nop>
 nnoremap K <nop>
+
+" Repeat last macro if in normal buffer.
+nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
 noremap Y y$
 
