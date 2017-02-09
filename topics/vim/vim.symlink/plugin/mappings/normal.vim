@@ -48,3 +48,6 @@ nnoremap Q @@
 " Create newlines without entering insert mode
 nnoremap go o<Esc>k
 nnoremap gO O<Esc>j
+
+nnoremap =x :call functions#DoPrettyXML()<CR>
+nnoremap =j :call functions#PrettyJSON()<CR>

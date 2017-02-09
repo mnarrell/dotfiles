@@ -17,6 +17,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias weather="curl -4 http://wttr.in"
+alias sudo="sudo -E"
 
 alias git='hub'
 

@@ -33,7 +33,6 @@ fun! functions#PrettyJSON()
   %!jq .
   set filetype=json
 endfun
-nmap =j :call PrettyJSON()<CR>
 let g:vim_json_syntax_conceal = 0
 
 " Format XML
@@ -44,5 +43,4 @@ fun! functions#DoPrettyXML()
   1
   exe "set ft=" . l:origft
 endfun
-nmap =x :call DoPrettyXML()<CR>
 
