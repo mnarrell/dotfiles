@@ -35,7 +35,6 @@ PATH=${PATH}:/usr/bin
 PATH=${PATH}:/usr/sbin
 PATH=${PATH}:/bin
 PATH=${PATH}:/sbin
-# PATH=${PATH}:$PATH
 
 export PATH
 

@@ -1,67 +1,69 @@
 # vim: set filetype=gitconfig :
 
 [include]
-  path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 
 [apply]
-  whitespace = fix
+	whitespace = fix
 
 [core]
-  excludesfile = ~/.gitignore
-  ignorecase = false
-  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-  editor = vim
-  attributesfile = ~/.gitattributes
-  abbrev = 12
+	excludesfile = ~/.gitignore
+	ignorecase = false
+	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+	editor = vim
+	attributesfile = ~/.gitattributes
+	abbrev = 12
 
 [color]
-  status = auto
-  diff = auto
-  branch = auto
-  ui = auto
-  grep = auto
-  showbranch = auto
+	status = auto
+	diff = auto
+	branch = auto
+	ui = auto
+	grep = auto
+	showbranch = auto
 
 [alias]
-  who = shortlog -s -n --no-merges
-  today = shortlog --since=midnight
-  st = status -sb
-  ci = commit
-  co = checkout
-  br = branch
-  lg = log --graph --pretty=format:'%Cred%h%Creset : %C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  scrub = gc --aggressive --prune=now
-  fetch = fetch -p
-  patch = --no-pager diff --no-color
-  conflicted = !vim +Conflicted
+	who = shortlog -s -n --no-merges
+	today = shortlog --since=midnight
+	st = status -sb
+	ci = commit
+	co = checkout
+	br = branch
+	lg = log --graph --pretty=format:'%Cred%h%Creset : %C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	scrub = gc --aggressive --prune=now
+	fetch = fetch -p
+	patch = --no-pager diff --no-color
+	conflicted = !vim +Conflicted
+	it = !git init && git commit -m “root” --allow-empty
+	commend = commit --amend --no-edit
 
 [merge]
-  ff = only
-  tool = opendiff
+	ff = only
+	tool = opendiff
 
 [mergetool]
-  prompt = false
+	prompt = false
 
 [diff]
-  tool = opendiff
+	tool = opendiff
 
 [diff "bin"]
-  textconv = hexdump -v -C
+	textconv = hexdump -v -C
 
 [svn]
-  rmdir = true
+	rmdir = true
 
 [push]
-  default = nothing
+	default = nothing
 
 [init]
-  templatedir = ~/.git_templates
+	templatedir = ~/.git_templates
 
 [pager]
-  diff = diff-so-fancy | less --tabs=4 -RFX
-  show = diff-so-fancy | less --tabs=4 -RFX
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX
 
 [fetch]
-  prune = true
+	prune = true
 
