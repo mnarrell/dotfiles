@@ -1,6 +1,6 @@
 topics/vim/vim.symlink/plugged/
 topics/vim/vim.symlink/autoload/plug.vim
-.netrwhist
+.netrwhist*
 .netrwbook
 .DS_Store
 topics/vim/vim.symlink/tmp/viminfo

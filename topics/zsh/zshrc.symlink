@@ -16,7 +16,6 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 cdpath=( . ${HOME}/src/work /usr/local)
 
 fpath=( ${HOME}/.zsh/functions $fpath )
-# autoload $HOME/.zsh/functions/*(:t)
 
 autoload -U select-word-style
 select-word-style bash
@@ -31,8 +30,6 @@ setopt no_global_rcs
 alias ls="gls --color=tty --quoting-style=literal"
 alias ll="ls -lh"
 alias la="ls -lah"
-
-# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=22"
 
 # load config and system specific
 [ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
