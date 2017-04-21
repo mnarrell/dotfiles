@@ -10,9 +10,6 @@ set -g prefix C-Space
 unbind c
 bind c new-window -c '#{pane_current_path}'
 unbind %
-bind % split-window -h -c '#{pane_current_path}'
-unbind '"'
-bind '"' split-window -v -c '#{pane_current_path}'
 
 # Split windows
 unbind %
@@ -43,25 +40,15 @@ set -g renumber-windows on
 # bar), resize panes. For default bindings see `tmux list-keys`.
 set -g mouse on
 
-# Stay in copy mode on drag end.
-# (Would use `bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X
-# stop-selection` but it is a bit glitchy.)
-unbind-key -t vi-copy MouseDragEnd1Pane
-
-# Copy mode
-setw -g mode-keys vi
-set -g status-keys vi
-bind-key -t vi-edit Up   history-up
-bind-key -t vi-edit Down history-down
-
-unbind p
-bind p paste-buffer
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
+# unbind-key -t vi-copy MouseDragEnd1Pane
+unbind-key -T copy-mode-vi MouseDragEnd1Pane
+# bind-key -t vi-copy 'v' begin-selection
+bind -T copy-mode-vi v send -X begin-selection
+# bind-key -t vi-copy 'y' copy-selection
+bind -T copy-mode-vi y send -X copy-selection
+bind -T copy-mode-vi Escape send-keys cancel
 
 # Window movement
-bind -r , select-window -t :-
-bind -r . select-window -t :+
 bind ) swap-window -t +
 bind ( swap-window -t -
 
