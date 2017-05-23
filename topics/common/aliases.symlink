@@ -4,7 +4,7 @@ alias lsd="ls -l --color | grep '^d'"
 alias ll="ls -lh"
 alias la="ls -lah"
 alias hosts='sudo -E ${EDITOR} /etc/hosts'
-alias grep='grep --color=auto'
+alias grep='grep --color=auto --exclude-dir=.git'
 alias sshconfig='${EDITOR} ~/.ssh/config'
 alias clear="echo 'NO!'"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -37,8 +37,6 @@ alias showfiles="defaults write com.apple.finder AppleShowAllFiles TRUE; killall
 alias hidefiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
 alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
 alias sc="find . -name target | xargs rm -r"
-
-alias k="k -h"
 
 # vi: ft=sh
 

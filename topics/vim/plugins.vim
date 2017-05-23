@@ -2,7 +2,7 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Prerequisites
-Plug 'L9'
+" Plug 'L9'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'chriskempson/base16-vim'

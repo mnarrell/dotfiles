@@ -40,13 +40,9 @@ set -g renumber-windows on
 # bar), resize panes. For default bindings see `tmux list-keys`.
 set -g mouse on
 
-# unbind-key -t vi-copy MouseDragEnd1Pane
 unbind-key -T copy-mode-vi MouseDragEnd1Pane
-# bind-key -t vi-copy 'v' begin-selection
 bind -T copy-mode-vi v send -X begin-selection
-# bind-key -t vi-copy 'y' copy-selection
-bind -T copy-mode-vi y send -X copy-selection
-bind -T copy-mode-vi Escape send-keys cancel
+bind -T copy-mode-vi y send -X copy-selection-and-cancel
 
 # Window movement
 bind ) swap-window -t +
