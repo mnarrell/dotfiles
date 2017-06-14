@@ -25,7 +25,7 @@ Plug 'corntrace/bufexplorer'
 Plug 'fweep/vim-tabber'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim', { 'on': [] }
+Plug 'edkolev/tmuxline.vim'
 
 " Text objects
 Plug 'kana/vim-textobj-user'
