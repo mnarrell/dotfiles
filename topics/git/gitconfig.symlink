@@ -40,7 +40,9 @@
 
 [merge]
 	ff = only
-	tool = opendiff
+	; tool = opendiff
+	tool = vimdiff
+	; conflictstyle = diff3
 
 [mergetool]
 	prompt = false

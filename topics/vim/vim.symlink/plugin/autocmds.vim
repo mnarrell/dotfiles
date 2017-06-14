@@ -4,5 +4,6 @@ if has('autocmd')
     autocmd FocusLost,WinLeave * :silent! wa " Save whenever switching windows or leaving vim.
     autocmd VimEnter * highlight clear SignColumn
     autocmd BufWritePre,FileWritePre * call functions#AutoMakeDirectory()
+    autocmd VimResized * wincmd =
   augroup END
 endif

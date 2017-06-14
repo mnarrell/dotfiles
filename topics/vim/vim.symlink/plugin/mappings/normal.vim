@@ -43,7 +43,7 @@ nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
 
 " Make Q repeat the last macro.
-nnoremap Q @@
+xnoremap Q : '<,'>:normal @q<CR>
 
 " Create newlines without entering insert mode
 nnoremap go o<Esc>k
