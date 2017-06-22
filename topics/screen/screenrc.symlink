@@ -1,0 +1,9 @@
+autodetach on
+defscrollback 30000
+defutf8 on
+nonblock on
+
+hardstatus off
+hardstatus alwayslastline
+hardstatus string "%{b kw}%H %{r}%1` %{w}| %{g}%c %{w}| %{y}%m.%d.%Y %{w}| %{-b kw}%u %-Lw%{= wW}%50> %n%f %t %{-}%+Lw%<"
+

@@ -49,5 +49,7 @@ xnoremap Q : '<,'>:normal @q<CR>
 nnoremap go o<Esc>k
 nnoremap gO O<Esc>j
 
+nnoremap du :diffupdate<CR>
+
 nnoremap =x :call functions#DoPrettyXML()<CR>
 nnoremap =j :call functions#PrettyJSON()<CR>

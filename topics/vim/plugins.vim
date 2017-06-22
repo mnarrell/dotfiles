@@ -18,14 +18,13 @@ Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'wesQ3/vim-windowswap'
 
 " Eyecandy
 Plug 'corntrace/bufexplorer'
 Plug 'fweep/vim-tabber'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim', { 'for': [] }
 
 " Text objects
 Plug 'kana/vim-textobj-user'
@@ -37,16 +36,13 @@ Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic', { 'on': ['SyntasticToggle', 'SyntasticInfo'] }
 Plug 'sukima/xmledit', { 'for': 'xml'}
 Plug 'keith/tmux.vim', { 'for': 'tmux' }
 Plug 'GEverding/vim-hocon', { 'for': 'hocon' }
 
 " Git things
 Plug 'airblade/vim-gitgutter'
-Plug 'christoomey/vim-conflicted'
-Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-vinegar'

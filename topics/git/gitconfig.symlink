@@ -41,11 +41,14 @@
 [merge]
 	ff = only
 	; tool = opendiff
-	tool = vimdiff
-	; conflictstyle = diff3
+	tool = fugitive
+	conflictstyle = merge
 
 [mergetool]
 	prompt = false
+
+[mergetool "fugitive"]
+	cmd = vim "+Gdiff" $MERGED
 
 [diff]
 	tool = opendiff
