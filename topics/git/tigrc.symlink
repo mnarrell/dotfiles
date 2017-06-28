@@ -87,4 +87,4 @@ bind stash A !?git stash apply %(stash)
 bind status S !?git stash save "%{prompt Enter stash name: )"
 bind status D !@?rm %(file)
 bind main T !@git tag %(prompt) %(commit)
-bind status P !git push origin
+bind status P !git push origin "%(prompt Enter branch name: )"

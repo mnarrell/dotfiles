@@ -8,7 +8,6 @@ alias grep='grep --color=auto --exclude-dir=.git'
 alias sshconfig='${EDITOR} ~/.ssh/config'
 alias clear="echo 'NO!'"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en1"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print ${1}'"
 alias flush="dscacheutil -flushcache"
 alias clear="echo 'NO!'"
@@ -26,12 +25,6 @@ alias rsync-copy="rsync -avz --progress -h"
 alias rsync-move="rsync -avz --progress -h --remove-source-files"
 alias rsync-update="rsync -avzu --progress -h"
 alias rsync-synchronize="rsync -avzu --delete --progress -h"
-
-# Vagrant
-alias vu="vagrant up --no-provision && vagrant provision"
-alias vd="vagrant destroy"
-alias vh="vagrant halt"
-alias vs="vagrant ssh"
 
 alias showfiles="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
 alias hidefiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
