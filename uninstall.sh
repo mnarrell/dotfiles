@@ -14,3 +14,5 @@ echo -e "\n"
 for post_down_hook in topics/*/post-down; do
   [ -e ${post_down_hook} ] && echo -e "Running ${post_down_hook}..." && ${post_down_hook}
 done
+
+git submodule deinit --all --force

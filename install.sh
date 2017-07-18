@@ -38,6 +38,8 @@ if [ ! -f ~/.localrc ]; then
     echo "export DOTFILES=`pwd`" >> ~/.localrc
 fi
 
+git submodule update --init --recursive --remote
+
 confirm "Installing bin (y/N)"
 if [ $? -eq 0 ]; then 
     if [ ! -d "${HOME}/bin" ]; then mkdir ${HOME}/bin; fi
