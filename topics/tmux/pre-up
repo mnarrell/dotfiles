@@ -1,1 +1,2 @@
-yes | pip install tmuxp
+yes | pip2 install tmuxp
+yes | pip3 install tmuxp

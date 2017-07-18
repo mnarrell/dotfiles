@@ -18,6 +18,7 @@ Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 
 " Eyecandy
 Plug 'corntrace/bufexplorer'

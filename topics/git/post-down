@@ -1,1 +1,2 @@
-yes | pip uninstall gitpython
+yes | pip2 uninstall gitpython
+yes | pip3 uninstall gitpython

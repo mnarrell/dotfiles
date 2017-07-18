@@ -1,1 +1,2 @@
-yes | pip uninstall tmuxp
+yes | pip2 uninstall tmuxp
+yes | pip3 uninstall tmuxp

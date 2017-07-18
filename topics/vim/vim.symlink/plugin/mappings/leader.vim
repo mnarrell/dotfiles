@@ -9,3 +9,5 @@ nnoremap <silent> <Leader>x :xit<CR>
 " <Leader>r -- Cycle through relativenumber + number, number (only), and no
 " numbering (mnemonic: relative).
 nnoremap <silent> <Leader>r :call mappings#leader#cycle_numbering()<CR>
+
+nmap <leader>gs :Gstatus<cr>gg<C-n>
