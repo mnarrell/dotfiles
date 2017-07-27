@@ -25,3 +25,6 @@ lifecycles
 SRE
 heatbeats
 ResourceManager
+OTA
+sessionizer
+BatchProcessor

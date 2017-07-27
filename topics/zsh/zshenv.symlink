@@ -16,7 +16,7 @@ export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="${HADOOP_HOME}/etc/hadoop"
 export DOCKER_HOST="unix:///var/run/docker.sock"
 
-export GNU_BIN=$(/usr/local/bin/brew --prefix coreutils)/libexec/gnubin:$(/usr/local/bin/brew --prefix gnu-sed)/libexec/gnubin
+export GNU_BIN=/usr/local/coreutils/libexec/gnubin:/usr/local/gnu-sed/libexec/gnubin
 
 # PATH
 SYSTEM_PATH=${PATH}
