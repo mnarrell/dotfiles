@@ -46,3 +46,6 @@ unset bash_prompt
 
 # vi: ft=sh
 
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

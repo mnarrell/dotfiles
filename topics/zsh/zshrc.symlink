@@ -44,3 +44,6 @@ stty start undef stop undef
 
 # vi: ft=zsh
 
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

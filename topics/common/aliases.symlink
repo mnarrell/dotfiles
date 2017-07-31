@@ -6,7 +6,6 @@ alias la="ls -lah"
 alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias grep='grep --color=auto --exclude-dir=.git'
 alias sshconfig='${EDITOR} ~/.ssh/config'
-alias clear="echo 'NO!'"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print ${1}'"
 alias flush="dscacheutil -flushcache"
@@ -17,8 +16,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias weather="curl -4 http://wttr.in"
 alias sudo="sudo -E"
+alias work='cd $(ls ~/src/work | fzf)'
 
 alias git='hub'
+alias tis='tig status'
 
 # Synchronization
 alias rsync-copy="rsync -avz --progress -h"

@@ -7,21 +7,24 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'chriskempson/base16-vim'
 
-Plug 'wincent/command-t', { 'do': 'rake make' } " Fuzzy finder
+" Plug 'wincent/command-t', { 'do': 'rake make' } " Fuzzy finder
 Plug 'wincent/loupe'                            " Better in-file search
 Plug 'wincent/pinnacle'                         " Search highlighting
 Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
 Plug 'wincent/vim-clipper'                      " Make system clipboard work like a real app
 
 " Core
-Plug 'mileszs/ack.vim', { 'on': 'Ack' }
+" Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tweekmonster/startuptime.vim', {'on': 'StartupTime'}
+
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " Eyecandy
-Plug 'corntrace/bufexplorer'
+" Plug 'corntrace/bufexplorer'
 Plug 'fweep/vim-tabber'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

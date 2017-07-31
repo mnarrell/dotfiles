@@ -11,3 +11,7 @@ nnoremap <silent> <Leader>x :xit<CR>
 nnoremap <silent> <Leader>r :call mappings#leader#cycle_numbering()<CR>
 
 nmap <leader>gs :Gstatus<cr>gg<C-n>
+
+" FZF
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>f :Files<CR>
