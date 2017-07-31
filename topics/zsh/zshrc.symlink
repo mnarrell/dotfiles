@@ -10,8 +10,11 @@ source ${HOME}/.zsh/functions
 source ${HOME}/.zsh/history
 source ${HOME}/.zsh/prompt
 
-# Make the up/down arrows search through history.
 zmodload zsh/terminfo
+
+# Alt-arrow command line navigation
+bindkey "^[^[[D" backward-word
+bindkey "^[^[[C" forward-word
 
 cdpath=( . ${HOME}/src/work /usr/local)
 
