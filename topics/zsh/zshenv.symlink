@@ -1,8 +1,7 @@
 export ZPLUG_LOADFILE=${HOME}/.zsh/packages
 
 export BASE16_SHELL=${HOME}/.zsh/base16-shell/
-
-export AUTOENV_AUTH_FILE=~/.env_auth
+export FZF_TMUX=1
 
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=10000
@@ -37,4 +36,3 @@ PATH=${PATH}:/sbin
 export PATH
 
 # vi: ft=zsh
-

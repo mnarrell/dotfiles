@@ -1,5 +1,7 @@
 #!/usr//bin/env bash
 
+find "${HOME}/bin" -type l -delete
+
 for pre_down_hook in topics/*/pre-down; do
   [ -e ${pre_down_hook} ] && echo -e "Running ${pre_down_hook}..." && ${pre_down_hook}
 done
