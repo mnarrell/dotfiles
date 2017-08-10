@@ -42,6 +42,7 @@
 	; tool = opendiff
 	tool = fugitive
 	conflictstyle = merge
+	stat = true
 
 [mergetool]
 	prompt = false
@@ -71,3 +72,5 @@
 [fetch]
 	prune = true
 
+[help]
+	autocorrect = 1
