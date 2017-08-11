@@ -47,8 +47,8 @@ bind -T copy-mode-vi y send -X copy-selection-and-cancel
 bind ) swap-window -t +
 bind ( swap-window -t -
 
-set -g default-terminal "xterm-256color"
-set -ga terminal-overrides ',xterm-256color:Tc'
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ',screen-256color:Tc'
 
 set -g history-limit 262144
 

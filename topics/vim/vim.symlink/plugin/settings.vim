@@ -80,7 +80,7 @@ if has('vertsplit')
   set splitright                      " open vertical splits to the right of the current window
 endif
 
-set swapsync=                         " let OS sync swapfiles lazily
+" set swapsync=                         " let OS sync swapfiles lazily
 set switchbuf=usetab                  " try to reuse windows/tabs when switching buffers
 
 set textwidth=120

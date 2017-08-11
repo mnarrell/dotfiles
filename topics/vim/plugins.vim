@@ -2,7 +2,6 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 " Prerequisites
-" Plug 'L9'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
 Plug 'chriskempson/base16-vim'
@@ -19,6 +18,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'ervandew/supertab'
 Plug 'tweekmonster/startuptime.vim', {'on': 'StartupTime'}
 
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -40,7 +40,8 @@ Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-Plug 'scrooloose/syntastic', { 'on': ['SyntasticToggle', 'SyntasticInfo'] }
+" Plug 'scrooloose/syntastic', { 'on': ['SyntasticToggle', 'SyntasticInfo'] }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sukima/xmledit', { 'for': 'xml'}
 Plug 'keith/tmux.vim', { 'for': 'tmux' }
 Plug 'GEverding/vim-hocon', { 'for': 'hocon' }
