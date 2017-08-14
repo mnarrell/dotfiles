@@ -1,0 +1,1 @@
+/Users/matt/.dotfiles/bin/Open in Terminal VIM.app

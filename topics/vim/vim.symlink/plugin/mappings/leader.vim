@@ -15,3 +15,4 @@ nmap <leader>gs :Gstatus<cr>gg<C-n>
 " FZF
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>g :Find<CR>
