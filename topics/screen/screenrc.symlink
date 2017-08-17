@@ -1,3 +1,5 @@
+escape ^Oo
+
 autodetach on
 defscrollback 30000
 defutf8 on
