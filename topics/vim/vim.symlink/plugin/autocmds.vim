@@ -5,5 +5,7 @@ if has('autocmd')
     autocmd VimEnter * highlight clear SignColumn
     autocmd BufWritePre,FileWritePre * call functions#AutoMakeDirectory()
     autocmd VimResized * wincmd =
+
+    autocmd BufWritePost *.py Neomake
   augroup END
 endif
