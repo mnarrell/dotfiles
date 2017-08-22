@@ -46,6 +46,8 @@ Plug 'sukima/xmledit', { 'for': 'xml'}
 Plug 'keith/tmux.vim', { 'for': 'tmux' }
 Plug 'GEverding/vim-hocon', { 'for': 'hocon' }
 
+Plug 'darfink/vim-plist'
+
 " Git things
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
