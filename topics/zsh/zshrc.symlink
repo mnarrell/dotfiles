@@ -1,49 +1,13 @@
-export DOTFILES=${HOME}/.dotfiles
-export PRIVATE_DOTFILES=${HOME}/.private_dotfiles
-
-# Load generic aliases
-[ -e "${HOME}/.aliases" ] && source "${HOME}/.aliases"
-
 source ${HOME}/.zplug/init.zsh
-source ${HOME}/.zsh/completions
-source ${HOME}/.zsh/functions
-source ${HOME}/.zsh/history
-source ${HOME}/.zsh/prompt
-
-zmodload zsh/terminfo
-
-# Alt-arrow command line navigation
-bindkey "^[^[[D" backward-word
-bindkey "^[^[[C" forward-word
+source ${HOME}/.zsh/setopts.zsh
+source ${HOME}/.zsh/bindkeys.zsh
+source ${HOME}/.zsh/completions.zsh
+source ${HOME}/.zsh/functions.zsh
+source ${HOME}/.zsh/history.zsh
+source ${HOME}/.zsh/prompt.zsh
+source ${HOME}/.zsh/aliases.zsh
+source ${HOME}/.zsh/extensions.zsh
 
 cdpath=( . ${HOME}/src/work /usr/local)
 
-fpath=( ${HOME}/.zsh/functions $fpath )
-
-autoload -U select-word-style
-select-word-style bash
-
-setopt AUTO_CD
-setopt hist_ignore_all_dups # ignore duplication command history list
-setopt hist_ignore_space
-setopt no_share_history
-setopt no_global_rcs
-
-# Need to redefined these aliases at this point as they get trampled by plugins
-alias ls="gls --color=tty --quoting-style=literal"
-alias ll="ls -lh"
-alias la="ls -lah"
-
-# load config and system specific
-[ -e "${HOME}/.localrc" ] && source "${HOME}/.localrc"
-
-[ -n "$PS1" ] && [ -s ${BASE16_SHELL}/profile_helper.sh ] && eval "$(${BASE16_SHELL}/profile_helper.sh)"
-
-# http://stackoverflow.com/questions/13648237/ctrls-horizontal-split-not-working-with-command-t-in-vim
-stty start undef stop undef
-
 # vi: ft=zsh
-
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

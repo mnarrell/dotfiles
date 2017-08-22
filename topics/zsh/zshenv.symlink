@@ -1,3 +1,6 @@
+export DOTFILES=${HOME}/.dotfiles
+export PRIVATE_DOTFILES=${HOME}/.private_dotfiles
+
 export ZPLUG_LOADFILE=${HOME}/.zsh/packages
 
 export BASE16_SHELL=${HOME}/.zsh/base16-shell/

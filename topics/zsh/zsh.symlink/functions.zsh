@@ -1,3 +1,5 @@
+fpath=( ${HOME}/.zsh/functions $fpath )
+
 function show_colors() {
   for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
 }
