@@ -40,18 +40,23 @@
 [merge]
 	ff = only
 	; tool = opendiff
-	tool = fugitive
+	; tool = fugitive
+	tool = vimdiff
 	conflictstyle = merge
 	stat = true
 
 [mergetool]
-	prompt = false
+	prompt = true
 
 [mergetool "fugitive"]
 	cmd = vim "+Gdiff" $MERGED
 
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [diff]
-	tool = opendiff
+	; tool = opendiff
+	tool = vimdiff
 
 [diff "bin"]
 	textconv = hexdump -v -C
