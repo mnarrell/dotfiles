@@ -1,7 +1,6 @@
 " Load the plugins ****************************************************************************************************
 source $DOTFILES/topics/vim/plugins.vim
 
-
 let mapleader = "\<Space>"
 let maplocalleader="\\"
 
