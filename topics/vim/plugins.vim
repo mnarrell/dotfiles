@@ -9,6 +9,8 @@ Plug 'wincent/pinnacle'                         " Search highlighting
 Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
 Plug 'wincent/vim-clipper'                      " Make system clipboard work like a real app
 
+Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
+
 " Core
 Plug 'SirVer/ultisnips'
 Plug 'ervandew/supertab'
