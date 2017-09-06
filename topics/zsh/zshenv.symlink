@@ -1,21 +1,24 @@
 export DOTFILES=${HOME}/.dotfiles
 export PRIVATE_DOTFILES=${HOME}/.private_dotfiles
 
+export EDITOR="vim"
 export ZPLUG_LOADFILE=${HOME}/.zsh/packages
-
 export BASE16_SHELL=${HOME}/.zsh/base16-shell/
-export FZF_TMUX=1
 
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
 
-export EDITOR="vim"
+export FZF_TMUX=1
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+
 export M2_HOME="/usr/local/maven"
 export MAVEN_OPTS="-Xmx1g -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"
 export JAVA_HOME=`/usr/libexec/java_home`
+
 export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_CONF_DIR="${HADOOP_HOME}/etc/hadoop"
+
 export DOCKER_HOST="unix:///var/run/docker.sock"
 
 export GNU_BIN=/usr/local/coreutils/libexec/gnubin:/usr/local/gnu-sed/libexec/gnubin

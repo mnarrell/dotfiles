@@ -6,15 +6,11 @@ nnoremap <silent> <Leader>q :quit<CR>
 nnoremap <silent> <Leader>w :write<CR>
 nnoremap <silent> <Leader>x :xit<CR>
 
-" <Leader>r -- Cycle through relativenumber + number, number (only), and no
-" numbering (mnemonic: relative).
-nnoremap <silent> <Leader>r :call mappings#leader#cycle_numbering()<CR>
-
 nmap <leader>gs :Gstatus<cr>gg<C-n>
 
 " FZF
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>c :Commands<CR>
 nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>g :Find<CR>
+nnoremap <Leader>g :Find<Space>
 nnoremap <silent> <Leader>t :Tags<CR>
