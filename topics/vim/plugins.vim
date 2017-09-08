@@ -52,7 +52,7 @@ Plug 'sukima/xmledit', { 'for': 'xml'}
 
 " Python
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-Plug 'zchee/deoplete-jedi', { 'do': 'git submodule update --init', 'for': 'python' }
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Git things
 Plug 'airblade/vim-gitgutter'
