@@ -23,22 +23,4 @@ export DOCKER_HOST="unix:///var/run/docker.sock"
 
 export GNU_BIN=/usr/local/coreutils/libexec/gnubin:/usr/local/gnu-sed/libexec/gnubin
 
-# PATH
-SYSTEM_PATH=${PATH}
-unset PATH
-
-PATH=~/bin
-PATH=${PATH}:${JAVA_HOME}/bin
-PATH=${PATH}:${M2_HOME}/bin
-PATH=${PATH}:${GNU_BIN}
-PATH=${PATH}:${HADOOP_HOME}/bin
-PATH=${PATH}:/usr/local/bin
-PATH=${PATH}:/usr/local/sbin
-PATH=${PATH}:/usr/bin
-PATH=${PATH}:/usr/sbin
-PATH=${PATH}:/bin
-PATH=${PATH}:/sbin
-
-export PATH
-
 # vi: ft=zsh

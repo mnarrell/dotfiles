@@ -5,4 +5,7 @@ let mapleader = "\<Space>"
 let maplocalleader="\\"
 
 filetype indent plugin on
-syntax on
+
+if !exists("g:syntax_on")
+  syntax enable
+endif

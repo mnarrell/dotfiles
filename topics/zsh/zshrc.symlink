@@ -6,6 +6,7 @@ source ${HOME}/.zsh/functions.zsh
 source ${HOME}/.zsh/history.zsh
 source ${HOME}/.zsh/prompt.zsh
 source ${HOME}/.zsh/aliases.zsh
+source ${HOME}/.zsh/path.zsh
 source ${HOME}/.zsh/extensions.zsh
 
 cdpath=( . ${HOME}/src/work /usr/local)
