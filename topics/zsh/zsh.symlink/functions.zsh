@@ -27,5 +27,10 @@ function fo() {
   fi
 }
 
+function git_personal_user() {
+  git config user.email $MY_EMAIL
+  git config user.name $MY_NAME
+}
+
 # vi: ft=zsh
 
