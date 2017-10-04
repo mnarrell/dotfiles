@@ -134,6 +134,7 @@ brew 'zsh'
 
 mas 'Clocks', id: 414554506
 mas 'Deliveries: a package tracker', id: 924726344
+mas 'Marked 2', id: 890031187
 mas 'Microsoft Remote Desktop (8.0.27228)', id: 715768417
 mas 'Paprika Recipe Manager (2.2.0)', id: 451907568
 mas 'Slack (2.3.1)', id: 803453959

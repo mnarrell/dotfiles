@@ -9,4 +9,3 @@ yes | pip2 install neovim
 yes | pip3 install neovim
 
 vim -u ${HOME}/.dotfiles//topics/vim/plugins.vim +PlugClean! +PlugUpdate +qa!
-vim -u ${HOME}/.dotfiles//topics/vim/plugins.vim +UpdateRemotePlugins +qa!
