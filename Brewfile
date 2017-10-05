@@ -12,8 +12,6 @@ cask_args appdir: '/Applications'
 # This guy needs precedence.  Separating so I can sort the others.
 cask 'java'
 
-# cask 'textmate'
-# cask 'virtualbox'
 cask 'alfred'
 cask 'atom'
 cask 'bartender'
@@ -41,7 +39,7 @@ cask 'onyx'
 cask 'powerphotos'
 cask 'rowanj-gitx'
 cask 'slack'
-cask 'visualvm'
+cask 'virtualbox'
 cask 'vlc'
 cask 'xquartz'
 

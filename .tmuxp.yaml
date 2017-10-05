@@ -7,7 +7,7 @@ windows:
     - shell_command:
       - vim .
       focus: True
-    - tig --all
+    - sleep 3; tig --all
     - pane
   start_directory: $DOTFILES/
   window_name: public
@@ -17,7 +17,7 @@ windows:
     - shell_command:
       - vim .
       focus: True
-    - tig --all
+    - sleep 3; tig --all
   start_directory: ${PRIVATE_DOTFILES}/
   window_name: private
 - options: {}
