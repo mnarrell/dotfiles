@@ -43,12 +43,11 @@ unbind-key -T copy-mode-vi MouseDragEnd1Pane
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi y send -X copy-selection-and-cancel
 
-# Window movement
-bind ) swap-window -t +
-bind ( swap-window -t -
-
+# set -g default-terminal "screen-256color"
+# set -ga terminal-overrides ',screen-256color:Tc'
 set -g default-terminal "screen-256color"
-set -ga terminal-overrides ',screen-256color:Tc'
+set -g terminal-overrides ',xterm-256color:Tc'
+set -as terminal-overrides ',xterm*:sitm=\E[3m'
 
 set -g history-limit 262144
 
@@ -69,10 +68,10 @@ set -g window-status-bell-style fg=yellow,bold,underscore
 # Turn off distracting border highlight: the background highlighting is probably
 # enough. Default value of 8 comes from "pane-border-fg" in tmux's
 # options-table.c.
-set -g pane-border-fg "#1d1f21"
-set -g pane-border-bg "#1d1f21"
-set -g pane-active-border-fg "#1d1f21"
-set -g pane-active-border-bg "#1d1f21"
+set -g pane-border-fg "#282a2e"
+set -g pane-border-bg "#282a2e"
+set -g pane-active-border-fg "#282a2e"
+set -g pane-active-border-bg "#282a2e"
 
 # Clipper.
 bind-key y run-shell "tmux save-buffer - | nc -U ~/.clipper.sock"

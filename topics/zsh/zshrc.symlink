@@ -14,3 +14,5 @@ cdpath=( . ${HOME}/src/work /usr/local)
 source ${HOME}/.zsh.local
 
 # vi: ft=zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

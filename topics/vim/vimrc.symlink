@@ -9,3 +9,6 @@ filetype indent plugin on
 if !exists("g:syntax_on")
   syntax enable
 endif
+
+let g:deoplete#enable_at_startup = 1
+

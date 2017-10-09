@@ -2,10 +2,10 @@ SYSTEM_PATH=${PATH}
 unset PATH
 
 PATH=~/bin
+PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:${JAVA_HOME}/bin
 PATH=${PATH}:${M2_HOME}/bin
 PATH=${PATH}:${GNU_BIN}
-PATH=${PATH}:${HADOOP_HOME}/bin
 PATH=${PATH}:/usr/local/bin
 PATH=${PATH}:/usr/local/sbin
 PATH=${PATH}:/usr/bin

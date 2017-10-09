@@ -16,8 +16,7 @@ export M2_HOME="/usr/local/maven"
 export MAVEN_OPTS="-Xmx1g -XX:+UseCompressedOops -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.insecure=true"
 export JAVA_HOME=`/usr/libexec/java_home`
 
-export HADOOP_HOME="/usr/local/hadoop"
-export HADOOP_CONF_DIR="${HADOOP_HOME}/etc/hadoop"
+export GOPATH=${HOME}/src/work/spg
 
 export DOCKER_HOST="unix:///var/run/docker.sock"
 

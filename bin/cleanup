@@ -3,11 +3,11 @@
 
 #! /bin/bash
 
-for dir in ${HOME}/src/*/; do 
-    cd "$dir"; 
-    mvn clean; 
+for dir in ${HOME}/src/*/; do
+    cd "$dir";
+    mvn clean;
     git fetch
-    git scrub; 
+    git scrub;
     cd ..;
 done
 

@@ -10,7 +10,6 @@
 [core]
 	excludesfile = ~/.gitignore
 	ignorecase = false
-	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
 	editor = vim
 	attributesfile = ~/.gitattributes
 	abbrev = 12
@@ -70,10 +69,6 @@
 
 [init]
 	templatedir = ~/.git_templates
-
-[pager]
-	diff = diff-so-fancy | less --tabs=4 -RFX
-	show = diff-so-fancy | less --tabs=4 -RFX
 
 [fetch]
 	prune = true

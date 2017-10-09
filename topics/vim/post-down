@@ -7,5 +7,7 @@ rm -rf ${HOME}/.dotfiles/topics/vim/vim.symlink/autoload/plug.vim
 rm -rf ${HOME}/.dotfiles/topics/vim/vim.symlink/plugged
 rm -rf ${HOME}/.ideavimrc
 
+rm -rf ${HOME}/.config/nvim
+
 yes | pip2 uninstall neovim
 yes | pip3 uninstall neovim

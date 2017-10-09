@@ -1,27 +1,20 @@
 session_name: dots
 windows:
-- focus: 'true'
-  layout: 706b,327x83,0,0{200x83,0,0,0,126x83,201,0[126x57,201,0,1,126x25,201,58,2]}
-  options: {}
+- window_name: dots
+  start_directory: ${DOTFILES}/
+  options:
+    automatic-rename: 'off'
   panes:
-    - shell_command:
-      - vim .
-      focus: True
-    - sleep 3; tig --all
-    - pane
-  start_directory: $DOTFILES/
-  window_name: public
-- layout: 706b,327x83,0,0{200x83,0,0,0,126x83,201,0[126x57,201,0,1,126x25,201,58,2]}
-  options: {}
-  panes:
-    - shell_command:
-      - vim .
-      focus: True
-    - sleep 3; tig --all
+    - shell_command: vim .
+- window_name: private
   start_directory: ${PRIVATE_DOTFILES}/
-  window_name: private
-- options: {}
+  options:
+    automatic-rename: 'off'
+  panes:
+    - shell_command: vim .
+- window_name: scratch
+  start_directory: ${HOME}
+  options:
+    automatic-rename: 'off'
   panes:
     - pane
-  start_directory: ${HOME}
-  window_name: scratch

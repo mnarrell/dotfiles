@@ -8,4 +8,7 @@ fi
 yes | pip2 install neovim
 yes | pip3 install neovim
 
+mkdir -p ${HOME}/.config
+ln -s ${HOME}/.vim ${HOME}/.config/nvim
+
 vim -u ${HOME}/.dotfiles//topics/vim/plugins.vim +PlugClean! +PlugUpdate +qa!
