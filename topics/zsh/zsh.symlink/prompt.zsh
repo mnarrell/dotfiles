@@ -30,8 +30,27 @@ function +vi-git-untracked() {
   fi
 }
 
+
+# Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+zle -N edit-command-line
+
+# allow v to edit the command line (standard behaviour)
+autoload -Uz edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+function vi_mode_prompt_info() {
+  MODE_INDICATOR="%{$fg_bold[red]%}(normal) %{$reset_color%}"
+  echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
+}
+
 setopt prompt_subst
-PROMPT="%F{green}%m%f:%F{white}%2c%f\${vcs_info_msg_0_} %F{yellow}$%f "
+PROMPT="%F{green}%m%f:%F{white}%2c%f\${vcs_info_msg_0_} %F{yellow}\$(vi_mode_prompt_info)$%f "
 
 # vi: ft=zsh
 
