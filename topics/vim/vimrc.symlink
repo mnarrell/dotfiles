@@ -11,4 +11,3 @@ if !exists("g:syntax_on")
 endif
 
 let g:deoplete#enable_at_startup = 1
-
