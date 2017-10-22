@@ -11,7 +11,9 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " Core
 " Plug 'ervandew/supertab'
+Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -68,7 +70,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 
-Plug 'Raimondi/delimitMate'
+" Docker
 Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
