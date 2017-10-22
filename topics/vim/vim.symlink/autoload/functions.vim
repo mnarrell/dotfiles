@@ -21,12 +21,14 @@ fun! functions#plaintext() abort
 endfun
 
 " Mkdir on save
-fun! functions#AutoMakeDirectory()
-  let s:directory = expand("<afile>:p:h")
-  if !isdirectory(s:directory)
-    call mkdir(s:directory, "p")
+fun! functions#MkNonExDir(file, buf)
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
+    endif
   endif
-endfun
+endfunction
 
 " Format JSON with jq
 fun! functions#PrettyJSON()
