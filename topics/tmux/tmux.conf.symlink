@@ -16,11 +16,8 @@ bind | split-window -h -c '#{pane_current_path}'
 bind \ split-window -h -c '#{pane_current_path}'
 bind - split-window -v -c '#{pane_current_path}'
 
-# Pane movement
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
+# This is really sad, but I prefer the vim-tmux-navigator keybindings :(
+bind C-l send-keys 'C-l'
 
 # Pane resizing
 unbind Left
@@ -43,10 +40,9 @@ unbind-key -T copy-mode-vi MouseDragEnd1Pane
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi y send -X copy-selection-and-cancel
 
-# set -g default-terminal "screen-256color"
-# set -ga terminal-overrides ',screen-256color:Tc'
 set -g default-terminal "screen-256color"
 set -g terminal-overrides ',xterm-256color:Tc'
+set -g -a terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 
 set -g history-limit 262144
@@ -73,11 +69,10 @@ set -g pane-border-bg "#282a2e"
 set -g pane-active-border-fg "#282a2e"
 set -g pane-active-border-bg "#282a2e"
 
-# Clipper.
-bind-key y run-shell "tmux save-buffer - | nc -U ~/.clipper.sock"
-
-# "copy-pipe" requires tmux >= 1.8
-bind-key -T copy-mode-vi Enter send-keys copy-pipe-and-cancel "nc -U ~/.clipper.sock"
+# Copy mode things
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+# Stay in copy mode on drag end.
+unbind-key -T copy-mode-vi MouseDragEnd1Pane
 
 # reload config
 bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
@@ -85,6 +80,7 @@ bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'christoomey/vim-tmux-navigator'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '${HOME}/.tmux/plugins/tpm/tpm'

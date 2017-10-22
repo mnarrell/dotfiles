@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'wincent/loupe'                            " Better in-file search
 Plug 'wincent/pinnacle'                         " Search highlighting
 Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
-Plug 'wincent/vim-clipper'                      " Make system clipboard work like a real app
 Plug 'christoomey/vim-tmux-navigator'
 
 " Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane

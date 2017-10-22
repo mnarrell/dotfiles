@@ -4,6 +4,8 @@ source $DOTFILES/topics/vim/plugins.vim
 let mapleader = "\<Space>"
 let maplocalleader="\\"
 
+set clipboard+=unnamed
+
 filetype indent plugin on
 
 if !exists("g:syntax_on")

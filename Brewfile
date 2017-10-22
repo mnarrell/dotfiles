@@ -52,7 +52,6 @@ brew 'automake'
 brew 'bash'
 brew 'berkeley-db'
 brew 'boost'
-brew 'clipper', restart_service: :changed
 brew 'cmake'
 brew 'coreutils'
 brew 'findutils'
