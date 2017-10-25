@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'wincent/loupe'                            " Better in-file search
 Plug 'wincent/pinnacle'                         " Search highlighting
 Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
-Plug 'christoomey/vim-tmux-navigator'
 
 " Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
 
@@ -51,11 +50,15 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'keith/tmux.vim', { 'for': 'tmux' }
 
 " Completion
-Plug 'Shougo/deoplete.nvim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim'
+endif
 
 " GO
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'zchee/deoplete-go', { 'do': 'make' }
+if has('nvim')
+  Plug 'zchee/deoplete-go', { 'do': 'make' }
+endif
 
 " PostgreSQL
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
@@ -67,7 +70,9 @@ Plug 'xolox/vim-lua-inspect', { 'for': 'lua' }
 " Python
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+if has('nvim')
+  Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+endif
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'

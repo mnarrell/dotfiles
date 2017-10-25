@@ -16,8 +16,11 @@ bind | split-window -h -c '#{pane_current_path}'
 bind \ split-window -h -c '#{pane_current_path}'
 bind - split-window -v -c '#{pane_current_path}'
 
-# This is really sad, but I prefer the vim-tmux-navigator keybindings :(
-bind C-l send-keys 'C-l'
+# Pane movement
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
 
 # Pane resizing
 unbind Left
@@ -42,7 +45,7 @@ bind -T copy-mode-vi y send -X copy-selection-and-cancel
 
 set -g default-terminal "screen-256color"
 set -g terminal-overrides ',xterm-256color:Tc'
-set -g -a terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
+set -g -a terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'  # allow for changing the cursor on normal/insert mode
 set -as terminal-overrides ',xterm*:sitm=\E[3m'
 
 set -g history-limit 262144
@@ -80,7 +83,9 @@ bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-open'
-set -g @plugin 'christoomey/vim-tmux-navigator'
+
+set -g @resurrect-capture-pane-contents 'on' # kindaa works
+set -g @continuum-restore 'on'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '${HOME}/.tmux/plugins/tpm/tpm'

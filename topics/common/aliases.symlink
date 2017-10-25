@@ -3,23 +3,32 @@ alias la="ls -lah --color"
 alias lsd="ls -l --color | grep '^d'"
 alias ll="ls -lh"
 alias la="ls -lah"
+
 alias hosts='sudo -E ${EDITOR} /etc/hosts'
-alias grep='grep --color=auto --exclude-dir=.git'
+# alias grep='grep --color=auto --exclude-dir=.git'
 alias sshconfig='${EDITOR} ~/.ssh/config'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print ${1}'"
 alias flush="dscacheutil -flushcache"
+
 alias clear="echo 'NO!'"
 alias please='sudo $(fc -nl -1)'
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias weather="curl -4 http://wttr.in"
+
 alias sudo="sudo -E"
-alias work='cd $(ls ~/src/work | fzf)'
 
 alias git='hub'
 alias tis='tig status'
+
+alias t="tmux attach || tmux"
+alias tk="tmux kill-server"
+
+alias dots="cd ${DOTFILES} && ${EDITOR}"
+
+alias k='kubectl'
 
 # Synchronization
 alias rsync-copy="rsync -avz --progress -h"

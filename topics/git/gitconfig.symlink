@@ -10,7 +10,6 @@
 [core]
 	excludesfile = ~/.gitignore
 	ignorecase = false
-	editor = vim
 	attributesfile = ~/.gitattributes
 	abbrev = 12
 

@@ -2,7 +2,7 @@ if has('autocmd')
   augroup MyAutocmds
     autocmd!
     autocmd FocusLost,WinLeave * :silent! wa " Save whenever switching windows or leaving vim.
-    autocmd VimEnter * highlight clear SignColumn
+    " autocmd VimEnter * highlight clear SignColumn
     autocmd BufWritePre * :call functions#MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     autocmd VimResized * wincmd =
   augroup END

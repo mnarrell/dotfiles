@@ -7,6 +7,7 @@ fi
 
 yes | pip2 install neovim
 yes | pip3 install neovim
+gem install neovim
 
 mkdir -p ${HOME}/.config
 ln -s ${HOME}/.vim ${HOME}/.config/nvim
