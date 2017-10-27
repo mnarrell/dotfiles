@@ -9,7 +9,7 @@ source ${HOME}/.zsh/aliases.zsh
 source ${HOME}/.zsh/path.zsh
 source ${HOME}/.zsh/extensions.zsh
 
-cdpath=( . ${HOME}/src/work /usr/local)
+cdpath=( . ${HOME}/src/work /usr/local ${SPG_SRC})
 
 source ${HOME}/.zsh.local
 

@@ -1,16 +1,16 @@
 set autoread                          " Load buffers modified outside of VIM
 set backspace=indent,eol,start        " Make the backspace key sane
-set cursorline                        " Highlight the entire line the cursor is on
+set clipboard+=unnamed
 set diffopt+=vertical                 " Always use vertical diffs
 set encoding=utf-8                    " Default character encoding
 set ff=unix                           " UNIX EOL characters
 set hidden                            " allow for unsaved buffers in the background
 set nocompatible                      " VIM only, don't regress to VI
+set nocursorline                      " Highlight the entire line the cursor is on
 set nojoinspaces                      " Use one space, not two, after punctuation.
 set noshowmode                        " Don't show mode (because of airline)
 set nowrap                            " Do not wrap lines by default
 set number                            " Show the current line number in the gutter
-set showcmd                           " Display incomplete commands
 set showmatch                         " Show matching braces, parens, etc.
 set undolevels=1000                   " Undo memory size
 
@@ -80,7 +80,6 @@ if has('vertsplit')
   set splitright                      " open vertical splits to the right of the current window
 endif
 
-" set swapsync=                         " let OS sync swapfiles lazily
 set switchbuf=usetab                  " try to reuse windows/tabs when switching buffers
 
 set textwidth=120

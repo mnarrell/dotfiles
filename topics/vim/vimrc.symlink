@@ -4,14 +4,7 @@ source $DOTFILES/topics/vim/plugins.vim
 let mapleader = "\<Space>"
 let maplocalleader="\\"
 
-set clipboard+=unnamed
-
 filetype indent plugin on
-
 if !exists("g:syntax_on")
   syntax enable
 endif
-
-let g:deoplete#enable_at_startup = 1
-let g:python_host_prog = "/usr/local/bin/python2"
-let g:python3_host_prog = "/usr/local/bin/python3"

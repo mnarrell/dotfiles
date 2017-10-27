@@ -9,7 +9,7 @@ Plug 'wincent/terminus'                         " Make terminal VIM work like a 
 
 " Core
 " Plug 'ervandew/supertab'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
@@ -44,10 +44,12 @@ Plug 'tpope/vim-git'
 " Syntax
 " Plug 'darfink/vim-plist'
 " Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-" Plug 'sukima/xmledit', { 'for': 'xml' }
 Plug 'GEverding/vim-hocon', { 'for': 'hocon' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'keith/tmux.vim', { 'for': 'tmux' }
+
+" Linting
+Plug 'w0rp/ale'
 
 " Completion
 if has('nvim')

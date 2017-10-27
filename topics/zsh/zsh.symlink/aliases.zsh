@@ -6,12 +6,21 @@ alias ls="gls --color=tty --quoting-style=literal"
 alias ll="ls -lh"
 alias la="ls -lah"
 
+alias -g tig="tig --all"
+alias -g tis='tig status'
+
 #
 # Suffix aliases
 # (eg. "foo.md" to open Markdown files in "Marked 2.app")
 #
 alias -s md='open -a "Marked 2.app"'
 alias -s markdown='open -a "Marked 2.app"'
+
+
+# Here be Kubernetes
+alias -g k='kubectl -o wide'
+alias kp='k get pods'
+alias ks='k get services'
 
 alias -g IMAGES='$(docker images | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1 \":\" \$2}")'
 alias -g CONTAINERS='$(docker ps -a | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
