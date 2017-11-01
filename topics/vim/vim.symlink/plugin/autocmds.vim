@@ -13,4 +13,9 @@ if has('autocmd')
         \ formatoptions+=croq softtabstop=4
         \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
   augroup END
+
+  augroup docker
+    autocmd!
+    autocmd FileType Dockerfile setlocal nolist
+  augroup END
 endif

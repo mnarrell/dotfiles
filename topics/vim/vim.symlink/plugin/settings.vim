@@ -1,6 +1,5 @@
 set autoread                          " Load buffers modified outside of VIM
 set backspace=indent,eol,start        " Make the backspace key sane
-set clipboard+=unnamed
 set diffopt+=vertical                 " Always use vertical diffs
 set encoding=utf-8                    " Default character encoding
 set ff=unix                           " UNIX EOL characters
@@ -12,19 +11,24 @@ set noshowmode                        " Don't show mode (because of airline)
 set nowrap                            " Do not wrap lines by default
 set number                            " Show the current line number in the gutter
 set showmatch                         " Show matching braces, parens, etc.
+set switchbuf=usetab                  " try to reuse windows/tabs when switching buffers
+set textwidth=120                     " 80 is for the weak
 set undolevels=1000                   " Undo memory size
+set updatecount=80                    " update swapfiles every 80 typed chars
+set updatetime=2000                   " same as YCM
+set visualbell t_vb=                  " stop annoying beeping for non-error errors
+set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
+set wildcharm=<C-z>                   " substitute for 'wildchar' (<Tab>) in macros
 
 set autoindent                        " Retain indents when moving to new line
 set copyindent                        " Copy the structure of the indent
+set expandtab                         " Insert spaces as the tab characters
+set scrolloff=3                       " start scrolling 3 lines before edge of viewport
+set shiftround                        " always indent by multiple of shiftwidth
+set shiftwidth=2                      " spaces per tab (when shifting)
+set sidescrolloff=3                   " same as scrolloff, but for columns
 set smartindent                       " Intelligently indent based on syntax
-
-if exists('&belloff')
-  set belloff=all                     " never ring the bell for any reason
-endif
-
-if has('linebreak')
-  set linebreak                       " wrap long lines at characters in 'breakat'
-endif
+set smarttab                          " <tab>/<BS> indent/dedent in leading whitespace
 
 set list                              " show whitespace
 set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
@@ -35,13 +39,6 @@ set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
 set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
 set number                            " show line numbers in gutter
 
-if exists('+relativenumber')
-  set relativenumber                  " show relative numbers in gutter
-endif
-
-set scrolloff=3                       " start scrolling 3 lines before edge of viewport
-set shiftround                        " always indent by multiple of shiftwidth
-set shiftwidth=2                      " spaces per tab (when shifting)
 set shortmess+=A                      " ignore annoying swapfile messages
 set shortmess+=I                      " no splash screen
 set shortmess+=O                      " file-read message overwrites previous
@@ -51,6 +48,22 @@ set shortmess+=a                      " use abbreviations in messages eg. `[RO]`
 set shortmess+=o                      " overwrite file-written messages
 set shortmess+=t                      " truncate file messages at start
 
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+if exists('&belloff')
+  set belloff=all                     " never ring the bell for any reason
+endif
+
+if has('linebreak')
+  set linebreak                       " wrap long lines at characters in 'breakat'
+endif
+
+if exists('+relativenumber')
+  set relativenumber                  " show relative numbers in gutter
+endif
+
 if has('linebreak')
   let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
 endif
@@ -58,10 +71,6 @@ endif
 if has('showcmd')
   set noshowcmd                       " don't show extra info at end of command line
 endif
-
-set sidescrolloff=3                   " same as scrolloff, but for columns
-set smarttab                          " <tab>/<BS> indent/dedent in leading whitespace
-set expandtab                         " Insert spaces as the tab characters
 
 if v:progname !=# 'vi'
   set softtabstop=-1                  " use 'shiftwidth' for tab/bs at end of line
@@ -80,19 +89,9 @@ if has('vertsplit')
   set splitright                      " open vertical splits to the right of the current window
 endif
 
-set switchbuf=usetab                  " try to reuse windows/tabs when switching buffers
-
-set textwidth=120
-set updatecount=80                    " update swapfiles every 80 typed chars
-set updatetime=2000                   " same as YCM
-
 if has('virtualedit')
   set virtualedit=block               " allow cursor to move where there is no text in visual block mode
 endif
-
-set visualbell t_vb=                  " stop annoying beeping for non-error errors
-set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
-set wildcharm=<C-z>                   " substitute for 'wildchar' (<Tab>) in macros
 
 if has('wildignore')
   set wildignore+=*/.git             " patterns to ignore during file-navigation

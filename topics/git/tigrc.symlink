@@ -79,13 +79,13 @@ set line-graphics = utf-8
 
 set main-view = id:yes date:relative author:full commit-title:yes,graph,refs,overflow=no
 
+bind generic + !git commit --amend
 bind main B !git rebase -i %(commit)
 bind main F !git fetch
-bind refs n !@git branch "%(prompt Enter branch name: )"
-bind generic + !git commit --amend
-bind stash D !?git stash drop %(stash)
-bind stash A !?git stash apply %(stash)
-bind status S !?git stash save "%{prompt Enter stash name: )"
-bind status D !@?rm %(file)
-bind main T !@git tag %(prompt) %(commit)
 bind main P !git push origin "%(prompt Enter branch name: )"
+bind main T !@git tag %(prompt) %(commit)
+bind refs n !@git branch "%(prompt Enter branch name: )"
+bind stash A !?git stash apply %(stash)
+bind stash D !?git stash drop %(stash)
+bind status D !@?rm %(file)
+bind status S !git stash save "%{prompt Enter stash name: )"

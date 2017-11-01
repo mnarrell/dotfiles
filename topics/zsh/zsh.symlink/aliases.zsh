@@ -18,9 +18,9 @@ alias -s markdown='open -a "Marked 2.app"'
 
 
 # Here be Kubernetes
-alias -g k='kubectl -o wide'
-alias kp='k get pods'
-alias ks='k get services'
+alias k='kubectl'
+alias kp='k get pods -o wide'
+alias ks='k get services -o wide'
 
 alias -g IMAGES='$(docker images | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1 \":\" \$2}")'
 alias -g CONTAINERS='$(docker ps -a | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
