@@ -1,3 +1,6 @@
+tap 'caskroom/cask'
+tap 'caskroom/fonts'
+tap 'go-delve/delve'
 tap 'homebrew/services'
 
 cask_args appdir: '/Applications'
@@ -64,6 +67,7 @@ brew 'git-extras'
 brew 'glib'
 brew 'gnu-sed'
 brew 'go', args: ["cross-compile-common"]
+brew 'go-delve/delve/delve'
 brew 'googler'
 brew 'grep'
 brew 'gti'

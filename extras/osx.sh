@@ -117,7 +117,7 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 # Disable the OSX Dashboard
 defaults write com.apple.dashboard mcx-disabled -boolean true
 
-# kill / restart apps 
+# kill / restart apps
 echo "Changed defaults. Restarting apps…"
 for app in Safari Finder Dock Mail; do killall "$app"; done
 echo "Restarted apps. All done."

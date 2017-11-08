@@ -88,4 +88,5 @@ bind refs n !@git branch "%(prompt Enter branch name: )"
 bind stash A !?git stash apply %(stash)
 bind stash D !?git stash drop %(stash)
 bind status D !@?rm %(file)
-bind status S !git stash save "%{prompt Enter stash name: )"
+bind status P !@git stash pop
+bind status S !@git stash save

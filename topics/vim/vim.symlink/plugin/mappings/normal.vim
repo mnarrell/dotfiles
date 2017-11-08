@@ -39,10 +39,6 @@ nnoremap <C-y> 5<C-y>
 " Make Q repeat the last macro.
 xnoremap Q : '<,'>:normal @q<CR>
 
-" Create newlines without entering insert mode
-nnoremap go o<Esc>k
-nnoremap gO O<Esc>j
-
 nnoremap du :diffupdate<CR>
 
 nnoremap =x :call functions#DoPrettyXML()<CR>

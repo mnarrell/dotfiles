@@ -8,33 +8,34 @@
 	whitespace = fix
 
 [core]
+	abbrev = 12
+	attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore
 	ignorecase = false
-	attributesfile = ~/.gitattributes
-	abbrev = 12
 
 [color]
-	status = auto
-	diff = auto
 	branch = auto
-	ui = auto
+	diff = auto
 	grep = auto
 	showbranch = auto
+	status = auto
+	ui = auto
 
 [alias]
-	who = shortlog -s -n --no-merges
-	today = shortlog --since=midnight
-	st = status -sb
+	br = branch
 	ci = commit
 	co = checkout
-	br = branch
+	commend = commit --amend --no-edit
+	fetch = fetch -p
+	fs = submodule update --remote
+	it = !git init && git commit -m “root” --allow-empty
 	lg = log --graph --pretty=format:'%Cred%h%Creset : %C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	scrub = gc --aggressive --prune=now
-	fetch = fetch -p
 	patch = --no-pager diff --no-color
-	it = !git init && git commit -m “root” --allow-empty
-	commend = commit --amend --no-edit
+	scrub = gc --aggressive --prune=now
+	st = status -sb
+	today = shortlog --since=midnight
+	who = shortlog -s -n --no-merges
 
 [merge]
 	ff = only

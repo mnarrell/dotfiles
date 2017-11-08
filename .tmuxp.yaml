@@ -13,7 +13,7 @@ windows:
   panes:
     - shell_command: vim .
 - window_name: scratch
-  start_directory: ${HOME}
+  start_directory: ${DOTFILES}
   options:
     automatic-rename: 'off'
   panes:

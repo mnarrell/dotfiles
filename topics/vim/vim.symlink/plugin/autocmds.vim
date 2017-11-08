@@ -2,9 +2,18 @@ if has('autocmd')
   augroup MyAutocmds
     autocmd!
     autocmd FocusLost,WinLeave * :silent! wa " Save whenever switching windows or leaving vim.
-    " autocmd VimEnter * highlight clear SignColumn
+    autocmd VimEnter * hi Search ctermfg=Red ctermbg=NONE cterm=underline
     autocmd BufWritePre * :call functions#MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     autocmd VimResized * wincmd =
+  augroup END
+
+  augroup editor_stuff
+    autocmd!
+    autocmd FocusLost   * :set norelativenumber
+    autocmd FocusGained * :set relativenumber
+    autocmd InsertEnter * :set norelativenumber
+    autocmd InsertLeave * :set relativenumber
+    " autocmd BufWritePre * call StripWhitespace()
   augroup END
 
   augroup vimrc-python

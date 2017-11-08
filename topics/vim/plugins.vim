@@ -2,29 +2,31 @@ set nocompatible
 call plug#begin('~/.vim/plugged')
 
 Plug 'wincent/loupe'                            " Better in-file search
-Plug 'wincent/pinnacle'                         " Search highlighting
 Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
 
-" Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
-
 " Core
-" Plug 'ervandew/supertab'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'SirVer/ultisnips'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
-
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
-" Eyecandy
+" Tmux Integration
+Plug 'benmills/vimux'
+Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
+Plug 'keith/tmux.vim', { 'for': 'tmux' }
+
+" Navigation
+Plug 'Xuyuanp/nerdtree-git-plugin'  | Plug 'scrooloose/nerdtree'
 Plug 'fweep/vim-tabber'
-" Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-vinegar'
+
+" Eyecandy
 Plug 'chriskempson/base16-vim'
 Plug 'edkolev/tmuxline.vim', { 'for': [] }
 Plug 'vim-airline/vim-airline'
@@ -41,17 +43,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 
-" Syntax
-" Plug 'darfink/vim-plist'
-" Plug 'pearofducks/ansible-vim', { 'for': 'ansible' }
-Plug 'GEverding/vim-hocon', { 'for': 'hocon' }
-Plug 'elzr/vim-json', { 'for': 'json' }
-Plug 'keith/tmux.vim', { 'for': 'tmux' }
-
 " Linting
 Plug 'w0rp/ale'
 
 " Completion
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim'
 endif
@@ -65,16 +61,19 @@ endif
 " PostgreSQL
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
+" JSON
+Plug 'elzr/vim-json', { 'for': 'json' }
+
 " Lua
-Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
-Plug 'xolox/vim-lua-inspect', { 'for': 'lua' }
+" Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
+" Plug 'xolox/vim-lua-inspect', { 'for': 'lua' }
 
 " Python
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
-if has('nvim')
-  Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-endif
+" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+" Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
+" if has('nvim')
+"   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+" endif
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'

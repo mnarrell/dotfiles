@@ -21,11 +21,14 @@ alias ....="cd ../../.."
 alias sudo="sudo -E"
 
 alias git='hub'
+alias tig="tig --all"
+alias tis='\tig status'
 
 alias t="tmux attach || tmux"
 alias tk="tmux kill-server"
 
-alias dots="cd ${DOTFILES} && ${EDITOR}"
+alias dots="cd ${DOTFILES}"
+alias e="${EDITOR} ."
 
 # Synchronization
 alias rsync-copy="rsync -avz --progress -h"

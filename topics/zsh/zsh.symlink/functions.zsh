@@ -19,5 +19,10 @@ function git_personal_user() {
   git config user.name $MY_NAME
 }
 
+function git_porcelain_submodules() {
+  git submodule deinit -f .
+  git submodule update --init
+}
+
 # vi: ft=zsh
 
