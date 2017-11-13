@@ -16,7 +16,6 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " Tmux Integration
-Plug 'benmills/vimux'
 Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
 Plug 'keith/tmux.vim', { 'for': 'tmux' }
 
@@ -77,5 +76,8 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'
+
+" K8s
+Plug 'andrewstuart/vim-kubernetes'
 
 call plug#end()
