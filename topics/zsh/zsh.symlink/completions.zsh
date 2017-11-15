@@ -24,4 +24,6 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 # Colorize completions using default `ls` colors.
 zstyle ':completion:*' list-colors ''
 
+source <(kubectl completion zsh)
+
 # vi: ft=zsh

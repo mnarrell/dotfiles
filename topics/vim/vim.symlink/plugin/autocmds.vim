@@ -9,7 +9,7 @@ if has('autocmd')
     autocmd BufWritePre * :call functions#MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     " Resize splits when VIM is resized
     autocmd VimResized * wincmd =
-   ugroup END
+  augroup END
 
   augroup syntax_help
     autocmd!

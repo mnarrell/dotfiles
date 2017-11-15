@@ -49,8 +49,18 @@ function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
 }
 
+function kube_context_info() {
+  CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+
+  if [ -n "$CONTEXT" ]; then
+      echo "(k8s: ${CONTEXT})"
+  fi
+}
+
 setopt prompt_subst
 PROMPT="%F{green}%m%f:%F{white}%2c%f\${vcs_info_msg_0_} %F{yellow}\$(vi_mode_prompt_info)$%f "
+
+RPROMPT="%F{blue}\$(kube_context_info)"
 
 # vi: ft=zsh
 
