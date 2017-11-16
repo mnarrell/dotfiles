@@ -25,5 +25,6 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 zstyle ':completion:*' list-colors ''
 
 source <(kubectl completion zsh)
+source <(helm completion zsh)
 
 # vi: ft=zsh
