@@ -17,4 +17,10 @@ if has('autocmd')
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   augroup END
 
+  augroup linting
+    autocmd!
+    au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+    au FileType json setlocal equalprg=jq\ .
+  augroup END
+
 endif

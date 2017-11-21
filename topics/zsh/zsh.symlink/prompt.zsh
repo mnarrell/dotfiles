@@ -50,10 +50,10 @@ function vi_mode_prompt_info() {
 }
 
 function kube_context_info() {
-  CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+  KUBE_CTX=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
 
-  if [ -n "$CONTEXT" ]; then
-      echo "(k8s: ${CONTEXT})"
+  if [ -n "$KUBE_CTX" ]; then
+      echo "(k8s: ${KUBE_CTX})"
   fi
 }
 

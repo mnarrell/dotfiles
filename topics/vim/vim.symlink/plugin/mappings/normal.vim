@@ -40,6 +40,3 @@ nnoremap <C-y> 5<C-y>
 xnoremap Q : '<,'>:normal @q<CR>
 
 nnoremap du :diffupdate<CR>
-
-nnoremap =x :call functions#DoPrettyXML()<CR>
-nnoremap =j :call functions#PrettyJSON()<CR>

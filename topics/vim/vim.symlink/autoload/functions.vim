@@ -29,20 +29,3 @@ fun! functions#MkNonExDir(file, buf)
     endif
   endif
 endfunction
-
-" Format JSON with jq
-fun! functions#PrettyJSON()
-  %!jq .
-  set filetype=json
-endfun
-let g:vim_json_syntax_conceal = 0
-
-" Format XML
-fun! functions#DoPrettyXML()
-  let l:origft = &ft
-  set ft=
-  silent %!xmllint --format -
-  1
-  exe "set ft=" . l:origft
-endfun
-

@@ -24,6 +24,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'  | Plug 'scrooloose/nerdtree'
 Plug 'fweep/vim-tabber'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-vinegar'
+Plug 'jlanzarotta/bufexplorer'
 
 " Eyecandy
 Plug 'chriskempson/base16-vim'
@@ -41,9 +42,6 @@ Plug 'kana/vim-textobj-user'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
-
-" Linting
-Plug 'w0rp/ale'
 
 " Completion
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'

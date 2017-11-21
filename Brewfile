@@ -104,6 +104,7 @@ brew 'pkg-config'
 brew 'popt'
 brew 'postgresql', restart_service: :changed
 brew 'python'
+brew 'ranger'
 brew 'readline'
 brew 'reattach-to-user-namespace'
 brew 'redis', restart_service: :changed

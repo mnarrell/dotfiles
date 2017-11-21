@@ -18,15 +18,11 @@ alias -s markdown='open -a "Marked 2.app"'
 alias k='kubectl'
 alias kp='k get pods -o wide'
 alias ks='k get services -o wide'
+alias ke='k exec PODS -it sh'
+alias kl='k logs PODS'
 
 alias -g IMAGES='$(docker images | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1 \":\" \$2}")'
 alias -g CONTAINERS='$(docker ps -a | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-
-# List and select pod name with fzf (https://github.com/junegunn/fzf)
-# e.g.
-#   kubectl exec -it P sh
-#   kubectl delete pod P
-alias -g P='$(kubectl get pods | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 
 # Like P, global aliases about kubernetes resources
 alias -g PODS='$(  kubectl get pods  | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'

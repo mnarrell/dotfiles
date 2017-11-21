@@ -1,6 +1,6 @@
-alias ls="ls -h --color"
-alias la="ls -lah --color"
-alias lsd="ls -l --color | grep '^d'"
+alias ls="ls -h"
+alias la="ls -lah"
+alias lsd="ls -l | grep '^d'"
 alias ll="ls -lh"
 alias la="ls -lah"
 
