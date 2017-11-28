@@ -14,6 +14,22 @@ function fo() {
   fi
 }
 
+function fbr() {
+  local branches branch
+  branches=$(git branch) &&
+    branch=$(echo "$branches" | fzf +s +m) &&
+    git checkout $(echo "$branch" | sed "s/.* //")
+}
+
+function fkill() {
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    kill -${1:-9} $pid
+  fi
+}
+
 function git_personal_user() {
   git config user.email $MY_EMAIL
   git config user.name $MY_NAME

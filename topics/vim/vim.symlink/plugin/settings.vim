@@ -5,7 +5,6 @@ set encoding=utf-8                    " Default character encoding
 set ff=unix                           " UNIX EOL characters
 set hidden                            " allow for unsaved buffers in the background
 set nocompatible                      " VIM only, don't regress to VI
-set nocursorline                      " Highlight the entire line the cursor is on
 set nojoinspaces                      " Use one space, not two, after punctuation.
 set noshowmode                        " Don't show mode (because of airline)
 set nowrap                            " Do not wrap lines by default

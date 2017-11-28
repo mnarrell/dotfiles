@@ -9,3 +9,6 @@ cnoreabbrev wQ wq
 cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
+
+cnoremap <C-n> <down>
+cnoremap <C-p> <up>

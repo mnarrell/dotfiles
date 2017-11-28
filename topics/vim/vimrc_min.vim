@@ -7,7 +7,6 @@ filetype indent plugin on
 syntax on
 
 " Settings ************************************************************************************************************
-set cursorline                        " Highlight the entire line the cursor is on
 set encoding=utf-8                    " Default character encoding
 set hidden                            " allow for unsaved buffers in the background
 set number                            " Show the current line number in the gutter
