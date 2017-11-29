@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'wincent/loupe'                            " Better in-file search
 Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
+Plug 'mhinz/vim-startify'
 
 " Core
 Plug 'AndrewRadev/splitjoin.vim'
@@ -22,9 +23,12 @@ Plug 'keith/tmux.vim', { 'for': 'tmux' }
 " Navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'  | Plug 'scrooloose/nerdtree'
 Plug 'fweep/vim-tabber'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/vim-peekaboo'
+Plug 'justinmk/vim-gtfo'                      " Open current file in finder or tmux pane
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-vinegar'
-Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/vim-easy-align'
 
 " Eyecandy
 Plug 'chriskempson/base16-vim'
@@ -36,7 +40,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-sort-motion'  | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'      | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-user'
+" Plug 'kana/vim-textobj-user'
 
 " Git things
 Plug 'airblade/vim-gitgutter'

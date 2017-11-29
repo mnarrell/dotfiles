@@ -1,5 +1,5 @@
 if has('autocmd')
-  augroup MyAutocmds
+  augroup behavior
     autocmd!
     " Save whenever switching windows or leaving vim.
     autocmd FocusLost,WinLeave * :silent! wa
