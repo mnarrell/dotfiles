@@ -9,6 +9,8 @@ if has('autocmd')
     autocmd BufWritePre * :call functions#MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     " Resize splits when VIM is resized
     autocmd VimResized * wincmd =
+    " Text exiting for prose
+    autocmd FileType markdown :call functions#plaintext()
   augroup END
 
   augroup syntax_help
@@ -23,4 +25,15 @@ if has('autocmd')
     au FileType json setlocal equalprg=jq\ .
   augroup END
 
+  if has('nvim')
+    augroup Terminal
+      autocmd!
+      autocmd TermOpen * setlocal nolist nospell noshowmode
+    augroup END
+  endif
+
+  augroup VimHelp
+    autocmd!
+    autocmd BufEnter *.txt call functions#Help()
+  augroup END
 endif

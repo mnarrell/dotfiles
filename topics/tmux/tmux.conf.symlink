@@ -1,9 +1,9 @@
 # set-option -g default-command "reattach-to-user-namespace -l zsh"
 source-file -q ${HOME}/.tmux_line
 
-# Set prefix to space.
 unbind C-b
-set -g prefix C-Space
+set -g prefix `
+bind ` send-prefix
 
 # Open new/split panes with the path of the current pane.
 unbind c

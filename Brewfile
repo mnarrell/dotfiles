@@ -7,11 +7,6 @@ cask_args appdir: '/Applications'
 
 cask 'caskroom/fonts/font-meslo-for-powerline'
 cask 'caskroom/fonts/font-source-code-pro-for-powerline'
-cask 'caskroom/fonts/font-anonymice-powerline'
-cask 'caskroom/fonts/font-dejavu-sans-mono-for-powerline'
-cask 'caskroom/fonts/font-fira-mono-for-powerline'
-cask 'caskroom/fonts/font-inconsolata-for-powerline'
-cask 'caskroom/fonts/font-liberation-mono-for-powerline'
 cask 'caskroom/fonts/font-roboto-mono-for-powerline'
 
 # cask 'intellij-idea'
@@ -98,6 +93,7 @@ brew 'oniguruma'
 brew 'openssl'
 brew 'ossp-uuid'
 brew 'pandoc'
+brew 'par'
 brew 'pcre'
 brew 'perl'
 brew 'pkg-config'
@@ -132,13 +128,11 @@ brew 'xz'
 brew 'zsh'
 
 
-mas 'Clocks', id: 414554506
 mas 'Deliveries: a package tracker', id: 924726344
 mas 'Marked 2', id: 890031187
 mas 'Microsoft Remote Desktop (8.0.27228)', id: 715768417
 mas 'Paprika Recipe Manager (2.2.0)', id: 451907568
 mas 'Slack (2.3.1)', id: 803453959
-mas 'TrackSift (1.2.3)', id: 435371243
 mas 'Tweetbot (2.4.4)', id: 557168941
 mas 'Xcode (8.1)', id: 497799835
 mas 'feedly. Read more, know more.', id: 865500966

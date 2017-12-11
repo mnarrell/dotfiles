@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'wincent/loupe'                            " Better in-file search
 Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
 Plug 'mhinz/vim-startify'
+Plug 'machakann/vim-highlightedyank'
 
 " Core
 Plug 'AndrewRadev/splitjoin.vim'
@@ -81,5 +82,6 @@ Plug 'ekalinin/Dockerfile.vim'
 
 " K8s
 Plug 'andrewstuart/vim-kubernetes'
+Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()

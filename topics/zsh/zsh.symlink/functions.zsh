@@ -41,4 +41,3 @@ function git_porcelain_submodules() {
 }
 
 # vi: ft=zsh
-

@@ -90,3 +90,4 @@ bind stash D !?git stash drop %(stash)
 bind status D !@?rm %(file)
 bind status P !@git stash pop
 bind status S !@git stash save
+bind status I !sh -c "echo %(file) >> .gitignore"

@@ -29,3 +29,10 @@ fun! functions#MkNonExDir(file, buf)
     endif
   endif
 endfunction
+
+fun! functions#Help()
+  if &buftype == 'help'
+    wincmd T
+    nnoremap <buffer> q :q<CR>
+  endif
+endfunction
