@@ -81,6 +81,7 @@ set main-view = id:yes date:relative author:full commit-title:yes,graph,refs,ove
 
 bind generic + !git commit --amend
 bind main B !git rebase -i %(commit)
+bind refs B !git rebase -i %(commit)
 bind main F !git fetch
 bind main P !git push origin "%(prompt Enter branch name: )"
 bind main T !@git tag %(prompt) %(commit)

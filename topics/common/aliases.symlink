@@ -43,5 +43,6 @@ alias sc="find . -name target | xargs rm -r"
 
 alias vim="nvim"
 
-# vi: ft=sh
+alias dc="docker system prune"
 
+# vi: ft=sh
