@@ -16,7 +16,7 @@ export BASE16_SHELL=${HOME}/.zsh/base16-shell/
 
 export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=10000
-export SAVEHIST=10000
+export SAVEHIST=${HISTSIZE}
 
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'

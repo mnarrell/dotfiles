@@ -40,6 +40,7 @@ cask 'postman'
 cask 'rowanj-gitx'
 cask 'slack'
 cask 'spotify'
+cask 'vagrant'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'xquartz'
@@ -127,6 +128,7 @@ brew 'vim'
 brew 'wget'
 brew 'xz'
 brew 'zsh'
+brew 'zsh-completions'
 
 
 mas 'Deliveries: a package tracker', id: 924726344
