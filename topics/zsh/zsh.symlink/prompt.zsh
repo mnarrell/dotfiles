@@ -48,22 +48,10 @@ function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
 }
 
-function kube_context_info() {
-  KUBE_CTX=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
-
-  if [ -n "$KUBE_CTX" ]; then
-      echo "(k8s: ${KUBE_CTX})"
-  fi
-}
-
 setopt prompt_subst
-# export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%b%F{blue}%1~%F{yellow}%B%(1j.*.)%(?..!)%b%f%F{red}%B${SUFFIX}%b%f "
 PROMPT="%F{green}%m%f:%F{white}%2c%f\${vcs_info_msg_0_} %F{yellow}\$(vi_mode_prompt_info)$%f "
 SPROMPT="zsh: correct %F{red}'%R'%f to %F{red}'%r'%f [%B%Uy%u%bes, %B%Un%u%bo, %B%Ue%u%bdit, %B%Ua%u%bbort]? "
-
-# RPROMPT="%F{blue}\$(kube_context_info)"
 
 add-zsh-hook precmd vcs_info
 
 # vi: ft=zsh
-
