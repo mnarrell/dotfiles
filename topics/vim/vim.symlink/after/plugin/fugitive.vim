@@ -1,3 +1,2 @@
-nmap <silent> <leader>gs :Gstatus<cr>gg<C-n>
-noremap <silent> <Leader>gb :Gblame<CR>
-noremap <silent> <Leader>gd :Gvdiff<CR>
+noremap <silent> <leader>gs :Gstatus<cr>gg<c-n>
+noremap <silent> <leader>gd :Gvdiff<cr>

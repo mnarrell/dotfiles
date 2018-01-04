@@ -46,15 +46,15 @@ augroup go
   au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
   au FileType go nmap <Leader>de <Plug>(go-def-vertical)
-  au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
+  " au FileType go nmap <Leader>do <Plug>(go-doc-vertical)
   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
   au FileType go nmap <Leader>i <Plug>(go-info)
   au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
   au FileType go nmap <C-g> :GoDeclsDir<cr>
 
-  au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
-  au FileType go nmap <leader>t  <Plug>(go-test)
-  au FileType go nmap <Leader>tc <Plug>(go-coverage-toggle)
-  au FileType go imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
+  au FileType go nmap <leader>gb :<c-u>call <sid>build_go_files()<cr>
+  au FileType go nmap <leader>t  <plug>(go-test)
+  au FileType go nmap <Leader>tc <plug>(go-coverage-toggle)
+  au FileType go imap <c-g> <esc>:<c-u>GoDeclsDir<cr>
 
 augroup END
