@@ -1,7 +1,7 @@
 export DOTFILES=${HOME}/.dotfiles
 export PRIVATE_DOTFILES=${HOME}/.private_dotfiles
 
-if which nvim &> /dev/null; then
+if [ $commands[nvim] ]; then
   export EDITOR=$(which nvim)
 elif [ -x "$HOME/bin/vim" ]; then
   # PATH isn't set yet (.zsh/path depends on this file), so we do this check

@@ -128,14 +128,12 @@ brew 'vim'
 brew 'wget'
 brew 'xz'
 brew 'zsh'
-brew 'zsh-completions'
 
 
 mas 'Deliveries: a package tracker', id: 924726344
 mas 'Marked 2', id: 890031187
-mas 'Microsoft Remote Desktop (8.0.27228)', id: 715768417
-mas 'Paprika Recipe Manager (2.2.0)', id: 451907568
-mas 'Slack (2.3.1)', id: 803453959
-mas 'Tweetbot (2.4.4)', id: 557168941
-mas 'Xcode (8.1)', id: 497799835
+mas 'Microsoft Remote Desktop (8.0)', id: 715768417
+mas 'Paprika Recipe Manager 3', id: 1303222628
+mas 'Tweetbot for Twitter', id: 557168941
+mas 'Xcode', id: 497799835
 mas 'feedly. Read more, know more.', id: 865500966

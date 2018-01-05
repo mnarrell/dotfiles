@@ -1,3 +1,4 @@
+# vi: ft=zsh
 source ${HOME}/.zplug/init.zsh
 source ${HOME}/.zsh/setopts.zsh
 source ${HOME}/.zsh/bindkeys.zsh
@@ -12,7 +13,5 @@ source ${HOME}/.zsh/extensions.zsh
 cdpath=( . ${HOME}/src/work /usr/local ${SPG_SRC})
 
 source ${HOME}/.zsh.local
-
-# vi: ft=zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,7 +1,11 @@
-fpath=(${HOME}/.zsh/completions /usr/local/share/zsh-completions $fpath)
+fpath=(${HOME}/.zsh/completions /usr/local/share/zsh/site-functions $fpath)
 
-autoload -U compinit
-compinit -u
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 # Make completion:
 # - Case-insensitive.
@@ -11,14 +15,6 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 
 # Colorize completions using default `ls` colors.
 zstyle ':completion:*' list-colors ''
-
-if [ $commands[kubectl] ]; then
-  source <(kubectl completion zsh)
-fi
-
-if [ $commands[helm] ]; then
-  source <(helm completion zsh)
-fi
 
 for COMPLETION in $(find $HOME/.zsh/completions/ -name '*.zsh'); do
   source "${COMPLETION}"

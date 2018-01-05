@@ -13,7 +13,6 @@ setopt histignorespace      # dont record commands starting with a space
 setopt histverify           # confirm history expansion (!$, !!, !foo)
 setopt ignoreeof            # prevent accidental C-d from exiting shell
 setopt interactivecomments  # allow comments, even in interactive shells
-# setopt printexitvalue       # for non-zero exit status
 setopt pushdignoredups      # dont push multiple copies of same dir onto stack
 setopt pushdsilent          # dont print dir stack after pushing/popping
 setopt sharehistory         # share history across shells
