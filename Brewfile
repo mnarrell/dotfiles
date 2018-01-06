@@ -1,7 +1,16 @@
+mas 'Deliveries: a package tracker', id: 924726344
+mas 'Marked 2', id: 890031187
+mas 'Microsoft Remote Desktop (8.0)', id: 715768417
+mas 'Paprika Recipe Manager 3', id: 1303222628
+mas 'Tweetbot for Twitter', id: 557168941
+mas 'Xcode', id: 497799835
+mas 'feedly. Read more, know more.', id: 865500966
+
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'go-delve/delve'
 tap 'homebrew/services'
+tap 'getantibody/tap'
 
 cask_args appdir: '/Applications'
 
@@ -25,7 +34,6 @@ cask 'docker'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
-cask 'insomnia'
 cask 'istat-menus'
 cask 'iterm2'
 cask 'mactex'
@@ -46,6 +54,7 @@ cask 'vlc'
 cask 'xquartz'
 
 brew 'ack'
+brew 'antibody'
 brew 'ansible'
 brew 'autoconf'
 brew 'automake'
@@ -54,6 +63,7 @@ brew 'berkeley-db'
 brew 'boost'
 brew 'cmake'
 brew 'coreutils'
+brew 'exa'
 brew 'findutils'
 brew 'freetype'
 brew 'fzf'
@@ -113,6 +123,7 @@ brew 's-lang'
 brew 'sbt'
 brew 'screen'
 brew 'screenresolution'
+brew 'shellcheck'
 brew 'sip'
 brew 'source-highlight'
 brew 'sqlite'
@@ -128,12 +139,3 @@ brew 'vim'
 brew 'wget'
 brew 'xz'
 brew 'zsh'
-
-
-mas 'Deliveries: a package tracker', id: 924726344
-mas 'Marked 2', id: 890031187
-mas 'Microsoft Remote Desktop (8.0)', id: 715768417
-mas 'Paprika Recipe Manager 3', id: 1303222628
-mas 'Tweetbot for Twitter', id: 557168941
-mas 'Xcode', id: 497799835
-mas 'feedly. Read more, know more.', id: 865500966

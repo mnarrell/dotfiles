@@ -1,0 +1,118 @@
+################################################################################
+# Status line
+source-file -q ${HOME}/.tmux_line
+# Reload status line
+set -g status-interval 5
+
+
+################################################################################
+# Grave as TMUX prefix is best prefix
+unbind C-b
+set -g prefix `
+bind ` send-prefix
+
+
+################################################################################
+# General
+set -g history-limit 262144
+
+# Start window and pane numbering at 1, (0 is too hard to reach).
+set -g base-index 1
+set -g pane-base-index 1
+
+# Don't wait for an escape sequence after seeing C-a.
+set -s escape-time 0
+
+# Needed as on tmux 1.9 and up (defaults to off).
+# Added in tmux commit c7a121cfc0137c907b7bfb.
+set -g focus-events on
+
+# Reload config
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+
+# Mouse can be used to select panes, select windows (by clicking on the status
+# bar), resize panes. For default bindings see `tmux list-keys`.
+set -g mouse on
+
+
+################################################################################
+# Visuals
+set -g default-terminal "screen-256color"
+set -g terminal-overrides ',xterm-256color:Tc'
+set -g -a terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'  # allow for changing the cursor on normal/insert mode
+set -as terminal-overrides ',xterm*:sitm=\E[3m'
+
+# Turn off distracting border highlight: the background highlighting is probably
+# enough. Default value of 8 comes from "pane-border-fg" in tmux's
+# options-table.c.
+set -g pane-border-fg "#282a2e"
+set -g pane-border-bg "#282a2e"
+set -g pane-active-border-fg "#282a2e"
+set -g pane-active-border-bg "#282a2e"
+
+
+################################################################################
+# Windows
+# Enable visual notification
+setw -g monitor-activity on
+# Enable visual notification
+set -g visual-activity on
+# Show bells in window titles.
+set -g window-status-bell-style fg=yellow,bold,underscore
+
+# Automatically renumber window numbers on closing a pane (tmux >= 1.7).
+set -g renumber-windows on
+set -g allow-rename off
+
+# Open windows with the path of the current pane.
+unbind c
+bind c new-window -c '#{pane_current_path}'
+unbind %
+
+# Reorder windows with shift left/right.
+bind-key -n S-Left swap-window -t -1
+bind-key -n S-Right swap-window -t +1
+
+
+################################################################################
+# Panes
+unbind %
+bind | split-window -h -c '#{pane_current_path}'
+bind \ split-window -h -c '#{pane_current_path}'
+bind - split-window -v -c '#{pane_current_path}'
+
+# Pane movement
+bind h select-pane -L
+bind j select-pane -D
+bind n select-pane -D
+bind k select-pane -U
+bind p select-pane -U
+bind l select-pane -R
+
+# Pane resizing
+unbind Left
+bind -r Left resize-pane -L 5
+unbind Right
+bind -r Right resize-pane -R 5
+unbind Down
+bind -r Down resize-pane -D 5
+unbind Up
+bind -r Up resize-pane -U 5
+
+
+################################################################################
+# Copy mode (Yank)
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+# Stay in copy mode on drag end.
+unbind-key -T copy-mode-vi MouseDragEnd1Pane
+# Start visual selection
+bind -T copy-mode-vi v send -X begin-selection
+
+
+################################################################################
+# Plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-open'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '${HOME}/.tmux/plugins/tpm/tpm'

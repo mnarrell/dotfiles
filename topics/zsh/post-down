@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-rm -rf ${HOME}/.zplug

@@ -1,0 +1,51 @@
+#! /usr/bin/env bash
+# vim: ft=sh
+
+################################################################################
+# The helpers
+. ./support/functions
+
+
+################################################################################
+# Remove all symlinks from ${HOME}/bin
+empty_bin() {
+  info "Emptying ${HOME}/bin"
+  while read -r file; do
+    rm "${file}"
+    success "Removed ${file}"
+  done < <(find "${HOME:?}/bin" -type l)
+  echo ''
+}
+
+
+################################################################################
+# Remove all symlinks from ${HOME}
+uninstall_dotfiles () {
+  info "Uninstalling dotfiles"
+  while read -r dot; do
+    rm -rf "${dot}"
+    success "Removed ${dot}"
+  done < <(find "${HOME:?}" -depth 1 -type l -ilname "*.symlink")
+  echo ''
+}
+
+
+################################################################################
+# Remove contents of GIT submodules.
+remove_git_submodules() {
+  info "Removing Git submodules..."
+  while read -r sm; do
+    success "${sm}"
+  done < <(git submodule deinit --all --force)
+  echo ''
+}
+
+
+################################################################################
+# Uninstall...
+empty_bin
+execute_hooks pre-down  # Pre-remove hooks
+uninstall_dotfiles
+execute_hooks post-down # Post-remove hooks
+remove_git_submodules
+echo "  Dotfiles uninstalled..."

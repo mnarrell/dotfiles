@@ -1,0 +1,51 @@
+#! /usr/bin/env bash
+# vim: ft=sh
+
+################################################################################
+# The helpers
+. ./support/functions
+
+
+################################################################################
+# Install GIT submodules
+install_git_submodules() {
+  info "Installing Git submodules..."
+  while read -r sm; do
+    success "${sm}"
+  done < <(git submodule update --init --recursive)
+  echo ''
+}
+
+
+################################################################################
+# Symlink my super generic scripts
+install_bin() {
+  info "Symlinking ~/bin..."
+  while read -r src; do
+    dst="${HOME:?}"/bin/$(basename "${src}")
+    link_file "${src}" "${dst}"
+  done < <(find "${DOTFILES_ROOT}"/bin)
+  echo ''
+}
+
+
+################################################################################
+# Symlink all dotfiles.
+install_dotfiles() {
+  info 'Installing dotfiles...'
+  while read -r src; do
+    dst="${HOME:?}"/.$(basename "${src%.*}")
+    link_file "${src}" "${dst}"
+  done < <(find -H "${DOTFILES_ROOT}" -name '*.symlink' ! -path '*vim.symlink/tmp/*' ! -path '*.git*')
+  echo ''
+}
+
+
+################################################################################
+# Install...
+install_git_submodules
+install_bin
+execute_hooks pre-up  # Pre-install hooks
+install_dotfiles
+execute_hooks post-up # Post-install hooks
+echo "  Dotfiles installed. Restart ALL zsh shells."

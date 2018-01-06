@@ -1,6 +1,0 @@
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug load
-
-# vi: ft=zsh
-

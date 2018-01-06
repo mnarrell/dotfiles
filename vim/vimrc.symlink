@@ -1,0 +1,10 @@
+" Load the plugins
+source ${HOME}/.vim/plugins.vim
+
+let mapleader = "\<Space>"
+let maplocalleader="\\"
+
+filetype indent plugin on
+if !exists("g:syntax_on")
+  syntax enable
+endif

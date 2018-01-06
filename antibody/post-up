@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+BUNDLE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+antibody bundle < "${BUNDLE_DIR}"/bundle.txt > "${HOME:?}"/.zsh_plugins.sh
+antibody update
