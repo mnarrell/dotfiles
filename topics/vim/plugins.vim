@@ -27,9 +27,10 @@ Plug 'fweep/vim-tabber'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-gtfo'                      " Open current file in finder or tmux pane
-Plug 'mbbill/undotree'
+Plug 'mbbill/undo/tree'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/vim-easy-align'
+Plug 'kshenoy/vim-signature'
 
 " Eyecandy
 Plug 'chriskempson/base16-vim'

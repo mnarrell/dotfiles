@@ -14,4 +14,5 @@ cdpath=( . ${HOME}/src/work /usr/local ${SPG_SRC})
 
 source ${HOME}/.zsh.local
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Start tmux session
+dots

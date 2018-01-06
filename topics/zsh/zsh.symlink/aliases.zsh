@@ -12,7 +12,6 @@ if [ $commands[gls] ]; then
 fi
 
 alias clear="echo 'NO!'"
-alias dots="cd ${DOTFILES}"
 alias e="${EDITOR} ."
 alias flush="dscacheutil -flushcache"
 alias hosts='sudo -E ${EDITOR} /etc/hosts'
@@ -34,8 +33,9 @@ alias tig="tig --all"
 alias tis='\tig status'
 
 # TMUX
-alias t="tmux attach || tmux"
+alias t="tmux attach -t dots || dots; tmux attach -t dots"
 alias tk="tmux kill-server"
+alias tls="tmux ls"
 
 # Synchronization
 alias rsync-copy="rsync -avz --progress -h"

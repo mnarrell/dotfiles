@@ -17,12 +17,12 @@ bind \ split-window -h -c '#{pane_current_path}'
 bind - split-window -v -c '#{pane_current_path}'
 
 # Pane movement
-bind h select-pane -L; refresh-client -S
-bind j select-pane -D; refresh-client -S
-bind n select-pane -D; refresh-client -S
-bind k select-pane -U; refresh-client -S
-bind p select-pane -U; refresh-client -S
-bind l select-pane -R; refresh-client -S
+bind h select-pane -L
+bind j select-pane -D
+bind n select-pane -D
+bind k select-pane -U
+bind p select-pane -U
+bind l select-pane -R
 
 # Pane resizing
 unbind Left

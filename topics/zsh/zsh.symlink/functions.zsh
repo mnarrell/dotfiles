@@ -1,5 +1,19 @@
 fpath=( ${HOME}/.zsh/functions $fpath )
 
+if [ $commands[kubectl] ]; then
+  function kubectl() {
+    source <(command kubectl completion zsh)
+    command kubectl "$@"
+  }
+fi
+
+if [ $commands[helm] ]; then
+  function helm() {
+    source <(command helm completion zsh)
+    command helm "$@"
+  }
+fi
+
 function show_colors() {
   for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
 }
@@ -19,15 +33,6 @@ function fbr() {
   branches=$(git branch) &&
     branch=$(echo "$branches" | fzf +s +m) &&
     git checkout $(echo "$branch" | sed "s/.* //")
-}
-
-function fkill() {
-  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-
-  if [ "x$pid" != "x" ]
-  then
-    kill -${1:-9} $pid
-  fi
 }
 
 function git_personal_user() {
@@ -84,29 +89,7 @@ function man-preview() {
   man -t "$@" | open -f -a Preview
 }
 
-# function set-tab-and-window-title() {
-#   emulate -L zsh
-#   local CMD="${1:gs/$/\\$}"
-#   print -Pn "\e]0;$CMD:q\a"
-# }
-
-# function update-window-title-precmd() {
-#   emulate -L zsh
-#   set-tab-and-window-title `history | tail -1 | cut -b8-`
-# }
-# add-zsh-hook precmd update-window-title-precmd
-
-# function update-window-title-preexec() {
-#   emulate -L zsh
-#   setopt extended_glob
-
-#   # skip ENV=settings, sudo, ssh; show first distinctive word of command;
-#   # mostly stolen from:
-#   #   https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/termsupport.zsh
-#   set-tab-and-window-title ${2[(wr)^(*=*|mosh|ssh|sudo)]}
-# }
-# add-zsh-hook preexec update-window-title-preexec
-
+# Execute `ls -lh` after cd-ing to a directory
 function auto-ls-after-cd() {
   emulate -L zsh
   # Only in response to a user-initiated `cd`, not indirectly (eg. via another
@@ -116,5 +99,17 @@ function auto-ls-after-cd() {
   fi
 }
 add-zsh-hook chpwd auto-ls-after-cd
+
+# Load my dotfile session
+function dots() {
+  if ! tmux has-session -t dots 2> /dev/null; then
+    tmux new-session -d -s dots -c ${DOTFILES} -n public
+    tmux new-window -t dots -c ${PRIVATE_DOTFILES} -n private
+    tmux new-window -t dots -c ${DOTFILES} -n scratch
+    tmux send-keys -t dots:public "vim ." Enter
+    tmux send-keys -t dots:private "vim ." Enter
+    tmux select-window -t 1
+  fi
+}
 
 # vi: ft=zsh
