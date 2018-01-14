@@ -54,25 +54,30 @@ cask 'vlc'
 cask 'xquartz'
 
 brew 'ack'
-brew 'antibody'
 brew 'ansible'
+brew 'antibody'
 brew 'autoconf'
 brew 'automake'
 brew 'bash'
 brew 'berkeley-db'
 brew 'boost'
 brew 'cmake'
-brew 'coreutils'
+brew 'coreutils', args: ["with-default-names"]
 brew 'exa'
-brew 'findutils'
+brew 'findutils', args: ["with-default-names"]
 brew 'freetype'
 brew 'fzf'
+brew 'gawk', args: ["with-default-names"]
 brew 'gdbm'
 brew 'gettext'
 brew 'git'
 brew 'git-extras'
 brew 'glib'
-brew 'gnu-sed'
+brew 'gnu-getopt', args: ["with-default-names"]
+brew 'gnu-indent', args: ["with-default-names"]
+brew 'gnu-sed', args: ["with-default-names"]
+brew 'gnu-tar', args: ["with-default-names"]
+brew 'gnutls'
 brew 'go', args: ["cross-compile-common"]
 brew 'go-delve/delve/delve'
 brew 'googler'

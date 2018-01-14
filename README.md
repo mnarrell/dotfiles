@@ -1,8 +1,11 @@
 # dotfiles
 
+[![Build Status](https://travis-ci.org/mnarrell/dotfiles.svg?branch=master)](https://travis-ci.org/mnarrell/dotfiles)
+
 ## Inspiration
 
 This recent effort was influenced by:
+
 * [Carlos Becker's dotfiles](https://github.com/caarlos0/dotfiles)
 * [pure prompt](https://github.com/sindresorhus/pure)
 
