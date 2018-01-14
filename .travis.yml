@@ -1,7 +1,2 @@
 language: python
-os:
-  - osx
-install: |
-  brew update >/dev/null
-  brew install zsh
 script: make check.scripts
