@@ -6,6 +6,7 @@
 
 nnoremap Q <nop>
 nnoremap K <nop>
+nnoremap <silent> K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Repeat last macro if in normal buffer.
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
@@ -38,5 +39,3 @@ nnoremap <C-y> 5<C-y>
 
 " Make Q repeat the last macro.
 xnoremap Q : '<,'>:normal @q<CR>
-
-nnoremap du :diffupdate<CR>

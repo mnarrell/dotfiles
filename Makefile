@@ -7,3 +7,15 @@ SRC = $(shell find . -type f \
 
 check.scripts: $(SRC)
 	@shellcheck $^
+
+deps:
+	@./bootstrap
+.PHONY: deps
+
+install:
+	@./install
+.PHONY: install
+
+uninstall:
+	@./uninstall
+.PHONY: uninstall

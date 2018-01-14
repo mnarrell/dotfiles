@@ -23,7 +23,7 @@ endif
 nnoremap <silent> <Leader>b :Buffers<CR>
 " nnoremap <silent> <Leader>c :Commands<CR>
 nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <Leader>g :Find<Space>
+nnoremap \ :Find<Space>
 nnoremap <silent> <Leader>t :Tags<CR>
 
 " Insert mode mappings
