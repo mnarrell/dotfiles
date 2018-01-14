@@ -1,5 +1,6 @@
 language: python
 os:
+  - linux
   - osx
 # install: |
 #   brew update >/dev/null
