@@ -1,6 +1,9 @@
 .DS_Store
 .netrwbook
 .netrwhist*
+
+tmux/tmux.symlink/plugins
+
 vim/vim.symlink/autoload/plug.vim
 vim/vim.symlink/autoload/plug.vim.old
 vim/vim.symlink/plugged/

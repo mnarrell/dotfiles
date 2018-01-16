@@ -28,12 +28,14 @@ function +vi-git-aheadbehind() {
   local -a gitstatus
 
   ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d ' ')
-  (( $ahead )) && gitstatus+=( " %F{green}⇡${ahead}%f" )
+  (( $ahead )) && gitstatus+=( "%F{green}⇡${ahead}%f" )
 
   behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d ' ')
-  (( $behind )) && gitstatus+=( " %F{red}⇣${behind}%f" )
+  (( $behind )) && gitstatus+=( "%F{red}⇣${behind}%f" )
 
-  hook_com[branch]+=${(j:/:)gitstatus}
+  if [ ${#gitstatus[@]} -gt 0 ]; then
+    hook_com[branch]+=" %F{242}(%f"${(j: :)gitstatus}"%F{242})%f"
+  fi
 }
 
 # Show count of stashed changes
@@ -42,7 +44,7 @@ function +vi-git-stash() {
 
   if [[ -s ${hook_com[base]}/.git/refs/stash ]] ; then
     stashes=$(git stash list 2>/dev/null | wc -l | tr -d ' ')
-    hook_com[misc]+=" (${stashes} stashed)"
+    hook_com[misc]+=" %F{242}(${stashes} stashed)%f"
   fi
 }
 

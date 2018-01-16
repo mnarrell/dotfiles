@@ -7,15 +7,16 @@ Plug 'mhinz/vim-startify'
 Plug 'machakann/vim-highlightedyank'
 
 " Core
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'neomake/neomake'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " Tmux Integration
 Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
@@ -67,8 +68,6 @@ Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 " JSON
 Plug 'elzr/vim-json', { 'for': 'json' }
 
-Plug 'neomake/neomake'
-
 " Lua
 " Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
 " Plug 'xolox/vim-lua-inspect', { 'for': 'lua' }
@@ -79,9 +78,6 @@ Plug 'neomake/neomake'
 " if has('nvim')
 "   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 " endif
-
-" Plaintext
-Plug 'davidbeckingsale/writegood.vim'
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim'

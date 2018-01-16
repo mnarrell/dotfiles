@@ -1,3 +1,21 @@
 #! /usr/bin/env zsh
 
-export GNU_BIN=/usr/local/coreutils/libexec/gnubin:/usr/local/gnu-sed/libexec/gnubin
+local -a gnu_paths
+gnu_path=(
+  "/usr/local/coreutils/libexec/gnubin"
+  "/usr/local/opt/findutils/libexec/gnubin"
+  "/usr/local/gnu-sed/libexec/gnubin"
+  "/usr/local/opt/gnu-tar/libexec/gnubin"
+  "/usr/local/opt/gnu-getopt/bin"
+)
+
+local -a gnu_manpath
+gnu_manpath=(
+  "/usr/local/opt/coreutils/libexec/gnuman"
+  "/usr/local/opt/findutils/libexec/gnuman"
+  "/usr/local/opt/gnu-sed/libexec/gnuman"
+  "/usr/local/opt/gnu-tar/libexec/gnuman"
+)
+
+export PATH=${(j.:.)gnu_path}:$PATH
+export MANPATH=${(j.:.)gnu_manpath}:$MANPATH

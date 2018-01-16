@@ -25,7 +25,7 @@ uninstall_dotfiles () {
   while read -r dot; do
     rm -rf "${dot}"
     success "Removed ${dot}"
-  done < <(find "${HOME:?}" -depth 1 -type l -ilname "*.symlink")
+  done < <(find "${HOME:?}" -maxdepth 1 -type l -ilname "*.symlink")
   echo ''
 }
 

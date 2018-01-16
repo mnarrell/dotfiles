@@ -62,9 +62,9 @@ brew 'bash'
 brew 'berkeley-db'
 brew 'boost'
 brew 'cmake'
-brew 'coreutils', args: ["with-default-names"]
+brew 'coreutils'
 brew 'exa'
-brew 'findutils', args: ["with-default-names"]
+brew 'findutils'
 brew 'freetype'
 brew 'fzf'
 brew 'gawk', args: ["with-default-names"]
@@ -73,10 +73,10 @@ brew 'gettext'
 brew 'git'
 brew 'git-extras'
 brew 'glib'
-brew 'gnu-getopt', args: ["with-default-names"]
-brew 'gnu-indent', args: ["with-default-names"]
-brew 'gnu-sed', args: ["with-default-names"]
-brew 'gnu-tar', args: ["with-default-names"]
+brew 'gnu-getopt'
+brew 'gnu-indent'
+brew 'gnu-sed'
+brew 'gnu-tar'
 brew 'gnutls'
 brew 'go', args: ["cross-compile-common"]
 brew 'go-delve/delve/delve'
