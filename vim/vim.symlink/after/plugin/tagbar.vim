@@ -1,4 +1,3 @@
-noremap <silent> <F9> :TagbarToggle<CR>
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
-let g:tagbar_autopreview = 1
-
+let g:tagbar_width = 80

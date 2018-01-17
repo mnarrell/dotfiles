@@ -70,8 +70,8 @@ Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 
 " Lua
-" Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' }
-" Plug 'xolox/vim-lua-inspect', { 'for': 'lua' }
+Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' } | Plug 'xolox/vim-misc'
+Plug 'tbastos/vim-lua', { 'for': 'lua' }
 
 " Python
 " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
