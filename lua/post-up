@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+[ ! -L "${HOME:?}/bin/lua" ] && ln -s /usr/local/bin/lua-5.1 "${HOME:?}/bin/lua"
+[ ! -L "${HOME:?}/bin/ltags" ] && ln -s "${DOTFILES:?}/lua/ltags/ltags" "${HOME:?}/bin/ltags"
+chmod +x "${HOME:?}/bin/ltags"

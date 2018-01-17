@@ -8,9 +8,10 @@ mas 'feedly. Read more, know more.', id: 865500966
 
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
+tap 'getantibody/tap'
 tap 'go-delve/delve'
 tap 'homebrew/services'
-tap 'getantibody/tap'
+tap 'universal-ctags/universal-ctags'
 
 cask_args appdir: '/Applications'
 
@@ -139,6 +140,7 @@ brew 'telnet'
 brew 'tig'
 brew 'tmux'
 brew 'tree'
+brew 'universal-ctags', args: ["HEAD"]
 brew 'utf8proc'
 brew 'vim'
 brew 'wget'

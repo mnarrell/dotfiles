@@ -17,6 +17,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
+Plug 'majutsushi/tagbar'
 
 " Tmux Integration
 Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
