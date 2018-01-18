@@ -24,7 +24,7 @@ install_bin() {
   while read -r src; do
     dst="${HOME:?}"/bin/$(basename "${src}")
     link_file "${src}" "${dst}"
-  done < <(find "${DOTFILES_ROOT}"/bin)
+  done < <(find "${DOTFILES_ROOT}"/bin/*)
   echo ''
 }
 

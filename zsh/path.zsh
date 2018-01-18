@@ -2,6 +2,9 @@ SYSTEM_PATH=${PATH}
 unset PATH
 
 PATH=~/bin
+PATH=${PATH}:${GOPATH}/bin
+PATH=${PATH}:${JAVA_HOME}/bin
+PATH=${PATH}:${M2_HOME}/bin
 PATH=${PATH}:${GNU_BIN}
 PATH=${PATH}:/Library/TeX/texbin
 PATH=${PATH}:/usr/local/bin
@@ -12,3 +15,5 @@ PATH=${PATH}:/bin
 PATH=${PATH}:/sbin
 
 export PATH
+
+export MANPATH=${GNU_MAN}:${MANPATH}

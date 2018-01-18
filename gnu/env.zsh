@@ -17,5 +17,5 @@ gnu_manpath=(
   "/usr/local/opt/gnu-tar/libexec/gnuman"
 )
 
-export PATH=${(j.:.)gnu_path}:$PATH
-export MANPATH=${(j.:.)gnu_manpath}:$MANPATH
+export GNU_BIN=${(j.:.)gnu_path}
+export GNU_MAN=${(j.:.)gnu_manpath}
