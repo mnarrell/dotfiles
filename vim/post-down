@@ -12,4 +12,9 @@ rm -rf ${HOME}/.config/nvim
 
 yes | pip2 uninstall neovim
 yes | pip3 uninstall neovim
+yes | pip2 uninstall proselint
+yes | pip3 uninstall proselint
+
+npm uninstall -g markdownlint-cli
+
 gem uninstall neovim
