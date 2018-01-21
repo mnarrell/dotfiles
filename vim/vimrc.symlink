@@ -8,3 +8,8 @@ filetype indent plugin on
 if !exists("g:syntax_on")
   syntax enable
 endif
+
+let s:vimrc_local = $HOME . '/.vimrc.local'
+if filereadable(s:vimrc_local)
+  execute 'source ' . s:vimrc_local
+endif

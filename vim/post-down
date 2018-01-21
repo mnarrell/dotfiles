@@ -10,11 +10,11 @@ rm -rf ${HOME}/.ideavimrc
 
 rm -rf ${HOME}/.config/nvim
 
-yes | pip2 uninstall neovim
-yes | pip3 uninstall neovim
-yes | pip2 uninstall proselint
-yes | pip3 uninstall proselint
+pip2 uninstall -U -r requirements.txt
+pip3 uninstall -U -r requirements.txt
 
-npm uninstall -g markdownlint-cli
+npm uninstall -g \
+  jsonlint \
+  markdownlint-cli
 
 gem uninstall neovim

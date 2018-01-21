@@ -3,42 +3,38 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'wincent/loupe'                            " Better in-file search
 Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
-Plug 'mhinz/vim-startify'
-Plug 'machakann/vim-highlightedyank'
 
 " Core
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
-Plug 'majutsushi/tagbar'
-
-" Tmux Integration
-Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
-Plug 'keith/tmux.vim', { 'for': 'tmux' }
 
 " Navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'  | Plug 'scrooloose/nerdtree'
 Plug 'fweep/vim-tabber'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-gtfo'                      " Open current file in finder or tmux pane
+Plug 'kshenoy/vim-signature'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-vinegar'
-Plug 'junegunn/vim-easy-align'
-Plug 'kshenoy/vim-signature'
 
 " Eyecandy
 Plug 'chriskempson/base16-vim'
 Plug 'edkolev/tmuxline.vim', { 'for': [] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'machakann/vim-highlightedyank'
 
 " Text objects
 Plug 'christoomey/vim-sort-motion'  | Plug 'kana/vim-textobj-user'
@@ -86,5 +82,9 @@ Plug 'ekalinin/Dockerfile.vim'
 " K8s
 Plug 'andrewstuart/vim-kubernetes'
 Plug 'mustache/vim-mustache-handlebars'
+
+" Tmux Integration
+Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
+Plug 'keith/tmux.vim', { 'for': 'tmux' }
 
 call plug#end()

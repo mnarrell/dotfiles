@@ -1,0 +1,3 @@
+neovim
+proselint
+vim-vint
