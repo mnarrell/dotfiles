@@ -1,4 +1,3 @@
-set nocompatible
 call plug#begin('~/.vim/plugged')
 
 Plug 'wincent/loupe'                            " Better in-file search
@@ -11,7 +10,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'

@@ -8,14 +8,14 @@ function! s:build_go_files()
   endif
 endfunction
 
-let g:deoplete#sources#go#gocode_binary = "${GOPATH}/bin/gocode"
+let g:deoplete#sources#go#gocode_binary = '${GOPATH}/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
-let g:go_list_type = "quickfix"
-let g:go_list_height = 20
-let g:go_addtags_transform = "camelcase"
-let g:go_fmt_command = "goimports"
+let g:go_addtags_transform = 'camelcase'
+let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
+let g:go_list_height = 20
+let g:go_list_type = 'quickfix'
 
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']

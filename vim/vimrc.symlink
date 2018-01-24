@@ -1,11 +1,13 @@
+set encoding=utf-8
+
 " Load the plugins
 source ${HOME}/.vim/plugins.vim
 
-let mapleader = "\<Space>"
-let maplocalleader="\\"
+let g:mapleader = "\<Space>"
+let g:maplocalleader="\\"
 
 filetype indent plugin on
-if !exists("g:syntax_on")
+if !exists('g:syntax_on')
   syntax enable
 endif
 

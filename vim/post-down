@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 set -e
 
-rm -rf ${HOME}/.vim
-rm -rf ${HOME}/.viminfo
-rm -rf ${HOME}/.vimrc_background
-rm -rf ${HOME}/.dotfiles/vim/vim.symlink/autoload/plug.vim
-rm -rf ${HOME}/.dotfiles/vim/vim.symlink/plugged
-rm -rf ${HOME}/.ideavimrc
+rm -rf "${HOME}/.vim"
+rm -rf "${HOME}/.viminfo"
+rm -rf "${HOME}/.vimrc_background"
+rm -rf "${HOME}/.dotfiles/vim/vim.symlink/autoload/plug.vim"
+rm -rf "${HOME}/.dotfiles/vim/vim.symlink/plugged"
+rm -rf "${HOME}/.ideavimrc"
 
-rm -rf ${HOME}/.config/nvim
+rm -rf "${HOME}/.config/nvim"
 
 pip2 uninstall -U -r requirements.txt
 pip3 uninstall -U -r requirements.txt
 
 npm uninstall -g \
   jsonlint \
-  markdownlint-cli
+  markdownlint-cli \
+  alex \
+  ember-template-lint
 
 gem uninstall neovim

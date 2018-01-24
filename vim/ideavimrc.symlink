@@ -1,14 +1,11 @@
-let mapleader = " "
-let maplocalleader="\\"
+let g:mapleader = ' '
+let g:maplocalleader='\\'
 
 set clipboard+=unnamed
-
-set showmode
-
-set surround
-
 set number
 set relativenumber                  " show relative numbers in gutter
+set showmode
+set surround
 
 nnoremap <silent> <Leader>o :only<CR>
 nnoremap <silent> <Leader>q :quit<CR>

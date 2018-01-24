@@ -1,5 +1,5 @@
 " Zap trailing whitespace in the current buffer.
-nnoremap <silent> <Leader>zz :call mappings#leader#zap()<CR>
+nnoremap <silent> <Leader>zz :call functions#Preserve('%s/\\s\\+$//e')<CR>
 
 nnoremap <silent> <Leader>o :only<CR>
 nnoremap <silent> <Leader>q :quit<CR>

@@ -1,11 +1,11 @@
+scriptencoding utf-8
+
 set autoread                         " Load buffers modified outside of VIM
 set backspace=indent,eol,start       " Make the backspace key sane
 set cmdwinheight=20                  " Make the command window height more tolerable
 set diffopt+=vertical                " Always use vertical diffs
-set encoding=utf-8                   " Default character encoding
-set ff=unix                          " UNIX EOL characters
+set fileformat=unix                  " UNIX EOL characters
 set hidden                           " allow for unsaved buffers in the background
-set nocompatible                     " VIM only, don't regress to VI
 set nojoinspaces                     " Use one space, not two, after punctuation.
 set noshowmode                       " Don't show mode (because of airline)
 set nowrap                           " Do not wrap lines by default
@@ -36,8 +36,6 @@ set listchars+=tab:▷┅                " WHITE RIGHT-POINTING TRIANGLE (U+25B7
 set listchars+=extends:»             " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
 set listchars+=precedes:«            " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
 set listchars+=trail:•               " BULLET (U+2022, UTF-8: E2 80 A2)
-set nojoinspaces                     " don't autoinsert two spaces after '.', '?', '!' for join command
-set number                           " show line numbers in gutter
 
 set shortmess+=A                     " ignore annoying swapfile messages
 set shortmess+=I                     " no splash screen
@@ -56,7 +54,7 @@ if has('nvim')
   set inccommand=nosplit             " Incremental substitution highlighting
 endif
 
-if executable("par")
+if executable('par')
   set formatprg=par\ -w78rq          " Use Par to format text
 endif
 

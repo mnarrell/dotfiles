@@ -9,20 +9,6 @@ if has('autocmd')
     autocmd BufWritePre * :call functions#MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     " Resize splits when VIM is resized
     autocmd VimResized * wincmd =
-    " Text exiting for prose
-    autocmd FileType markdown :call functions#plaintext()
-  augroup END
-
-  augroup syntax_help
-    autocmd!
-    autocmd FileType Dockerfile setlocal nolist
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-  augroup END
-
-  augroup linting
-    autocmd!
-    au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
-    au FileType json setlocal equalprg=jq\ .
   augroup END
 
   if has('nvim')

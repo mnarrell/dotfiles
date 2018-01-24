@@ -1,2 +1,5 @@
+#! /usr/bin/env bash
+# vim: ft=sh
+
 yes | pip2 install gitpython
 yes | pip3 install gitpython
