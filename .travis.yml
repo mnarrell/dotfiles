@@ -2,7 +2,7 @@ language: python
 os:
   - linux
   # - osx
-# install: |
-#   brew update >/dev/null
-#   brew install zsh
-script: make all
+before_install: 
+  - pip install vim-vint
+install:
+  - make all
