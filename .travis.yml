@@ -4,5 +4,6 @@ os:
   # - osx
 before_install: 
   - pip install vim-vint
-install:
+install: true
+script:
   - make all
