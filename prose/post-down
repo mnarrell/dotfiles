@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+npm uninstall -g alex
+
+yes | pip2 uninstall proselint
+yes | pip3 uninstall proselint

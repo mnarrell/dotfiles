@@ -17,6 +17,9 @@ nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v
 " Close the quick windows
 nnoremap <leader>c :cclose<bar>lclose<cr>
 
+" Redraw the screen
+nnoremap <leader>rd :redraw!
+
 " Adds markdown headers
 nnoremap <leader>1 m`yypVr=``
 nnoremap <leader>2 m`yypVr-``

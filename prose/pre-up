@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+npm install -g alex
+
+pip2 install -U proselint
+pip3 install -U proselint

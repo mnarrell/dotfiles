@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
+set -e
 
-npm install -g \
+npm uninstall -g \
   markdown2confluence \
   markdownlint-cli

@@ -7,9 +7,6 @@ yes | pip2 uninstall -r "${DIR}/requirements.txt"
 yes | pip3 uninstall -r "${DIR}/requirements.txt"
 
 npm uninstall -g \
-  jsonlint \
-  markdownlint-cli \
-  alex \
   ember-template-lint
 
 gem uninstall neovim

@@ -15,6 +15,11 @@ if [ $commands[brew] ]; then
         command brew upgrade
         brew cleanup
         ;;
+      new)
+        command brew update
+        command brew outdated
+        brew cleanup
+        ;;
       *)
         command brew "$@"
         ;;

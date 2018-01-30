@@ -2,8 +2,14 @@ language: python
 os:
   - linux
   # - osx
-before_install: 
+before_install:
   - pip install vim-vint
-install: true
-script:
   - make all
+install:
+  - ./install
+  - vim +PlugClean! +PlugUpdate +qa!
+  - exec "$SHELL" -l
+script:
+  - show_colors
+after_success:
+  - ./uninstall
