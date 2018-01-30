@@ -1,21 +1,18 @@
 language: python
-addons:
-  apt:
-    packages:
-      - build-essential
-      - zsh
+python:
+  - "2.7"
+  - "3.6"
 os:
   - linux
-  # - osx
 before_install:
+  - sudo apt-get update >/dev/null
+  - sudo apt-get install -y zsh
+  - curl -sL git.io/antibody | bash -s
   - pip install vim-vint
-  - zsh
-  - make all
+  - make check
 install:
-  - ./install
-  # - vim +PlugClean! +PlugUpdate +qa!
-  - exec "$SHELL" -l
+  - make install
 script:
-  - show_colors
+  - make test
 after_success:
-  - ./uninstall
+  - make uninstall

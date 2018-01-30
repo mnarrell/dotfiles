@@ -16,8 +16,8 @@ check.vim:
 		-not -path '*spell*' \
 		-exec vint -c -s {} +
 
-.PHONY: all
-all: check.scripts check.vim
+.PHONY: check
+check: check.scripts check.vim
 
 .PHONY: deps
 deps:
@@ -30,3 +30,7 @@ install:
 .PHONY: uninstall
 uninstall:
 	@./uninstall
+
+.PHONY: test
+test:
+	@./support/verify
