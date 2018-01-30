@@ -1,9 +1,15 @@
 language: python
+addons:
+  apt:
+    packages:
+      - build-essential
+      - zsh
 os:
   - linux
   # - osx
 before_install:
   - pip install vim-vint
+  - zsh
   - make all
 install:
   - ./install
