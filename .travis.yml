@@ -7,7 +7,7 @@ before_install:
   - make all
 install:
   - ./install
-  - vim +PlugClean! +PlugUpdate +qa!
+  # - vim +PlugClean! +PlugUpdate +qa!
   - exec "$SHELL" -l
 script:
   - show_colors
