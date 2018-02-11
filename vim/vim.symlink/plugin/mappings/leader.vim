@@ -18,7 +18,7 @@ nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v
 nnoremap <leader>c :cclose<bar>lclose<cr>
 
 " Redraw the screen
-nnoremap <leader>rd :redraw!
+nnoremap <leader>rd :redraw!<CR>
 
 " Adds markdown headers
 nnoremap <leader>1 m`yypVr=``

@@ -3,4 +3,4 @@ set -e
 
 npm uninstall -g \
   markdown2confluence \
-  markdownlint-cli
+  mdl

@@ -6,6 +6,7 @@ mas 'Tweetbot for Twitter', id: 557168941
 mas 'Xcode', id: 497799835
 mas 'feedly. Read more, know more.', id: 865500966
 
+tap 'ValeLint/vale'
 tap 'caskroom/cask'
 tap 'caskroom/fonts'
 tap 'getantibody/tap'
@@ -143,6 +144,7 @@ brew 'tmux'
 brew 'tree'
 brew 'universal-ctags', args: ["HEAD"]
 brew 'utf8proc'
+brew 'vale'
 brew 'vim'
 brew 'wget'
 brew 'xz'

@@ -2,4 +2,4 @@
 
 npm install -g \
   markdown2confluence \
-  markdownlint-cli
+  mdl
