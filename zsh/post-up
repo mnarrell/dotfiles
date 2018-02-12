@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+yes | pip2 install base16-shell-preview
+yes | pip3 install base16-shell-preview
