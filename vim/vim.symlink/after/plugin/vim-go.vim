@@ -50,11 +50,11 @@ augroup go
 
   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
   au FileType go nmap <Leader>de <Plug>(go-def-vertical)
-  au FileType go nmap <Leader>i <Plug>(go-info)
+  " au FileType go nmap <Leader>i <Plug>(go-info)
   au FileType go nmap <Leader>rn <Plug>(go-rename)
   au FileType go nmap <Leader>tc <Plug>(go-coverage-toggle)
   au FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
-  au FileType go nmap <leader>t  <Plug>(go-test)
+  au FileType go nmap <leader>gt  <Plug>(go-test)
   au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
 
 augroup END

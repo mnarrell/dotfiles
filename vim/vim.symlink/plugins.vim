@@ -69,6 +69,8 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' } | Plug 'xolox/vim-misc'
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
 
+" Nginx
+Plug 'chr4/nginx.vim'
 " Python
 " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 " Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
