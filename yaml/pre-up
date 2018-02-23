@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+yes | pip2 install yamllint
+yes | pip3 install yamllint
+
+mkdir -p "${HOME}/.config/yamllint"
+ln -s "${DOTFILES}/yaml/yamllint.yaml" "${HOME}/.config/yamllint/config"

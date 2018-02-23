@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+yes | pip2 uninstall yamllint
+yes | pip3 uninstall yamllint
+
+rm -rf "${HOME}/.config/yamllint"

@@ -1,0 +1,13 @@
+---
+
+extends: default
+
+rules:
+  document-end:
+    present: true
+  indentation:
+    indent-sequences: consistent
+  line-length:
+    allow-non-breakable-inline-mappings: true
+
+...
