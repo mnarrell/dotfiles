@@ -4,8 +4,11 @@
 " noremap <silent> <Left> :cpfile<CR>
 " noremap <silent> <Right> :cnfile<CR>
 
+nnoremap gG gggqgG''
+
+noremap U <C-r>
 nnoremap Q <nop>
-nnoremap K <nop>
+" nnoremap K <nop>
 nnoremap <silent> K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Repeat last macro if in normal buffer.
