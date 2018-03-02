@@ -18,7 +18,6 @@ if [ $commands[brew] ]; then
       new)
         command brew update
         command brew outdated
-        brew cleanup
         ;;
       *)
         command brew "$@"

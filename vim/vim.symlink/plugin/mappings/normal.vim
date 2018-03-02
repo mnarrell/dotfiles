@@ -6,7 +6,6 @@
 
 nnoremap gG gggqgG''
 
-noremap U <C-r>
 nnoremap Q <nop>
 " nnoremap K <nop>
 nnoremap <silent> K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>

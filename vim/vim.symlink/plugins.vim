@@ -85,6 +85,9 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'andrewstuart/vim-kubernetes'
 Plug 'mustache/vim-mustache-handlebars'
 
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+
 " Tmux Integration
 Plug 'jgdavey/tslime.vim'                       " Send selected text to a tmux pane
 Plug 'keith/tmux.vim', { 'for': 'tmux' }
