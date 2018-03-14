@@ -24,4 +24,13 @@ function auto-ls-after-cd() {
 }
 add-zsh-hook chpwd auto-ls-after-cd
 
+# EDITOR shortcuts
+function e() {
+  if [[ $# -eq 0 ]]; then
+    ${EDITOR} .
+  else
+    ${EDITOR} $1
+  fi
+}
+
 # vi: ft=zsh

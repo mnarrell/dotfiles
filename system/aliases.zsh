@@ -5,7 +5,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 alias clear="echo 'NO!'"
-alias e="${EDITOR} ."
 alias flush="dscacheutil -flushcache"
 alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"

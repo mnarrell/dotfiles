@@ -3,7 +3,7 @@
 ################################################################################
 # How Low Can You Go?
 export DOTFILES="$HOME/.dotfiles"
-export EDITOR='vim'
+export EDITOR='/usr/local/bin/nvim'
 bindkey -v # VIM tho
 
 ################################################################################

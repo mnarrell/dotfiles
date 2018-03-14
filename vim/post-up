@@ -11,7 +11,8 @@ yes | pip2 install -U -r "${DIR}/requirements.txt"
 yes | pip3 install -U -r "${DIR}/requirements.txt"
 
 npm install -g \
-  ember-template-lint
+  ember-template-lint \
+  neovim
 
 gem install neovim
 

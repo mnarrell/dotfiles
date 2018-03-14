@@ -13,15 +13,15 @@ export HISTTIMEFORMAT="%m/%d/%y - %H:%M:%S "
 
 bash_prompt() {
   # regular colors
-  Y="\[\033[0;33m\]"    # yellow
-  W="\[\033[0;37m\]"    # white
+  Y="\\[\\033[0;33m\\]"    # yellow
+  W="\\[\\033[0;37m\\]"    # white
 
   # bolded colors
-  BC="\[\033[1;36m\]"
+  BC="\\[\\033[1;36m\\]"
 
-  OFF="\[\033[0;0m\]"
+  OFF="\\[\\033[0;0m\\]"
 
-  PS1="$Y\u@\h$W: $BC\W$OFF $ "
+  PS1="$Y\\u@\\h$W: $BC\\W$OFF $ "
 }
 
 bash_prompt
