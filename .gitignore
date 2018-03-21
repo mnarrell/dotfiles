@@ -9,3 +9,4 @@ vim/vim.symlink/autoload/plug.vim.old
 vim/vim.symlink/plugged/
 vim/vim.symlink/spell/en.utf-8.add.spl
 vim/vim.symlink/tmp/viminfo
+vim/vim.symlink/ultisnips/*private.snippets
