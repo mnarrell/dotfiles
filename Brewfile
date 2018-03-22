@@ -94,7 +94,6 @@ brew 'imagemagick'
 brew 'jmeter', args: ["with-plugins"]
 brew 'jpeg'
 brew 'jq'
-brew 'kafka'
 brew 'libevent'
 brew 'libffi'
 brew 'libmagic'
