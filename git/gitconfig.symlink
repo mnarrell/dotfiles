@@ -24,23 +24,24 @@
 [alias]
 	br = branch
 	ci = commit
+	cm = !git add -A && git cmmmit -m
 	co = checkout
 	commend = commit --amend --no-edit
 	fetch = fetch -p
 	fs = submodule update --remote
 	it = !git init && git commit -m “root” --allow-empty
-	lg = log --graph --pretty=format:'%Cred%h%Creset : %C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset' --abbrev-commit --date=relative
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	patch = --no-pager diff --no-color
 	scrub = gc --aggressive --prune=now
 	st = status -sb
 	today = shortlog --since=midnight
 	who = shortlog -s -n --no-merges
+	wip = commit -am "WIP"
 
 [merge]
 	ff = only
-	; tool = opendiff
-	tool = fugitive
+	tool = opendiff
+	; tool = fugitive
 	; tool = vimdiff
 	conflictstyle = merge
 	stat = true

@@ -9,7 +9,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-startify'
 " Plug 'neomake/neomake'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
@@ -19,14 +18,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Navigation
-Plug 'Xuyuanp/nerdtree-git-plugin'  | Plug 'scrooloose/nerdtree'
 Plug 'fweep/vim-tabber'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
-Plug 'justinmk/vim-gtfo'                      " Open current file in finder or tmux pane
 Plug 'kshenoy/vim-signature'
-Plug 'mbbill/undotree'
+" Plug 'mbbill/undotree'
 Plug 'tpope/vim-vinegar'
 
 " Eyecandy
@@ -71,6 +68,7 @@ Plug 'tbastos/vim-lua', { 'for': 'lua' }
 
 " Nginx
 Plug 'chr4/nginx.vim'
+
 " Python
 " Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 " Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
