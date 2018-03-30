@@ -9,7 +9,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
-" Plug 'neomake/neomake'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -23,7 +22,6 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
-" Plug 'mbbill/undotree'
 Plug 'tpope/vim-vinegar'
 
 " Eyecandy
@@ -37,7 +35,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'christoomey/vim-sort-motion'  | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'      | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
-" Plug 'kana/vim-textobj-user'
 
 " Git things
 Plug 'airblade/vim-gitgutter'

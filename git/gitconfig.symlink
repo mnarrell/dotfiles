@@ -24,7 +24,7 @@
 [alias]
 	br = branch
 	ci = commit
-	cm = !git add -A && git cmmmit -m
+	cm = !git add -A && git commit -m
 	co = checkout
 	commend = commit --amend --no-edit
 	fetch = fetch -p
