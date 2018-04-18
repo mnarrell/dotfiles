@@ -114,8 +114,11 @@ defaults write com.apple.QuickTimePlayerX NSQuitAlwaysKeepsWindows -bool false
 echo "Disable local Time Machine backups"
 hash tmutil &> /dev/null && sudo tmutil disablelocal
 
-# Disable the OSX Dashboard
+echo "Disable the OSX Dashboard"
 defaults write com.apple.dashboard mcx-disabled -boolean true
+
+echo "Only show active apps in the dock"
+defaults write com.apple.dock static-only -bool true
 
 # kill / restart apps
 echo "Changed defaults. Restarting apps…"
