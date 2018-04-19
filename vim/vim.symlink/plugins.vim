@@ -42,6 +42,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'gregsexton/gitv', {'on': ['Gitv']}
 
+" Formatting
+Plug 'sbdchd/neoformat'
+
 " Completion
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 if has('nvim')

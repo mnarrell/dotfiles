@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
+set -e
 
-yes | pip2 install yamllint
-yes | pip3 install yamllint
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+yes | pip2 install -U -r "${DIR}/requirements.txt"
+yes | pip3 install -U -r "${DIR}/requirements.txt"
 
 mkdir -p "${HOME}/.config/yamllint"
 ln -s "${DOTFILES}/yaml/yamllint.yaml" "${HOME}/.config/yamllint/config"

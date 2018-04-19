@@ -5,3 +5,6 @@
 [ ! -L "${HOME:?}/bin/luarocks" ] && ln -s /usr/local/bin/luarocks-5.1 "${HOME:?}/bin/luarocks"
 [ ! -L "${HOME:?}/bin/ltags" ] && ln -s "${DOTFILES:?}/lua/ltags/ltags" "${HOME:?}/bin/ltags"
 chmod +x "${HOME:?}/bin/ltags"
+
+"${HOME}/bin/luarocks" install --local checks
+"${HOME}/bin/luarocks" install --local formatter
