@@ -8,7 +8,8 @@ function! s:build_go_files()
   endif
 endfunction
 
-let g:deoplete#sources#go#gocode_binary = '${GOPATH}/bin/gocode'
+let g:deoplete#sources#go#align_class = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH. '/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 let g:go_addtags_transform = 'camelcase'
@@ -17,8 +18,8 @@ let g:go_fmt_fail_silently = 1
 let g:go_list_height = 20
 let g:go_list_type = 'quickfix'
 
-" let g:go_metalinter_autosave = 1
-" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 
 let g:go_auto_type_info = 1
 
@@ -39,7 +40,6 @@ let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_types = 1
-let g:go_highlight_types = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
 
@@ -59,7 +59,6 @@ augroup go
 
   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
   au FileType go nmap <Leader>de <Plug>(go-def-vertical)
-  " au FileType go nmap <Leader>i <Plug>(go-info)
   au FileType go nmap <Leader>rn <Plug>(go-rename)
   au FileType go nmap <Leader>tc <Plug>(go-coverage-toggle)
   au FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
