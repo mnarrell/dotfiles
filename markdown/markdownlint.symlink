@@ -1,0 +1,16 @@
+{
+  "comment": "Rules for the style guide at http://www.cirosantilli.com/markdown-style-guide/",
+  "default": true,
+  "MD003": {
+    "style": "atx"
+  },
+  "MD004": {
+    "style": "asterisk"
+  },
+  "MD007": {
+    "indent": 4
+  },
+  "MD035": {
+    "style": "---"
+  }
+}
