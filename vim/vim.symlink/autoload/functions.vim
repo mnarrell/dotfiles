@@ -53,7 +53,7 @@ endfunction
 
 " Copies selected markdown and converts it to Confluence style markdown. Puts
 " the results in the * register for easy pasting into Confluence.
-fun! functions#AsConfluence() range
+fun! functions#AsConfluence() abort
   if executable('markdown2confluence')
     let l:tf = tempname() . '.md'
     silent! execute "'<,'> w" l:tf
