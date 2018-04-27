@@ -5,6 +5,8 @@ if has('autocmd')
     autocmd FocusLost,WinLeave * :silent! wa
     " Red underlined search results
     autocmd VimEnter * hi Search ctermfg=Red ctermbg=NONE cterm=underline
+    " Strip all trailing whitespace on write
+    autocmd BufWritePre * :call functions#Preserve('%s/\v\s+$//e')
     " mkdir -p when saving files
     autocmd BufWritePre * :call functions#MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     " Resize splits when VIM is resized
