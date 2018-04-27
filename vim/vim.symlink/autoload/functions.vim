@@ -51,3 +51,22 @@ fun! functions#Preserve(cmd) abort
   call cursor(l:line, l:col)
 endfunction
 
+" Copies selected markdown and converts it to Confluence style markdown. Puts
+" the results in the * register for easy pasting into Confluence.
+fun! functions#AsConfluence() range
+  if executable('markdown2confluence')
+    let l:tf = tempname() . '.md'
+    silent! execute "'<,'> w" l:tf
+    silent! execute "let @* = system('markdown2confluence " . l:tf ."')"
+    silent! execute 'silent !rm ' . l:tf
+  else
+    echo 'The markdown2confluence utility was not found on your $PATH'
+  endif
+endfunction
+
+" Updates all configured plugins, making a backup first.
+fun! functions#UpdatePlugins() abort
+  let l:filename='~/.vim/tmp/plugin_snapshot-'.strftime('%Y%m%d-%H%M%S').'.vim'
+  echom 'Backing up plugin state to: '.l:filename
+  execute 'PlugSnapshot! '.l:filename.' | PlugUpdate | PlugUpgrade'
+endf
