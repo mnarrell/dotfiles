@@ -10,7 +10,7 @@ fi
 alias k='kubectl'
 alias kp='k get pods -o wide'
 alias ks='k get services -o wide'
-alias ke='k exec -it PODS sh'
+alias ke='k exec -it PODS bash'
 alias kl='k logs -f PODS'
 alias kdp='k describe pod PODS'
 alias kds='k describe service SVC'
