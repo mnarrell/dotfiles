@@ -53,6 +53,7 @@ cask 'spotify'
 cask 'vagrant'
 cask 'visual-studio-code'
 cask 'vlc'
+cask 'wireshark'
 cask 'xquartz'
 
 # brew 'gnu-sed'
