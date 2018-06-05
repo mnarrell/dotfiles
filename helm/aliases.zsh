@@ -7,3 +7,4 @@ if [ $commands[helm] ]; then
   }
 fi
 
+alias tn='echo $TILLER_NAMESPACE'

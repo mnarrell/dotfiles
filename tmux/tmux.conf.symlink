@@ -107,6 +107,8 @@ bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "reattach-to-user-n
 unbind-key -T copy-mode-vi MouseDragEnd1Pane
 # Start visual selection
 bind -T copy-mode-vi v send -X begin-selection
+# Change the copy-mode colors to match theme
+set-window-option -g mode-style 'fg=colour18 bg=colour4'
 
 
 ################################################################################

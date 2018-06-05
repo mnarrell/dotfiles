@@ -23,14 +23,14 @@ alias -g SVC='$(   kubectl get svc   | fzf-tmux --header-lines=1 --reverse --mul
 alias -g ING='$(   kubectl get ing   | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 
 function kip() {
-  NODE_IP=$(kubectl cluster-info | grep master | egrep -o '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
-  NODE_PORTS=$(kubectl get svc -o json SVC | jq -r '.spec.ports[] | "\(.name) \(.nodePort)"')
-  if [[ $(echo "${NODE_PORTS}" | wc -l) -eq 1 ]]; then
-    echo "${NODE_PORTS}" \
-      | awk -v ip="${NODE_IP}" '{print "http://" ip ":"$2}' > >(cat) > >(pbcopy)
+  local node_ip=$(kubectl cluster-info | grep master | egrep -o '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+  local node_ports=$(kubectl get svc -o json SVC | jq -r '.spec.ports[] | "\(.name) \(.nodePort)"')
+  if [[ $(echo "${node_ports}" | wc -l) -eq 1 ]]; then
+    echo "${node_ports}" \
+      | awk -v ip="${node_ip}" '{print "http://" ip ":"$2}' > >(cat) > >(pbcopy)
   else
-    echo "${NODE_PORTS}" \
-      | awk -v OFS='\t' -v ip="${NODE_IP}" '{print $1, " http://" ip ":"$2}' \
+    echo "${node_ports}" \
+      | awk -v OFS='\t' -v ip="${node_ip}" '{print $1, " http://" ip ":"$2}' \
       | fzf-tmux --cycle \
       | awk '{print $2}' > >(cat) > >(pbcopy)
   fi
