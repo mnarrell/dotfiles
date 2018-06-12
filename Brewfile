@@ -7,18 +7,17 @@ mas 'Xcode', id: 497799835
 mas 'feedly. Read more, know more.', id: 865500966
 
 tap 'ValeLint/vale'
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
 tap 'getantibody/tap'
 tap 'go-delve/delve'
+tap 'homebrew/cask-fonts'
 tap 'homebrew/services'
 tap 'universal-ctags/universal-ctags'
 
 cask_args appdir: '/Applications'
 
-cask 'caskroom/fonts/font-meslo-for-powerline'
-cask 'caskroom/fonts/font-source-code-pro-for-powerline'
-cask 'caskroom/fonts/font-roboto-mono-for-powerline'
+cask 'font-meslo-for-powerline'
+cask 'font-source-code-pro-for-powerline'
+cask 'font-roboto-mono-for-powerline'
 
 # cask 'intellij-idea'
 # cask 'jce-unlimited-strength-policy'
@@ -90,7 +89,6 @@ brew 'grep'
 brew 'gti'
 brew 'hadolint'
 brew 'httpie'
-brew 'hub'
 brew 'imagemagick'
 brew 'jmeter', args: ["with-plugins"]
 brew 'jpeg'
@@ -147,6 +145,7 @@ brew 'tree'
 brew 'universal-ctags', args: ["HEAD"]
 brew 'utf8proc'
 brew 'vale'
+brew 'vault'
 brew 'vim'
 brew 'wget'
 brew 'xz'
