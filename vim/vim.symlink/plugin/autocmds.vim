@@ -3,8 +3,6 @@ if has('autocmd')
     autocmd!
     " Save whenever switching windows or leaving vim.
     autocmd FocusLost,WinLeave * :silent! wa
-    " Red underlined search results
-    autocmd VimEnter * hi Search ctermfg=Red ctermbg=NONE cterm=underline
     " Strip all trailing whitespace on write
     autocmd BufWritePre * :call functions#Preserve('%s/\v\s+$//e')
     " mkdir -p when saving files
