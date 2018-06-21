@@ -35,3 +35,10 @@ function kip() {
       | awk '{print $2}' > >(cat) > >(pbcopy)
   fi
 }
+
+function tns() {
+  local ctx=$(kubectl config current-context)
+  local cns=$(kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${ctx}\")].context.namespace}")
+  echo "TILLER_NAMESPACE=${cns}"
+  export TILLER_NAMESPACE=${cns}
+}

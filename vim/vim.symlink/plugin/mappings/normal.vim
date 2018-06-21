@@ -7,19 +7,13 @@
 nnoremap gG gggqgG''
 
 nnoremap Q <nop>
-" nnoremap K <nop>
 nnoremap <silent> K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Repeat last macro if in normal buffer.
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
+" Make Y behave like C and D
 noremap Y y$
-
-" " moving up and down work as you would expect
-" nnoremap <silent> j gj
-" nnoremap <silent> k gk
-" nnoremap <silent> ^ g^
-" nnoremap <silent> $ g$
 
 " Split navigation
 nnoremap <C-j> <C-w>j
@@ -38,8 +32,3 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 " scroll the viewport faster
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
-
-" " Better command history with q:
-nnoremap q: :History:<CR>
-" " Better search history
-nnoremap q/ :History/<CR>

@@ -1,4 +1,3 @@
-" let g:UltiSnipsExpandTrigger = '<c-u>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 let g:UltiSnipsListSnippets = '<c-k>'

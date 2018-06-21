@@ -43,11 +43,9 @@ let g:go_highlight_types = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
 
-
 autocmd BufNewFile,BufRead *.go setlocal nolist noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 augroup go
-
   au!
   au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
@@ -64,5 +62,4 @@ augroup go
   au FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
   au FileType go nmap <leader>gt  <Plug>(go-test)
   au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
-
 augroup END

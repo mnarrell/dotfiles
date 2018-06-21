@@ -1,7 +1,7 @@
 setlocal equalprg=jq\ .
 
 if has('autocmd')
-  augroup md
+  augroup json
     autocmd!
     autocmd BufWritePre <buffer> :Neoformat
   augroup END

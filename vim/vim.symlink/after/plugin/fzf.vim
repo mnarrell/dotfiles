@@ -22,14 +22,22 @@ if executable('rg')
   nnoremap \ :Find<Space>
 endif
 
-" Normal mode mappings
 nnoremap <silent> <Leader>b :Buffers<CR>
 " nnoremap <silent> <Leader>c :Commands<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 " nnoremap <silent> <Leader>t :Tags<CR>
 
-" Insert mode mappings
-imap <C-x><C-l> <Plug>(fzf-complete-line)
+" Better command history with q:
+nnoremap q: :History:<CR>
+" Better search history
+nnoremap q/ :History/<CR>
+
+" Is this any good?
+" imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 
 let g:fzf_colors =
