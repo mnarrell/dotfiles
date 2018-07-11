@@ -84,7 +84,7 @@ prompt_parts=(
   "\${vcs_info_msg_0_}"
   "\$(vi_mode_prompt_info)"
   $prompt_newline
-  "%(?.%F{yellow}.%F{red})❯%f "
+  "%(?.%F{yellow}.%F{red})$%f "
 )
 
 setopt prompt_subst

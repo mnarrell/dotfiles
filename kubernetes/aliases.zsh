@@ -39,6 +39,6 @@ function kip() {
 function tns() {
   local ctx=$(kubectl config current-context)
   local cns=$(kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${ctx}\")].context.namespace}")
-  echo "TILLER_NAMESPACE=${cns}"
+  echo "${cns}" >! "${HOME}/.tiller_namespace"
   export TILLER_NAMESPACE=${cns}
 }
