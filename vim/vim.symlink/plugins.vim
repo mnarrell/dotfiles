@@ -18,9 +18,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Navigation
+" Plug 'junegunn/vim-easy-align'
 Plug 'fweep/vim-tabber'
+Plug 'godlygeek/tabular'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-vinegar'
@@ -86,8 +87,11 @@ Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 
 " Pandoc
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
+Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
+
+" Markdown
+Plug 'plasticboy/vim-markdown'
 
 " Tmux
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/', 'for': 'tmux'}
