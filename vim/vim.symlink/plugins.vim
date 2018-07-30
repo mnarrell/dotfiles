@@ -39,7 +39,8 @@ Plug 'kana/vim-textobj-indent'      | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
 
 " Git things
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-git'
 
@@ -89,9 +90,6 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 " Pandoc
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
-
-" Markdown
-Plug 'plasticboy/vim-markdown'
 
 " Tmux
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/', 'for': 'tmux'}

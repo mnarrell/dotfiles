@@ -5,10 +5,7 @@
     "style": "atx"
   },
   "MD004": {
-    "style": "asterisk"
-  },
-  "MD007": {
-    "indent": 4
+    "style": "dash"
   },
   "MD024": false,
   "MD035": {
