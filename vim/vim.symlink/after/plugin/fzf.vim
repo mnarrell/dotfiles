@@ -19,7 +19,7 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 if executable('rg')
   let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
   command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-  nnoremap \ :Find<Space>
+  nnoremap <localleader> :Find<Space>
 endif
 
 nnoremap <silent> <Leader>b :Buffers<CR>

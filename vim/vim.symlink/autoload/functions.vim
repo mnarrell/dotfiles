@@ -70,3 +70,31 @@ fun! functions#UpdatePlugins() abort
   echom 'Backing up plugin state to: '.l:filename
   execute 'PlugSnapshot! '.l:filename.' | PlugUpdate | PlugUpgrade'
 endf
+
+fun! functions#ToggleQuickFix() abort
+  if exists("g:qwindow")
+    cclose
+    unlet g:qwindow
+  else
+    " try
+      botright copen 20
+      let g:qwindow = 1
+    " catch
+    "   echo "No Errors found!"
+    " endtry
+  endif
+endf
+
+fun! functions#ToggleLocationList() abort
+  if exists("g:lwindow")
+    lclose
+    unlet g:lwindow
+  else
+    try
+      botright lopen 20
+      let g:lwindow = 1
+    catch
+      echo "No Errors found!"
+    endtry
+  endif
+endf
