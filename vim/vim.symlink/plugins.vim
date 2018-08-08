@@ -18,9 +18,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Navigation
-" Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 Plug 'fweep/vim-tabber'
-Plug 'godlygeek/tabular'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
@@ -53,11 +52,6 @@ if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " GO
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 if has('nvim')
@@ -76,13 +70,6 @@ Plug 'tbastos/vim-lua', { 'for': 'lua' }
 
 " Nginx
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
-
-" Python
-" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-" Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
-" if has('nvim')
-"   Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-" endif
 
 " Docker
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }

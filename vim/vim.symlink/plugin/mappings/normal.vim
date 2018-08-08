@@ -7,7 +7,7 @@ nnoremap <silent> K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'
 
 " Make Y behave like C and D
-noremap Y y$
+nnoremap Y y$
 
 " Split navigation
 nnoremap <C-j> <C-w>j
@@ -18,12 +18,6 @@ nnoremap <C-l> <C-w>l
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
-
-" Make arrow keys do something useful
-nnoremap <left> :vertical resize +2<cr>
-nnoremap <right> :vertical resize -2<cr>
-nnoremap <up> :resize -2<cr>
-nnoremap <down> :resize +2<cr>
 
 " Store relative line number jumps in the jumplist if they exceed a threshold.
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : '') . 'k'
