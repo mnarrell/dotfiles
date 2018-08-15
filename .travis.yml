@@ -11,8 +11,8 @@ before_install:
   - curl -sL git.io/antibody | bash -s
   - pip install -U setuptools
   - pip install -U pip
-  - pip install vim-vint
-  # - sudo pip install typing pathlib vim-vint
+  # - pip install vim-vint
+  - sudo pip install typing pathlib vim-vint
   - make check
 install:
   - make install
