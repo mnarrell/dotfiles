@@ -1,7 +1,7 @@
 ---
 language: python
 python:
-  - "2.7"
+  # - "2.7"
   - "3.6"
 os:
   - linux
@@ -9,10 +9,7 @@ before_install:
   - sudo apt-get update >/dev/null
   - sudo apt-get install -y zsh
   - curl -sL git.io/antibody | bash -s
-  - pip install -U setuptools
-  - pip install -U pip
-  # - pip install vim-vint
-  - sudo pip install typing pathlib vim-vint
+  - pip install vim-vint
   - make check
 install:
   - make install
