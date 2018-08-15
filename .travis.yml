@@ -9,7 +9,7 @@ before_install:
   - sudo apt-get update >/dev/null
   - sudo apt-get install -y zsh
   - curl -sL git.io/antibody | bash -s
-  - pip install pathlib vim-vint
+  - pip install typing pathlib vim-vint
   - make check
 install:
   - make install
