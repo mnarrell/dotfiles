@@ -12,7 +12,7 @@ function git_personal_user() {
 function eradicate_submodule!(){
   git submodule deinit -f $1
   git rm $1
-  git commit -m "Removed submodule: $1"
+  git commit -am "Removed submodule: $1"
   rm -rf .git/modules/$1
 }
 

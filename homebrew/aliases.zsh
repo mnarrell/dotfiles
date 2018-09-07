@@ -6,7 +6,7 @@ if [ $commands[brew] ]; then
       cleanup)
         (cd "$(brew --repo)" && git prune && git gc)
         command brew cleanup
-        command brew cask cleanup
+        # command brew cask cleanup
         command brew prune
         rm -rf "$(brew --cache)"
         ;;

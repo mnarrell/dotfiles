@@ -5,8 +5,7 @@ Plug 'wincent/terminus'                         " Make terminal VIM work like a 
 
 " Core
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'editorconfig/editorconfig-vim'
+" Plug 'AndrewRadev/splitjoin.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
@@ -14,20 +13,20 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-" Plug 'tpope/vim-dispatch'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Navigation
-Plug 'junegunn/vim-easy-align'
+Plug 'Yilin-Yang/vim-markbar'
 Plug 'fweep/vim-tabber'
+Plug 'godlygeek/tabular'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-vinegar'
 
 " Eyecandy
 Plug 'chriskempson/base16-vim'
-Plug 'edkolev/tmuxline.vim', { 'for': [] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'machakann/vim-highlightedyank'
@@ -43,8 +42,8 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-git'
 
-" Formatting
-Plug 'sbdchd/neoformat'
+" " Formatting
+" Plug 'sbdchd/neoformat'
 
 " Completion
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -52,33 +51,30 @@ if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 
-" GO
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax
+
 Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 if has('nvim')
   Plug 'zchee/deoplete-go', { 'do': 'make' }
 endif
 
-" PostgreSQL
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
-" JSON
 Plug 'elzr/vim-json', { 'for': 'json' }
 
-" Lua
-Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' } | Plug 'xolox/vim-misc'
 Plug 'tbastos/vim-lua', { 'for': 'lua' }
+Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' } | Plug 'xolox/vim-misc'
 
-" Nginx
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 
-" Docker
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 
-" Pandoc
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
 
-" Tmux
-Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/', 'for': 'tmux'}
+Plug 'edkolev/tmuxline.vim', { 'for': [] }
+Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
+
 
 call plug#end()
