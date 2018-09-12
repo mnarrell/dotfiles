@@ -9,6 +9,8 @@ if has('autocmd')
     autocmd BufWritePre * :call functions#MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     " Resize splits when VIM is resized
     autocmd VimResized * wincmd =
+    " Quickfix should always be at the bottom
+    autocmd FileType qf wincmd J
   augroup END
 
   if has('nvim')
