@@ -22,7 +22,7 @@ let g:go_list_type = 'quickfix'
 " let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 
-let g:go_gocode_propose_source = 1
+" let g:go_gocode_propose_source = 1
 
 let g:go_auto_type_info = 1
 

@@ -29,7 +29,7 @@
 	commend = commit --amend --no-edit
 	fetch = fetch -p
 	fs = submodule update --remote
-	it = !git init && git commit -m “root” --allow-empty
+	it = !git init && git commit -m "root" --allow-empty
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	patch = --no-pager diff --no-color
 	scrub = gc --aggressive --prune=now

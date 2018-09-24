@@ -5,7 +5,7 @@ Plug 'wincent/terminus'                         " Make terminal VIM work like a 
 
 " Core
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-" Plug 'AndrewRadev/splitjoin.vim'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
@@ -18,7 +18,6 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 " Navigation
 Plug 'Yilin-Yang/vim-markbar'
 Plug 'fweep/vim-tabber'
-Plug 'godlygeek/tabular'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'

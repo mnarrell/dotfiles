@@ -77,8 +77,8 @@ fun! functions#ToggleQuickFix() abort
     unlet g:qwindow
   else
     " try
-      botright copen 20
-      let g:qwindow = 1
+    botright copen 20
+    let g:qwindow = 1
     " catch
     "   echo 'No Errors found!'
     " endtry
@@ -98,3 +98,28 @@ fun! functions#ToggleLocationList() abort
     endtry
   endif
 endf
+
+fun! functions#Redir(cmd)
+  for win in range(1, winnr('$'))
+    if getwinvar(win, 'scratch')
+      execute win . 'windo close'
+    endif
+  endfor
+  if a:cmd =~# '^!'
+    execute "let output = system('" . substitute(a:cmd, '^!', '', '') . "')"
+  else
+    redir => output
+    execute a:cmd
+    redir END
+  endif
+  vnew
+  let w:scratch = 1
+  setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile
+  call setline(1, split(output, "\n"))
+endfunction
+
+" command! -nargs=1 -complete=command Redir silent call redir#Redir(<f-args>)
+" Usage:
+" 	:Redir hi ............. show the full output of command ':hi' in a scratch window
+" 	:Redir !ls -al ........ show the full output of command ':!ls -al' in a scratch window
+

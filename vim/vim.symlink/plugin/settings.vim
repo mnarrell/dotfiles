@@ -27,7 +27,7 @@ set scrolloff=3                      " start scrolling 3 lines before edge of vi
 set shiftround                       " always indent by multiple of shiftwidth
 set shiftwidth=2                     " spaces per tab (when shifting)
 set sidescrolloff=3                  " same as scrolloff, but for columns
-set smartindent                      " Intelligently indent based on syntax
+" set smartindent                      " Intelligently indent based on syntax
 set smarttab                         " <tab>/<BS> indent/dedent in leading whitespace
 
 set list                             " show whitespace
@@ -78,10 +78,10 @@ if has('showcmd')
   set noshowcmd                      " don't show extra info at end of command line
 endif
 
-if v:progname !=# 'vi'
-  set softtabstop=-1                 " use 'shiftwidth' for tab/bs at end of line
-endif
-set tabstop=2                        " spaces per tab
+" if v:progname !=# 'vi'
+"   set softtabstop=-1                 " use 'shiftwidth' for tab/bs at end of line
+" endif
+" set tabstop=2                        " spaces per tab
 
 if has('syntax')
   set spellcapcheck=                 " don't check for capital letters at start of sentence

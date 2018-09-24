@@ -2,16 +2,17 @@ mas 'Deliveries: a package tracker', id: 924726344
 mas 'Marked 2', id: 890031187
 mas 'Microsoft Remote Desktop (8.0)', id: 715768417
 mas 'Paprika Recipe Manager 3', id: 1303222628
-mas 'Tweetbot for Twitter', id: 557168941
+mas 'Tweetbot (3.1)', id: 1384080005
 mas 'Xcode', id: 497799835
 mas 'feedly. Read more, know more.', id: 865500966
 
 tap 'ValeLint/vale'
+tap 'crisidev/homebrew-chunkwm'
 tap 'getantibody/tap'
-tap 'go-delve/delve'
 tap 'golangci/tap'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/services'
+tap 'koekeishiya/formulae'
 tap 'universal-ctags/universal-ctags'
 
 cask_args appdir: '/Applications'
@@ -22,11 +23,11 @@ cask 'font-roboto-mono-for-powerline'
 
 # cask 'intellij-idea'
 # cask 'jce-unlimited-strength-policy'
+
 cask 'alfred'
 cask 'atom'
 cask 'bartender'
 cask 'better-window-manager'
-cask 'box-sync'
 cask 'carbon-copy-cloner'
 cask 'cleanmymac'
 cask 'coconutbattery'
@@ -60,6 +61,8 @@ cask 'xquartz'
 # brew 'gnu-sed'
 # brew 'kubernetes-cli'
 # brew 'kubernetes-helm'
+# brew 'redis', restart_service: :changed
+
 brew 'ack'
 brew 'ansible'
 brew 'antibody'
@@ -68,6 +71,7 @@ brew 'automake'
 brew 'bash'
 brew 'berkeley-db'
 brew 'boost'
+brew 'chunkwm'
 brew 'cmake'
 brew 'coreutils'
 brew 'exa'
@@ -85,7 +89,6 @@ brew 'gnu-indent'
 brew 'gnu-tar'
 brew 'gnutls'
 brew 'go', args: ["cross-compile-common"]
-brew 'go-delve/delve/delve'
 brew 'golangci-lint'
 brew 'googler'
 brew 'grep'
@@ -96,6 +99,7 @@ brew 'imagemagick'
 brew 'jmeter', args: ["with-plugins"]
 brew 'jpeg'
 brew 'jq'
+brew 'koekeishiya/formulae/skhd', args: ["HEAD", "with-logging"]
 brew 'libevent'
 brew 'libffi'
 brew 'libmagic'
@@ -104,8 +108,10 @@ brew 'libtasn1'
 brew 'libtiff'
 brew 'libtool'
 brew 'libyaml'
-brew 'lua51'
+brew 'lua@5.1'
+brew 'luarocks'
 brew 'mas'
+brew 'nats-streaming-server'
 brew 'neofetch'
 brew 'neovim'
 brew 'nmap'
@@ -124,7 +130,6 @@ brew 'python'
 brew 'ranger'
 brew 'readline'
 brew 'reattach-to-user-namespace'
-brew 'redis', restart_service: :changed
 brew 'rg'
 brew 'rpm'
 brew 'ruby'

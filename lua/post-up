@@ -2,9 +2,9 @@
 
 [ ! -L "${HOME:?}/bin/lua" ] && ln -s /usr/local/bin/lua-5.1 "${HOME:?}/bin/lua"
 [ ! -L "${HOME:?}/bin/luac" ] && ln -s /usr/local/bin/luac-5.1 "${HOME:?}/bin/luac"
-[ ! -L "${HOME:?}/bin/luarocks" ] && ln -s /usr/local/bin/luarocks-5.1 "${HOME:?}/bin/luarocks"
+# [ ! -L "${HOME:?}/bin/luarocks" ] && ln -s /usr/local/bin/luarocks-5.1 "${HOME:?}/bin/luarocks"
 [ ! -L "${HOME:?}/bin/ltags" ] && ln -s "${DOTFILES:?}/lua/ltags/ltags" "${HOME:?}/bin/ltags"
 chmod +x "${HOME:?}/bin/ltags"
 
-"${HOME}/bin/luarocks" install --local checks
-"${HOME}/bin/luarocks" install --local formatter
+/usr/local/bin/luarocks install --local checks
+/usr/local/bin/luarocks install --local formatter
