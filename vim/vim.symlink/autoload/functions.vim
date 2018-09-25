@@ -99,7 +99,7 @@ fun! functions#ToggleLocationList() abort
   endif
 endf
 
-fun! functions#Redir(cmd)
+fun! functions#Redir(cmd) abort
   for win in range(1, winnr('$'))
     if getwinvar(win, 'scratch')
       execute win . 'windo close'
