@@ -1,6 +1,7 @@
 #! /usr/bin/env zsh
 
 # TMUX
+alias tmux="tmux -2"
 alias tk="tmux kill-server"
 alias tls="tmux ls"
 

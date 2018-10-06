@@ -25,6 +25,7 @@ let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 " let g:go_gocode_propose_source = 1
 
 let g:go_auto_type_info = 1
+let g:go_updatetime = 400
 
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_build_constraints = 1
@@ -66,4 +67,5 @@ augroup go
   au FileType go nmap <Leader>tc <Plug>(go-coverage-toggle)
   au FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
   au FileType go nmap <leader>gt  <Plug>(go-test)
+  au FileType go nmap <Leader>i <Plug>(go-info)
 augroup END

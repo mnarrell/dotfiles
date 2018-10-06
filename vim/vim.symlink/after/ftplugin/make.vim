@@ -1,2 +1,3 @@
-set nolist
 set noexpandtab
+set nolist
+set tabstop=2

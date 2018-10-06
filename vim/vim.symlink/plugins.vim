@@ -75,5 +75,6 @@ Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
 Plug 'edkolev/tmuxline.vim', { 'for': [] }
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 
+Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
