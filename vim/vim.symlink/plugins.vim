@@ -77,4 +77,6 @@ Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 
 Plug 'mustache/vim-mustache-handlebars'
 
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+
 call plug#end()

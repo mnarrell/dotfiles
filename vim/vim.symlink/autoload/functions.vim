@@ -21,7 +21,7 @@ fun! functions#plaintext() abort
       autocmd BufWinLeave <buffer> call clearmatches()
     augroup END
   endif
-endfun
+endf
 
 " Mkdir on save
 fun! functions#MkNonExDir(file, buf) abort
@@ -38,7 +38,7 @@ fun! functions#Help() abort
     wincmd T
     nnoremap <buffer> q :q<CR>
   endif
-endfunction
+endf
 
 " Preserves the state of the editor, executes a command, and restores this state
 " http://vimcasts.org/episodes/tidying-whitespace/
@@ -49,7 +49,7 @@ fun! functions#Preserve(cmd) abort
   execute a:cmd
   let @/ = l:search
   call cursor(l:line, l:col)
-endfunction
+endf
 
 " Copies selected markdown and converts it to Confluence style markdown. Puts
 " the results in the * register for easy pasting into Confluence.
@@ -62,7 +62,7 @@ fun! functions#AsConfluence() abort
   else
     echo 'The markdown2confluence utility was not found on your $PATH'
   endif
-endfunction
+endf
 
 " Updates all configured plugins, making a backup first.
 fun! functions#UpdatePlugins() abort
@@ -116,10 +116,14 @@ fun! functions#Redir(cmd) abort
   let w:scratch = 1
   setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile
   call setline(1, split(output, "\n"))
-endfunction
+endf
 
 " command! -nargs=1 -complete=command Redir silent call redir#Redir(<f-args>)
 " Usage:
 " 	:Redir hi ............. show the full output of command ':hi' in a scratch window
 " 	:Redir !ls -al ........ show the full output of command ':!ls -al' in a scratch window
 
+fun! functions#RestartGocode() abort
+  echom 'Gocode killed...'
+  silent! !killall gocode
+endf

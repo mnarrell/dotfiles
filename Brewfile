@@ -1,33 +1,28 @@
-mas 'Deliveries: a package tracker', id: 924726344
-mas 'Marked 2', id: 890031187
-mas 'Microsoft Remote Desktop (8.0)', id: 715768417
-mas 'Paprika Recipe Manager 3', id: 1303222628
-mas 'Tweetbot (3.1)', id: 1384080005
-mas 'Xcode', id: 497799835
-mas 'feedly. Read more, know more.', id: 865500966
-
+################################################################################
+# Taps
+################################################################################
 tap 'ValeLint/vale'
 tap 'crisidev/homebrew-chunkwm'
 tap 'getantibody/tap'
 tap 'golangci/tap'
+tap 'homebrew/cask-drivers'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/services'
 tap 'koekeishiya/formulae'
 tap 'universal-ctags/universal-ctags'
 
-cask_args appdir: '/Applications'
 
-cask 'font-meslo-for-powerline'
-cask 'font-source-code-pro-for-powerline'
-cask 'font-roboto-mono-for-powerline'
-
-# cask 'intellij-idea'
+################################################################################
+# Casks
+################################################################################
 # cask 'jce-unlimited-strength-policy'
 # cask 'minikube'
 
+cask_args appdir: '/Applications'
+
 cask 'alfred'
-cask 'atom'
 cask 'bartender'
+cask 'basictex'
 cask 'better-window-manager'
 cask 'carbon-copy-cloner'
 cask 'cleanmymac'
@@ -35,22 +30,29 @@ cask 'coconutbattery'
 cask 'colloquy'
 cask 'docker'
 cask 'dropbox'
+cask 'dropbox'
 cask 'firefox'
+cask 'font-meslo-for-powerline'
+cask 'font-roboto-mono-for-powerline'
+cask 'font-source-code-pro-for-powerline'
 cask 'google-chrome'
 cask 'istat-menus'
 cask 'iterm2'
-cask 'mactex'
-cask 'macupdate-desktop'
+cask 'jetbrains-toolbox'
+cask 'logitech-options'
+cask 'marked'
 cask 'microsoft-office'
 cask 'monolingual'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
+cask 'onedrive'
 cask 'onyx'
 cask 'postman'
 cask 'rowanj-gitx'
 cask 'skitch'
 cask 'slack'
 cask 'spotify'
+cask 'the-unarchiver'
 cask 'vagrant'
 cask 'vienna'
 cask 'visual-studio-code'
@@ -58,6 +60,10 @@ cask 'vlc'
 cask 'wireshark'
 cask 'xquartz'
 
+
+################################################################################
+# Simple brews
+################################################################################
 # brew 'gnu-sed'
 # brew 'kubernetes-cli'
 # brew 'kubernetes-helm'
@@ -75,6 +81,7 @@ brew 'chunkwm'
 brew 'cmake'
 brew 'coreutils'
 brew 'exa'
+brew 'extract_url'
 brew 'findutils'
 brew 'freetype'
 brew 'fzf'
@@ -156,6 +163,18 @@ brew 'utf8proc'
 brew 'vale'
 brew 'vault'
 brew 'vim'
+brew 'watch'
 brew 'wget'
 brew 'xz'
 brew 'zsh'
+
+
+################################################################################
+# Mac App Store?
+################################################################################
+# mas 'Blackmagic Disk Speed Test (3.1)', id: 425264550
+# mas 'Deliveries: a package tracker', id: 924726344
+# mas 'Microsoft Remote Desktop (8.0)', id: 715768417
+# mas 'Paprika Recipe Manager 3', id: 1303222628
+# mas 'Tweetbot (3.1)', id: 1384080005
+# mas 'feedly. Read more, know more.', id: 865500966

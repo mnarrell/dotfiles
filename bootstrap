@@ -10,13 +10,13 @@ echo ''
 
 if test "$(uname)" = "Darwin"; then
 
-  if test ! "$(which gcc)"; then
+  if test ! "$(command -v gcc)"; then
     info "Installing XCode..."
     xcode-select --install
   fi
 
   info "Installing Homebrew..."
-  if test ! "$(which brew)"; then
+  if test ! "$(command -v brew)"; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" | while read -r line; do success "$line"; done
   else
     while read -r brw; do
@@ -30,4 +30,7 @@ if test "$(uname)" = "Darwin"; then
     success "${bun}"
   done < <(brew bundle)
   echo ''
+
+  "$(brew --prefix)/opt/fzf/install --all"
+
 fi

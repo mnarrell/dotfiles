@@ -5,7 +5,8 @@ alt - f : chunkc tiling::window --toggle fullscreen
 alt - a : chunkc tiling::desktop --toggle offset
 
 # change focus between tiling / floating windows
-shift + alt - space : chunkc tiling::window --toggle float
+shift + alt - space : chunkc tiling::window --toggle float;\
+                      chunkc tiling::window --grid-layout 4:4:1:1:2:2
 
 # change layout of desktop
 alt - e : chunkc tiling::desktop --layout bsp
@@ -59,3 +60,4 @@ ctrl + alt - l : chunkc tiling::window --use-insertion-point east
 
 # float next window to be tiled
 shift + alt - t : chunkc set window_float_next 1
+

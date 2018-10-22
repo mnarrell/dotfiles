@@ -7,3 +7,11 @@ alias -s markdown='open -a "Marked 2.app"'
 # Handle picky command/arg corrections
 alias ./...="nocorrect ./..."
 alias zsh="nocorrect zsh"
+
+
+alias chmod='chmod -v'
+alias chown='chown -v'
+alias cp='cp -v'
+alias mkdir='mkdir -v'
+alias mv='mv -v'
+alias rm='rm -v'

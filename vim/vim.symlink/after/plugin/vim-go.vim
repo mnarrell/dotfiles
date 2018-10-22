@@ -4,7 +4,9 @@ function! s:build_go_files()
   if l:file =~# '^\f\+_test\.go$'
     call go#test#Test(0, 1)
   elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
+    " call go#cmd#Build(0)
+    " call go#cmd#Install(0)
+    GoBuild -i
   endif
 endfunction
 
@@ -52,6 +54,7 @@ augroup go
   au!
 
   au BufNewFile,BufRead *.go setlocal nolist noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
+  " au BufWritePost *.go silent! GoBuild -i
 
   au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
@@ -67,5 +70,4 @@ augroup go
   au FileType go nmap <Leader>tc <Plug>(go-coverage-toggle)
   au FileType go nmap <leader>gb :<C-u>call <SID>build_go_files()<CR>
   au FileType go nmap <leader>gt  <Plug>(go-test)
-  au FileType go nmap <Leader>i <Plug>(go-info)
 augroup END

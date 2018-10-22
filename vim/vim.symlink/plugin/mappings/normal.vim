@@ -26,3 +26,6 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : '') . 'j'
 " scroll the viewport faster
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
+
+" Clear the search highlighting
+nmap <C-_> <Plug>(LoupeClearHighlight)

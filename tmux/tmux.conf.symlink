@@ -117,6 +117,7 @@ set-window-option -g mode-style 'fg=colour18 bg=colour4'
 # Plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'tmux-plugins/tmux-urlview'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run "${HOME}/.tmux/plugins/tpm/tpm"
