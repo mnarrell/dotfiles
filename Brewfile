@@ -2,7 +2,6 @@
 # Taps
 ################################################################################
 tap 'ValeLint/vale'
-tap 'crisidev/homebrew-chunkwm'
 tap 'getantibody/tap'
 tap 'golangci/tap'
 tap 'homebrew/cask-drivers'
@@ -30,7 +29,6 @@ cask 'coconutbattery'
 cask 'colloquy'
 cask 'docker'
 cask 'dropbox'
-cask 'dropbox'
 cask 'firefox'
 cask 'font-meslo-for-powerline'
 cask 'font-roboto-mono-for-powerline'
@@ -55,6 +53,7 @@ cask 'spotify'
 cask 'the-unarchiver'
 cask 'vagrant'
 cask 'vienna'
+cask 'virtualbox'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'wireshark'
@@ -101,12 +100,12 @@ brew 'googler'
 brew 'grep'
 brew 'gti'
 brew 'hadolint'
+brew 'htop'
 brew 'httpie'
 brew 'imagemagick'
 brew 'jmeter', args: ["with-plugins"]
 brew 'jpeg'
 brew 'jq'
-brew 'koekeishiya/formulae/skhd', args: ["HEAD", "with-logging"]
 brew 'libevent'
 brew 'libffi'
 brew 'libmagic'
@@ -170,11 +169,11 @@ brew 'zsh'
 
 
 ################################################################################
-# Mac App Store?
+# Mac App Store
 ################################################################################
-# mas 'Blackmagic Disk Speed Test (3.1)', id: 425264550
-# mas 'Deliveries: a package tracker', id: 924726344
-# mas 'Microsoft Remote Desktop (8.0)', id: 715768417
-# mas 'Paprika Recipe Manager 3', id: 1303222628
-# mas 'Tweetbot (3.1)', id: 1384080005
-# mas 'feedly. Read more, know more.', id: 865500966
+mas 'Blackmagic Disk Speed Test (3.1)', id: 425264550
+mas 'Deliveries: a package tracker', id: 924726344
+mas 'Microsoft Remote Desktop (8.0)', id: 715768417
+mas 'Paprika Recipe Manager 3', id: 1303222628
+mas 'Tweetbot (3.1)', id: 1384080005
+mas 'feedly. Read more, know more.', id: 865500966

@@ -53,7 +53,9 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax
 
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
+
+Plug 'fatih/vim-go', { 'tag': '*', 'for': 'go', 'do': ':GoUpdateBinaries' }
 if has('nvim')
   Plug 'zchee/deoplete-go', { 'do': 'make' }
 endif
