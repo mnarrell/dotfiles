@@ -3,4 +3,4 @@
 yes | pip2 uninstall -r "${DIR}/requirements.txt"
 yes | pip3 uninstall -r "${DIR}/requirements.txt"
 
-rm -rf "${HOME}/.config/yamllint"
+rm -rf "${HOME}/.config/yapf"
