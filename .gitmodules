@@ -4,6 +4,3 @@
 [submodule "zsh/zsh.symlink/base16-shell"]
 	path = zsh/zsh.symlink/base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
-[submodule "lua/ltags"]
-	path = lua/ltags
-	url = https://github.com/stevedonovan/ltags.git
