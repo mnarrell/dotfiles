@@ -16,7 +16,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 
 " Navigation
-Plug 'Yilin-Yang/vim-markbar'
 Plug 'fweep/vim-tabber'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
@@ -36,10 +35,8 @@ Plug 'kana/vim-textobj-indent'      | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
 
 " Git things
-" Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-git'
 
 " " Formatting
 " Plug 'sbdchd/neoformat'
@@ -80,5 +77,6 @@ Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'mustache/vim-mustache-handlebars'
 
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
 
 call plug#end()

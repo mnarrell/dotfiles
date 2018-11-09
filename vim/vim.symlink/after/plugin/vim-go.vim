@@ -10,9 +10,10 @@ function! s:build_go_files()
   endif
 endfunction
 
-let g:deoplete#sources#go#align_class = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH. '/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+let g:go_gocode_propose_source = 0
 
 let g:go_addtags_transform = 'camelcase'
 let g:go_fmt_command = 'goimports'
@@ -23,8 +24,6 @@ let g:go_list_type = 'quickfix'
 
 " let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-
-" let g:go_gocode_propose_source = 1
 
 let g:go_auto_type_info = 1
 let g:go_updatetime = 400
