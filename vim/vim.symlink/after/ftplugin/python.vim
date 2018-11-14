@@ -8,3 +8,5 @@ set fileformat=unix
 
 setlocal equalprg=yapf
 " setlocal formatprg=yapf
+
+" let g:ale_python_flake8_options = '-m flake8'
