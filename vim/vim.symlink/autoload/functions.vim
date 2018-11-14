@@ -128,7 +128,7 @@ fun! functions#RestartGocode() abort
   silent! !killall gocode
 endf
 
-fun functions#SetPython2() abort
+fun! functions#SetPython2() abort
   let b:ale_python_flake8_executable = 'python'
   let b:ale_python_pylint_executable = 'python'
   :ALEToggle
