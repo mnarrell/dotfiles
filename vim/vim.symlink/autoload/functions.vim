@@ -134,7 +134,7 @@ fun! functions#SetPython2() abort
   :ALEToggle
 endfun
 
-function functions#Base64Decode() range
+fun! functions#Base64Decode() abort
   normal! gv"sy
   execute "let output = system('echo -n " . @s . " | base64 -D')"
 
@@ -148,5 +148,4 @@ function functions#Base64Decode() range
   setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile
   " vint: -ProhibitUsingUndeclaredVariable
   call setline(1, split(output, "\n"))
-endfunction
-
+endfun
