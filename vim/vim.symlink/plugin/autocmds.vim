@@ -24,4 +24,9 @@ if has('autocmd')
     autocmd!
     autocmd BufEnter *.txt call functions#Help()
   augroup END
+
+  augroup XML
+    autocmd!
+    autocmd FileType xml setlocal foldmethod=indent foldlevel=20
+  augroup END
 endif

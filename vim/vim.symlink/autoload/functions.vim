@@ -118,7 +118,6 @@ fun! functions#Redir(cmd) abort
   call setline(1, split(output, "\n"))
 endf
 
-" command! -nargs=1 -complete=command Redir silent call redir#Redir(<f-args>)
 " Usage:
 " 	:Redir hi ............. show the full output of command ':hi' in a scratch window
 " 	:Redir !ls -al ........ show the full output of command ':!ls -al' in a scratch window
@@ -134,3 +133,20 @@ fun! functions#SetPython2() abort
   :ALEToggle
   :ALEToggle
 endfun
+
+function functions#Base64Decode() range
+  normal! gv"sy
+  execute "let output = system('echo -n " . @s . " | base64 -D')"
+
+  for win in range(1, winnr('$'))
+    if getwinvar(win, 'scratch')
+      execute win . 'windo close'
+    endif
+  endfor
+  botright new
+  let w:scratch = 1
+  setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile
+  " vint: -ProhibitUsingUndeclaredVariable
+  call setline(1, split(output, "\n"))
+endfunction
+
