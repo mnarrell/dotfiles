@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+/usr/bin/env osascript << EOF
+  display notification "Restarting..." with title "Chunk WM"
+EOF
+
+brew services restart chunkwm
+
+/usr/bin/env osascript << EOF
+  display notification "Restarting..." with title "SKHD"
+EOF
+
+brew services restart skhd
