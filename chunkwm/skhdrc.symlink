@@ -43,9 +43,9 @@ shift + alt - y : chunkc tiling::desktop --mirror vertical
 shift + alt - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
 shift + alt - p : chunkc tiling::window --send-to-desktop prev
 shift + alt - n : chunkc tiling::window --send-to-desktop next
-shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
-shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
-shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
+shift + alt - 1 : chunkc tiling::window --send-to-desktop 1; chunkc tiling::monitor -f 1
+shift + alt - 2 : chunkc tiling::window --send-to-desktop 2; chunkc tiling::monitor -f 2
+shift + alt - 3 : chunkc tiling::window --send-to-desktop 3; chunkc tiling::monitor -f 3
 
 # resizing
 shift + alt - left : chunkc tiling::window --use-temporary-ratio 0.05 --adjust-window-edge west; chunkc tiling::window --use-temporary-ratio -0.05 --adjust-window-edge east
