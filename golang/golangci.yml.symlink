@@ -31,6 +31,7 @@ linters-settings:
 linters:
   enable-all: true
   disable:
+    - megacheck
     # - maligned
     # - prealloc
     # - gosec
