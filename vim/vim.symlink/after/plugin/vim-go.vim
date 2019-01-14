@@ -62,14 +62,13 @@ augroup go
   au FileType go imap <C-g> <ESC>:<C-u>GoDeclsDir<CR>
   au FileType go nmap <C-g> :GoDeclsDir<CR>
 
+  au FileType go nmap <Leader>gt  <Plug>(go-test-func)
   au FileType go nmap db <Plug>(go-doc-browser)
   au FileType go nmap de <Plug>(go-def-vertical)
-  au FileType go nmap tc <Plug>(go-coverage-toggle)
   au FileType go nmap gb :<C-u>call <SID>build_go_files()<CR>
-  au FileType go nmap gt  <Plug>(go-test-func)
-
-  au FileType go nmap gf <Plug>(go-referrers)
-  au FileType go nmap gr <Plug>(go-rename)
   au FileType go nmap gc <Plug>(go-callers)
+  au FileType go nmap gf <Plug>(go-referrers)
   au FileType go nmap gi <Plug>(go-implements)
+  au FileType go nmap gr <Plug>(go-rename)
+  au FileType go nmap tc <Plug>(go-coverage-toggle)
 augroup END

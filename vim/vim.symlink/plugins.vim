@@ -1,19 +1,23 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'wincent/loupe'                            " Better in-file search
-Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
+" Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
 
 " Core
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
-Plug 'w0rp/ale'
+Plug 'romainl/vim-qf'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
+Plug 'w0rp/ale'
 
 " Navigation
 Plug 'fweep/vim-tabber'
@@ -38,31 +42,26 @@ Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
-" " Formatting
-" Plug 'sbdchd/neoformat'
-
 " Completion
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-go', { 'do': 'make'}
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax
 
-Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
+" Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 
 Plug 'fatih/vim-go', { 'tag': '*', 'for': 'go', 'do': ':GoUpdateBinaries' }
-if has('nvim')
-  Plug 'zchee/deoplete-go', { 'do': 'make' }
-endif
 
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 Plug 'elzr/vim-json', { 'for': 'json' }
 
-Plug 'tbastos/vim-lua', { 'for': 'lua' }
-Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' } | Plug 'xolox/vim-misc'
+" Plug 'tbastos/vim-lua', { 'for': 'lua' }
+" Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' } | Plug 'xolox/vim-misc'
 
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 
@@ -72,11 +71,14 @@ Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
 
 Plug 'edkolev/tmuxline.vim', { 'for': [] }
+Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'mustache/vim-mustache-handlebars'
 
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
+
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
 call plug#end()

@@ -30,14 +30,11 @@
   fetch = fetch -p
   fs = submodule update --remote
   it = !git init && git commit -m "root" --allow-empty
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   patch = --no-pager diff --no-color
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
   pull = pull --tags
   scrub = gc --aggressive --prune=now
   st = status -sb
-  today = shortlog --since=midnight
-  who = shortlog -s -n --no-merges
   wip = commit -am "WIP"
 
 [merge]
