@@ -11,7 +11,7 @@ function! s:build_go_files()
 endfunction
 
 let g:go_gocode_propose_source = 0
-let g:deoplete#sources#go#gocode_binary = $GOPATH. '/bin/gocode'
+let g:deoplete#sources#go#gocode_binary = $GOPATH. '/bin/gocode-gomod'
 
 let g:go_addtags_transform = 'camelcase'
 let g:go_fmt_command = 'goimports'

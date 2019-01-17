@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-function reset_gocode() {
-  gocode drop-cache
-  gocode set autobuild true
+function kgc() {
+  killall gocode
+  killall gocode-gomod
 }

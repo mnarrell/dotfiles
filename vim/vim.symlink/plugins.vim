@@ -60,9 +60,6 @@ Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 Plug 'elzr/vim-json', { 'for': 'json' }
 
-" Plug 'tbastos/vim-lua', { 'for': 'lua' }
-" Plug 'xolox/vim-lua-ftplugin', { 'for': 'lua' } | Plug 'xolox/vim-misc'
-
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
@@ -76,8 +73,6 @@ Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'mustache/vim-mustache-handlebars'
-
-Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 

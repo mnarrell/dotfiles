@@ -1,7 +1,7 @@
 command! GX :silent! !gitx
 command! PU :call functions#UpdatePlugins()
 command! PY2 :call functions#SetPython2()
-command! RGC :call functions#RestartGocode()
+command! KGC :call functions#RestartGocode()
 
 command! -range=% AsConfluence :call functions#AsConfluence()
 command! -range=% Base64Decode :call functions#Base64Decode()
