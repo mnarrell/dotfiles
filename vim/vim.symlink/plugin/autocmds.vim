@@ -17,6 +17,7 @@ if has('autocmd')
     augroup Terminal
       autocmd!
       autocmd TermOpen * setlocal nolist nospell noshowmode
+      autocmd TermOpen * startinsert
     augroup END
   endif
 

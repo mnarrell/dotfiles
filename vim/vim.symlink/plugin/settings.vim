@@ -10,6 +10,7 @@ set nojoinspaces                     " Use one space, not two, after punctuation
 set noshowmode                       " Don't show mode (because of airline)
 set nowrap                           " Do not wrap lines by default
 set number                           " Show the current line number in the gutter
+set shell=/usr/local/bin/zsh         " ZSH
 set showmatch                        " Show matching braces, parens, etc.
 set switchbuf=usetab                 " try to reuse windows/tabs when switching buffers
 set textwidth=120                    " 80 is for the weak
