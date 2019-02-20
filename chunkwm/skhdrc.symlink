@@ -29,6 +29,9 @@ alt - a : chunkc tiling::desktop --toggle offset
 #                       chunkc tiling::window --grid-layout 4:4:1:1:2:2
 shift + alt - space : chunkc tiling::window --toggle float
 
+# float next window to be tiled
+shift + alt - t : chunkc set window_float_next 1
+
 # move focused window
 shift + alt - h : chunkc tiling::window --warp west
 shift + alt - j : chunkc tiling::window --warp south
@@ -60,9 +63,6 @@ ctrl + alt - h : chunkc tiling::window --use-insertion-point west
 ctrl + alt - j : chunkc tiling::window --use-insertion-point south
 ctrl + alt - k : chunkc tiling::window --use-insertion-point north
 ctrl + alt - l : chunkc tiling::window --use-insertion-point east
-
-# float next window to be tiled
-ctrl + alt - t : chunkc set window_float_next 1
 
 # restart chunk and skhd
 ctrl + alt - r : "${HOME}/.chunkwm/scripts/restart"

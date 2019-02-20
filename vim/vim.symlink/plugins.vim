@@ -55,7 +55,7 @@ endif
 
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 
-Plug 'fatih/vim-go', { 'tag': '*', 'for': 'go', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
 
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 

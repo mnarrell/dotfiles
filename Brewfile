@@ -14,10 +14,11 @@ tap 'universal-ctags/universal-ctags'
 ################################################################################
 # Casks
 ################################################################################
+cask_args appdir: '/Applications'
+
 # cask 'jce-unlimited-strength-policy'
 # cask 'minikube'
-
-cask_args appdir: '/Applications'
+# cask 'onedrive'
 
 cask 'alfred'
 cask 'bartender'
@@ -38,13 +39,10 @@ cask 'istat-menus'
 cask 'iterm2'
 cask 'java'
 cask 'jetbrains-toolbox'
-cask 'logitech-options'
 cask 'marked'
-cask 'microsoft-office'
 cask 'monolingual'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
-cask 'onedrive'
 cask 'onyx'
 cask 'postman'
 cask 'rowanj-gitx'
@@ -53,7 +51,6 @@ cask 'slack'
 cask 'spotify'
 cask 'the-unarchiver'
 cask 'vagrant'
-cask 'vienna'
 cask 'virtualbox'
 cask 'visual-studio-code'
 cask 'vlc'
@@ -71,17 +68,21 @@ cask 'xquartz'
 
 brew 'ack'
 brew 'ansible'
+brew 'ansible-lint'
 brew 'antibody'
 brew 'autoconf'
 brew 'automake'
 brew 'bash'
+brew 'bat'
 brew 'berkeley-db'
 brew 'boost'
 brew 'chunkwm'
 brew 'cmake'
 brew 'coreutils'
+brew 'dep'
 brew 'exa'
 brew 'extract_url'
+brew 'fd'
 brew 'findutils'
 brew 'freetype'
 brew 'fzf'
@@ -97,9 +98,7 @@ brew 'gnu-tar'
 brew 'gnutls'
 brew 'go', args: ["cross-compile-common"]
 brew 'golangci-lint'
-brew 'googler'
 brew 'grep'
-brew 'gti'
 brew 'hadolint'
 brew 'htop'
 brew 'httpie'
@@ -119,6 +118,7 @@ brew 'lua@5.1'
 brew 'luarocks'
 brew 'mas'
 brew 'nats-streaming-server'
+brew 'ncdu'
 brew 'neofetch'
 brew 'neovim'
 brew 'nmap'
@@ -152,7 +152,6 @@ brew 'source-highlight'
 brew 'sqlite'
 brew 'ssh-copy-id'
 brew 'stern'
-brew 'stern'
 brew 'stow'
 brew 'tcptraceroute'
 brew 'telnet'
@@ -160,7 +159,7 @@ brew 'tidy-html5'
 brew 'tig'
 brew 'tmux'
 brew 'tree'
-brew 'universal-ctags', args: ["HEAD"]
+# brew 'universal-ctags', args: ["HEAD"]
 brew 'utf8proc'
 brew 'vale'
 brew 'vault'
@@ -168,15 +167,23 @@ brew 'vim'
 brew 'watch'
 brew 'wget'
 brew 'xz'
+brew 'yq'
 brew 'zsh'
 
 
 ################################################################################
 # Mac App Store
 ################################################################################
-mas 'Blackmagic Disk Speed Test (3.1)', id: 425264550
-mas 'Deliveries: a package tracker', id: 924726344
-mas 'Microsoft Remote Desktop (8.0)', id: 715768417
-mas 'Paprika Recipe Manager 3', id: 1303222628
-mas 'Tweetbot (3.1)', id: 1384080005
-mas 'feedly. Read more, know more.', id: 865500966
+mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
+mas 'Deliveries (3.1.1)', id: 924726344
+mas 'Microsoft Excel (16.22)', id: 462058435
+mas 'Microsoft OneNote (16.22)', id: 784801555
+mas 'Microsoft Outlook (16.22)', id: 985367838
+mas 'Microsoft PowerPoint (16.22)', id: 462062816
+mas 'Microsoft Remote Desktop (8.0.30030)', id: 715768417
+mas 'Microsoft Word (16.22)', id: 462054704
+mas 'OneDrive (19.002.0107)', id: 823766827
+mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
+mas 'Tweetbot (3.2)', id: 1384080005
+mas 'Xcode (10.1)', id: 497799835
+mas 'feedly (1.1)', id: 865500966
