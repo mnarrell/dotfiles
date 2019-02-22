@@ -21,12 +21,16 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'w0rp/ale'
 
 " Navigation
-Plug 'fweep/vim-tabber'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
+" Plug 'tommcdo/vim-lion'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
+Plug 'markonm/traces.vim'
+Plug 'rhysd/clever-f.vim'
 Plug 'tpope/vim-vinegar'
+Plug 'wellle/targets.vim'
+Plug 'fweep/vim-tabber'
 
 " Eyecandy
 Plug 'chriskempson/base16-vim'
@@ -35,9 +39,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'machakann/vim-highlightedyank'
 
 " Text objects
-Plug 'christoomey/vim-sort-motion'  | Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-indent'      | Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'        | Plug 'kana/vim-textobj-user'
+Plug 'christoomey/vim-sort-motion' | Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'     | Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'       | Plug 'kana/vim-textobj-user'
 
 " Git things
 Plug 'mhinz/vim-signify'

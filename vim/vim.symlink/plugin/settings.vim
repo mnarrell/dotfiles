@@ -51,9 +51,9 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
-if has('nvim')
-  set inccommand=nosplit             " Incremental substitution highlighting
-endif
+" if has('nvim')
+"   set inccommand=nosplit             " Incremental substitution highlighting
+" endif
 
 if executable('par')
   set formatprg=par\ -w78rq          " Use Par to format text
