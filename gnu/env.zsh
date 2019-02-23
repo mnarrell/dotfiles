@@ -2,7 +2,7 @@
 
 local -a gnu_paths
 gnu_path=(
-  "/usr/local/coreutils/libexec/gnubin"
+  "/usr/local/opt/coreutils/libexec/gnubin"
   "/usr/local/opt/findutils/libexec/gnubin"
   # "/usr/local/opt/gnu-sed/libexec/gnubin"
   "/usr/local/opt/gnu-tar/libexec/gnubin"

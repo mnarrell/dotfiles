@@ -86,7 +86,7 @@ brew 'fd'
 brew 'findutils'
 brew 'freetype'
 brew 'fzf'
-brew 'gawk', args: ["with-default-names"]
+#brew 'gawk', args: ["with-default-names"]
 brew 'gdbm'
 brew 'gettext'
 brew 'git'
@@ -96,14 +96,14 @@ brew 'gnu-getopt'
 brew 'gnu-indent'
 brew 'gnu-tar'
 brew 'gnutls'
-brew 'go', args: ["cross-compile-common"]
+brew 'go'
 brew 'golangci-lint'
 brew 'grep'
 brew 'hadolint'
 brew 'htop'
 brew 'httpie'
 brew 'imagemagick'
-brew 'jmeter', args: ["with-plugins"]
+#brew 'jmeter', args: ["with-plugins"]
 brew 'jpeg'
 brew 'jq'
 brew 'libevent'
