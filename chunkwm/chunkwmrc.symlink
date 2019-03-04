@@ -131,7 +131,10 @@ chunkc core::load tiling.so
 
 chunkc tiling::rule --owner Finder --state float &
 chunkc tiling::rule --owner GitX --state float &
+chunkc tiling::rule --owner Mail --name \"New Message\" --state float &
+chunkc tiling::rule --owner Tweetbot --state float &
 chunkc tiling::rule --owner \"App Store\" --state float &
-chunkc tiling::rule --owner \"Screen Sharing\" --name calypso --state float &
 chunkc tiling::rule --owner \"CleanMyMac X\" --name CleanMyMac --state float &
 chunkc tiling::rule --owner \"Microsoft Outlook\" --name ^.+Reminder$ --state float &
+chunkc tiling::rule --owner \"Microsoft Outlook\" --name .*Untitled.* --state float &
+chunkc tiling::rule --owner \"Screen Sharing\" --name calypso --state float &
