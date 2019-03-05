@@ -63,6 +63,7 @@
 
 [fetch]
   prune = true
+  pruneTags = true
 
 [help]
   autocorrect = 1

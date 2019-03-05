@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-go get honnef.co/go/tools/cmd/staticcheck
+go get -u github.com/amitbet/gorename
+go get -u github.com/rakyll/hey
+go get -u honnef.co/go/tools/cmd/staticcheck
