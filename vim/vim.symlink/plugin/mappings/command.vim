@@ -8,6 +8,4 @@ command! -range=% Base64Decode :call functions#Base64Decode()
 
 command! -nargs=1 -complete=command Redir silent call functions#Redir(<f-args>)
 
-command! GOLINT :cexpr system('golangci-lint run')
-
 command! TIG :tabnew | terminal tig -a

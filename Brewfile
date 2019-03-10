@@ -39,7 +39,7 @@ cask 'istat-menus'
 cask 'iterm2'
 cask 'java'
 cask 'jetbrains-toolbox'
-cask 'marked'
+# cask 'marked'
 cask 'monolingual'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
@@ -183,6 +183,7 @@ brew 'zsh'
 ################################################################################
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Deliveries (3.1.1)', id: 924726344
+mas 'Marked 2 (2.5.31)', id: 890031187 
 mas 'Microsoft Excel (16.22)', id: 462058435
 mas 'Microsoft OneNote (16.22)', id: 784801555
 mas 'Microsoft Outlook (16.22)', id: 985367838

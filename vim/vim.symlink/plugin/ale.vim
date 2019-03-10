@@ -12,7 +12,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_go_staticcheck_lint_package = 1
 
 let g:ale_linters = {
-  \ 'go': ['vet', 'golint', 'gosimple'],
+  \ 'go': ['staticcheck'],
   \ 'yaml': ['yamllint']
   \ }
 

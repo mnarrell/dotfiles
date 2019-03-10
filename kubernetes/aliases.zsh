@@ -30,7 +30,8 @@ alias -g SVC='$(   kubectl get svc   | fzf-tmux --header-lines=1 --reverse --mul
 alias -g ING='$(   kubectl get ing   | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 
 function kip() {
-  local node_ip=$(kubectl cluster-info | grep master | egrep -o '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+  # local node_ip=$(kubectl cluster-info | grep master | egrep -o '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
+  local node_ip=$(kubectl get pods -l name=tiller -o wide | awk 'NR>1 {print $7}')
   local node_ports=$(kubectl get svc -o json SVC | jq -r '.spec.ports[] | "\(.name) \(.nodePort)"')
   if [[ $(echo "${node_ports}" | wc -l) -eq 1 ]]; then
     echo "${node_ports}" \
