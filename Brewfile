@@ -1,7 +1,6 @@
 ################################################################################
 # Taps
 ################################################################################
-tap 'ValeLint/vale'
 tap 'getantibody/tap'
 tap 'golangci/tap'
 tap 'homebrew/cask-drivers'
@@ -167,7 +166,6 @@ brew 'tmux'
 brew 'tree'
 brew 'universal-ctags', args: ["HEAD"]
 brew 'utf8proc'
-brew 'vale'
 brew 'vault'
 brew 'vim'
 brew 'watch'
@@ -183,7 +181,7 @@ brew 'zsh'
 ################################################################################
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Deliveries (3.1.1)', id: 924726344
-mas 'Marked 2 (2.5.31)', id: 890031187 
+mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'Microsoft Excel (16.22)', id: 462058435
 mas 'Microsoft OneNote (16.22)', id: 784801555
 mas 'Microsoft Outlook (16.22)', id: 985367838
