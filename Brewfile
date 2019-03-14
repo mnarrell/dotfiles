@@ -181,6 +181,7 @@ brew 'zsh'
 ################################################################################
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Deliveries (3.1.1)', id: 924726344
+mas 'Magnet (2.4.2)', id: 441258766
 mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'Microsoft Excel (16.22)', id: 462058435
 mas 'Microsoft OneNote (16.22)', id: 784801555
