@@ -50,9 +50,11 @@ Plug 'tpope/vim-fugitive'
 " Completion
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 if has('nvim')
+  " Plug 'zchee/deoplete-go', { 'do': 'make'}
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'zchee/deoplete-go', { 'do': 'make'}
+  Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 endif
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax

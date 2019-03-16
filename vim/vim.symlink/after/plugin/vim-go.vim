@@ -11,11 +11,15 @@ function! s:build_go_files()
 endfunction
 
 let g:go_gocode_propose_source = 0
-let g:deoplete#sources#go#gocode_binary = $GOPATH. '/bin/gocode-gomod'
+" let g:deoplete#sources#go#gocode_binary = $GOPATH. '/bin/gocode-gomod'
 
 let g:go_addtags_transform = 'camelcase'
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
+
+let g:go_fmt_options = {
+      \ 'gofmt': '-s',
+      \ }
 
 let g:go_list_height = 20
 let g:go_list_type = 'quickfix'

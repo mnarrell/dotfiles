@@ -14,7 +14,7 @@ hi clear Search
 hi Search ctermfg=Red ctermbg=NONE cterm=underline
 hi IncSearch ctermfg=White ctermbg=Red cterm=bold
 
-hi Pmenu ctermbg=white ctermfg=black
-hi PmenuSbar ctermbg=grey ctermfg=grey
-hi PmenuSel ctermbg=4 ctermfg=18 cterm=bold
-hi PmenuThumb ctermbg=4 ctermfg=4
+hi Pmenu ctermbg=18
+hi PmenuSbar ctermbg=18
+hi PmenuSel ctermbg=Blue cterm=bold
+hi PmenuThumb ctermbg=Blue
