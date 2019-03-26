@@ -8,13 +8,11 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 " Plug 'romainl/vim-qf'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
@@ -23,11 +21,9 @@ Plug 'w0rp/ale'
 " Navigation
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
-" Plug 'tommcdo/vim-lion'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
 Plug 'markonm/traces.vim'
-Plug 'rhysd/clever-f.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'wellle/targets.vim'
 Plug 'fweep/vim-tabber'
@@ -58,6 +54,8 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax
+
+Plug 'vim-jp/syntax-vim-ex'
 
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 
