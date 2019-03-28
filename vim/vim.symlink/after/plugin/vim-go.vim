@@ -10,6 +10,12 @@ function! s:build_go_files()
   endif
 endfunction
 
+fun! s:restart_gocode() abort
+  echom 'Gocode killed...'
+  silent! !killall gocode
+endf
+command! KGC :call s:estart_gocode()
+
 let g:go_gocode_propose_source = 0
 " let g:deoplete#sources#go#gocode_binary = $GOPATH. '/bin/gocode-gomod'
 

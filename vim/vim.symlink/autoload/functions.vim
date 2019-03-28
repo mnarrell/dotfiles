@@ -122,11 +122,6 @@ endf
 " 	:Redir hi ............. show the full output of command ':hi' in a scratch window
 " 	:Redir !ls -al ........ show the full output of command ':!ls -al' in a scratch window
 
-fun! functions#RestartGocode() abort
-  echom 'Gocode killed...'
-  silent! !killall gocode
-endf
-
 fun! functions#SetPython2() abort
   let b:ale_python_flake8_executable = 'python'
   let b:ale_python_pylint_executable = 'python'
@@ -136,7 +131,7 @@ endfun
 
 fun! functions#Base64Decode() abort
   normal! gv"sy
-  execute "let output = system('echo -n " . @s . " | base64 -D')"
+  execute "let output = system('echo -n " . @s . " | base64 -d')"
 
   for win in range(1, winnr('$'))
     if getwinvar(win, 'scratch')
