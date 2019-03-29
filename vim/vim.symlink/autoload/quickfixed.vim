@@ -1,4 +1,4 @@
-fun! s:history(earlier)
+fun! s:history(earlier) abort
   let l:wininfo = filter(getwininfo(), {i,v -> v.winnr == winnr()})[0]
   let l:cmd = (l:wininfo.loclist ? 'l' : 'c') . (a:earlier ? 'newer' : 'older')
   try
@@ -8,10 +8,10 @@ fun! s:history(earlier)
   endtry
 endfun
 
-fun! quickfixed#older()
+fun! quickfixed#older() abort
   call s:history(0)
 endfun
 
-fun! quickfixed#newer()
+fun! quickfixed#newer() abort
   call s:history(1)
 endfun
