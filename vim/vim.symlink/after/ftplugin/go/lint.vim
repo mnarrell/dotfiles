@@ -2,8 +2,8 @@ if !executable('golangci-lint')
   finish
 endif
 
-function! s:SuperLint() abort
+function! s:SuperLinter() abort
   cexpr system('golangci-lint run --enable-all ' . shellescape(expand('%:p:h')))
 endfunction
 
-command! -buffer SuperLint call s:SuperLint()
+command! -buffer SuperLint call s:SuperLinter()

@@ -76,12 +76,12 @@ fun! functions#ToggleQuickFix() abort
     cclose
     unlet g:qwindow
   else
-    " try
+    try
     botright copen 20
     let g:qwindow = 1
-    " catch
+    catch
     "   echo 'No Errors found!'
-    " endtry
+    endtry
   endif
 endf
 
