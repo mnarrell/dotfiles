@@ -9,7 +9,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
-" Plug 'romainl/vim-qf'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
@@ -19,7 +18,7 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'w0rp/ale'
 
 " Navigation
-Plug 'jlanzarotta/bufexplorer'
+" Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'kshenoy/vim-signature'
@@ -72,7 +71,7 @@ Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
 
-Plug 'edkolev/tmuxline.vim', { 'for': [] }
+" Plug 'edkolev/tmuxline.vim'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
