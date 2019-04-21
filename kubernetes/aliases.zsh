@@ -50,3 +50,11 @@ function tns() {
   echo "${cns}" >! "${HOME}/.tiller_namespace"
   export TILLER_NAMESPACE=${cns}
 }
+
+function k18() {
+  ln -s -f "${HOME}/bin/kubectl-1.8.3" "${HOME}/bin/kubectl"
+}
+
+function k111() {
+  ln -s -f "${HOME}/bin/kubectl-1.11.3" "${HOME}/bin/kubectl"
+}
