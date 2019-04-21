@@ -4,8 +4,6 @@ function! s:build_go_files()
   if l:file =~# '^\f\+_test\.go$'
     call go#test#Test(0, 1)
   elseif l:file =~# '^\f\+\.go$'
-    " call go#cmd#Build(0)
-    " call go#cmd#Install(0)
     GoBuild -i
   endif
 endfunction
@@ -32,9 +30,10 @@ let g:go_list_type = 'quickfix'
 
 " let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-let g:go_metalinter_enabled = ['staticcheck']
 
+" let g:go_info_mode = 'guru'
 let g:go_auto_type_info = 1
+" let g:go_auto_sameids = 1
 let g:go_updatetime = 400
 
 let g:go_highlight_array_whitespace_error = 1
@@ -56,7 +55,6 @@ let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_types = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
-
 
 augroup go
   au!
