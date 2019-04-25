@@ -18,3 +18,5 @@ hi Pmenu ctermbg=18
 hi PmenuSbar ctermbg=18
 hi PmenuSel ctermbg=Blue cterm=bold
 hi PmenuThumb ctermbg=Blue
+
+hi HighlightedyankRegion ctermbg=Blue

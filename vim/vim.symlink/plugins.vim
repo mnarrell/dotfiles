@@ -1,11 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'wincent/loupe'                            " Better in-file search
-" Plug 'wincent/terminus'                         " Make terminal VIM work like a real app
 
 " Core
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
@@ -16,6 +13,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'w0rp/ale'
+Plug 'wincent/loupe'
 
 " Navigation
 " Plug 'jlanzarotta/bufexplorer'
@@ -54,19 +52,18 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax
 
-Plug 'vim-jp/syntax-vim-ex'
+" Plug 'vim-jp/syntax-vim-ex'
 
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 
-Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+" " Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'tag': '1.19', 'do': ':GoUpdateBinaries' }
 
-Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
+" Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
-Plug 'elzr/vim-json', { 'for': 'json' }
+" Plug 'elzr/vim-json', { 'for': 'json' }
 
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
-
-Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
@@ -76,8 +73,6 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
-Plug 'mustache/vim-mustache-handlebars'
-
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
