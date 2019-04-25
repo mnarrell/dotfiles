@@ -52,9 +52,11 @@ function tns() {
 }
 
 function k18() {
+  echo "Switching kubectl to ${HOME}/bin/kubectl-1.8.3"
   ln -s -f "${HOME}/bin/kubectl-1.8.3" "${HOME}/bin/kubectl"
 }
 
 function k111() {
+  echo "Switching kubectl to ${HOME}/bin/kubectl-1.11.3"
   ln -s -f "${HOME}/bin/kubectl-1.11.3" "${HOME}/bin/kubectl"
 }

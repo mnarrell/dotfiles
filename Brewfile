@@ -174,6 +174,7 @@ brew 'watch'
 brew 'wdiff'
 brew 'wget'
 brew 'xz'
+brew 'yarn'
 brew 'yq'
 brew 'zsh'
 
