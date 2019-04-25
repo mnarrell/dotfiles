@@ -47,10 +47,8 @@ set -as terminal-overrides ',xterm*:sitm=\E[3m'
 # Turn off distracting border highlight: the background highlighting is probably
 # enough. Default value of 8 comes from "pane-border-fg" in tmux's
 # options-table.c.
-set -g pane-border-fg "#282a2e"
-set -g pane-border-bg "#282a2e"
-set -g pane-active-border-fg "#282a2e"
-set -g pane-active-border-bg "#282a2e"
+set -g pane-border-style none,fg="#282a2e",bg="#282a2e"
+set -g pane-active-border-style none,fg="#282a2e",bg="#282a2e"
 
 
 ################################################################################
