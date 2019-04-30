@@ -3,9 +3,11 @@ let g:LanguageClient_rootMarkers = {
         \ }
 
 let g:LanguageClient_serverCommands = {
-    \ 'go': ['bingo'],
+    \ 'go': ['gopls'],
     \ 'sh': ['bash-language-server', 'start'],
     \ 'Dockerfile': ['docker-langserver', '--stdio'],
     \ }
+
+let g:LanguageClient_diagnosticsEnable = 0
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>

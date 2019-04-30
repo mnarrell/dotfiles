@@ -8,15 +8,6 @@ function! s:build_go_files()
   endif
 endfunction
 
-fun! s:restart_gocode() abort
-  echom 'Gocode killed...'
-  silent! !killall gocode
-endf
-command! KGC :call s:estart_gocode()
-
-let g:go_gocode_propose_source = 0
-" let g:deoplete#sources#go#gocode_binary = $GOPATH. '/bin/gocode-gomod'
-
 let g:go_addtags_transform = 'camelcase'
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
@@ -25,13 +16,18 @@ let g:go_fmt_options = {
       \ 'gofmt': '-s',
       \ }
 
+" call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+
 let g:go_list_height = 20
 let g:go_list_type = 'quickfix'
 
 " let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_command='golangci-lint'
 
-" let g:go_info_mode = 'guru'
+let g:go_def_mode='gopls'
+let g:go_info_mode = 'gopls'
+
 let g:go_auto_type_info = 1
 " let g:go_auto_sameids = 1
 let g:go_updatetime = 400
@@ -42,7 +38,7 @@ let g:go_highlight_chan_whitespace_error = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_format_strings = 1
-let g:go_highlight_function_arguments = 1
+let g:go_highlight_function_parameters = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_generate_tags = 1
@@ -60,7 +56,6 @@ augroup go
   au!
 
   au BufNewFile,BufRead *.go setlocal nolist noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
-  " au BufWritePost *.go silent! GoBuild -i
 
   au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
