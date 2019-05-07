@@ -12,7 +12,7 @@ nnoremap <leader>s :sp<cr>
 
 " Takes a register (or * by default) and opens it in the cmdline-window.
 " Hit <cr> when you're done editing for setting the register.
-nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+" nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
 " Redraw the screen
 " nnoremap <leader>r :redraw!<CR>
