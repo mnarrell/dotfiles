@@ -9,3 +9,5 @@ command! -nargs=1 -complete=command Redir silent call functions#Redir(<f-args>)
 command! -nargs=* Rg call functions#Rg(<q-args>)
 
 command! TIG :tabnew | terminal tig -a
+
+command! ClearRegisters call functions#ClearRegisters()

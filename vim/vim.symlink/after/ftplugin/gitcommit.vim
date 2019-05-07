@@ -7,3 +7,5 @@ if has('syntax')
 endif
 
 setlocal nolist
+setlocal formatoptions+=t
+setlocal textwidth=72

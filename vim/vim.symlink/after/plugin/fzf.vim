@@ -25,6 +25,7 @@ endif
 nnoremap <silent> <Leader>b :Buffers<CR>
 " nnoremap <silent> <Leader>c :Commands<CR>
 nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>h :Helptags<CR>
 " nnoremap <silent> <Leader>t :Tags<CR>
 
 " Better command history with q:

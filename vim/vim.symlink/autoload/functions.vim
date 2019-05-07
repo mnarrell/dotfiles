@@ -156,3 +156,12 @@ fun! functions#Rg(...) abort
   call setqflist(l:ql, 'r')
   echo 'Rg results: '.len(l:ql)
 endfun
+
+function! functions#ClearRegisters() abort
+  let l:regs='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-="*+'
+  let l:i=0
+  while (l:i<strlen(l:regs))
+    exec 'let @'.l:regs[l:i].'=""'
+    let l:i=l:i+1
+  endwhile
+endfunction

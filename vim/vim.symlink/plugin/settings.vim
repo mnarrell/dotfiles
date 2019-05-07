@@ -1,6 +1,7 @@
 scriptencoding utf-8
 
 set autoread                         " Load buffers modified outside of VIM
+set complete=.,b,k,kspell            " Where to find completion candidates
 set backspace=indent,eol,start       " Make the backspace key sane
 set cmdwinheight=20                  " Make the command window height more tolerable
 set diffopt+=vertical                " Always use vertical diffs
@@ -50,6 +51,11 @@ set shortmess+=t                     " truncate file messages at start
 
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
+endif
+
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
 endif
 
 " if has('nvim')
