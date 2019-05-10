@@ -39,6 +39,7 @@ set -g mouse on
 # Clear the scrollback buffer
 bind -n C-k clear-history
 
+
 ################################################################################
 # Visuals
 set -g default-terminal "screen-256color"
@@ -58,7 +59,7 @@ set -g pane-active-border-style none,fg="#282a2e",bg="#282a2e"
 # Enable visual notification
 setw -g monitor-activity on
 # Enable visual notification
-set -g visual-activity on
+# set -g visual-activity on
 # Show bells in window titles.
 set -g window-status-bell-style fg=yellow,bold,underscore
 

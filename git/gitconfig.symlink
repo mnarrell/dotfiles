@@ -38,7 +38,7 @@
   wip = commit -am "WIP"
 
 [merge]
-  ff = only
+  ; ff = only
   tool = opendiff
   conflictstyle = merge
   stat = true
