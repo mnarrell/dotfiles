@@ -1,18 +1,24 @@
 " Status line **********************************************************************************************************
 set laststatus=2
 
-let g:airline_section_z = ''
+function Position() abort
+  return '[' . col('.') . ':' . line('.') . ']'
+endfunction
 
-" let g:airline_powerline_fonts = 1
+call airline#parts#define_function('pos', 'Position')
+call airline#parts#define_accent('pos', 'none')
+
+let g:airline_section_y = ''
+let g:airline_section_z = airline#section#create_right(['pos'])
+
+let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16'
-let g:airline_right_sep=''
+" let g:airline_right_sep=''
 
 let g:airline_extensions = ['branch', 'whitespace', 'ale']
 if exists(':Tmuxline')
   let g:airline_extensions += 'tmuxline'
 endif
-
-" let g:airline#extensions#ale#enabled = 1
 
 let g:airline_mode_map = {
       \ '__' : '-',
@@ -32,6 +38,3 @@ let g:airline_mode_map = {
       \ 'v'  : 'V',
       \ 'V'  : 'V'
       \ }
-
-
-let g:tmuxline_powerline_separators = 0

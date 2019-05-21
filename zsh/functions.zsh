@@ -38,4 +38,9 @@ function fgl() (
     ls *.flf | sort | fzf --no-multi --reverse --preview "figlet -f {} Hello World!"
 )
 
+# Show most used shell commands
+function most() {
+  history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head
+}
+
 # vi: ft=zsh

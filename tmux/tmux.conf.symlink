@@ -36,9 +36,6 @@ bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
 # bar), resize panes. For default bindings see `tmux list-keys`.
 set -g mouse on
 
-# Clear the scrollback buffer
-bind -n C-k clear-history
-
 
 ################################################################################
 # Visuals
