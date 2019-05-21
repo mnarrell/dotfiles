@@ -58,6 +58,7 @@ Plug 'w0rp/ale'
 " Plug 'vim-jp/syntax-vim-ex'
 
 " Syntax
+Plug 'cespare/vim-toml'
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }

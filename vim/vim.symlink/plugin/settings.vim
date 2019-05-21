@@ -72,14 +72,11 @@ endif
 
 if has('linebreak')
   set linebreak                      " wrap long lines at characters in 'breakat'
+  let &showbreak='⤷ '                " ARROW POINTING DOWNWARDS THEN CURVING RIGHTWARDS (U+2937, UTF-8: E2 A4 B7)
 endif
 
 if exists('+relativenumber')
   set relativenumber                 " show relative numbers in gutter
-endif
-
-if has('linebreak')
-  let &showbreak='↳ '                " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
 endif
 
 if has('showcmd')
