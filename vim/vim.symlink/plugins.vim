@@ -36,6 +36,7 @@ Plug 'wellle/targets.vim'
 
 " Git
 Plug 'mhinz/vim-signify'
+Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-fugitive'
 
 " Tmux
@@ -61,6 +62,7 @@ Plug 'w0rp/ale'
 Plug 'cespare/vim-toml'
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }

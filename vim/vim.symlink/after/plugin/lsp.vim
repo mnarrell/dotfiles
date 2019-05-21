@@ -3,7 +3,7 @@ let g:LanguageClient_rootMarkers = {
         \ }
 
 let g:LanguageClient_serverCommands = {
-    \ 'go': ['bingo'],
+    \ 'go': ['gopls'],
     \ 'sh': ['bash-language-server', 'start'],
     \ 'Dockerfile': ['docker-langserver', '--stdio'],
     \ }

@@ -52,11 +52,9 @@ let g:go_highlight_types = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
 
-augroup go
+
+augroup vimgo
   au!
-
-  au BufNewFile,BufRead *.go setlocal nolist noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
-
   au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
   au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
