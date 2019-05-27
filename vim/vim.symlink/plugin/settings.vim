@@ -53,11 +53,6 @@ if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
 
-if executable('rg')
-  set grepprg=rg\ --vimgrep
-  set grepformat=%f:%l:%c:%m
-endif
-
 " if has('nvim')
 "   set inccommand=nosplit             " Incremental substitution highlighting
 " endif

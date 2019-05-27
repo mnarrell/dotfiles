@@ -1,6 +1,4 @@
 ---
-output:
-  format: tab
 linters-settings:
   govet:
     check-shadowing: true
@@ -15,18 +13,16 @@ linters-settings:
   goconst:
     min-len: 2
     min-occurrences: 2
+  gofmt:
+    simplify: true
   depguard:
     list-type: blacklist
     packages:
-      # logging is allowed only by logutils.Log, logrus
-      # is allowed to use only in logutils package
       - github.com/sirupsen/logrus
   misspell:
     locale: US
   lll:
     line-length: 140
-  # goimports:
-  #   local-prefixes: github.com/golangci/golangci-lint
 
 linters:
   enable-all: true
@@ -36,6 +32,16 @@ linters:
     # - prealloc
     # - gosec
     # - gochecknoglobals
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - dupl
+        - errcheck
+        - gocyclo
+        - gosec
+        - scopelint
 
 run:
   skip-dirs:

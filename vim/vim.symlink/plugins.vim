@@ -53,11 +53,6 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 " Linting
 Plug 'w0rp/ale'
 
-" Plug 'elzr/vim-json', { 'for': 'json' }
-" Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
-" Plug 'mustache/vim-mustache-handlebars'
-" Plug 'vim-jp/syntax-vim-ex'
-
 " Syntax
 Plug 'cespare/vim-toml'
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
