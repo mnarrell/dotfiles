@@ -13,7 +13,7 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'wincent/loupe'
 
 " Navigation
-" Plug 'jlanzarotta/bufexplorer'
+Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'markonm/traces.vim'
@@ -56,8 +56,8 @@ Plug 'w0rp/ale'
 " Syntax
 Plug 'cespare/vim-toml'
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
-Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
