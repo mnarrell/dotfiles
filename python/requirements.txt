@@ -1,5 +1,2 @@
-yapf
-flake8
-pylint
-
-pyinstaller
+jedi
+python-language-server[all]
