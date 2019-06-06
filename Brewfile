@@ -81,7 +81,9 @@ brew 'berkeley-db'
 brew 'boost'
 brew 'chunkwm'
 brew 'cmake'
+brew 'cmatrix'
 brew 'coreutils'
+brew 'cowsay'
 brew 'dep'
 brew 'exa'
 brew 'extract_url'
@@ -111,6 +113,7 @@ brew 'gzip'
 brew 'hadolint'
 brew 'htop'
 brew 'httpie'
+brew 'hub'
 brew 'imagemagick'
 brew 'jpeg'
 brew 'jq'
@@ -131,7 +134,7 @@ brew 'mas'
 brew 'nats-streaming-server'
 brew 'ncdu'
 brew 'neofetch'
-brew 'neovim'
+brew 'neovim'#, args: ["HEAD"]
 brew 'nmap'
 brew 'node'
 brew 'oniguruma'
@@ -189,7 +192,6 @@ brew 'zsh'
 ################################################################################
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Deliveries (3.1.1)', id: 924726344
-mas 'Magnet (2.4.2)', id: 441258766
 mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'Microsoft Excel (16.22)', id: 462058435
 mas 'Microsoft OneNote (16.22)', id: 784801555

@@ -52,3 +52,4 @@ nnoremap _tx :set filetype=text<CR>
 nnoremap _vi :set filetype=vim<CR>
 nnoremap _xm :set filetype=xml<CR>
 nnoremap _df :set filetype=Dockerfile<CR>
+nnoremap _zs :set filetype=zsh<CR>

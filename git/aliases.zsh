@@ -4,6 +4,10 @@ alias g="git"
 alias tig="tig --all"
 alias tis='\tig status'
 
+if [ $commands[hub] ]; then
+  alias git='hub'
+fi
+
 function git_personal_user() {
   git config user.email $MY_EMAIL
   git config user.name $MY_NAME
