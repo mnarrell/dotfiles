@@ -16,5 +16,7 @@ npm install -g \
 
 gem install neovim
 
+yarn global add vim-language-server
+
 [ ! -d "${HOME}/.config" ] && mkdir -p "${HOME}/.config"
 [ ! -L "${HOME}/.config/nvim" ] && ln -s "${HOME}/.vim" "${HOME}/.config/nvim"

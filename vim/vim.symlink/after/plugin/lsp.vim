@@ -7,6 +7,7 @@ let g:LanguageClient_serverCommands = {
       \ 'sh': ['bash-language-server', 'start'],
       \ 'Dockerfile': ['docker-langserver', '--stdio'],
       \ 'python': ['/usr/local/bin/pyls'],
+      \ 'vim': ['vim-language-server', '--stdio']
       \ }
 
 let g:LanguageClient_diagnosticsEnable = 0
