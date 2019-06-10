@@ -42,5 +42,3 @@ function fgl() (
 function most() {
   history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head
 }
-
-# vi: ft=zsh

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 ################################################################################
 # Basics
@@ -56,5 +56,3 @@ execute_hooks() {
   done < <(find -H "${DOTFILES_ROOT}" -name "$1" ! -path '*vim.symlink/tmp/*' ! -path '*.git*')
   echo ''
 }
-
-# vim: ft=sh
