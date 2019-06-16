@@ -136,7 +136,7 @@ brew 'ncdu'
 brew 'neofetch'
 brew 'neovim'#, args: ["HEAD"]
 brew 'nmap'
-brew 'node'
+brew 'node@10'
 brew 'oniguruma'
 brew 'openssl'
 brew 'ossp-uuid'

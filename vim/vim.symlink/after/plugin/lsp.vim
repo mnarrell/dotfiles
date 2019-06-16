@@ -14,7 +14,7 @@ let g:LanguageClient_diagnosticsEnable = 0
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
-function SetLSPShortcuts()
+function! SetLSPShortcuts()
   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
@@ -24,10 +24,13 @@ function SetLSPShortcuts()
   nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
   nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
   nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+  " nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 endfunction()
 
 augroup LSP
   autocmd!
   autocmd FileType python call SetLSPShortcuts()
+  autocmd FileType Dockerfile call SetLSPShortcuts()
+  autocmd FileType sh call SetLSPShortcuts()
+  autocmd FileType vim call SetLSPShortcuts()
 augroup END

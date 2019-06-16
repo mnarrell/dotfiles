@@ -53,3 +53,6 @@ nnoremap _vi :set filetype=vim<CR>
 nnoremap _xm :set filetype=xml<CR>
 nnoremap _df :set filetype=Dockerfile<CR>
 nnoremap _zs :set filetype=zsh<CR>
+
+nnoremap <Up> :cprevious<CR>
+nnoremap <Down> :cnext<CR>

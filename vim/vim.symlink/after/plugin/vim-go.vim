@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -25,10 +27,9 @@ let g:go_list_type = 'quickfix'
 " let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_command='golangci-lint run --print-issued-lines=false'
 
-let g:go_def_mode='gopls'
+" let g:go_def_mode='gopls'
 " let g:go_info_mode = 'gopls'
 
-let g:go_auto_type_info = 1
 " let g:go_auto_sameids = 1
 let g:go_updatetime = 400
 
@@ -63,11 +64,13 @@ augroup vimgo
   au FileType go imap <C-g> <ESC>:<C-u>GoDeclsDir<CR>
   au FileType go nmap <C-g> :GoDeclsDir<CR>
 
-  au FileType go nmap <Leader>gt  <Plug>(go-test-func)
+  " Option-T
+  au FileType go nmap †  <Plug>(go-test-func)
   au FileType go nmap db <Plug>(go-doc-browser)
   au FileType go nmap de <Plug>(go-def-vertical)
   au FileType go nmap gb :<C-u>call <SID>build_go_files()<CR>
   au FileType go nmap gc <Plug>(go-callers)
+  " au FileType go nmap ge :GoErrCheck<CR>
   au FileType go nmap gf <Plug>(go-referrers)
   au FileType go nmap gi <Plug>(go-implements)
   au FileType go nmap gr <Plug>(go-rename)
