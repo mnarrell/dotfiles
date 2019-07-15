@@ -1,7 +1,7 @@
 " Clear the search highlighting
 nmap <C-_> <Plug>(LoupeClearHighlight)
 
-function! s:SetUpLoupeHighlight()
+function! s:SetUpLoupeHighlight() abort
   execute 'highlight! link QuickFixLine PmenuSel'
 
   highlight! clear Search

@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 " run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
+function! s:build_go_files() abort
   let l:file = expand('%')
   if l:file =~# '^\f\+_test\.go$'
     call go#test#Test(0, 1)

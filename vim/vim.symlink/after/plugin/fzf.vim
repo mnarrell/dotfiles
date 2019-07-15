@@ -1,6 +1,6 @@
 " CTRL-A CTRL-Q to select all and build quickfix list
 
-function! s:build_quickfix_list(lines)
+function! s:build_quickfix_list(lines) abort
   " vint: -ProhibitUnnecessaryDoubleQuote
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
   " vint: +ProhibitUnnecessaryDoubleQuote

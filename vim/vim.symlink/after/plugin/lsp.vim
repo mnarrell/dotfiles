@@ -14,7 +14,7 @@ let g:LanguageClient_diagnosticsEnable = 0
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
-function! SetLSPShortcuts()
+function! SetLSPShortcuts() abort
   nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
   nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
   nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>

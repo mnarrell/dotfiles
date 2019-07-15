@@ -4,11 +4,12 @@ local -a gnu_paths
 gnu_path=(
   "/usr/local/opt/coreutils/libexec/gnubin"
   "/usr/local/opt/findutils/libexec/gnubin"
+  "/usr/local/opt/gettext/bin"
   "/usr/local/opt/gnu-getopt/bin"
   "/usr/local/opt/gnu-tar/libexec/gnubin"
   "/usr/local/opt/gnu-which/libexec/gnubin"
-  "/usr/local/opt/make/libexec/gnubin"
   "/usr/local/opt/less/bin"
+  "/usr/local/opt/make/libexec/gnubin"
   # "/usr/local/opt/gnu-sed/libexec/gnubin"
 )
 
