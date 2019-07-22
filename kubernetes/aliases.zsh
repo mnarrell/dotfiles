@@ -17,17 +17,18 @@ fi
 alias k='kubectl'
 alias kp='k get pods -o wide'
 alias ks='k get services -o wide'
-alias ke='k exec -it PODS sh'
+alias ke='k exec -it PODS bash'
 alias kl='k logs -f PODS'
 alias kdp='k describe pod PODS'
 alias kds='k describe service SVC'
-alias kcv='k config view | vim -c "set ft=yaml" -'
+alias kcs='k config use-context CTX && tns'
 
 alias -g PODS='$(  kubectl get pods  | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 alias -g DEPLOY='$(kubectl get deploy| fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 alias -g RS='$(    kubectl get rs    | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 alias -g SVC='$(   kubectl get svc   | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 alias -g ING='$(   kubectl get ing   | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g CTX='$(   kubectl config get-contexts -o=name | sort -fd | fzf-tmux --reverse --multi --cycle)'
 
 function kip() {
   # local node_ip=$(kubectl cluster-info | grep master | egrep -o '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
@@ -49,6 +50,7 @@ function tns() {
   local cns=$(kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${ctx}\")].context.namespace}")
   echo "${cns}" >! "${HOME}/.tiller_namespace"
   export TILLER_NAMESPACE=${cns}
+  echo "Switched Tiller namespace to ${cns}"
 }
 
 function k18() {

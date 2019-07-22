@@ -6,5 +6,3 @@ if [ $commands[helm] ]; then
     command helm "$@"
   }
 fi
-
-alias tn='echo $TILLER_NAMESPACE'

@@ -13,13 +13,13 @@ Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
 Plug 'wincent/loupe'
 
 " Navigation
+Plug 'fweep/vim-tabber'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
+Plug 'majutsushi/tagbar'
 Plug 'markonm/traces.vim'
 Plug 'tpope/vim-vinegar'
-Plug 'fweep/vim-tabber'
-Plug 'majutsushi/tagbar'
 
 " Eyecandy
 Plug 'chriskempson/base16-vim'

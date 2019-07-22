@@ -2,5 +2,4 @@
 set -e
 
 npm uninstall -g \
-  jsonlint \
-  json-minify
+  jsonlint
