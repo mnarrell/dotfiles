@@ -1,36 +1,18 @@
-check.scripts:
-	@find . -type f \
-		-regextype egrep -regex "(.*/*\.sh|.*/(pre-up|post-up|pre-down|post-down))" \
-		-not -path '*base16-shell*' \
-		-not -path '*tmux/tmux.symlink/plugins*' \
-		-not -path '*plugged*' \
-		-not -path '*tmp*' \
-		-exec shellcheck {} +
+MAKEFLAGS ?= '-j 4'
+MODULES = ansible bash bin docker fzf gem git gnu golang homebrew \
+					java json kubernetes less markdown node npm nvim psql \
+					python readline ripgrep tig tmux vagrant yamllint yapf zsh
 
-check.vim:
-	@find vim -type f \
-		-name "*.vim" \
-		-not -name "plug.vim" \
-		-not -path '*tmp*' \
-		-not -path '*plugged*' \
-		-not -path '*spell*' \
-		-exec vint -c -s {} +
+CLEAN := $(addsuffix .clean,$(MODULES))
 
-.PHONY: check
-check: check.scripts check.vim
+$(MODULES):
+	$(MAKE) -C $@
 
-.PHONY: deps
-deps:
-	@./bootstrap
+$(CLEAN):
+	$(MAKE) -C $(basename $@) clean
 
-.PHONY: install
-install:
-	@./install
+all: $(MODULES)
 
-.PHONY: uninstall
-uninstall:
-	@./uninstall
+clean.all: $(CLEAN)
 
-.PHONY: test
-test:
-	@./support/verify
+.PHONY: $(MODULES) $(CLEAN) all clean.all

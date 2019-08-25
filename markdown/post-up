@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-npm install -g \
-  alex \
-  markdown2confluence \
-  markdownlint-cli

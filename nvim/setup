@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+curl -sfLo "${XDG_CONFIG_HOME}/nvim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim >> /dev/null
+
+stow --verbose --restow --target "${XDG_CONFIG_HOME}/nvim" .
+pip2 install -U -r "${DIR}/requirements.txt"
+pip3 install -U -r "${DIR}/requirements.txt"
+
+npm install -g \
+  ember-template-lint \
+  neovim
+
+gem install neovim
+
+yarn global add vim-language-server

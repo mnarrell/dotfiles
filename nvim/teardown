@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+pip2 uninstall -y -r "${DIR}/requirements.txt"
+pip3 uninstall -y -r "${DIR}/requirements.txt"
+stow --verbose --delete --target "${XDG_CONFIG_HOME}/nvim" .
+npm uninstall -g \
+  ember-template-lint \
+  neovim
+
+gem uninstall neovim
+
+# rm -rf "$(HOME)/.viminfo"
+rm -rf "${HOME}/.vimrc_background"
+rm -rf "${HOME}/.dotfiles/vim/vim.symlink/autoload/plug.vim"
+rm -rf "${HOME}/.dotfiles/vim/vim.symlink/plugged"
+rm -rf "${XDG_CONFIG_HOME}/nvim"

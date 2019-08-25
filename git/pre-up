@@ -1,4 +1,0 @@
-#! /usr/bin/env bash
-
-yes | pip2 install gitpython
-yes | pip3 install gitpython

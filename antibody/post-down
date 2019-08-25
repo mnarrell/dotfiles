@@ -1,6 +1,0 @@
-#! /usr/bin/env bash
-set -e
-
-if [ -f "${HOME:?}"/.zsh_plugins.sh ]; then
-  rm "${HOME:?}"/.zsh_plugins.sh
-fi

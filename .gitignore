@@ -2,12 +2,11 @@
 .netrwbook
 .netrwhist*
 
-tmux/tmux.symlink/plugins
+tmux/plugins
 
-vim/vim.symlink/autoload/plug.vim
-vim/vim.symlink/autoload/plug.vim.old
-vim/vim.symlink/plugged/
-vim/vim.symlink/spell/
-vim/vim.symlink/spell/en.utf-8.add.spl
-vim/vim.symlink/tmp/
-vim/vim.symlink/ultisnips/*private.snippets
+nvim/autoload/plug.vim
+nvim/autoload/plug.vim.old
+nvim/plugged/
+nvim/spell/
+nvim/spell/en.utf-8.add.spl
+nvim/ultisnips/*private.snippets

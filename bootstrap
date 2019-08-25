@@ -2,34 +2,26 @@
 
 set -e
 
-. ./support/functions
+if test ! "$(command -v gcc)"; then
+  echo "Installing XCode..."
+  xcode-select --install
+fi
 
-info "Bootstrapping Dotfiles..."
+echo "Installing Homebrew..."
+if test ! "$(command -v brew)"; then
+  ruby -e "$(curl -fsSL
+  https://raw.githubusercontent.com/Homebrew/install/master/install)" | while read -r line; do echo "$line"; done
+else
+  while read -r brw; do
+    echo "${brw}"
+  done < <(brew update)
+  echo ''
+fi
+
+echo "Installing Git submodules..."
+while read -r sm; do
+  echo "${sm}"
+done < <(git submodule update --init --recursive)
 echo ''
 
-if test "$(uname)" = "Darwin"; then
-
-  if test ! "$(command -v gcc)"; then
-    info "Installing XCode..."
-    xcode-select --install
-  fi
-
-  info "Installing Homebrew..."
-  if test ! "$(command -v brew)"; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" | while read -r line; do success "$line"; done
-  else
-    while read -r brw; do
-      success "${brw}"
-    done < <(brew update)
-    echo ''
-  fi
-
-  info "Updating Brew Bundles..."
-  while read -r bun; do
-    success "${bun}"
-  done < <(brew bundle)
-  echo ''
-
-  "$(brew --prefix)/opt/fzf/install --all"
-
-fi
+"$(brew --prefix)/opt/fzf/install --all"

@@ -1,4 +1,0 @@
-#! /usr/bin/env bash
-
-yes | pip2 uninstall gitpython
-yes | pip3 uninstall gitpython

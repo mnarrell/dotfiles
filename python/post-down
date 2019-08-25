@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-yes | pip2 uninstall -r "${DIR}/requirements.txt"
-yes | pip3 uninstall -r "${DIR}/requirements.txt"
-
-rm -rf "${HOME}/.config/yapf"
