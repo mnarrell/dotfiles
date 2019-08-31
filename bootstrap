@@ -1,11 +1,18 @@
-#! /usr/bin/env bash
+#! /usr/bin/env zsh
 
-set -e
+echo "This file should be sourced..."
+echo ''
+for e in $(find . -name env.zsh); do 
+  echo "Sourcing $e"
+  source $e 
+done
+echo ''
 
-if test ! "$(command -v gcc)"; then
-  echo "Installing XCode..."
-  xcode-select --install
-fi
+echo "Installing Git submodules..."
+while read -r sm; do
+  echo "${sm}"
+done < <(git submodule update --init --recursive)
+echo ''
 
 echo "Installing Homebrew..."
 if test ! "$(command -v brew)"; then
@@ -18,10 +25,4 @@ else
   echo ''
 fi
 
-echo "Installing Git submodules..."
-while read -r sm; do
-  echo "${sm}"
-done < <(git submodule update --init --recursive)
-echo ''
-
-"$(brew --prefix)/opt/fzf/install --all"
+"$(brew --prefix)/opt/fzf/install" --all --xdg --no-update-rc

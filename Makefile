@@ -1,3 +1,5 @@
+$(if $(value BOOTSTRAPPED),,$(error Environment not bootstrapped.  Please run $$DOTFILES/bootstrap))
+
 MAKEFLAGS ?= '-j 4'
 MODULES = ansible bash bin docker fzf gem git gnu golang homebrew \
 					java json kubernetes less markdown node npm nvim psql \
