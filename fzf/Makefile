@@ -1,18 +1,9 @@
-default: install
-
-prepare:
+install:
 	mkdir -p $(XDG_CONFIG_HOME)/fzf
-
-install: prepare
 	@stow --verbose --restow --target $(XDG_CONFIG_HOME)/fzf .
 
-uninstall:
+clean:
 	@stow --verbose --delete --target $(XDG_CONFIG_HOME)/fzf .
-
-clean: uninstall
 	rm -rf $(XDG_CONFIG_HOME)/fzf
 
-dry-run:
-	@stow --verbose --simulate --target $(XDG_CONFIG_HOME)/fzf .
-
-.PHONY: default setup install uninstall clean dry-run
+.PHONY: install clean

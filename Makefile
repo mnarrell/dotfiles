@@ -1,9 +1,10 @@
-$(if $(value BOOTSTRAPPED),,$(error Environment not bootstrapped.  Please run $$DOTFILES/bootstrap))
+$(if $(value BOOTSTRAPPED),,$(error Environment not bootstrapped.  Please source $$DOTFILES/bootstrap))
 
 MAKEFLAGS ?= '-j 4'
-MODULES = ansible bash bin docker fzf gem git gnu golang homebrew \
-					java json kubernetes less markdown node npm nvim psql \
-					python readline ripgrep tig tmux vagrant yamllint yapf zsh
+MODULES = bash bin docker fzf gem git gnu golang homebrew \
+     			java json kubernetes less markdown node npm nvim \
+     			psql python readline ripgrep tig tmux vagrant \
+     			yamllint yapf zsh
 
 CLEAN := $(addsuffix .clean,$(MODULES))
 

@@ -1,18 +1,9 @@
-default: install
-
-prepare:
+install:
 	mkdir -p $(XDG_CONFIG_HOME)/kubernetes
-
-install: prepare
 	@stow --verbose --restow --target $(XDG_CONFIG_HOME)/kubernetes .
 
-uninstall:
+clean:
 	@stow --verbose --delete --target $(XDG_CONFIG_HOME)/kubernetes .
-
-clean: uninstall
 	rm -rf $(XDG_CONFIG_HOME)/kubernetes
 
-dry-run:
-	@stow --verbose --simulate --target $(XDG_CONFIG_HOME)/kubernetes .
-
-.PHONY: default setup install uninstall clean dry-run
+.PHONY: install clean

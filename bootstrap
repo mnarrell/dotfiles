@@ -1,11 +1,18 @@
-#! /usr/bin/env zsh
+#! /usr/bin/env bash
 
 echo "This file should be sourced..."
 echo ''
-for e in $(find . -name env.zsh); do 
-  echo "Sourcing $e"
-  source $e 
-done
+
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_CACHE_HOME=${HOME}/.cache
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_RUNTIME_DIR=${HOME}/tmp/xdg_runtime
+
+while read -r env; do
+  echo "Sourcing $env"
+  # shellcheck disable=SC1090
+  source "${env}"
+done < <(find . -name env.zsh)
 echo ''
 
 echo "Installing Git submodules..."
