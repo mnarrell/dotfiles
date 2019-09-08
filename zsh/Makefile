@@ -1,6 +1,7 @@
 install:
 	mkdir -p $(XDG_CONFIG_HOME)/zsh
 	mkdir -p $(XDG_CACHE_HOME)/zsh
+	mkdir -p $(XDG_DATA_HOME)/zsh
 	@stow --verbose --restow --target $(XDG_CONFIG_HOME)/zsh .
 	@pip2 install -U -r $(CURDIR)/requirements.txt
 	@pip3 install -U -r $(CURDIR)/requirements.txt
@@ -14,6 +15,7 @@ clean:
 	@pip3 uninstall -y -r $(CURDIR)/requirements.txt
 	@stow --verbose --delete --target $(XDG_CONFIG_HOME)/zsh .
 	rm -rf $(XDG_CONFIG_HOME)/zsh
-	rm -rf ${XDG_CACHE_HOME}/zsh/plugins
+	rm -rf ${XDG_CACHE_HOME}/zsh
+	rm -rf ${XDG_DATA_HOME}/zsh
 
 .PHONY: install clean

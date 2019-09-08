@@ -1,4 +1,4 @@
 augroup gitconfig
-  au BufRead,BufEnter gitconfig.symlink set filetype=gitconfig
-  au BufRead,BufEnter .gitconfig.local set filetype=gitconfig
+  au BufRead,BufEnter */git/config set filetype=gitconfig
+  au BufRead,BufEnter */git/config.local set filetype=gitconfig
 augroup END
