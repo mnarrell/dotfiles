@@ -3,6 +3,7 @@ unset PATH
 
 PATH=~/bin
 PATH=${PATH}:${GOROOT}/bin
+PATH=${PATH}:${GOBIN}
 PATH=${PATH}:${JAVA_HOME}/bin
 # PATH=${PATH}:/usr/local/opt/openssl/bin
 # PATH=${PATH}:/usr/local/lib/ruby/gems/2.6.0/bin

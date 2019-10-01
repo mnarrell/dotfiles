@@ -72,6 +72,7 @@ cask 'xquartz'
 # brew 'redis', restart_service: :changed
 # brew 'gawk', args: ["with-default-names"]
 # brew 'jmeter', args: ["with-plugins"]
+# brew 'dep'
 
 brew 'ack'
 brew 'ansible'
@@ -89,7 +90,6 @@ brew 'cmake'
 brew 'cmatrix'
 brew 'coreutils'
 brew 'cowsay'
-# brew 'dep'
 brew 'exa'
 brew 'extract_url'
 brew 'fd'
@@ -153,6 +153,7 @@ brew 'popt'
 brew 'postgresql', restart_service: :changed
 brew 'prettier'
 brew 'python'
+brew 'python@2'
 brew 'ranger'
 brew 'readline'
 brew 'reattach-to-user-namespace'
@@ -196,6 +197,7 @@ brew 'zsh'
 ################################################################################
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Deliveries (3.1.1)', id: 924726344
+mas 'Keynote (9.1)', id: 409183694
 mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'Microsoft Excel (16.22)', id: 462058435
 mas 'Microsoft OneNote (16.22)', id: 784801555
@@ -203,6 +205,7 @@ mas 'Microsoft Outlook (16.22)', id: 985367838
 mas 'Microsoft PowerPoint (16.22)', id: 462062816
 mas 'Microsoft Remote Desktop (8.0.30030)', id: 715768417
 mas 'Microsoft Word (16.22)', id: 462054704
+mas 'Numbers (6.1)', id: 409203825
 mas 'OneDrive (19.002.0107)', id: 823766827
 mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
 mas 'Tweetbot (3.2)', id: 1384080005

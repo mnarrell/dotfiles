@@ -30,6 +30,8 @@ let g:go_metalinter_command='golangci-lint run --print-issued-lines=false'
 " let g:go_def_mode='gopls'
 " let g:go_info_mode = 'gopls'
 
+let g:go_doc_popup_window = 1
+
 " let g:go_auto_sameids = 1
 let g:go_updatetime = 400
 

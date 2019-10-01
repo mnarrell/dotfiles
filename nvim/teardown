@@ -14,6 +14,6 @@ gem uninstall neovim
 
 # rm -rf "$(HOME)/.viminfo"
 rm -rf "${HOME}/.vimrc_background"
-rm -rf "${HOME}/.dotfiles/vim/vim.symlink/autoload/plug.vim"
-rm -rf "${HOME}/.dotfiles/vim/vim.symlink/plugged"
+rm -rf "${DIR}/autoload/plug.vim"
+rm -rf "${DIR}/plugged"
 rm -rf "${XDG_CONFIG_HOME}/nvim"
