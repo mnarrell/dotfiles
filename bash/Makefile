@@ -1,7 +1,9 @@
 install:
-	@stow --verbose --restow --target $(HOME) .
+	ln -sf $(CURDIR)/.bash_profile $(HOME)/.bash_profile
+	ln -sf $(CURDIR)/.bashrc $(HOME)/.bashrc
 
 clean:
-	@stow --verbose --delete --target $(HOME) .
+	rm -f $(HOME)/.bash_profile
+	rm -f $(HOME)/.bashrc
 
 .PHONY: install clean

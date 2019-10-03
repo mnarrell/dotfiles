@@ -1,5 +1,5 @@
 install:
-	mkdir -p $(XDG_CONFIG_HOME)/markdown
+	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/markdown
 	ln -sf $(CURDIR)/markdownlintrc.json $(HOME)/.markdownlintrc
 	@npm install -g \
 		alex \
@@ -7,7 +7,7 @@ install:
 		markdownlint-cli
 
 clean:
-	rm $(HOME)/.markdownlintrc
+	rm -f $(HOME)/.markdownlintrc
 	@npm uninstall -g \
 		alex \
 		markdown2confluence \

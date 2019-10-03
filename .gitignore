@@ -10,3 +10,10 @@ nvim/plugged/
 nvim/spell/
 nvim/spell/en.utf-8.add.spl
 nvim/ultisnips/*private.snippets
+
+vim/autoload/plug.vim
+vim/autoload/plug.vim.old
+vim/plugged/
+vim/spell/
+vim/spell/en.utf-8.add.spl
+vim/ultisnips/*private.snippets
