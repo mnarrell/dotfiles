@@ -14,11 +14,7 @@ let g:go_addtags_transform = 'camelcase'
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
 
-let g:go_fmt_options = {
-      \ 'gofmt': '-s',
-      \ }
-
-" call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
 let g:go_list_height = 20
 let g:go_list_type = 'quickfix'
@@ -27,30 +23,26 @@ let g:go_list_type = 'quickfix'
 " let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_command='golangci-lint run --print-issued-lines=false'
 
-" let g:go_def_mode='gopls'
-" let g:go_info_mode = 'gopls'
-
 let g:go_doc_popup_window = 1
 
-" let g:go_auto_sameids = 1
 let g:go_updatetime = 400
 
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
+" let g:go_highlight_array_whitespace_error = 1
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_chan_whitespace_error = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_format_strings = 1
 let g:go_highlight_function_parameters = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_generate_tags = 1
+" let g:go_highlight_generate_tags = 1
 let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_string_spellcheck = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_space_tab_error = 0
+" let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_structs = 1
-let g:go_highlight_trailing_whitespace_error = 0
+" let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_types = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
@@ -72,7 +64,6 @@ augroup vimgo
   au FileType go nmap de <Plug>(go-def-vertical)
   au FileType go nmap gb :<C-u>call <SID>build_go_files()<CR>
   au FileType go nmap gc <Plug>(go-callers)
-  " au FileType go nmap ge :GoErrCheck<CR>
   au FileType go nmap gf <Plug>(go-referrers)
   au FileType go nmap gi <Plug>(go-implements)
   au FileType go nmap gr <Plug>(go-rename)

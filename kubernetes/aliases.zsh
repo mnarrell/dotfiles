@@ -22,6 +22,7 @@ alias kl='k logs -f PODS'
 alias kdp='k describe pod PODS'
 alias kds='k describe service SVC'
 alias kcs='k config use-context CTX && tns'
+alias kfixcomp='source <(kubectl completion zsh)'
 
 alias -g PODS='$(  kubectl get pods  | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 alias -g DEPLOY='$(kubectl get deploy| fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'

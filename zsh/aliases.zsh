@@ -25,21 +25,21 @@ alias sshconfig='${EDITOR} ~/.ssh/config'
 alias sudo="sudo -E"
 
 if [ $commands[exa] ]; then
-	alias ls='exa'
-	alias ll='exa -lg --git --time-style long-iso'
-	alias la='exa -laag --git --time-style long-iso'
+  alias ls='exa'
+  alias ll='exa -lg --git --time-style long-iso'
+  alias la='exa -laag --git --time-style long-iso'
 else
-	if [ "$(uname -s)" = "Darwin" ]; then
-		if [ $commands[gls] ]; then
-			alias ls="gls --color=tty --quoting-style=literal -h"
-		else
-			alias ls='ls -FG'
-		fi
-	else
-		alias ls='ls -F --color'
-	fi
-	alias la="ls -lah"
-	alias ll="ls -lh"
+  if [ "$(uname -s)" = "Darwin" ]; then
+    if [ $commands[gls] ]; then
+      alias ls="gls --color=tty --quoting-style=literal -h"
+    else
+      alias ls='ls -FG'
+    fi
+  else
+    alias ls='ls -F --color'
+  fi
+  alias la="ls -lah"
+  alias ll="ls -lh"
 fi
 
 # Suffix aliases (eg. "foo.md" to open Markdown files in "Marked 2.app")
@@ -52,8 +52,8 @@ alias zsh="nocorrect zsh"
 
 # OSX stuffs
 if [ "$(uname -s)" = "Darwin" ]; then
-	alias showfiles="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
-	alias hidefiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
-	alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
+  alias showfiles="defaults write com.apple.finder AppleShowAllFiles TRUE; killall Finder"
+  alias hidefiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
+  alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
 fi
 
