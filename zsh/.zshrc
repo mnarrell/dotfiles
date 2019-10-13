@@ -42,4 +42,4 @@ unset config_files updated_at
 
 ################################################################################
 # Load local configurations, including $PRIVATE_DOTFILES.
-[ -f ${HOME}/.zsh.local ] && . ${HOME}/.zsh.local
+[ -f ${XDG_CONFIG_HOME}/zsh/local.zsh ] && . ${XDG_CONFIG_HOME}/zsh/local.zsh
