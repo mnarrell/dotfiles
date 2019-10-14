@@ -1,3 +1,5 @@
+include ../env.mk
+
 install:
 	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/yapf
 	@pip2 install -U -r $(CURDIR)/requirements.txt

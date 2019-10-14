@@ -1,3 +1,5 @@
+include ../env.mk
+
 install:
 	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/node
 	mkdir -p $(XDG_DATA_HOME)/node

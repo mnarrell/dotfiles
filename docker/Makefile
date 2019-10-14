@@ -1,3 +1,5 @@
+include ../env.mk
+
 install:
 	ln -sf $(PWD) $(XDG_CONFIG_HOME)/docker
 	@npm i -g dockerfile-language-server-nodejs

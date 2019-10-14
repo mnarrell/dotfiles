@@ -1,3 +1,5 @@
+include ../env.mk
+
 install:
 	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/zsh
 	mkdir -p $(XDG_CACHE_HOME)/zsh

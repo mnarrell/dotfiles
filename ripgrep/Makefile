@@ -1,3 +1,5 @@
+include ../env.mk
+
 install:
 	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/ripgrep
 

@@ -1,3 +1,5 @@
+include ../env.mk
+
 install:
 	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/git
 	@pip2 install -U -r $(CURDIR)/requirements.txt

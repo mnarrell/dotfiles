@@ -2,14 +2,17 @@
 .netrwbook
 .netrwhist*
 
-tmux/plugins
+git/config.local
 
 nvim/autoload/plug.vim
 nvim/autoload/plug.vim.old
+nvim/local.vim
 nvim/plugged/
 nvim/spell/
 nvim/spell/en.utf-8.add.spl
 nvim/ultisnips/*private.snippets
+
+tmux/plugins
 
 vim/autoload/plug.vim
 vim/autoload/plug.vim.old
@@ -17,3 +20,5 @@ vim/plugged/
 vim/spell/
 vim/spell/en.utf-8.add.spl
 vim/ultisnips/*private.snippets
+
+zsh/local.zsh
