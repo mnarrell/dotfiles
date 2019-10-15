@@ -1,8 +1,7 @@
 include ../env.mk
 
 install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/golang
-	ln -sf $(CURDIR)/golangci.yml $(HOME)/.golangci.yml
+	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
 	go get -u github.com/rakyll/hey
 	go get -u honnef.co/go/tools/cmd/staticcheck
 

@@ -37,4 +37,3 @@ else
   echo ''
 fi
 
-"$(brew --prefix)/opt/fzf/install" --all --xdg --no-update-rc

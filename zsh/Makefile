@@ -1,7 +1,7 @@
 include ../env.mk
 
 install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/zsh
+	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
 	mkdir -p $(XDG_CACHE_HOME)/zsh
 	mkdir -p $(XDG_DATA_HOME)/zsh
 	@pip2 install -U -r $(CURDIR)/requirements.txt
@@ -16,6 +16,5 @@ clean:
 	@pip3 uninstall -y -r $(CURDIR)/requirements.txt
 	rm -rf $(XDG_CONFIG_HOME)/zsh
 	rm -rf ${XDG_CACHE_HOME}/zsh
-	rm -rf ${XDG_DATA_HOME}/zsh
 
 .PHONY: install clean

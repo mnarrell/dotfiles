@@ -1,7 +1,7 @@
 include ../env.mk
 
 install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/json
+	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
 	@npm install -g jsonlint
 
 clean:

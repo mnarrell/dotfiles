@@ -1,7 +1,7 @@
 include ../env.mk
 
 install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/psql
+	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
 	mkdir -p $(XDG_CACHE_HOME)/psql
 
 clean:

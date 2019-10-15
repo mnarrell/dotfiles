@@ -1,4 +1,3 @@
-
 MODULES = bash bin docker fzf gem git gnu golang homebrew \
 			java json kubernetes less markdown node npm nvim \
 			psql python readline ripgrep tig tmux vagrant \

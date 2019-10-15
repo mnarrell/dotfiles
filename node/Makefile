@@ -1,7 +1,7 @@
 include ../env.mk
 
 install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/node
+	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
 	mkdir -p $(XDG_DATA_HOME)/node
 
 clean:

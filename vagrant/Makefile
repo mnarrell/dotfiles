@@ -1,7 +1,7 @@
 include ../env.mk
 
 install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)/vagrant
+	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
 	mkdir -p $(XDG_DATA_HOME)/vagrant
 	@vagrant plugin install vagrant-hosts
 
