@@ -28,6 +28,7 @@ linters:
   enable-all: true
   disable:
     - megacheck
+    - wsl
     # - maligned
     # - prealloc
     # - gosec

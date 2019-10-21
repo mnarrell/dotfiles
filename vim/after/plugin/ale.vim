@@ -1,5 +1,8 @@
 scriptencoding utf-8
 
+" set omnifunc=ale#completion#OmniFunc
+set completeopt-=preview
+
 highlight ALEErrorSign ctermbg=18 ctermfg=red cterm=bold
 
 let g:ale_echo_msg_error_str = 'E'
