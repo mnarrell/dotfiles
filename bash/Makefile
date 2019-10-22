@@ -1,8 +1,8 @@
 include ../env.mk
 
 install:
-	ln -sf $(CURDIR)/.bash_profile $(HOME)/.bash_profile
-	ln -sf $(CURDIR)/.bashrc $(HOME)/.bashrc
+	ln -sfn $(CURDIR)/.bash_profile $(HOME)/.bash_profile
+	ln -sfn $(CURDIR)/.bashrc $(HOME)/.bashrc
 
 clean:
 	rm -f $(HOME)/.bash_profile

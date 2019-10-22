@@ -1,7 +1,7 @@
 include ../env.mk
 
-install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
+install: .ensure.xdg
+	ln -sfn $(CURDIR) $(XDG_CONFIG_HOME)/yapf
 	@pip2 install -U -r $(CURDIR)/requirements.txt
 	@pip3 install -U -r $(CURDIR)/requirements.txt
 

@@ -1,7 +1,7 @@
 include ../env.mk
 
 install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
+	ln -sfn $(CURDIR) $(XDG_CONFIG_HOME)/zsh
 	mkdir -p $(XDG_CACHE_HOME)/zsh
 	mkdir -p $(XDG_DATA_HOME)/zsh
 	@pip2 install -U -r $(CURDIR)/requirements.txt

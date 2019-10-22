@@ -1,7 +1,7 @@
 include ../env.mk
 
-install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
+install: .ensure.xdg
+	ln -sfn $(CURDIR) $(XDG_CONFIG_HOME)/markdown
 	ln -sf $(CURDIR)/markdownlintrc.json $(HOME)/.markdownlintrc
 	@npm install -g \
 		alex \

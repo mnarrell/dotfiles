@@ -1,7 +1,7 @@
 include ../env.mk
 
-install:
-	ln -sf $(CURDIR) $(XDG_CONFIG_HOME)
+install: .ensure.xdg
+	ln -sfn $(CURDIR) $(XDG_CONFIG_HOME)/golang
 	go get -u github.com/rakyll/hey
 	go get -u honnef.co/go/tools/cmd/staticcheck
 
