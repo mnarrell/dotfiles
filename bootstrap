@@ -28,8 +28,7 @@ echo ''
 
 echo "Installing Homebrew..."
 if test ! "$(command -v brew)"; then
-  ruby -e "$(curl -fsSL
-  https://raw.githubusercontent.com/Homebrew/install/master/install)" | while read -r line; do echo "$line"; done
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" | while read -r line; do echo "$line"; done
 else
   while read -r brw; do
     echo "${brw}"

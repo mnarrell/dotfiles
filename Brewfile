@@ -24,6 +24,7 @@ cask_args appdir: '/Applications'
 
 cask 'aerial'
 cask 'alfred'
+cask 'backblaze'
 cask 'bartender'
 cask 'basictex'
 cask 'better-window-manager'
@@ -209,5 +210,4 @@ mas 'Numbers (6.1)', id: 409203825
 mas 'OneDrive (19.002.0107)', id: 823766827
 mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
 mas 'Tweetbot (3.2)', id: 1384080005
-mas 'Xcode (10.1)', id: 497799835
 mas 'feedly (1.1)', id: 865500966
