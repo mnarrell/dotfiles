@@ -1,3 +1,3 @@
-augroup gitconfig
-  au BufRead,BufEnter */.ssh/config set filetype=sshconfig
-augroup END
+" vint: -ProhibitAutocmdWithNoGroup
+
+au BufRead,BufEnter */.ssh/config set filetype=sshconfig

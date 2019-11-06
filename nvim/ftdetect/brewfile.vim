@@ -1,3 +1,3 @@
-augroup brew
-  au BufRead,BufEnter Brewfile set filetype=ruby syntax=brewfile
-augroup END
+" vint: -ProhibitAutocmdWithNoGroup
+
+au BufRead,BufEnter Brewfile set filetype=ruby syntax=brewfile

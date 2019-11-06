@@ -36,6 +36,10 @@ linters:
 
 issues:
   exclude-rules:
+    - linters:
+        - staticcheck
+      text: "SA3000:"
+
     - path: _test\.go
       linters:
         - dupl

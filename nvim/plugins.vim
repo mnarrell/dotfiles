@@ -62,5 +62,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
+Plug 'dylon/vim-antlr'
 
 call plug#end()

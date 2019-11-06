@@ -1,3 +1,3 @@
-augroup docker
-  au BufNewFile,BufRead Dockerfile.* set ft=Dockerfile
-augroup END
+" vint: -ProhibitAutocmdWithNoGroup
+
+au BufNewFile,BufRead Dockerfile.* set ft=Dockerfile

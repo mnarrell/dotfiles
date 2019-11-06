@@ -43,3 +43,7 @@ unset config_files updated_at
 ################################################################################
 # Load local configurations, including $PRIVATE_DOTFILES.
 [ -f ${XDG_CONFIG_HOME}/zsh/local.zsh ] && . ${XDG_CONFIG_HOME}/zsh/local.zsh
+
+################################################################################
+# Prepare for persistent ssh sessions
+mkdir -p /tmp/ssh-sockets

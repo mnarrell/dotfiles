@@ -46,7 +46,7 @@ set shortmess+=a                " use abbreviations in messages eg. `[RO]` inste
 set shortmess+=o                " overwrite file-written messages
 set shortmess+=t                " truncate file messages at start
 
-if has('unnamedplus')
+if has('clipboard')
   set clipboard=unnamed,unnamedplus
 endif
 

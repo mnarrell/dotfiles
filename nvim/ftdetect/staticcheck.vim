@@ -1,3 +1,3 @@
-augroup staticcheck
-  au BufNewFile,BufRead staticcheck.conf set ft=toml
-augroup END
+" vint: -ProhibitAutocmdWithNoGroup
+
+au BufNewFile,BufRead staticcheck.conf set ft=toml

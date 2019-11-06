@@ -48,6 +48,9 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Completion
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 " Linting
 Plug 'w0rp/ale'
@@ -60,5 +63,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
+Plug 'dylon/vim-antlr'
 
 call plug#end()

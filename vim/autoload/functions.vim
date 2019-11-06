@@ -66,7 +66,7 @@ endf
 
 " Updates all configured plugins, making a backup first.
 fun! functions#UpdatePlugins() abort
-  let l:filename='$XDG_DATA_HOME/nvim/plugin_snapshot-'.strftime('%Y%m%d-%H%M%S').'.vim'
+  let l:filename='$XDG_DATA_HOME/vim/plugin_snapshot-'.strftime('%Y%m%d-%H%M%S').'.vim'
   echom 'Backing up plugin state to: '.l:filename
   execute 'PlugSnapshot! '.l:filename.' | PlugUpdate | PlugUpgrade'
 endf

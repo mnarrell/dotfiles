@@ -73,12 +73,13 @@ cask 'xquartz'
 # brew 'redis', restart_service: :changed
 # brew 'gawk', args: ["with-default-names"]
 # brew 'jmeter', args: ["with-plugins"]
-# brew 'dep'
+# brew 'node@10'
 
 brew 'ack'
 brew 'ansible'
 brew 'ansible-lint'
 brew 'antibody'
+brew 'antlr'
 brew 'autoconf'
 brew 'automake'
 brew 'awscli'
@@ -140,7 +141,6 @@ brew 'ncdu'
 brew 'neofetch'
 brew 'neovim'#, args: ["HEAD"]
 brew 'nmap'
-# brew 'node@10'
 brew 'node'
 brew 'oniguruma'
 brew 'openssl'
