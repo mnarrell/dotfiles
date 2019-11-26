@@ -2,7 +2,8 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 " Core
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'ConradIrwin/vim-bracketed-paste'
+" Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'wincent/terminus'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -42,7 +43,7 @@ Plug 'tpope/vim-rhubarb'
 
 " Tmux
 " Plug 'edkolev/tmuxline.vim'
-Plug 'roxma/vim-tmux-clipboard'
+" Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 

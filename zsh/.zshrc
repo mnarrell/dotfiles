@@ -30,12 +30,11 @@ done
 ################################################################################
 # Initialize the autocompletion framework.
 autoload -Uz compinit
-typeset -i updated_at=$(date +'%j' -r ${XDG_CACHE_HOME}/zsh/zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ${XDG_CACHE_HOME}/zsh/zcompdump 2>/dev/null)
-if [ $(date +'%j') != $updated_at ]; then
-  compinit -i -d ${XDG_CACHE_HOME}/zsh/zcompdump
+if [[ -n ${XDG_CACHE_HOME}/zsh/zcompdump(#qN.mh+24) ]]; then
+  compinit -i -d ${XDG_CACHE_HOME}/zsh/zcompdump;
 else
-  compinit -C -i -d ${XDG_CACHE_HOME}/zsh/zcompdump
-fi
+  compinit -C ${XDG_CACHE_HOME}/zsh/zcompdump;
+fi;
 
 ################################################################################
 unset config_files updated_at

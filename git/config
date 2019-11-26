@@ -9,8 +9,6 @@
 
 [core]
   abbrev = 12
-  attributesfile = ~/.gitattributes
-  excludesfile = ~/.gitignore
   ignorecase = false
 
 [color]
@@ -57,9 +55,6 @@
 
 [push]
   default = nothing
-
-[init]
-  templatedir = ~/.git_templates
 
 [fetch]
   prune = true

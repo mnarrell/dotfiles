@@ -4,3 +4,8 @@ vnoremap Q : '<,'>:normal @q<CR>                  " allow Q to execute the macro
 xnoremap <  <gv
 xnoremap >  >gv
 xnoremap =  >gv
+
+xnoremap il g_o^
+onoremap il :normal vil<CR>
+xnoremap al $o0
+onoremap al :normal val<CR>
