@@ -1,6 +1,7 @@
-.DS_Store
-*.swp
 *.iml
-.idea/
+*.swp
+.DS_Store
 .autoenv.zsh
+.idea/
+Session.vim
 tags

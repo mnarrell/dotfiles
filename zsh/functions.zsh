@@ -28,3 +28,13 @@ function fgl() (
     cd /usr/local/Cellar/figlet/*/share/figlet/fonts
     ls *.flf | sort | fzf --no-multi --reverse --preview "figlet -f {} Hello World!"
 )
+
+function e() {
+  if (( ${+1} )); then
+    ${EDITOR} $1
+  elif [ -f Session.vim ]; then
+    ${EDITOR} -S Session.vim
+  else
+    ${EDITOR} .
+  fi
+}

@@ -23,7 +23,7 @@ let g:go_metalinter_command='golangci-lint run --print-issued-lines=false'
 let g:go_updatetime = 400
 
 let g:go_gopls_complete_unimported = 1
-let g:go_gopls_use_placeholders = 1
+" let g:go_gopls_use_placeholders = 1
 
 let g:go_highlight_array_whitespace_error = 1
 let g:go_highlight_build_constraints = 1

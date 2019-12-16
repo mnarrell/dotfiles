@@ -1,4 +1,3 @@
-alias e="${EDITOR}"
 alias reload!='exec "$SHELL" -l'
 
 alias ..="cd .."
