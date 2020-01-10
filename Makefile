@@ -1,7 +1,8 @@
-MODULES = bash bin docker fzf gem git gnu golang homebrew \
-			java json kubernetes less markdown node npm nvim \
-			psql python readline ripgrep tig tmux vagrant \
-					vim yamllint yapf zsh
+MODULES = \
+	bash bin docker fzf gem git gnu golang helm \
+	homebrew java json kubernetes less markdown \
+	node npm nvim psql python readline ripgrep \
+	tig tmux vagrant vim yamllint yapf zsh
 
 CLEAN := $(addsuffix .clean,$(MODULES))
 
