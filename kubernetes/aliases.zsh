@@ -24,12 +24,15 @@ alias kds='k describe service SVC'
 alias kcs='k config use-context CTX && tns'
 alias kfixcomp='source <(kubectl completion zsh)'
 
-alias -g PODS='$(  kubectl get pods  | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g DEPLOY='$(kubectl get deploy| fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g RS='$(    kubectl get rs    | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g SVC='$(   kubectl get svc   | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g ING='$(   kubectl get ing   | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g CTX='$(   kubectl config get-contexts -o=name | sort -fd | fzf-tmux --reverse --multi --cycle)'
+alias -g PODS='$(   kubectl get pods            | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g DEPLOY='$( kubectl get deploy          | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g RS='$(     kubectl get rs              | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g SVC='$(    kubectl get svc             | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g ING='$(    kubectl get ing             | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g SECRETS='$(kubectl get secrets         | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g SA='$(     kubectl get serviceaccounts | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+
+alias -g CTX='$(kubectl config get-contexts -o=name | sort -fd | fzf-tmux --reverse --multi --cycle)'
 
 function kip() {
   # local node_ip=$(kubectl cluster-info | grep master | egrep -o '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
