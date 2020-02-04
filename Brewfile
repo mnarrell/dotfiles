@@ -27,7 +27,6 @@ cask_args appdir: '~/Applications'
 
 cask 'aerial'
 cask 'alfred'
-cask 'backblaze'
 cask 'balenaetcher'
 cask 'bartender'
 cask 'basictex'
@@ -74,6 +73,7 @@ cask 'xquartz'
 # brew 'gawk', args: ["with-default-names"]
 # brew 'chunkwm'
 # brew 'skhd'
+# brew 'vim'
 
 brew 'ack'
 brew 'ansible'
@@ -183,7 +183,6 @@ brew 'tree'
 brew 'universal-ctags', args: ["HEAD"]
 brew 'utf8proc'
 brew 'vault'
-brew 'vim'
 brew 'watch'
 brew 'wdiff'
 brew 'weechat'
@@ -197,18 +196,18 @@ brew 'zsh'
 ################################################################################
 # Mac App Store
 ################################################################################
-# mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
-# mas 'Deliveries (3.1.1)', id: 924726344
-# mas 'Keynote (9.1)', id: 409183694
-# mas 'Marked 2 (2.5.31)', id: 890031187
-# mas 'Microsoft Excel (16.22)', id: 462058435
-# mas 'Microsoft OneNote (16.22)', id: 784801555
-# mas 'Microsoft Outlook (16.22)', id: 985367838
-# mas 'Microsoft PowerPoint (16.22)', id: 462062816
-# mas 'Microsoft Remote Desktop (8.0.30030)', id: 715768417
-# mas 'Microsoft Word (16.22)', id: 462054704
-# mas 'Numbers (6.1)', id: 409203825
-# mas 'OneDrive (19.002.0107)', id: 823766827
-# mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
-# mas 'Tweetbot (3.2)', id: 1384080005
-# mas 'feedly (1.1)', id: 865500966
+mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
+mas 'Deliveries (3.1.1)', id: 924726344
+mas 'Keynote (9.1)', id: 409183694
+mas 'Marked 2 (2.5.31)', id: 890031187
+mas 'Microsoft Excel (16.22)', id: 462058435
+mas 'Microsoft OneNote (16.22)', id: 784801555
+mas 'Microsoft Outlook (16.22)', id: 985367838
+mas 'Microsoft PowerPoint (16.22)', id: 462062816
+mas 'Microsoft Remote Desktop (8.0.30030)', id: 715768417
+mas 'Microsoft Word (16.22)', id: 462054704
+mas 'Numbers (6.1)', id: 409203825
+mas 'OneDrive (19.002.0107)', id: 823766827
+mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
+mas 'Tweetbot (3.2)', id: 1384080005
+mas 'feedly (1.1)', id: 865500966
