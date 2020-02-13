@@ -1,56 +1,90 @@
 ---
+
+output:
+  print-issued-lines: false
+  # format: line-number
+
 linters-settings:
-  govet:
-    check-shadowing: true
-  golint:
-    min-confidence: 0
-  gocyclo:
-    min-complexity: 10
-  maligned:
-    suggest-new: true
-  dupl:
-    threshold: 100
-  goconst:
-    min-len: 2
-    min-occurrences: 2
-  gofmt:
-    simplify: true
-  depguard:
-    list-type: blacklist
-    packages:
-      - github.com/sirupsen/logrus
+  # govet:
+  #   check-shadowing: true
+  # golint:
+  #   min-confidence: 0
+  # gocyclo:
+  #   min-complexity: 10
+  # maligned:
+  #   suggest-new: true
+  # dupl:
+  #   threshold: 100
+  # goconst:
+  #   min-len: 2
+  #   min-occurrences: 2
+  # gofmt:
+  #   simplify: true
   misspell:
     locale: US
   lll:
     line-length: 140
 
 linters:
-  enable-all: true
-  disable:
-    - megacheck
-    - wsl
-    # - maligned
-    # - prealloc
-    # - gosec
+  enable:
+    # - depguard
     # - gochecknoglobals
+    # - gochecknoinits
+    # - gofmt
+    # - gomnd
+    # - staticcheck
+    # - wsl
+    - bodyclose
+    - deadcode
+    - dogsled
+    - dupl
+    - errcheck
+    - funlen
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godox
+    - goimports
+    - golint
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - interfacer
+    # - lll
+    - maligned
+    - misspell
+    - nakedret
+    - prealloc
+    - rowserrcheck
+    - scopelint
+    - structcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+    - whitespace
 
-issues:
-  exclude-rules:
-    - linters:
-        - staticcheck
-      text: "SA3000:"
+# issues:
+#   exclude-rules:
+#     - linters:
+#         - staticcheck
+#       text: "SA3000:"
 
-    - path: _test\.go
-      linters:
-        - dupl
-        - errcheck
-        - gocyclo
-        - gosec
-        - scopelint
+#     - path: _test\.go
+#       linters:
+#         - dupl
+#         - errcheck
+#         - gocyclo
+#         - gosec
+#         - scopelint
 
-run:
-  skip-dirs:
-    - testdata
+# run:
+#   skip-dirs:
+#     - testdata
+
 ...
-
-# vim: set filetype=yaml :
