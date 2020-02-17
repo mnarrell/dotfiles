@@ -16,10 +16,9 @@ let g:go_addtags_transform = 'camelcase'
 let g:go_doc_popup_window = 1
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_fail_silently = 1
-let g:go_gorename_command = 'gopls'
 let g:go_list_height = 20
 let g:go_list_type = 'quickfix'
-let g:go_metalinter_command='golangci-lint run --print-issued-lines=false'
+let g:go_rename_command = 'gopls'
 let g:go_updatetime = 400
 
 let g:go_gopls_complete_unimported = 1
