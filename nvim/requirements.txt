@@ -1,3 +1,4 @@
+msgpack
 neovim
-vim-vint
 pynvim
+vim-vint

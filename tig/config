@@ -79,16 +79,25 @@ set line-graphics = utf-8
 
 set main-view = id:yes date:relative author:full commit-title:yes,graph,refs,overflow=no
 
+
+################################################################################
+# Custom mappings
 bind generic + !git commit --amend
+
+bind main ! !git revert %(commit)
 bind main B !git rebase -i %(commit)
-bind refs B !git rebase -i %(commit)
 bind main F !git fetch
 bind main P !git push origin "%(prompt Enter branch name: )"
 bind main T !@git tag %(prompt) %(commit)
+
+bind refs B !git rebase -i %(commit)
+bind refs D ?git branch -d %(branch)
 bind refs n !@git branch "%(prompt Enter branch name: )"
+
 bind stash A !?git stash apply %(stash)
 bind stash D !?git stash drop %(stash)
+bind stash P !@git stash pop
+
 bind status D !@?rm %(file)
-bind status P !@git stash pop
-bind status S !@git stash save
 bind status I !sh -c "echo %(file) >> .gitignore"
+bind status S !@git stash save

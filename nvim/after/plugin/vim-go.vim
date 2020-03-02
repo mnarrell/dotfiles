@@ -15,6 +15,7 @@ call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 let g:go_addtags_transform = 'camelcase'
 let g:go_doc_popup_window = 1
 let g:go_fmt_command = 'goimports'
+" let g:go_fmt_command = 'gopls'
 let g:go_fmt_fail_silently = 1
 let g:go_list_height = 20
 let g:go_list_type = 'quickfix'
