@@ -136,7 +136,7 @@ brew 'lua@5.1'
 brew 'luarocks'
 brew 'make'
 brew 'mas'
-brew 'nats-streaming-server'
+brew 'nats-server'
 brew 'ncdu'
 brew 'neofetch'
 brew 'neovim'#, args: ["HEAD"]
