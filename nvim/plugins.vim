@@ -1,35 +1,35 @@
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 " Core
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'wincent/terminus'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' }
-Plug 'wincent/loupe'
+" Plug 'tpope/vim-obsession'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'          " Fuzzy finding
+Plug 'jiangmiao/auto-pairs'                                  " Add closing brace/paren/quote/etc.
+Plug 'tpope/vim-commentary'                                  " Comments
+Plug 'tpope/vim-eunuch'                                      " Unix commands rename/move/copy
+Plug 'tpope/vim-repeat'                                      " Repeat plugin maps
+Plug 'tpope/vim-surround'                                    " Manage surrounding braces/quotes/parens
+Plug 'tpope/vim-unimpaired'                                  " Pair-wise operators
+Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' } " Calculate start up time
+Plug 'wincent/loupe'                                         " Enhanced in-file search
+Plug 'wincent/terminus'                                      " Enhanced terminal integration
 
 " Navigation
-Plug 'fweep/vim-tabber'
-Plug 'jlanzarotta/bufexplorer'
 " Plug 'junegunn/vim-easy-align'
-Plug 'tommcdo/vim-lion'
-Plug 'junegunn/vim-peekaboo'
-Plug 'majutsushi/tagbar'
-Plug 'markonm/traces.vim'
-Plug 'tpope/vim-vinegar'
+" Plug 'majutsushi/tagbar'
+Plug 'jlanzarotta/bufexplorer' " Buffer management
+Plug 'junegunn/vim-peekaboo'   " Show the register contents
+Plug 'markonm/traces.vim'      " Range, pattern and substitute preview
+Plug 'tommcdo/vim-lion'        " Alignments
+Plug 'tpope/vim-vinegar'       " Netrw for normal people
 
 " Eyecandy
-Plug 'chriskempson/base16-vim'
-Plug 'kshenoy/vim-signature'
-Plug 'machakann/vim-highlightedyank'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'        " Color schemes
+Plug 'fweep/vim-tabber'               " Like airline for the tab bar
+Plug 'kshenoy/vim-signature'          " Display marks in the gutter
+Plug 'machakann/vim-highlightedyank'  " Show me what you're yanking
+Plug 'vim-airline/vim-airline'        " Statusline eyecandy
+Plug 'vim-airline/vim-airline-themes' " Statusline eyecandy
 
 " Text objects
 " Plug 'kana/vim-textobj-line'       | Plug 'kana/vim-textobj-user'
@@ -46,25 +46,41 @@ Plug 'tpope/vim-rhubarb'
 " Tmux
 " Plug 'edkolev/tmuxline.vim'
 " Plug 'roxma/vim-tmux-clipboard'
-Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
-Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' } " Tmux syntax highlighting
+Plug 'tmux-plugins/vim-tmux-focus-events'       " Seamless terminal/vim/tmux integration
 
 " Completion
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'           " Snippets
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
 
 " Linting
-Plug 'w0rp/ale'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Weak LSP client
+Plug 'w0rp/ale'                                                                      " Asynchronous Linting Engine
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax
-" Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }
+
+" Golang
+" Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' } " This is the last formal release
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }               " This is the bleeding edge
+
+" Python
+Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
+Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+
+" TOML
 Plug 'cespare/vim-toml'
+
+" Nginx
 Plug 'chr4/nginx.vim', { 'for': 'nginx' }
-Plug 'dylon/vim-antlr'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Terraform
 Plug 'hashivim/vim-terraform'
+
+" Ansible
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
+
+" Pandoc
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
 
