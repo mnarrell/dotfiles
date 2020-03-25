@@ -69,7 +69,10 @@ linters:
     - varcheck
     - whitespace
 
-# issues:
+issues:
+  exclude:
+    - Using the variable on range scope .* in function literal
+
 #   exclude-rules:
 #     - linters:
 #         - staticcheck

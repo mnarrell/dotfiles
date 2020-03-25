@@ -1,6 +1,7 @@
 ################################################################################
 # Taps
 ################################################################################
+tap 'buo/cask-upgrade'
 tap 'getantibody/tap'
 tap 'golangci/tap'
 tap 'homebrew/cask'
@@ -17,15 +18,6 @@ tap 'universal-ctags/universal-ctags'
 ################################################################################
 cask_args appdir: '~/Applications'
 
-# cask 'jce-unlimited-strength-policy'
-# cask 'minikube'
-# cask 'onedrive'
-# cask 'marked'
-# cask 'wireshark'
-# cask 'carbon-copy-cloner'
-# cask 'discord'
-
-cask 'aerial'
 cask 'alfred'
 cask 'balenaetcher'
 cask 'bartender'
@@ -41,6 +33,7 @@ cask 'font-meslo-for-powerline'
 cask 'font-roboto-mono-for-powerline'
 cask 'font-source-code-pro-for-powerline'
 cask 'google-chrome'
+cask 'insomnia'
 cask 'istat-menus'
 cask 'iterm2'
 cask 'java'
@@ -69,12 +62,6 @@ cask 'xquartz'
 ################################################################################
 # Simple brews
 ################################################################################
-# brew 'gnu-sed'
-# brew 'gawk', args: ["with-default-names"]
-# brew 'chunkwm'
-# brew 'skhd'
-# brew 'vim'
-
 brew 'ack'
 brew 'ansible'
 brew 'ansible-lint'

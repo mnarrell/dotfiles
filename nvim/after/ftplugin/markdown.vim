@@ -1,6 +1,6 @@
 call functions#plaintext()
 
-setlocal equalprg=prettier\ --stdin\ --stdin-filepath\ '%:p'
+setlocal equalprg=prettier\ --stdin-filepath\ '%:p'
 setlocal makeprg=open\ %
 
 if has('autocmd')
