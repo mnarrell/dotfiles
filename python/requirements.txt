@@ -1,2 +1,7 @@
-jedi
-python-language-server[all]
+black
+isort
+jedi<0.16,>=0.14.1
+
+python-language-server[rope, mccabe, pycodestyle]
+pyls-isort
+pyls-black

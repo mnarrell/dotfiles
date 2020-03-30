@@ -3,7 +3,7 @@ set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-pip2 uninstall -y -r "${DIR}/requirements.txt"
+# pip2 uninstall -y -r "${DIR}/requirements.txt"
 pip3 uninstall -y -r "${DIR}/requirements.txt"
 rm -rf "${XDG_CONFIG_HOME}/nvim"
 npm uninstall -g \

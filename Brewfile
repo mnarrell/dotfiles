@@ -141,7 +141,6 @@ brew 'popt'
 brew 'postgresql', restart_service: :changed
 brew 'prettier'
 brew 'python'
-brew 'python@2'
 brew 'ranger'
 brew 'readline'
 brew 'reattach-to-user-namespace'

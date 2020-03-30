@@ -55,7 +55,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
 
 " Linting
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Weak LSP client
-Plug 'w0rp/ale'                                                                      " Asynchronous Linting Engine
+Plug 'dense-analysis/ale'                                                            " Asynchronous Linting Engine
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax
@@ -66,7 +66,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }               " This is the b
 
 " Python
 Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
-Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+" Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
+" Plug 'davidhalter/jedi-vim'
+Plug 'vim-python/python-syntax'
 
 " TOML
 Plug 'cespare/vim-toml'

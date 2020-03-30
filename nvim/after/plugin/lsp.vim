@@ -5,7 +5,7 @@ let g:LanguageClient_rootMarkers = {
 let g:LanguageClient_serverCommands = {
       \ 'sh': ['bash-language-server', 'start'],
       \ 'Dockerfile': ['docker-langserver', '--stdio'],
-      \ 'python': ['/usr/local/bin/pyls'],
+      \ 'python': ['pyls', '-vv', '--log-file', '~/pyls.log'],
       \ 'vim': ['vim-language-server', '--stdio']
       \ }
 
