@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # Tig
 
 alias g="git"
