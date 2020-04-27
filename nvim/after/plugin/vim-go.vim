@@ -21,6 +21,7 @@ let g:go_list_height = 20
 let g:go_list_type = 'quickfix'
 let g:go_rename_command = 'gopls'
 let g:go_updatetime = 400
+let g:go_echo_command_info = 0
 
 let g:go_gopls_complete_unimported = 1
 " let g:go_gopls_use_placeholders = 1
@@ -61,7 +62,7 @@ augroup vimgo
   au FileType go nmap †  <Plug>(go-test-func)
   au FileType go nmap db <Plug>(go-doc-browser)
   au FileType go nmap de <Plug>(go-def-vertical)
-  au FileType go nmap gb :<C-u>call <SID>build_go_files()<CR>
+  au FileType go nmap <silent> gb :<C-u>call <SID>build_go_files()<CR>
   au FileType go nmap gc <Plug>(go-callers)
   au FileType go nmap gf <Plug>(go-referrers)
   au FileType go nmap gi <Plug>(go-implements)
