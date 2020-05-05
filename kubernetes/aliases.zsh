@@ -7,13 +7,6 @@ if [ $commands[kubectl] ]; then
   }
 fi
 
-if [ $commands[stern] ]; then
-  function stern() {
-    source <(command stern --completion=zsh)
-    command stern "$@"
-  }
-fi
-
 alias k='kubectl'
 alias kp='k get pods -o wide'
 alias ks='k get services -o wide'
@@ -55,14 +48,4 @@ function tns() {
   echo "${cns}" >! "${HOME}/.tiller_namespace"
   export TILLER_NAMESPACE=${cns}
   echo "Switched Tiller namespace to ${cns}"
-}
-
-function k18() {
-  echo "Switching kubectl to ${HOME}/bin/kubectl-1.8.3"
-  ln -s -f "${HOME}/bin/kubectl-1.8.3" "${HOME}/bin/kubectl"
-}
-
-function k111() {
-  echo "Switching kubectl to ${HOME}/bin/kubectl-1.11.3"
-  ln -s -f "${HOME}/bin/kubectl-1.11.3" "${HOME}/bin/kubectl"
 }

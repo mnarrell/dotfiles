@@ -34,10 +34,6 @@ nnoremap <silent> ¬ :call functions#ToggleLocationList()<CR>
 " Option-C
 nnoremap <silent> ç :call functions#ToggleQuickFix()<CR>
 
-" Or use built-in gt/gT to traverse between tabs
-nnoremap <silent> ]<Tab> :tabnext<CR>
-nnoremap <silent> [<Tab> :tabprev<CR>
-
 " Tab management
 nnoremap <silent> <leader>+ :tabnew<CR>:edit .<CR>
 nnoremap <silent> <leader>) :tabonly<CR>
