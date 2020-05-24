@@ -1,6 +1,6 @@
 include ../env.mk
 
-GO_VERSION = 1.14.1
+GO_VERSION = 1.14.3
 GO_URL = https://dl.google.com/go/go$(GO_VERSION).darwin-amd64.tar.gz
 
 install: .ensure.xdg /usr/local/go-$(GO_VERSION)
