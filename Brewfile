@@ -18,12 +18,12 @@ tap 'universal-ctags/universal-ctags'
 ################################################################################
 cask_args appdir: '~/Applications'
 
+# cask 'cleanmymac'
 cask 'alfred'
 cask 'balenaetcher'
 cask 'bartender'
 cask 'basictex'
 cask 'better-window-manager'
-cask 'cleanmymac'
 cask 'coconutbattery'
 cask 'colloquy'
 cask 'docker'
@@ -138,6 +138,7 @@ brew 'pcre'
 brew 'perl'
 brew 'pkg-config'
 brew 'popt'
+brew 'postgis'
 brew 'postgresql', restart_service: :changed
 brew 'prettier'
 brew 'python'
@@ -189,7 +190,7 @@ mas 'Microsoft Excel (16.22)', id: 462058435
 mas 'Microsoft OneNote (16.22)', id: 784801555
 mas 'Microsoft Outlook (16.22)', id: 985367838
 mas 'Microsoft PowerPoint (16.22)', id: 462062816
-mas 'Microsoft Remote Desktop (8.0.30030)', id: 715768417
+mas 'Microsoft Remote Desktop (10.3.11)', id: 1295203466
 mas 'Microsoft Word (16.22)', id: 462054704
 mas 'Numbers (6.1)', id: 409203825
 mas 'OneDrive (19.002.0107)', id: 823766827

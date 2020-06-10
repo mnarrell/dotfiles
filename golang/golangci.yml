@@ -27,13 +27,13 @@ linters-settings:
 
 linters:
   enable:
-    # - depguard
+    - depguard
     # - gochecknoglobals
-    # - gochecknoinits
+    - gochecknoinits
     # - gofmt
     # - gomnd
     # - staticcheck
-    # - wsl
+    - wsl
     - bodyclose
     - deadcode
     - dogsled
@@ -53,7 +53,7 @@ linters:
     - govet
     - ineffassign
     - interfacer
-    # - lll
+    - lll
     - maligned
     - misspell
     - nakedret

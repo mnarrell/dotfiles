@@ -2,7 +2,6 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 " Core
 " Plug 'ConradIrwin/vim-bracketed-paste'
-" Plug 'tpope/vim-obsession'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'          " Fuzzy finding
 Plug 'jiangmiao/auto-pairs'                                  " Add closing brace/paren/quote/etc.
 Plug 'tpope/vim-commentary'                                  " Comments
@@ -12,7 +11,7 @@ Plug 'tpope/vim-surround'                                    " Manage surroundin
 Plug 'tpope/vim-unimpaired'                                  " Pair-wise operators
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' } " Calculate start up time
 Plug 'wincent/loupe'                                         " Enhanced in-file search
-Plug 'wincent/terminus'                                      " Enhanced terminal integration
+" Plug 'wincent/terminus'                                      " Enhanced terminal integration
 
 " Navigation
 " Plug 'junegunn/vim-easy-align'
@@ -32,7 +31,6 @@ Plug 'vim-airline/vim-airline'        " Statusline eyecandy
 Plug 'vim-airline/vim-airline-themes' " Statusline eyecandy
 
 " Text objects
-" Plug 'kana/vim-textobj-line'       | Plug 'kana/vim-textobj-user'
 Plug 'christoomey/vim-sort-motion' | Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'     | Plug 'kana/vim-textobj-user'
 Plug 'wellle/targets.vim'
@@ -41,17 +39,15 @@ Plug 'wellle/targets.vim'
 Plug 'mhinz/vim-signify'
 Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 
 " Tmux
 " Plug 'edkolev/tmuxline.vim'
-" Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' } " Tmux syntax highlighting
 Plug 'tmux-plugins/vim-tmux-focus-events'       " Seamless terminal/vim/tmux integration
 
 " Completion
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'           " Snippets
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
 
 " Linting
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Weak LSP client
@@ -74,7 +70,7 @@ Plug 'vim-python/python-syntax'
 Plug 'cespare/vim-toml'
 
 " Nginx
-Plug 'chr4/nginx.vim', { 'for': 'nginx' }
+"Plug 'chr4/nginx.vim', { 'for': 'nginx' }
 
 " Terraform
 Plug 'hashivim/vim-terraform'
@@ -85,5 +81,8 @@ Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
 " Pandoc
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
+
+" Helm
+Plug 'towolf/vim-helm'
 
 call plug#end()

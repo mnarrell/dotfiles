@@ -1,6 +1,6 @@
-let g:LanguageClient_rootMarkers = {
-      \ 'go': ['.git', 'go.mod', 'Gopkg.toml'],
-      \ }
+" let g:LanguageClient_rootMarkers = {
+"       \ 'go': ['.git', 'go.mod', 'Gopkg.toml'],
+"       \ }
 
 let g:LanguageClient_serverCommands = {
       \ 'sh': ['bash-language-server', 'start'],
