@@ -11,19 +11,15 @@ alias chown='chown -v'
 alias clear="echo 'NO!'"
 alias cp='cp -v'
 alias e="${EDITOR}"
-alias flush="dscacheutil -flushcache"
-alias hosts='sudo -E ${EDITOR} /etc/hosts'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print ${1}'"
 alias mkdir='mkdir -v'
 alias mv='mv -v'
-alias please='sudo $(fc -nl -1)'
 alias rm='rm -v'
 alias rsync-copy="rsync -avz --progress -h"
 alias rsync-move="rsync -avz --progress -h --remove-source-files"
 alias rsync-synchronize="rsync -avzu --delete --progress -h"
 alias rsync-update="rsync -avzu --progress -h"
-alias sshconfig='${EDITOR} ~/.ssh/config'
 alias sudo="sudo -E"
 
 if [ $commands[exa] ]; then

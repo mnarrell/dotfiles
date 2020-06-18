@@ -4,6 +4,8 @@
 
 git/config.local
 
+helm/repositories*
+
 nvim/autoload/plug.vim
 nvim/autoload/plug.vim.old
 nvim/local.vim

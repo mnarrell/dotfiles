@@ -56,6 +56,9 @@
 [push]
   default = nothing
 
+[pull]
+	rebase = true
+
 [fetch]
   prune = true
   pruneTags = true
