@@ -1,2 +1,2 @@
 setlocal noexpandtab
-set nolist
+setlocal nolist

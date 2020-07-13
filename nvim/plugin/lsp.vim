@@ -1,10 +1,6 @@
-" let g:LanguageClient_rootMarkers = {
-"       \ 'go': ['.git', 'go.mod', 'Gopkg.toml'],
-"       \ }
-
 let g:LanguageClient_serverCommands = {
       \ 'sh': ['bash-language-server', 'start'],
-      \ 'Dockerfile': ['docker-langserver', '--stdio'],
+      \ 'dockerfile': ['docker-langserver', '--stdio'],
       \ 'python': ['pyls', '-vv', '--log-file', '~/pyls.log'],
       \ 'vim': ['vim-language-server', '--stdio']
       \ }
@@ -28,8 +24,8 @@ endfunction()
 
 augroup LSP
   autocmd!
-  autocmd FileType python call SetLSPShortcuts()
-  autocmd FileType Dockerfile call SetLSPShortcuts()
+  " autocmd FileType python call SetLSPShortcuts()
+  autocmd FileType dockerfile call SetLSPShortcuts()
   autocmd FileType sh call SetLSPShortcuts()
   autocmd FileType vim call SetLSPShortcuts()
 augroup END

@@ -1,5 +1,3 @@
-" let g:deoplete#enable_at_startup = 1
+set completeopt-=preview
 
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
-let g:ruby_host_prog = '$XDG_DATA_HOME/gem/bin/neovim-ruby-host'
+nnoremap <silent> <Leader>d :call deoplete#toggle()<CR>
