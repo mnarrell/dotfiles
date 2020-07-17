@@ -15,7 +15,7 @@ Plug 'wincent/loupe'                                         " Enhanced in-file 
 
 " Navigation
 " Plug 'junegunn/vim-easy-align'
-" Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 Plug 'jlanzarotta/bufexplorer' " Buffer management
 Plug 'junegunn/vim-peekaboo'   " Show the register contents
 Plug 'markonm/traces.vim'      " Range, pattern and substitute preview
