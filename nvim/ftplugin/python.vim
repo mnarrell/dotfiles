@@ -7,7 +7,6 @@ setlocal autoindent
 setlocal fileformat=unix
 
 setlocal equalprg=yapf
-setlocal formatprg=yapf
 
 hi SpellCap ctermbg=NONE
 

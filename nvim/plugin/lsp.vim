@@ -1,7 +1,7 @@
 let g:LanguageClient_serverCommands = {
       \ 'sh': ['bash-language-server', 'start'],
       \ 'dockerfile': ['docker-langserver', '--stdio'],
-      \ 'python': ['pyls', '-vv', '--log-file', '~/pyls.log'],
+      \ 'python': ['pyls'],
       \ 'vim': ['vim-language-server', '--stdio']
       \ }
 
