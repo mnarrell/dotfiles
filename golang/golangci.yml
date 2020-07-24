@@ -73,10 +73,10 @@ issues:
   exclude:
     - Using the variable on range scope .* in function literal
 
-#   exclude-rules:
-#     - linters:
-#         - staticcheck
-#       text: "SA3000:"
+  exclude-rules:
+    - linters:
+        - staticcheck
+      text: "SA3000:"
 
 #     - path: _test\.go
 #       linters:

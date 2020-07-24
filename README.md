@@ -15,4 +15,4 @@ Inspired by and/or stolen from people a lot smarter than myself:
 - [VIM Screencasts](https://www.youtube.com/playlist?list=PLwJS-G75vM7kFO-yUkyNphxSIdbi_1NKX)
 - [tpope/tpope](https://github.com/tpope/tpope)
 
- ... and many others.
+... and many others.

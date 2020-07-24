@@ -11,17 +11,18 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 
 let g:ale_linters = {
-      \ 'go': ['staticcheck', 'vet', 'golint'],
-      \ 'yaml': ['yamllint'],
-      \ 'python': ['pyls'],
+      \ 'go'        : ['staticcheck', 'vet', 'golint'],
+      \ 'markdown'  : ['alex', 'markdownlint'],
+      \ 'python'    : ['pyls'],
+      \ 'yaml'      : ['yamllint'],
       \ }
 
 let g:ale_fixers = {
-      \   'markdown'  : ['prettier'],
-      \   'yaml'      : ['prettier'],
-      \   'html'      : ['prettier'],
-      \   'sh'        : ['shfmt'],
-      \   'bash'      : ['shfmt'],
-      \}
+      \ 'bash'      : ['shfmt'],
+      \ 'html'      : ['prettier'],
+      \ 'markdown'  : ['prettier'],
+      \ 'sh'        : ['shfmt'],
+      \ 'yaml'      : ['prettier'],
+      \ }
 
 nnoremap <leader>at :ALEToggle<CR>

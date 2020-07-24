@@ -2,7 +2,8 @@ let g:LanguageClient_serverCommands = {
       \ 'sh': ['bash-language-server', 'start'],
       \ 'dockerfile': ['docker-langserver', '--stdio'],
       \ 'python': ['pyls'],
-      \ 'vim': ['vim-language-server', '--stdio']
+      \ 'vim': ['vim-language-server', '--stdio'],
+      \ 'terraform': ['terraform-ls', 'serve'],
       \ }
 
 let g:LanguageClient_diagnosticsEnable = 0
