@@ -38,7 +38,6 @@ function kport() {
   local port=$(kubectl get pod "${pod}" -o json | jq '.spec.containers | .[0].ports | .[0].containerPort')
   echo "Forwarding traffic from localhost:${port} to ${pod}:${port}"
   kubectl port-forward ${pod} ${port}:${port} | bat -l log
-  # kubectl port-forward ${pod} ${port}:${port} | bat -l log
 }
 
 # Tiller meh
