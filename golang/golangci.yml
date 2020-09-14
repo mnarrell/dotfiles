@@ -33,7 +33,7 @@ linters:
     # - gofmt
     # - gomnd
     # - staticcheck
-    - wsl
+    # - wsl
     - bodyclose
     - deadcode
     - dogsled

@@ -17,31 +17,31 @@ alias kds='k describe service SVC'
 alias kcs='k config use-context CTX && tns'
 alias kfixcomp='source <(kubectl completion zsh)'
 
-alias -g PODS='$(   kubectl get pods            | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g DEPLOY='$( kubectl get deploy          | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g RS='$(     kubectl get rs              | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g SVC='$(    kubectl get svc             | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g ING='$(    kubectl get ing             | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g SECRETS='$(kubectl get secrets         | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
-alias -g SA='$(     kubectl get serviceaccounts | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
+alias -g PODS='$(kfuzz pod)'
+alias -g DEPLOY='$(kfuzz deploy)'
+alias -g RS='$(kfuzz rs)'
+alias -g SVC='$(kfuzz svc)'
+alias -g ING='$(kfuzz ing)'
+alias -g SECRETS='$(kfuzz secrets)'
+alias -g SA='$(kfuzz serviceaccounts)'
 
 alias -g CTX='$(kubectl config get-contexts -o=name | sort -fd | fzf-tmux --reverse --multi --cycle)'
 
-function kip() {
-  # local node_ip=$(kubectl cluster-info | grep master | egrep -o '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}')
-  local node_ip=$(kubectl get pods -l name=tiller -o wide | awk 'NR>1 {print $7}')
-  local node_ports=$(kubectl get svc -o json SVC | jq -r '.spec.ports[] | "\(.name) \(.nodePort)"')
-  if [[ $(echo "${node_ports}" | wc -l) -eq 1 ]]; then
-    echo "${node_ports}" \
-      | awk -v ip="${node_ip}" '{print "http://" ip ":"$2}' > >(cat) > >(tr -d '\n' | pbcopy)
-  else
-    echo "${node_ports}" \
-      | awk -v OFS='\t' -v ip="${node_ip}" '{print $1, " http://" ip ":"$2}' \
-      | fzf-tmux --cycle \
-      | awk '{print $2}' > >(cat) > >(tr -d '\n' | pbcopy)
-  fi
+# Fuzzy match a Kubernetes resource
+function kfuzz() {
+  kubectl get "$1" | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}"
 }
 
+# Fuzzy port-forwarding
+function kport() {
+  local pod=$(kfuzz pod)
+  local port=$(kubectl get pod "${pod}" -o json | jq '.spec.containers | .[0].ports | .[0].containerPort')
+  echo "Forwarding traffic from localhost:${port} to ${pod}:${port}"
+  kubectl port-forward ${pod} ${port}:${port} | bat -l log
+  # kubectl port-forward ${pod} ${port}:${port} | bat -l log
+}
+
+# Tiller meh
 function tns() {
   local ctx=$(kubectl config current-context)
   local cns=$(kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${ctx}\")].context.namespace}")

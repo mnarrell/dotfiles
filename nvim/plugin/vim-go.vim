@@ -1,32 +1,26 @@
 " Basics
 let g:go_addtags_transform = 'camelcase'
-let g:go_auto_type_info = 0
 let g:go_doc_popup_window = 1
 let g:go_list_height = 20
 let g:go_list_type = 'quickfix'
-" let g:go_rename_command = 'gopls'
 let g:go_snippet_engine = 'ultisnips'
 let g:go_updatetime = 400
 let g:go_echo_command_info = 0
 let g:go_implements_mode = 'gopls'
+" let g:go_debug = ['lsp', 'shell-commands']
 
 
 " Formatting
-let g:go_fmt_command = 'goimports'
-" let g:go_fmt_command = 'gopls'
+let g:go_fmt_command = 'gopls'
 let g:go_fmt_fail_silently = 1
-" let g:go_fmt_autosave = 1
-" let g:go_fmt_options = {
-"   \ 'gofmt': '-s',
-"   \ }
 
-" let g:go_imports_mode = 'gopls'
-" let g:go_imports_autosave = 1
+let g:go_imports_autosave = 1
 
+" Gopls
+" https://github.com/golang/tools/blob/master/gopls/doc/settings.md
 let g:go_gopls_complete_unimported = 1
-" let g:go_gopls_use_placeholders = 1
-
-let g:go_gopls_matcher = 'fuzzy'
+let g:go_gopls_gofumpt=v:true
+" let g:go_gopls_matcher = 'fuzzy'
 
 
 " Highlighting
