@@ -24,5 +24,5 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
-bindkey '^K' up-line-or-beginning-search
-bindkey '^J' down-line-or-beginning-search
+bindkey '^p' up-line-or-beginning-search
+bindkey '^n' down-line-or-beginning-search

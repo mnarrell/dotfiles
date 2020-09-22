@@ -1,9 +1,8 @@
 scriptencoding utf-8
 
-nnoremap gG gggqgG''
+" nnoremap gG gggqgG''
 
-nnoremap Q <nop>
-" nnoremap <silent> K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" nnoremap Q <nop>
 
 " Repeat last macro if in normal buffer.
 nnoremap <expr> <CR> empty(&buftype) ? '@@' : '<CR>'

@@ -11,10 +11,10 @@ Plug 'tpope/vim-surround'                                    " Manage surroundin
 Plug 'tpope/vim-unimpaired'                                  " Pair-wise operators
 Plug 'tweekmonster/startuptime.vim', { 'on': 'StartupTime' } " Calculate start up time
 Plug 'wincent/loupe'                                         " Enhanced in-file search
+Plug 'tpope/vim-scriptease'
 " Plug 'wincent/terminus'                                      " Enhanced terminal integration
 
 " Navigation
-" Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
 Plug 'jlanzarotta/bufexplorer' " Buffer management
 Plug 'junegunn/vim-peekaboo'   " Show the register contents
@@ -53,36 +53,19 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'           " Snippets
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Weak LSP client
 Plug 'dense-analysis/ale'                                                            " Asynchronous Linting Engine
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax
-
-" Golang
 " Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' } " This is the last formal release
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }               " This is the bleeding edge
-
-" Python
 Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
 " Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 " Plug 'davidhalter/jedi-vim'
 Plug 'vim-python/python-syntax'
-
-" TOML
 Plug 'cespare/vim-toml'
-
-" Nginx
 "Plug 'chr4/nginx.vim', { 'for': 'nginx' }
-
-" Terraform
 Plug 'hashivim/vim-terraform'
-
-" Ansible
 Plug 'pearofducks/ansible-vim', { 'do': 'cd ./UltiSnips; ./generate.py' }
-
-" Pandoc
 Plug 'vim-pandoc/vim-pandoc', { 'for': 'pandoc' }
 Plug 'vim-pandoc/vim-pandoc-syntax', { 'for': 'pandoc' }
-
-" Helm
 Plug 'towolf/vim-helm'
 
 call plug#end()

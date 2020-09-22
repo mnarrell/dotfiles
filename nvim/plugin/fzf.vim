@@ -14,12 +14,8 @@ let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit' }
 
-" let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-
 if executable('rg')
-  " let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!{.git,vendor}/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-  nnoremap <localleader> :Find<Space>
+  nnoremap <localleader> :Rg<Space>
 endif
 
 nnoremap <silent> <Leader>b :Buffers<CR>
@@ -28,7 +24,7 @@ nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>h :Helptags<CR>
 nnoremap <silent> <Leader>m :Marks<CR>
 nnoremap <silent> <Leader>gf :GFiles?<CR>
-" nnoremap <silent> <Leader>t :Tags<CR>
+nnoremap <silent> <Leader>t :Tags<CR>
 
 " Better command history with q:
 nnoremap q: :History:<CR>

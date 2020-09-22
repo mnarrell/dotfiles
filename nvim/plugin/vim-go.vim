@@ -19,7 +19,7 @@ let g:go_imports_autosave = 1
 " Gopls
 " https://github.com/golang/tools/blob/master/gopls/doc/settings.md
 let g:go_gopls_complete_unimported = 1
-let g:go_gopls_gofumpt=v:true
+" let g:go_gopls_gofumpt=v:true
 " let g:go_gopls_matcher = 'fuzzy'
 
 

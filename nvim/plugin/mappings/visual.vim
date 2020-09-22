@@ -5,6 +5,7 @@ xnoremap <  <gv
 xnoremap >  >gv
 xnoremap =  >gv
 
+" Crude 'line' text objects
 xnoremap il g_o^
 onoremap il :normal vil<CR>
 xnoremap al $o0

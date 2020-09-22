@@ -1,4 +1,4 @@
-noremap <silent> <leader>gb :Gblame<cr>
-noremap <silent> <leader>gd :Gvdiff<cr>
-noremap <silent> <leader>gr :Gread<cr>
-noremap <silent> <leader>gs :Gstatus<cr>gg<c-n>
+noremap <silent> <leader>gb :Gblame<CR>
+noremap <silent> <leader>gd :Gvdiff<CR>
+noremap <silent> <leader>gr :Gread<CR> :w <CR>
+noremap <silent> <leader>gs :Gstatus<CR>

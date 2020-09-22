@@ -122,13 +122,6 @@ endf
 " 	:Redir hi ............. show the full output of command ':hi' in a scratch window
 " 	:Redir !ls -al ........ show the full output of command ':!ls -al' in a scratch window
 
-fun! functions#SetPython2() abort
-  let b:ale_python_flake8_executable = 'python'
-  let b:ale_python_pylint_executable = 'python'
-  :ALEToggle
-  :ALEToggle
-endfun
-
 fun! functions#Base64Decode() abort
   normal! gv"sy
   execute "let output = system('echo -n " . @s . " | base64 -d')"
@@ -145,17 +138,17 @@ fun! functions#Base64Decode() abort
   call setline(1, split(output, "\n"))
 endfun
 
-fun! functions#Rg(...) abort
-  let l:output = system('rg --vimgrep '.join(a:000, ' '))
-  let l:list = split(l:output, '\n')
-  let l:ql = []
-  for l:item in l:list
-    let sit = split(l:item, ':')
-    call add(l:ql, {'filename': sit[0], 'lnum': sit[1], 'col': sit[2], 'text': sit[3]})
-  endfor
-  call setqflist(l:ql, 'r')
-  echo 'Rg results: '.len(l:ql)
-endfun
+" fun! functions#Rg(...) abort
+"   let l:output = system('rg --vimgrep '.join(a:000, ' '))
+"   let l:list = split(l:output, '\n')
+"   let l:ql = []
+"   for l:item in l:list
+"     let sit = split(l:item, ':')
+"     call add(l:ql, {'filename': sit[0], 'lnum': sit[1], 'col': sit[2], 'text': sit[3]})
+"   endfor
+"   call setqflist(l:ql, 'r')
+"   echo 'Rg results: '.len(l:ql)
+" endfun
 
 function! functions#ClearRegisters() abort
   let l:regs='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-="*+'
