@@ -2,3 +2,6 @@
 --smart-case
 --max-columns=150
 --max-columns-preview
+
+--glob=!vendor
+--glob=!.git
