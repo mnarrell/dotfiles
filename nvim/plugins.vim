@@ -15,12 +15,13 @@ Plug 'tpope/vim-scriptease'
 " Plug 'wincent/terminus'                                      " Enhanced terminal integration
 
 " Navigation
-Plug 'majutsushi/tagbar'
 Plug 'jlanzarotta/bufexplorer' " Buffer management
 Plug 'junegunn/vim-peekaboo'   " Show the register contents
+Plug 'majutsushi/tagbar'
 Plug 'markonm/traces.vim'      " Range, pattern and substitute preview
 Plug 'tommcdo/vim-lion'        " Alignments
 Plug 'tpope/vim-vinegar'       " Netrw for normal people
+Plug 'unblevable/quick-scope'
 
 " Eyecandy
 Plug 'chriskempson/base16-vim'        " Color schemes
@@ -54,8 +55,10 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 Plug 'dense-analysis/ale'                                                            " Asynchronous Linting Engine
 
 " Syntax
-" Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' } " This is the last formal release
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }               " This is the bleeding edge
+" Plug 'fatih/vim-go', { 'tag': '*', 'do': ':GoUpdateBinaries' }     " This is the last formal release
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }                 " This is the edge
+" Plug 'bhcleek/vim-go', { 'do': ':GoUpdateBinaries' }               " This is the bleeding edge
+
 Plug 'raimon49/requirements.txt.vim', { 'for': 'requirements' }
 " Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
 " Plug 'davidhalter/jedi-vim'
