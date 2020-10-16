@@ -12,7 +12,6 @@ pip3 install -U -r "${DIR}/requirements.txt"
 
 npm install -g \
   bash-language-server \
-  ember-template-lint \
   neovim
 
 gem install neovim

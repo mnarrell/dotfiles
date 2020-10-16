@@ -6,7 +6,6 @@ let g:go_list_type = 'quickfix'
 let g:go_snippet_engine = 'ultisnips'
 let g:go_updatetime = 400
 let g:go_echo_command_info = 0
-let g:go_implements_mode = 'gopls'
 " let g:go_debug = ['lsp', 'shell-commands']
 
 
@@ -47,4 +46,4 @@ let g:go_highlight_variable_assignments = 1
 let g:go_highlight_variable_declarations = 1
 
 
-" call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })

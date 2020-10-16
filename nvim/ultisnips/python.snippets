@@ -1,0 +1,21 @@
+snippet #! "Shebang" b
+#!/usr/bin/env python3
+$0
+endsnippet
+
+snippet def
+def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+	"""${3:docstring for $1}"""
+	${0}
+endsnippet
+
+snippet with "with" b
+with ${1:expr}`!p snip.rv = " as " if t[2] else ""`${2:var}:
+	${3:${VISUAL:pass}}
+$0
+endsnippet
+
+snippet cla
+class ${1:class_name}:
+	"""${0:description}"""
+endsnippet

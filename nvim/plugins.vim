@@ -48,7 +48,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'       " Seamless terminal/vim/tmux int
 
 " Completion
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'           " Snippets
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion
 
 " Linting
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' } " Weak LSP client
