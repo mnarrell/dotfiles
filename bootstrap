@@ -6,7 +6,7 @@ echo ''
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
 export XDG_DATA_HOME=${HOME}/.local/share
-export XDG_RUNTIME_DIR=${HOME}/tmp/xdg_runtime
+export XDG_RUNTIME_DIR=~/tmp/xdg_runtime
 
 while read -r env; do
   echo "Sourcing $env"
@@ -28,7 +28,7 @@ echo ''
 
 echo "Installing Homebrew..."
 if test ! "$(command -v brew)"; then
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" | while read -r line; do echo "$line"; done
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   while read -r brw; do
     echo "${brw}"

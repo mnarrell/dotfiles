@@ -1,7 +1,6 @@
-black
 isort
 #jedi<0.16,>=0.14.1
 jedi
 
-python-language-server[rope, pyflakes, mccabe, pycodestyle, pydocstyle, yapf]
+python-language-server[all]
 pyls-isort

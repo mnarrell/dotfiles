@@ -1,0 +1,5 @@
+vim.api.nvim_command([[command! GX :silent! !gitx]])
+vim.api.nvim_command([[command! -range=% AsConfluence :call functions#AsConfluence()]])
+vim.api.nvim_command([[command! -range=% Base64Decode :call functions#Base64Decode()]])
+vim.api.nvim_command([[command! TIG :tabnew | terminal tig -a]])
+vim.api.nvim_command([[command! ClearRegisters call functions#ClearRegisters()]])

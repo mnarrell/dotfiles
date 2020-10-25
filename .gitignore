@@ -2,6 +2,10 @@
 .netrwbook
 .netrwhist*
 
+docker/.buildNodeID
+docker/.token_seed
+docker/.token_seed.lock
+
 git/config.local
 
 helm/repositories*
@@ -16,10 +20,4 @@ nvim/ultisnips/*private.snippets
 
 tmux/plugins
 
-weechat/logs/
-weechat/weechat.log
-
 zsh/local.zsh
-
-*atna*
-atna*

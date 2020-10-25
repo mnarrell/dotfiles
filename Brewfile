@@ -16,15 +16,14 @@ tap 'universal-ctags/universal-ctags'
 ################################################################################
 # Casks
 ################################################################################
-cask_args appdir: '~/Applications'
 
 cask 'alfred'
 cask 'balenaetcher'
 cask 'bartender'
 cask 'basictex'
 cask 'better-window-manager'
+cask 'cleanmymac'
 cask 'coconutbattery'
-cask 'colloquy'
 cask 'docker'
 cask 'dropbox'
 cask 'firefox'
@@ -32,13 +31,14 @@ cask 'font-meslo-for-powerline'
 cask 'font-meslo-lg-nerd-font'
 cask 'font-roboto-mono-nerd-font'
 cask 'font-sauce-code-pro-nerd-font'
+cask 'gitter'
 cask 'google-chrome'
 cask 'insomnia'
 cask 'istat-menus'
 cask 'iterm2'
-cask 'java'
 cask 'jetbrains-toolbox'
 cask 'karabiner-elements'
+cask 'microsoft-teams'
 cask 'monolingual'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
@@ -62,8 +62,9 @@ cask 'xquartz'
 ################################################################################
 # Simple brews
 ################################################################################
+
+# brew 'neovim', args: ["HEAD"]
 brew 'ack'
-brew 'git-delta'
 brew 'ansible'
 brew 'ansible-lint'
 brew 'antibody'
@@ -91,6 +92,7 @@ brew 'gawk'
 brew 'gdbm'
 brew 'gettext'
 brew 'git'
+brew 'git-delta'
 brew 'git-extras'
 brew 'glib'
 brew 'gnu-getopt'
@@ -104,14 +106,13 @@ brew 'graphviz'
 brew 'grep'
 brew 'gzip'
 brew 'hadolint'
-brew 'terraform-ls'
 brew 'htop'
 brew 'httpie'
 brew 'hub'
 brew 'imagemagick'
+brew 'java'
 brew 'jpeg'
 brew 'jq'
-brew 'aquasecurity/trivy/trivy'
 brew 'less'
 brew 'libevent'
 brew 'libffi'
@@ -128,7 +129,7 @@ brew 'mas'
 brew 'nats-server'
 brew 'ncdu'
 brew 'neofetch'
-brew 'neovim'#, args: ["HEAD"]
+brew 'ninja'
 brew 'nmap'
 brew 'node'
 brew 'oniguruma'
@@ -165,6 +166,7 @@ brew 'telnet'
 brew 'terraform'
 brew 'terraform-docs'
 brew 'terraform-ls'
+brew 'terraform-ls'
 brew 'tflint'
 brew 'tidy-html5'
 brew 'tig'
@@ -187,7 +189,9 @@ brew 'zsh'
 # Mac App Store
 ################################################################################
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
+mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
 mas 'Deliveries (3.1.1)', id: 924726344
+mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
 mas 'Keynote (9.1)', id: 409183694
 mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'Microsoft Excel (16.22)', id: 462058435

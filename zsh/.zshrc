@@ -1,20 +1,20 @@
 #! /usr/bin/env zsh
 
+[ -z ${ZSH_PROFILE+x} ] || zmodload zsh/zprof
+
 ################################################################################
-# How Low Can You Go?
 export DOTFILES="$HOME/.dotfiles"
-export EDITOR='/usr/local/bin/nvim'
+export EDITOR="/usr/local/bin/nvim"
 bindkey -v # VIM tho
 
 ################################################################################
 # All the ZSH files.
-typeset -U config_files
 config_files=($XDG_CONFIG_HOME/*/*.zsh)
 
 ################################################################################
-# load the env files
-for file in ${(M)config_files:#*/env.zsh}; do
-  source "$file"
+# Load the env files
+for f in ${config_files}; do
+  [ "${f##*env.zsh*}" ] || source $f
 done
 
 ################################################################################
@@ -23,21 +23,9 @@ source $XDG_DATA_HOME/zsh/plugins
 
 ################################################################################
 # Load everything but the env files.
-for file in ${config_files:#*/env.zsh}; do
-  source "$file"
+for f in ${config_files}; do
+  [ "${f##*env*}" ] && source $f
 done
-
-################################################################################
-# Initialize the autocompletion framework.
-autoload -Uz compinit
-if [[ -n ${XDG_CACHE_HOME}/zsh/zcompdump(#qN.mh+24) ]]; then
-  compinit -i -d ${XDG_CACHE_HOME}/zsh/zcompdump;
-else
-  compinit -C ${XDG_CACHE_HOME}/zsh/zcompdump;
-fi;
-
-################################################################################
-unset config_files updated_at
 
 ################################################################################
 # Load local configurations, including $PRIVATE_DOTFILES.
@@ -46,3 +34,18 @@ unset config_files updated_at
 ################################################################################
 # Prepare for persistent ssh sessions
 mkdir -p /tmp/ssh-sockets
+
+################################################################################
+# Initialize the autocompletion framework.
+autoload -Uz compinit
+
+recent=$(find ${XDG_CACHE_HOME}/zsh/zcompdump -mtime -1 2>/dev/null | wc -l)
+if [ $recent -eq 0 ]; then
+  # If there isnt a recently updated completion file (past 24hrs), create it.
+  compinit -i -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+else
+  # Otherwise load this completion file.
+  compinit -C -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+fi;
+
+[ -z ${ZSH_PROFILE+x} ] || zprof

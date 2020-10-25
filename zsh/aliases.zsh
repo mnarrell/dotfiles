@@ -10,6 +10,7 @@ alias chmod="chmod -v"
 alias chown="chown -v"
 alias clear="echo 'NO!'"
 alias cp="cp -v"
+alias dots="cd ${DOTFILES}"
 alias e="${EDITOR}"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print ${1}'"
@@ -25,8 +26,8 @@ alias watch="watch "
 
 if [ $commands[exa] ]; then
   alias ls="exa"
-  alias ll="exa -lg --git --time-style long-iso"
-  alias la="exa -laag --git --time-style long-iso"
+  alias ll="exa -lg --git --icons --time-style long-iso"
+  alias la="exa -laag --git --icons --time-style long-iso"
 else
   if [ "$(uname -s)" = "Darwin" ]; then
     if [ $commands[gls] ]; then
@@ -42,8 +43,8 @@ else
 fi
 
 # Suffix aliases (eg. "foo.md" to open Markdown files in "Marked 2.app")
-alias -s md="open -a "Marked 2.app""
-alias -s markdown="open -a "Marked 2.app""
+alias -s md="open -a 'Marked 2.app'"
+alias -s markdown="open -a 'Marked 2.app'"
 
 # Handle picky command/arg corrections
 alias ./...="nocorrect ./..."

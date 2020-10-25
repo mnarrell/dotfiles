@@ -4,11 +4,9 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ln -sfn "${DIR}" "${XDG_CONFIG_HOME}/nvim"
-
-curl -sfLo "${XDG_CONFIG_HOME}/nvim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim >> /dev/null
-
 mkdir -p "${XDG_DATA_HOME}/nvim/"{backup,swap,undo}
-pip install -U --user -r "${DIR}/requirements.txt"
+
+pip install -U -r "${DIR}/requirements.txt"
 
 npm install -g \
   bash-language-server \
@@ -17,5 +15,3 @@ npm install -g \
 gem install neovim
 
 yarn global add vim-language-server
-
-nvim +PlugInstall +qall!

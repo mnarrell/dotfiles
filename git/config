@@ -22,16 +22,18 @@
 
 [alias]
   br = branch
+  cherry = cherry-pick
   ci = commit
   cm = !git add -A && git commit -m
   co = checkout
   commend = commit --amend --no-edit
-  fetch = fetch -p
+  cp = cherry-pick
+  fetch = fetch -p --tags -f
   fs = submodule update --remote
   it = !git init && git commit -m "root" --allow-empty
   patch = --no-pager diff --no-color
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
-  pull = pull --tags
+  pull = pull --tags -f
   scrub = gc --aggressive --prune=now
   st = status -sb
   wip = commit -am "WIP"
@@ -58,7 +60,7 @@
   default = nothing
 
 [pull]
-	rebase = true
+  rebase = true
 
 [fetch]
   prune = true
