@@ -10,6 +10,7 @@
 [core]
   abbrev = 12
   ignorecase = false
+  pager = delta
 
 [color]
   branch = auto
@@ -65,3 +66,14 @@
 
 [help]
   autocorrect = 1
+
+
+
+[delta]
+  ; plus-color = "#012800"
+  ; minus-color = "#340001"
+  syntax-theme = Monokai Extended Bright
+  line-numbers = true
+
+[interactive]
+  diffFilter = delta --color-only

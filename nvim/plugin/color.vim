@@ -20,3 +20,5 @@ hi PmenuSel              ctermbg=Blue  cterm=bold
 hi PmenuThumb            ctermbg=Blue
 hi Search                ctermfg=Red   ctermbg=NONE cterm=underline
 hi SpellBad              cterm=underline,bold
+
+hi CursorLineNr          ctermfg=Blue  cterm=bold
