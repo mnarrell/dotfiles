@@ -1,11 +1,14 @@
+local opt = require('options').opt
+
 return function()
-  vim.bo.equalprg = [[prettier --stdin-filepath '%:p']]
-  vim.bo.makeprg = [[open %]]
-  vim.bo.textwidth = 0
-  vim.bo.wrapmargin = 0
-  vim.wo.list = false
+  opt.equalprg = [[prettier --stdin-filepath '%:p']]
+  opt.makeprg = [[open %]]
+  opt.textwidth = 0
+  opt.wrapmargin = 0
+  opt.list = false
   vim.cmd([[setlocal spell]])
-  vim.wo.wrap = true
+  -- opt.spell = true
+  opt.wrap = true
 
   require('tools').apply_mappings({
     {'n', 'j', 'gj'},

@@ -1,18 +1,11 @@
-local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
-
-if not packer_exists then
-  if vim.fn.input('Download Packer? (y for yes) ') ~= 'y' then return end
-
-  local directory = string.format('%s/site/pack/packer/opt/', vim.fn.stdpath('data'))
-  vim.fn.mkdir(directory, 'p')
-  local out = vim.fn.system(string.format('git clone %s %s', 'https://github.com/wbthomason/packer.nvim',
-                                          directory .. '/packer.nvim'))
-
-  print(out)
+-- TODO: this also needs to be functionalized and called from nvim/init.lua
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/opt'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   print('Downloading packer.nvim...')
-  return
+  vim.cmd('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 
+vim.cmd [[packadd packer.nvim]]
 require('tools').create_autocmds({packer = {{'BufWritePost', 'plugins.lua', [[:PackerCompile]]}}})
 
 return require('packer').startup({
@@ -20,7 +13,8 @@ return require('packer').startup({
     use {'wbthomason/packer.nvim', opt = true}
 
     -- Eyecandy
-    use {'chriskempson/base16-vim', config = function() require('plugins.base16') end}
+    -- use {'chriskempson/base16-vim', config = function() require('plugins.base16') end}
+    use {'norcalli/nvim-base16.lua', config = function() require('plugins.theme') end}
     use {'fweep/vim-tabber', config = function() require('plugins.tabber') end}
     use {'kshenoy/vim-signature'}
     use {'machakann/vim-highlightedyank'}
@@ -43,7 +37,8 @@ return require('packer').startup({
 
     -- Navigation
     use {'jlanzarotta/bufexplorer', config = function() require('plugins.bufexplorer') end}
-    use {'junegunn/vim-peekaboo', config = function() vim.g.peekaboo_window = 'vertical botright 80new' end}
+    -- use {'junegunn/vim-peekaboo', config = function() vim.g.peekaboo_window = 'vertical botright 80new' end}
+    use {'gennaro-tedesco/nvim-peekup'}
     use {'majutsushi/tagbar', config = function() require('plugins.tagbar') end}
     use {'markonm/traces.vim'}
     use {'tommcdo/vim-lion'}
@@ -59,9 +54,12 @@ return require('packer').startup({
     use {'wellle/targets.vim'}
 
     -- Git
-    use {'mhinz/vim-signify', config = function() require('plugins.signify') end}
-    use {'rhysd/git-messenger.vim'}
     use {'tpope/vim-fugitive', config = function() require('plugins.fugitive') end}
+    use {
+      'lewis6991/gitsigns.nvim',
+      requires = {'nvim-lua/plenary.nvim'},
+      config = function() require('gitsigns').setup() end,
+    }
 
     -- Tmux
     use {'edkolev/tmuxline.vim', disable = true}
@@ -72,6 +70,7 @@ return require('packer').startup({
     use {'honza/vim-snippets'}
     use {'SirVer/ultisnips', config = function() require('plugins.ultisnips') end}
     use {'nvim-lua/completion-nvim', config = function() require('plugins.completion') end}
+    -- use {'hrsh7th/nvim-compe', config = function() require('plugins.nvim-compe') end}
 
     -- Linting
     use {'dense-analysis/ale', config = function() require('plugins.ale') end}
@@ -89,34 +88,42 @@ return require('packer').startup({
     use {'towolf/vim-helm',  ft = 'helm'}
     -- }}}
 
+    -- use {'davidhalter/jedi-vim', opt = true, ft = 'python'}
+
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('plugins.treesitter') end}
+    -- use {'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup() end}
     -- use {'nvim-treesitter/nvim-treesitter-textobjects'}
-    use {'nvim-treesitter/nvim-treesitter-refactor'}
+    -- use {'nvim-treesitter/nvim-treesitter-refactor'}
 
     use {'neovim/nvim-lspconfig'}
-    use {'glepnir/lspsaga.nvim', config = function() require('plugins.lspsaga') end}
+    -- use {'glepnir/lspsaga.nvim', config = function() require('plugins.lspsaga') end}
 
     -- Telescope {{{
     use {
       'nvim-lua/telescope.nvim',
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+      requires = {
+        {'nvim-lua/popup.nvim'},
+        {'nvim-lua/plenary.nvim'},
+        {'nvim-telescope/telescope-fzy-native.nvim'},
+        {'nvim-telescope/telescope-symbols.nvim'},
+        {'fhill2/telescope-ultisnips.nvim'},
+      },
       config = function() require('plugins.telescope') end
     }
-    use {'nvim-telescope/telescope-fzf-writer.nvim'}
-    use {'nvim-telescope/telescope-fzy-native.nvim'}
     -- }}}
 
-    -- use {'tjdevries/nlua.nvim'}
-
-    use {'bfredl/nvim-luadev'}
+    use {'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end}
 
     use {
       'kyazdani42/nvim-web-devicons',
-      config = function() require('nvim-web-devicons').setup {} end,
       {'ryanoasis/vim-devicons'}
     }
 
-    use {'euclidianAce/BetterLua.vim', {'andrejlevkovitch/vim-lua-format'}}
+    use {
+      'euclidianAce/BetterLua.vim',
+      {'andrejlevkovitch/vim-lua-format'}
+    }
+
   end,
   config = {display = {open_fn = require('packer.util').float}}
 })

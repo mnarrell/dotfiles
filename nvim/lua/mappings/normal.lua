@@ -1,4 +1,5 @@
 -- vim.keymap.nnoremap { 'm<CR>', '<cmd>Make!<CR>' }
+vim.api.nvim_set_keymap('n', 'tz', ":luafile ~/.config/nvim/init.lua<CR>", { noremap=true })
 
 require('tools').apply_mappings({
   -- {'n', '<Leader>y', '<Plug>(Luadev-RunWord)'},
@@ -10,9 +11,9 @@ require('tools').apply_mappings({
   {'n', '<Leader>k', ':bd!<CR>'},
   {'n', '<Leader>w', ':<C-u>call functions#SaveAndExec()<CR>'},
 
-  {'n', '<leader>tv', ':vsplit<cr>:term<CR>'},
-  {'n', '<leader>ts', ':split<cr>:term<CR>'},
-  {'n', '<leader>tt', ':tabnew<cr>:term<CR>'},
+  {'n', 'tv', ':vsplit<cr>:term<CR>'},
+  {'n', 'ts', ':split<cr>:term<CR>'},
+  {'n', 'tt', ':tabnew<cr>:term<CR>'},
 
   -- Make Y behave like C and D
   {'n', 'Y', 'y$'},
@@ -71,7 +72,7 @@ require('tools').apply_mappings({
   {'n', '<Up>', ':cprevious<CR>'},
   {'n', '<Down>', ':cnext<CR>'},
 
-  {'n', '<leader>ll', ':<C-u>call functions#ToggleLocationList()<CR>'},
-  {'n', '<leader>lq', ':<C-u>call functions#ToggleQuickFix()<CR>'},
+  {'n', 'tl', ':<C-u>call functions#ToggleLocationList()<CR>'},
+  {'n', 'tq', ':<C-u>call functions#ToggleQuickFix()<CR>'},
 }, {noremap = true, silent = true})
 

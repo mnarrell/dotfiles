@@ -1,7 +1,8 @@
 include ../env.mk
 
-GO_VERSION = 1.15.7
+GO_VERSION = 1.16
 GO_URL = https://dl.google.com/go/go$(GO_VERSION).darwin-amd64.tar.gz
+# GO_URL = https://golang.org/dl/go$(GO_VERSION).darwin-amd64.tar.gz
 
 install: .ensure.xdg /usr/local/go-$(GO_VERSION)
 	ln -sfn $(CURDIR) $(XDG_CONFIG_HOME)/golang

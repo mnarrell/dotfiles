@@ -4,7 +4,7 @@ local tools = {}
 function tools.reload(fcn) require('plenary.reload').reload_module(fcn) end
 
 -- Convenience func to print Lua tables.
-function tools.emit(...)
+function _G.emit(...)
   local objects = vim.tbl_map(vim.inspect, {...})
   print(unpack(objects))
 end

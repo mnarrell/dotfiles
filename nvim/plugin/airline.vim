@@ -15,7 +15,9 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16'
 " let g:airline_right_sep=''
 
-let g:airline_extensions = ['branch', 'whitespace', 'ale']
+let g:airline_extensions = ['branch', 'whitespace', 'ale', 'fugitiveline', 'quickfix', 'keymap']
+" let g:airline_extensions = ['branch', 'whitespace', 'ale', 'fugitiveline', 'fzf', 'hunks', 'keymap', 'localsearch', 'nvim-lsp', 'quickfix', 'tagbar']
+" let g:airline_extensions = ['branch', 'whitespace', 'ale']
 if exists(':Tmuxline')
   let g:airline_extensions += 'tmuxline'
 endif

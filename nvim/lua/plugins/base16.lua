@@ -11,18 +11,22 @@ local background = path:new(env.home .. '/.vimrc_background')
 if background:exists() then cmd('source ' .. background.filename) end
 
 local function set_highlights()
-  cmd('highlight! clear Search')
-  cmd('highlight! clear SpellBad')
+  local t4 = vim.g.terminal_color_4
 
-  cmd('highlight! CursorLineNr ctermfg=Blue cterm=bold')
-  cmd('highlight! HighlightedyankRegion ctermbg=Blue')
-  cmd('highlight! IncSearch ctermfg=White ctermbg=Red cterm=bold')
-  cmd('highlight! Pmenu ctermbg=18')
-  cmd('highlight! PmenuSbar ctermbg=18')
-  cmd('highlight! PmenuSel ctermbg=Blue cterm=bold')
-  cmd('highlight! PmenuThumb ctermbg=Blue')
-  cmd('highlight! Search ctermfg=Red ctermbg=NONE cterm=underline')
-  cmd('highlight! SpellBad cterm=underline,bold')
+  cmd(string.format('highlight! CursorLineNr ctermfg=Blue cterm=bold guifg=%s', t4))
+  cmd(string.format('highlight! HighlightedyankRegion ctermbg=Blue guibg=%s', t4))
+  cmd(string.format('highlight! IncSearch ctermfg=White ctermbg=Red cterm=bold guifg=White guibg=%s', t4))
+
+  cmd('highlight! LspDiagnosticsSignError guibg=#282a2e guifg=Red')
+  cmd('highlight! LspDiagnosticsSignWarning guibg=#282a2e guifg=Yellow')
+  cmd('highlight! LspDiagnosticsSignHint guibg=#282a2e guifg=' .. t4)
+
+  -- cmd('highlight! Pmenu ctermbg=18')
+  -- cmd('highlight! Pmenu ctermbg=18 guibg=%s')
+  cmd('highlight! PmenuSbar ctermbg=18 guibg=Black')
+  cmd(string.format('highlight! PmenuSel ctermbg=Blue cterm=bold guibg=%s', t4))
+  cmd(string.format('highlight! PmenuThumb ctermbg=Blue guibg=%s', t4))
+
   cmd('highlight! link QuickFixLine PmenuSel')
   cmd('highlight! link Search Underlined')
 end

@@ -1,3 +1,5 @@
+local opt = require('options').opt
+
 require('tools').create_autocmds({
   general = {
     {'FocusLost,WinLeave', '*', [[:silent! wa]]},
@@ -12,38 +14,44 @@ require('tools').create_autocmds({
 
   brewfile = {
     { 'BufRead,BufEnter', 'Brewfile', function()
-        vim.bo.filetype = 'ruby'
-        vim.bo.syntax = 'brewfile'
+        opt.filetype = 'ruby'
+        opt.syntax = 'brewfile'
       end }
   },
 
   dockerfile = {
-    { 'BufRead,BufEnter', '[Dd]ockerfile.[^vim],Dockerfile*', function()
-      vim.bo.filetype = 'dockerfile'
+    { 'BufRead,BufEnter', [[[Dd]ockerfile\.(lua|vim)\@!.*$]], function()
+      opt.filetype = 'dockerfile'
+    end }
+  },
+
+  helm = {
+    {'BufRead,BufEnter', '*/templates/*.yaml', function()
+      opt.filetype = 'helm'
     end }
   },
 
   gitconfig = {
     { 'BufRead,BufEnter', '*/git/config,*/git/config.local', function()
-      vim.bo.filetype = 'gitconfig'
+      opt.filetype = 'gitconfig'
     end }
   },
 
   kubeconfig = {
     { 'BufRead,BufEnter', '*/.kube/config', function()
-      vim.bo.filetype = 'yaml'
+      opt.filetype = 'yaml'
     end }
   },
 
   sshconfig = {
     { 'BufRead,BufEnter', '*/.ssh/config', function()
-      vim.bo.filetype = 'sshconfig'
+      opt.filetype = 'sshconfig'
     end }
   },
 
   staticcheck = {
     { 'BufRead,BufEnter', 'staticcheck.conf', function()
-      vim.bo.filetype = 'toml'
+      opt.filetype = 'toml'
     end }
   },
 })

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-SUMKENO_URL="https://github.com/sumneko/lua-language-server"
+SUMKENO_URL="git@github.com:sumneko/lua-language-server.git"
 
 if [ ! -d ${1} ]; then
   echo "${1} is not present, cloning..."

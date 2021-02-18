@@ -5,8 +5,8 @@ output:
   # format: line-number
 
 linters-settings:
-  # govet:
-  #   check-shadowing: true
+  govet:
+    feildalignment: true
   # golint:
   #   min-confidence: 0
   # gocyclo:
@@ -52,9 +52,7 @@ linters:
     - gosimple
     - govet
     - ineffassign
-    - interfacer
     - lll
-    - maligned
     - misspell
     - nakedret
     - prealloc

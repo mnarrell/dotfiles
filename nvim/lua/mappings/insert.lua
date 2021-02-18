@@ -8,3 +8,15 @@ require('tools').apply_mappings({
   {'o', 'al', ':normal val<CR>'}
 }, {noremap = true, silent = true})
 
+vim.g.completion_confirm_key = ""
+
+-- _G.MUtils= {}
+-- MUtils.completion_confirm=function()
+--     return require('nvim-autopairs').check_break_line_char()
+-- end
+-- vim.api.nvim_set_keymap('i', '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+
+_G.completion_confirm = function()
+    return require('nvim-autopairs').check_break_line_char()
+end
+vim.api.nvim_set_keymap('i', '<CR>','v:lua.completion_confirm()', {expr = true , noremap = true})

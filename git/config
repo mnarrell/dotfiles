@@ -28,12 +28,11 @@
   co = checkout
   commend = commit --amend --no-edit
   cp = cherry-pick
-  fetch = fetch -p --tags -f
   fs = submodule update --remote
   it = !git init && git commit -m "root" --allow-empty
   patch = --no-pager diff --no-color
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
-  pull = pull --tags -f
+  pum = !"git fetch origin -v; git fetch upstream -v; git merge upstream/main"
   scrub = gc --aggressive --prune=now
   st = status -sb
   wip = commit -am "WIP"
@@ -42,10 +41,12 @@
   ; ff = only
   tool = opendiff
   conflictstyle = merge
+  ; tool = vimdiff
+  ; conflictstyle = diff3
   stat = true
 
 [mergetool]
-  prompt = true
+  prompt = false
 
 [diff]
   tool = opendiff
@@ -61,6 +62,7 @@
 
 [pull]
   rebase = true
+  tags = true
 
 [fetch]
   prune = true
@@ -68,8 +70,6 @@
 
 [help]
   autocorrect = 1
-
-
 
 [delta]
   ; plus-color = "#012800"
@@ -79,3 +79,6 @@
 
 [interactive]
   diffFilter = delta --color-only
+
+[init]
+  defaultBranch = main

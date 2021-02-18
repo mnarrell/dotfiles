@@ -12,11 +12,13 @@ g.ale_sign_error = '✗'
 -- g.ale_sign_error = '❌'
 g.ale_sign_warning = '⚠'
 
+g.ale_linters_explicit = true
 g.ale_linters = {
+  -- lua = {'luac', 'luacheck', 'luafmt'},
+  -- python = {'pyls'},
   go = {'staticcheck', 'vet', 'golint'},
   markdown = {'alex', 'markdownlint'},
-  python = {'pyls'},
-  yaml = {'yamllint'}
+  yaml = {'yamllint'},
 }
 
 g.ale_fixers = {
@@ -24,7 +26,8 @@ g.ale_fixers = {
   html = {'prettier'},
   markdown = {'prettier'},
   sh = {'shfmt'},
-  yaml = {'prettier'}
+  yaml = {'prettier'},
+  python = {'isort', 'yapf'}
 }
 
 require('tools').apply_mappings({

@@ -6,7 +6,6 @@ FILETYPE_HOOKS = {
   gitconfig  = require('ftplugin.gitconfig'),
   go         = require('ftplugin.go'),
   gomod      = require('ftplugin.gomod'),
-  -- lua        = require('ftplugin.lua').options(),
   lua        = require('ftplugin.lua'),
   make       = require('ftplugin.make'),
   markdown   = require('ftplugin.markdown'),

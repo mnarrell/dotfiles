@@ -3,3 +3,5 @@
 
 # If you're not FZF, you should be
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+
+eval "$(direnv hook zsh)"

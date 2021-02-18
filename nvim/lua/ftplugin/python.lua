@@ -1,12 +1,15 @@
+local opt = require('options').opt
+
 return function ()
-  vim.bo.autoindent = true
-  vim.bo.equalprg='yapf'
-  vim.bo.expandtab = true
-  vim.bo.fileformat='unix'
-  vim.bo.shiftwidth=4
-  vim.bo.softtabstop=4
-  vim.bo.tabstop=4
-  vim.bo.textwidth=79
+  opt.autoindent = true
+  -- opt.equalprg='yapf'
+  opt.equalprg='black --quiet -'
+  opt.expandtab = true
+  opt.fileformat='unix'
+  opt.shiftwidth=4
+  opt.softtabstop=4
+  opt.tabstop=4
+  opt.textwidth=88
 
   vim.api.nvim_command('highlight! SpellCap ctermbg=NONE')
 end

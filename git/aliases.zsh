@@ -6,9 +6,12 @@ alias g="git"
 alias tig="tig --all"
 alias tis='\tig status'
 
-if [ $commands[hub] ]; then
-  alias git='hub'
-fi
+alias pr='gh pr view --web'
+alias rp='gh repo view --web'
+
+# if [ $commands[hub] ]; then
+#   alias git='hub'
+# fi
 
 function git_personal_user() {
   git config user.email $MY_EMAIL
@@ -26,4 +29,3 @@ function git_porcelain_submodules() {
   git submodule deinit -f .
   git submodule update --init
 }
-
