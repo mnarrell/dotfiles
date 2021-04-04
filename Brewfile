@@ -2,6 +2,7 @@
 # Taps
 ################################################################################
 tap 'buo/cask-upgrade'
+tap 'filippo.io/age'
 tap 'getantibody/tap'
 tap 'golangci/tap'
 tap 'hashicorp/tap'
@@ -10,7 +11,7 @@ tap 'homebrew/cask-drivers'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/services'
 tap 'koekeishiya/formulae'
-tap 'universal-ctags/universal-ctags'
+tap 'snyk/tap'
 
 
 ################################################################################
@@ -65,6 +66,7 @@ cask 'xquartz'
 ################################################################################
 
 brew 'ack'
+brew 'age'
 brew 'ansible'
 brew 'ansible-lint'
 brew 'antibody'
@@ -161,6 +163,8 @@ brew 'screenresolution'
 brew 'shellcheck'
 brew 'shfmt'
 brew 'sip'
+brew 'snyk'
+brew 'sops'
 brew 'source-highlight'
 brew 'sqlite'
 brew 'ssh-copy-id'
@@ -171,14 +175,13 @@ brew 'telnet'
 brew 'terraform'
 brew 'terraform-docs'
 brew 'terraform-ls'
-brew 'terraform-ls'
+brew 'terragrunt'
 brew 'tflint'
 brew 'tidy-html5'
 brew 'tig'
 brew 'tmux'
 brew 'tree'
 brew 'tree-sitter'
-brew 'universal-ctags', args: ["HEAD"]
 brew 'utf8proc'
 brew 'vault'
 brew 'watch'
@@ -196,7 +199,7 @@ brew 'zsh'
 ################################################################################
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
-mas 'Deliveries (3.1.1)', id: 924726344
+mas 'Deliveries (3.1.1)', id: 290986013
 mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
 mas 'Keynote (9.1)', id: 409183694
 mas 'Marked 2 (2.5.31)', id: 890031187

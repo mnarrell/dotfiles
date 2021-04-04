@@ -1,4 +1,8 @@
-local function history(earlier)
+local nnoremap= require('tools').nnoremap
+
+local M= {}
+
+M.history =function(earlier)
   return function()
     local winnr = vim.api.nvim_eval('winnr()')
     local win_info = vim.tbl_filter(function(item)
@@ -12,9 +16,7 @@ local function history(earlier)
   end
 end
 
-return function()
-  require('tools').apply_mappings({
-    {'n', '<left>', history(false)},
-    {'n', '<right>', history(true)},
-  }, {noremap = true, silent = true})
-end
+nnoremap('<left>', [[:lua require('ftplugin.qf').history(false)<CR>]])
+nnoremap('<right>', [[:lua require('ftplugin.qf').history(true)<CR>]])
+
+return M

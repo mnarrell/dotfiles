@@ -1,7 +1,7 @@
 local g = vim.g
 local cmd = vim.api.nvim_command
 
-cmd('highlight! ALEErrorSign ctermbg=18 ctermfg=red cterm=bold')
+cmd('highlight! link ALEErrorSign LspDiagnosticsSignError')
 
 g.ale_echo_msg_error_str = 'E'
 g.ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -14,15 +14,15 @@ g.ale_sign_warning = '⚠'
 
 g.ale_linters_explicit = true
 g.ale_linters = {
-  -- lua = {'luac', 'luacheck', 'luafmt'},
-  -- python = {'pyls'},
-  go = {'staticcheck', 'vet', 'golint'},
+  hcl = {'terraform'},
+  go = {'staticcheck', 'vet', 'revive'},
   markdown = {'alex', 'markdownlint'},
   yaml = {'yamllint'},
 }
 
 g.ale_fixers = {
   bash = {'shfmt'},
+  hcl = {'terraform'},
   html = {'prettier'},
   markdown = {'prettier'},
   sh = {'shfmt'},
@@ -30,6 +30,4 @@ g.ale_fixers = {
   python = {'isort', 'yapf'}
 }
 
-require('tools').apply_mappings({
-  {'n', '<Leader>at', ':ALEToggle<CR>'}
-}, {silent = true, noremap = true})
+require('tools').nnoremap('<Leader>at', ':ALEToggle<CR>')

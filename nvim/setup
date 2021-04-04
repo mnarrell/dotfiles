@@ -10,6 +10,7 @@ pip install -U -r "${DIR}/requirements.txt"
 
 npm install -g \
   bash-language-server \
+  vscode-langservers-extracted \
   neovim
 
 gem install neovim

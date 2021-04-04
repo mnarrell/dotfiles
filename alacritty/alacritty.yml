@@ -159,19 +159,19 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: true
 
-  url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a URL.
-    # The URL is always added to the command as the last parameter.
-    launcher: open
+  #url:
+  #  # URL launcher
+  #  #
+  #  # This program is executed when clicking on a text which is recognized as a URL.
+  #  # The URL is always added to the command as the last parameter.
+  #  launcher: open
 
-    # URL modifiers
-    #
-    # These are the modifiers that need to be held down for opening URLs when clicking
-    # on them. The available modifiers are documented in the key binding section.
-    # modifiers: Control|Shift
-    # modifiers: Command
+  #  # URL modifiers
+  #  #
+  #  # These are the modifiers that need to be held down for opening URLs when clicking
+  #  # on them. The available modifiers are documented in the key binding section.
+  #  # modifiers: Control|Shift
+  #  # modifiers: Command
 
 key_bindings:
   - { key: S, mods: Command, chars: "\x00\x2d" }
@@ -182,6 +182,12 @@ key_bindings:
   - { key: L, mods: Command, chars: "\x00\x6c" }
   - { key: X, mods: Command, chars: "\x00\x78" }
   - { key: Z, mods: Command, chars: "\x00\x7a" }
+  - { key: Down, mods: Command, chars: "\x00\x1b\x5b\x42" }
+  - { key: Up, mods: Command, chars: "\x00\x1b\x5b\x41" }
+  - { key: Left, mods: Command, chars: "\x00\x1b\x5b\x44" }
+  - { key: Right, mods: Command, chars: "\x00\x1b\x5b\x43" }
+
+  # xxd -psd
   # - { key: D, mods: Command|Shift, chars: "\x06\x73" }
   # - { key: W, mods: Command, chars: "\x06\x78" }
   # - { key: H, mods: Command, chars: "\x06\x68" }

@@ -27,26 +27,27 @@ linters-settings:
 
 linters:
   enable:
-    - depguard
     # - gochecknoglobals
-    - gochecknoinits
     # - gofmt
     # - gomnd
+    # - scopelint
     # - staticcheck
     # - wsl
     - bodyclose
     - deadcode
+    - depguard
     - dogsled
     - dupl
     - errcheck
+    - exportloopref
     - funlen
+    - gochecknoinits
     - gocognit
     - goconst
     - gocritic
     - gocyclo
     - godox
     - goimports
-    - golint
     - goprintffuncname
     - gosec
     - gosimple
@@ -56,9 +57,8 @@ linters:
     - misspell
     - nakedret
     - prealloc
+    - revive
     - rowserrcheck
-    # - scopelint
-    - exportloopref
     - structcheck
     - stylecheck
     - typecheck

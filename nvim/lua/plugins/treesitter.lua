@@ -13,6 +13,9 @@ require('nvim-treesitter.configs').setup {
   --     }
   --   }
   },
+  custom_captures = {
+    ["comment"] = "Comment"
+  },
   textobjects = {
     select = {
       enable = true,

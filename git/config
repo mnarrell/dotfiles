@@ -36,26 +36,33 @@
   scrub = gc --aggressive --prune=now
   st = status -sb
   wip = commit -am "WIP"
+  cb = !git checkout $(git branch | fzf)
 
 [merge]
-  ; ff = only
   tool = opendiff
-  conflictstyle = merge
+  ; tool = nvim
   ; tool = vimdiff
-  ; conflictstyle = diff3
+  conflictstyle = merge
   stat = true
 
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+
 [mergetool]
-  prompt = true
+  prompt = false
 
 [diff]
-  tool = opendiff
+  ; tool = opendiff
+  tool = vimdiff
+
+[difftool]
+  prompt = false
 
 [diff "bin"]
   textconv = hexdump -v -C
-
-[svn]
-  rmdir = true
 
 [push]
   default = nothing

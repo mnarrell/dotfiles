@@ -1,78 +1,72 @@
--- vim.keymap.nnoremap { 'm<CR>', '<cmd>Make!<CR>' }
-vim.api.nvim_set_keymap('n', 'tz', ":luafile ~/.config/nvim/init.lua<CR>", { noremap=true })
+local nnoremap = require('tools').nnoremap
 
-require('tools').apply_mappings({
-  -- {'n', '<Leader>y', '<Plug>(Luadev-RunWord)'},
-  {'n', '<Leader>o', ':only<CR>'},
-  {'n', '<Leader>q', ':quit<CR>'},
-  {'n', '<Leader>x', ':xit<CR>'},
-  {'n', '<Leader>v', ':vsp<CR>'},
-  {'n', '<Leader>s', ':sp<CR>'},
-  {'n', '<Leader>k', ':bd!<CR>'},
-  {'n', '<Leader>w', ':<C-u>call functions#SaveAndExec()<CR>'},
+nnoremap('tz', ":luafile ~/.config/nvim/init.lua<CR>", {silent = false})
 
-  {'n', 'tv', ':vsplit<cr>:term<CR>'},
-  {'n', 'ts', ':split<cr>:term<CR>'},
-  {'n', 'tt', ':tabnew<cr>:term<CR>'},
+nnoremap('<Leader>o', ':only<CR>')
+nnoremap('<Leader>q', ':quit<CR>')
+nnoremap('<Leader>x', ':xit<CR>')
+nnoremap('<Leader>v', ':vsp<CR>')
+nnoremap('<Leader>s', ':sp<CR>')
+nnoremap('<Leader>k', ':bd!<CR>')
+nnoremap('<Leader>w', ':<C-u>call functions#SaveAndExec()<CR>')
 
-  -- Make Y behave like C and D
-  {'n', 'Y', 'y$'},
+-- Toggle terminal
+nnoremap('tv', ':vsplit<cr>:term<CR>')
+nnoremap('ts', ':split<cr>:term<CR>')
+nnoremap('tt', ':tabnew<cr>:term<CR>')
 
-  -- Split navigation
-  {'n', '<C-j>', '<C-w>j'},
-  {'n', '<C-k>', '<C-w>k'},
-  {'n', '<C-h>', '<C-w>h'},
-  {'n', '<C-l>', '<C-w>l'},
+-- Make Y behave like C and D
+nnoremap('Y', 'y$')
 
-  -- Split resizing
-  {'n', '˙', '<C-w>5<'}, -- Option-H
-  {'n', '∆', '<C-w>-'},  -- Option-J
-  {'n', '˚', '<C-w>+'},  -- Option-K
-  {'n', '¬', '<C-w>5>'}, -- Option-L
-  {'n', '<leader>=', ':wincmd =<CR>'},
+-- Split navigation
+nnoremap('<C-j>', '<C-w>j')
+nnoremap('<C-k>', '<C-w>k')
+nnoremap('<C-h>', '<C-w>h')
+nnoremap('<C-l>', '<C-w>l')
 
-  -- Scroll the viewport faster
-  {'n', '<C-e>', '5<C-e>'},
-  {'n', '<C-y>', '5<C-y>'},
+-- Scroll the viewport faster
+nnoremap('<C-e>', '5<C-e>')
+nnoremap('<C-y>', '5<C-y>')
 
-  -- Force filetypes
-  -- {'n', '_ba', ':set filetype=bash<CR>'},
-  {'n', '_df', ':set filetype=Dockerfile<CR>'},
-  {'n', '_hl', ':set filetype=helm<CR>'},
-  {'n', '_js', ':set filetype=json<CR>'},
-  {'n', '_lu', ':set filetype=lua<CR>'},
-  {'n', '_md', ':set filetype=markdown<CR>'},
-  {'n', '_py', ':set filetype=python<CR>'},
-  {'n', '_sh', ':set filetype=sh<CR>'},
-  {'n', '_tx', ':set filetype=text<CR>'},
-  {'n', '_vi', ':set filetype=vim<CR>'},
-  {'n', '_xm', ':set filetype=xml<CR>'},
-  {'n', '_ya', ':set filetype=yaml<CR>'},
-  {'n', '_zs', ':set filetype=zsh<CR>'},
+-- Force filetypes
+nnoremap('_ba', ':set filetype=bash<CR>')
+nnoremap('_df', ':set filetype=Dockerfile<CR>')
+nnoremap('_hl', ':set filetype=helm<CR>')
+nnoremap('_js', ':set filetype=json<CR>')
+nnoremap('_lu', ':set filetype=lua<CR>')
+nnoremap('_md', ':set filetype=markdown<CR>')
+nnoremap('_py', ':set filetype=python<CR>')
+nnoremap('_sh', ':set filetype=sh<CR>')
+nnoremap('_tx', ':set filetype=text<CR>')
+nnoremap('_vi', ':set filetype=vim<CR>')
+nnoremap('_xm', ':set filetype=xml<CR>')
+nnoremap('_ya', ':set filetype=yaml<CR>')
+nnoremap('_zs', ':set filetype=zsh<CR>')
 
-  -- This was a nightmeer
-  {'n', 'k', [[(v:count > 5 ? "m'" . v:count : '') . 'k']], {expr = true}},
-  {'n', 'j', [[(v:count > 5 ? "m'" . v:count : '') . 'j']], {expr = true}},
+-- This was a nightmeer
+nnoremap('k', [[(v:count > 5 ? "m'" . v:count : '') . 'k']], {expr = true})
+nnoremap('j', [[(v:count > 5 ? "m'" . v:count : '') . 'j']], {expr = true})
 
-  -- This was a challenge. Not sure if it's worth it.
-  -- Clears search and Loupe highlights with <CR>, or <CR> if no selection...
-  {
-    'n', '<CR>',
-    function()
-      if vim.api.nvim_get_vvar('hlsearch') ~= 0 then
-        vim.api.nvim_command('nohlsearch')
-        vim.api.nvim_command('normal! call loupe#private#clean_highlight()<CR>')
-      else
-        local key = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
-        vim.api.nvim_feedkeys(key, 'n', true)
-      end
-    end
-  },
+-- This was a challenge. Not sure if it's worth it.
+-- Clears search and Loupe highlights with <CR>, or <CR> if no selection...
+nnoremap('<CR>', [[:lua require('mappings.normal').clear_highlight()<CR>]])
 
-  {'n', '<Up>', ':cprevious<CR>'},
-  {'n', '<Down>', ':cnext<CR>'},
+nnoremap('<Up>', ':cprevious<CR>')
+nnoremap('<Down>', ':cnext<CR>')
 
-  {'n', 'tl', ':<C-u>call functions#ToggleLocationList()<CR>'},
-  {'n', 'tq', ':<C-u>call functions#ToggleQuickFix()<CR>'},
-}, {noremap = true, silent = true})
+nnoremap('tl', ':<C-u>call functions#ToggleLocationList()<CR>')
+nnoremap('tq', ':<C-u>call functions#ToggleQuickFix()<CR>')
 
+local M = {}
+
+M.clear_highlight = function()
+  if vim.api.nvim_get_vvar('hlsearch') ~= 0 then
+    vim.api.nvim_command('nohlsearch')
+    vim.api.nvim_command('normal! call loupe#private#clean_highlight()<CR>')
+  else
+    local key = vim.api.nvim_replace_termcodes('<CR>', true, true, true)
+    vim.api.nvim_feedkeys(key, 'n', true)
+  end
+end
+
+return M

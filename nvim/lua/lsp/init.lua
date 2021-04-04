@@ -2,12 +2,6 @@ vim.fn.sign_define('LspDiagnosticsSignError', {text='✗', texthl='LspDiagnostic
 vim.fn.sign_define('LspDiagnosticsSignWarning', {text='⚠', texthl='LspDiagnosticsSignWarning'})
 vim.fn.sign_define('LspDiagnosticsSignHint', {text='𝓲', texthl='LspDiagnosticsSignHint'})
 
-  -- cmd(string.format('highlight! IncSearch ctermfg=White ctermbg=Red cterm=bold guifg=White guibg=%s', t4))
--- vim.fn.sign_define('LspDiagnosticsSignError', {text='❌', texthl='LspDiagnosticsSignError'})
--- vim.fn.sign_define('LspDiagnosticsSignWarning', {text='⚠️', texthl='LspDiagnosticsSignWarning'})
--- vim.fn.sign_define('LspDiagnosticsSignHint', {text='💡', texthl='LspDiagnosticsSignHint'})
-
-local env = require('env')
 local lspconfig = require('lspconfig')
 local completion = require('completion')
 
@@ -40,11 +34,8 @@ vim.lsp.handlers[publishDiagnostics] = function (err, method, result, client_id,
   vim.lsp.util.set_qflist(qflist)
 end
 
--- local t4 = vim.g.terminal_color_4
--- local t4 = "#81a2be"
-
 local function custom_attach(client, bufnr)
-  print('\'' .. client.name .. '\' language server started')
+  print(string.format([['%s', language server started]], client.name))
 
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -79,7 +70,7 @@ local function custom_attach(client, bufnr)
 
   -- -- Set autocommands conditional on server_capabilities
   -- if client.resolved_capabilities.document_highlight then
-  --   vim.api.nvim_exec(string.format([[
+  --   vim.exec(string.format([[
   --     hi LspReferenceRead cterm=bold ctermfg=Blue guifg=White guibg=NONE
   --     hi LspReferenceText cterm=bold ctermfg=Blue guifg=White guibg=NONE
   --     hi LspReferenceWrite cterm=bold ctermfg=Blue guifg=White guibg=NONE
@@ -96,46 +87,8 @@ local function custom_attach(client, bufnr)
 
 end
 
--- LUA{{{
-local function lua_runtime()
-  local result = {}
-  for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
-    local lua_path = path .. '/lua/'
-    if vim.fn.isdirectory(lua_path) then result[lua_path] = true end
-  end
-
-  result[vim.fn.expand('$VIMRUNTIME/lua')] = true
-  result[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
-  result[vim.fn.expand(env.home .. '/src/neovim/src/nvim/lua')] = true
-
-  return result
-end
-
-local sumneko_root = env.home .. '/src/lua-language-server'
-local sumneko_bin = sumneko_root .. '/bin/macOS/lua-language-server'
-
-lspconfig.sumneko_lua.setup {
-  on_attach = custom_attach,
-  cmd = {sumneko_bin, '-E', sumneko_root .. '/main.lua'},
-  settings = {
-    Lua = {
-      runtime = {
-        -- Get the language server to recognize LuaJIT globals like `jit` and `bit`
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = vim.split(package.path, ';'),
-      },
-      completion = {keywordSnippet = 'Disable'},
-      diagnostics = {
-        enable = true,
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'}
-      },
-      workspace = {library = lua_runtime()}
-    }
-  }
-}
--- }}}
+require("lsp.lua").setup(lspconfig, custom_attach)
+-- lspconfig.efm = require('lsp.efm')(lspconfig, custom_attach)
 
 lspconfig.dockerls.setup {
   on_attach = custom_attach,
@@ -145,8 +98,17 @@ lspconfig.dockerls.setup {
 -- lspconfig.pyls.setup {on_attach = custom_attach}
 lspconfig.pyright.setup {on_attach = custom_attach, settings = {python = {formatting = {provider = 'yapf'}}}}
 lspconfig.vimls.setup {on_attach = custom_attach}
-lspconfig.jsonls = {cmd = {'json-languageserver', '--stdio'}}
+
+lspconfig.jsonls.setup {
+  on_attach = custom_attach,
+  commands = {
+    Format = {
+      function()
+        vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
+      end
+    }
+  }
+}
+
 lspconfig.terraformls.setup {on_attach = custom_attach}
 lspconfig.bashls.setup {on_attach = custom_attach, filetypes = {'sh', 'zsh', 'bash'}}
-
--- lspconfig.efm = require('lsp.efm')(lspconfig, custom_attach)

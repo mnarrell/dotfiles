@@ -12,17 +12,11 @@ telescope.setup {
         ['<C-q>'] = actions.smart_send_to_qflist,
       }
     },
-    extensions = {
-      fzy_native = {
-        override_generic_sorter = false,
-        override_file_sorter = true,
-      }
-    }
   }
 }
 
-telescope.load_extension('fzy_native')
 telescope.load_extension('ultisnips')
+telescope.load_extension('fzf')
 
 local tele = {}
 
@@ -53,6 +47,10 @@ function tele.buffers()
   builtin.buffers({sort_lastused = true})
 end
 
+function tele.ultisnips()
+  require('telescope').extensions.ultisnips.ultisnips{}
+end
+
 local function telescope_mapping(key, target)
   vim.api.nvim_set_keymap('n', key, string.format(
   [[<cmd>lua require('plugins.telescope')['%s']()<CR>]],
@@ -66,6 +64,7 @@ telescope_mapping('<leader>m', 'marks')
 telescope_mapping('<leader>r', 'grep_prompt')
 telescope_mapping('<leader>d', 'dotfiles')
 telescope_mapping('<leader>h', 'help_tags')
+telescope_mapping('<leader>u', 'ultisnips')
 telescope_mapping('<leader>ca', 'lsp_code_actions')
 
 -- telescope_mapping('<leader>lg', 'live_grep')

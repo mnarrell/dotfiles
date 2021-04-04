@@ -21,3 +21,4 @@ nvim/ultisnips/*private.snippets
 tmux/plugins
 
 zsh/local.zsh
+nvim/plugin/packer_compiled.vim

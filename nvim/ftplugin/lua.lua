@@ -1,3 +1,5 @@
+-- local opt = require('options').opt
+local opt = vim.opt_local
 local env = require('env')
 
 local function setup_path()
@@ -16,10 +18,7 @@ local function setup_path()
   return result
 end
 
-return function()
-  local rt = setup_path()
-  vim.bo.path = table.concat(rt, ',') .. ',' .. vim.o.path
-  vim.bo.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
-  vim.bo.comments = ':---,:--'
-end
-
+local rt = setup_path()
+opt.path = table.concat(rt, ',') .. ',' .. vim.o.path
+opt.include = [[\v<((do|load)file|require)[^''"]*[''"]\zs[^''"]+]]
+opt.comments = ':---,:--'

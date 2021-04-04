@@ -1,6 +1,6 @@
-require('tools').apply_mappings({
-  {'n', '<Leader>gb', ':Gblame<CR>'},
-  {'n', '<Leader>gd', ':Gvdiff<CR>'},
-  {'n', '<Leader>gr', ':Gread<CR> :w <CR>'},
-  {'n', '<Leader>gs', ':Gstatus<CR>'},
-}, {silent = true, noremap = true})
+local nnoremap = require('tools').nnoremap
+
+nnoremap('<Leader>gb', ':Git blame<CR>')
+nnoremap('<Leader>gd', ':Gvdiff<CR>')
+nnoremap('<Leader>gr', ':Gread<CR> :w <CR>')
+nnoremap('<Leader>gs', ':Git<CR>')
