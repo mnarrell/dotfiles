@@ -65,7 +65,7 @@ _G.packer_plugins = {
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/fzf.vim"
   },
   ["gitsigns.nvim"] = {
-    config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0" },
+    config = { "\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugins.gitsigns\frequire\0" },
     loaded = true,
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
@@ -106,6 +106,14 @@ _G.packer_plugins = {
     config = { "\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0" },
     loaded = true,
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-treesitter-refactor"] = {
+    loaded = true,
+    path = "/Users/matt/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor"
+  },
+  ["nvim-treesitter-textobjects"] = {
+    loaded = true,
+    path = "/Users/matt/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -229,10 +237,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/vim-highlightedyank"
   },
-  ["vim-lion"] = {
-    loaded = true,
-    path = "/Users/matt/.local/share/nvim/site/pack/packer/start/vim-lion"
-  },
   ["vim-lua-format"] = {
     loaded = true,
     path = "/Users/matt/.local/share/nvim/site/pack/packer/start/vim-lua-format"
@@ -303,44 +307,44 @@ _G.packer_plugins = {
   }
 }
 
--- Config for: nvim-autopairs
-try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.autopairs\frequire\0", "config", "nvim-autopairs")
--- Config for: loupe
-try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.loupe\frequire\0", "config", "loupe")
--- Config for: nvim-treesitter
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
--- Config for: completion-nvim
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.completion\frequire\0", "config", "completion-nvim")
 -- Config for: telescope.nvim
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.telescope\frequire\0", "config", "telescope.nvim")
--- Config for: vim-terraform
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26plugins.vim-terraform\frequire\0", "config", "vim-terraform")
 -- Config for: vim-go
 try_loadstring("\27LJ\2\nÂ\b\0\0\2\0&\0C6\0\0\0009\0\1\0'\1\3\0=\1\2\0)\1\1\0=\1\4\0)\1\20\0=\1\5\0'\1\a\0=\1\6\0'\1\t\0=\1\b\0)\1ê\1=\1\n\0)\1\0\0=\1\v\0'\1\r\0=\1\f\0)\1\1\0=\1\14\0)\1\1\0=\1\15\0)\1\1\0=\1\16\0)\1\1\0=\1\17\0)\1\1\0=\1\18\0)\1\1\0=\1\19\0)\1\0\0=\1\20\0)\1\0\0=\1\21\0)\1\1\0=\1\22\0)\1\1\0=\1\23\0)\1\1\0=\1\24\0)\1\1\0=\1\25\0)\1\1\0=\1\26\0)\1\1\0=\1\27\0)\1\1\0=\1\28\0)\1\1\0=\1\29\0)\1\1\0=\1\30\0)\1\0\0=\1\31\0)\1\1\0=\1 \0)\1\1\0=\1!\0)\1\0\0=\1\"\0)\1\1\0=\1#\0)\1\1\0=\1$\0)\1\1\0=\1%\0K\0\1\0'go_highlight_variable_declarations&go_highlight_variable_assignments\23go_highlight_types+go_highlight_trailing_whitespace_error\25go_highlight_structs#go_highlight_string_spellcheck!go_highlight_space_tab_error\27go_highlight_operators\25go_highlight_methods\31go_highlight_generate_tags\27go_highlight_functions%go_highlight_function_parameters go_highlight_function_calls go_highlight_format_strings\24go_highlight_fields\29go_highlight_extra_types%go_highlight_diagnostic_warnings#go_highlight_diagnostic_errors'go_highlight_chan_whitespace_error#go_highlight_build_constraints(go_highlight_array_whitespace_error!go_gopls_complete_unimported\24go_imports_autosave\25go_fmt_fail_silently\ngopls\19go_fmt_command\25go_echo_command_info\18go_updatetime\14ultisnips\22go_snippet_engine\rquickfix\17go_list_type\19go_list_height\24go_doc_popup_window\14camelcase\25go_addtags_transform\6g\bvim\0", "config", "vim-go")
--- Config for: fzf.vim
-try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.fzf\frequire\0", "config", "fzf.vim")
--- Config for: quick-scope
-try_loadstring("\27LJ\2\nB\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\5\0\0\6f\6F\6t\6T\25qs_highlight_on_keys\6g\bvim\0", "config", "quick-scope")
--- Config for: nvim-base16.lua
-try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.theme\frequire\0", "config", "nvim-base16.lua")
--- Config for: nvim-colorizer.lua
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
--- Config for: bufexplorer
-try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24plugins.bufexplorer\frequire\0", "config", "bufexplorer")
 -- Config for: ultisnips
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.ultisnips\frequire\0", "config", "ultisnips")
+-- Config for: loupe
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.loupe\frequire\0", "config", "loupe")
+-- Config for: fzf.vim
+try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.fzf\frequire\0", "config", "fzf.vim")
 -- Config for: ale
 try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.ale\frequire\0", "config", "ale")
--- Config for: vim-commentary
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.commentary\frequire\0", "config", "vim-commentary")
--- Config for: vim-fugitive
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugins.fugitive\frequire\0", "config", "vim-fugitive")
+-- Config for: quick-scope
+try_loadstring("\27LJ\2\nB\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\5\0\0\6f\6F\6t\6T\25qs_highlight_on_keys\6g\bvim\0", "config", "quick-scope")
 -- Config for: tagbar
 try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19plugins.tagbar\frequire\0", "config", "tagbar")
 -- Config for: vim-tabber
 try_loadstring("\27LJ\2\n.\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\19plugins.tabber\frequire\0", "config", "vim-tabber")
+-- Config for: nvim-base16.lua
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.theme\frequire\0", "config", "nvim-base16.lua")
+-- Config for: nvim-colorizer.lua
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+-- Config for: vim-commentary
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.commentary\frequire\0", "config", "vim-commentary")
+-- Config for: completion-nvim
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.completion\frequire\0", "config", "completion-nvim")
+-- Config for: nvim-treesitter
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
+-- Config for: bufexplorer
+try_loadstring("\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24plugins.bufexplorer\frequire\0", "config", "bufexplorer")
+-- Config for: vim-terraform
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26plugins.vim-terraform\frequire\0", "config", "vim-terraform")
+-- Config for: nvim-autopairs
+try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.autopairs\frequire\0", "config", "nvim-autopairs")
 -- Config for: gitsigns.nvim
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugins.gitsigns\frequire\0", "config", "gitsigns.nvim")
+-- Config for: vim-fugitive
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugins.fugitive\frequire\0", "config", "vim-fugitive")
 
 -- Command lazy-loads
 vim.cmd [[command! -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'startuptime.vim'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
@@ -348,19 +352,19 @@ vim.cmd [[command! -nargs=* -range -bang -complete=file StartupTime lua require(
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
+vim.cmd [[au FileType helm ++once lua require("packer.load")({'vim-helm'}, { ft = "helm" }, _G.packer_plugins)]]
 vim.cmd [[au FileType python ++once lua require("packer.load")({'python-syntax'}, { ft = "python" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tmux ++once lua require("packer.load")({'vim-tmux'}, { ft = "tmux" }, _G.packer_plugins)]]
-vim.cmd [[au FileType nginx ++once lua require("packer.load")({'nginx.vim'}, { ft = "nginx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType helm ++once lua require("packer.load")({'vim-helm'}, { ft = "helm" }, _G.packer_plugins)]]
-vim.cmd [[au FileType requirements ++once lua require("packer.load")({'requirements.txt.vim'}, { ft = "requirements" }, _G.packer_plugins)]]
 vim.cmd [[au FileType toml ++once lua require("packer.load")({'vim-toml'}, { ft = "toml" }, _G.packer_plugins)]]
+vim.cmd [[au FileType nginx ++once lua require("packer.load")({'nginx.vim'}, { ft = "nginx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType requirements ++once lua require("packer.load")({'requirements.txt.vim'}, { ft = "requirements" }, _G.packer_plugins)]]
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]
-vim.cmd [[source /Users/matt/.local/share/nvim/site/pack/packer/opt/nginx.vim/ftdetect/nginx.vim]]
-vim.cmd [[source /Users/matt/.local/share/nvim/site/pack/packer/opt/requirements.txt.vim/ftdetect/requirements.vim]]
 vim.cmd [[source /Users/matt/.local/share/nvim/site/pack/packer/opt/vim-helm/ftdetect/helm.vim]]
-vim.cmd [[source /Users/matt/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]]
+vim.cmd [[source /Users/matt/.local/share/nvim/site/pack/packer/opt/nginx.vim/ftdetect/nginx.vim]]
 vim.cmd [[source /Users/matt/.local/share/nvim/site/pack/packer/opt/vim-tmux/ftdetect/tmux.vim]]
+vim.cmd [[source /Users/matt/.local/share/nvim/site/pack/packer/opt/requirements.txt.vim/ftdetect/requirements.vim]]
+vim.cmd [[source /Users/matt/.local/share/nvim/site/pack/packer/opt/vim-toml/ftdetect/toml.vim]]
 vim.cmd("augroup END")
 END
 

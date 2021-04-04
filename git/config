@@ -46,7 +46,7 @@
   stat = true
 
 [mergetool]
-  prompt = false
+  prompt = true
 
 [diff]
   tool = opendiff

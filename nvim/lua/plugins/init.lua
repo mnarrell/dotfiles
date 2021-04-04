@@ -14,12 +14,17 @@ return require('packer').startup({
 
     -- Eyecandy
     -- use {'chriskempson/base16-vim', config = function() require('plugins.base16') end}
-    use {'norcalli/nvim-base16.lua', config = function() require('plugins.theme') end}
     use {'fweep/vim-tabber', config = function() require('plugins.tabber') end}
     use {'kshenoy/vim-signature'}
     use {'machakann/vim-highlightedyank'}
     use {'vim-airline/vim-airline'}
     use {'vim-airline/vim-airline-themes'}
+    -- use {'glepnir/galaxyline.nvim', configla = function () require('plugins.galaxyline') end}
+
+    use {
+      'kyazdani42/nvim-web-devicons',
+      {'ryanoasis/vim-devicons'}
+    }
 
     use {'junegunn/fzf'}
     use {'junegunn/fzf.vim', config = function() require('plugins.fzf') end}
@@ -41,7 +46,7 @@ return require('packer').startup({
     use {'gennaro-tedesco/nvim-peekup'}
     use {'majutsushi/tagbar', config = function() require('plugins.tagbar') end}
     use {'markonm/traces.vim'}
-    use {'tommcdo/vim-lion'}
+    -- use {'tommcdo/vim-lion'}
     use {'godlygeek/tabular'}
     use {'AndrewRadev/splitjoin.vim'}
     use {'tpope/vim-vinegar'}
@@ -55,11 +60,7 @@ return require('packer').startup({
 
     -- Git
     use {'tpope/vim-fugitive', config = function() require('plugins.fugitive') end}
-    use {
-      'lewis6991/gitsigns.nvim',
-      requires = {'nvim-lua/plenary.nvim'},
-      config = function() require('gitsigns').setup() end,
-    }
+    use {'lewis6991/gitsigns.nvim', config = function() require('plugins.gitsigns') end}
 
     -- Tmux
     use {'edkolev/tmuxline.vim', disable = true}
@@ -92,8 +93,8 @@ return require('packer').startup({
 
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('plugins.treesitter') end}
     -- use {'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup() end}
-    -- use {'nvim-treesitter/nvim-treesitter-textobjects'}
-    -- use {'nvim-treesitter/nvim-treesitter-refactor'}
+    use {'nvim-treesitter/nvim-treesitter-textobjects'}
+    use {'nvim-treesitter/nvim-treesitter-refactor'}
 
     use {'neovim/nvim-lspconfig'}
     -- use {'glepnir/lspsaga.nvim', config = function() require('plugins.lspsaga') end}
@@ -115,15 +116,11 @@ return require('packer').startup({
     use {'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end}
 
     use {
-      'kyazdani42/nvim-web-devicons',
-      {'ryanoasis/vim-devicons'}
-    }
-
-    use {
       'euclidianAce/BetterLua.vim',
       {'andrejlevkovitch/vim-lua-format'}
     }
 
+    use {'norcalli/nvim-base16.lua', config = function() require('plugins.theme') end}
   end,
   config = {display = {open_fn = require('packer.util').float}}
 })

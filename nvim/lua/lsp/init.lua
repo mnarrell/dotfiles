@@ -29,7 +29,6 @@ vim.lsp.handlers[publishDiagnostics] = function (err, method, result, client_id,
   local qflist = {}
   for bn,diagnostic in pairs(diagnostics) do
     for _,d in ipairs(diagnostic) do
-      emit(diagnostic)
       table.insert(qflist, {
         bufnr = bn,
         lnum = d.range.start.line + 1,
@@ -42,7 +41,7 @@ vim.lsp.handlers[publishDiagnostics] = function (err, method, result, client_id,
 end
 
 -- local t4 = vim.g.terminal_color_4
-local t4 = "#81a2be"
+-- local t4 = "#81a2be"
 
 local function custom_attach(client, bufnr)
   print('\'' .. client.name .. '\' language server started')
@@ -78,19 +77,19 @@ local function custom_attach(client, bufnr)
     buf_set_keymap('n', '<Leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   end
 
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(string.format([[
-      hi LspReferenceRead cterm=bold ctermfg=Blue guifg=White guibg=NONE
-      hi LspReferenceText cterm=bold ctermfg=Blue guifg=White guibg=NONE
-      hi LspReferenceWrite cterm=bold ctermfg=Blue guifg=White guibg=NONE
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], t4, t4, t4), false)
-  end
+  -- -- Set autocommands conditional on server_capabilities
+  -- if client.resolved_capabilities.document_highlight then
+  --   vim.api.nvim_exec(string.format([[
+  --     hi LspReferenceRead cterm=bold ctermfg=Blue guifg=White guibg=NONE
+  --     hi LspReferenceText cterm=bold ctermfg=Blue guifg=White guibg=NONE
+  --     hi LspReferenceWrite cterm=bold ctermfg=Blue guifg=White guibg=NONE
+  --     augroup lsp_document_highlight
+  --       autocmd! * <buffer>
+  --       autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+  --       autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+  --     augroup END
+  --   ]], t4, t4, t4), false)
+  -- end
 
   -- wrap it here THIS is the extra completion plugin
   completion.on_attach(client)
@@ -149,9 +148,5 @@ lspconfig.vimls.setup {on_attach = custom_attach}
 lspconfig.jsonls = {cmd = {'json-languageserver', '--stdio'}}
 lspconfig.terraformls.setup {on_attach = custom_attach}
 lspconfig.bashls.setup {on_attach = custom_attach, filetypes = {'sh', 'zsh', 'bash'}}
-lspconfig.yamlls.setup{
-  on_attach = custom_attach,
-  filetypes = {"yaml"},
-}
 
 -- lspconfig.efm = require('lsp.efm')(lspconfig, custom_attach)

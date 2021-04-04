@@ -57,7 +57,8 @@ linters:
     - nakedret
     - prealloc
     - rowserrcheck
-    - scopelint
+    # - scopelint
+    - exportloopref
     - structcheck
     - stylecheck
     - typecheck

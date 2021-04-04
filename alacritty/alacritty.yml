@@ -141,7 +141,7 @@ colors:
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 50000
+  history: 100000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -171,6 +171,7 @@ mouse:
     # These are the modifiers that need to be held down for opening URLs when clicking
     # on them. The available modifiers are documented in the key binding section.
     # modifiers: Control|Shift
+    # modifiers: Command
 
 key_bindings:
   - { key: S, mods: Command, chars: "\x00\x2d" }
@@ -180,6 +181,7 @@ key_bindings:
   - { key: K, mods: Command, chars: "\x00\x6a" }
   - { key: L, mods: Command, chars: "\x00\x6c" }
   - { key: X, mods: Command, chars: "\x00\x78" }
+  - { key: Z, mods: Command, chars: "\x00\x7a" }
   # - { key: D, mods: Command|Shift, chars: "\x06\x73" }
   # - { key: W, mods: Command, chars: "\x06\x78" }
   # - { key: H, mods: Command, chars: "\x06\x68" }

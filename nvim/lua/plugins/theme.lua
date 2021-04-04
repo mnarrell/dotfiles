@@ -5,6 +5,16 @@ local theme = base16.themes['tomorrow-night']
 base16(theme, true)
 
 local function hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
+  local meh = {
+    group,
+    'guifg=' .. (guifg or 'none'),
+    'guibg=' .. (guibg or 'none'),
+    'ctermfg=' .. (ctermfg or 'none'),
+    'ctermbg=' .. (ctermbg or 'none'),
+    'gui=' .. (attr or 'none'),
+    'cterm=' .. (attr or 'none'),
+    'guisp=#' .. (guifg or 'none'),
+  }
   local parts = {group}
   -- table.insert(parts, 'guifg=' .. (guifg or 'none'))
   if guifg then table.insert(parts, "guifg="..guifg) end
@@ -23,6 +33,8 @@ end
 local function set_highlights()
   local t1 = '#' .. theme.base01
   local td = '#' .. theme.base0D
+
+  -- hi SignColumn guibg=NONE
 
   hi('CursorLineNr', td, nil, nil, nil, 'bold', nil)
   hi('IncSearch','YELLOW', td, nil, nil, nil, nil)
