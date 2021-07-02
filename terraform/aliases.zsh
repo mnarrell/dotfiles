@@ -1,8 +1,11 @@
 #!/usr/bin/env zsh
 
-alias tf='terraform'
-alias tfi='terraform init'
-alias tfa='terraform apply'
-alias tfd='terraform destroy'
+alias -g tf='terraform'
+alias -g tfi='terraform init'
+alias -g tfp='terraform plan'
+alias -g tfa='terraform apply'
+alias -g tfd='terraform destroy'
+alias -g tfo='terraform output'
+alias -g tfs='terraform state'
 
 alias tg="terragrunt"

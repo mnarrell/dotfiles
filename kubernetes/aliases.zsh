@@ -7,16 +7,16 @@ if [ $commands[kubectl] ]; then
   }
 fi
 
-alias k='kubectl'
-alias kp='k get pods -o wide'
-alias ks='k get services -o wide'
-alias ke='k exec -it PODS bash'
-alias kevt="k get events --sort-by='.lastTimestamp'"
-alias kl='k logs -f PODS'
-alias kdp='k describe pod PODS'
-alias kds='k describe service SVC'
-alias kcs='k config use-context CTX'
-alias kfixcomp='source <(kubectl completion zsh)'
+alias -g k='kubectl'
+alias -g kp='k get pods -o wide'
+alias -g ks='k get services -o wide'
+alias -g ke='k exec -it PODS bash'
+alias -g kevt="k get events --sort-by='.lastTimestamp'"
+alias -g kl='k logs -f PODS'
+alias -g kdp='k describe pod PODS'
+alias -g kds='k describe service SVC'
+alias -g kcs='k config use-context CTX'
+alias -g kfixcomp='source <(kubectl completion zsh)'
 
 alias -g PODS='$(kfuzz pod)'
 alias -g DEPLOY='$(kfuzz deploy)'

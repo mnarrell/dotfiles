@@ -1,8 +1,7 @@
-require('tools').create_backup_dirs()
+if require "mn.bootstrap"() then
+	os.exit()
+end
 
-require('options')
-require('ftdetect')
-require('plugins')
-require('lsp')
-require('mappings')
--- require('ftplugin')
+require "mn.options"
+require "mn.plugins"
+require "mn.lsp"

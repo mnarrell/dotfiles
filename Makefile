@@ -1,8 +1,7 @@
 MODULES = \
-	alacritty bash bin docker fzf gem git gnu golang helm \
-	homebrew java kubernetes less lua markdown node npm \
-	nvim psql python readline ripgrep terraform tig tmux \
-	vagrant yamllint yapf zsh
+	alacritty ansible bash bin docker fzf gem git gnu golang helm \ homebrew java \
+	kubernetes less lua markdown node npm nvim psql python readline ripgrep \
+	terraform tig tmux vagrant yamllint yapf zsh
 
 CLEAN := $(addsuffix .clean,$(MODULES))
 

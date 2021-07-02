@@ -1,5 +1,0 @@
-require('mappings.command')
-require('mappings.insert')
-require('mappings.normal')
-require('mappings.terminal')
-require('mappings.visual')
