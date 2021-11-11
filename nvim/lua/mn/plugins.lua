@@ -106,6 +106,8 @@ return require("packer").startup {
 		use { "ckipp01/stylua-nvim", opt = true, ft = "lua" }
 		-- }}}
 
+		use { "pedrohdz/vim-yaml-folds" }
+
 		-- Treesitter
 		use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 		-- use {'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup() end}

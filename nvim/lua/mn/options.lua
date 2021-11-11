@@ -50,6 +50,7 @@ vim.opt.visualbell = true -- stop annoying beeping for non error errors
 vim.opt.whichwrap = [[b,h,l,s,<,>,[,],~]] -- allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 vim.opt.wildignore = "*/.git,tmp/backup,*/tmp/swap" -- patterns to ignore during file navigation
 vim.opt.wildmode = "longest:full,full" -- shell like autocomplete to unambiguous portion
+vim.opt.foldlevelstart = 100 -- open all folds by default
 
 vim.opt.completeopt = "menuone,noinsert,noselect"
 -- vim.opt.completeopt = "menu,noselect"
@@ -62,6 +63,9 @@ vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case --hidden"
 vim.o.grepformat = "%f:%l:%c:%m"
 
 vim.opt.listchars = "nbsp:⦸,tab:▷┅,extends:»,precedes:«,trail:•"
+
+vim.opt.fillchars:append "fold: "
+vim.opt.fillchars:append "vert:|"
 
 -- vim.opt.shortmess = vim.o.shortmess .. 'c' -- don't give |ins-completion-menu| messages
 vim.opt.shortmess:append "c"
