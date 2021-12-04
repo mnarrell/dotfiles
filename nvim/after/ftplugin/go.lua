@@ -46,4 +46,4 @@ end
 buf_local_nnoremap("gb", ":lua build_go_files()<CR>")
 buf_local_nnoremap("<C-g>", ":GoDeclsDir<CR>")
 
-vim.cmd [[autocmd FileType go lua require("cmp").setup.buffer { completion = { autocomplete = false } }]]
+-- vim.cmd [[autocmd FileType go lua require("cmp").setup.buffer { completion = { autocomplete = false } }]]

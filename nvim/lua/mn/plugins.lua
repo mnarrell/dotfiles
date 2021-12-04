@@ -26,6 +26,7 @@ return require("packer").startup {
 		}
 
 		-- Basics
+		use { "tpope/vim-abolish" }
 		use { "tpope/vim-commentary" }
 		use { "tpope/vim-eunuch" }
 		use { "tpope/vim-repeat" }
@@ -79,7 +80,8 @@ return require("packer").startup {
 		use { "quangnguyen30192/cmp-nvim-ultisnips" }
 
 		-- Linting
-		use { "dense-analysis/ale" }
+		-- use { "dense-analysis/ale" }
+		use { "jose-elias-alvarez/null-ls.nvim" }
 
 		-- Syntax {{{
 		use { "fatih/vim-go", run = ":GoUpdateBinaries", opt = true, ft = "go" }
@@ -98,7 +100,7 @@ return require("packer").startup {
 		use { "hashivim/vim-terraform", opt = true, ft = { "terraform", "hcl" } }
 		-- use { "jvirtanen/vim-hcl" }
 		use { "pearofducks/ansible-vim", run = "cd ./UltiSnips; ./generate.py" }
-		use { "towolf/vim-helm", ft = "helm" }
+		use { "towolf/vim-helm" }
 		-- use {'plasticboy/vim-markdown', ft = 'markdown'}
 
 		use { "folke/lua-dev.nvim" }

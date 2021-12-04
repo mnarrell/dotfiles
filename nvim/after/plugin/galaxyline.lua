@@ -22,6 +22,10 @@ gl.short_line_list = { "netrw" }
 vim.cmd(string.format("highlight GalaxyFileInfoModified guibg=%s guifg=#00aa00", "#555965"))
 vim.cmd(string.format("highlight GalaxyFileInfoReadonly guibg=%s guifg=#ffa003", "#555965"))
 vim.cmd(string.format("highlight GalaxyFileInfoRestricted guibg=%s guifg=#dc322f", "#555965"))
+
+
+
+
 vim.cmd(string.format("highlight GalaxyFileInfoUnmodified guibg=%s guifg=%s", "#555965", theme.base0D:upper()))
 
 local modes = {
@@ -226,24 +230,24 @@ gl.section.right = {
 			separator_highlight = { colors.orange, "#555965" },
 		},
 	},
-	{
-		Warnings = {
-			condition = ale.check_warnings,
-			provider = ale.warnings,
-			highlight = { colors.yellow, "#555965" },
-			separator = " ",
-			separator_highlight = { theme.base0D:upper(), "#555965", "bold" },
-		},
-	},
-	{
-		Errors = {
-			condition = ale.check_errors,
-			provider = ale.errors,
-			highlight = { colors.red, "#555965" },
-			separator = " ",
-			separator_highlight = { theme.base0D:upper(), "#555965", "bold" },
-		},
-	},
+	-- {
+	-- 	Warnings = {
+	-- 		condition = ale.check_warnings,
+	-- 		provider = ale.warnings,
+	-- 		highlight = { colors.yellow, "#555965" },
+	-- 		separator = " ",
+	-- 		separator_highlight = { theme.base0D:upper(), "#555965", "bold" },
+	-- 	},
+	-- },
+	-- {
+	-- 	Errors = {
+	-- 		condition = ale.check_errors,
+	-- 		provider = ale.errors,
+	-- 		highlight = { colors.red, "#555965" },
+	-- 		separator = " ",
+	-- 		separator_highlight = { theme.base0D:upper(), "#555965", "bold" },
+	-- 	},
+	-- },
 	{
 		WhiteSpace = {
 			provider = "WhiteSpace",

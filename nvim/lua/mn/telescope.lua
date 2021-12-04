@@ -1,44 +1,20 @@
 local telescope = require "telescope"
 local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
 local builtin = require "telescope.builtin"
 local themes = require "telescope.themes"
 
-local custom_actions = {}
-
-function custom_actions.fzf_multi_select(prompt_bufnr)
-	local picker = action_state.get_current_picker(prompt_bufnr)
-	-- local num_selections = table.getn(picker:get_multi_selection())
-	local num_selections = #picker:get_multi_selection()
-
-	if num_selections > 1 then
-		-- actions.file_edit throws - context of picker seems to change
-		--actions.file_edit(prompt_bufnr)
-		actions.send_selected_to_qflist(prompt_bufnr)
-		actions.open_qflist()
-	else
-		actions.file_edit(prompt_bufnr)
-	end
-end
+local my_maps = {
+	["<C-x>"] = false,
+	["<C-s>"] = actions.select_horizontal,
+	["<C-y>"] = actions.send_selected_to_loclist,
+	["<tab>"] = actions.toggle_selection,
+}
 
 telescope.setup {
 	defaults = {
 		mappings = {
-			i = {
-				["<C-x>"] = false,
-				["<C-s>"] = actions.select_horizontal,
-				-- ['<C-q>'] = actions.smart_send_to_qflist,
-				["<C-y>"] = actions.send_to_loclist + actions.open_loclist,
-				["<esc>"] = actions.close,
-				["<tab>"] = actions.toggle_selection + actions.move_selection_next,
-				["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-				["<cr>"] = custom_actions.fzf_multi_select
-			},
-			n = {
-				["<tab>"] = actions.toggle_selection + actions.move_selection_next,
-				["<s-tab>"] = actions.toggle_selection + actions.move_selection_previous,
-				["<cr>"] = custom_actions.fzf_multi_select,
-			},
+			i = my_maps,
+			n = my_maps,
 		},
 		-- extensions = {
 		--   fzf = {
@@ -55,6 +31,12 @@ telescope.load_extension "ultisnips"
 -- telescope.load_extension('fzf')
 
 local tele = {}
+
+function tele.find_files()
+	-- local cmd = { "fd", "--type", "f", "--hidden", "--no-ignore", "--exclude", "vendor", "--exclude", ".git" }
+	local cmd = { "fd", "--type", "f", "--hidden" }
+	builtin.find_files { find_command = cmd }
+end
 
 function tele.lsp_code_actions()
 	local opts = themes.get_dropdown {
@@ -101,7 +83,7 @@ telescope_mapping("<leader>h", "help_tags")
 telescope_mapping("<leader>u", "ultisnips")
 telescope_mapping("<leader>ca", "lsp_code_actions")
 
--- telescope_mapping('<leader>lg', 'live_grep')
+telescope_mapping("<leader>lg", "live_grep")
 
 return setmetatable({}, {
 	__index = function(_, k)

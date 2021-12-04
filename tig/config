@@ -87,12 +87,13 @@ bind generic + !git commit --amend
 
 bind main ! !git revert %(commit)
 bind main B !git rebase -i %(commit)
+bind main C ?git checkout %(commit)
 bind main F !git fetch
 bind main P !git push origin "%(prompt Enter branch name: )"
 bind main T !@git tag %(prompt) %(commit)
 
 bind refs B !git rebase -i %(commit)
-bind refs D ?git branch -d %(branch)
+bind refs D ?git branch -D %(branch)
 bind refs n !@git branch "%(prompt Enter branch name: )"
 bind refs R ?git reset origin/%(branch) --hard
 

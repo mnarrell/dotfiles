@@ -5,7 +5,7 @@ M.setup = function(lspconfig, custom_attach)
 	local sumneko_bin = sumneko_root .. "/bin/macOS/lua-language-server"
 	local luadev = require("lua-dev").setup {
 		library = {
-			plugins = false,
+			plugins = true,
 		},
 		lspconfig = {
 			on_attach = custom_attach,

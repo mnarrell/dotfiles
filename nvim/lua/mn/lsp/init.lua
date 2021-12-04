@@ -12,17 +12,15 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 })
 
 vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})]]
--- vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
 
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local custom_init = function(client)
 	client.config.flags = client.config.flags or {}
 	client.config.flags.allow_incremental_sync = true
 end
 
-local function custom_attach(client, bufnr)
+local custom_attach = function(client, bufnr)
 	print(string.format([['%s', language server started]], client.name))
 
 	local function buf_set_keymap(...)
@@ -60,29 +58,17 @@ local function custom_attach(client, bufnr)
 	-- elseif client.resolved_capabilities.document_range_formatting then
 	--   buf_set_keymap('n', '<Leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 	-- end
-
-	-- -- Set autocommands conditional on server_capabilities
-	-- if client.resolved_capabilities.document_highlight then
-	-- 	vim.cmd [[
-	-- 	hi LspReferenceRead cterm=bold ctermfg=Blue guifg=White guibg=NONE
-	-- 	hi LspReferenceText cterm=bold ctermfg=Blue guifg=White guibg=NONE
-	-- 	hi LspReferenceWrite cterm=bold ctermfg=Blue guifg=White guibg=NONE
-	-- 	augroup lsp_document_highlight
-	-- 		autocmd! * <buffer>
-	-- 		autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-	-- 		autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-	-- 	augroup END
-	-- 	]]
-	-- end
-
-	-- wrap it here THIS is the extra completion plugin
-	-- completion.on_attach(client)
 end
 
 local lspconfig = require "lspconfig"
 
 require("mn.lsp.lua").setup(lspconfig, custom_attach)
-require("mn.lsp.golang").setup(lspconfig, custom_init, custom_attach)
+
+lspconfig.gopls.setup {
+	on_init = custom_init,
+	on_attach = custom_attach,
+	capabilities = capabilities,
+}
 
 lspconfig.dockerls.setup {
 	on_attach = custom_attach,
@@ -91,11 +77,9 @@ lspconfig.dockerls.setup {
 	end,
 }
 
-lspconfig.pyright.setup { on_attach = custom_attach, settings = { python = { formatting = { provider = "yapf" } } } }
-lspconfig.vimls.setup { on_attach = custom_attach }
-
 lspconfig.jsonls.setup {
 	on_attach = custom_attach,
+	capabilities = capabilities,
 	commands = {
 		Format = {
 			function()
@@ -105,5 +89,24 @@ lspconfig.jsonls.setup {
 	},
 }
 
-lspconfig.terraformls.setup { on_attach = custom_attach }
-lspconfig.bashls.setup { on_attach = custom_attach, filetypes = { "sh", "zsh", "bash" } }
+lspconfig.bashls.setup {
+	on_attach = custom_attach,
+	capabilities = capabilities,
+	filetypes = { "sh", "zsh", "bash" },
+}
+
+lspconfig.pyright.setup {
+	on_attach = custom_attach,
+	capabilities = capabilities,
+	settings = {
+		python = {
+			formatting = {
+				provider = "yapf",
+			},
+		},
+	},
+}
+
+lspconfig.yamlls.setup { on_attach = custom_attach, capabilities = capabilities }
+lspconfig.terraformls.setup { on_attach = custom_attach, capabilities = capabilities }
+lspconfig.vimls.setup { on_attach = custom_attach, capabilities = capabilities }

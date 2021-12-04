@@ -1,7 +1,7 @@
 {
-	"auths": {
-		"https://index.docker.io/v1/": {},
-		"hub.comcast.net": {}
-	},
-	"credsStore": "osxkeychain"
+  "auths": {
+    "hub.comcast.net": {}
+  },
+  "credsStore": "osxkeychain"
 }
+
