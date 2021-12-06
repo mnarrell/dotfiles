@@ -1,6 +1,9 @@
+local support = require "mn.lsp.support"
 local null_ls = require "null-ls"
 
 null_ls.config {
+	debug = true,
+diagnostics_format = "[#{c}] #{m} (#{s})",
 	sources = {
 
 		--------------------------------------------------------------------------------
@@ -29,18 +32,18 @@ null_ls.config {
 		null_ls.builtins.diagnostics.ansiblelint,
 
 		null_ls.builtins.diagnostics.codespell,
-		null_ls.builtins.diagnostics.cspell,
-		null_ls.builtins.diagnostics.misspell,
+		-- null_ls.builtins.diagnostics.cspell,
+		-- null_ls.builtins.diagnostics.misspell,
 
 		null_ls.builtins.diagnostics.flake8,
 		null_ls.builtins.diagnostics.pylint,
 
 		null_ls.builtins.diagnostics.hadolint,
 
-		-- null_ls.builtins.diagnostics.markdownlint,
-		null_ls.builtins.diagnostics.markdownlint.with {
-			diagnostics_format = "[#{c}] #{m} (#{s})",
-		},
+		null_ls.builtins.diagnostics.markdownlint,
+		-- null_ls.builtins.diagnostics.markdownlint.with {
+		-- 	diagnostics_format = "[#{c}] #{m} (#{s})",
+		-- },
 
 		null_ls.builtins.diagnostics.shellcheck,
 
@@ -65,4 +68,8 @@ null_ls.config {
 	},
 }
 
-require("lspconfig.configs")["null-ls"].setup {}
+local M = {}
+
+M.config = support.base_config
+
+return M

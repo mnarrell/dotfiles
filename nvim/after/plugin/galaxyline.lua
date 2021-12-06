@@ -23,9 +23,6 @@ vim.cmd(string.format("highlight GalaxyFileInfoModified guibg=%s guifg=#00aa00",
 vim.cmd(string.format("highlight GalaxyFileInfoReadonly guibg=%s guifg=#ffa003", "#555965"))
 vim.cmd(string.format("highlight GalaxyFileInfoRestricted guibg=%s guifg=#dc322f", "#555965"))
 
-
-
-
 vim.cmd(string.format("highlight GalaxyFileInfoUnmodified guibg=%s guifg=%s", "#555965", theme.base0D:upper()))
 
 local modes = {

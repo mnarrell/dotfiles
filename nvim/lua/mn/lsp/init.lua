@@ -11,75 +11,44 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	update_in_insert = false,
 })
 
-vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})]]
+-- local publishDiagnostics = "textDocument/publishDiagnostics"
+-- local default_handler = vim.lsp.handlers[publishDiagnostics]
+-- vim.lsp.handlers[publishDiagnostics] = function(err, method, result, client_id, bufnr, config)
+-- 	default_handler(err, method, result, client_id, bufnr, config)
+-- 	local diagnostics = vim.diagnostic.get(0)
+-- 	local qflist = {}
+-- 	for bn, diagnostic in pairs(diagnostics) do
+-- 		for _, d in ipairs(diagnostic) do
+-- 			table.insert(qflist, {
+-- 				bufnr = bn,
+-- 				lnum = d.range.start.line + 1,
+-- 				col = d.range.start.character + 1,
+-- 				text = d.message,
+-- 			})
+-- 		end
+-- 	end
+-- 	vim.diagnostic.setqflist(qflist)
+-- end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-local custom_init = function(client)
-	client.config.flags = client.config.flags or {}
-	client.config.flags.allow_incremental_sync = true
-end
-
-local custom_attach = function(client, bufnr)
-	print(string.format([['%s', language server started]], client.name))
-
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
-
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-	-- Mappings.
-	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "<c-]>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "<Leader>ld", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "<Leader>li", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "<Leader>lk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "<Leader>ln", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "<Leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	-- buf_set_keymap('n', '<Leader>ls', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-	buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-	buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-	-- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-	-- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-	-- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-	-- buf_set_keymap('n', 'gq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-	-- -- Set some keybinds conditional on server capabilities
-	-- if client.resolved_capabilities.document_formatting then
-	buf_set_keymap("n", "<Leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	-- elseif client.resolved_capabilities.document_range_formatting then
-	--   buf_set_keymap('n', '<Leader>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-	-- end
-end
+-- vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})]]
 
 local lspconfig = require "lspconfig"
+local support = require "mn.lsp.support"
 
-require("mn.lsp.lua").setup(lspconfig, custom_attach)
+lspconfig.sumneko_lua.setup(require("mn.lsp.lua").config)
 
-lspconfig.gopls.setup {
-	on_init = custom_init,
-	on_attach = custom_attach,
-	capabilities = capabilities,
-}
+lspconfig.gopls.setup(require("mn.lsp.support").base_config)
+lspconfig.yamlls.setup(require("mn.lsp.support").base_config)
+lspconfig.terraformls.setup(require("mn.lsp.support").base_config)
+lspconfig.vimls.setup(require("mn.lsp.support").base_config)
 
-lspconfig.dockerls.setup {
-	on_attach = custom_attach,
+lspconfig.dockerls.setup(vim.tbl_extend("force", support.base_config, {
 	root_dir = function(fname)
 		return lspconfig.util.find_git_ancestor(fname)
 	end,
-}
+}))
 
-lspconfig.jsonls.setup {
-	on_attach = custom_attach,
-	capabilities = capabilities,
+lspconfig.jsonls.setup(vim.tbl_extend("force", support.base_config, {
 	commands = {
 		Format = {
 			function()
@@ -87,17 +56,13 @@ lspconfig.jsonls.setup {
 			end,
 		},
 	},
-}
+}))
 
-lspconfig.bashls.setup {
-	on_attach = custom_attach,
-	capabilities = capabilities,
+lspconfig.bashls.setup(vim.tbl_extend("force", support.base_config, {
 	filetypes = { "sh", "zsh", "bash" },
-}
+}))
 
-lspconfig.pyright.setup {
-	on_attach = custom_attach,
-	capabilities = capabilities,
+lspconfig.pyright.setup(vim.tbl_extend("force", support.base_config, {
 	settings = {
 		python = {
 			formatting = {
@@ -105,8 +70,7 @@ lspconfig.pyright.setup {
 			},
 		},
 	},
-}
+}))
 
-lspconfig.yamlls.setup { on_attach = custom_attach, capabilities = capabilities }
-lspconfig.terraformls.setup { on_attach = custom_attach, capabilities = capabilities }
-lspconfig.vimls.setup { on_attach = custom_attach, capabilities = capabilities }
+local mn_null_ls = require "mn.lsp.null-ls"
+require("lspconfig.configs")["null-ls"].setup(mn_null_ls.config)
