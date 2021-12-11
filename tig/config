@@ -94,8 +94,9 @@ bind main T !@git tag %(prompt) %(commit)
 
 bind refs B !git rebase -i %(commit)
 bind refs D ?git branch -D %(branch)
-bind refs n !@git branch "%(prompt Enter branch name: )"
+bind refs F !git fetch
 bind refs R ?git reset origin/%(branch) --hard
+bind refs n !@git branch "%(prompt Enter branch name: )"
 
 bind stash A !?git stash apply %(stash)
 bind stash D !?git stash drop %(stash)

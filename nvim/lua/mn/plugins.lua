@@ -13,7 +13,8 @@ return require("packer").startup {
 		use { "fweep/vim-tabber" }
 		use { "kshenoy/vim-signature" }
 		use { "machakann/vim-highlightedyank" }
-		use { "glepnir/galaxyline.nvim" }
+		-- use { "glepnir/galaxyline.nvim" }
+		use { "nvim-lualine/lualine.nvim" }
 		use { "kyazdani42/nvim-web-devicons" }
 		use {
 			"windwp/nvim-autopairs",

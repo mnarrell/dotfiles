@@ -1,15 +1,22 @@
-local signs = { Error = "✗ ", Warn = " ", Hint = " ", Information = "𝓲 " }
+local signs = { Error = "✗ ", Warn = " ", Hint = " ", Info = "𝓲 " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+-- 	signs = true,
+-- 	underline = true,
+-- 	update_in_insert = false,
+-- 	virtual_text = false,
+-- })
+
+vim.diagnostic.config {
 	virtual_text = false,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-})
+	-- virtual_text = {
+	-- 	source = "if_many",
+	-- },
+}
 
 -- local publishDiagnostics = "textDocument/publishDiagnostics"
 -- local default_handler = vim.lsp.handlers[publishDiagnostics]
@@ -37,7 +44,9 @@ local support = require "mn.lsp.support"
 
 lspconfig.sumneko_lua.setup(require("mn.lsp.lua").config)
 
-lspconfig.gopls.setup(require("mn.lsp.support").base_config)
+-- lspconfig.gopls.setup(require("mn.lsp.support").base_config)
+lspconfig.gopls.setup(require("mn.lsp.golang").config)
+
 lspconfig.yamlls.setup(require("mn.lsp.support").base_config)
 lspconfig.terraformls.setup(require("mn.lsp.support").base_config)
 lspconfig.vimls.setup(require("mn.lsp.support").base_config)
