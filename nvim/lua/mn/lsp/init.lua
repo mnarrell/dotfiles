@@ -47,6 +47,7 @@ lspconfig.sumneko_lua.setup(require("mn.lsp.lua").config)
 -- lspconfig.gopls.setup(require("mn.lsp.support").base_config)
 lspconfig.gopls.setup(require("mn.lsp.golang").config)
 
+lspconfig.ansiblels.setup(require("mn.lsp.support").base_config)
 lspconfig.yamlls.setup(require("mn.lsp.support").base_config)
 lspconfig.terraformls.setup(require("mn.lsp.support").base_config)
 lspconfig.vimls.setup(require("mn.lsp.support").base_config)
