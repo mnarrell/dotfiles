@@ -4,18 +4,21 @@ end
 
 require("nvim-treesitter.configs").setup {
 	ensure_installed = "maintained",
-	highlight = { enable = true },
-	-- autotag = {enable = true},
-	refactor = {
-		-- highlight_definitions = {enable = true},
-		--   highlight_current_scope = {enable = false},
-		--   smart_rename = {
-		--     enable = true,
-		--     keymaps = {
-		--       -- mapping to rename reference under cursor
-		--       smart_rename = 'gy'
-		--     }
-		--   }
+	highlight = {
+		enable = true,
+		disable = { "make" },
+	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "gnn",
+			node_incremental = "grn",
+			scope_incremental = "grc",
+			node_decremental = "grm",
+		},
+	},
+	indent = {
+		enable = true,
 	},
 	custom_captures = {
 		["comment"] = "Comment",
@@ -23,13 +26,12 @@ require("nvim-treesitter.configs").setup {
 	textobjects = {
 		select = {
 			enable = true,
+			lookahead = true,
 			keymaps = {
-				-- ['af'] = '@function.outer',
-				-- ['if'] = '@function.inner',
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
 				["ac"] = "@class.outer",
 				["ic"] = "@class.inner",
-				["aC"] = "@class.outer",
-				["iC"] = "@class.inner",
 				["ab"] = "@block.outer",
 				["ib"] = "@block.inner",
 			},

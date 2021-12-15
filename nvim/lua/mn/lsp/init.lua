@@ -4,40 +4,16 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
--- 	signs = true,
--- 	underline = true,
--- 	update_in_insert = false,
--- 	virtual_text = false,
--- })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
+-- vim.diagnostic.show_line_diagnostics { border = "single" }
 vim.diagnostic.config {
 	virtual_text = false,
 	-- virtual_text = {
 	-- 	source = "if_many",
 	-- },
 }
-
--- local publishDiagnostics = "textDocument/publishDiagnostics"
--- local default_handler = vim.lsp.handlers[publishDiagnostics]
--- vim.lsp.handlers[publishDiagnostics] = function(err, method, result, client_id, bufnr, config)
--- 	default_handler(err, method, result, client_id, bufnr, config)
--- 	local diagnostics = vim.diagnostic.get(0)
--- 	local qflist = {}
--- 	for bn, diagnostic in pairs(diagnostics) do
--- 		for _, d in ipairs(diagnostic) do
--- 			table.insert(qflist, {
--- 				bufnr = bn,
--- 				lnum = d.range.start.line + 1,
--- 				col = d.range.start.character + 1,
--- 				text = d.message,
--- 			})
--- 		end
--- 	end
--- 	vim.diagnostic.setqflist(qflist)
--- end
-
--- vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})]]
 
 local lspconfig = require "lspconfig"
 local support = require "mn.lsp.support"
@@ -82,5 +58,7 @@ lspconfig.pyright.setup(vim.tbl_extend("force", support.base_config, {
 	},
 }))
 
-local mn_null_ls = require "mn.lsp.null-ls"
-require("lspconfig.configs")["null-ls"].setup(mn_null_ls.config)
+-- local mn_null_ls = require "mn.lsp.null-ls"
+-- require("lspconfig.configs")["null-ls"].setup(mn_null_ls.config)
+
+require("mn.lsp.null-ls").setup(support.base_config.on_attach)

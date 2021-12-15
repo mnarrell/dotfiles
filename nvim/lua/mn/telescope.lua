@@ -78,10 +78,11 @@ telescope_mapping("<leader>gf", "git_status")
 telescope_mapping("<leader>f", "find_files")
 telescope_mapping("<leader>m", "marks")
 telescope_mapping("<leader>r", "grep_prompt")
-telescope_mapping("<leader>d", "dotfiles")
+-- telescope_mapping("<leader>d", "dotfiles")
 telescope_mapping("<leader>h", "help_tags")
 telescope_mapping("<leader>u", "ultisnips")
 telescope_mapping("<leader>ca", "lsp_code_actions")
+telescope_mapping("<leader>ls", "lsp_document_symbols")
 
 telescope_mapping("<leader>lg", "live_grep")
 

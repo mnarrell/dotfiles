@@ -5,21 +5,18 @@ end
 
 local statusline = require "mn.statusline"
 
-local whitespace = require("lualine.component"):extend()
-
-whitespace.draw = function()
-	return statusline.whitespace()
-end
-
 local config = {
 	options = {
 		-- Disable sections and component separators
 		component_separators = "",
 		section_separators = "",
-		disabled_filetypes = { "netrw" },
+		disabled_filetypes = {
+			"netrw",
+			"quickfix",
+		},
 		theme = {
-			normal = { c = { fg = statusline.colors.fg, bg = statusline.colors.bg } },
-			inactive = { c = { fg = statusline.colors.fg, bg = statusline.colors.bg } },
+			normal = { c = "StatusLineThemeNormalC" },
+			inactive = { c = "StatusLineThemeInactiveC" },
 		},
 	},
 	sections = {
@@ -59,7 +56,7 @@ add_left {
 }
 
 add_left {
-	[[ require("mn.statusline").mode() ]],
+	statusline.mode,
 	color = "StatusLineViMode",
 }
 
@@ -80,7 +77,7 @@ add_left {
 }
 
 add_left {
-	[[ require("mn.statusline").file_info() ]],
+	statusline.file_info,
 	cond = statusline.conditions.buffer_not_empty,
 	color = "StatusLineFileInfo",
 }
@@ -98,15 +95,15 @@ add_left {
 	sources = { "nvim_diagnostic" },
 	symbols = { error = " ", warn = " ", info = " " },
 	diagnostics_color = {
-		color_error = { fg = statusline.colors.red },
-		color_warn = { fg = statusline.colors.yellow },
-		color_info = { fg = statusline.colors.cyan },
+		error = "StatusLineDiagnosticError",
+		warn = "StatusLineDiagnosticWarn",
+		info = "StatusLineDiagnosticInfo",
 	},
 }
 
 add_left {
-	[[ require("mn.statusline").whitespace() ]],
-	color = { fg = statusline.colors.red},
+	statusline.mixed_indent,
+	color = "StatusLineMixedIndent",
 }
 
 add_right {
@@ -118,13 +115,13 @@ add_right {
 }
 
 add_right {
-	[[ require("mn.statusline").filetype() ]],
+	statusline.filetype,
 	color = "StatusLineTextBold",
 	padding = { left = 0, right = 0 },
 }
 
 add_right {
-	[[ require("mn.statusline").position_info() ]],
+	statusline.position_info,
 	color = "StatusLineTextBold",
 }
 
@@ -135,5 +132,12 @@ add_right {
 	color = "StatusLineSeparator",
 	padding = { left = 0, right = 0 },
 }
+
+-- Inactive split
+table.insert(config.inactive_sections.lualine_a, {
+	statusline.inactive_filename,
+	cond = statusline.conditions.buffer_not_empty,
+	color = "StatusLineInactiveFilename",
+})
 
 lualine.setup(config)

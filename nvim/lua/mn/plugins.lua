@@ -128,12 +128,7 @@ return require("packer").startup {
 		use { "fhill2/telescope-ultisnips.nvim" }
 		-- }}}
 
-		use {
-			"folke/trouble.nvim",
-			config = function()
-				require("trouble").setup { height = 20 }
-			end,
-		}
+		use { "folke/trouble.nvim", }
 
 		use {
 			"folke/todo-comments.nvim",

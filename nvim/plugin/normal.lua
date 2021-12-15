@@ -4,7 +4,10 @@ end
 
 local nnoremap = require("mn.mappings").nnoremap
 
-nnoremap("tz", ":luafile ~/.config/nvim/init.lua<CR>", { silent = false })
+nnoremap("Q", "<Nop>")
+
+nnoremap("n", "nzzzv")
+nnoremap("N", "Nzzzv")
 
 nnoremap("<Leader>o", ":only<CR>")
 nnoremap("<Leader>q", ":quit<CR>")
@@ -13,11 +16,6 @@ nnoremap("<Leader>v", ":vsp<CR>")
 nnoremap("<Leader>s", ":sp<CR>")
 nnoremap("<Leader>k", ":bd!<CR>")
 nnoremap("<Leader>w", ":<C-u>call functions#SaveAndExec()<CR>")
-
--- Toggle terminal
-nnoremap("tv", ":vsplit<cr>:term<CR>")
-nnoremap("ts", ":split<cr>:term<CR>")
-nnoremap("tt", ":tabnew<cr>:term<CR>")
 
 -- Make Y behave like C and D
 nnoremap("Y", "y$")
@@ -62,5 +60,7 @@ nnoremap("<Down>", ":cnext<CR>")
 nnoremap("tl", ":TroubleToggle loclist<CR>")
 -- nnoremap("tq", ":<C-u>call functions#ToggleQuickFix()<CR>")
 nnoremap("tq", ":TroubleToggle quickfix<CR>")
-nnoremap("td", ":TroubleToggle document_diagnostics<CR>")
-nnoremap("tD", ":TroubleToggle workspace_diagnostics<CR>")
+-- nnoremap("td", ":TroubleToggle document_diagnostics<CR>")
+-- nnoremap("tD", ":TroubleToggle workspace_diagnostics<CR>")
+
+nnoremap("td", [[:lua require("mn.lsp.support").toggle_diagnostics()<CR>]])

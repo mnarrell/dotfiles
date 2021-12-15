@@ -8,4 +8,3 @@ opt.softtabstop = 4
 -- opt.equalprg = [[stylua -]]
 
 vim.cmd [[autocmd BufWritePost *.lua lua require("stylua-nvim").format_file()]]
-
