@@ -1,9 +1,9 @@
-if not pcall(require, "base16-colorscheme") then
+local ok, base16 = pcall(require, "base16-colorscheme")
+if not ok then
 	return
 end
 
 local NONE = "NONE"
-local base16 = require "base16-colorscheme"
 local theme = base16.colorschemes["tomorrow-night"]
 local hi = base16.highlight
 
@@ -23,7 +23,7 @@ M.apply_highlights = function()
 
 	-- LSP Signs
 	hi.DiagnosticSignError = { guifg = "Red", guibg = theme.base01, gui = NONE, guisp = nil }
-	hi.DiagnosticSignWarn= { guifg = "Yellow", guibg = theme.base01, gui = NONE, guisp = nil }
+	hi.DiagnosticSignWarn = { guifg = "Yellow", guibg = theme.base01, gui = NONE, guisp = nil }
 	hi.DiagnosticSignHint = { guifg = theme.base0D, guibg = theme.base01, gui = NONE, guisp = nil }
 
 	hi.LspDiagnosticsVirtualTextError = { guifg = "Red", ctermfg = "Red" }

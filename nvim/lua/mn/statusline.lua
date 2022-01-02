@@ -1,5 +1,10 @@
-local theme = require("base16-colorscheme").colorschemes["tomorrow-night"]
-local devicons = require "nvim-web-devicons"
+local base16_loaded, scheme = pcall(require, "base16-colorscheme")
+if not base16_loaded then return end
+
+local devicons_loaded, devicons = pcall(require, "nvim-web-devicons")
+if not devicons_loaded then return end
+
+local theme = scheme.colorschemes["tomorrow-night"]
 
 local M = {}
 

@@ -1,8 +1,10 @@
+#!/usr/bin/env bash
+
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
 export XDG_DATA_HOME=${HOME}/.local/share
 export PATH=~/bin:/usr/local/bin:$PATH
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # Don’t clear the screen after quitting a manual page
 export MANPAGER="less -X"
@@ -14,6 +16,20 @@ export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoredups
 export HISTTIMEFORMAT="%m/%d/%y - %H:%M:%S "
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias e='${EDITOR}'
+alias la="ls -lah"
+alias ll="ls -lh"
+alias mkdir="mkdir -v"
+alias mv="mv -v"
+alias rm="rm -v"
+alias cp="cp -v"
+alias chmod="chmod -v"
+alias chown="chown -v"
+alias clear="echo 'NO!'"
 
 bash_prompt() {
   # regular colors

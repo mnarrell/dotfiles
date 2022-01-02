@@ -5,22 +5,17 @@ end
 local cmp = require "cmp"
 cmp.setup {
 	formatting = {
-		format = function(entry, item)
-			item.kind = require("lspkind").presets.default[item.kind] .. " " .. item.kind
-			item.menu = ({
-				buffer = "[Buffer]",
+		format = require("lspkind").cmp_format {
+			with_text = false,
+			menu = {
 				nvim_lsp = "[LSP]",
-				ultisnips = "[UltiSnips]",
+				ultisnips = "[US]",
 				nvim_lua = "[Lua]",
-				cmp_tabnine = "[TabNine]",
-				look = "[Look]",
 				path = "[Path]",
-				spell = "[Spell]",
-				calc = "[Calc]",
+				buffer = "[Buffer]",
 				emoji = "[Emoji]",
-			})[entry.source.name]
-			return item
-		end,
+			},
+		},
 	},
 
 	snippet = {
@@ -42,7 +37,7 @@ cmp.setup {
 		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 	},
 
-	sources = {
+	sources = cmp.config.sources {
 		{ name = "nvim_lsp" },
 		{ name = "ultisnips" },
 		{ name = "nvim_lua" },
@@ -50,3 +45,36 @@ cmp.setup {
 		{ name = "buffer", keyword_length = 4 },
 	},
 }
+
+-- local cmp = require('cmp')
+-- cmp.setup {
+--   completion = {
+--     autocomplete = false, -- disable auto-completion.
+--   },
+-- }
+
+-- _G.vimrc = _G.vimrc or {}
+-- _G.vimrc.cmp = _G.vimrc.cmp or {}
+-- _G.vimrc.cmp.lsp = function()
+--   cmp.complete({
+--     config = {
+--       sources = {
+--         { name = 'nvim_lsp' }
+--       }
+--     }
+--   })
+-- end
+-- _G.vimrc.cmp.snippet = function()
+--   cmp.complete({
+--     config = {
+--       sources = {
+--         { name = 'vsnip' }
+--       }
+--     }
+--   })
+-- end
+
+-- vim.cmd([[
+--   inoremap <C-x><C-o> <Cmd>lua vimrc.cmp.lsp()<CR>
+--   inoremap <C-x><C-s> <Cmd>lua vimrc.cmp.snippet()<CR>
+-- ]])

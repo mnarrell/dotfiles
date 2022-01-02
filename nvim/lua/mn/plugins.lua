@@ -1,4 +1,9 @@
-return require("packer").startup {
+local ok, packer = pcall(require, "packer")
+if not ok then return end
+
+
+
+packer.startup {
 	function(use)
 		use { "wbthomason/packer.nvim" }
 
@@ -13,15 +18,9 @@ return require("packer").startup {
 		use { "fweep/vim-tabber" }
 		use { "kshenoy/vim-signature" }
 		use { "machakann/vim-highlightedyank" }
-		-- use { "glepnir/galaxyline.nvim" }
 		use { "nvim-lualine/lualine.nvim" }
 		use { "kyazdani42/nvim-web-devicons" }
-		use {
-			"windwp/nvim-autopairs",
-			config = function()
-				require("nvim-autopairs").setup()
-			end,
-		}
+		use { "windwp/nvim-autopairs", after = "nvim-cmp" }
 
 		-- Basics
 		use { "tpope/vim-abolish" }
@@ -36,7 +35,12 @@ return require("packer").startup {
 		use { "romainl/vim-qf" }
 
 		-- Navigation
-		use { "jlanzarotta/bufexplorer" }
+		use {
+			"jlanzarotta/bufexplorer",
+			setup = function()
+				vim.g.bufExplorerDisableDefaultKeyMapping = 1
+			end,
+		}
 		use { "gennaro-tedesco/nvim-peekup" }
 		use { "markonm/traces.vim" }
 		use { "godlygeek/tabular" }
@@ -63,9 +67,12 @@ return require("packer").startup {
 		-- use { "honza/vim-snippets" }
 		use { "honza/vim-snippets", rtp = "." }
 		use { "SirVer/ultisnips" }
-		use { "hrsh7th/nvim-cmp" }
-		use { "hrsh7th/cmp-nvim-lsp" }
-		use { "quangnguyen30192/cmp-nvim-ultisnips" }
+		use { "hrsh7th/nvim-cmp", after = "lspkind-nvim" }
+		use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
+		use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
+		use { "hrsh7th/cmp-path", after = "nvim-cmp" }
+		use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
+		use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
 
 		-- Linting
 		-- use { "dense-analysis/ale" }
@@ -87,7 +94,6 @@ return require("packer").startup {
 		use { "hashivim/vim-terraform", opt = true, ft = { "terraform", "hcl" } }
 		use { "pearofducks/ansible-vim", run = "cd ./UltiSnips; ./generate.py" }
 		use { "towolf/vim-helm" }
-		-- use {'plasticboy/vim-markdown', ft = 'markdown'}
 
 		use { "folke/lua-dev.nvim" }
 		use { "euclidianAce/BetterLua.vim", opt = true, ft = "lua" }
@@ -98,12 +104,25 @@ return require("packer").startup {
 
 		-- Treesitter
 		use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-		-- use {'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup() end}
-		use { "nvim-treesitter/nvim-treesitter-textobjects" }
-		use { "nvim-treesitter/nvim-treesitter-refactor" }
+		use {
+			"windwp/nvim-ts-autotag",
+			after = "nvim-treesitter",
+			config = function()
+				require("nvim-ts-autotag").setup()
+			end,
+		}
+		use { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" }
+		use { "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" }
+		use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
 
 		-- LSP
-		use { "neovim/nvim-lspconfig" }
+		use {
+			"neovim/nvim-lspconfig",
+			after = "nvim-cmp",
+			config = function()
+				require "mn.lsp"
+			end,
+		}
 		use { "onsails/lspkind-nvim" }
 
 		-- FZF
@@ -128,7 +147,15 @@ return require("packer").startup {
 		use { "fhill2/telescope-ultisnips.nvim" }
 		-- }}}
 
-		use { "folke/trouble.nvim", }
+		use {
+			"rcarriga/nvim-notify",
+			event = "BufEnter",
+			config = function()
+				vim.notify = require("notify")
+			end
+		}
+
+		use { "folke/trouble.nvim" }
 
 		use {
 			"folke/todo-comments.nvim",

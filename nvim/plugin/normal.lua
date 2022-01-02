@@ -1,8 +1,9 @@
-if not pcall(require, "mn.mappings") then
+local ok, mappings = pcall(require, "mn.mappings")
+if not ok then
 	return
 end
 
-local nnoremap = require("mn.mappings").nnoremap
+local nnoremap = mappings.nnoremap
 
 nnoremap("Q", "<Nop>")
 
@@ -64,3 +65,4 @@ nnoremap("tq", ":TroubleToggle quickfix<CR>")
 -- nnoremap("tD", ":TroubleToggle workspace_diagnostics<CR>")
 
 nnoremap("td", [[:lua require("mn.lsp.support").toggle_diagnostics()<CR>]])
+

@@ -13,7 +13,9 @@ M.setup = function(custom_attach)
 		sources = {
 
 			-- Ansible
-			null_ls.builtins.diagnostics.ansiblelint,
+			null_ls.builtins.diagnostics.ansiblelint.with{
+				filetypes = {"yaml", "yaml.ansible"}
+			},
 
 			-- Docker
 			null_ls.builtins.diagnostics.hadolint,
@@ -52,7 +54,6 @@ M.setup = function(custom_attach)
 			null_ls.builtins.formatting.shellharden,
 			null_ls.builtins.formatting.shfmt,
 			null_ls.builtins.diagnostics.shellcheck,
-			-- null_ls.builtins.code_actions.shellcheck,
 			null_ls.builtins.code_actions.shellcheck.with {
 				filetypes = { "sh", "bash", "zsh" },
 			},

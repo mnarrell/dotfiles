@@ -1,3 +1,6 @@
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then return end
+
 local signs = { Error = "✗ ", Warn = " ", Hint = " ", Info = "𝓲 " }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
@@ -15,7 +18,6 @@ vim.diagnostic.config {
 	-- },
 }
 
-local lspconfig = require "lspconfig"
 local support = require "mn.lsp.support"
 
 lspconfig.sumneko_lua.setup(require("mn.lsp.lua").config)
