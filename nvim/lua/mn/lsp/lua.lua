@@ -1,5 +1,8 @@
 local ok, luadev = pcall(require, "lua-dev")
-if not ok then return end
+if not ok then
+	emit("Unable to load lua-dev")
+	return
+end
 
 local support = require "mn.lsp.support"
 
@@ -13,7 +16,7 @@ M.config = luadev.setup {
 		plugins = true,
 	},
 	lspconfig = {
-		on_init = support.custom_init,
+		-- on_init = support.custom_init,
 		on_attach = support.custom_attach,
 		capabilities = support.capabilities,
 		cmd = { sumneko_bin, "-E", sumneko_root .. "/main.lua" },

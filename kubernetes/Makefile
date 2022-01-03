@@ -1,6 +1,6 @@
 include ../env.mk
 
-KUBECTL_VERSION = 1.11.3
+KUBECTL_VERSION = 1.21.1
 KUBECTL_URL = https://storage.googleapis.com/kubernetes-release/release/v$(KUBECTL_VERSION)/bin/darwin/amd64/kubectl
 KUBECTL = kubectl-$(KUBECTL_VERSION)
 

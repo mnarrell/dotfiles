@@ -1,6 +1,3 @@
-local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not ok then return end
-
 local M = {}
 
 -- M.custom_init = function(client)
@@ -56,17 +53,23 @@ M.custom_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not ok then
+	emit "Unable to load cmp_nvim_lsp"
+else
 M.capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+end
 
 local diagnostics_enabled = true
 M.toggle_diagnostics = function()
 	if diagnostics_enabled then
-		vim.notify("Disabling diagnostics...")
+		vim.notify "Disabling diagnostics..."
 		vim.diagnostic.disable()
 		diagnostics_enabled = false
 	else
-		vim.notify("Enabling diagnostics...")
+		vim.notify "Enabling diagnostics..."
 		vim.diagnostic.enable()
 		diagnostics_enabled = true
 	end

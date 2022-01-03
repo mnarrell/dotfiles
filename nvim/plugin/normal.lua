@@ -1,5 +1,6 @@
 local ok, mappings = pcall(require, "mn.mappings")
 if not ok then
+	emit("Unable to load mn.mappings")
 	return
 end
 

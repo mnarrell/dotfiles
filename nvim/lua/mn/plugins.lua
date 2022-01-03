@@ -1,7 +1,8 @@
 local ok, packer = pcall(require, "packer")
-if not ok then return end
-
-
+if not ok then
+	emit("Unable to load packer")
+	return
+end
 
 packer.startup {
 	function(use)
@@ -67,12 +68,12 @@ packer.startup {
 		-- use { "honza/vim-snippets" }
 		use { "honza/vim-snippets", rtp = "." }
 		use { "SirVer/ultisnips" }
-		use { "hrsh7th/nvim-cmp", after = "lspkind-nvim" }
-		use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
-		use { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" }
-		use { "hrsh7th/cmp-path", after = "nvim-cmp" }
-		use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
-		use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
+		use { "hrsh7th/nvim-cmp" }
+		use { "hrsh7th/cmp-nvim-lsp" }
+		use { "hrsh7th/cmp-nvim-lua" }
+		use { "hrsh7th/cmp-path" }
+		use { "hrsh7th/cmp-buffer" }
+		use { "quangnguyen30192/cmp-nvim-ultisnips" }
 
 		-- Linting
 		-- use { "dense-analysis/ale" }
@@ -111,14 +112,13 @@ packer.startup {
 				require("nvim-ts-autotag").setup()
 			end,
 		}
-		use { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" }
-		use { "nvim-treesitter/nvim-treesitter-refactor", after = "nvim-treesitter" }
-		use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
+		use { "nvim-treesitter/nvim-treesitter-textobjects" }
+		use { "nvim-treesitter/nvim-treesitter-refactor" }
+		use { "p00f/nvim-ts-rainbow" }
 
 		-- LSP
 		use {
 			"neovim/nvim-lspconfig",
-			after = "nvim-cmp",
 			config = function()
 				require "mn.lsp"
 			end,
@@ -151,8 +151,8 @@ packer.startup {
 			"rcarriga/nvim-notify",
 			event = "BufEnter",
 			config = function()
-				vim.notify = require("notify")
-			end
+				vim.notify = require "notify"
+			end,
 		}
 
 		use { "folke/trouble.nvim" }
@@ -164,7 +164,8 @@ packer.startup {
 			end,
 		}
 	end,
-	config = { display = {
-		open_fn = require("packer.util").float,
-	} },
+	config = {
+		display = { open_fn = require("packer.util").float },
+		max_jobs = 10,
+	},
 }

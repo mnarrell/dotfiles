@@ -37,6 +37,7 @@ local config = {
 		lualine_y = {},
 		lualine_z = {},
 	},
+	extensions = {"quickfix", "fugitive"},
 }
 
 local add_left = function(component)
