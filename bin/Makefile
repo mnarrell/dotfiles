@@ -1,8 +1,8 @@
 include ../env.mk
 
 install:
-	@mkdir -p $(HOME)/bin
-	ln -sf $(CURDIR)/* $(HOME)/bin
+	@mkdir -p $(HOME)/.local/bin
+	ln -sf $(CURDIR)/* $(HOME)/.local/bin
 
 clean:
 

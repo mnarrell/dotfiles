@@ -3,7 +3,7 @@
 SYSTEM_PATH=${PATH}
 unset PATH
 
-PATH=~/bin
+PATH=~/.local/bin
 PATH=${PATH}:${GOROOT}/bin
 PATH=${PATH}:${GOBIN}
 PATH=${PATH}:/usr/local/opt/openssl/bin

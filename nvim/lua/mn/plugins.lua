@@ -1,6 +1,6 @@
 local ok, packer = pcall(require, "packer")
 if not ok then
-	emit("Unable to load packer")
+	emit "Unable to load packer"
 	return
 end
 
@@ -21,7 +21,7 @@ packer.startup {
 		use { "machakann/vim-highlightedyank" }
 		use { "nvim-lualine/lualine.nvim" }
 		use { "kyazdani42/nvim-web-devicons" }
-		use { "windwp/nvim-autopairs", after = "nvim-cmp" }
+		use { "windwp/nvim-autopairs" }
 
 		-- Basics
 		use { "tpope/vim-abolish" }
@@ -73,7 +73,14 @@ packer.startup {
 		use { "hrsh7th/cmp-nvim-lua" }
 		use { "hrsh7th/cmp-path" }
 		use { "hrsh7th/cmp-buffer" }
-		use { "quangnguyen30192/cmp-nvim-ultisnips" }
+		use {
+			"quangnguyen30192/cmp-nvim-ultisnips",
+			config = function()
+				require("cmp_nvim_ultisnips").setup {
+					filetype_source = "ultisnips_default",
+				}
+			end,
+		}
 
 		-- Linting
 		-- use { "dense-analysis/ale" }
