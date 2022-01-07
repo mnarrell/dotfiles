@@ -1,24 +1,34 @@
 local M = {}
 
--- M.custom_init = function(client)
--- 	client.config.flags = client.config.flags or {}
--- 	client.config.flags.allow_incremental_sync = true
--- end
+M.custom_init = function(client, init_result)
+	vim.notify(
+		string.format("%s language server started", client.name),
+		vim.log.levels.INFO,
+		{ title = "LSP", icon = "" }
+	)
+end
 
-M.show_line_diagnostics = function()
-	local opts = {
-		focusable = false,
-		close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-		border = "rounded",
-		-- border = "single",
-		source = "always", -- show source in diagnostic popup window
-		prefix = " ",
-	}
-	vim.diagnostic.open_float(nil, opts)
+M.custom_exit = function(code, signal, client_id)
+	local client = vim.lsp.get_client_by_id(client_id)
+	vim.notify(
+		string.format("%s language server stopped (%s)", client.name, signal),
+		code == 0 and vim.log.levels.INFO or vim.log.levels.ERROR,
+		{ title = "LSP", icon = "" }
+	)
+end
+
+M.custom_error = function(code, ...)
+	local msg = vim.lsp.rpc.client_errors[code]
+	vim.notify(msg, vim.log.levels.ERROR, { title = "LSP", icon = "" })
 end
 
 M.custom_attach = function(client, bufnr)
-	print(string.format([['%s', language server started]], client.name))
+	print(string.format([['%s' attached to buffer]], client.name))
+	-- vim.notify(
+	-- 	string.format("%s language server started", client.name),
+	-- 	vim.log.levels.INFO,
+	-- 	{ title = "LSP", icon = "" }
+	-- )
 
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -42,42 +52,56 @@ M.custom_attach = function(client, bufnr)
 	buf_set_keymap("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 	buf_set_keymap("n", "<Leader>ln", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	buf_set_keymap("n", "<Leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "gr", [[<cmd>lua require('telescope.builtin').lsp_references()<cr>]], opts)
-	buf_set_keymap("n", "<Leader>d", [[<cmd>lua require("mn.lsp.support").show_line_diagnostics()<CR>]], opts)
+	buf_set_keymap("n", "gf", [[<cmd>lua require('telescope.builtin').lsp_references()<cr>]], opts)
+	buf_set_keymap("n", "<leader>ld", [[<cmd>lua require("mn.lsp.support").show_line_diagnostics()<CR>]], opts)
 	buf_set_keymap("n", "[d", [[<cmd>lua vim.diagnostic.goto_prev({float={border="rounded"}})<CR>]], opts)
-	buf_set_keymap("n", "]d", [[<cmd>lua vim.diagnostic.goto_next({float={border="rounded"}}}<CR>]], opts)
+	buf_set_keymap("n", "]d", [[<cmd>lua vim.diagnostic.goto_next({float={border="rounded"}})<CR>]], opts)
+	buf_set_keymap("n", "<Leader>ll", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
+	buf_set_keymap("n", "<Leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
 	-- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 	-- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
 	-- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-	buf_set_keymap("n", "<Leader>ll", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
-	buf_set_keymap("n", "<Leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
 local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not ok then
 	emit "Unable to load cmp_nvim_lsp"
 else
-M.capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+	M.capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+end
 
+M.show_line_diagnostics = function()
+	local opts = {
+		focusable = false,
+		close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+		border = "rounded",
+		-- border = "single",
+		source = "always", -- show source in diagnostic popup window
+		prefix = " ",
+	}
+	vim.diagnostic.open_float(nil, opts)
 end
 
 local diagnostics_enabled = true
 M.toggle_diagnostics = function()
 	if diagnostics_enabled then
-		vim.notify "Disabling diagnostics..."
+		vim.notify("Disabling diagnostics...", vim.log.levels.INFO, { title = "LSP" })
 		vim.diagnostic.disable()
 		diagnostics_enabled = false
 	else
-		vim.notify "Enabling diagnostics..."
+		vim.notify("Enabling diagnostics...", vim.log.levels.INFO, { title = "LSP" })
 		vim.diagnostic.enable()
 		diagnostics_enabled = true
 	end
 end
 
 M.base_config = {
-	-- on_init = M.custom_init,
+	on_init = M.custom_init,
 	on_attach = M.custom_attach,
+	on_exit = M.custom_exit,
+	on_error = M.custom_error,
 	capabilities = M.capabilities,
 }
 

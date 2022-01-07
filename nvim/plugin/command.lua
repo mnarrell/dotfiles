@@ -1,15 +1,25 @@
-vim.cmd [[command! PS PackerSync]]
-vim.cmd [[command! GX :silent! !gitx]]
-vim.cmd [[command! TIG :tabnew | terminal tig -a]]
-vim.cmd [[command! ClearRegisters call functions#ClearRegisters()]]
+local ok, mappings = pcall(require, "mn.mappings")
+if not ok then
+	emit "Unable to load mn.mappings"
+	return
+end
 
-vim.cmd [[command! -range=% AsConfluence :call functions#AsConfluence()]]
-vim.cmd [[command! -range=% Base64Decode :call functions#Base64Decode()]]
+local command = mappings.command
 
-vim.cmd [[command! Wq wq]]
-vim.cmd [[command! Wqa wqa]]
+command("Wq", "wq")
+command("Wqa", "wqa")
+
+command("PS", "PackerSync")
+command("GX", [[:silent !gitx]])
+command("TIG", [[:tabnew | terminal tig -a]])
+command("ClearRegisters", [[call functions#ClearRegisters()]])
+
+command("AsConfluence", [[:call functions#AsConfluence()]], { range = "%" })
+command("Base64Decode", [[:call functions#Base64Decode()]], { range = "%" })
 
 -- Terminals bro
-vim.cmd [[command! -nargs=* TS split | term <args>]]
-vim.cmd [[command! -nargs=* TV vsplit | term <args>]]
-vim.cmd [[command! -nargs=* TT tabnew | term <args>]]
+command("TS", [[split | term <args>]], { nargs = "*" })
+command("TV", [[vsplit | term <args>]], { nargs = "*" })
+command("TT", [[tabnew | term <args>]], { nargs = "*" })
+
+command("TD", require("mn.lsp.support").toggle_diagnostics)

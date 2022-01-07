@@ -75,11 +75,11 @@ packer.startup {
 		use { "hrsh7th/cmp-buffer" }
 		use {
 			"quangnguyen30192/cmp-nvim-ultisnips",
-			config = function()
-				require("cmp_nvim_ultisnips").setup {
-					filetype_source = "ultisnips_default",
-				}
-			end,
+			-- config = function()
+			-- 	require("cmp_nvim_ultisnips").setup {
+			-- 		filetype_source = "ultisnips_default",
+			-- 	}
+			-- end,
 		}
 
 		-- Linting
@@ -154,13 +154,8 @@ packer.startup {
 		use { "fhill2/telescope-ultisnips.nvim" }
 		-- }}}
 
-		use {
-			"rcarriga/nvim-notify",
-			event = "BufEnter",
-			config = function()
-				vim.notify = require "notify"
-			end,
-		}
+		-- use { "rcarriga/nvim-notify", event = "BufEnter", }
+		use { "rcarriga/nvim-notify"}
 
 		use { "folke/trouble.nvim" }
 

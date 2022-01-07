@@ -1,6 +1,6 @@
 local ok, luadev = pcall(require, "lua-dev")
 if not ok then
-	emit("Unable to load lua-dev")
+	emit "Unable to load lua-dev"
 	return
 end
 
@@ -15,10 +15,7 @@ M.config = luadev.setup {
 	library = {
 		plugins = true,
 	},
-	lspconfig = {
-		-- on_init = support.custom_init,
-		on_attach = support.custom_attach,
-		capabilities = support.capabilities,
+	lspconfig = vim.tbl_extend("keep", support.base_config, {
 		cmd = { sumneko_bin, "-E", sumneko_root .. "/main.lua" },
 		settings = {
 			Lua = {
@@ -27,7 +24,7 @@ M.config = luadev.setup {
 				},
 			},
 		},
-	},
+	}),
 }
 
 return M

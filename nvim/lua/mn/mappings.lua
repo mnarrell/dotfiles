@@ -1,14 +1,23 @@
 local tools = {}
 
--- reload a lua module
-function tools.reload(fcn)
-	require("plenary.reload").reload_module(fcn)
-end
-
 -- Convenience func to print Lua tables.
 function _G.emit(...)
 	local objects = vim.tbl_map(vim.inspect, { ... })
 	print(unpack(objects))
+end
+
+-- Convenience functions Lua lacks...
+function string.startswith(self, str)
+	return self:sub(1, #str) == str
+end
+
+function string.endswith(self, str)
+	return self:sub(-#str) == str
+end
+
+-- reload a lua module
+function tools.reload(fcn)
+	require("plenary.reload").reload_module(fcn)
 end
 
 -- Create dictionary keys for embedded functions.
@@ -82,13 +91,9 @@ tools.vmap = function(lhs, rhs, opts)
 	mapper("v", lhs, rhs, options)
 end
 
--- Convenience functions Lua lacks...
-function string.startswith(self, str)
-	return self:sub(1, #str) == str
-end
-
-function string.endswith(self, str)
-	return self:sub(-#str) == str
+tools.command = function(lhs, rhs, opts)
+	local options = vim.tbl_extend("force", { bang = true }, opts or {})
+	vim.api.nvim_add_user_command(lhs, rhs, options)
 end
 
 tools.clear_highlight = function()

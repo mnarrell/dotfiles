@@ -1,6 +1,6 @@
 local ok, mappings = pcall(require, "mn.mappings")
 if not ok then
-	emit("Unable to load mn.mappings")
+	emit "Unable to load mn.mappings"
 	return
 end
 
@@ -65,5 +65,5 @@ nnoremap("tq", ":TroubleToggle quickfix<CR>")
 -- nnoremap("td", ":TroubleToggle document_diagnostics<CR>")
 -- nnoremap("tD", ":TroubleToggle workspace_diagnostics<CR>")
 
-nnoremap("td", [[:lua require("mn.lsp.support").toggle_diagnostics()<CR>]])
-
+nnoremap("td", [[:TroubleToggle document_diagnostics<CR>]])
+nnoremap("twd", [[:TroubleToggle workspace_diagnostics<CR>]])

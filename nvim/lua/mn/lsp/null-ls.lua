@@ -5,16 +5,15 @@ end
 
 local M = {}
 
-M.setup = function(custom_attach)
-	null_ls.setup {
+M.setup = function()
+	null_ls.setup( vim.tbl_extend("keep", require("mn.lsp.support").base_config, {
 		debug = true,
 		diagnostics_format = "[#{c}] #{m} (#{s})",
-		on_attach = custom_attach,
 		sources = {
 
 			-- Ansible
-			null_ls.builtins.diagnostics.ansiblelint.with{
-				filetypes = {"yaml", "yaml.ansible"}
+			null_ls.builtins.diagnostics.ansiblelint.with {
+				filetypes = { "yaml", "yaml.ansible" },
 			},
 
 			-- Docker
@@ -22,6 +21,7 @@ M.setup = function(custom_attach)
 
 			-- Go
 			null_ls.builtins.diagnostics.golangci_lint,
+			null_ls.builtins.diagnostics.revive,
 			null_ls.builtins.diagnostics.staticcheck,
 			-- null_ls.builtins.formatting.gofumpt,
 			-- null_ls.builtins.formatting.goimports,
@@ -73,7 +73,7 @@ M.setup = function(custom_attach)
 
 			null_ls.builtins.code_actions.refactoring,
 		},
-	}
+	}))
 end
 
 return M

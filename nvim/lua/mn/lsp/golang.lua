@@ -2,22 +2,19 @@ local support = require "mn.lsp.support"
 
 local M = {}
 
-M.config = {
+M.config = vim.tbl_extend("keep", support.base_config, {
 	cmd = { "gopls", "--remote=auto" },
-	on_attach = support.on_attach,
-	capabilities = vim.tbl_extend("force", support.capabilities, {
-		textDocument = {
-			completion = {
-				completionItem = {
-					snippetSupport = true,
-				},
+	settings = {
+		gopls = {
+			usePlaceholders = true,
+			completeUnimported = true,
+			analyses = {
+				unusedparams = true,
+				shadow = true,
 			},
+			staticcheck = true,
 		},
-	}),
-	init_options = {
-		usePlaceholders = true,
-		completeUnimported = true,
 	},
-}
+})
 
 return M

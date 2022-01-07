@@ -2,24 +2,10 @@
 
 output:
   print-issued-lines: false
-  # format: line-number
 
 linters-settings:
   govet:
     feildalignment: true
-  # golint:
-  #   min-confidence: 0
-  # gocyclo:
-  #   min-complexity: 10
-  # maligned:
-  #   suggest-new: true
-  # dupl:
-  #   threshold: 100
-  # goconst:
-  #   min-len: 2
-  #   min-occurrences: 2
-  # gofmt:
-  #   simplify: true
   misspell:
     locale: US
   lll:
@@ -27,66 +13,84 @@ linters-settings:
 
 linters:
   enable:
-    # - gochecknoglobals
-    # - gofmt
-    # - gomnd
-    # - scopelint
-    # - staticcheck
-    # - wsl
+    - asciicheck
+    - bidichk
     - bodyclose
+    - bodyclose
+    - contextcheck
+    - cyclop
     - deadcode
     - depguard
     - dogsled
     - dupl
+    - durationcheck
     - errcheck
+    - errname
+    - errorlint
+    - exhaustive
+    # - exhaustivestruct
     - exportloopref
+    - forbidigo
+    - forcetypeassert
     - funlen
+    - gci
     - gochecknoinits
     - gocognit
     - goconst
     - gocritic
     - gocyclo
+    - godot
     - godox
+    - goerr113
+    # - gofumpt
+    - goheader
     - goimports
+    - gomoddirectives
+    - gomodguard
     - goprintffuncname
     - gosec
     - gosimple
     - govet
+    - ifshort
+    - importas
     - ineffassign
+    - ireturn
     - lll
+    - makezero
     - misspell
     - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - nlreturn
+    - noctx
+    - nolintlint
+    - paralleltest
     - prealloc
+    - predeclared
+    - promlinter
     - revive
     - rowserrcheck
+    - sqlclosecheck
     - structcheck
     - stylecheck
+    - tagliatelle
+    - tenv
+    - testpackage
+    - thelper
+    - tparallel
     - typecheck
     - unconvert
     - unparam
     - unused
     - varcheck
+    - varnamelen
+    - wastedassign
     - whitespace
+    - wrapcheck
 
-issues:
-  exclude:
-    - Using the variable on range scope .* in function literal
-
-  exclude-rules:
-    - linters:
-        - staticcheck
-      text: "SA3000:"
-
-#     - path: _test\.go
-#       linters:
-#         - dupl
-#         - errcheck
-#         - gocyclo
-#         - gosec
-#         - scopelint
-
-# run:
-#   skip-dirs:
-#     - testdata
+# issues:
+  # exclude:
+    # - Using the variable on range scope .* in function literal
 
 ...
