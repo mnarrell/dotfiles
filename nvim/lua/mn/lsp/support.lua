@@ -24,11 +24,6 @@ end
 
 M.custom_attach = function(client, bufnr)
 	print(string.format([['%s' attached to buffer]], client.name))
-	-- vim.notify(
-	-- 	string.format("%s language server started", client.name),
-	-- 	vim.log.levels.INFO,
-	-- 	{ title = "LSP", icon = "" }
-	-- )
 
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)

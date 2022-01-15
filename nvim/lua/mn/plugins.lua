@@ -100,7 +100,7 @@ packer.startup {
 		use { "cespare/vim-toml", opt = true, ft = "toml" }
 		use { "chr4/nginx.vim", opt = true, ft = "nginx" }
 		use { "hashivim/vim-terraform", opt = true, ft = { "terraform", "hcl" } }
-		use { "pearofducks/ansible-vim", run = "cd ./UltiSnips; ./generate.py" }
+		use { "pearofducks/ansible-vim", run = "./UltiSnips/generate.sh" }
 		use { "towolf/vim-helm" }
 
 		use { "folke/lua-dev.nvim" }
@@ -155,7 +155,7 @@ packer.startup {
 		-- }}}
 
 		-- use { "rcarriga/nvim-notify", event = "BufEnter", }
-		use { "rcarriga/nvim-notify"}
+		use { "rcarriga/nvim-notify" }
 
 		use { "folke/trouble.nvim" }
 

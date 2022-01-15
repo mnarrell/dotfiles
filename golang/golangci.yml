@@ -4,12 +4,12 @@ output:
   print-issued-lines: false
 
 linters-settings:
-  govet:
-    feildalignment: true
   misspell:
     locale: US
   lll:
     line-length: 140
+  nlreturn:
+    block-size: 3
 
 linters:
   enable:
@@ -33,7 +33,7 @@ linters:
     - forbidigo
     - forcetypeassert
     - funlen
-    - gci
+    # - gci
     - gochecknoinits
     - gocognit
     - goconst
@@ -84,7 +84,7 @@ linters:
     - unparam
     - unused
     - varcheck
-    - varnamelen
+    # - varnamelen
     - wastedassign
     - whitespace
     - wrapcheck

@@ -68,6 +68,24 @@ function tele.ultisnips()
 	require("telescope").extensions.ultisnips.ultisnips {}
 end
 
+function tele.help_tags()
+	builtin.help_tags{
+		prompt_title = "~ Help Tags ~",
+		initial_mode = "insert",
+		sorting_strategy = "ascending",
+		layout_config = {
+			prompt_position = "top",
+			preview_width = 0.75,
+			height = 0.6,
+		},
+		preview = {
+			preview_cutoff = 120,
+			preview_width = 80,
+			hide_on_startup = false,
+		},
+	}
+end
+
 local function telescope_mapping(key, target)
 	local cmd = string.format([[<cmd>lua require('mn.telescope')['%s']()<CR>]], target)
 	vim.api.nvim_set_keymap("n", key, cmd, { noremap = true, silent = true })

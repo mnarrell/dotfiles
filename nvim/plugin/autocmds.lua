@@ -11,5 +11,7 @@ vim.cmd [[
     autocmd TermOpen * setlocal nolist nonumber norelativenumber noshowmode nospell
 	autocmd TermOpen * startinsert
 
+	autocmd FileType lspinfo nnoremap <buffer><silent> q :close <CR>
+
   augroup end
 ]]
