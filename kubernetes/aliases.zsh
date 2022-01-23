@@ -10,6 +10,7 @@ fi
 alias -g k='kubectl'
 alias -g kp='k get pods -o wide'
 alias -g ks='k get services -o wide'
+alias -g kn="k config view --minify --output 'jsonpath={..namespace}' && echo -n '\n'"
 alias -g ke='k exec -it PODS bash'
 alias -g kevt="k get events --sort-by='.lastTimestamp'"
 alias -g kl='k logs -f PODS'
