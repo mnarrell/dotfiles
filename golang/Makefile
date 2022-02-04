@@ -1,6 +1,6 @@
 include ../env.mk
 
-GO_VERSION = 1.17.3
+GO_VERSION = 1.17.6
 GO_URL = https://dl.google.com/go/go$(GO_VERSION).darwin-amd64.tar.gz
 # GO_URL = https://golang.org/dl/go$(GO_VERSION).darwin-amd64.tar.gz
 
@@ -9,6 +9,7 @@ install: .ensure.xdg /usr/local/go-$(GO_VERSION)
 	ln -sfn $(CURDIR)/golangci.yml $(HOME)/.golangci.yml
 	go install honnef.co/go/tools/cmd/staticcheck@latest
 	go install github.com/sbowman/xq@latest
+	go install github.com/oligot/go-mod-upgrade@latest
 
 
 /usr/local/go-$(GO_VERSION):

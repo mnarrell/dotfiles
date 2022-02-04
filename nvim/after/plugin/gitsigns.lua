@@ -3,6 +3,18 @@ if not pcall(require, "gitsigns") then
 end
 
 require("gitsigns").setup {
+	on_attach = function(bufnr)
+		local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+    map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+
+	end,
 	-- signs = {
 	-- 	add = { hl = "GitGutterAdd", text = "│" },
 	-- 	change = { hl = "GitGutterChange", text = "│" },

@@ -56,6 +56,7 @@ packer.startup {
 		use { "wellle/targets.vim" }
 
 		-- Git
+		use { "tpope/vim-rhubarb" }
 		use { "tpope/vim-fugitive" }
 		use { "lewis6991/gitsigns.nvim" }
 

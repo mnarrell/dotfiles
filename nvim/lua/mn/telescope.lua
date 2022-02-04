@@ -4,6 +4,7 @@ local builtin = require "telescope.builtin"
 local themes = require "telescope.themes"
 
 local my_maps = {
+["<C-a>"] = actions.select_all,
 	["<C-x>"] = false,
 	["<C-s>"] = actions.select_horizontal,
 	["<C-y>"] = actions.send_selected_to_loclist,
