@@ -81,16 +81,16 @@ M.apply_highlights = function()
 
 	-- vim.api.nvim_command('highlight! link TSComment Comment')
 
-	vim.cmd([[highlight! link TelescopeSelection Visual]])
-vim.cmd([[highlight! link TelescopeNormal Normal]])
-vim.cmd([[highlight! link TelescopePromptNormal TelescopeNormal]])
-vim.cmd([[highlight! link TelescopeBorder TelescopeNormal]])
-vim.cmd([[highlight! link TelescopePromptBorder TelescopeBorder]])
-vim.cmd([[highlight! link TelescopeTitle TelescopeBorder]])
-vim.cmd([[highlight! link TelescopePromptTitle TelescopeTitle]])
-vim.cmd([[highlight! link TelescopeResultsTitle TelescopeTitle]])
-vim.cmd([[highlight! link TelescopePreviewTitle TelescopeTitle]])
-vim.cmd([[highlight! link TelescopePromptPrefix Identifier]])
+	-- vim.cmd [[highlight! link TelescopeSelection Visual]]
+	vim.cmd [[highlight! link TelescopeNormal Normal]]
+	-- vim.cmd [[highlight! link TelescopePromptNormal TelescopeNormal]]
+	-- vim.cmd [[highlight! link TelescopePromptBorder TelescopeBorder]]
+	-- vim.cmd [[highlight! link TelescopeBorder TelescopeNormal]]
+	-- vim.cmd [[highlight! link TelescopeTitle TelescopeBorder]]
+	-- vim.cmd [[highlight! link TelescopePromptTitle TelescopeTitle]]
+	-- vim.cmd [[highlight! link TelescopeResultsTitle TelescopeTitle]]
+	-- vim.cmd [[highlight! link TelescopePreviewTitle TelescopeTitle]]
+	-- vim.cmd [[highlight! link TelescopePromptPrefix Identifier]]
 end
 
 M.apply_highlights()

@@ -10,10 +10,7 @@ git/config.local
 
 helm/repositories*
 
-nvim/autoload/plug.vim
-nvim/autoload/plug.vim.old
-nvim/local.vim
-nvim/plugged/
+nvim/lua/mn/local.lua
 nvim/spell/
 nvim/spell/en.utf-8.add.spl
 nvim/ultisnips/*private.snippets

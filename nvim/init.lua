@@ -4,4 +4,6 @@ end
 
 require "mn.options"
 require "mn.plugins"
--- require "mn.lsp"
+
+-- Machine local settings...
+pcall(require, "mn.local")

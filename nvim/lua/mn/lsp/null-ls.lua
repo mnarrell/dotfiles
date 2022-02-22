@@ -10,7 +10,7 @@ M.setup = function()
 		debug = true,
 		diagnostics_format = "[#{c}] #{m} (#{s})",
 		should_attach = function(bufnr)
-			return not string.find(vim.api.nvim_buf_get_name(bufnr), "[BufExplorer]")
+			return not string.find(vim.api.nvim_buf_get_name(bufnr), "BufExplorer")
 		end,
 		sources = {
 
@@ -25,7 +25,7 @@ M.setup = function()
 			-- Go
 			-- null_ls.builtins.diagnostics.golangci_lint,
 			null_ls.builtins.diagnostics.revive,
-			null_ls.builtins.diagnostics.staticcheck,
+			-- null_ls.builtins.diagnostics.staticcheck,
 			-- null_ls.builtins.formatting.gofumpt,
 			-- null_ls.builtins.formatting.goimports,
 
@@ -36,7 +36,8 @@ M.setup = function()
 			null_ls.builtins.formatting.stylua.with {
 				filetypes = { "lua" },
 			},
-			null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--global vim" } },
+			-- null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--global vim" } },
+			null_ls.builtins.diagnostics.luacheck,
 
 			-- Markdown
 			null_ls.builtins.diagnostics.markdownlint,
@@ -62,7 +63,7 @@ M.setup = function()
 			},
 
 			-- SQL
-			null_ls.builtins.formatting.sqlformat,
+			-- null_ls.builtins.formatting.sqlformat,
 
 			-- VIM
 			null_ls.builtins.diagnostics.vint,

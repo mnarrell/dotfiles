@@ -82,6 +82,7 @@ packer.startup {
 			-- 	}
 			-- end,
 		}
+		use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
 
 		-- Linting
 		-- use { "dense-analysis/ale" }
@@ -133,6 +134,13 @@ packer.startup {
 		}
 		use { "onsails/lspkind-nvim" }
 
+		use {
+			"j-hui/fidget.nvim",
+			config = function()
+				require("fidget").setup()
+			end,
+		}
+
 		-- FZF
 		use { "junegunn/fzf" }
 		use { "junegunn/fzf.vim" }
@@ -156,7 +164,7 @@ packer.startup {
 		-- }}}
 
 		-- use { "rcarriga/nvim-notify", event = "BufEnter", }
-		use { "rcarriga/nvim-notify" }
+		-- use { "rcarriga/nvim-notify" }
 
 		use { "folke/trouble.nvim" }
 

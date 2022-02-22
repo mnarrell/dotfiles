@@ -25,7 +25,7 @@ lspconfig.gopls.setup(require("mn.lsp.golang").config)
 
 local support = require "mn.lsp.support"
 lspconfig.ansiblels.setup(require("mn.lsp.support").base_config)
-lspconfig.yamlls.setup(require("mn.lsp.support").base_config)
+-- lspconfig.yamlls.setup(require("mn.lsp.support").base_config)
 lspconfig.terraformls.setup(require("mn.lsp.support").base_config)
 lspconfig.vimls.setup(require("mn.lsp.support").base_config)
 
