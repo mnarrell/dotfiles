@@ -66,26 +66,25 @@ packer.startup {
 		use { "tmux-plugins/vim-tmux-focus-events" }
 
 		-- Completion
-		-- use { "honza/vim-snippets" }
-		use { "honza/vim-snippets", rtp = "." }
-		use { "SirVer/ultisnips" }
 		use { "hrsh7th/nvim-cmp" }
 		use { "hrsh7th/cmp-nvim-lsp" }
 		use { "hrsh7th/cmp-nvim-lua" }
 		use { "hrsh7th/cmp-path" }
 		use { "hrsh7th/cmp-buffer" }
-		use {
-			"quangnguyen30192/cmp-nvim-ultisnips",
-			-- config = function()
-			-- 	require("cmp_nvim_ultisnips").setup {
-			-- 		filetype_source = "ultisnips_default",
-			-- 	}
-			-- end,
-		}
-		use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
+		use { "saadparwaiz1/cmp_luasnip" }
+		-- use { "quangnguyen30192/cmp-nvim-ultisnips" }
+		use { "hrsh7th/cmp-nvim-lsp-signature-help" }
+
+		-- Snippets
+		-- use { "honza/vim-snippets" }
+		-- use { "honza/vim-snippets", rtp = "." }
+		-- use { "SirVer/ultisnips" }
+		use { "L3MON4D3/LuaSnip" }
+		-- use { "L3MON4D3/LuaSnip", setup = function()
+		-- 	require("mn.luasnip")
+		-- end}
 
 		-- Linting
-		-- use { "dense-analysis/ale" }
 		use { "jose-elias-alvarez/null-ls.nvim" }
 
 		-- Syntax {{{

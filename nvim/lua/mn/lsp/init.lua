@@ -1,6 +1,6 @@
 local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then
-	emit "Unable to load lspconfig"
+	vim.notify ("Unable to load lspconfig", vim.log.levels.ERROR)
 	return
 end
 
@@ -24,7 +24,7 @@ lspconfig.sumneko_lua.setup(require("mn.lsp.lua").config)
 lspconfig.gopls.setup(require("mn.lsp.golang").config)
 
 local support = require "mn.lsp.support"
-lspconfig.ansiblels.setup(require("mn.lsp.support").base_config)
+-- lspconfig.ansiblels.setup(require("mn.lsp.support").base_config)
 -- lspconfig.yamlls.setup(require("mn.lsp.support").base_config)
 lspconfig.terraformls.setup(require("mn.lsp.support").base_config)
 lspconfig.vimls.setup(require("mn.lsp.support").base_config)

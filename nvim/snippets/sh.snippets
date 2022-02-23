@@ -1,0 +1,30 @@
+snippet #! "shebang"
+	#!/usr/bin/env bash
+
+snippet safe "euo pipefail"
+	set -euo pipefail
+	IFS=$'\n\t'
+
+snippet if "conditional"
+	if [[ ${1:condition} ]]; then
+		${0:${VISUAL}}
+	fi
+
+snippet elif "else branch"
+	elif [[ ${1:condition} ]]; then
+		${0:${VISUAL}}
+
+snippet fori "For loop with index"
+	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
+		${0:${VISUAL}}
+	done
+
+snippet for "For loop"
+	for ${1:needle} in ${2:haystack} ; do
+		${0:${VISUAL}}
+	done
+
+snippet func
+	function ${1:function_name}() {
+		${0:#function_body}
+	}

@@ -7,7 +7,7 @@ end
 local support = require "mn.lsp.support"
 
 local sumneko_root = vim.env.HOME .. "/src/lua-language-server"
-local sumneko_bin = sumneko_root .. "/bin/macOS/lua-language-server"
+local sumneko_bin = sumneko_root .. "/bin/lua-language-server"
 
 local M = {}
 

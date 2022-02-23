@@ -1,11 +1,5 @@
 local tools = {}
 
--- Convenience func to print Lua tables.
-function _G.emit(...)
-	local objects = vim.tbl_map(vim.inspect, { ... })
-	print(unpack(objects))
-end
-
 -- Convenience functions Lua lacks...
 function string.startswith(self, str)
 	return self:sub(1, #str) == str

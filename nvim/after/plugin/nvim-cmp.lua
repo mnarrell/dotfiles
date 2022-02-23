@@ -9,7 +9,7 @@ cmp.setup {
 			with_text = false,
 			menu = {
 				nvim_lsp = "[LSP]",
-				ultisnips = "[US]",
+				luasnip = "[Snippet]",
 				nvim_lua = "[Lua]",
 				path = "[Path]",
 				buffer = "[Buffer]",
@@ -20,7 +20,7 @@ cmp.setup {
 
 	snippet = {
 		expand = function(args)
-			vim.fn["UltiSnips#Anon"](args.body)
+			require("luasnip").lsp_expand(args.body)
 		end,
 	},
 
@@ -40,40 +40,12 @@ cmp.setup {
 	sources = cmp.config.sources {
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
-		{ name = "ultisnips" },
+		{ name = "luasnip" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "buffer", keyword_length = 4 },
 	},
 }
-
--- local cmp = require('cmp')
--- cmp.setup {
---   completion = {
---     autocomplete = false, -- disable auto-completion.
---   },
--- }
-
--- _G.vimrc = _G.vimrc or {}
--- _G.vimrc.cmp = _G.vimrc.cmp or {}
--- _G.vimrc.cmp.lsp = function()
---   cmp.complete({
---     config = {
---       sources = {
---         { name = 'nvim_lsp' }
---       }
---     }
---   })
--- end
--- _G.vimrc.cmp.snippet = function()
---   cmp.complete({
---     config = {
---       sources = {
---         { name = 'vsnip' }
---       }
---     }
---   })
--- end
 
 -- vim.cmd([[
 --   inoremap <C-x><C-o> <Cmd>lua vimrc.cmp.lsp()<CR>

@@ -6,4 +6,4 @@ install: .ensure.xdg
 	@$(CURDIR)/setup $(SUMNEKO_HOME)
 
 clean:
-	@rm -rf $(SUMNEKO_HOME)
+	rm -rf $(SUMNEKO_HOME)
