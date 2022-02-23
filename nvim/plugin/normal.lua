@@ -55,8 +55,11 @@ nnoremap("j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { expr = true })
 -- Clears search and Loupe highlights with <CR>, or <CR> if no selection...
 nnoremap("<CR>", [[:lua require('mn.mappings').clear_highlight()<CR>]])
 
-nnoremap("<Up>", ":cprevious<CR>")
-nnoremap("<Down>", ":cnext<CR>")
+-- nnoremap("<Up>", ":cprevious<CR>")
+-- nnoremap("<Down>", ":cnext<CR>")
+
+nnoremap("<Up>", [[:lua require('trouble').previous({skip_groups = true, jump = true})<CR>]])
+nnoremap("<Down>", [[:lua require('trouble').next({skip_groups = true, jump = true})<CR>]])
 
 -- nnoremap("tl", ":<C-u>call functions#ToggleLocationList()<CR>")
 nnoremap("tl", ":TroubleToggle loclist<CR>")
