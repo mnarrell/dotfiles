@@ -25,7 +25,7 @@ configs.setup {
 
 	indent = {
 		enable = true,
-		disable = { "yaml" },
+		disable = { "yaml", "go" },
 	},
 
 	custom_captures = {

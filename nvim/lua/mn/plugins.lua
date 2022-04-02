@@ -1,6 +1,6 @@
 local ok, packer = pcall(require, "packer")
 if not ok then
-	emit "Unable to load packer"
+	vim.notify("Unable to load packer", vim.log.levels.ERROR)
 	return
 end
 
@@ -72,17 +72,11 @@ packer.startup {
 		use { "hrsh7th/cmp-path" }
 		use { "hrsh7th/cmp-buffer" }
 		use { "saadparwaiz1/cmp_luasnip" }
-		-- use { "quangnguyen30192/cmp-nvim-ultisnips" }
 		use { "hrsh7th/cmp-nvim-lsp-signature-help" }
 
 		-- Snippets
-		-- use { "honza/vim-snippets" }
 		-- use { "honza/vim-snippets", rtp = "." }
-		-- use { "SirVer/ultisnips" }
 		use { "L3MON4D3/LuaSnip" }
-		-- use { "L3MON4D3/LuaSnip", setup = function()
-		-- 	require("mn.luasnip")
-		-- end}
 
 		-- Linting
 		use { "jose-elias-alvarez/null-ls.nvim" }
@@ -101,12 +95,12 @@ packer.startup {
 		use { "cespare/vim-toml", opt = true, ft = "toml" }
 		use { "chr4/nginx.vim", opt = true, ft = "nginx" }
 		use { "hashivim/vim-terraform", opt = true, ft = { "terraform", "hcl" } }
-		use { "pearofducks/ansible-vim", run = "./UltiSnips/generate.sh" }
+		use { "pearofducks/ansible-vim" }
 		use { "towolf/vim-helm" }
 
 		use { "folke/lua-dev.nvim" }
 		use { "euclidianAce/BetterLua.vim", opt = true, ft = "lua" }
-		use { "ckipp01/stylua-nvim", opt = true, ft = "lua" }
+		-- use { "ckipp01/stylua-nvim", opt = true, ft = "lua" }
 		-- }}}
 
 		use { "pedrohdz/vim-yaml-folds" }
@@ -162,10 +156,12 @@ packer.startup {
 		use { "fhill2/telescope-ultisnips.nvim" }
 		-- }}}
 
+		use { "kevinhwang91/nvim-bqf", ft = "qf" }
+
 		-- use { "rcarriga/nvim-notify", event = "BufEnter", }
 		-- use { "rcarriga/nvim-notify" }
 
-		use { "folke/trouble.nvim" }
+		-- use { "folke/trouble.nvim" }
 
 		use {
 			"folke/todo-comments.nvim",

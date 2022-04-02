@@ -25,11 +25,15 @@ ls.config.set_config {
 	},
 }
 
-ls.snippets = {
-	all = R "mn.snips.all",
-	go = R "mn.snips.go",
-	markdown = R "mn.snips.markdown",
-}
+ls.add_snippets("all", R "mn.snips.all")
+ls.add_snippets("go", R "mn.snips.go")
+ls.add_snippets("markdown", R "mn.snips.markdown")
+
+-- ls.snippets = {
+-- 	all = R "mn.snips.all",
+-- 	go = R "mn.snips.go",
+-- 	markdown = R "mn.snips.markdown",
+-- }
 
 -- require("luasnip.loaders.from_snipmate").load()
 require("luasnip.loaders.from_snipmate").lazy_load()

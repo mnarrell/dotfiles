@@ -1,8 +1,8 @@
 {
   "compose-versions": {
-    "v2.3.3": {
+    "2.3.3": {
       "active-percentage": 1,
-      "include-pro-users": false,
+      "include-pro-users": true,
       "default": 0.00
     }
   }

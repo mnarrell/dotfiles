@@ -1,6 +1,6 @@
 local ok, mappings = pcall(require, "mn.mappings")
 if not ok then
-	emit "Unable to load mn.mappings"
+	P "Unable to load mn.mappings"
 	return
 end
 
@@ -55,18 +55,18 @@ nnoremap("j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { expr = true })
 -- Clears search and Loupe highlights with <CR>, or <CR> if no selection...
 nnoremap("<CR>", [[:lua require('mn.mappings').clear_highlight()<CR>]])
 
--- nnoremap("<Up>", ":cprevious<CR>")
--- nnoremap("<Down>", ":cnext<CR>")
+nnoremap("<Up>", ":cprevious<CR>")
+nnoremap("<Down>", ":cnext<CR>")
 
-nnoremap("<Up>", [[:lua require('trouble').previous({skip_groups = true, jump = true})<CR>]])
-nnoremap("<Down>", [[:lua require('trouble').next({skip_groups = true, jump = true})<CR>]])
+-- nnoremap("<Up>", [[:lua require('trouble').previous({skip_groups = true, jump = true})<CR>]])
+-- nnoremap("<Down>", [[:lua require('trouble').next({skip_groups = true, jump = true})<CR>]])
 
--- nnoremap("tl", ":<C-u>call functions#ToggleLocationList()<CR>")
-nnoremap("tl", ":TroubleToggle loclist<CR>")
--- nnoremap("tq", ":<C-u>call functions#ToggleQuickFix()<CR>")
-nnoremap("tq", ":TroubleToggle quickfix<CR>")
+nnoremap("tl", ":<C-u>call functions#ToggleLocationList()<CR>")
+-- nnoremap("tl", ":TroubleToggle loclist<CR>")
+nnoremap("tq", ":<C-u>call functions#ToggleQuickFix()<CR>")
+-- nnoremap("tq", ":TroubleToggle quickfix<CR>")
 -- nnoremap("td", ":TroubleToggle document_diagnostics<CR>")
 -- nnoremap("tD", ":TroubleToggle workspace_diagnostics<CR>")
 
-nnoremap("td", [[:TroubleToggle document_diagnostics<CR>]])
-nnoremap("twd", [[:TroubleToggle workspace_diagnostics<CR>]])
+-- nnoremap("td", [[:TroubleToggle document_diagnostics<CR>]])
+-- nnoremap("twd", [[:TroubleToggle workspace_diagnostics<CR>]])

@@ -61,7 +61,7 @@ end
 
 local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not ok then
-	emit "Unable to load cmp_nvim_lsp"
+	P "Unable to load cmp_nvim_lsp"
 else
 	M.capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 	M.capabilities.textDocument.completion.completionItem.snippetSupport = true

@@ -1,6 +1,7 @@
 include ../env.mk
 
-GO_VERSION = 1.17.6
+# GO_VERSION = 1.17.8
+GO_VERSION = 1.18
 GO_URL = https://dl.google.com/go/go$(GO_VERSION).darwin-amd64.tar.gz
 # GO_URL = https://golang.org/dl/go$(GO_VERSION).darwin-amd64.tar.gz
 
