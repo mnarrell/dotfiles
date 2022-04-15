@@ -91,14 +91,13 @@ snippet func "func Function(...) [error] { ... }"
 	}
 
 snippet ff "fmt.Printf(...)"
-	fmt.Printf("$1 = %+v\n", ${1:${VISUAL}})
+	fmt.Printf("$1 = %+v\n", $1)
 
 snippet fn "fmt.Println(...)"
 	fmt.Println("${1:${VISUAL}}")
 
 snippet fe "fmt.Errorf(...)"
 	fmt.Errorf("${1:${VISUAL}}")
-
 
 snippet few "fmt.Errorf(%w, err)"
 	fmt.Errorf("${1:message}: %w", ${2:${VISUAL:err}})

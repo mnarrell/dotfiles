@@ -4,7 +4,27 @@ if not ok then
 end
 
 configs.setup {
-	ensure_installed = "maintained",
+	ensure_installed = {
+		"bash",
+		"comment",
+		"dockerfile",
+		"go",
+		"gomod",
+		"gowork",
+		"hcl",
+		"help",
+		"jsonc",
+		"json",
+		"lua",
+		"make",
+		"python",
+		"regex",
+		"ruby",
+		"scala",
+		"toml",
+		"vim",
+		"yaml",
+	},
 	sync_install = false,
 
 	highlight = {

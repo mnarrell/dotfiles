@@ -87,7 +87,7 @@ end
 
 tools.command = function(lhs, rhs, opts)
 	local options = vim.tbl_extend("force", { bang = true }, opts or {})
-	vim.api.nvim_add_user_command(lhs, rhs, options)
+	vim.api.nvim_create_user_command(lhs, rhs, options)
 end
 
 tools.clear_highlight = function()

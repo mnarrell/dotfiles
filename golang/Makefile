@@ -1,9 +1,7 @@
 include ../env.mk
 
-# GO_VERSION = 1.17.8
-GO_VERSION = 1.18
-GO_URL = https://dl.google.com/go/go$(GO_VERSION).darwin-amd64.tar.gz
-# GO_URL = https://golang.org/dl/go$(GO_VERSION).darwin-amd64.tar.gz
+GO_VERSION = 1.18.1
+GO_URL = https://go.dev/dl/go$(GO_VERSION).darwin-amd64.tar.gz
 
 install: .ensure.xdg /usr/local/go-$(GO_VERSION)
 	ln -sfn $(CURDIR) $(XDG_CONFIG_HOME)/golang
@@ -15,7 +13,7 @@ install: .ensure.xdg /usr/local/go-$(GO_VERSION)
 
 /usr/local/go-$(GO_VERSION):
 	@echo "Installing Go $(GO_VERSION)"
-	@curl $(GO_URL) | tar xz -C $(HOME)/tmp
+	@curl -L $(GO_URL) | tar xz -C $(HOME)/tmp
 	@sudo mv $(HOME)/tmp/go /usr/local/go-$(GO_VERSION)
 	@sudo ln -sfn /usr/local/go-$(GO_VERSION) /usr/local/go
 

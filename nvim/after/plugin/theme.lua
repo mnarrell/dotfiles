@@ -75,40 +75,34 @@ M.apply_highlights = function()
 	hi.rubySymbol = { guifg = theme.base0B, guibg = nil, gui = NONE, guisp = nil }
 	hi.rubyStringDelimiter = { guifg = theme.base0B, guibg = nil, gui = NONE, guisp = nil }
 
+	-- Telescope
+	-- https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.vim
+	hi.TelescopePromptTitle = { guifg = theme.base0D, guibg = NONE, gui = NONE }
+	hi.TelescopePreviewTitle = { guifg = theme.base0D, guibg = NONE, gui = NONE }
+	hi.TelescopePromptPrefix = { guifg = theme.base0D, guibg = NONE, gui = NONE }
+
 	-- vim.api.nvim_command('highlight! clear Search')
 	vim.api.nvim_command "highlight! link Search Underlined"
 	-- vim.api.nvim_command('highlight! link QuickFixLine PmenuSel')
 
-	-- vim.api.nvim_command('highlight! link TSComment Comment')
-
-	-- vim.cmd [[highlight! link TelescopeSelection Visual]]
-	vim.cmd [[highlight! link TelescopeNormal Normal]]
-	-- vim.cmd [[highlight! link TelescopePromptNormal TelescopeNormal]]
-	-- vim.cmd [[highlight! link TelescopePromptBorder TelescopeBorder]]
-	-- vim.cmd [[highlight! link TelescopeBorder TelescopeNormal]]
-	-- vim.cmd [[highlight! link TelescopeTitle TelescopeBorder]]
-	-- vim.cmd [[highlight! link TelescopePromptTitle TelescopeTitle]]
-	-- vim.cmd [[highlight! link TelescopeResultsTitle TelescopeTitle]]
-	-- vim.cmd [[highlight! link TelescopePreviewTitle TelescopeTitle]]
-	-- vim.cmd [[highlight! link TelescopePromptPrefix Identifier]]
 end
 
 M.apply_highlights()
 
-vim.cmd [[
-	augroup theme
-		autocmd!
-		autocmd ColorScheme * lua require('plugins.theme').apply_highlights()
-	augroup END
-]]
+-- vim.cmd [[
+-- 	augroup theme
+-- 		autocmd!
+-- 		autocmd ColorScheme * lua require('plugins.theme').apply_highlights()
+-- 	augroup END
+-- ]]
 
-vim.cmd [[
-	highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
-	highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
-	highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
-	highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
-	highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
-	highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
-]]
+-- vim.cmd [[
+-- 	highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
+-- 	highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
+-- 	highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+-- 	highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+-- 	highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+-- 	highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+-- ]]
 
 return M

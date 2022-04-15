@@ -9,3 +9,5 @@ mnarre200.yaml
 mnarre200-*.yaml
 .envrc
 .direnv/
+
+go.work*
