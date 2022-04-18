@@ -7,6 +7,7 @@ end
 packer.startup {
 	function(use)
 		use { "wbthomason/packer.nvim" }
+		use { "nvim-lua/plenary.nvim" }
 
 		-- Eyecandy
 		use { "RRethy/nvim-base16" }
@@ -143,7 +144,6 @@ packer.startup {
 			"nvim-lua/telescope.nvim",
 			requires = {
 				{ "nvim-lua/popup.nvim" },
-				{ "nvim-lua/plenary.nvim" },
 			},
 			config = function()
 				require "mn.telescope"
