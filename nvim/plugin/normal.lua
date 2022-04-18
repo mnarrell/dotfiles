@@ -1,10 +1,7 @@
-local ok, mappings = pcall(require, "mn.mappings")
-if not ok then
-	P "Unable to load mn.mappings"
-	return
+local function nnoremap(lhs, rhs, opts)
+	local options = vim.tbl_extend("force", { noremap = true, silent = true }, opts or {})
+	vim.keymap.set("n", lhs, rhs, options)
 end
-
-local nnoremap = mappings.nnoremap
 
 nnoremap("Q", "<Nop>")
 
@@ -53,20 +50,18 @@ nnoremap("j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { expr = true })
 
 -- This was a challenge. Not sure if it's worth it.
 -- Clears search and Loupe highlights with <CR>, or <CR> if no selection...
-nnoremap("<CR>", [[:lua require('mn.mappings').clear_highlight()<CR>]])
+nnoremap("<CR>", function()
+	if vim.api.nvim_get_vvar "hlsearch" ~= 0 then
+		vim.cmd "nohlsearch"
+		vim.cmd "normal! call loupe#private#clean_highlight()<CR>"
+	else
+		local key = vim.api.nvim_replace_termcodes("<CR>", true, true, true)
+		vim.api.nvim_feedkeys(key, "n", true)
+	end
+end)
 
 nnoremap("<Up>", ":cprevious<CR>")
 nnoremap("<Down>", ":cnext<CR>")
 
--- nnoremap("<Up>", [[:lua require('trouble').previous({skip_groups = true, jump = true})<CR>]])
--- nnoremap("<Down>", [[:lua require('trouble').next({skip_groups = true, jump = true})<CR>]])
-
 nnoremap("tl", ":<C-u>call functions#ToggleLocationList()<CR>")
--- nnoremap("tl", ":TroubleToggle loclist<CR>")
 nnoremap("tq", ":<C-u>call functions#ToggleQuickFix()<CR>")
--- nnoremap("tq", ":TroubleToggle quickfix<CR>")
--- nnoremap("td", ":TroubleToggle document_diagnostics<CR>")
--- nnoremap("tD", ":TroubleToggle workspace_diagnostics<CR>")
-
--- nnoremap("td", [[:TroubleToggle document_diagnostics<CR>]])
--- nnoremap("twd", [[:TroubleToggle workspace_diagnostics<CR>]])

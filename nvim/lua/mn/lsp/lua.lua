@@ -1,6 +1,6 @@
 local ok, luadev = pcall(require, "lua-dev")
 if not ok then
-	emit "Unable to load lua-dev"
+	P "Unable to load lua-dev"
 	return
 end
 
@@ -21,6 +21,10 @@ M.config = luadev.setup {
 			Lua = {
 				workspace = {
 					preloadFileSize = 50000,
+				},
+				-- Do not send telemetry data containing a randomized but unique identifier
+				telemetry = {
+					enable = false,
 				},
 			},
 		},

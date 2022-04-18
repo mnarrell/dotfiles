@@ -1,17 +1,40 @@
-vim.cmd [[
-  augroup ftdetect
-    au!
+local autocmds = vim.api.nvim_create_augroup("FTDetect", { clear = true })
 
-    autocmd FocusLost,WinLeave, * :silent! wa
-    autocmd BufWritePre * :call functions#Preserve('%s/\v\s+$//e')
-    autocmd VimResized * :wincmd =
+vim.api.nvim_create_autocmd({ "FocusLost", "WinLeave" }, {
+	command = ":silent! wa",
+	pattern = "*",
+	group = autocmds,
+})
 
-    autocmd BufWritePost */mn/plugins.lua PackerCompile
+vim.api.nvim_create_autocmd("BufWritePre", {
+	command = [[:call functions#Preserve('%s/\v\s+$//e')]],
+	pattern = "*",
+	group = autocmds,
+})
 
-    autocmd TermOpen * setlocal nolist nonumber norelativenumber noshowmode nospell
-	autocmd TermOpen * startinsert
+vim.api.nvim_create_autocmd("VimResized", {
+	command = ":wincmd =",
+	pattern = "*",
+	group = autocmds,
+})
 
-	autocmd FileType lspinfo nnoremap <buffer><silent> q :close <CR>
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "PackerCompile",
+	pattern = "*/mn/plugins.lua",
+	group = autocmds,
+})
 
-  augroup end
-]]
+vim.api.nvim_create_autocmd("TermOpen", {
+	command = [[
+		setlocal nolist nonumber norelativenumber noshowmode nospell
+		startinsert
+	]],
+	pattern = "*",
+	group = autocmds,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	command = "nnoremap <buffer><silent> q :close <CR>",
+	pattern = "lspinfo",
+	group = autocmds,
+})

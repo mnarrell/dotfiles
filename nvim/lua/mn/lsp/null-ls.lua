@@ -23,21 +23,13 @@ M.setup = function()
 			null_ls.builtins.diagnostics.hadolint,
 
 			-- Go
-			-- null_ls.builtins.diagnostics.golangci_lint,
 			null_ls.builtins.diagnostics.revive,
-			-- null_ls.builtins.diagnostics.staticcheck,
-			-- null_ls.builtins.formatting.gofumpt,
-			-- null_ls.builtins.formatting.goimports,
 
 			-- Lua
-			-- null_ls.builtins.formatting.stylua.with {
-			-- 	extra_args = { "--config-path", vim.fn.expand "~/.config/stylua.toml" },
-			-- },
 			null_ls.builtins.formatting.stylua.with {
 				filetypes = { "lua" },
 			},
 			null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals vim" } },
-			-- null_ls.builtins.diagnostics.luacheck,
 
 			-- Markdown
 			null_ls.builtins.diagnostics.markdownlint,
@@ -62,20 +54,12 @@ M.setup = function()
 				filetypes = { "sh", "bash", "zsh" },
 			},
 
-			-- SQL
-			-- null_ls.builtins.formatting.sqlformat,
-
-			-- VIM
-			null_ls.builtins.diagnostics.vint,
-
 			-- YAML
 			null_ls.builtins.diagnostics.yamllint,
 
 			--------------------------------------------------------------------------------
 			-- Do these work?
 			null_ls.builtins.code_actions.gitsigns,
-
-			null_ls.builtins.code_actions.refactoring,
 		},
 	}))
 end

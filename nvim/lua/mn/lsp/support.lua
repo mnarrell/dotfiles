@@ -25,38 +25,49 @@ end
 M.custom_attach = function(client, bufnr)
 	print(string.format([['%s' attached to buffer]], client.name))
 
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-	end
-
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
-
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+	-- Options
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	-- Mappings.
-	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "<c-]>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "de", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	buf_set_keymap("n", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	buf_set_keymap("n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	buf_set_keymap("n", "<Leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	buf_set_keymap("n", "gf", [[<cmd>lua require('telescope.builtin').lsp_references()<CR>]], opts)
-	buf_set_keymap("n", "<leader>ld", [[<cmd>lua require("mn.lsp.support").show_line_diagnostics()<CR>]], opts)
-	buf_set_keymap("n", "[d", [[<cmd>lua vim.diagnostic.goto_prev({float={border="rounded"}})<CR>]], opts)
-	buf_set_keymap("n", "]d", [[<cmd>lua vim.diagnostic.goto_next({float={border="rounded"}})<CR>]], opts)
-	buf_set_keymap("n", "<Leader>ll", "<cmd>lua vim.diagnostic.set_loclist()<CR>", opts)
-	buf_set_keymap("n", "<Leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	local buf_nnoremap = function(lhs, rhs, opts)
+		local options = vim.tbl_extend("force", {
+			noremap = true,
+			silent = true,
+			buffer = bufnr,
+		}, opts or {})
+		vim.keymap.set("n", lhs, rhs, options)
+	end
 
-	-- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-	-- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-	-- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+	buf_nnoremap("gD", vim.lsp.buf.declaration)
+	buf_nnoremap("<c-]>", vim.lsp.buf.definition)
+	buf_nnoremap("gd", vim.lsp.buf.definition)
+	buf_nnoremap("K", vim.lsp.buf.hover)
+	buf_nnoremap("gi", vim.lsp.buf.implementation)
+	buf_nnoremap("<C-s>", vim.lsp.buf.signature_help)
+	buf_nnoremap("<Leader>D", vim.lsp.buf.type_definition)
+	buf_nnoremap("gr", vim.lsp.buf.rename)
+	buf_nnoremap("<Leader>lr", vim.lsp.buf.references)
+	buf_nnoremap("gf", require("telescope.builtin").lsp_references)
+	buf_nnoremap("<leader>ld", require("mn.lsp.support").show_line_diagnostics)
+	buf_nnoremap("<Leader>ll", vim.diagnostic.setloclist)
+	buf_nnoremap("<Leader>lf", vim.lsp.buf.formatting)
+
+	buf_nnoremap("de", function()
+		vim.cmd "vsplit"
+		vim.lsp.buf.definition()
+	end)
+
+	buf_nnoremap("[d", function()
+		vim.diagnostic.goto_prev { float = { border = "rounded" } }
+	end)
+
+	buf_nnoremap("]d", function()
+		vim.diagnostic.goto_next { float = { border = "rounded" } }
+	end)
+
+	-- vim.keymap.set('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+	-- vim.keymap.set('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+	-- vim.keymap.set('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 end
 
 local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

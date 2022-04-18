@@ -77,17 +77,29 @@ M.apply_highlights = function()
 
 	-- Telescope
 	-- https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.vim
-	hi.TelescopePromptTitle = { guifg = theme.base0D, guibg = NONE, gui = NONE }
-	hi.TelescopePreviewTitle = { guifg = theme.base0D, guibg = NONE, gui = NONE }
+	local teleCanvas = "#1A1B1D"
+	hi.TelescopePromptBorder = { guifg = teleCanvas, guibg = teleCanvas, gui = NONE }
+	hi.TelescopePromptNormal = { guifg = NONE, guibg = teleCanvas, gui = NONE }
 	hi.TelescopePromptPrefix = { guifg = theme.base0D, guibg = NONE, gui = NONE }
+	hi.TelescopePromptTitle = { guifg = theme.base0D, guibg = NONE, gui = NONE }
+
+	hi.TelescopePreviewTitle = { guifg = theme.base0D, guibg = NONE, gui = NONE }
 
 	-- vim.api.nvim_command('highlight! clear Search')
 	vim.api.nvim_command "highlight! link Search Underlined"
 	-- vim.api.nvim_command('highlight! link QuickFixLine PmenuSel')
-
 end
 
 M.apply_highlights()
+
+-- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+-- vim.api.nvim_create_autocmd('TextYankPost', {
+--   callback = function()
+--     vim.highlight.on_yank()
+--   end,
+--   group = highlight_group,
+--   pattern = '*',
+-- })
 
 -- vim.cmd [[
 -- 	augroup theme

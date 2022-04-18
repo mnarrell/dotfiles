@@ -1,4 +1,1 @@
--- vim.g.bufExplorerDisableDefaultKeyMapping = 1
-
-
-require("mn.mappings").nnoremap("<Leader>e", [[:lua vim.api.nvim_command('BufExplorer')<CR>]])
+vim.keymap.set("n", "<Leader>e", ":BufExplorer<CR>", { noremap = true, silent = true})

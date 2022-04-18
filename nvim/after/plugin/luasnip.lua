@@ -27,16 +27,9 @@ ls.config.set_config {
 
 ls.add_snippets("all", R "mn.snips.all")
 ls.add_snippets("go", R "mn.snips.go")
+ls.add_snippets("lua", R "mn.snips.lua")
 ls.add_snippets("markdown", R "mn.snips.markdown")
-
--- ls.snippets = {
--- 	all = R "mn.snips.all",
--- 	go = R "mn.snips.go",
--- 	markdown = R "mn.snips.markdown",
--- }
-
--- require("luasnip.loaders.from_snipmate").load()
-require("luasnip.loaders.from_snipmate").lazy_load()
+ls.add_snippets("sh", R "mn.snips.sh")
 
 -- <c-k> is my expansion key
 -- this will expand the current item or jump to the next item within the snippet.

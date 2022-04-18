@@ -16,7 +16,6 @@ linters:
     - asciicheck
     - bidichk
     - bodyclose
-    - bodyclose
     - contextcheck
     - cyclop
     - deadcode
@@ -69,7 +68,7 @@ linters:
     - prealloc
     - predeclared
     - promlinter
-    - revive
+    # - revive
     - rowserrcheck
     - sqlclosecheck
     - structcheck

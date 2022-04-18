@@ -4,7 +4,7 @@ local builtin = require "telescope.builtin"
 local themes = require "telescope.themes"
 
 local my_maps = {
-["<C-a>"] = actions.select_all,
+	["<C-a>"] = actions.select_all,
 	["<C-x>"] = false,
 	["<C-s>"] = actions.select_horizontal,
 	["<C-y>"] = actions.send_selected_to_loclist,
@@ -70,7 +70,7 @@ function tele.ultisnips()
 end
 
 function tele.help_tags()
-	builtin.help_tags{
+	builtin.help_tags {
 		prompt_title = "~ Help Tags ~",
 		initial_mode = "insert",
 		sorting_strategy = "ascending",
@@ -89,7 +89,7 @@ end
 
 local function telescope_mapping(key, target)
 	local cmd = string.format([[<cmd>lua require('mn.telescope')['%s']()<CR>]], target)
-	vim.api.nvim_set_keymap("n", key, cmd, { noremap = true, silent = true })
+	vim.keymap.set("n", key, cmd, { noremap = true, silent = true })
 end
 
 telescope_mapping("<leader>b", "buffers")

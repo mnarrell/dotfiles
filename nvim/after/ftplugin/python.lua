@@ -1,4 +1,3 @@
--- local opt = require('options').opt
 local opt = vim.opt_local
 
 opt.autoindent = true

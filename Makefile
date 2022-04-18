@@ -1,6 +1,6 @@
 MODULES = \
 	alacritty ansible bash bin docker fd fzf gem git gnu golang helm \
-	homebrew java kubernetes less lua macos markdown node npm nvim \
+	homebrew java kubernetes less lua markdown node npm nvim \
 	psql python readline ripgrep terraform tig tmux vagrant yamllint \
 	yapf zsh
 

@@ -11,4 +11,4 @@ opt.softtabstop = 4
 opt.formatoptions:remove "o"
 opt.formatoptions:remove "r"
 
-vim.cmd [[autocmd BufWritePost *.lua lua require("stylua-nvim").format_file()]]
+-- vim.cmd [[autocmd BufWritePost *.lua lua require("stylua-nvim").format_file()]]

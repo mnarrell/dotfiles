@@ -2,8 +2,7 @@ local support = require "mn.lsp.support"
 
 local M = {}
 
-local public = {
-	["local"] = "code.comcast.com",
+local config = {
 	gofumpt = true, -- A stricter gofmt
 	codelenses = {
 		-- SEE: https://github.com/golang/tools/blob/master/gopls/doc/settings.md#code-lenses
@@ -27,10 +26,15 @@ local public = {
 	staticcheck = true,
 }
 
+local ok, private = pcall(require, "mn.lsp.go_private")
+if ok then
+	config = vim.tbl_extend("force", config, private)
+end
+
 M.config = vim.tbl_extend("keep", support.base_config, {
 	cmd = { "gopls", "--remote=auto" },
 	settings = {
-		gopls = vim.tbl_extend("force", public, {})
+		gopls = config
 	},
 })
 

@@ -1,10 +1,4 @@
-if not pcall(require, "mn.mappings") then
-	return
-end
-
-local nnoremap = require("mn.mappings").nnoremap
-
-_G.history = function(earlier)
+local history = function(earlier)
 	return function()
 		local winnr = vim.api.nvim_eval "winnr()"
 		local win_info = vim.tbl_filter(function(item)
@@ -18,5 +12,19 @@ _G.history = function(earlier)
 	end
 end
 
-nnoremap("<left>", ":lua history(false)<CR>")
-nnoremap("<right>", ":lua history(true)<CR>")
+-- Mappings.
+local function nnoremap(lhs, rhs, opts)
+	local options = vim.tbl_extend("force", {
+		noremap = true,
+		silent = true,
+	}, opts or {})
+	vim.keymap.set("n", lhs, rhs, options)
+end
+
+nnoremap("<left>", function()
+	history(false)
+end)
+
+nnoremap("<right>", function()
+	history(true)
+end)

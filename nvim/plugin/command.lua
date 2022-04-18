@@ -1,10 +1,7 @@
-local ok, mappings = pcall(require, "mn.mappings")
-if not ok then
-	emit "Unable to load mn.mappings"
-	return
+local command = function(lhs, rhs, opts)
+	local options = vim.tbl_extend("force", { bang = true }, opts or {})
+	vim.api.nvim_create_user_command(lhs, rhs, options)
 end
-
-local command = mappings.command
 
 command("Wq", "wq")
 command("Wqa", "wqa")
