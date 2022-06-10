@@ -113,7 +113,7 @@ local go = {
 		{ t "func ", i(1, "name"), t "(", i(2, "params"), t ") ", i(3), t { "{", "" }, i(0), t { "", "}" } }
 	),
 
-	s({ trig = "ff", name = "Print variable" }, { t [[fmt.Printf("]], i(1), t [[" = %+v\n, ]], rep(1), t ")" }),
+	s({ trig = "ff", name = "Print variable" }, { t [[fmt.Printf("]], i(1), t [[ = %+v\n", ]], rep(1), t ")" }),
 
 	s({ trig = "fn", name = "Print statement" }, { t [[fmt.Printf("]], i(1), t [[")]] }),
 
@@ -162,16 +162,16 @@ local go = {
 		{ trig = "tt", name = "Table tests" },
 		fmt(
 			[[
-				var tests = [] struct {{
+				var tests = []struct {{
 					name string
 				}}{{
 					{{"{}"}},
 				}}
 				for _, tt := range tests {{
 					tt := tt
-					t.Run(tt.name, func(t *testing.T){{
+					t.Run(tt.name, func(t *testing.T) {{
 						{}
-					}}
+					}})
 				}}
 			]],
 			{ i(1), i(0) }

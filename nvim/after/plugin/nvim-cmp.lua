@@ -27,15 +27,12 @@ cmp.setup {
 	completion = {
 		keyword_length = 1,
 		completeopt = "menu,noselect",
+		-- autocomplete = false,
 	},
 
 	mapping = cmp.mapping.preset.insert({
 		["<C-X><C-O>"] = cmp.mapping.complete(),
 	}),
-
-	-- documentation = {
-	-- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-	-- },
 
 	sources = cmp.config.sources {
 		{ name = "nvim_lsp" },

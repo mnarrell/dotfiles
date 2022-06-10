@@ -26,9 +26,9 @@ M.setup = function()
 			null_ls.builtins.diagnostics.revive,
 
 			-- Lua
-			null_ls.builtins.formatting.stylua.with {
-				filetypes = { "lua" },
-			},
+			-- null_ls.builtins.formatting.stylua.with {
+			-- 	filetypes = { "lua" },
+			-- },
 			null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals vim" } },
 
 			-- Markdown

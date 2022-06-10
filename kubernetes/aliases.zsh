@@ -18,6 +18,7 @@ alias -g kdp='k describe pod PODS'
 alias -g kds='k describe service SVC'
 alias -g kcs='k config use-context CTX'
 alias -g kfixcomp='source <(kubectl completion zsh)'
+alias -g kge='k get events --sort-by='\''.metadata.creationTimestamp'\'' '
 
 alias -g PODS='$(kfuzz pod)'
 alias -g DEPLOY='$(kfuzz deploy)'
@@ -40,4 +41,8 @@ function kport() {
   local port=$(kubectl get pod "${pod}" -o json | jq '.spec.containers | .[0].ports | .[0].containerPort')
   echo "Forwarding traffic from localhost:${port} to ${pod}:${port}"
   kubectl port-forward ${pod} ${port}:${port} | bat -l log
+}
+
+function ka() {
+  kubectl $@ --all-namespaces
 }
