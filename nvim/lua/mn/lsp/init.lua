@@ -24,10 +24,10 @@ lspconfig.sumneko_lua.setup(require("mn.lsp.lua").config)
 lspconfig.gopls.setup(require("mn.lsp.golang").config)
 
 local support = require "mn.lsp.support"
--- lspconfig.ansiblels.setup(require("mn.lsp.support").base_config)
--- lspconfig.yamlls.setup(require("mn.lsp.support").base_config)
-lspconfig.terraformls.setup(require("mn.lsp.support").base_config)
-lspconfig.vimls.setup(require("mn.lsp.support").base_config)
+lspconfig.ansiblels.setup(support.base_config)
+lspconfig.yamlls.setup(support.base_config)
+lspconfig.terraformls.setup(support.base_config)
+lspconfig.vimls.setup(support.base_config)
 
 lspconfig.dockerls.setup(vim.tbl_extend("force", support.base_config, {
 	root_dir = function(fname)

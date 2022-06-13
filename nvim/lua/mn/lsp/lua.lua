@@ -26,6 +26,10 @@ M.config = luadev.setup {
 				telemetry = {
 					enable = false,
 				},
+				completion = {
+					keywordSnippet = "Replace",
+					callSnippet = "Replace"
+				},
 			},
 		},
 	}),

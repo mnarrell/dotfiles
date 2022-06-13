@@ -1,13 +1,9 @@
 *.iml
 *.swp
 .DS_Store
-.autoenv.zsh
 .idea/
-Session.vim
-tags
 mnarre200.yaml
 mnarre200-*.yaml
 .envrc
 .direnv/
-
 go.work*
