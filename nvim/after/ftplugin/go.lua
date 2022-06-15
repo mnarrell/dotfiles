@@ -27,24 +27,6 @@ local function buf_nmap(lhs, rhs, opts)
 	vim.keymap.set("n", lhs, rhs, options)
 end
 
-buf_nmap("†", "<Plug>(go-test-func)")
-buf_nmap("db", "<Plug>(go-doc-browser)")
--- buf_nmap("de", "<Plug>(go-def-vertical)")
--- buf_nmap("gc", "<Plug>(go-callers)")
--- buf_nmap("gf", "<Plug>(go-referrers)")
--- buf_nmap("gi", "<Plug>(go-implements)")
--- buf_nmap("gr", "<Plug>(go-rename)")
-buf_nmap("tc", "<Plug>(go-coverage-toggle)")
-
--- _G.build_go_files = function()
--- 	local f = vim.fn.expand "%"
--- 	if string.endswith(f, "_test.go") then
--- 		vim.fn["go#test#Test"](0, 1)
--- 	elseif string.endswith(f, ".go") then
--- 		vim.cmd "GoBuild -i"
--- 	end
--- end
-
 local function buf_nnoremap(lhs, rhs, opts)
 	local options = vim.tbl_extend("force", {
 		noremap = true,
@@ -54,10 +36,18 @@ local function buf_nnoremap(lhs, rhs, opts)
 	vim.keymap.set("n", lhs, rhs, options)
 end
 
+buf_nmap("†", "<Plug>(go-test-func)")
+buf_nmap("db", "<Plug>(go-doc-browser)")
+buf_nmap("tc", "<Plug>(go-coverage-toggle)")
+-- buf_nmap("de", "<Plug>(go-def-vertical)")
+-- buf_nmap("gc", "<Plug>(go-callers)")
+-- buf_nmap("gf", "<Plug>(go-referrers)")
+-- buf_nmap("gi", "<Plug>(go-implements)")
+-- buf_nmap("gr", "<Plug>(go-rename)")
+
 buf_nnoremap("<C-g>", ":GoDeclsDir<CR>")
--- buf_nnoremap("gb", ":lua build_go_files()<CR>")
 buf_nnoremap("gb", function()
-	local f = vim.fn.expand "%"
+	local f = vim.fn.expand("%", false, false)
 	if string.endswith(f, "_test.go") then
 		vim.fn["go#test#Test"](0, 1)
 	elseif string.endswith(f, ".go") then
@@ -65,4 +55,14 @@ buf_nnoremap("gb", function()
 	end
 end)
 
--- vim.cmd [[autocmd FileType go lua require("cmp").setup.buffer { completion = { autocomplete = false } }]]
+local cmp = require("cmp")
+cmp.setup.buffer {
+	-- completion = {
+	-- 	autocomplete = false
+	-- },
+	sources = cmp.config.sources {
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "luasnip" },
+	},
+}

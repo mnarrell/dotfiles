@@ -7,6 +7,13 @@ if [ $commands[kubectl] ]; then
   }
 fi
 
+if [ $commands[k3d] ]; then
+  function k3d() {
+    source <(command k3d completion zsh)
+    command k3d "$@"
+  }
+fi
+
 alias -g k='kubectl'
 alias -g kp='k get pods -o wide'
 alias -g ks='k get services -o wide'

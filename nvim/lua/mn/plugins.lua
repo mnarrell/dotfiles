@@ -65,6 +65,7 @@ packer.startup {
 		use { "edkolev/tmuxline.vim", disable = true }
 		use { "tmux-plugins/vim-tmux", opt = true, ft = "tmux" }
 		use { "tmux-plugins/vim-tmux-focus-events" }
+		use { 'ojroques/vim-oscyank' }
 
 		-- Completion
 		use { "hrsh7th/nvim-cmp" }
