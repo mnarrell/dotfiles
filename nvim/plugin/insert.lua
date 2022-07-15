@@ -1,19 +1,6 @@
-local function noremap(mode, lhs, rhs, opts)
-	local options = vim.tbl_extend("force", { noremap = true, silent = true }, opts or {})
-	vim.keymap.set(mode, lhs, rhs, options)
-end
-
-local function xnoremap(...)
-	noremap("x", ...)
-end
-
-local function onoremap(...)
-	noremap("o", ...)
-end
-
-local function inoremap(...)
-	noremap("i", ...)
-end
+local inoremap = require("mn.lib").inoremap
+local xnoremap = require("mn.lib").xnoremap
+local onoremap = require("mn.lib").onoremap
 
 -- Crude XML Tag completion
 inoremap([[</]], [[</<C-x><C-o>]])
@@ -31,5 +18,8 @@ onoremap("al", ":normal val<CR>")
 -- vim.api.nvim_set_keymap('i', '<CR>','v:lua.completion_confirm()', {expr = true , noremap = true})
 -- inoremap("<CR>", "v:lua.completion_confirm()", { expr = true })
 vim.g.completion_confirm_key = ""
-local expr = { expr = true, noremap = false, silent = true }
-vim.keymap.set("i", "<CR>", require("nvim-autopairs").check_break_line_char, expr)
+-- local expr = { expr = true, noremap = false, silent = true }
+-- vim.keymap.set("i", "<CR>", require("nvim-autopairs").check_break_line_char, expr)
+
+local opts = { expr = true, silent = true }
+inoremap("<CR>", require("nvim-autopairs").check_break_line_char, opts)

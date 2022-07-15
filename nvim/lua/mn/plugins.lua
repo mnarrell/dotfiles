@@ -102,7 +102,6 @@ packer.startup {
 
 		use { "folke/lua-dev.nvim" }
 		use { "euclidianAce/BetterLua.vim", opt = true, ft = "lua" }
-		-- use { "ckipp01/stylua-nvim", opt = true, ft = "lua" }
 		-- }}}
 
 		use { "pedrohdz/vim-yaml-folds" }
@@ -154,7 +153,7 @@ packer.startup {
 		use { "nvim-telescope/telescope-packer.nvim" }
 		use { "nvim-telescope/telescope-symbols.nvim" }
 
-		use { "fhill2/telescope-ultisnips.nvim" }
+		use { 'nvim-telescope/telescope-ui-select.nvim' }
 		-- }}}
 
 		use { "kevinhwang91/nvim-bqf", ft = "qf" }

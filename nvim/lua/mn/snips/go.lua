@@ -115,7 +115,7 @@ local go = {
 
 	s({ trig = "ff", name = "Print variable" }, { t [[fmt.Printf("]], i(1), t [[ = %+v\n", ]], rep(1), t ")" }),
 
-	s({ trig = "fn", name = "Print statement" }, { t [[fmt.Printf("]], i(1), t [[")]] }),
+	s({ trig = "fn", name = "Print statement" }, { t [[fmt.Println("]], i(1), t [[")]] }),
 
 	s({ trig = "fe", name = "fmt.Errorf" }, { t [[fmt.Errorf("]], i(1), t [[")]] }),
 
@@ -199,10 +199,10 @@ local go = {
 	s({ trig = "tsrv", name = "httptest.NewServer" }, {
 		t {
 			"ts := httptest.NewServer(http.HandlerFunc(func(out http.ResponseWriter, req *http.Request) {",
-			"	fmt.Fprintln(out, )",
+			"	fmt.Fprintln(out, ",
 		},
 		i(1, [["ohai"]]),
-		t { "", "}))", "defer ts.Close()" },
+		t { ")", "}))", "defer ts.Close()" },
 	}),
 
 	s(

@@ -29,32 +29,29 @@ M.custom_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	-- Mappings.
-	local buf_nnoremap = function(lhs, rhs, opts)
-		local options = vim.tbl_extend("force", {
-			noremap = true,
-			silent = true,
-			buffer = bufnr,
-		}, opts or {})
-		vim.keymap.set("n", lhs, rhs, options)
+	local buf_nnoremap = function(lhs, rhs)
+		require("mn.lib").buf_nnoremap(lhs, rhs, { buffer = bufnr })
 	end
 
 	buf_nnoremap("gD", vim.lsp.buf.declaration)
 	buf_nnoremap("<c-]>", vim.lsp.buf.definition)
-	buf_nnoremap("gd", vim.lsp.buf.definition)
+	-- buf_nnoremap("gd", vjm.lsp.buf.definition)
 	buf_nnoremap("K", vim.lsp.buf.hover)
-	buf_nnoremap("gi", vim.lsp.buf.implementation)
+	buf_nnoremap("gi", require("telescope.builtin").lsp_implementations)
 	buf_nnoremap("<C-s>", vim.lsp.buf.signature_help)
 	buf_nnoremap("<Leader>D", vim.lsp.buf.type_definition)
 	buf_nnoremap("gr", vim.lsp.buf.rename)
-	buf_nnoremap("<Leader>lr", vim.lsp.buf.references)
+	-- buf_nnoremap("<Leader>lr", vim.lsp.buf.references)
 	buf_nnoremap("gf", require("telescope.builtin").lsp_references)
 	buf_nnoremap("<leader>ld", require("mn.lsp.support").show_line_diagnostics)
 	buf_nnoremap("<Leader>ll", vim.diagnostic.setloclist)
 	buf_nnoremap("<Leader>lf", vim.lsp.buf.formatting)
+	buf_nnoremap("<Leader>la", vim.lsp.buf.code_action)
 
 	buf_nnoremap("de", function()
-		vim.cmd "vsplit"
-		vim.lsp.buf.definition()
+		-- vim.cmd "vsplit"
+		-- vim.lsp.buf.definition()
+		require "telescope.builtin".lsp_definitions({ jump_type = "vsplit" })
 	end)
 
 	buf_nnoremap("[d", function()
@@ -95,6 +92,7 @@ M.toggle_diagnostics = function()
 	if diagnostics_enabled then
 		vim.notify("Disabling diagnostics...", vim.log.levels.INFO, { title = "LSP" })
 		vim.diagnostic.disable()
+		vim.diagnostic.reset(nil, 0)
 		diagnostics_enabled = false
 	else
 		vim.notify("Enabling diagnostics...", vim.log.levels.INFO, { title = "LSP" })

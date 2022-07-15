@@ -1,6 +1,4 @@
-local nnoremap = function(lhs, rhs)
-	vim.keymap.set("n",lhs,rhs, { noremap = true, silent = true})
-end
+local nnoremap = require("mn.lib").nnoremap
 
 nnoremap("<Leader>gb", ":Git blame<CR>")
 nnoremap("<Leader>gd", ":Gvdiff<CR>")

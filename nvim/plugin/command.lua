@@ -1,7 +1,4 @@
-local command = function(lhs, rhs, opts)
-	local options = vim.tbl_extend("force", { bang = true }, opts or {})
-	vim.api.nvim_create_user_command(lhs, rhs, options)
-end
+local command = require("mn.lib").command
 
 command("Wq", "wq")
 command("Wqa", "wqa")
@@ -18,5 +15,3 @@ command("Base64Decode", [[:call functions#Base64Decode()]], { range = "%" })
 command("TS", [[split | term <args>]], { nargs = "*" })
 command("TV", [[vsplit | term <args>]], { nargs = "*" })
 command("TT", [[tabnew | term <args>]], { nargs = "*" })
-
-command("TD", require("mn.lsp.support").toggle_diagnostics)

@@ -4,18 +4,11 @@ vim.g.fzf_action = {
 	["ctrl-v"] = "vsplit",
 }
 
--- Mappings
-local nnoremap = function(lhs, rhs)
-	vim.keymap.set("n", lhs, rhs, { noremap = true, silent = true })
-end
-
-local imap = function(lhs, rhs)
-	vim.keymap.set("i", lhs, rhs, { noremap = false, silent = false })
-end
-
+local nnoremap = require("mn.lib").nnoremap
 nnoremap("q:", [[:History:<CR>]])
 nnoremap("q/", [[:History/<CR>]])
 
+local imap = require("mn.lib").imap
 imap("<C-x><C-l>", [[<Plug>(fzf-complete-line)]])
 imap("<C-x><C-k>", [[<Plug>(fzf-complete-word)]])
 imap("<C-x><C-f>", [[<Plug>(fzf-complete-path)]])

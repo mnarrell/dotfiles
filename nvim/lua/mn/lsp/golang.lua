@@ -28,7 +28,7 @@ local config = {
 
 local ok, private = pcall(require, "mn.lsp.go_private")
 if ok then
-	config = vim.tbl_extend("force", config, private)
+	config = vim.tbl_extend("force", config, private) or config
 end
 
 M.config = vim.tbl_extend("keep", support.base_config, {

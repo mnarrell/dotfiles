@@ -1,6 +1,6 @@
 include ../env.mk
 
-HELM_VERSION = 3.8.2
+HELM_VERSION = 3.9.1
 HELM_URL = https://get.helm.sh/helm-v$(HELM_VERSION)-darwin-amd64.tar.gz
 HELM = helm-$(HELM_VERSION)
 

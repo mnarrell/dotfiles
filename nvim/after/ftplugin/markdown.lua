@@ -10,16 +10,7 @@ opt.wrapmargin = 0
 opt.list = false
 opt.wrap = true
 
--- Mappings.
-local function buf_nnoremap(lhs, rhs, opts)
-	local options = vim.tbl_extend("force", {
-		noremap = true,
-		silent = true,
-		buffer = true,
-	}, opts or {})
-	vim.keymap.set("n", lhs, rhs, options)
-end
-
+local buf_nnoremap = require("mn.lib").buf_nnoremap
 buf_nnoremap("j", "gj")
 buf_nnoremap("k", "gk")
 

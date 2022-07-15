@@ -22,10 +22,10 @@ vim.diagnostic.config {
 
 lspconfig.sumneko_lua.setup(require("mn.lsp.lua").config)
 lspconfig.gopls.setup(require("mn.lsp.golang").config)
+lspconfig.yamlls.setup(require("mn.lsp.yaml").config)
 
 local support = require "mn.lsp.support"
 lspconfig.ansiblels.setup(support.base_config)
-lspconfig.yamlls.setup(support.base_config)
 lspconfig.terraformls.setup(support.base_config)
 lspconfig.vimls.setup(support.base_config)
 
@@ -59,4 +59,4 @@ lspconfig.pyright.setup(vim.tbl_extend("force", support.base_config, {
 	},
 }))
 
-require("mn.lsp.null-ls").setup()
+-- require("mn.lsp.null-ls").setup()

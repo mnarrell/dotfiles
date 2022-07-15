@@ -1,7 +1,4 @@
-local function nnoremap(lhs, rhs, opts)
-	local options = vim.tbl_extend("force", { noremap = true, silent = true }, opts or {})
-	vim.keymap.set("n", lhs, rhs, options)
-end
+local nnoremap = require("mn.lib").nnoremap
 
 nnoremap("Q", "<Nop>")
 
@@ -31,6 +28,7 @@ nnoremap("<C-y>", "5<C-y>")
 
 -- Force filetypes
 nnoremap("_ba", ":set filetype=bash<CR>")
+nnoremap("_co", ":set filetype=conf<CR>")
 nnoremap("_df", ":set filetype=Dockerfile<CR>")
 nnoremap("_hl", ":set filetype=helm<CR>")
 nnoremap("_js", ":set filetype=json<CR>")
@@ -55,7 +53,7 @@ nnoremap("<CR>", function()
 		vim.cmd "nohlsearch"
 		vim.cmd "normal! call loupe#private#clean_highlight()<CR>"
 	else
-		local key = vim.api.nvim_replace_termcodes("<CR>", true, true, true)
+		local key = vim.api.nvim_replace_termcodes("<CR>", true, true, true) or ""
 		vim.api.nvim_feedkeys(key, "n", true)
 	end
 end)
@@ -65,3 +63,7 @@ nnoremap("<Down>", ":cnext<CR>")
 
 nnoremap("tl", ":<C-u>call functions#ToggleLocationList()<CR>")
 nnoremap("tq", ":<C-u>call functions#ToggleQuickFix()<CR>")
+
+nnoremap("yod", require("mn.lsp.support").toggle_diagnostics)
+
+nnoremap("<Leader>t", ":tabnew<CR>")
