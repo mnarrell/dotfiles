@@ -90,8 +90,8 @@ end
 M.file_info = function()
 	if vim.bo.modified then
 		vim.cmd "highlight link StatusLineFileInfo StatusLineFileModified"
-	elseif not vim.bo.modifiable then
-		vim.cmd "highlight link StatusLineFileInfo StatusLineFileRestricted"
+	-- elseif not vim.bo.modifiable then
+	-- 	vim.cmd "highlight link StatusLineFileInfo StatusLineFileRestricted"
 	elseif vim.bo.readonly then
 		vim.cmd "highlight link StatusLineFileInfo StatusLineFileReadonly"
 	elseif not vim.bo.modified then

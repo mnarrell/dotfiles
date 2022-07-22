@@ -22,34 +22,6 @@ fun! functions#AsConfluence() abort
   endif
 endf
 
-fun! functions#ToggleQuickFix() abort
-  if exists('g:qwindow')
-    cclose
-    unlet g:qwindow
-  else
-    try
-      botright copen 20
-      let g:qwindow = 1
-    catch
-      "   echo 'No Errors found!'
-    endtry
-  endif
-endf
-
-fun! functions#ToggleLocationList() abort
-  if exists('g:lwindow')
-    lclose
-    unlet g:lwindow
-  else
-    try
-      botright lopen 20
-      let g:lwindow = 1
-    catch
-      echo 'No Errors found!'
-    endtry
-  endif
-endf
-
 fun! functions#Base64Decode() abort
   normal! gv"sy
   execute "let output = system('echo -n " . @s . " | base64 -d')"

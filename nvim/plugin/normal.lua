@@ -61,8 +61,8 @@ end)
 nnoremap("<Up>", ":cprevious<CR>")
 nnoremap("<Down>", ":cnext<CR>")
 
-nnoremap("tl", ":<C-u>call functions#ToggleLocationList()<CR>")
-nnoremap("tq", ":<C-u>call functions#ToggleQuickFix()<CR>")
+nnoremap("tl", function() vim.cmd "botright lopen 20" end)
+nnoremap("tq", function() vim.cmd "botright copen 20" end)
 
 nnoremap("yod", require("mn.lsp.support").toggle_diagnostics)
 

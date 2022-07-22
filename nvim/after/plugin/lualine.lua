@@ -11,8 +11,10 @@ local config = {
 		component_separators = "",
 		section_separators = "",
 		disabled_filetypes = {
-			"netrw",
-			"quickfix",
+			statusline = {
+				-- "netrw",
+				-- "quickfix",
+			},
 		},
 		theme = {
 			normal = { c = "StatusLineThemeNormalC" },
@@ -37,7 +39,7 @@ local config = {
 		lualine_y = {},
 		lualine_z = {},
 	},
-	extensions = {"quickfix", "fugitive"},
+	extensions = { "quickfix", "fugitive" },
 }
 
 local add_left = function(component)
@@ -71,7 +73,8 @@ add_left {
 }
 
 add_left {
-	"branch",
+	-- "branch",
+	'FugitiveHead',
 	icon = "",
 	color = "StatusLineTextBold",
 	padding = { left = 0, right = 0 },
@@ -79,7 +82,7 @@ add_left {
 
 add_left {
 	statusline.file_info,
-	cond = statusline.conditions.buffer_not_empty,
+	-- cond = statusline.conditions.buffer_not_empty,
 	color = "StatusLineFileInfo",
 }
 
