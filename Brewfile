@@ -220,4 +220,5 @@ mas 'Numbers (6.1)', id: 409203825
 mas 'OneDrive (19.002.0107)', id: 823766827
 mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
 mas 'Tweetbot (3.2)', id: 1384080005
+mas 'WireGuard (1.0.15)', id: 1451685025
 mas 'feedly (1.1)', id: 865500966
