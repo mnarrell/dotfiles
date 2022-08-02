@@ -4,6 +4,12 @@ if not ok then
 	return
 end
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "PackerCompile",
+	pattern = "*/mn/plugins.lua",
+	group = vim.api.nvim_create_augroup("packer", { clear = true })
+})
+
 packer.startup {
 	function(use)
 		use { "wbthomason/packer.nvim" }
@@ -75,6 +81,9 @@ packer.startup {
 		use { "hrsh7th/cmp-buffer" }
 		use { "saadparwaiz1/cmp_luasnip" }
 		use { "hrsh7th/cmp-nvim-lsp-signature-help" }
+		use { "hrsh7th/cmp-omni" }
+		use { "hrsh7th/cmp-nvim-lsp-document-symbol" }
+		use { "andersevenrud/cmp-tmux" }
 
 		-- Snippets
 		-- use { "honza/vim-snippets", rtp = "." }

@@ -33,24 +33,28 @@ M.custom_attach = function(client, bufnr)
 		require("mn.lib").buf_nnoremap(lhs, rhs, { buffer = bufnr })
 	end
 
+	vim.keymap.set("n", "<leader>ld", "<Cmd>Telescope diagnostics<CR>", { desc = "search lsp diagnostics" })
+
 	buf_nnoremap("gD", vim.lsp.buf.declaration)
 	buf_nnoremap("<c-]>", vim.lsp.buf.definition)
-	-- buf_nnoremap("gd", vjm.lsp.buf.definition)
 	buf_nnoremap("K", vim.lsp.buf.hover)
-	buf_nnoremap("gi", require("telescope.builtin").lsp_implementations)
 	buf_nnoremap("<C-s>", vim.lsp.buf.signature_help)
 	buf_nnoremap("<Leader>D", vim.lsp.buf.type_definition)
 	buf_nnoremap("gr", vim.lsp.buf.rename)
-	-- buf_nnoremap("<Leader>lr", vim.lsp.buf.references)
-	buf_nnoremap("gf", require("telescope.builtin").lsp_references)
 	buf_nnoremap("<leader>ld", require("mn.lsp.support").show_line_diagnostics)
 	buf_nnoremap("<Leader>ll", vim.diagnostic.setloclist)
 	buf_nnoremap("<Leader>lf", vim.lsp.buf.formatting)
 	buf_nnoremap("<Leader>la", vim.lsp.buf.code_action)
+	buf_nnoremap("gl", vim.lsp.buf.incoming_calls)
+	buf_nnoremap("gw", vim.lsp.buf.workspace_symbol)
+
+	buf_nnoremap("gi", require("telescope.builtin").lsp_implementations)
+	buf_nnoremap("gf", require("telescope.builtin").lsp_references)
+	buf_nnoremap("<leader>li", require("telescope.builtin").lsp_incoming_calls)
+	buf_nnoremap("<leader>lo", require("telescope.builtin").lsp_outgoing_calls)
+	buf_nnoremap("<leader>ls", require("telescope.builtin").lsp_document_symbols)
 
 	buf_nnoremap("de", function()
-		-- vim.cmd "vsplit"
-		-- vim.lsp.buf.definition()
 		require "telescope.builtin".lsp_definitions({ jump_type = "vsplit" })
 	end)
 
@@ -62,9 +66,6 @@ M.custom_attach = function(client, bufnr)
 		vim.diagnostic.goto_next { float = { border = "rounded" } }
 	end)
 
-	-- vim.keymap.set('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-	-- vim.keymap.set('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-	-- vim.keymap.set('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 end
 
 local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

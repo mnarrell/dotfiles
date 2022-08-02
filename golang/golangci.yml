@@ -41,7 +41,7 @@ linters:
     - godot
     - godox
     - goerr113
-    # - gofumpt
+    - gofumpt
     - goheader
     - goimports
     - gomoddirectives
@@ -68,7 +68,7 @@ linters:
     - prealloc
     - predeclared
     - promlinter
-    # - revive
+    - revive
     - rowserrcheck
     - sqlclosecheck
     - structcheck

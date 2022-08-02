@@ -16,7 +16,7 @@ M.setup = function()
 
 			-- Ansible
 			null_ls.builtins.diagnostics.ansiblelint.with {
-				filetypes = { "yaml", "yaml.ansible" },
+				filetypes = { "yaml.ansible" },
 			},
 
 			-- Docker
@@ -48,7 +48,6 @@ M.setup = function()
 			null_ls.builtins.formatting.shfmt.with({
 				extra_args = { "-i", "2", "-ci" }
 			}),
-			-- null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.code_actions.shellcheck.with {
 				filetypes = { "sh", "bash", "zsh" },
 			},

@@ -41,6 +41,7 @@ nnoremap("_vi", ":set filetype=vim<CR>")
 nnoremap("_xm", ":set filetype=xml<CR>")
 nnoremap("_ya", ":set filetype=yaml<CR>")
 nnoremap("_zs", ":set filetype=zsh<CR>")
+nnoremap("_an", ":set filetype=yaml.ansible<CR>")
 
 -- This was a nightmeer
 nnoremap("k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], { expr = true })

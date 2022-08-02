@@ -1,5 +1,20 @@
 local support = require "mn.lsp.support"
 
+-- function OrgImports(wait_ms)
+-- 	local params = vim.lsp.util.make_range_params()
+-- 	params.context = { only = { "source.organizeImports" } }
+-- 	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+-- 	for _, res in pairs(result or {}) do
+-- 		for _, r in pairs(res.result or {}) do
+-- 			if r.edit then
+-- 				vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+-- 			else
+-- 				vim.lsp.buf.execute_command(r.command)
+-- 			end
+-- 		end
+-- 	end
+-- end
+
 local M = {}
 
 local config = {
@@ -22,8 +37,18 @@ local config = {
 		shadow = true, -- check for possible unintended shadowing of variables
 		unusedparams = true, -- check for unused parameters of functions
 		unusedwrite = true, -- checks for unused writes, an instances of writes to struct fields and arrays that are never read
+		useany = true,
 	},
 	staticcheck = true,
+	hints = {
+		assignVariableTypes = true,
+		compositeLiteralFields = true,
+		compositeLiteralTypes = true,
+		constantValues = true,
+		functionTypeParameters = true,
+		parameterNames = true,
+		rangeVariableTypes = true,
+	},
 }
 
 local ok, private = pcall(require, "mn.lsp.go_private")

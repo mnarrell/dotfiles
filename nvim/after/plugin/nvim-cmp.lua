@@ -2,6 +2,7 @@ if not (pcall(require, "cmp") and pcall(require, "lspkind")) then
 	return
 end
 
+
 local cmp = require "cmp"
 cmp.setup {
 	formatting = {
@@ -14,6 +15,9 @@ cmp.setup {
 				path = "[Path]",
 				buffer = "[Buffer]",
 				emoji = "[Emoji]",
+				omni = "[omni]",
+				tmux = "[tmux]",
+				nvim_lsp_document_symbol = "[Syms]"
 			},
 		},
 	},
@@ -41,10 +45,8 @@ cmp.setup {
 		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "buffer", keyword_length = 4 },
+		{ name = "omni" },
+		{ name = "nvim_lsp_document_symbol" },
+		{ name = "tmux", keyword_length = 4 },
 	},
 }
-
--- vim.cmd([[
---   inoremap <C-x><C-o> <Cmd>lua vimrc.cmp.lsp()<CR>
---   inoremap <C-x><C-s> <Cmd>lua vimrc.cmp.snippet()<CR>
--- ]])

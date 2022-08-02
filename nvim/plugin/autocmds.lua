@@ -18,12 +18,6 @@ vim.api.nvim_create_autocmd("VimResized", {
 	group = autocmds,
 })
 
-vim.api.nvim_create_autocmd("BufWritePost", {
-	command = "PackerCompile",
-	pattern = "*/mn/plugins.lua",
-	group = autocmds,
-})
-
 vim.api.nvim_create_autocmd("TermOpen", {
 	command = [[
 		setlocal nolist nonumber norelativenumber noshowmode nospell
