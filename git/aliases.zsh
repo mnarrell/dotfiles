@@ -13,7 +13,7 @@ function git_personal_user() {
   git config user.name "$MY_NAME"
 }
 
-function eradicate_submodule!(){
+function eradicate_submodule!() {
   git submodule deinit -f "$1"
   git rm "$1"
   git commit -am "Removed submodule: $1"

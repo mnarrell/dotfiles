@@ -11,7 +11,7 @@ alias chown="chown -v"
 alias clear="echo 'NO!'"
 alias cp="cp -v"
 alias dots="cd ${DOTFILES}"
-alias e="${EDITOR}"
+alias e="$EDITOR"
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print ${1}'"
 alias mkdir="mkdir -v"
@@ -56,4 +56,3 @@ if [ "$(uname -s)" = "Darwin" ]; then
   alias hidefiles="defaults write com.apple.finder AppleShowAllFiles FALSE; killall Finder"
   alias fixow='/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -kill -r -domain local -domain user;killall Finder;echo "Open With has been rebuilt, Finder will relaunch"'
 fi
-

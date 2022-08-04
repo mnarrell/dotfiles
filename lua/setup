@@ -5,7 +5,7 @@ SUMKENO_URL="git@github.com:sumneko/lua-language-server.git"
 
 if [ ! -d "${1}" ]; then
   echo "${1} is not present, cloning..."
-  git clone ${SUMKENO_URL} "${1}"
+  git clone "$SUMKENO_URL" "${1}"
 fi
 
 cd "${1}"

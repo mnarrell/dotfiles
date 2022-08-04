@@ -27,10 +27,10 @@ function +vi-git-aheadbehind() {
   local ahead behind
   local -a gitstatus
 
-  ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d ' ')
+  ahead=$(git rev-list "${hook_com[branch]}"@{upstream}..HEAD 2>/dev/null | wc -l | tr -d ' ')
   (( $ahead )) && gitstatus+=( "%F{green}⇡${ahead}%f" )
 
-  behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d ' ')
+  behind=$(git rev-list HEAD.."${hook_com[branch]}"@{upstream} 2>/dev/null | wc -l | tr -d ' ')
   (( $behind )) && gitstatus+=( "%F{red}⇣${behind}%f" )
 
   if [ ${#gitstatus[@]} -gt 0 ]; then
@@ -79,11 +79,11 @@ fi
 
 local -a prompt_parts
 prompt_parts=(
-  $prompt_newline
+  "$prompt_newline"
   "%F{blue}%2c%f"
   "\${vcs_info_msg_0_}"
   "\$(vi_mode_prompt_info)"
-  $prompt_newline
+  "$prompt_newline"
   "%(?.%F{yellow}.%F{red})$%f "
 )
 

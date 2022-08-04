@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 pip uninstall -y -r "${DIR}/requirements.txt"
 rm -rf "${XDG_CONFIG_HOME}/nvim"

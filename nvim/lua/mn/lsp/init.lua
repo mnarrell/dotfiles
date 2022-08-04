@@ -59,4 +59,4 @@ lspconfig.pyright.setup(vim.tbl_extend("force", support.base_config, {
 	},
 }))
 
--- require("mn.lsp.null-ls").setup()
+require("mn.lsp.null-ls").setup()

@@ -33,8 +33,8 @@ alias clear="echo 'NO!'"
 
 bash_prompt() {
   # regular colors
-  Y="\\[\\033[0;33m\\]"    # yellow
-  W="\\[\\033[0;37m\\]"    # white
+  Y="\\[\\033[0;33m\\]" # yellow
+  W="\\[\\033[0;37m\\]" # white
 
   # bolded colors
   BC="\\[\\033[1;36m\\]"

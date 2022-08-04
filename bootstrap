@@ -11,7 +11,7 @@ export XDG_RUNTIME_DIR=~/tmp/xdg_runtime
 while read -r env; do
   echo "Sourcing $env"
   # shellcheck disable=SC1090
-  source "${env}"
+  source "$env"
 done < <(find . -name env.zsh)
 echo ''
 
@@ -22,7 +22,7 @@ source zsh/path.zsh
 
 echo "Installing Git submodules..."
 while read -r sm; do
-  echo "${sm}"
+  echo "$sm"
 done < <(git submodule update --init --recursive)
 echo ''
 
@@ -31,8 +31,7 @@ if test ! "$(command -v brew)"; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   while read -r brw; do
-    echo "${brw}"
+    echo "$brw"
   done < <(brew update)
   echo ''
 fi
-
