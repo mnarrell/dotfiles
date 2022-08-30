@@ -179,7 +179,6 @@ packer.startup {
 			end,
 		}
 
-		use { 'ojroques/vim-oscyank' }
 	end,
 	config = {
 		display = { open_fn = require("packer.util").float },
