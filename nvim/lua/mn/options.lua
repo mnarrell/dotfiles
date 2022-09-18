@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
-vim.g.python3_host_prog = "/usr/local/opt/python@3.9/libexec/bin/python"
+vim.g.maplocalleader = "\\"
+vim.g.python3_host_prog = "/usr/local/opt/python@3/libexec/bin/python"
 vim.g.vimsyn_embed = "l" -- highlight inline Lua
 
 -- netrw oddities

@@ -6,6 +6,12 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
 
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldnestmax = 10
+opt.foldenable = false
+opt.foldlevel = 2
+
 -- Commands
 local command = require("mn.lib").command
 command("A", [[call go#alternate#Switch(<bang>0, 'edit')]])

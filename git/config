@@ -39,16 +39,16 @@
   cb = !git checkout $(git branch | fzf)
 
 [merge]
-  tool = opendiff
-  ; tool = nvim
+  ; tool = opendiff
   ; tool = vimdiff
-  conflictstyle = merge
+  tool = fugitive
+  conflictstyle = diff3
   stat = true
 
 [mergetool "vimdiff"]
   cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
-[mergetool "nvim"]
+[mergetool "fugitive"]
   cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 
 [mergetool]
@@ -89,3 +89,6 @@
 
 [init]
   defaultBranch = main
+
+; [rerere]
+;   enabled = true
