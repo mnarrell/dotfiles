@@ -15,21 +15,29 @@ M.setup = function()
 		sources = {
 
 			-- Ansible
-			null_ls.builtins.diagnostics.ansiblelint.with {
-				filetypes = { "yaml.ansible" },
-			},
+			null_ls.builtins.diagnostics.ansiblelint,
 
 			-- Docker
 			null_ls.builtins.diagnostics.hadolint,
 
+			null_ls.builtins.diagnostics.codespell,
+			null_ls.builtins.formatting.codespell,
+
 			-- Go
 			null_ls.builtins.diagnostics.revive,
+			null_ls.builtins.formatting.gofumpt,
+
+			-- Makefile
+			null_ls.builtins.diagnostics.checkmake,
 
 			-- Lua
 			null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals vim" } },
+			null_ls.builtins.formatting.stylua,
 
 			-- Markdown
 			null_ls.builtins.diagnostics.markdownlint,
+			null_ls.builtins.formatting.markdownlint,
+			null_ls.builtins.diagnostics.proselint,
 			null_ls.builtins.code_actions.proselint,
 
 			-- Prettier
@@ -56,8 +64,12 @@ M.setup = function()
 			null_ls.builtins.diagnostics.yamllint,
 
 			--------------------------------------------------------------------------------
-			-- Do these work?
+			-- Code Actions
 			null_ls.builtins.code_actions.gitsigns,
+
+			null_ls.builtins.diagnostics.tidy,
+			null_ls.builtins.formatting.tidy,
+			null_ls.builtins.diagnostics.zsh,
 		},
 	}))
 end
