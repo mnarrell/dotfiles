@@ -15,13 +15,14 @@ tap 'qmk/qmk'
 tap 'snyk/tap'
 tap 'osx-cross/avr'
 tap 'osx-cross/arm'
-
+tap '1password/tap'
 
 ################################################################################
 # Casks
 ################################################################################
 
 cask 'alacritty'
+cask '1password-cli'
 cask 'alfred'
 cask 'balenaetcher'
 cask 'bartender'

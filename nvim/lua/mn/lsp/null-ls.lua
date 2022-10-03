@@ -20,8 +20,8 @@ M.setup = function()
 			-- Docker
 			null_ls.builtins.diagnostics.hadolint,
 
-			null_ls.builtins.diagnostics.codespell,
-			null_ls.builtins.formatting.codespell,
+			-- null_ls.builtins.diagnostics.codespell,
+			-- null_ls.builtins.formatting.codespell,
 
 			-- Go
 			null_ls.builtins.diagnostics.revive,
