@@ -1,3 +1,6 @@
-local tnoremap = require("mn.lib").tnoremap
-tnoremap("<Esc>", [[<C-\><C-n>]])
-tnoremap("<Leader>q", [[<C-\><C-n> :bd!<CR>]])
+local map = function(lhs, rhs)
+	vim.keymap.set("t", lhs, rhs, { silent = true })
+end
+
+map("<Esc>", [[<C-\><C-n>]])
+map("<Leader>q", [[<C-\><C-n> :bd!<CR>]])

@@ -13,30 +13,37 @@ opt.foldenable = false
 opt.foldlevel = 2
 
 -- Commands
-local command = require("mn.lib").command
-command("A", [[call go#alternate#Switch(<bang>0, 'edit')]])
-command("AV", [[call go#alternate#Switch(<bang>0, 'vsplit')]])
-command("AS", [[call go#alternate#Switch(<bang>0, 'split')]])
-command("AT", [[call go#alternate#Switch(<bang>0, 'tabe')]])
+local cmd = function(lhs, rhs)
+	vim.api.nvim_create_user_command(lhs, rhs, { bang = true })
+end
 
-local buf_nmap = require("mn.lib").buf_nmap
-buf_nmap("†", "<Plug>(go-test-func)")
-buf_nmap("db", "<Plug>(go-doc-browser)")
-buf_nmap("tc", "<Plug>(go-coverage-toggle)")
+local alt = require "mn.go.alternate"
 
-
-local buf_nnoremap = require("mn.lib").buf_nnoremap
-buf_nnoremap("<C-g>", ":GoDeclsDir<CR>")
-buf_nnoremap("gb", function()
-	local f = vim.api.nvim_buf_get_name(0)
-	if string.endswith(f, "_test.go") then
-		vim.fn["go#test#Test"](0, 1)
-	elseif string.endswith(f, ".go") then
-		vim.cmd "GoBuild -i"
-	end
+cmd("A", function()
+	alt.switch ""
 end)
 
-local cmp = require("cmp")
+cmd("AS", function()
+	alt.switch "split"
+end)
+
+cmd("AV", function()
+	alt.switch "vsplit"
+end)
+
+cmd("AT", function()
+	alt.switch "tabe"
+end)
+
+-- Mappings
+local map = function(lhs, rhs)
+	vim.keymap.set("n", lhs, rhs, { buffer = true, silent = true })
+end
+
+-- map("<C-g>", ":GoDeclsDir<CR>")
+map("gb", require("mn.go.build").build)
+
+local cmp = require "cmp"
 cmp.setup.buffer {
 	-- completion = {
 	-- 	autocomplete = false

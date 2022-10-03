@@ -2,7 +2,6 @@ if not (pcall(require, "cmp") and pcall(require, "lspkind")) then
 	return
 end
 
-
 local cmp = require "cmp"
 cmp.setup {
 	formatting = {
@@ -17,7 +16,7 @@ cmp.setup {
 				emoji = "[Emoji]",
 				omni = "[omni]",
 				tmux = "[tmux]",
-				nvim_lsp_document_symbol = "[Syms]"
+				nvim_lsp_document_symbol = "[Syms]",
 			},
 		},
 	},
@@ -34,9 +33,9 @@ cmp.setup {
 		-- autocomplete = false,
 	},
 
-	mapping = cmp.mapping.preset.insert({
+	mapping = cmp.mapping.preset.insert {
 		["<C-X><C-O>"] = cmp.mapping.complete(),
-	}),
+	},
 
 	sources = cmp.config.sources {
 		{ name = "nvim_lsp" },

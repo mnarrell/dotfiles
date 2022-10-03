@@ -1,9 +1,10 @@
-local nnoremap = require("mn.lib").nnoremap
+local map = function(lhs, rhs)
+	vim.keymap.set("n", lhs, rhs, { silent = true })
+end
 
-nnoremap("<Leader>gb", ":Git blame<CR>")
-nnoremap("<Leader>gd", ":Gvdiff<CR>")
-nnoremap("<Leader>gr", ":Gread<CR> :w <CR>")
-nnoremap("<Leader>gs", ":Git<CR>")
-
-nnoremap("<LocalLeader>gd", ":diffget //2 <CR>")
-nnoremap("<LocalLeader>gl", ":diffget //3 <CR>")
+map("<Leader>gb", ":Git blame<CR>")
+map("<Leader>gd", ":Gvdiff<CR>")
+map("<Leader>gr", ":Gread<CR> :w <CR>")
+map("<Leader>gs", ":Git<CR>")
+map("<LocalLeader>gd", ":diffget //2 <CR>")
+map("<LocalLeader>gl", ":diffget //3 <CR>")

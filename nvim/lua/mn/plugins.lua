@@ -7,7 +7,7 @@ end
 vim.api.nvim_create_autocmd("BufWritePost", {
 	command = "PackerCompile",
 	pattern = "*/mn/plugins.lua",
-	group = vim.api.nvim_create_augroup("packer", { clear = true })
+	group = vim.api.nvim_create_augroup("packer", { clear = true }),
 })
 
 packer.startup {
@@ -25,10 +25,12 @@ packer.startup {
 		}
 		use { "fweep/vim-tabber" }
 		use { "kshenoy/vim-signature" }
-		use { "machakann/vim-highlightedyank" }
+		-- use { "machakann/vim-highlightedyank" }
 		use { "nvim-lualine/lualine.nvim" }
 		use { "kyazdani42/nvim-web-devicons" }
 		use { "windwp/nvim-autopairs" }
+
+		use { "MunifTanjim/nui.nvim" }
 
 		-- Basics
 		use { "tpope/vim-abolish" }
@@ -71,7 +73,7 @@ packer.startup {
 		use { "edkolev/tmuxline.vim", disable = true }
 		use { "tmux-plugins/vim-tmux", opt = true, ft = "tmux" }
 		use { "tmux-plugins/vim-tmux-focus-events" }
-		use { 'ojroques/vim-oscyank' }
+		use { "ojroques/vim-oscyank" }
 
 		-- Completion
 		use { "hrsh7th/nvim-cmp" }
@@ -107,9 +109,9 @@ packer.startup {
 		use { "chr4/nginx.vim", opt = true, ft = "nginx" }
 		use { "hashivim/vim-terraform", opt = true, ft = { "terraform", "hcl" } }
 		use { "pearofducks/ansible-vim" }
-		use { "towolf/vim-helm" }
+		-- use { "towolf/vim-helm" }
 
-		use { "folke/lua-dev.nvim" }
+		use { "folke/neodev.nvim" }
 		use { "euclidianAce/BetterLua.vim", opt = true, ft = "lua" }
 		-- }}}
 
@@ -162,7 +164,7 @@ packer.startup {
 		use { "nvim-telescope/telescope-packer.nvim" }
 		use { "nvim-telescope/telescope-symbols.nvim" }
 
-		use { 'nvim-telescope/telescope-ui-select.nvim' }
+		use { "nvim-telescope/telescope-ui-select.nvim" }
 		-- }}}
 
 		use { "kevinhwang91/nvim-bqf", ft = "qf" }
@@ -178,7 +180,6 @@ packer.startup {
 				require("todo-comments").setup()
 			end,
 		}
-
 	end,
 	config = {
 		display = { open_fn = require("packer.util").float },

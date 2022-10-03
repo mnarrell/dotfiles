@@ -1,55 +1,59 @@
-local nnoremap = require("mn.lib").nnoremap
+local map = function(lhs, rhs, opts)
+	opts = vim.tbl_extend("force", { silent = true }, opts or {})
+	vim.keymap.set("n", lhs, rhs, opts)
+end
 
-nnoremap("Q", "<Nop>")
+map("Q", "<Nop>")
 
-nnoremap("n", "nzzzv")
-nnoremap("N", "Nzzzv")
+map("n", "nzzzv")
+map("N", "Nzzzv")
 
-nnoremap("<Leader>o", ":only<CR>")
-nnoremap("<Leader>q", ":quit<CR>")
-nnoremap("<Leader>x", ":xit<CR>")
-nnoremap("<Leader>v", ":vsp<CR>")
-nnoremap("<Leader>s", ":sp<CR>")
-nnoremap("<Leader>k", ":bd!<CR>")
-nnoremap("<Leader>w", ":<C-u>call functions#SaveAndExec()<CR>")
+map("<Leader>o", ":only<CR>")
+map("<Leader>q", ":quit<CR>")
+map("<Leader>x", ":xit<CR>")
+map("<Leader>v", ":vsp<CR>")
+map("<Leader>s", ":sp<CR>")
+map("<Leader>k", ":bd!<CR>")
+-- map("<Leader>w", ":<C-u>call functions#SaveAndExec()<CR>")
+map("<Leader>w", SaveAndReload)
 
 -- Make Y behave like C and D
-nnoremap("Y", "y$")
+map("Y", "y$")
 
 -- Split navigation
-nnoremap("<C-j>", "<C-w>j")
-nnoremap("<C-k>", "<C-w>k")
-nnoremap("<C-h>", "<C-w>h")
-nnoremap("<C-l>", "<C-w>l")
+map("<C-j>", "<C-w>j")
+map("<C-k>", "<C-w>k")
+map("<C-h>", "<C-w>h")
+map("<C-l>", "<C-w>l")
 
 -- Scroll the viewport faster
-nnoremap("<C-e>", "5<C-e>")
-nnoremap("<C-y>", "5<C-y>")
+map("<C-e>", "5<C-e>")
+map("<C-y>", "5<C-y>")
 
 -- Force filetypes
-nnoremap("_ba", ":set filetype=bash<CR>")
-nnoremap("_co", ":set filetype=conf<CR>")
-nnoremap("_df", ":set filetype=Dockerfile<CR>")
-nnoremap("_hl", ":set filetype=helm<CR>")
-nnoremap("_js", ":set filetype=json<CR>")
-nnoremap("_lu", ":set filetype=lua<CR>")
-nnoremap("_md", ":set filetype=markdown<CR>")
-nnoremap("_py", ":set filetype=python<CR>")
-nnoremap("_sh", ":set filetype=sh<CR>")
-nnoremap("_tx", ":set filetype=text<CR>")
-nnoremap("_vi", ":set filetype=vim<CR>")
-nnoremap("_xm", ":set filetype=xml<CR>")
-nnoremap("_ya", ":set filetype=yaml<CR>")
-nnoremap("_zs", ":set filetype=zsh<CR>")
-nnoremap("_an", ":set filetype=yaml.ansible<CR>")
+map("_ba", ":set filetype=bash<CR>")
+map("_co", ":set filetype=conf<CR>")
+map("_df", ":set filetype=Dockerfile<CR>")
+map("_hl", ":set filetype=helm<CR>")
+map("_js", ":set filetype=json<CR>")
+map("_lu", ":set filetype=lua<CR>")
+map("_md", ":set filetype=markdown<CR>")
+map("_py", ":set filetype=python<CR>")
+map("_sh", ":set filetype=sh<CR>")
+map("_tx", ":set filetype=text<CR>")
+map("_vi", ":set filetype=vim<CR>")
+map("_xm", ":set filetype=xml<CR>")
+map("_ya", ":set filetype=yaml<CR>")
+map("_zs", ":set filetype=zsh<CR>")
+map("_an", ":set filetype=yaml.ansible<CR>")
 
 -- This was a nightmeer
-nnoremap("k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], { expr = true })
-nnoremap("j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { expr = true })
+map("k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], { expr = true })
+map("j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { expr = true })
 
 -- This was a challenge. Not sure if it's worth it.
 -- Clears search and Loupe highlights with <CR>, or <CR> if no selection...
-nnoremap("<CR>", function()
+map("<CR>", function()
 	if vim.api.nvim_get_vvar "hlsearch" ~= 0 then
 		vim.cmd "nohlsearch"
 		vim.cmd "normal! call loupe#private#clean_highlight()<CR>"
@@ -59,12 +63,15 @@ nnoremap("<CR>", function()
 	end
 end)
 
-nnoremap("<Up>", ":cprevious<CR>")
-nnoremap("<Down>", ":cnext<CR>")
+map("<Up>", ":cprevious<CR>")
+map("<Down>", ":cnext<CR>")
 
-nnoremap("tl", function() vim.cmd "botright lopen 20" end)
-nnoremap("tq", function() vim.cmd "botright copen 20" end)
+map("tl", function()
+	vim.cmd "botright lopen 20"
+end)
 
-nnoremap("yod", require("mn.lsp.support").toggle_diagnostics)
+map("tq", function()
+	vim.cmd "botright copen 20"
+end)
 
-nnoremap("<Leader>t", ":tabnew<CR>")
+map("<Leader>t", ":tabnew<CR>")

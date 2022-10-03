@@ -4,43 +4,29 @@ end
 
 require("gitsigns").setup {
 	on_attach = function(bufnr)
-		-- Navigation
-		vim.keymap.set("n", "]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { buffer = bufnr, expr = true })
-		vim.keymap.set("n", "[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { buffer = bufnr, expr = true })
-	end,
-	-- signs = {
-	-- 	add = { hl = "GitGutterAdd", text = "│" },
-	-- 	change = { hl = "GitGutterChange", text = "│" },
-	-- 	delete = { hl = "GitGutterDelete", text = "_" },
-	-- 	topdelete = { hl = "GitGutterDelete", text = "‾" },
-	-- 	changedelete = { hl = "GitGutterChange", text = "~" },
-	-- },
-	-- signs = {
-	--   add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
-	--   change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-	--   delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-	--   topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
-	--   changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
-	-- },
-	-- keymaps = {
-	-- 	-- Default keymap options
-	-- 	noremap = true,
-	-- 	buffer = true,
+		local gs = package.loaded.gitsigns
+		local map = function(lhs, rhs)
+			vim.keymap.set("n", lhs, rhs, { silent = true, buffer = bufnr, expr = true })
+		end
 
-	-- 	["n <leader>hs"] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
-	-- 	["n <leader>hu"] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
-	-- 	["n <leader>hr"] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
-	-- 	["n <leader>hR"] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
-	-- 	["n <leader>hp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
-	-- 	["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line()<CR>',
-	-- },
-	-- watch_index = {
-	-- 	interval = 1000,
-	-- },
-	-- current_line_blame = false,
-	-- sign_priority = 6,
-	-- update_debounce = 100,
-	-- status_formatter = nil, -- Use default
-	-- use_decoration_api = true,
-	-- use_internal_diff = true, -- If luajit is present
+		map("]c", function()
+			if vim.wo.diff then
+				return "]c"
+			end
+			vim.schedule(function()
+				gs.next_hunk()
+			end)
+			return "<Ignore>"
+		end)
+
+		map("[c", function()
+			if vim.wo.diff then
+				return "[c"
+			end
+			vim.schedule(function()
+				gs.prev_hunk()
+			end)
+			return "<Ignore>"
+		end)
+	end,
 }

@@ -1,11 +1,11 @@
 include ../env.mk
 
 install:
-	@yarn global add ansible-language-server
+	@npm install -g @ansible/ansible-language-server
 	@pip3 install -U -r $(CURDIR)/requirements.txt
 
 clean:
 	@pip3 uninstall -y -r $(CURDIR)/requirements.txt
-	@yarn global remove ansible-language-server
+	@npm uninstall -g @ansible/ansible-language-server
 
 .PHONY: install clean

@@ -17,10 +17,11 @@ telescope.setup {
 			i = my_maps,
 			n = my_maps,
 		},
+		file_ignore_patterns = { "vendor" },
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" }
+			find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 		},
 		help_tags = {
 			layout_config = {
@@ -33,24 +34,28 @@ telescope.setup {
 				preview_width = 80,
 				hide_on_startup = false,
 			},
-		}
+		},
 	},
 }
 
-telescope.load_extension('ui-select')
+telescope.load_extension "ui-select"
 
-local nnoremap = require("mn.lib").nnoremap
-nnoremap("<leader>b", builtin.buffers)
-nnoremap("<leader>gf", builtin.git_status)
-nnoremap("<leader>f", builtin.find_files)
-nnoremap("<leader>m", builtin.marks)
-nnoremap("<leader>r", builtin.live_grep)
-nnoremap("<leader>h", builtin.help_tags)
+-- Mappings
+local map = function(lhs, rhs)
+	vim.keymap.set("n", lhs, rhs, { silent = true })
+end
 
-local command = require("mn.lib").command
-command("FH", function()
-	builtin.find_files({ find_command = {
-		"fd", "--type", "f", "--hidden", "--no-ignore-vcs", "--strip-cwd-prefix", "--follow"
-	} })
+map("<leader>b", builtin.buffers)
+map("<leader>gf", builtin.git_status)
+map("<leader>f", builtin.find_files)
+map("<leader>m", builtin.marks)
+map("<leader>r", builtin.live_grep)
+map("<leader>h", builtin.help_tags)
 
-end)
+-- Commands
+local find_hidden = function()
+	builtin.find_files {
+		find_command = { "fd", "--type", "f", "--hidden", "--no-ignore-vcs", "--strip-cwd-prefix", "--follow" },
+	}
+end
+vim.api.nvim_create_user_command("FH", find_hidden, { bang = true })

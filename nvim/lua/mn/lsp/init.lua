@@ -1,6 +1,6 @@
 local ok, lspconfig = pcall(require, "lspconfig")
 if not ok then
-	vim.notify ("Unable to load lspconfig", vim.log.levels.ERROR)
+	vim.notify("Unable to load lspconfig", vim.log.levels.ERROR)
 	return
 end
 
@@ -13,43 +13,57 @@ end
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
 
-vim.diagnostic.config {
-	virtual_text = false,
-	-- virtual_text = {
-	-- 	source = "if_many",
-	-- },
-}
-
-lspconfig.sumneko_lua.setup(require("mn.lsp.lua").config)
-lspconfig.gopls.setup(require("mn.lsp.golang").config)
-lspconfig.yamlls.setup(require("mn.lsp.yaml").config)
+vim.diagnostic.config { virtual_text = false }
 
 local support = require "mn.lsp.support"
-lspconfig.ansiblels.setup(support.base_config)
-lspconfig.terraformls.setup(support.base_config)
-lspconfig.vimls.setup(support.base_config)
 
-lspconfig.dockerls.setup(vim.tbl_extend("force", support.base_config, {
+require "mn.lsp.lua"
+require "mn.lsp.golang"
+require "mn.lsp.null-ls"
+
+lspconfig.yamlls.setup {
+	capabilities = support.capabilities(),
+	on_attach = support.on_attach,
+}
+
+lspconfig.dockerls.setup {
+	capabilities = support.capabilities(),
+	on_attach = support.on_attach,
 	root_dir = function(fname)
 		return lspconfig.util.find_git_ancestor(fname)
 	end,
-}))
+}
 
-lspconfig.jsonls.setup(vim.tbl_extend("force", support.base_config, {
-	commands = {
-		Format = {
-			function()
-				vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line "$", 0 })
-			end,
-		},
-	},
-}))
+lspconfig.ansiblels.setup {
+	on_attach = support.on_attach,
+	capabilities = support.capabilities(),
+}
 
-lspconfig.bashls.setup(vim.tbl_extend("force", support.base_config, {
-	filetypes = { "sh", "zsh", "bash" },
-}))
+lspconfig.bashls.setup {
+	on_attach = function(client, bufnr)
+		if client.supports_method "textDocument/formatting" then
+			local autocmds = vim.api.nvim_create_augroup("bashAutocmds", { clear = true })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				callback = function(args)
+					vim.lsp.buf.format { bufnr = args.buf }
+				end,
+				group = autocmds,
+			})
+		end
+		support.on_attach(client, bufnr)
+	end,
+	capabilities = support.capabilities(),
+	filetypes = { "sh", "bash" },
+}
 
-lspconfig.pyright.setup(vim.tbl_extend("force", support.base_config, {
+lspconfig.terraformls.setup {
+	on_attach = support.on_attach,
+	capabilities = support.capabilities(),
+}
+
+lspconfig.pyright.setup {
+	on_attach = support.on_attach,
+	capabilities = support.capabilities(),
 	settings = {
 		python = {
 			formatting = {
@@ -57,6 +71,23 @@ lspconfig.pyright.setup(vim.tbl_extend("force", support.base_config, {
 			},
 		},
 	},
-}))
+}
 
-require("mn.lsp.null-ls").setup()
+local autocmds = vim.api.nvim_create_augroup("lspAutocmds", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(_)
+		vim.keymap.set("n", "q", ":close", { silent = true, buffer = true })
+	end,
+	pattern = "lspinfo",
+	group = autocmds,
+})
+
+-- vim.api.nvim_create_autocmd("LspAttach", {
+-- 	callback = function(args)
+-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+-- 		-- vim.notify(client.name .. " attached to dis", vim.lsp.log_levels.INFO)
+-- 		support.mappings(args.data.client_id)
+-- 	end,
+-- 	group = autocmds,
+-- })

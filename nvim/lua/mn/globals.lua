@@ -20,3 +20,14 @@ end
 function string.endswith(self, str)
 	return self:sub(-#str) == str
 end
+
+_G.SaveAndReload = function()
+	vim.cmd "silent! write"
+
+	local ft = vim.bo.filetype
+	if ft == "vim" then
+		vim.cmd "source %"
+	elseif ft == "lua" then
+		vim.cmd "luafile %"
+	end
+end

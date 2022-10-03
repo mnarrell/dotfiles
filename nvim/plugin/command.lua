@@ -1,17 +1,20 @@
-local command = require("mn.lib").command
+local cmd = function(lhs, rhs, opts)
+	opts = vim.tbl_extend("force", { bang = true }, opts or {})
+	vim.api.nvim_create_user_command(lhs, rhs, opts)
+end
 
-command("Wq", "wq")
-command("Wqa", "wqa")
+cmd("Wq", "wq")
+cmd("Wqa", "wqa")
 
-command("PS", "PackerSync")
-command("GX", [[:silent !gitx]])
-command("TIG", [[:tabnew | terminal tig -a]])
-command("ClearRegisters", [[call functions#ClearRegisters()]])
+cmd("PS", "PackerSync")
+cmd("GX", [[:silent !gitx]])
+cmd("TIG", [[:tabnew | terminal tig -a]])
+cmd("ClearRegisters", [[call functions#ClearRegisters()]])
 
-command("AsConfluence", [[:call functions#AsConfluence()]], { range = "%" })
-command("Base64Decode", [[:call functions#Base64Decode()]], { range = "%" })
+cmd("AsConfluence", require("mn.convert").as_confluence)
+cmd("Base64Decode", require("mn.convert").decode_base64, { range = "%" })
 
 -- Terminals bro
-command("TS", [[split | term <args>]], { nargs = "*" })
-command("TV", [[vsplit | term <args>]], { nargs = "*" })
-command("TT", [[tabnew | term <args>]], { nargs = "*" })
+cmd("TS", [[split | term <args>]], { nargs = "*" })
+cmd("TV", [[vsplit | term <args>]], { nargs = "*" })
+cmd("TT", [[tabnew | term <args>]], { nargs = "*" })

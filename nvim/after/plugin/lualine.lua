@@ -74,7 +74,7 @@ add_left {
 
 add_left {
 	-- "branch",
-	'FugitiveHead',
+	"FugitiveHead",
 	icon = "",
 	color = "StatusLineTextBold",
 	padding = { left = 0, right = 0 },

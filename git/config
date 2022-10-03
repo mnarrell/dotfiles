@@ -39,9 +39,9 @@
   cb = !git checkout $(git branch | fzf)
 
 [merge]
-  ; tool = opendiff
+  tool = opendiff
   ; tool = vimdiff
-  tool = fugitive
+  ; tool = fugitive
   conflictstyle = diff3
   stat = true
 
@@ -55,8 +55,8 @@
   prompt = false
 
 [diff]
-  ; tool = opendiff
-  tool = vimdiff
+  tool = opendiff
+  ; tool = vimdiff
 
 [difftool]
   prompt = false

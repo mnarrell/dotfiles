@@ -4,6 +4,7 @@ local g = vim.g
 g.go_addtags_transform = "camelcase"
 g.go_doc_popup_window = 1
 g.go_list_height = 20
+g.go_fmt_autosave = 0
 -- g.go_list_type = "quickfix"
 -- g.go_updatetime = 400
 -- g.go_echo_command_info = 0

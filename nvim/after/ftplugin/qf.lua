@@ -11,11 +11,14 @@ local history = function(earlier)
 	end
 end
 
-local nnoremap = require("mn.lib").nnoremap
-nnoremap("<left>", function()
+local map = function(lhs, rhs)
+	vim.keymap.set("n", lhs, rhs, { silent = true })
+end
+
+map("<left>", function()
 	history(false)
 end)
 
-nnoremap("<right>", function()
+map("<right>", function()
 	history(true)
 end)

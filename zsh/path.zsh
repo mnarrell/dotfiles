@@ -6,6 +6,7 @@ unset PATH
 PATH=~/.local/bin
 PATH=${PATH}:${GOROOT}/bin
 PATH=${PATH}:${GOBIN}
+PATH=${PATH}:~/.rd/bin
 PATH=${PATH}:/usr/local/opt/openssl/bin
 PATH=${PATH}:/usr/local/opt/python@3/libexec/bin
 PATH=${PATH}:${XDG_DATA_HOME}/npm/bin

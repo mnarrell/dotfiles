@@ -1,8 +1,9 @@
-local vnoremap = require("mn.lib").vnoremap
-vnoremap(".", ":normal .<CR>")
-vnoremap("Q", ":normal @q<CR>")
+local map = function(mode, lhs, rhs)
+	vim.keymap.set(mode, lhs, rhs, { silent = true })
+end
 
-local xnoremap = require("mn.lib").xnoremap
-xnoremap("<", "<gv")
-xnoremap(">", ">gv")
-xnoremap("=", ">gv")
+map("v", ".", ":normal .<CR>")
+map("v", "Q", ":normal @q<CR>")
+map("x", "<", "<gv")
+map("x", ">", ">gv")
+map("x", "=", ">gv")

@@ -83,7 +83,7 @@ font:
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  use_thin_strokes: false
+  AppleFontSmoothing: false
 
 shell:
   program: /usr/local/bin/zsh
