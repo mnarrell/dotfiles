@@ -28,9 +28,11 @@ cask 'balenaetcher'
 cask 'bartender'
 cask 'basictex'
 cask 'better-window-manager'
+# cask 'cleanmymac'
 cask 'coconutbattery'
 cask 'docker', greedy: true
 cask 'dropbox'
+cask 'element'
 cask 'firefox'
 cask 'font-meslo-for-powerline'
 cask 'font-meslo-lg-nerd-font'
@@ -44,15 +46,21 @@ cask 'karabiner-elements'
 cask 'lens'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
+cask 'onyx'
 cask 'postman'
+cask 'private-internet-access'
 cask 'qmk-toolbox'
 cask 'rowanj-gitx'
 cask 'slack'
+cask 'spotify'
+cask 'steam'
+cask 'textmate'
 cask 'the-unarchiver'
 cask 'vagrant'
 cask 'virtualbox'
 cask 'visual-studio-code'
 cask 'vlc'
+cask 'wez/wezterm/wezterm'
 
 
 ################################################################################
@@ -199,9 +207,12 @@ brew 'zsh'
 
 ################################################################################
 # Mac App Store
+################################################################################
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
+mas 'Deliveries (3.1.1)', id: 290986013
 mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
+mas 'Keynote (9.1)', id: 409183694
 mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'Microsoft Excel (16.22)', id: 462058435
 mas 'Microsoft OneNote (16.22)', id: 784801555
@@ -211,4 +222,7 @@ mas 'Microsoft Remote Desktop (10.3.11)', id: 1295203466
 mas 'Microsoft Word (16.22)', id: 462054704
 mas 'Numbers (6.1)', id: 409203825
 mas 'OneDrive (19.002.0107)', id: 823766827
+mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
 mas 'Tweetbot (3.2)', id: 1384080005
+mas 'WireGuard (1.0.15)', id: 1451685025
+mas 'feedly (1.1)', id: 865500966
