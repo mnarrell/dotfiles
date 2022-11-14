@@ -1,8 +1,14 @@
 local base16_loaded, scheme = pcall(require, "base16-colorscheme")
-if not base16_loaded then return end
+if not base16_loaded then
+	vim.notify("Unable to load base16-colorscheme", vim.log.levels.ERROR)
+	return
+end
 
 local devicons_loaded, devicons = pcall(require, "nvim-web-devicons")
-if not devicons_loaded then return end
+if not devicons_loaded then
+	vim.notify("Unable to load nvim-web-devicons", vim.log.levels.ERROR)
+	return
+end
 
 local theme = scheme.colorschemes["tomorrow-night"]
 
@@ -90,8 +96,8 @@ end
 M.file_info = function()
 	if vim.bo.modified then
 		vim.cmd "highlight link StatusLineFileInfo StatusLineFileModified"
-	-- elseif not vim.bo.modifiable then
-	-- 	vim.cmd "highlight link StatusLineFileInfo StatusLineFileRestricted"
+		-- elseif not vim.bo.modifiable then
+		-- 	vim.cmd "highlight link StatusLineFileInfo StatusLineFileRestricted"
 	elseif vim.bo.readonly then
 		vim.cmd "highlight link StatusLineFileInfo StatusLineFileReadonly"
 	elseif not vim.bo.modified then

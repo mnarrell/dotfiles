@@ -1,4 +1,9 @@
-local ls = require "luasnip"
+local ok, ls = pcall(require, "luasnip")
+if not ok then
+	vim.notify("Unable to load luasnip", vim.log.levels.ERROR)
+	return
+end
+
 local types = require "luasnip.util.types"
 
 ls.config.set_config {

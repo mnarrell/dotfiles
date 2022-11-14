@@ -13,5 +13,9 @@ map("x", "al", "$o0")
 map("o", "al", ":normal val<CR>")
 
 vim.g.completion_confirm_key = ""
-local opts = { expr = true, silent = true }
-map("i", "<CR>", require("nvim-autopairs").check_break_line_char, opts)
+
+local ok, autopairs = pcall(require, "nvim-autopairs")
+if ok then
+	local opts = { expr = true, silent = true }
+	map("i", "<CR>", autopairs.check_break_line_char, opts)
+end

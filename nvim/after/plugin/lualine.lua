@@ -1,5 +1,6 @@
 local ok, lualine = pcall(require, "lualine")
 if not ok then
+	vim.notify("Unable to load lualine", vim.log.levels.ERROR)
 	return
 end
 

@@ -1,3 +1,9 @@
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+	vim.notify("Unable to load lspconfig", vim.log.levels.ERROR)
+	return
+end
+
 local sumneko_root = vim.env.HOME .. "/src/lua-language-server"
 local sumneko_bin = sumneko_root .. "/bin/lua-language-server"
 
@@ -14,14 +20,27 @@ local on_attach = function(client, bufnr)
 	require("mn.lsp.support").on_attach(client, bufnr)
 end
 
-require("neodev").setup {}
+local yes, neodev = pcall(require, "neodev")
+if yes then
+	neodev.setup {
+		library = {
+			plugins = false,
+			-- plugins = {
+			-- 	"telescope.nvim",
+			-- },
+		},
+	}
+end
 
-require("lspconfig").sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
 	cmd = { sumneko_bin, "-E", sumneko_root .. "/main.lua" },
 	on_attach = on_attach,
 	capabilities = require("mn.lsp.support").capabilities(),
 	settings = {
 		Lua = {
+			-- diagnostics = {
+			-- 	globals = { "vim" },
+			-- },
 			workspace = {
 				preloadFileSize = 50000,
 				checkThirdParty = false,

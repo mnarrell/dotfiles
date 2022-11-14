@@ -1,3 +1,9 @@
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+	vim.notify("Unable to load lspconfig", vim.log.levels.ERROR)
+	return
+end
+
 local go_org_imports = function(wait_ms)
 	local params = vim.lsp.util.make_range_params()
 	params.context = { only = { "source.organizeImports" } }
@@ -30,9 +36,12 @@ local on_attach = function(client, bufnr)
 	require("mn.lsp.support").on_attach(client, bufnr)
 end
 
-require("lspconfig").gopls.setup {
+lspconfig.gopls.setup {
 	on_attach = on_attach,
 	capabilities = require("mn.lsp.support").capabilities(),
+	flags = {
+		debounce_text_changes = 500,
+	},
 	settings = {
 		gopls = {
 			gofumpt = true, -- A stricter gofmt
@@ -66,6 +75,7 @@ require("lspconfig").gopls.setup {
 				parameterNames = true,
 				rangeVariableTypes = true,
 			},
+			diagnosticsDelay = "500ms",
 		},
 	},
 }

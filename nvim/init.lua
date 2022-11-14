@@ -1,4 +1,4 @@
-if require "mn.bootstrap"() then
+if require "mn.bootstrap" () then
 	os.exit()
 end
 

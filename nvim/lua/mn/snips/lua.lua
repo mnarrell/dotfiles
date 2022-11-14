@@ -1,4 +1,8 @@
-local ls = require "luasnip"
+local ok, ls = pcall(require, "luasnip")
+if not ok then
+	vim.notify("Unable to load luasnip", vim.log.levels.ERROR)
+	return
+end
 
 local s = ls.s
 local i = ls.insert_node
@@ -59,16 +63,13 @@ return {
 		{ t "if ", i(1, "condition"), t(" then", "	"), i(2, "-- body"), t("", "end") }
 	),
 
-	s(
-		{ trig = "ife", name = "if/else" },
-		{
-			t "if ",
-			i(1, "condition"),
-			t { " then", "	" },
-			i(2, "-- truth"),
-			t { "", "else", "	" },
-			i(0, "-- false"),
-			t { "", "end" },
-		}
-	),
+	s({ trig = "ife", name = "if/else" }, {
+		t "if ",
+		i(1, "condition"),
+		t { " then", "	" },
+		i(2, "-- truth"),
+		t { "", "else", "	" },
+		i(0, "-- false"),
+		t { "", "end" },
+	}),
 }

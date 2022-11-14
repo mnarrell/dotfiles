@@ -1,5 +1,6 @@
 local ok, null_ls = pcall(require, "null-ls")
 if not ok then
+	vim.notify("Unable to load null-ls", vim.log.levels.ERROR)
 	return
 end
 
@@ -9,6 +10,7 @@ null_ls.setup {
 	should_attach = function(bufnr)
 		return not string.find(vim.api.nvim_buf_get_name(bufnr), "BufExplorer")
 	end,
+	on_attach = require("mn.lsp.support").on_attach,
 	sources = {
 
 		-- Ansible

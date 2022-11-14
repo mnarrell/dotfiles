@@ -1,8 +1,10 @@
-if not pcall(require, "gitsigns") then
+local ok, gitsigns = pcall(require, "gitsigns")
+if not ok then
+	vim.notify("Unable to load gitsigns", vim.log.levels.ERROR)
 	return
 end
 
-require("gitsigns").setup {
+gitsigns.setup {
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
 		local map = function(lhs, rhs)

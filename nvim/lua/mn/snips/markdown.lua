@@ -1,4 +1,8 @@
-local ls = require "luasnip"
+local ok, ls = pcall(require, "luasnip")
+if not ok then
+	vim.notify("Unable to load luasnip", vim.log.levels.ERROR)
+	return
+end
 
 local s = ls.s
 local i = ls.insert_node
@@ -21,8 +25,8 @@ local markdown = {
 	s({ trig = "link", name = "Link" }, fmt("[{}]({})", { i(1, "Text"), i(2, "http://www.url.com") })),
 }
 
-local ok, private = pcall(require, "mn.snips.markdown_private")
-if ok then
+local yes, private = pcall(require, "mn.snips.markdown_private")
+if yes then
 	for _, v in ipairs(private) do
 		table.insert(markdown, v)
 	end
