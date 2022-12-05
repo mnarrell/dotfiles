@@ -23,7 +23,9 @@ alias -g kevt="k get events --sort-by='.lastTimestamp'"
 alias -g kl='k logs -f PODS'
 alias -g kdp='k describe pod PODS'
 alias -g kds='k describe service SVC'
-alias -g kcs='k config use-context CTX'
+# alias -g kcs='k config use-context CTX'
+alias -g kc='kubectx'
+alias -g kn='kubens'
 alias -g kfixcomp='source <(kubectl completion zsh)'
 alias -g kge='k get events --sort-by='\''.metadata.creationTimestamp'\'' '
 
@@ -35,7 +37,7 @@ alias -g ING='$(kfuzz ing)'
 alias -g SECRETS='$(kfuzz secrets)'
 alias -g SA='$(kfuzz serviceaccounts)'
 
-alias -g CTX='$(kubectl config get-contexts -o=name | sort -fd | fzf-tmux --reverse --multi --cycle)'
+# alias -g CTX='$(kubectl config get-contexts -o=name | sort -fd | fzf-tmux --reverse --multi --cycle)'
 
 # Fuzzy match a Kubernetes resource
 function kfuzz() {

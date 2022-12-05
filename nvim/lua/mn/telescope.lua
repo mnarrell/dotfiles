@@ -25,6 +25,9 @@ telescope.setup {
 		file_ignore_patterns = { "vendor" },
 	},
 	pickers = {
+		lsp_references = {
+			fname_width = 100,
+		},
 		find_files = {
 			find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 		},
