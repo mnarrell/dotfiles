@@ -63,8 +63,8 @@ map("<CR>", function()
 	end
 end)
 
-map("<Up>", ":cprevious<CR>")
-map("<Down>", ":cnext<CR>")
+-- map("<Up>", ":cprevious<CR>")
+-- map("<Down>", ":cnext<CR>")
 
 map("tl", function()
 	vim.cmd "botright lopen 20"

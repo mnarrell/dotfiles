@@ -24,8 +24,7 @@ packer.startup {
 			end,
 		}
 		use { "fweep/vim-tabber" }
-		use { "kshenoy/vim-signature" }
-		-- use { "machakann/vim-highlightedyank" }
+		use { "kshenoy/vim-signature" } -- show marks
 		use { "nvim-lualine/lualine.nvim" }
 		use { "kyazdani42/nvim-web-devicons" }
 		use { "windwp/nvim-autopairs" }
@@ -96,20 +95,10 @@ packer.startup {
 
 		-- Syntax {{{
 		use { "fatih/vim-go", run = ":GoUpdateBinaries", opt = true, ft = "go" }
-		use { "raimon49/requirements.txt.vim", opt = true, ft = "requirements" }
-		use {
-			"vim-python/python-syntax",
-			opt = true,
-			ft = "python",
-			config = function()
-				vim.g.python_highlight_all = 1
-			end,
-		}
 		use { "cespare/vim-toml", opt = true, ft = "toml" }
 		use { "chr4/nginx.vim", opt = true, ft = "nginx" }
 		use { "hashivim/vim-terraform", opt = true, ft = { "terraform", "hcl" } }
 		use { "pearofducks/ansible-vim" }
-		-- use { "towolf/vim-helm" }
 
 		use { "folke/neodev.nvim" }
 		use { "euclidianAce/BetterLua.vim", opt = true, ft = "lua" }
