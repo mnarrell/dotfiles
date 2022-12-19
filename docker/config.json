@@ -1,3 +1,4 @@
 {
-	"auths": {}
+	"auths": {},
+	"credsStore": "osxkeychain"
 }

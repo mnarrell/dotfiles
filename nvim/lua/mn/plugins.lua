@@ -56,6 +56,7 @@ packer.startup {
 		use { "AndrewRadev/splitjoin.vim" }
 		use { "tpope/vim-vinegar" }
 		use { "simeji/winresizer" }
+		use { "johmsalas/text-case.nvim" }
 
 		-- Text objects
 		use { "kana/vim-textobj-user" }
@@ -67,6 +68,7 @@ packer.startup {
 		use { "tpope/vim-rhubarb" }
 		use { "tpope/vim-fugitive" }
 		use { "lewis6991/gitsigns.nvim" }
+		use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
 
 		-- Tmux
 		use { "edkolev/tmuxline.vim", disable = true }

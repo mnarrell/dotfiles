@@ -18,5 +18,9 @@ alias -g CONTAINERS='$(docker ps -a | fzf-tmux --header-lines=1 --reverse --mult
 
 function dp() {
   docker system prune -f
+}
+
+function dpa() {
+  docker system prune -f
   docker builder prune -af
 }

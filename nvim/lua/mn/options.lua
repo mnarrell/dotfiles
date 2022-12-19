@@ -67,6 +67,7 @@ vim.opt.listchars = "nbsp:⦸,tab:▷┅,extends:»,precedes:«,trail:•"
 
 vim.opt.fillchars:append "fold: "
 vim.opt.fillchars:append "vert:|"
+vim.opt.fillchars:append "diff: "
 
 -- vim.opt.shortmess = vim.o.shortmess .. 'c' -- don't give |ins-completion-menu| messages
 vim.opt.shortmess:append "c"
