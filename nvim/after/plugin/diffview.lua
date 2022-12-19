@@ -37,4 +37,37 @@ require("diffview").setup {
 			win_opts = {},
 		},
 	},
+	hooks = {
+		diff_buf_read = function(_)
+			-- Change local options in diff buffers
+			vim.opt_local.list = false
+			-- vim.opt_local.colorcolumn = { 80 }
+		end,
+		view_opened = function(view)
+			local utils = require "mn.ui"
+			-- Highlight 'DiffChange' as 'DiffDelete' on the left, and 'DiffAdd' on
+			-- the right.
+			local function post_layout()
+				utils.tbl_ensure(view, "winopts.diff2.a")
+				utils.tbl_ensure(view, "winopts.diff2.b")
+				-- left
+				view.winopts.diff2.a = utils.tbl_union_extend(view.winopts.diff2.a, {
+					winhl = {
+						"DiffChange:DiffAddAsDelete",
+						"DiffText:DiffDeleteText",
+					},
+				})
+				-- right
+				view.winopts.diff2.b = utils.tbl_union_extend(view.winopts.diff2.b, {
+					winhl = {
+						"DiffChange:DiffAdd",
+						"DiffText:DiffAddText",
+					},
+				})
+			end
+
+			view.emitter:on("post_layout", post_layout)
+			post_layout()
+		end,
+	},
 }

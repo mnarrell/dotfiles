@@ -64,13 +64,6 @@ lspconfig.terraformls.setup {
 lspconfig.pyright.setup {
 	on_attach = support.on_attach,
 	capabilities = support.capabilities(),
-	settings = {
-		python = {
-			formatting = {
-				provider = "yapf",
-			},
-		},
-	},
 }
 
 local autocmds = vim.api.nvim_create_augroup("lspAutocmds", { clear = true })

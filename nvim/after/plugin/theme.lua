@@ -85,6 +85,29 @@ M.apply_highlights = function()
 
 	hi.TelescopePreviewTitle = { guifg = theme.base0D, guibg = NONE, gui = NONE }
 
+	-- hi.DiffAdd = { gui = NONE, guifg = NONE, guibg = "#2C3B4B" }
+	-- -- hi.DiffChange = { gui = NONE, guifg = NONE, guibg = "#e5d5ac" }
+	-- hi.DiffDelete = { guifg = "Grey", guibg = "#1f0201", gui = NONE, guisp = nil }
+	-- hi.DiffText = { guifg = NONE, guibg = "#2C3B4B", gui = NONE, guisp = nil }
+
+	hi.DiffAdd = { gui = NONE, guifg = NONE, guibg = "#103235" }
+	hi.DiffChange = { gui = NONE, guifg = NONE, guibg = "#272D43" }
+	hi.DiffText = { gui = NONE, guifg = NONE, guibg = "#394b70" }
+	hi.DiffDelete = { gui = NONE, guifg = NONE, guibg = "#3F2D3D" }
+	-- hi.DiffviewDiffAddAsDelete = { guibg = "#3f2d3d", gui = NONE, guifg = NONE }
+	-- hi.DiffviewDiffDelete = { gui = NONE, guifg = "#3B4252", guibg = NONE }
+
+	-- Left panel
+	-- "DiffChange:DiffAddAsDelete",
+	-- "DiffText:DiffDeleteText",
+	-- hi.DiffAddAsDelete = { gui = NONE, guifg = NONE, guibg = "#3F2D3D" }
+	-- hi.DiffDeleteText = { gui = NONE, guifg = NONE, guibg = "#4B1818" }
+
+	-- Right panel
+	-- "DiffChange:DiffAdd",
+	-- "DiffText:DiffAddText",
+	-- hi.DiffAddText = { gui = NONE, guifg = NONE, guibg = "#1C5458" }
+
 	-- vim.api.nvim_command('highlight! clear Search')
 	vim.api.nvim_command "highlight! link Search Underlined"
 	-- vim.api.nvim_command('highlight! link QuickFixLine PmenuSel')

@@ -74,4 +74,6 @@ map("tq", function()
 	vim.cmd "botright copen 20"
 end)
 
+map("tt", ":TroubleToggle<CR>")
+
 map("<Leader>t", ":tabnew<CR>")

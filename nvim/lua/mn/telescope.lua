@@ -28,6 +28,9 @@ telescope.setup {
 		lsp_references = {
 			fname_width = 100,
 		},
+		lsp_document_symbols = {
+			symbol_width = 60,
+		},
 		find_files = {
 			find_command = { "fd", "--type", "f", "--hidden", "--strip-cwd-prefix" },
 		},

@@ -43,6 +43,7 @@ lspconfig.gopls.setup {
 		debounce_text_changes = 500,
 	},
 	settings = {
+		buildFlags = { "tools" },
 		gopls = {
 			gofumpt = true, -- A stricter gofmt
 			codelenses = {

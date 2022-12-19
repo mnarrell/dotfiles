@@ -119,7 +119,7 @@ packer.startup {
 		}
 		use { "nvim-treesitter/nvim-treesitter-textobjects" }
 		use { "nvim-treesitter/nvim-treesitter-refactor" }
-		use { "p00f/nvim-ts-rainbow" }
+		use { "mrjones2014/nvim-ts-rainbow" }
 
 		-- LSP
 		use {
@@ -158,12 +158,12 @@ packer.startup {
 		use { "nvim-telescope/telescope-ui-select.nvim" }
 		-- }}}
 
-		use { "kevinhwang91/nvim-bqf", ft = "qf" }
+		-- use { "kevinhwang91/nvim-bqf", ft = "qf" }
 
 		-- use { "rcarriga/nvim-notify", event = "BufEnter", }
 		-- use { "rcarriga/nvim-notify" }
 
-		-- use { "folke/trouble.nvim" }
+		use { "folke/trouble.nvim" }
 
 		use {
 			"folke/todo-comments.nvim",

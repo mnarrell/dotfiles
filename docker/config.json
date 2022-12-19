@@ -1,4 +1,5 @@
 {
 	"auths": {},
-	"credsStore": "osxkeychain"
+	"credsStore": "osxkeychain",
+	"currentContext": "colima"
 }

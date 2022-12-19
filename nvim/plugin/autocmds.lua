@@ -2,7 +2,7 @@ local autocmds = vim.api.nvim_create_augroup("auto", { clear = true })
 
 vim.api.nvim_create_autocmd({ "FocusLost", "WinLeave" }, {
 	command = ":silent! wa",
-	pattern = "*",
+	-- pattern = "*",
 	group = autocmds,
 })
 
@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		end
 		vim.fn.winrestview(pos)
 	end,
-	pattern = "*",
+	-- pattern = "*",
 	group = autocmds,
 })
 
@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		setlocal nolist nonumber norelativenumber noshowmode nospell
 		startinsert
 	]],
-	pattern = "*",
+	-- pattern = "*",
 	group = autocmds,
 })
 

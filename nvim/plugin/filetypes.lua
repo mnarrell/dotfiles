@@ -1,6 +1,7 @@
 vim.filetype.add {
 	filename = {
 		["staticcheck.conf"] = "toml",
+		[".envrc"] = "direnv",
 	},
 	pattern = {
 		["Brewfile.*"] = "ruby",

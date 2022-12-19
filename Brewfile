@@ -35,6 +35,7 @@ cask 'font-meslo-for-powerline'
 cask 'font-meslo-lg-nerd-font'
 cask 'font-roboto-mono-nerd-font'
 cask 'font-sauce-code-pro-nerd-font'
+cask 'font-jetbrains-mono-nerd-font'
 cask 'google-chrome', greedy: true
 cask 'insomnia'
 cask 'istat-menus'

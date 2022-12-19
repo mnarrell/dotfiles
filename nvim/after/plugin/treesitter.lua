@@ -21,6 +21,7 @@ configs.setup {
 		"regex",
 		"ruby",
 		"scala",
+		"terraform",
 		"toml",
 		"vim",
 		"yaml",
