@@ -1,11 +1,9 @@
 include ../env.mk
 
 install:
-	@npm install -g @ansible/ansible-language-server
-	@pip3 install -U -r $(CURDIR)/requirements.txt
+	@pip3 install -U ansible
 
 clean:
-	@pip3 uninstall -y -r $(CURDIR)/requirements.txt
-	@npm uninstall -g @ansible/ansible-language-server
+	@pip3 uninstall -y ansible
 
 .PHONY: install clean

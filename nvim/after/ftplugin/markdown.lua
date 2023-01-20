@@ -11,11 +11,11 @@ opt.list = false
 opt.wrap = true
 
 local map = function(lhs, rhs)
-	vim.keymap.set("n", lhs, rhs, { buffer = true, silent = true })
+  vim.keymap.set("n", lhs, rhs, { buffer = true, silent = true })
 end
 
 map("j", "gj")
 map("k", "gk")
 
-vim.cmd [[setlocal spell]]
--- opt.spell = true
+-- vim.cmd [[setlocal spell]]
+opt.spell = true

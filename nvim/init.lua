@@ -1,10 +1,16 @@
-if require "mn.bootstrap" () then
-	os.exit()
-end
+require("mn.config.globals")
+require("mn.config.options")
 
-require "mn.globals"
-require "mn.options"
-require "mn.plugins"
+require("mn.config.lazy")
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    require("mn.config.filetypes")
+    require("mn.config.autocmds")
+    require("mn.config.keymaps")
+  end,
+})
 
 -- Machine local settings...
 pcall(require, "mn.local")

@@ -14,43 +14,43 @@ opt.foldlevel = 2
 
 -- Commands
 local cmd = function(lhs, rhs)
-	vim.api.nvim_create_user_command(lhs, rhs, { bang = true })
+  vim.api.nvim_create_user_command(lhs, rhs, { bang = true })
 end
 
-local alt = require "mn.go.alternate"
+local alt = require("mn.go.alternate")
 
 cmd("A", function()
-	alt.switch ""
+  alt.switch("")
 end)
 
 cmd("AS", function()
-	alt.switch "split"
+  alt.switch("split")
 end)
 
 cmd("AV", function()
-	alt.switch "vsplit"
+  alt.switch("vsplit")
 end)
 
 cmd("AT", function()
-	alt.switch "tabe"
+  alt.switch("tabe")
 end)
 
 -- Mappings
 local map = function(lhs, rhs)
-	vim.keymap.set("n", lhs, rhs, { buffer = true, silent = true })
+  vim.keymap.set("n", lhs, rhs, { buffer = true, silent = true })
 end
 
 -- map("<C-g>", ":GoDeclsDir<CR>")
 map("gb", require("mn.go.build").build)
 
-local cmp = require "cmp"
-cmp.setup.buffer {
-	-- completion = {
-	-- 	autocomplete = false
-	-- },
-	sources = cmp.config.sources {
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lsp_signature_help" },
-		{ name = "luasnip" },
-	},
-}
+-- local cmp = require "cmp"
+-- cmp.setup.buffer {
+-- 	-- completion = {
+-- 	-- 	autocomplete = false
+-- 	-- },
+-- 	sources = cmp.config.sources {
+-- 		{ name = "nvim_lsp" },
+-- 		{ name = "nvim_lsp_signature_help" },
+-- 		{ name = "luasnip" },
+-- 	},
+-- }

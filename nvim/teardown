@@ -11,8 +11,6 @@ npm uninstall -g \
 
 gem uninstall neovim || true
 
-# rm -rf "$(HOME)/.viminfo"
 rm -rf "${HOME}/.vimrc_background"
-rm -rf "${DIR}/plugin/packer_compiled.lua"
-rm -rf "${XDG_DATA_HOME}/nvim/site"
+rm -rf "${XDG_DATA_HOME}/nvim/lazy"
 rm -rf "${XDG_CONFIG_HOME}/nvim"
