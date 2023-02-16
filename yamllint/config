@@ -6,8 +6,6 @@ rules:
   braces:
     min-spaces-inside: 0
     max-spaces-inside: 1
-  document-end:
-    present: true
   indentation:
     indent-sequences: consistent
   line-length:

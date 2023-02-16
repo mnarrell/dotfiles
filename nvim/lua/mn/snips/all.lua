@@ -1,9 +1,4 @@
-local ok, ls = pcall(require, "luasnip")
-if not ok then
-  vim.notify("Unable to load luasnip", vim.log.levels.ERROR)
-  return
-end
-
+local ls = require("luasnip")
 local s = ls.s
 local i = ls.insert_node
 local t = ls.text_node
@@ -13,7 +8,9 @@ local all = {
 
   s(
     { trig = "lorem", name = "Lorem ipsum" },
-    t("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+    t(
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    )
   ),
 
   s({ trig = "MIT", name = "MIT License" }, {

@@ -1,9 +1,4 @@
-local ok, ls = pcall(require, "luasnip")
-if not ok then
-  vim.notify("Unable to load luasnip", vim.log.levels.ERROR)
-  return
-end
-
+local ls = require("luasnip")
 local s = ls.s
 local i = ls.insert_node
 local t = ls.text_node
@@ -120,7 +115,7 @@ local go = {
     { t("func "), i(1, "name"), t("("), i(2, "params"), t(") "), i(3), t({ "{", "" }), i(0), t({ "", "}" }) }
   ),
 
-  s({ trig = "ff", name = "Print variable" }, { t([[fmt.Printf("]]), i(1), t([[ = %+v\n", ]]), rep(1), t(")") }),
+  s({ trig = "ff", name = "Print Variable" }, fmt([[fmt.Printf("{} = %+v\n", {})]], { i(1), rep(1) })),
 
   s({ trig = "fn", name = "Print statement" }, { t([[fmt.Println("]]), i(1), t([[")]]) }),
 

@@ -26,7 +26,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function(args)
       go_org_imports(1)
-      -- vim.lsp.buf.format { async = true, bufnr = args.buf }
       vim.lsp.buf.format({ bufnr = args.buf })
     end,
     group = autocmds,
@@ -67,6 +66,9 @@ lspconfig.gopls.setup({
         useany = true,
       },
       staticcheck = true,
+      init_options = {
+        usePlaceholders = true,
+      },
       hints = {
         assignVariableTypes = true,
         compositeLiteralFields = true,

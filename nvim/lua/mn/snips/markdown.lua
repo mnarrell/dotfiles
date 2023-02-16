@@ -1,9 +1,4 @@
-local ok, ls = pcall(require, "luasnip")
-if not ok then
-  vim.notify("Unable to load luasnip", vim.log.levels.ERROR)
-  return
-end
-
+local ls = require("luasnip")
 local s = ls.s
 local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt

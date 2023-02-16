@@ -51,25 +51,57 @@ return {
         -- autocomplete = false,
       },
 
+      sorting = {
+        comparators = {
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.score,
+          cmp.config.compare.kind,
+          cmp.config.compare.sort_text,
+          cmp.config.compare.length,
+          cmp.config.compare.order,
+        },
+      },
+
       mapping = cmp.mapping.preset.insert({
         ["<C-X><C-O>"] = cmp.mapping.complete(),
-        -- ["<C-y>"] = cmp.mapping.confirm({
-        --   behavior = cmp.ConfirmBehavior.Insert,
-        --   select = false,
-        -- }),
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<C-y>"] = cmp.mapping.confirm({
+          -- behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        }, { "i", "c" }),
+        ["<c-q>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
+        }),
       }),
 
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "nvim_lsp_signature_help" },
         { name = "luasnip" },
-        { name = "nvim_lua" },
+        -- { name = "nvim_lua" },
+        -- { name = "nvim_lsp_document_symbol" },
+      }, {
         { name = "path" },
-        { name = "buffer", keyword_length = 4 },
-        { name = "omni" },
-        { name = "nvim_lsp_document_symbol" },
-        { name = "tmux", keyword_length = 4 },
+        { name = "buffer", keyword_length = 3 },
+      }, {
+        { name = "tmux", keyword_length = 3 },
+        -- { name = "omni" },
       }),
+
+      experimental = {
+        -- I like the new menu better! Nice work hrsh7th
+        native_menu = false,
+
+        -- Let's play with this for a day or two
+        ghost_text = false,
+      },
     }
   end,
 }

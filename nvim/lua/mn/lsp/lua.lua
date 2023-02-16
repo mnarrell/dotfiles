@@ -12,8 +12,22 @@ if yes then
   })
 end
 
+local on_attach = function(client, bufnr)
+  print("lua_ls attached to dis")
+  local autocmds = vim.api.nvim_create_augroup("luaLsAutocmds", { clear = true })
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    callback = function(args)
+      vim.lsp.buf.format({ bufnr = args.buf })
+    end,
+    group = autocmds,
+    pattern = "*.lua",
+  })
+
+  require("mn.lsp.support").on_attach(client, bufnr)
+end
+
 lspconfig.lua_ls.setup({
-  on_attach = require("mn.lsp.support").on_attach,
+  on_attach = on_attach,
   capabilities = require("mn.lsp.support").capabilities(),
   settings = {
     Lua = {
