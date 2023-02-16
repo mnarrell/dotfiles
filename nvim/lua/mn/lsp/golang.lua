@@ -55,7 +55,7 @@ lspconfig.gopls.setup({
         upgrade_dependency = true, -- Upgrades a dependency in the go.mod file for a module
         vendor = true, -- Runs go mod vendor for a module
       },
-      -- usePlaceholders = true,
+      usePlaceholders = true,
       completeUnimported = true,
       analyses = {
         -- fieldalignment = true, -- find structs that would use less memory if their fields were sorted
@@ -66,9 +66,6 @@ lspconfig.gopls.setup({
         useany = true,
       },
       staticcheck = true,
-      init_options = {
-        usePlaceholders = true,
-      },
       hints = {
         assignVariableTypes = true,
         compositeLiteralFields = true,
