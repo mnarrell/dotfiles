@@ -1,0 +1,612 @@
+---
+version: "3"
+
+env:
+  XDG_CONFIG_HOME: "{{.HOME}}/.config"
+  XDG_CACHE_HOME: "{{.HOME}}/.cache"
+  XDG_DATA_HOME: "{{.HOME}}/.local/share"
+  XDG_RUNTIME_DIR: "{{.HOME}}/tmp/xdg_runtime"
+
+################################################################################
+tasks:
+  ensure_xdg:
+    desc: Ensure the XDG locations are present
+    silent: true
+    internal: true
+    cmds:
+      - mkdir -p {{.XDG_CONFIG_HOME}}
+      - mkdir -p {{.XDG_CACHE_HOME}}
+      - mkdir -p {{.XDG_DATA_HOME}}
+      - mkdir -p {{.XDG_RUNTIME_DIR}}
+
+  ################################################################################
+  ## Alacritty
+  alacritty:up:
+    desc: Configures the Alacritty terminal
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/alacritty {{.XDG_CONFIG_HOME}}/alacritty
+      # - git clone https://github.com/alacritty/alacritty.git {{.HOME}}/tmp/alacritty
+      # - tic -xe alacritty,alacritty-direct {{.HOME}}/tmp/alacritty/extra/alacritty.info
+      # - rm -rf {{.HOME}}/tmp/alacritty
+      - defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+      - defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
+
+  alacritty:down:
+    desc: Removes Alacritty configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/alacritty
+
+  ################################################################################
+  # Ansible
+  ansible:up:
+    desc: Configures Ansible
+    cmds:
+      - pip3 install -U ansible
+
+  ansible:down:
+    desc: Removes Ansible configuration
+    cmds:
+      - pip3 uninstall -y ansible
+
+  ################################################################################
+  # Bash
+  bash:up:
+    desc: Configures the Bash shell
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/bash/.bash_profile {{.HOME}}/.bash_profile
+      - ln -sfn {{.ROOT_DIR}}/bash/.bashrc {{.HOME}}/.bashrc
+
+  bash:down:
+    desc: Removes Bash configuration
+    cmds:
+      - rm {{.HOME}}/.bash_profile
+      - rm {{.HOME}}/.bashrc
+
+  ################################################################################
+  # Binaries
+  bin:up:
+    desc: Provisions local binaries
+    vars:
+      BIN_HOME: "{{.HOME}}/.local/bin"
+    cmds:
+      - mkdir -p {{.BIN_HOME}}
+      - ln -sf {{.ROOT_DIR}}/bin {{.BIN_HOME}}
+
+  ################################################################################
+  # Direnv
+  direnv:up:
+    desc: Configures Direnv
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/direnv {{.XDG_CONFIG_HOME}}/direnv
+
+  direnv:down:
+    desc: Removes Direnv configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/direnv
+
+  ################################################################################
+  # Docker
+  docker:up:
+    desc: Configures the Docker engine
+    cmds:
+      - mkdir -p {{.XDG_CONFIG_HOME}}/docker/cli-plugins
+      - ln -sfn {{.ROOT_DIR}}/docker {{.XDG_CONFIG_HOME}}/docker
+      - ln -sfn /usr/local/opt/docker-buildx/bin/docker-buildx {{.XDG_CONFIG_HOME}}/docker/cli-plugins/docker-buildx
+
+  docker:down:
+    desc: Removes Docker configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/docker
+
+  ################################################################################
+  # FD
+  fd:up:
+    desc: Configures fd
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/fd {{.XDG_CONFIG_HOME}}/fd
+
+  fd:down:
+    desc: Removes FD configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/fd
+
+  ################################################################################
+  # FZF
+  fzf:up:
+    desc: Configures FZF fuzzy finder
+    vars:
+      FZF_HOME:
+        sh: brew --prefix
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/fzf {{.XDG_CONFIG_HOME}}/fzf
+      - "{{.FZF_HOME}}/opt/fzf/install --all --xdg --no-update-rc"
+
+  fzf:down:
+    desc: Removes FZF configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/fzf
+
+  ################################################################################
+  # Gems
+  gem:up:
+    desc: Configures Rubygems
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/gem {{.XDG_CONFIG_HOME}}/gem
+      - mkdir -p {{.XDG_DATA_HOME}}/gem
+      - mkdir -p {{.XDG_CACHE_HOME}}/gem
+      - gem update --system
+      - gem update
+      - gem cleanup
+
+  gem:down:
+    desc: Removes Gems configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/gem
+      - rm -rf {{.XDG_DATA_HOME}}/gem
+      - rm -rf {{.XDG_CACHE_HOME}}/gem
+
+  ################################################################################
+  # Git
+  git:up:
+    desc: Configures Git
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/git {{.XDG_CONFIG_HOME}}/git
+      - pip3 install -U -r {{.ROOT_DIR}}/git/requirements.txt
+
+  git:down:
+    desc: Removes Git configuration
+    cmds:
+      - pip3 uninstall -y -r {{.ROOT_DIR}}/git/requirements.txt
+      - rm -rf {{.XDG_CONFIG_HOME}}/git
+
+  ################################################################################
+  # GNU binaries
+  gnu:up:
+    desc: Configures GNU binaries
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/gnu {{.XDG_CONFIG_HOME}}/gnu
+
+  gnu:down:
+    desc: Removes GNU binaries configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/gnu
+
+  ################################################################################
+  # Golang
+  go:dist:
+    desc: Downloads a Golang distribution
+    silent: true
+    internal: true
+    vars:
+      GO_VERSION: 1.19.6
+      GO_URL: https://go.dev/dl/go{{.GO_VERSION}}.darwin-amd64.tar.gz
+    cmds:
+      - echo Installing Go {{.GO_VERSION}}
+      - curl -L {{.GO_URL}} | tar xz -C {{.HOME}}/tmp
+      - sudo mv {{.HOME}}/tmp/go /usr/local/go-{{.GO_VERSION}}
+      - sudo ln -sfn /usr/local/go-{{.GO_VERSION}} /usr/local/go
+    status:
+      - test -d /usr/local/go-{{.GO_VERSION}}
+
+  go:up:
+    desc: Configures the Golang development environment
+    cmds:
+      - task: go:dist
+      - ln -sfn {{.ROOT_DIR}}/golang {{.XDG_CONFIG_HOME}}/golang
+      - ln -sfn {{.ROOT_DIR}}/golang/golangci.yml {{.HOME}}/.golangci.yml
+      - go install honnef.co/go/tools/cmd/staticcheck@latest
+      - go install github.com/sbowman/xq@latest
+      - go install github.com/oligot/go-mod-upgrade@latest
+
+  go:down:
+    desc: Removes Golang configuration
+    cmds:
+      - rm -f {{.HOME}}/.golangci.yml
+      - rm -rf {{.XDG_CONFIG_HOME}}/golang
+
+  go:destroy:
+    desc: Destroys the Golang development environment
+    cmds:
+      - task: go:down
+      - sudo rm -rf /usr/local/go*
+
+  ################################################################################
+  # Helm
+  helm:dist:
+    desc: Downloads a Helm binary
+    silent: true
+    internal: true
+    vars:
+      HELM_VERSION: 3.9.1
+      HELM_URL: https://get.helm.sh/helm-v{{.HELM_VERSION}}-darwin-amd64.tar.gz
+      HELM: helm-{{.HELM_VERSION}}
+    cmds:
+      - echo "Installing helm {{.HELM_VERSION}}..."
+      - curl -L {{.HELM_URL}} | tar xz -C {{.HOME}}/tmp
+      - chmod +x {{.HOME}}/tmp/darwin-amd64/helm
+      - cp {{.HOME}}/tmp/darwin-amd64/helm {{.HOME}}/.local/bin/{{.HELM}}
+      - ln -sfn {{.HOME}}/.local/bin/{{.HELM}} {{.HOME}}/.local/bin/helm
+      - rm -rf {{.HOME}}/tmp/darwin-amd64
+    status:
+      - test -f {{.HOME}}/.local/bin/{{.HELM}}
+
+  helm:up:
+    desc: Installs the Helm binary and configuration
+    cmds:
+      - task: helm:dist
+      - ln -sfn {{.ROOT_DIR}}/helm {{.XDG_CONFIG_HOME}}/helm
+
+  helm:down:
+    desc: Removes Helm configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/helm
+
+  helm:destroy:
+    desc: Destroys the Helm binary and configuration
+    cmds:
+      - task: helm:down
+      - rm -rf {{.HOME}}/.local/bin/helm*
+
+  ################################################################################
+  # Homebrew
+  homebrew:up:
+    desc: Configures the Homebrew environment
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/homebrew {{.XDG_CONFIG_HOME}}/homebrew
+
+  homebrew:down:
+    desc: Removes Homebrew configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/homebrew
+
+  ################################################################################
+  # Java
+  java:up:
+    desc: Configures the JDK
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/java {{.XDG_CONFIG_HOME}}/java
+      - sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
+  java:down:
+    desc: Removes Java configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/java
+      - sudo rm /Library/Java/JavaVirtualMachines/openjdk.jdk
+
+  ################################################################################
+  # Kubernetes
+  kube:dist:
+    desc: Downloads a kubectl binary
+    silent: true
+    internal: true
+    vars:
+      KUBECTL_VERSION: 1.21.1
+      KUBECTL_URL: https://storage.googleapis.com/kubernetes-release/release/v{{.KUBECTL_VERSION}}/bin/darwin/amd64/kubectl
+      KUBECTL: kubectl-{{.KUBECTL_VERSION}}
+    cmds:
+      - echo "Installing kubectl {{.KUBECTL_VERSION}}..."
+      - curl {{.KUBECTL_URL}} -o {{.HOME}}/tmp/{{.KUBECTL}}
+      - chmod +x {{.HOME}}/tmp/{{.KUBECTL}}
+      - mv {{.HOME}}/tmp/{{.KUBECTL}} {{.HOME}}/.local/bin/{{.KUBECTL}}
+      - ln -sfn {{.HOME}}/.local/bin/{{.KUBECTL}} {{.HOME}}/.local/bin/kubectl
+    status:
+      - test -f {{.HOME}}/.local/bin/{{.KUBECTL}}
+
+  kube:up:
+    desc: Configures the Kubernetes environment
+    cmds:
+      - task: kube:dist
+      - ln -sfn {{.ROOT_DIR}}/kubernetes {{.XDG_CONFIG_HOME}}/kubernetes
+
+  kube:down:
+    desc: Removes Kubernetes configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/kubernetes
+
+  kube:destroy:
+    desc: Destroys the Kubernetes environment
+    cmds:
+      - task: kube:down
+      - rm -rf {{.HOME}}/.local/bin/kube*
+
+  ################################################################################
+  # Less
+  less:up:
+    desc: Configures the Less binary
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/less {{.XDG_CONFIG_HOME}}/less
+
+  less:down:
+    desc: Removes Less configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/less
+
+  ################################################################################
+  # MacOS
+  # macos:up:
+  #   desc: Configures MacOS
+  #   cmds:
+  #     - sudo cp {{.ROOT_DIR}}/macos/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
+  #     - sudo cp {{.ROOT_DIR}}/macos/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist
+
+  # macos:down:
+  #   desc: Removes MacOS configuration
+  #   cmds:
+  #     - sudo rm -f /Library/LaunchDaemons/limit.maxfiles.plist
+  #     - sudo rm -f /Library/LaunchDaemons/limit.maxproc.plist
+
+  ################################################################################
+  # Markdown
+  markdown:up:
+    desc: Configures the Markdown linters
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/markdown {{.XDG_CONFIG_HOME}}/markdown
+      - ln -sf {{.ROOT_DIR}}/markdownlintrc.json {{.HOME}}/.markdownlintrc
+      - npm install -g markdown2confluence
+
+  markdown:down:
+    desc: Removes Markdown configuration
+    cmds:
+      - rm -f {{.HOME}}/.markdownlintrc
+      - npm uninstall -g markdown2confluence
+      - rm -rf {{.XDG_CONFIG_HOME}}/markdown
+
+  ################################################################################
+  # Node
+  node:up:
+    desc: Configures NodeJS
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/node {{.XDG_CONFIG_HOME}}/node
+      - mkdir -p {{.XDG_DATA_HOME}}/node
+
+  node:down:
+    desc: Removes NodeJS configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/node
+      - rm -rf {{.XDG_DATA_HOME}}/node
+
+  ################################################################################
+  # NPM
+  npm:up:
+    desc: Configures NPM
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/npm {{.XDG_CONFIG_HOME}}/npm
+      - mkdir -p {{.XDG_CACHE_HOME}}/npm
+      - mkdir -p {{.XDG_DATA_HOME}}/npm
+      - mkdir -p {{.XDG_RUNTIME_DIR}}/npm
+
+  npm:down:
+    desc: Removes NPM configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/npm
+      - rm -rf {{.XDG_CACHE_HOME}}/npm
+      - rm -rf {{.XDG_DATA_HOME}}/npm
+      - rm -rf {{.XDG_RUNTIME_DIR}}/npm
+
+  ################################################################################
+  # Neovim
+  nvim:up:
+    desc: Configures Neovim
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/nvim {{.XDG_CONFIG_HOME}}/nvim
+      - pip install -U -r {{.ROOT_DIR}}/nvim/requirements.txt
+      - npm install -g neovim
+      - gem install neovim
+
+  nvim:down:
+    desc: Removes Neovim configuration
+    cmds:
+      - pip uninstall -y -r {{.ROOT_DIR}}/nvim/requirements.txt
+      - rm -rf {{.XDG_CONFIG_HOME}}/nvim
+      - npm uninstall -g neovim
+      - gem uninstall neovim || true
+      - rm -rf {{.HOME}}/.vimrc_background
+      - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy
+      - rm -rf {{.XDG_CONFIG_HOME}}/nvim
+
+  ################################################################################
+  # Pip
+  pip:up:
+    desc: Configures Pip
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/pip {{.XDG_CONFIG_HOME}}/pip
+
+  pip:down:
+    desc: Removes Pip configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/pip
+
+  ################################################################################
+  # PSQL
+  psql:up:
+    desc: Configures PSQL
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/psql {{.XDG_CONFIG_HOME}}/psql
+      - mkdir -p {{.XDG_CACHE_HOME}}/psql
+
+  psql:down:
+    desc: Removes PSQL configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/psql
+      - rm -rf {{.XDG_CACHE_HOME}}/psql
+
+  ################################################################################
+  # Python
+  python:up:
+    desc: Configures Python
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/python {{.XDG_CONFIG_HOME}}/python
+      - pip3 install -U -r {{.ROOT_DIR}}/python/requirements.txt
+      - ln -sf {{.ROOT_DIR}}/python/flake8.toml {{.XDG_CONFIG_HOME}}/flake8
+
+  python:down:
+    desc: Removes Python configuration
+    cmds:
+      - pip3 uninstall -y -r {{.ROOT_DIR}}/python/requirements.txt
+      - rm -rf {{.XDG_CONFIG_HOME}}/python
+      - rm {{.XDG_CONFIG_HOME}}/flake8
+
+  ################################################################################
+  # Readline
+  readline:up:
+    desc: Configures Readline
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/readline {{.XDG_CONFIG_HOME}}/readline
+
+  readline:down:
+    desc: Removes Readline configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/readline
+
+  ################################################################################
+  ripgrep:up:
+    desc: Configures Readline
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/ripgrep {{.XDG_CONFIG_HOME}}/ripgrep
+
+  ripgrep:down:
+    desc: Removes Ripgrep configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/ripgrep
+
+  ################################################################################
+  # Taskfile
+  task:up:
+    desc: Configures Taskfile
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/task {{.XDG_CONFIG_HOME}}/task
+
+  task:down:
+    desc: Removes Taskfile configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/task
+
+  ################################################################################
+  # Terraform
+  terraform:up:
+    desc: "Links Terraform configuration"
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/terraform {{.XDG_CONFIG_HOME}}/terraform
+
+  terraform:down:
+    desc: "Removes Terraform configuration link"
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/terraform
+
+  ################################################################################
+  # TIG
+  tig:up:
+    desc: Configures TIG
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/tig {{.XDG_CONFIG_HOME}}/tig
+      - mkdir -p {{.XDG_DATA_HOME}}/tig
+
+  tig:down:
+    desc: Removes TIG configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/tig
+      - rm -rf {{.XDG_DATA_HOME}}/tig
+
+  ################################################################################
+  # TMUX
+  tmux:up:
+    desc: Configures TMUX
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/tmux {{.XDG_CONFIG_HOME}}/tmux
+      - tic -xe tmux-256color {{.ROOT_DIR}}/tmux/tmux-256color.src
+
+  tmux:down:
+    desc: Removes TMUX configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/tmux
+      - rm -rf {{.HOME}}/.terminfo
+
+  ################################################################################
+  # Vagrant
+  vagrant:up:
+    desc: Configures Vagrant
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/vagrant {{.XDG_CONFIG_HOME}}/vagrant
+      - mkdir -p {{.XDG_DATA_HOME}}/vagrant
+      - vagrant plugin install vagrant-hosts
+
+  vagrant:down:
+    desc: Removes Vagrant configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/vagrant
+      - rm -rf {{.XDG_DATA_HOME}}/vagrant
+
+  ################################################################################
+  # YAML Lint
+  yamllint:up:
+    desc: Configures YAML Lint
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/yamllint {{.XDG_CONFIG_HOME}}/yamllint
+      - pip3 install -U -r {{.ROOT_DIR}}/yamllint/requirements.txt
+
+  yamllint:down:
+    desc: Removes YAML Lint configuration
+    cmds:
+      - pip3 uninstall -y -r {{.ROOT_DIR}}/yamllint/requirements.txt
+      - rm -rf {{.XDG_CONFIG_HOME}}/yamllint
+
+  ################################################################################
+  # ZSH
+  zsh:up:
+    desc: Configures ZSH
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/zsh {{.XDG_CONFIG_HOME}}/zsh
+      - mkdir -p {{.XDG_CACHE_HOME}}/zsh
+      - mkdir -p {{.XDG_DATA_HOME}}/zsh
+      - pip3 install -U -r {{.ROOT_DIR}}/zsh/requirements.txt
+      - antibody bundle < {{.ROOT_DIR}}/zsh/bundle.txt > {{.XDG_DATA_HOME}}/zsh/plugins
+      - antibody update
+      - ln -sf {{.ROOT_DIR}}/zsh/zshenv {{.HOME}}/.zshenv
+
+  zsh:down:
+    desc: Removes ZSH configuration
+    cmds:
+      - rm -f {{.HOME}}/.zshenv
+      - pip3 uninstall -y -r {{.ROOT_DIR}}/zsh/requirements.txt
+      - rm -rf {{.XDG_CONFIG_HOME}}/zsh
+      - rm -rf {{.XDG_CACHE_HOME}}/zsh
+
+  ################################################################################
+  # ALL
+  default:
+    desc: "Deploy all configuration"
+    cmds:
+      - task: ensure_xdg
+      - task: alacritty:up
+      - task: ansible:up
+      - task: bash:up
+      - task: bin:up
+      - task: direnv:up
+      - task: docker:up
+      - task: fd:up
+      - task: fzf:up
+      - task: gem:up
+      - task: git:up
+      - task: gnu:up
+      - task: go:up
+      - task: helm:up
+      - task: homebrew:up
+      - task: java:up
+      - task: kube:up
+      - task: less:up
+      - task: markdown:up
+      - task: node:up
+      - task: npm:up
+      - task: nvim:up
+      - task: pip:up
+      - task: psql:up
+      - task: python:up
+      - task: readline:up
+      - task: ripgrep:up
+      - task: task:up
+      - task: terraform:up
+      - task: tig:up
+      - task: tmux:up
+      - task: vagrant:up
+      - task: yamllint:up
+      - task: zsh:up
