@@ -45,11 +45,15 @@ return {
         end,
       },
 
-      completion = {
-        keyword_length = 1,
-        completeopt = "menu,noselect",
-        -- autocomplete = false,
+      window = {
+        documentation = cmp.config.window.bordered(),
       },
+
+      -- completion = {
+      --   keyword_length = 1,
+      --   completeopt = "menu,noselect",
+      --   -- autocomplete = false,
+      -- },
 
       sorting = {
         comparators = {
@@ -83,16 +87,13 @@ return {
 
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
+        { name = "buffer", keyword_length = 2 },
         { name = "nvim_lsp_signature_help" },
         { name = "luasnip" },
-        -- { name = "nvim_lua" },
-        -- { name = "nvim_lsp_document_symbol" },
-      }, {
+        { name = "nvim_lua" },
+        { name = "nvim_lsp_document_symbol" },
         { name = "path" },
-        { name = "buffer", keyword_length = 3 },
-      }, {
-        { name = "tmux", keyword_length = 3 },
-        -- { name = "omni" },
+        { name = "tmux" },
       }),
 
       experimental = {

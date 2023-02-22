@@ -26,5 +26,15 @@ return {
       require("mn.lsp")
     end,
   },
-  { "j-hui/fidget.nvim", config = true },
+  {
+    "j-hui/fidget.nvim",
+    opts = {
+      text = {
+        spinner = "arc",
+      },
+      sources = {
+        ["null-ls"] = { ignore = true },
+      },
+    },
+  },
 }

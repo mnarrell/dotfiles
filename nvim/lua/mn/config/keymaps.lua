@@ -74,6 +74,10 @@ map("n", "_ya", ":set filetype=yaml<CR>")
 map("n", "_zs", ":set filetype=zsh<CR>")
 map("n", "_an", ":set filetype=yaml.ansible<CR>")
 
+-- Navigate between tabpages
+map("n", "[t", ":tabprevious<CR>")
+map("n", "]t", ":tabnext<CR>")
+
 -- This was a nightmeer
 map("n", "k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], { silent = true, expr = true })
 map("n", "j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { silent = true, expr = true })
