@@ -5,6 +5,8 @@ return {
   { "kshenoy/vim-signature" }, -- show marks
   { "kyazdani42/nvim-web-devicons" },
 
+  { "MunifTanjim/nui.nvim" },
+
   -- Basics
   { "tpope/vim-abolish" },
   { "tpope/vim-repeat" },

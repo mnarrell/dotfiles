@@ -392,6 +392,7 @@ tasks:
       - pip install -U -r {{.ROOT_DIR}}/nvim/requirements.txt
       - npm install -g neovim
       - gem install neovim
+      - nvim --headless "+Lazy! sync" +qa
 
   nvim:down:
     desc: Removes Neovim configuration
