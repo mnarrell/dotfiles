@@ -1,6 +1,5 @@
 return {
   "hrsh7th/nvim-cmp",
-  -- event = "BufReadPre",
   event = {
     "CmdlineEnter",
     "InsertEnter",
@@ -13,7 +12,6 @@ return {
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lsp-signature-help",
     "hrsh7th/cmp-omni",
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
     "andersevenrud/cmp-tmux",
     "onsails/lspkind-nvim",
     "L3MON4D3/LuaSnip",
@@ -90,17 +88,12 @@ return {
         { name = "buffer", keyword_length = 2 },
         { name = "nvim_lsp_signature_help" },
         { name = "luasnip" },
-        { name = "nvim_lua" },
-        { name = "nvim_lsp_document_symbol" },
         { name = "path" },
         { name = "tmux" },
       }),
 
       experimental = {
-        -- I like the new menu better! Nice work hrsh7th
         native_menu = false,
-
-        -- Let's play with this for a day or two
         ghost_text = false,
       },
     }

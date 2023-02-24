@@ -1,5 +1,11 @@
 local support = require("mn.lsp.support")
 
+local caps = vim.lsp.protocol.make_client_capabilities()
+caps.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+
 require("lspconfig").yamlls.setup({
   filetypes = { "yaml", "helm" },
   capabilities = support.capabilities(),
@@ -8,9 +14,7 @@ require("lspconfig").yamlls.setup({
     -- read them properly)
     if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
       vim.diagnostic.disable(bufnr)
-      -- vim.defer_fn(function()
       vim.diagnostic.reset(nil, bufnr)
-      -- end, 1000)
     end
 
     support.on_attach(client, bufnr)

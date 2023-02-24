@@ -79,5 +79,5 @@
 [init]
   defaultBranch = main
 
-; [rerere]
-;   enabled = true
+[credential]
+  helper = osxkeychain

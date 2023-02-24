@@ -5,9 +5,10 @@
 docker/.buildNodeID
 docker/.token_seed
 docker/.token_seed.lock
-docker/contexts
-docker/cli-plugins/*
 docker/buildx/*
+docker/cli-plugins/*
+docker/config.json
+docker/contexts
 
 git/config.local
 

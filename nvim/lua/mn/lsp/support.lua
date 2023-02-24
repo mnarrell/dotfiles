@@ -70,24 +70,21 @@ M.on_attach = function(client, bufnr)
   end)
 
   map("yod", toggle_diagnostics)
-
-  -- local autocmds = vim.api.nvim_create_augroup("luaAutocmds", { clear = true })
-  -- if client.supports_method("textDocument/formatting") then
-  --   vim.api.nvim_create_autocmd("BufWritePre", {
-  --     callback = function(args)
-  --       vim.lsp.buf.format({ bufnr = args.buf })
-  --     end,
-  --     group = autocmds,
-  --   })
-  -- end
 end
 
 M.capabilities = function()
   local caps = vim.lsp.protocol.make_client_capabilities()
+
   local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
   if ok then
     caps = cmp_nvim_lsp.default_capabilities(caps)
   end
+
+  caps.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+  }
+
   return caps
 end
 

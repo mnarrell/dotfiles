@@ -35,7 +35,6 @@ return {
 
     highlight = {
       enable = true,
-      disable = { "make" },
       additional_vim_regex_highlighting = false,
     },
 

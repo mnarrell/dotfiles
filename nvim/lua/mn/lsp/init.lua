@@ -60,6 +60,7 @@ lspconfig.pyright.setup({
 --------------------------------------------------------------------------------
 -- Look and feel
 vim.diagnostic.config({ virtual_text = false })
+
 local signs = { Error = "✗ ", Warn = " ", Hint = " ", Info = "𝓲 " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
