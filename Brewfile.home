@@ -1,10 +1,7 @@
 ################################################################################
 # Taps
 ################################################################################
-#tap 'buo/cask-upgrade'
-#tap 'filippo.io/age'
-#tap 'getantibody/tap'
-#tap 'golangci/tap'
+
 tap 'hashicorp/tap'
 tap 'homebrew/cask'
 tap 'homebrew/cask-drivers'
@@ -21,16 +18,14 @@ tap '1password/tap'
 # Casks
 ################################################################################
 
-cask 'alacritty'
 cask '1password-cli'
+cask 'alacritty'
 cask 'alfred'
 cask 'balenaetcher'
 cask 'bartender'
 cask 'basictex'
 cask 'better-window-manager'
-# cask 'cleanmymac'
 cask 'coconutbattery'
-cask 'docker', greedy: true
 cask 'dropbox'
 cask 'element'
 cask 'firefox'
@@ -60,8 +55,6 @@ cask 'vagrant'
 cask 'virtualbox'
 cask 'visual-studio-code'
 cask 'vlc'
-cask 'wez/wezterm/wezterm'
-
 
 ################################################################################
 # Simple brews
@@ -82,10 +75,14 @@ brew 'berkeley-db'
 brew 'boost'
 brew 'cmake'
 brew 'cmatrix'
+brew 'colima'
 brew 'coreutils'
 brew 'cowsay'
 brew 'direnv'
 brew 'dive'
+brew 'docker'
+brew 'docker-buildx'
+brew 'docker-credential-helper'
 brew 'exa'
 brew 'fd'
 brew 'figlet'
@@ -107,11 +104,11 @@ brew 'gnu-sed'
 brew 'gnu-tar'
 brew 'gnu-which'
 brew 'gnutls'
+brew 'go-task'
 brew 'golangci-lint'
 brew 'graphviz'
 brew 'grep'
 brew 'gzip'
-brew 'hadolint'
 brew 'htop'
 brew 'httpie'
 brew 'hub'
@@ -120,6 +117,7 @@ brew 'java'
 brew 'jpeg'
 brew 'jq'
 brew 'k3d'
+brew 'kubectx'
 brew 'kubeseal'
 brew 'less'
 brew 'libevent'
@@ -179,12 +177,10 @@ brew 'sqlite'
 brew 'ssh-copy-id'
 brew 'stern'
 brew 'stow'
-brew 'stylua'
 brew 'tcptraceroute'
 brew 'telnet'
 brew 'terraform'
 brew 'terraform-docs'
-brew 'terraform-ls'
 brew 'terragrunt'
 brew 'tflint'
 brew 'tfsec'
@@ -200,7 +196,6 @@ brew 'wdiff'
 brew 'weechat'
 brew 'wget'
 brew 'xz'
-brew 'yaml-language-server'
 brew 'yarn'
 brew 'yq'
 brew 'zsh'
@@ -209,6 +204,7 @@ brew 'zsh'
 ################################################################################
 # Mac App Store
 ################################################################################
+
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
 mas 'Deliveries (3.1.1)', id: 290986013

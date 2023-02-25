@@ -1,10 +1,6 @@
 ################################################################################
 # Taps
 ################################################################################
-#tap 'buo/cask-upgrade'
-#tap 'filippo.io/age'
-#tap 'getantibody/tap'
-#tap 'golangci/tap'
 tap 'hashicorp/tap'
 tap 'homebrew/cask'
 tap 'homebrew/cask-drivers'
