@@ -341,7 +341,7 @@ tasks:
     desc: Configures the Markdown linters
     cmds:
       - ln -sfn {{.ROOT_DIR}}/markdown {{.XDG_CONFIG_HOME}}/markdown
-      - ln -sf {{.ROOT_DIR}}/markdownlintrc.json {{.HOME}}/.markdownlintrc
+      - ln -sf {{.ROOT_DIR}}/markdown/markdownlintrc.json {{.HOME}}/.markdownlintrc
       - npm install -g markdown2confluence
 
   markdown:down:

@@ -60,3 +60,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
   group = autocmds,
 })
+
+-- Disable inserting comment leader after hitting o or O or <Enter>
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove("o")
+    vim.opt_local.formatoptions:remove("r")
+  end,
+  group = autocmds,
+})
