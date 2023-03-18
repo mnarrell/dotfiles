@@ -9,11 +9,12 @@ return {
 
   -- Basics
   { "tpope/vim-abolish" },
-  { "tpope/vim-repeat" },
+  { "tpope/vim-repeat", event = "VeryLazy" },
   { "tpope/vim-surround" },
   { "tpope/vim-unimpaired" },
   { "tweekmonster/startuptime.vim", cmd = "StartupTime" },
   { "tpope/vim-scriptease", cmd = { "Messages", "Verbose" } },
+  { "tpope/vim-eunuch", cmd = { "Remove", "Delete", "Move", "Chmod", "Mkdir" } },
   { "wincent/loupe" },
   { "romainl/vim-qf" },
 

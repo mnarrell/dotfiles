@@ -48,12 +48,12 @@ lspconfig.lua_ls.setup({
       },
       format = {
         enable = false,
-        defaultConfig = {
-          indent_style = "space",
-          indent_size = "2",
-          quote_style = "double",
-          call_arg_parentheses = "keep",
-        },
+        --   defaultConfig = {
+        --     indent_style = "space",
+        --     indent_size = "2",
+        --     quote_style = "double",
+        --     call_arg_parentheses = "keep",
+        --   },
       },
     },
   },
