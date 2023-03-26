@@ -89,8 +89,8 @@ tasks:
   docker:up:
     desc: Configures the Docker engine
     cmds:
-      - mkdir -p {{.XDG_CONFIG_HOME}}/docker/cli-plugins
       - ln -sfn {{.ROOT_DIR}}/docker {{.XDG_CONFIG_HOME}}/docker
+      - mkdir -p {{.XDG_CONFIG_HOME}}/docker/cli-plugins
       - ln -sfn /usr/local/opt/docker-buildx/bin/docker-buildx {{.XDG_CONFIG_HOME}}/docker/cli-plugins/docker-buildx
 
   docker:down:

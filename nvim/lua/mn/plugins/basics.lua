@@ -14,7 +14,7 @@ return {
   { "tpope/vim-unimpaired" },
   { "tweekmonster/startuptime.vim", cmd = "StartupTime" },
   { "tpope/vim-scriptease", cmd = { "Messages", "Verbose" } },
-  { "tpope/vim-eunuch", cmd = { "Remove", "Delete", "Move", "Chmod", "Mkdir" } },
+  { "tpope/vim-eunuch", cmd = { "Rename", "Remove", "Delete", "Move", "Chmod", "Mkdir" } },
   { "wincent/loupe" },
   { "romainl/vim-qf" },
 
