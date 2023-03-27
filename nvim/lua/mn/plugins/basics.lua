@@ -23,4 +23,12 @@ return {
   { "markonm/traces.vim" },
   { "godlygeek/tabular", cmd = "Tabularize" },
   { "AndrewRadev/splitjoin.vim" },
+
+  -- {
+  --   "echasnovski/mini.nvim",
+  --   config = function()
+  --     require("mini.completion").setup()
+  --     require("mini.pairs").setup()
+  --   end,
+  -- },
 }
