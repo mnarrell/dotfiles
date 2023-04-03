@@ -1,6 +1,3 @@
-[include]
-  path = config.local
-
 [user]
   useConfigOnly = true
 
@@ -81,3 +78,6 @@
 
 [credential]
   helper = osxkeychain
+
+[includeIf "gitdir:~/src/work/"]
+  path = ~/.private_dotfiles/git/config.work
