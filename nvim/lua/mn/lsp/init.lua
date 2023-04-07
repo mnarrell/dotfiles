@@ -57,6 +57,11 @@ lspconfig.pyright.setup({
   capabilities = support.capabilities(),
 })
 
+lspconfig.jsonls.setup({
+  on_attach = support.on_attach,
+  capabilities = support.capabilities(),
+})
+
 --------------------------------------------------------------------------------
 -- Look and feel
 vim.diagnostic.config({ virtual_text = false })

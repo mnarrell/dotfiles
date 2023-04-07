@@ -17,7 +17,6 @@ return {
       "gomod",
       "gowork",
       "hcl",
-      "help",
       "jsonc",
       "json",
       "lua",

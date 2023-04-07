@@ -148,8 +148,8 @@ end
 
 -- Highlight groups
 local hi = require("base16-colorscheme").highlight
-hi.StatusLineThemeNormalC = { guibg = M.colors.bg, guifg = M.colors.fg }
-hi.StatusLineThemeInactiveC = "StatusLineThemeNormalC"
+-- hi.StatusLineThemeNormalC = { guibg = M.colors.bg, guifg = M.colors.fg }
+-- hi.StatusLineThemeInactiveC = "StatusLineThemeNormalC"
 hi.StatusLineSeparator = { guifg = "#555965" }
 hi.StatusLineTextBold = { guifg = theme.base0D:upper(), guibg = "#555965", gui = "bold" }
 
@@ -164,7 +164,8 @@ hi.StatusLineInactiveFilename = { guibg = M.colors.bg, guifg = "#555965" }
 
 hi.StatusLineDiagnosticError = { guibg = M.colors.bg, guifg = M.colors.red }
 hi.StatusLineDiagnosticWarn = { guibg = M.colors.bg, guifg = M.colors.yellow }
-hi.StatusLineDiagnosticInfo = { guibg = M.colors.bg, guifg = M.colors.cyan }
+-- hi.StatusLineDiagnosticInfo = { guibg = M.colors.bg, guifg = M.colors.cyan }
+hi.StatusLineDiagnosticInfo = { guibg = M.colors.bg, guifg = "#81A2BE" }
 
 hi.StatusLineMixedIndent = "StatusLineDiagnosticError"
 

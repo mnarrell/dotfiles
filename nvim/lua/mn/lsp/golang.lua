@@ -19,7 +19,6 @@ local go_org_imports = function(wait_ms)
 end
 
 local on_attach = function(client, bufnr)
-  print("gopls attached to dis")
   vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
 
   local autocmds = vim.api.nvim_create_augroup("golangAutocmds", { clear = true })

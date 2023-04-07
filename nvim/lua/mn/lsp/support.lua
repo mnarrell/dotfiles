@@ -28,7 +28,7 @@ end
 local M = {}
 
 M.on_attach = function(client, bufnr)
-  vim.notify(client.name .. " attached to dis", vim.lsp.log_levels.INFO)
+  -- vim.notify(client.name .. " attached to dis", vim.lsp.log_levels.INFO)
 
   local map = function(lhs, rhs)
     vim.keymap.set("n", lhs, rhs, { buffer = bufnr, silent = true })

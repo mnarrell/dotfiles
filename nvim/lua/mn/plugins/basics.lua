@@ -1,9 +1,15 @@
 return {
   -- Eyecandy
   { "tpope/vim-vinegar" },
-  { "norcalli/nvim-colorizer.lua", config = true },
   { "kshenoy/vim-signature" }, -- show marks
   { "kyazdani42/nvim-web-devicons" },
+
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
 
   { "MunifTanjim/nui.nvim" },
 

@@ -11,9 +11,10 @@ return {
         disabled_filetypes = {
           statusline = {
             -- "netrw",
-            -- "quickfix",
+            "quickfix",
           },
         },
+        -- theme = "base16",
         theme = {
           normal = { c = "StatusLineThemeNormalC" },
           inactive = { c = "StatusLineThemeInactiveC" },
@@ -37,7 +38,8 @@ return {
         lualine_y = {},
         lualine_z = {},
       },
-      extensions = { "quickfix", "fugitive" },
+      -- extensions = { "quickfix", "fugitive" },
+      -- extensions = { "fugitive" },
     }
 
     local add_left = function(component)
@@ -100,6 +102,7 @@ return {
         error = "StatusLineDiagnosticError",
         warn = "StatusLineDiagnosticWarn",
         info = "StatusLineDiagnosticInfo",
+        hint = "StatusLineDiagnosticInfo",
       },
     })
 
