@@ -22,7 +22,8 @@ return {
     return {
       formatting = {
         format = require("lspkind").cmp_format({
-          with_text = false,
+          mode = "symbol",
+          preset = "codicons",
           menu = {
             nvim_lsp = "[LSP]",
             luasnip = "[Snippet]",
@@ -34,6 +35,33 @@ return {
             tmux = "[tmux]",
             nvim_lsp_document_symbol = "[Syms]",
           },
+          -- symbol_map = {
+          --   Text = "",
+          --   Method = "",
+          --   Function = "",
+          --   Constructor = "",
+          --   Field = "ﰠ",
+          --   Variable = "",
+          --   Class = "ﴯ",
+          --   Interface = "",
+          --   Module = "",
+          --   Property = "ﰠ",
+          --   Unit = "塞",
+          --   Value = "",
+          --   Enum = "",
+          --   Keyword = "",
+          --   Snippet = "",
+          --   Color = "",
+          --   File = "",
+          --   Reference = "",
+          --   Folder = "",
+          --   EnumMember = "",
+          --   Constant = "",
+          --   Struct = "פּ",
+          --   Event = "",
+          --   Operator = "",
+          --   TypeParameter = "",
+          -- },
         }),
       },
 
@@ -68,29 +96,41 @@ return {
 
       mapping = cmp.mapping.preset.insert({
         ["<C-X><C-O>"] = cmp.mapping.complete(),
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        -- ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        -- ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-y>"] = cmp.mapping.confirm({
           -- behavior = cmp.ConfirmBehavior.Insert,
-          select = true,
+          select = false,
         }, { "i", "c" }),
         ["<c-q>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
-          select = false,
+          select = true,
         }),
       }),
 
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "buffer", keyword_length = 2 },
         { name = "nvim_lsp_signature_help" },
-        { name = "luasnip" },
+      }, { { name = "luasnip" } }, {
+        { name = "buffer", keyword_length = 2 },
         { name = "path" },
         { name = "tmux" },
       }),
+
+      -- sources = cmp.config.sources({
+      --   { name = "nvim_lsp" },
+      --   { name = "vsnip" }, -- For vsnip users.
+      --   { name = "luasnip" }, -- For luasnip users.
+      --   -- { name = 'ultisnips' }, -- For ultisnips users.
+      --   -- { name = 'snippy' }, -- For snippy users.
+      -- }, {
+      --   { name = "buffer" },
+      -- }),
 
       experimental = {
         native_menu = false,

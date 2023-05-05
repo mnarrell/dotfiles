@@ -19,8 +19,6 @@ local go_org_imports = function(wait_ms)
 end
 
 local on_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
-
   local autocmds = vim.api.nvim_create_augroup("golangAutocmds", { clear = true })
   vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function(args)
@@ -31,7 +29,14 @@ local on_attach = function(client, bufnr)
     pattern = "*.go",
   })
 
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    command = [[ silent !gci -w % ]],
+    pattern = "*.go",
+    group = autocmds,
+  })
+
   require("mn.lsp.support").on_attach(client, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
 end
 
 lspconfig.gopls.setup({

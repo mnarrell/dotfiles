@@ -32,7 +32,7 @@
   pum = !"git fetch origin -v; git fetch upstream -v; git merge upstream/main"
   scrub = gc --aggressive --prune=now
   st = status -sb
-  wip = commit -am "WIP"
+  wip = commit -am 'feat: WIP'
   cb = !git checkout $(git branch | fzf)
 
 [merge]
