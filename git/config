@@ -79,5 +79,8 @@
 [credential]
   helper = osxkeychain
 
+[include]
+  path = ~/.private_dotfiles/git/config.local
+
 [includeIf "gitdir:~/src/work/"]
   path = ~/.private_dotfiles/git/config.work
