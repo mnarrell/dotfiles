@@ -60,12 +60,11 @@ return {
   },
   config = function(_, opts)
     local tele = require("telescope")
-
     tele.setup(opts)
     tele.load_extension("ui-select")
 
     local find_hidden = function()
-      tele.builtin.find_files({
+      require("telescope.builtin").find_files({
         find_command = { "fd", "--type", "f", "--hidden", "--no-ignore-vcs", "--strip-cwd-prefix", "--follow" },
       })
     end
