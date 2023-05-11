@@ -1,5 +1,7 @@
 {
-	"auths": {},
+	"auths": {
+		"hub.comcast.net": {}
+	},
 	"credsStore": "osxkeychain",
 	"currentContext": "colima",
 	"aliases": {

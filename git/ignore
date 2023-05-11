@@ -7,3 +7,4 @@ mnarre200-*.yaml
 .envrc
 .direnv/
 go.work*
+.op/
