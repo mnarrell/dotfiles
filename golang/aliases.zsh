@@ -1,3 +1,3 @@
 #! /usr/bin/env zsh
 
-alias lint='golangci-lint run --out-format tab | sort'
+alias lint='golangci-lint run'

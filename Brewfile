@@ -1,16 +1,16 @@
 ################################################################################
 # Taps
 ################################################################################
-tap 'hashicorp/tap'
-tap 'homebrew/cask'
-tap 'homebrew/cask-drivers'
+# tap 'hashicorp/tap'
+# tap 'homebrew/cask'
+# tap 'homebrew/cask-drivers'
 tap 'homebrew/cask-fonts'
-tap 'homebrew/services'
-tap 'koekeishiya/formulae'
+# tap 'homebrew/services'
+# tap 'koekeishiya/formulae'
 tap 'snyk/tap'
-tap 'osx-cross/avr'
-tap 'osx-cross/arm'
-tap '1password/tap'
+# tap 'osx-cross/avr'
+# tap 'osx-cross/arm'
+# tap '1password/tap'
 
 ################################################################################
 # Casks
