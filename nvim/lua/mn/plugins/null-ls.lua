@@ -18,7 +18,7 @@ return {
           null_ls.builtins.diagnostics.hadolint,
 
           -- Go
-          null_ls.builtins.diagnostics.revive,
+          -- null_ls.builtins.diagnostics.revive,
 
           -- Lua
           null_ls.builtins.diagnostics.luacheck.with({ extra_args = { "--globals vim" } }),

@@ -6,8 +6,10 @@ unset PATH
 PATH=~/.local/bin
 PATH=${PATH}:${GOROOT}/bin
 PATH=${PATH}:${GOBIN}
+PATH=${PATH}:/usr/local/opt/openssh/bin
 PATH=${PATH}:/usr/local/opt/openssl/bin
 PATH=${PATH}:/usr/local/opt/python@3/libexec/bin
+PATH=${PATH}:/usr/local/opt/postgresql@15/bin
 PATH=${PATH}:${XDG_DATA_HOME}/npm/bin
 PATH=${PATH}:${XDG_DATA_HOME}/gem/bin
 PATH=${PATH}:/usr/local/opt/node/bin

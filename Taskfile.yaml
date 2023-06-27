@@ -217,7 +217,7 @@ tasks:
     silent: true
     internal: true
     vars:
-      HELM_VERSION: 3.9.1
+      HELM_VERSION: 3.12.0
       HELM_URL: https://get.helm.sh/helm-v{{.HELM_VERSION}}-darwin-amd64.tar.gz
       HELM: helm-{{.HELM_VERSION}}
     cmds:
@@ -280,7 +280,7 @@ tasks:
     silent: true
     internal: true
     vars:
-      KUBECTL_VERSION: 1.21.1
+      KUBECTL_VERSION: 1.27.3
       KUBECTL_URL: https://storage.googleapis.com/kubernetes-release/release/v{{.KUBECTL_VERSION}}/bin/darwin/amd64/kubectl
       KUBECTL: kubectl-{{.KUBECTL_VERSION}}
     cmds:
@@ -342,14 +342,12 @@ tasks:
     cmds:
       - ln -sfn {{.ROOT_DIR}}/markdown {{.XDG_CONFIG_HOME}}/markdown
       - ln -sf {{.ROOT_DIR}}/markdown/markdownlintrc.json {{.HOME}}/.markdownlintrc
-      - npm install -g markdown2confluence
 
   markdown:down:
     desc: Removes Markdown configuration
     cmds:
       - rm -f {{.HOME}}/.markdownlintrc
       - npm uninstall -g markdown2confluence
-      - rm -rf {{.XDG_CONFIG_HOME}}/markdown
 
   ################################################################################
   # Node
