@@ -34,7 +34,7 @@ return {
         spinner = "arc",
       },
       sources = {
-        ["null-ls"] = { ignore = true },
+        -- ["null-ls"] = { ignore = true },
       },
     },
   },
