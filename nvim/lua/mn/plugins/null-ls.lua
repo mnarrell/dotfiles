@@ -17,16 +17,9 @@ return {
           -- Docker
           null_ls.builtins.diagnostics.hadolint,
 
-          -- Go
-          -- null_ls.builtins.diagnostics.revive,
-
           -- Lua
           null_ls.builtins.diagnostics.luacheck.with({ extra_args = { "--globals vim" } }),
           null_ls.builtins.formatting.stylua,
-
-          -- Markdown
-          null_ls.builtins.diagnostics.markdownlint,
-          -- null_ls.builtins.formatting.markdownlint,
 
           -- Prettier
           null_ls.builtins.formatting.prettierd.with({
@@ -37,7 +30,6 @@ return {
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.isort,
           null_ls.builtins.diagnostics.flake8,
-          -- null_ls.builtins.diagnostics.pylint,
 
           -- Shell
           null_ls.builtins.formatting.shellharden,
@@ -51,10 +43,6 @@ return {
           --------------------------------------------------------------------------------
           -- Code Actions
           null_ls.builtins.code_actions.gitsigns,
-
-          null_ls.builtins.diagnostics.tidy,
-          null_ls.builtins.formatting.tidy,
-          null_ls.builtins.diagnostics.zsh,
         },
       }
     end,

@@ -1,3 +1,3 @@
 #! /usr/bin/env zsh
 
-alias lint='golangci-lint run'
+alias lint='golangci-lint run -c ${HOME}/.golangci.yaml'

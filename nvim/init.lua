@@ -14,3 +14,8 @@ vim.api.nvim_create_autocmd("User", {
 
 -- Machine local settings...
 pcall(require, "mn.local")
+
+-- vim.cmd([[colorscheme kanagawa]])
+vim.cmd("colorscheme kanagawa-dragon")
+-- vim.g.material_style = "darker"
+-- vim.cmd("colorscheme material")

@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   "RRethy/nvim-base16",
   config = function()
     local base16 = require("base16-colorscheme")
