@@ -71,6 +71,7 @@ M.on_attach = function(client, bufnr)
   end)
 
   map("yod", toggle_diagnostics)
+  -- vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
 end
 
 M.capabilities = function()
