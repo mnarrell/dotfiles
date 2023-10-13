@@ -1,16 +1,11 @@
 ################################################################################
 # Taps
 ################################################################################
-# tap 'hashicorp/tap'
-# tap 'homebrew/cask'
-# tap 'homebrew/cask-drivers'
+
 tap 'homebrew/cask-fonts'
 tap 'homebrew/services'
-# tap 'koekeishiya/formulae'
 tap 'snyk/tap'
-# tap 'osx-cross/avr'
-# tap 'osx-cross/arm'
-# tap '1password/tap'
+tap 'warrensbox/tap'
 
 ################################################################################
 # Casks
@@ -37,7 +32,6 @@ cask 'istat-menus'
 cask 'jetbrains-toolbox'
 cask 'karabiner-elements'
 cask 'omnidisksweeper'
-cask 'omnigraffle'
 cask 'postman'
 cask 'rowanj-gitx'
 cask 'slack'
@@ -53,6 +47,7 @@ cask 'vlc'
 ################################################################################
 
 # brew 'postgis'
+# brew 'terraform'
 brew 'ack'
 brew 'age'
 brew 'ansible'
@@ -173,11 +168,11 @@ brew 'stern'
 brew 'stow'
 brew 'tcptraceroute'
 brew 'telnet'
-brew 'terraform'
 brew 'terraform-docs'
 brew 'terragrunt'
 brew 'tflint'
 brew 'tfsec'
+brew 'tfswitch'
 brew 'tidy-html5'
 brew 'tig'
 brew 'tmux'
@@ -209,4 +204,3 @@ mas 'Microsoft Remote Desktop (10.3.11)', id: 1295203466
 mas 'Microsoft Word (16.22)', id: 462054704
 mas 'Numbers (6.1)', id: 409203825
 mas 'OneDrive (19.002.0107)', id: 823766827
-mas 'Tweetbot (3.2)', id: 1384080005

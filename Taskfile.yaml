@@ -178,7 +178,7 @@ tasks:
     silent: true
     internal: true
     vars:
-      GO_VERSION: 1.20.5
+      GO_VERSION: 1.21.3
       GO_URL: https://go.dev/dl/go{{.GO_VERSION}}.darwin-amd64.tar.gz
     cmds:
       - echo Installing Go {{.GO_VERSION}}

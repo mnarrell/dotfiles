@@ -1,5 +1,5 @@
 return {
-  "nvim-lua/telescope.nvim",
+  "nvim-telescope/telescope.nvim",
   -- event = "VeryLazy",
   dependencies = {
     "nvim-lua/popup.nvim",
@@ -13,6 +13,7 @@ return {
       ["<C-x>"] = false,
       ["<C-s>"] = actions.select_horizontal,
       ["<C-y>"] = actions.send_selected_to_loclist,
+      ["<C-d>"] = actions.delete_buffer,
       -- ["<tab>"] = actions.toggle_selection,
       ["<esc>"] = actions.close,
     }
