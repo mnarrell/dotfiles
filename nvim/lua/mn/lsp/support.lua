@@ -14,21 +14,24 @@ local toggle_diagnostics = function()
 end
 
 local show_line_diagnostics = function()
-  local opts = {
+  vim.diagnostic.open_float({
     focusable = false,
     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
     border = "rounded",
     -- border = "single",
     source = "always", -- show source in diagnostic popup window
     prefix = " ",
-  }
-  vim.diagnostic.open_float(nil, opts)
+  })
 end
 
 local M = {}
 
 M.on_attach = function(client, bufnr)
   -- vim.notify(client.name .. " attached to dis", vim.lsp.log_levels.INFO)
+
+  -- if client.server_capabilities.inlayHintProvider then
+  --   vim.lsp.inlay_hint(bufnr, true)
+  -- end
 
   local map = function(lhs, rhs)
     vim.keymap.set("n", lhs, rhs, { buffer = bufnr, silent = true })
@@ -71,7 +74,6 @@ M.on_attach = function(client, bufnr)
   end)
 
   map("yod", toggle_diagnostics)
-  -- vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
 end
 
 M.capabilities = function()

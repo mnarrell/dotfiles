@@ -7,7 +7,7 @@ require("mn.lsp.lua")
 
 --------------------------------------------------------------------------------
 -- Golang
-require("mn.lsp.golang")
+require("mn.lsp.gopls")
 
 --------------------------------------------------------------------------------
 -- YAML
@@ -64,9 +64,17 @@ lspconfig.jsonls.setup({
 
 --------------------------------------------------------------------------------
 -- Look and feel
-vim.diagnostic.config({ virtual_text = false })
+-- vim.diagnostic.config({ virtual_text = false })
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = false,
+  float = true,
+})
 
-local signs = { Error = "✗ ", Warn = " ", Hint = " ", Info = "𝓲 " }
+local signs = { Error = "✗ ", Warn = " ", Hint = "󰛩 ", Info = "𝓲 " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })

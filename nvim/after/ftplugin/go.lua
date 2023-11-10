@@ -36,3 +36,10 @@ end
 
 -- map("<C-g>", ":GoDeclsDir<CR>")
 map("gb", require("mn.go.build").build)
+
+local autocmds = vim.api.nvim_create_augroup("golangAutocmds", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  command = [[ silent !gci -w % ]],
+  pattern = "*.go",
+  group = autocmds,
+})

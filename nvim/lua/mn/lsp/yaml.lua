@@ -1,11 +1,5 @@
 local support = require("mn.lsp.support")
 
-local caps = vim.lsp.protocol.make_client_capabilities()
-caps.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
-
 require("lspconfig").yamlls.setup({
   filetypes = { "yaml", "helm" },
   capabilities = support.capabilities(),
