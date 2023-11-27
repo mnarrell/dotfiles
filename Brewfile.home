@@ -3,8 +3,6 @@
 ################################################################################
 
 tap 'hashicorp/tap'
-tap 'homebrew/cask'
-tap 'homebrew/cask-drivers'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/services'
 tap 'koekeishiya/formulae'
@@ -41,7 +39,6 @@ cask 'karabiner-elements'
 cask 'lens'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
-cask 'onyx'
 cask 'postman'
 cask 'private-internet-access'
 cask 'qmk-toolbox'
