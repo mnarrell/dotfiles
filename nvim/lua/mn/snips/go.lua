@@ -220,11 +220,4 @@ local go = {
   ),
 }
 
-local yes, private = pcall(require, "mn.snips.go_private")
-if yes then
-  for _, v in ipairs(private) do
-    table.insert(go, v)
-  end
-end
-
 return go

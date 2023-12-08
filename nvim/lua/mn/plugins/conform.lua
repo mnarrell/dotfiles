@@ -8,7 +8,7 @@ return {
       python = { "black", "isort" },
       html = { "prettierd" },
       json = { "prettierd" },
-      yaml = { "prettierd" },
+      -- yaml = { "prettierd" },
       markdown = { "prettierd" },
     },
     format_on_save = {

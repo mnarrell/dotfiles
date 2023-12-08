@@ -8,6 +8,8 @@ return {
       lua = { "luacheck" },
       python = { "flake8" },
       yaml = { "yamllint" },
+      go = { "revive" },
+      sh = { "shellcheck" },
     }
   end,
   init = function()

@@ -1,5 +1,6 @@
 return {
   "L3MON4D3/LuaSnip",
+  tag = "v2.1.1",
   config = function()
     local ls = require("luasnip")
 

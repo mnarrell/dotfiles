@@ -9,6 +9,7 @@ local support = require("mn.lsp.support")
 local on_attach = function(client, bufnr)
   require("mn.lsp.support").on_attach(client, bufnr)
 end
+
 lspconfig.gopls.setup({
   on_attach = on_attach,
   capabilities = support.capabilities(),
