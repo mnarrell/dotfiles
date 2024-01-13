@@ -1,0 +1,221 @@
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[[colors.indexed_colors]]
+color = "0xde935f"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xa3685a"
+index = 17
+
+[[colors.indexed_colors]]
+color = "0x282a2e"
+index = 18
+
+[[colors.indexed_colors]]
+color = "0x373b41"
+index = 19
+
+[[colors.indexed_colors]]
+color = "0xb4b7b4"
+index = 20
+
+[[colors.indexed_colors]]
+color = "0xe0e0e0"
+index = 21
+
+[colors.bright]
+black = "0x969896"
+blue = "0x81a2be"
+cyan = "0x8abeb7"
+green = "0xb5bd68"
+magenta = "0xb294bb"
+red = "0xcc6666"
+white = "0xffffff"
+yellow = "0xf0c674"
+
+[colors.cursor]
+cursor = "0xc5c8c6"
+text = "0x1d1f21"
+
+[colors.normal]
+black = "0x1d1f21"
+blue = "0x81a2be"
+cyan = "0x8abeb7"
+green = "0xb5bd68"
+magenta = "0xb294bb"
+red = "0xcc6666"
+white = "0xc5c8c6"
+yellow = "0xf0c674"
+
+[colors.primary]
+background = "0x1d1f21"
+foreground = "0xc5c8c6"
+
+[font]
+# AppleFontSmoothing = false
+size = 12.0
+
+[font.bold]
+family = "MesloLGM Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "MesloLGM Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "MesloLGM Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "MesloLGM Nerd Font Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u0000c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000-"
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000\\"
+key = "S"
+mods = "Command|Shift"
+
+[[keyboard.bindings]]
+chars = "\u0000h"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000j"
+key = "J"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000j"
+key = "K"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000l"
+key = "L"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000x"
+key = "X"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000z"
+key = "Z"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000,"
+key = "Comma"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00001"
+key = "Key1"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00002"
+key = "Key2"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00003"
+key = "Key3"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00004"
+key = "Key4"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00005"
+key = "Key5"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00006"
+key = "Key6"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00007"
+key = "Key7"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00008"
+key = "Key8"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u00009"
+key = "Key9"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000\u001B[B"
+key = "Down"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000\u001B[A"
+key = "Up"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000\u001B[D"
+key = "Left"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0000\u001B[C"
+key = "Right"
+mods = "Command"
+
+[mouse]
+hide_when_typing = true
+
+# [mouse.double_click]
+# threshold = 300
+
+# [mouse.triple_click]
+# threshold = 300
+
+[scrolling]
+history = 100000
+
+[shell]
+args = ["--login"]
+program = "/usr/local/bin/zsh"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = true
+
+[window.dimensions]
+columns = 200
+lines = 60
+
+[window.padding]
+x = 2
+y = 2
+
+[window.position]
+x = 100
+y = 100

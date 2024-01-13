@@ -15,6 +15,7 @@ return {
     "andersevenrud/cmp-tmux",
     "onsails/lspkind-nvim",
     "L3MON4D3/LuaSnip",
+    "windwp/nvim-autopairs",
   },
   opts = function()
     local cmp = require("cmp")
@@ -137,5 +138,11 @@ return {
         ghost_text = false,
       },
     }
+  end,
+  config = function(_, opts)
+    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+    local cmp = require("cmp")
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    cmp.setup(opts)
   end,
 }

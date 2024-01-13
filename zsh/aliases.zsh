@@ -24,10 +24,10 @@ alias rsync-update="rsync -avzu --progress -h"
 alias sudo="sudo -E -s "
 alias watch="watch --color "
 
-if [ $commands[exa] ]; then
-  alias ls="exa"
-  alias ll="exa -lg --git --icons --time-style long-iso"
-  alias la="exa -laag --git --icons --time-style long-iso"
+if [ $commands[eza] ]; then
+  alias ls="eza"
+  alias ll="eza -lg --git --icons --time-style long-iso"
+  alias la="eza -laag --git --icons --time-style long-iso"
 else
   if [ "$(uname -s)" = "Darwin" ]; then
     if [ $commands[gls] ]; then

@@ -1,8 +1,8 @@
 ################################################################################
 # Taps
 ################################################################################
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
+# tap 'homebrew/cask'
+# tap 'homebrew/cask-fonts'
 tap 'fluxcd/tap'
 
 ################################################################################
@@ -40,7 +40,7 @@ brew 'cmatrix'
 brew 'coreutils'
 brew 'direnv'
 brew 'dive'
-brew 'exa'
+brew 'eza'
 brew 'fd'
 brew 'findutils'
 brew 'fluxcd/tap/flux'
