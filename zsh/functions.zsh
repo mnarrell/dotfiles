@@ -1,5 +1,7 @@
 #! /usr/bin/env zsh
 
+autoload -Uz add-zsh-hook
+
 function show_colors() {
   for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
 }

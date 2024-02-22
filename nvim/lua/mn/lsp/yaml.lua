@@ -1,15 +1,16 @@
 local support = require("mn.lsp.support")
 
 require("lspconfig").yamlls.setup({
-  filetypes = { "yaml", "helm" },
+  -- filetypes = { "yaml", "helm" },
+  filetypes = { "yaml" },
   capabilities = support.capabilities(),
   on_attach = function(client, bufnr)
     -- disable and reset diagnostics for helm files (because the LS can't
     -- read them properly)
-    if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
-      vim.diagnostic.disable(bufnr)
-      vim.diagnostic.reset(nil, bufnr)
-    end
+    -- if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
+    --   vim.diagnostic.disable(bufnr)
+    --   vim.diagnostic.reset(nil, bufnr)
+    -- end
 
     support.on_attach(client, bufnr)
   end,

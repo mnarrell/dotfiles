@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.g.python3_host_prog = "/usr/local/opt/python@3/libexec/bin/python"
+vim.g.python3_host_prog = "/opt/homebrew/opt/python@3/libexec/bin/python"
 vim.g.vimsyn_embed = "l" -- highlight inline Lua
 
 -- netrw oddities
@@ -30,7 +30,7 @@ vim.opt.list = true -- show whitespace
 vim.opt.modeline = false -- Don't allow text to manipulate the editor
 vim.opt.mouse = "a" -- allow the mouse in all modes
 vim.opt.scrolloff = 3 -- start scrolling 3 lines before edge of viewport
-vim.opt.shell = "/usr/local/bin/zsh" -- ZSH
+vim.opt.shell = "/opt/homebrew/bin/zsh" -- ZSH
 vim.opt.shiftround = true -- always indent by multiple of shiftwidth
 vim.opt.shiftwidth = 2 -- spaces per tab (when shifting)
 vim.opt.showbreak = "⤷ " -- line wrap indicator

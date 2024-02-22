@@ -19,6 +19,11 @@ return {
       "vim",
     }
 
+    -- lint.linters.revive.args = {
+    --   "-config",
+    --   "~/.config/golang/revive.toml",
+    -- }
+
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()
         lint.try_lint()

@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-if [ $commands[brew] ]; then
+if [ $+commands[brew] ]; then
   brew() {
     case "$1" in
       cleanup)

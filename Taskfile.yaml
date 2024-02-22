@@ -91,7 +91,7 @@ tasks:
     cmds:
       - ln -sfn {{.ROOT_DIR}}/docker {{.XDG_CONFIG_HOME}}/docker
       - mkdir -p {{.XDG_CONFIG_HOME}}/docker/cli-plugins
-      - ln -sfn /usr/local/opt/docker-buildx/bin/docker-buildx {{.XDG_CONFIG_HOME}}/docker/cli-plugins/docker-buildx
+      - ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx {{.XDG_CONFIG_HOME}}/docker/cli-plugins/docker-buildx
 
   docker:down:
     desc: Removes Docker configuration
@@ -178,8 +178,8 @@ tasks:
     silent: true
     internal: true
     vars:
-      GO_VERSION: 1.21.6
-      GO_URL: https://go.dev/dl/go{{.GO_VERSION}}.darwin-amd64.tar.gz
+      GO_VERSION: 1.22.0
+      GO_URL: https://go.dev/dl/go{{.GO_VERSION}}.darwin-arm64.tar.gz
     cmds:
       - echo Installing Go {{.GO_VERSION}}
       - curl -L {{.GO_URL}} | tar xz -C {{.HOME}}/tmp
@@ -194,6 +194,7 @@ tasks:
       - task: go:dist
       - ln -sfn {{.ROOT_DIR}}/golang {{.XDG_CONFIG_HOME}}/golang
       - ln -sfn {{.ROOT_DIR}}/golang/golangci.yml {{.HOME}}/.golangci.yml
+      # - ln -sfn {{.ROOT_DIR}}/golang/revive.toml {{.XDG_CONFIG_HOME}}/revive/revive.toml
       - go install honnef.co/go/tools/cmd/staticcheck@latest
       - go install github.com/sbowman/xq@latest
       - go install github.com/oligot/go-mod-upgrade@latest
@@ -266,7 +267,7 @@ tasks:
     desc: Configures the JDK
     cmds:
       - ln -sfn {{.ROOT_DIR}}/java {{.XDG_CONFIG_HOME}}/java
-      - sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+      - sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
   java:down:
     desc: Removes Java configuration
@@ -388,7 +389,7 @@ tasks:
     desc: Configures Neovim
     cmds:
       - ln -sfn {{.ROOT_DIR}}/nvim {{.XDG_CONFIG_HOME}}/nvim
-      - pip install -U -r {{.ROOT_DIR}}/nvim/requirements.txt
+      - pip3 install -U -r {{.ROOT_DIR}}/nvim/requirements.txt
       - npm install -g neovim
       - gem install neovim
       - nvim --headless "+Lazy! sync" +qa
@@ -396,7 +397,7 @@ tasks:
   nvim:down:
     desc: Removes Neovim configuration
     cmds:
-      - pip uninstall -y -r {{.ROOT_DIR}}/nvim/requirements.txt
+      - pip3 uninstall -y -r {{.ROOT_DIR}}/nvim/requirements.txt
       - rm -rf {{.XDG_CONFIG_HOME}}/nvim
       - npm uninstall -g neovim
       - gem uninstall neovim || true
@@ -559,8 +560,8 @@ tasks:
       - mkdir -p {{.XDG_CACHE_HOME}}/zsh
       - mkdir -p {{.XDG_DATA_HOME}}/zsh
       - pip3 install -U -r {{.ROOT_DIR}}/zsh/requirements.txt
-      - antibody bundle < {{.ROOT_DIR}}/zsh/bundle.txt > {{.XDG_DATA_HOME}}/zsh/plugins
-      - antibody update
+      #- antibody bundle < {{.ROOT_DIR}}/zsh/bundle.txt > {{.XDG_DATA_HOME}}/zsh/plugins
+      #- antibody update
       - ln -sf {{.ROOT_DIR}}/zsh/zshenv {{.HOME}}/.zshenv
 
   zsh:down:

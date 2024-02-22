@@ -1,0 +1,3 @@
+[linters-settings.revive]
+    severity = "warning"
+    confidence = 0.8

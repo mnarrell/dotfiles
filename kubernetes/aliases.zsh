@@ -1,13 +1,13 @@
 #! /usr/bin/env zsh
 
-if [ $commands[kubectl] ]; then
+if [ $+commands[kubectl] ]; then
   function kubectl() {
     source <(command kubectl completion zsh)
     command kubectl "$@"
   }
 fi
 
-if [ $commands[k3d] ]; then
+if [ $+commands[k3d] ]; then
   function k3d() {
     source <(command k3d completion zsh)
     command k3d "$@"

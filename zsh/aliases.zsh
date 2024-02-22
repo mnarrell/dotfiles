@@ -24,13 +24,13 @@ alias rsync-update="rsync -avzu --progress -h"
 alias sudo="sudo -E -s "
 alias watch="watch --color "
 
-if [ $commands[eza] ]; then
+if [ $+commands[eza] ]; then
   alias ls="eza"
-  alias ll="eza -lg --git --icons --time-style long-iso"
-  alias la="eza -laag --git --icons --time-style long-iso"
+  alias ll="eza -lg --git --icons --no-user --time-style long-iso"
+  alias la="eza -laag --git --icons --no-user --time-style long-iso"
 else
   if [ "$(uname -s)" = "Darwin" ]; then
-    if [ $commands[gls] ]; then
+    if [ $+commands[gls] ]; then
       alias ls="gls --color=tty --quoting-style=literal -h"
     else
       alias ls="ls -FG"
@@ -48,7 +48,7 @@ alias -s markdown="open -a 'Marked 2.app'"
 
 # Handle picky command/arg corrections
 alias ./...="nocorrect ./..."
-alias zsh="nocorrect zsh"
+# alias zsh="nocorrect zsh"
 
 # OSX stuffs
 if [ "$(uname -s)" = "Darwin" ]; then

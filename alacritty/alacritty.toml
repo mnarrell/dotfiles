@@ -202,7 +202,7 @@ history = 100000
 
 [shell]
 args = ["--login"]
-program = "/usr/local/bin/zsh"
+program = "/opt/homebrew/bin/zsh"
 
 [window]
 decorations = "buttonless"

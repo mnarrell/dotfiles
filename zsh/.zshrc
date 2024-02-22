@@ -18,8 +18,9 @@ for f in ${config_files}; do
 done
 
 ################################################################################
-# Load Antibody Plugins
-source $XDG_DATA_HOME/zsh/plugins
+# Load Antidote Plugins
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load
 
 ################################################################################
 # Load everything but the env files.

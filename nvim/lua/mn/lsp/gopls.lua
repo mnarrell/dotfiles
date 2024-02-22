@@ -19,7 +19,6 @@ lspconfig.gopls.setup({
   settings = {
     -- buildFlags = { "tools" },
     gopls = {
-      gofumpt = true,
       -- codelenses = {
       --   -- kttps://github.com/golang/tools/blob/master/gopls/doc/settings.md#code-lenses
       --   gc_details = true, -- Toggle the calculation of gc annotations

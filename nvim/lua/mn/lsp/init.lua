@@ -13,6 +13,16 @@ require("mn.lsp.gopls")
 -- YAML
 require("mn.lsp.yaml")
 
+lspconfig.helm_ls.setup({
+  settings = {
+    ["helm-ls"] = {
+      yamlls = {
+        path = "yaml-language-server",
+      },
+    },
+  },
+})
+
 --------------------------------------------------------------------------------
 -- Ansible
 lspconfig.ansiblels.setup({

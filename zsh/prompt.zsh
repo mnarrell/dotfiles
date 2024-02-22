@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-autoload -Uz vcs_info colors
+autoload -Uz vcs_info colors add-zsh-hook
 
 ###############################################################################
 # VCS Prompt
