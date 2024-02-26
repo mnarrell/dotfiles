@@ -38,15 +38,15 @@ tasks:
 
   ################################################################################
   # Ansible
-  ansible:up:
-    desc: Configures Ansible
-    cmds:
-      - pip3 install -U ansible
-
-  ansible:down:
-    desc: Removes Ansible configuration
-    cmds:
-      - pip3 uninstall -y ansible
+  # ansible:up:
+  #   desc: Configures Ansible
+  #   cmds:
+  #     - pip3 install -U ansible
+  #
+  # ansible:down:
+  #   desc: Removes Ansible configuration
+  #   cmds:
+  #     - pip3 uninstall -y ansible
 
   ################################################################################
   # Bash
@@ -151,12 +151,10 @@ tasks:
     desc: Configures Git
     cmds:
       - ln -sfn {{.ROOT_DIR}}/git {{.XDG_CONFIG_HOME}}/git
-      - pip3 install -U -r {{.ROOT_DIR}}/git/requirements.txt
 
   git:down:
     desc: Removes Git configuration
     cmds:
-      - pip3 uninstall -y -r {{.ROOT_DIR}}/git/requirements.txt
       - rm -rf {{.XDG_CONFIG_HOME}}/git
 
   ################################################################################
@@ -389,7 +387,8 @@ tasks:
     desc: Configures Neovim
     cmds:
       - ln -sfn {{.ROOT_DIR}}/nvim {{.XDG_CONFIG_HOME}}/nvim
-      - pip3 install -U -r {{.ROOT_DIR}}/nvim/requirements.txt
+      - python -m venv {{.XDG_DATA_HOME}}/venvs/neovim
+      - "{{.XDG_DATA_HOME}}/venvs/neovim/bin/pip3 install -r {{.ROOT_DIR}}/nvim/requirements.txt"
       - npm install -g neovim
       - gem install neovim
       - nvim --headless "+Lazy! sync" +qa
@@ -397,7 +396,8 @@ tasks:
   nvim:down:
     desc: Removes Neovim configuration
     cmds:
-      - pip3 uninstall -y -r {{.ROOT_DIR}}/nvim/requirements.txt
+      - "{{.XDG_DATA_HOME}}/venvs/neovim/bin/pip3 uninstall -y -r {{.ROOT_DIR}}/nvim/requirements.txt"
+      - rm -rf {{.XDG_DATA_HOME}}/venvs/neovim
       - rm -rf {{.XDG_CONFIG_HOME}}/nvim
       - npm uninstall -g neovim
       - gem uninstall neovim || true
@@ -437,13 +437,11 @@ tasks:
     desc: Configures Python
     cmds:
       - ln -sfn {{.ROOT_DIR}}/python {{.XDG_CONFIG_HOME}}/python
-      - pip3 install -U -r {{.ROOT_DIR}}/python/requirements.txt
       - ln -sf {{.ROOT_DIR}}/python/flake8.toml {{.XDG_CONFIG_HOME}}/flake8
 
   python:down:
     desc: Removes Python configuration
     cmds:
-      - pip3 uninstall -y -r {{.ROOT_DIR}}/python/requirements.txt
       - rm -rf {{.XDG_CONFIG_HOME}}/python
       - rm {{.XDG_CONFIG_HOME}}/flake8
 
@@ -543,12 +541,10 @@ tasks:
     desc: Configures YAML Lint
     cmds:
       - ln -sfn {{.ROOT_DIR}}/yamllint {{.XDG_CONFIG_HOME}}/yamllint
-      - pip3 install -U -r {{.ROOT_DIR}}/yamllint/requirements.txt
 
   yamllint:down:
     desc: Removes YAML Lint configuration
     cmds:
-      - pip3 uninstall -y -r {{.ROOT_DIR}}/yamllint/requirements.txt
       - rm -rf {{.XDG_CONFIG_HOME}}/yamllint
 
   ################################################################################
@@ -559,16 +555,12 @@ tasks:
       - ln -sfn {{.ROOT_DIR}}/zsh {{.XDG_CONFIG_HOME}}/zsh
       - mkdir -p {{.XDG_CACHE_HOME}}/zsh
       - mkdir -p {{.XDG_DATA_HOME}}/zsh
-      - pip3 install -U -r {{.ROOT_DIR}}/zsh/requirements.txt
-      #- antibody bundle < {{.ROOT_DIR}}/zsh/bundle.txt > {{.XDG_DATA_HOME}}/zsh/plugins
-      #- antibody update
       - ln -sf {{.ROOT_DIR}}/zsh/zshenv {{.HOME}}/.zshenv
 
   zsh:down:
     desc: Removes ZSH configuration
     cmds:
       - rm -f {{.HOME}}/.zshenv
-      - pip3 uninstall -y -r {{.ROOT_DIR}}/zsh/requirements.txt
       - rm -rf {{.XDG_CONFIG_HOME}}/zsh
       - rm -rf {{.XDG_CACHE_HOME}}/zsh
 
@@ -579,7 +571,7 @@ tasks:
     cmds:
       - task: ensure_xdg
       - task: alacritty:up
-      - task: ansible:up
+      # - task: ansible:up
       - task: bash:up
       - task: bin:up
       - task: direnv:up

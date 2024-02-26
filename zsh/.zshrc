@@ -4,7 +4,7 @@
 
 ################################################################################
 export DOTFILES="$HOME/.dotfiles"
-export EDITOR="/usr/local/bin/nvim"
+export EDITOR="nvim"
 bindkey -v # VIM tho
 
 ################################################################################
