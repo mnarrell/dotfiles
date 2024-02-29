@@ -2,10 +2,11 @@
 # Taps
 ################################################################################
 
+# tap 'snyk/tap'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/services'
-# tap 'snyk/tap'
 tap 'warrensbox/tap'
+# tap 'homebrew/cask'
 
 ################################################################################
 # Casks
@@ -147,7 +148,6 @@ brew 'grep'
 brew 'gzip'
 brew 'htop'
 brew 'httpie'
-brew 'java'
 brew 'jq'
 brew 'k3d'
 brew 'kubectx'

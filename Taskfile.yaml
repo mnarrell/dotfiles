@@ -72,6 +72,21 @@ tasks:
       - mkdir -p {{.BIN_HOME}}
       - ln -sf {{.ROOT_DIR}}/bin {{.BIN_HOME}}
 
+  coursier:up:
+    cmds:
+      - curl -fL https://github.com/VirtusLab/coursier-m1/releases/latest/download/cs-aarch64-apple-darwin.gz | gzip -d > /tmp/cs
+      - chmod +x /tmp/cs
+      - (xattr -d com.apple.quarantine /tmp/cs || true)
+      - /tmp/cs setup
+    status:
+      - test -d {{.HOME}}/Library/Application\ Support/Coursier/bin
+
+  coursier:down:
+    cmds:
+      - rm -rf {{.HOME}}/Library/Caches/Coursier
+      - rm -rf {{.HOME}}/Library/Application\ Support/Coursier
+
+
   ################################################################################
   # Direnv
   direnv:up:
@@ -258,20 +273,6 @@ tasks:
     desc: Removes Homebrew configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/homebrew
-
-  ################################################################################
-  # Java
-  java:up:
-    desc: Configures the JDK
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/java {{.XDG_CONFIG_HOME}}/java
-      - sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-
-  java:down:
-    desc: Removes Java configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/java
-      - sudo rm /Library/Java/JavaVirtualMachines/openjdk.jdk
 
   ################################################################################
   # Kubernetes

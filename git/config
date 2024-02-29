@@ -19,7 +19,7 @@
 
 [alias]
   br = branch
-  cherry = cherry-pick
+  cb = !git checkout $(git branch | fzf)
   ci = commit
   cm = !git add -A && git commit -m
   co = checkout
@@ -33,7 +33,6 @@
   scrub = gc --aggressive --prune=now
   st = status -sb
   wip = commit -am 'feat: WIP'
-  cb = !git checkout $(git branch | fzf)
 
 [merge]
   tool = opendiff

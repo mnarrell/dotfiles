@@ -3,7 +3,6 @@
 		"hub.comcast.net": {}
 	},
 	"credsStore": "osxkeychain",
-	"currentContext": "colima",
 	"aliases": {
 		"builder": "buildx"
 	}
