@@ -15,7 +15,6 @@ PATH=${PATH}:/opt/homebrew/opt/python@3/libexec/bin
 PATH=${PATH}:/opt/homebrew/opt/postgresql@15/bin
 PATH=${PATH}:${XDG_DATA_HOME}/npm/bin
 PATH=${PATH}:${XDG_DATA_HOME}/gem/bin
-# PATH=${PATH}:/opt/homebrew/opt/java/bin
 PATH=${PATH}:${HOME}/Library/Application\ Support/Coursier/bin
 PATH=${PATH}:/opt/homebrew/opt/node/bin
 PATH=${PATH}:/opt/homebrew/opt/ruby/bin
