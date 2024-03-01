@@ -275,6 +275,18 @@ tasks:
       - rm -rf {{.XDG_CONFIG_HOME}}/homebrew
 
   ################################################################################
+  # Java
+  java:up:
+    desc: Configures the JDK
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/java {{.XDG_CONFIG_HOME}}/java
+
+  java:down:
+    desc: Removes Java configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/java
+
+  ################################################################################
   # Kubernetes
   kube:dist:
     desc: Downloads a kubectl binary
