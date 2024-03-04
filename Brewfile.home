@@ -3,12 +3,12 @@
 ################################################################################
 
 # tap 'hashicorp/tap'
-# tap 'homebrew/cask-fonts'
-tap 'homebrew/services'
+tap 'homebrew/cask-fonts'
+# tap 'homebrew/services'
 # tap 'koekeishiya/formulae'
-tap 'qmk/qmk'
-tap 'osx-cross/avr'
-tap 'osx-cross/arm'
+# tap 'qmk/qmk'
+# tap 'osx-cross/avr'
+# tap 'osx-cross/arm'
 # tap 'snyk/tap'
 # tap '1password/tap'
 
@@ -21,12 +21,12 @@ cask 'alacritty'
 cask 'alfred'
 cask 'balenaetcher'
 cask 'bartender'
-cask 'basictex'
+# cask 'basictex'
 cask 'better-window-manager'
 cask 'coconutbattery'
 cask 'dropbox'
 cask 'element'
-cask 'firefox'
+#cask 'firefox'
 cask 'font-meslo-for-powerline'
 cask 'font-meslo-lg-nerd-font'
 cask 'font-roboto-mono-nerd-font'
@@ -36,12 +36,12 @@ cask 'insomnia'
 cask 'istat-menus'
 cask 'jetbrains-toolbox'
 cask 'karabiner-elements'
-cask 'lens'
+#cask 'lens'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
 cask 'postman'
 cask 'private-internet-access'
-cask 'qmk-toolbox'
+#cask 'qmk-toolbox'
 cask 'gitx'
 cask 'slack'
 cask 'spotify'
@@ -49,7 +49,7 @@ cask 'steam'
 cask 'textmate'
 cask 'the-unarchiver'
 cask 'vagrant'
-cask 'virtualbox'
+# cask 'virtualbox'
 cask 'visual-studio-code'
 cask 'vlc'
 
@@ -61,22 +61,22 @@ brew 'ack'
 brew 'age'
 brew 'ansible'
 brew 'ansible-lint'
-brew 'antibody'
+brew 'antidote'
 brew 'antlr'
 brew 'autoconf'
 brew 'automake'
 brew 'awscli'
 brew 'bash'
 brew 'bat'
-brew 'berkeley-db'
+# brew 'berkeley-db'
 brew 'boost'
 brew 'cmake'
-brew 'cmatrix'
+# brew 'cmatrix'
 brew 'colima'
 brew 'coreutils'
 brew 'cowsay'
 brew 'direnv'
-brew 'dive'
+# brew 'dive'
 brew 'docker'
 brew 'docker-buildx'
 brew 'docker-credential-helper'
@@ -108,14 +108,14 @@ brew 'grep'
 brew 'gzip'
 brew 'htop'
 brew 'httpie'
-brew 'hub'
+# brew 'hub'
 brew 'imagemagick'
-brew 'java'
+# brew 'java'
 brew 'jpeg'
 brew 'jq'
 brew 'k3d'
 brew 'kubectx'
-brew 'kubeseal'
+# brew 'kubeseal'
 brew 'less'
 brew 'libevent'
 brew 'libffi'
@@ -125,12 +125,12 @@ brew 'libtasn1'
 brew 'libtiff'
 brew 'libtool'
 brew 'libyaml'
-brew 'lua@5.1'
+# brew 'lua@5.1'
 brew 'luarocks'
 brew 'make'
 brew 'markdownlint-cli'
 brew 'mas'
-brew 'nats-server'
+# brew 'nats-server'
 brew 'ncdu'
 brew 'neofetch'
 brew 'ninja'
@@ -145,15 +145,15 @@ brew 'pcre'
 brew 'perl'
 brew 'pkg-config'
 brew 'popt'
-brew 'postgis'
-brew 'postgresql', restart_service: :changed
+# brew 'postgis'
+# brew 'postgresql', restart_service: :changed
 brew 'pre-commit'
 brew 'prettier'
 brew 'proselint'
 brew 'pylint'
 brew 'python'
-brew 'qmk/qmk/qmk'
-brew 'ranger'
+# brew 'qmk/qmk/qmk'
+# brew 'ranger'
 brew 'readline'
 brew 'reattach-to-user-namespace'
 brew 'rg'
@@ -166,7 +166,7 @@ brew 'shellcheck'
 brew 'shellharden'
 brew 'shfmt'
 brew 'sip'
-brew 'snyk'
+# brew 'snyk'
 brew 'sops'
 brew 'source-highlight'
 brew 'sqlite'
@@ -205,17 +205,17 @@ mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
 mas 'Deliveries (3.1.1)', id: 290986013
 mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
-mas 'Keynote (9.1)', id: 409183694
+# mas 'Keynote (9.1)', id: 409183694
 mas 'Marked 2 (2.5.31)', id: 890031187
-mas 'Microsoft Excel (16.22)', id: 462058435
-mas 'Microsoft OneNote (16.22)', id: 784801555
-mas 'Microsoft Outlook (16.22)', id: 985367838
-mas 'Microsoft PowerPoint (16.22)', id: 462062816
-mas 'Microsoft Remote Desktop (10.3.11)', id: 1295203466
-mas 'Microsoft Word (16.22)', id: 462054704
-mas 'Numbers (6.1)', id: 409203825
+# mas 'Microsoft Excel (16.22)', id: 462058435
+# mas 'Microsoft OneNote (16.22)', id: 784801555
+# mas 'Microsoft Outlook (16.22)', id: 985367838
+# mas 'Microsoft PowerPoint (16.22)', id: 462062816
+# mas 'Microsoft Remote Desktop (10.3.11)', id: 1295203466
+# mas 'Microsoft Word (16.22)', id: 462054704
+# mas 'Numbers (6.1)', id: 409203825
 mas 'OneDrive (19.002.0107)', id: 823766827
 mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
-mas 'Tweetbot (3.2)', id: 1384080005
+# mas 'Tweetbot (3.2)', id: 1384080005
 mas 'WireGuard (1.0.15)', id: 1451685025
-mas 'feedly (1.1)', id: 865500966
+# mas 'feedly (1.1)', id: 865500966
