@@ -12,6 +12,9 @@ return {
 
     return metals_config
   end,
+  keys = {
+    { "<leader>lmc", ":lua require('telescope').extensions.metals.commands()<CR>", silent = true },
+  },
   config = function(self, metals_config)
     local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
