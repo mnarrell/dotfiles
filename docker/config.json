@@ -1,9 +1,12 @@
 {
-	"auths": {
-		"hub.comcast.net": {}
-	},
-	"credsStore": "osxkeychain",
-	"aliases": {
-		"builder": "buildx"
-	}
+  "auths": {
+    "hub.comcast.net": {}
+  },
+  "credsStore": "osxkeychain",
+  "aliases": {
+    "builder": "buildx"
+  },
+  "cliPluginsExtraDirs": [
+    "/opt/homebrew/lib/docker/cli-plugins"
+  ]
 }
