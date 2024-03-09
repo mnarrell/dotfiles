@@ -23,6 +23,7 @@ alias rsync-synchronize="rsync -avzu --delete --progress -h"
 alias rsync-update="rsync -avzu --progress -h"
 alias sudo="sudo -E -s "
 alias watch="watch --color "
+alias kick='NVIM_APPNAME="nvim-kickstart" nvim'
 
 if [ $+commands[eza] ]; then
   alias ls="eza"

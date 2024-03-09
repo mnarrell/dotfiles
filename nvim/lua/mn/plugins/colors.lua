@@ -1,34 +1,5 @@
 return {
   { "rebelot/kanagawa.nvim", lazy = false, priority = 1000, opts = {} },
-  { "EdenEast/nightfox.nvim", lazy = false, priority = 1000, opts = {} },
-  {
-    "marko-cerovac/material.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      lualine_style = "stealth",
-      plugins = { -- Uncomment the plugins that you use to highlight them
-        -- Available plugins:
-        -- "dap",
-        -- "dashboard",
-        "gitsigns",
-        -- "hop",
-        -- "indent-blankline",
-        -- "lspsaga",
-        "mini",
-        -- "neogit",
-        -- "neorg",
-        "nvim-cmp",
-        -- "nvim-navic",
-        -- "nvim-tree",
-        "nvim-web-devicons",
-        -- "sneak",
-        "telescope",
-        "trouble",
-        -- "which-key",
-      },
-    },
-  },
   {
     "echasnovski/mini.base16",
     enabled = false,

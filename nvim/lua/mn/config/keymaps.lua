@@ -93,6 +93,7 @@ map("n", "<CR>", function()
     vim.api.nvim_feedkeys(key, "n", true)
   end
 end)
+map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 map("n", "tl", function()
   if vim.tbl_isempty(vim.fn.getloclist(0)) then

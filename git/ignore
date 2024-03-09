@@ -8,3 +8,6 @@ mnarre200-*.yaml
 .direnv/
 go.work*
 .op/
+.mise.toml
+.venv
+mn.conf

@@ -34,5 +34,4 @@ local map = function(lhs, rhs)
   vim.keymap.set("n", lhs, rhs, { buffer = true, silent = true })
 end
 
--- map("<C-g>", ":GoDeclsDir<CR>")
 map("gb", require("mn.go.build").build)

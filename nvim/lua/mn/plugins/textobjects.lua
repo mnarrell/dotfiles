@@ -1,13 +1,6 @@
 return {
   { "christoomey/vim-sort-motion" },
   { "michaeljsmith/vim-indent-object" },
-  -- {
-  --   "kana/vim-textobj-indent",
-  --   dependencies = {
-  --     "kana/vim-textobj-user",
-  --   },
-  -- },
-
   {
     "echasnovski/mini.ai",
     event = "VeryLazy",
@@ -31,18 +24,4 @@ return {
       require("mini.ai").setup(opts)
     end,
   },
-
-  -- {
-  --   "arsham/indent-tools.nvim",
-  --   event = "InsertEnter",
-  --   dependencies = { "arsham/arshlib.nvim" },
-  --   config = true,
-  -- },
-  -- {
-  --   "chrisgrieser/nvim-various-textobjs",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("various-textobjs").setup({ useDefaultKeymaps = true })
-  --   end,
-  -- },
 }

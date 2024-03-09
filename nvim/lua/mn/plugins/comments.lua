@@ -8,6 +8,7 @@ return {
         comment = "cm",
         comment_line = "cml",
         -- textobject = "c",
+        comment_visual = "cm",
       },
       -- options = {
       --   custom_commentstring = function()

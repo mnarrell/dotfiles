@@ -17,6 +17,7 @@ vim.opt.signcolumn = "yes" -- Always show the gutter
 vim.opt.wrap = false -- Do not wrap lines by default
 
 vim.opt.backspace = "indent,eol,start" -- Make the backspace key sane
+vim.opt.breakindent = true -- wrapped lines have same indent level
 vim.opt.clipboard = "unnamed,unnamedplus" -- use the system clipboards
 vim.opt.cmdwinheight = 20 -- Make the command window height more tolerable
 vim.opt.complete = ".,b,k,kspell" -- Where to find completion candidates
@@ -24,13 +25,14 @@ vim.opt.copyindent = true -- Copy the structure of the indent
 vim.opt.diffopt:append(",vertical")
 vim.opt.expandtab = true -- Insert spaces as the tab characters
 vim.opt.fileformat = "unix" -- UNIX EOL characters
+vim.opt.foldlevelstart = 100 -- open all folds by default
 vim.opt.hidden = true -- allow for unsaved buffers in the background
 vim.opt.joinspaces = false -- Use one space, not two, after eunctuation.
 vim.opt.linebreak = true -- Wrap long lines at a character in 'breakat'
 vim.opt.list = true -- show whitespace
 vim.opt.modeline = false -- Don't allow text to manipulate the editor
 vim.opt.mouse = "a" -- allow the mouse in all modes
-vim.opt.scrolloff = 3 -- start scrolling 3 lines before edge of viewport
+vim.opt.scrolloff = 10 -- start scrolling 3 lines before edge of viewport
 vim.opt.shell = "/opt/homebrew/bin/zsh" -- ZSH
 vim.opt.shiftround = true -- always indent by multiple of shiftwidth
 vim.opt.shiftwidth = 2 -- spaces per tab (when shifting)
@@ -44,6 +46,7 @@ vim.opt.splitbelow = true -- open horizontal splits below current window
 vim.opt.splitright = true -- open vertical splits to the right of the current window
 vim.opt.switchbuf = "usetab" -- try to reuse windows/tabs when switching buffers
 vim.opt.textwidth = 120 -- 80 is for the weak
+vim.opt.timeoutlen = 300 --time in milliseconds to wait for a mapped sequence to complete.
 vim.opt.undolevels = 1000 -- Undo memory size
 vim.opt.updatecount = 80 -- update swapfiles every 80 typed chars
 vim.opt.updatetime = 250 -- millis to trigger CursorHold and swap file writes
@@ -52,7 +55,6 @@ vim.opt.visualbell = true -- stop annoying beeping for non error errors
 vim.opt.whichwrap = [[b,h,l,s,<,>,[,],~]] -- allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 vim.opt.wildignore = "*/.git,tmp/backup,*/tmp/swap" -- patterns to ignore during file navigation
 vim.opt.wildmode = "longest:full,full" -- shell like autocomplete to unambiguous portion
-vim.opt.foldlevelstart = 100 -- open all folds by default
 
 vim.opt.completeopt = "menuone,noinsert,noselect"
 -- vim.opt.completeopt = "menu,noselect"
@@ -64,7 +66,8 @@ vim.opt.formatprg = "par -w78rs"
 vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case --hidden"
 vim.o.grepformat = "%f:%l:%c:%m"
 
-vim.opt.listchars = "nbsp:⦸,tab:▷┅,extends:»,precedes:«,trail:•"
+-- vim.opt.listchars = "nbsp:⦸,tab:▷┅,extends:»,precedes:«,trail:•"
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.opt.fillchars:append("fold: ")
 vim.opt.fillchars:append("vert:|")

@@ -10,6 +10,5 @@ vim.filetype.add({
     [".*/git/config.*"] = "gitconfig",
     [".*/%.kube/config"] = "yaml",
     [".*/templates/.*%.yaml"] = "helm",
-    -- [".*/playbooks/.*%.yaml"] = "yaml.ansible"
   },
 })

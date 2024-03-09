@@ -5,17 +5,6 @@ M.decode_base64 = function()
   vim.cmd([[noau normal! gv"vy]])
   local cmd = string.format("echo -n %s | base64 -d", vim.fn.getreg("v"))
   local decoded = vim.fn.systemlist(cmd)
-
-  -- vim.cmd "botright new"
-  -- vim.api.nvim_buf_set_option(0, "buftype", "nofile")
-  -- vim.api.nvim_buf_set_option(0, "swapfile", false)
-  -- vim.api.nvim_buf_set_option(0, "bufhidden", "wipe")
-  -- vim.api.nvim_buf_set_option(0, "buflisted", false)
-
-  -- vim.api.nvim_buf_set_option(0, "modifiable", true)
-  -- vim.api.nvim_buf_set_lines(0, 0, -1, false, decoded)
-  -- vim.api.nvim_buf_set_option(0, "modifiable", false)
-
   local popup = require("nui.popup")
   local event = require("nui.utils.autocmd").event
 

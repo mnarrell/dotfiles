@@ -1,6 +1,15 @@
 local M = {
   "lewis6991/gitsigns.nvim",
   event = "BufReadPre",
+  opts = {
+    signs = {
+      add = { text = "+" },
+      change = { text = "~" },
+      delete = { text = "_" },
+      topdelete = { text = "‾" },
+      changedelete = { text = "~" },
+    },
+  },
   config = function()
     local gs = require("gitsigns")
     gs.setup({

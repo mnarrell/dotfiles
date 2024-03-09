@@ -1,12 +1,13 @@
 {
-  "auths": {
-    "hub.comcast.net": {}
-  },
-  "credsStore": "osxkeychain",
-  "aliases": {
-    "builder": "buildx"
-  },
-  "cliPluginsExtraDirs": [
-    "/opt/homebrew/lib/docker/cli-plugins"
-  ]
+	"auths": {
+		"hub.comcast.net": {}
+	},
+	"credsStore": "osxkeychain",
+	"currentContext": "colima",
+	"cliPluginsExtraDirs": [
+		"/opt/homebrew/lib/docker/cli-plugins"
+	],
+	"aliases": {
+		"builder": "buildx"
+	}
 }

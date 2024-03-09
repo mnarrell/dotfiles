@@ -5,11 +5,16 @@ return {
     local lint = require("lint")
     lint.linters_by_ft = {
       Dockerfile = { "hadolint" },
-      lua = { "luacheck" },
-      python = { "flake8" },
-      yaml = { "yamllint" },
+      ansible = { "ansible_lint" },
       go = { "revive" },
+      json = { "jsonlint" },
+      lua = { "luacheck" },
+      make = { "checkmake" },
+      markdown = { "markdownlint" },
+      python = { "flake8" },
       sh = { "shellcheck" },
+      yaml = { "yamllint" },
+      zsh = { "zsh" },
     }
   end,
   init = function()
@@ -18,11 +23,6 @@ return {
       "--globals",
       "vim",
     }
-
-    -- lint.linters.revive.args = {
-    --   "-config",
-    --   "~/.config/golang/revive.toml",
-    -- }
 
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()

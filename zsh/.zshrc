@@ -50,3 +50,5 @@ else
 fi;
 
 [ -z ${ZSH_PROFILE+x} ] || zprof
+
+eval "$(/opt/homebrew/bin/mise activate zsh)"

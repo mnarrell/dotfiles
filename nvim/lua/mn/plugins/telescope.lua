@@ -1,12 +1,21 @@
 return {
   "nvim-telescope/telescope.nvim",
-  -- event = "VeryLazy",
+  event = "VimEnter",
+  branch = "0.1.x",
   dependencies = {
-    "nvim-lua/popup.nvim",
+    -- "nvim-lua/popup.nvim",
+    "nvim-lua/plenary.nvim",
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      cond = function()
+        return vim.fn.executable("make") == 1
+      end,
+    },
     "nvim-telescope/telescope-symbols.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
   },
-  opts = function()
+  config = function()
     local actions = require("telescope.actions")
     local my_maps = {
       ["<C-a>"] = actions.select_all,
@@ -18,7 +27,7 @@ return {
       ["<esc>"] = actions.close,
     }
 
-    return {
+    require("telescope").setup({
       defaults = {
         mappings = {
           i = my_maps,
@@ -49,20 +58,25 @@ return {
           },
         },
       },
-    }
-  end,
-  keys = {
-    { "<leader>b", ":lua require('telescope.builtin').buffers()<CR>", silent = true },
-    { "<leader>gf", ":lua require('telescope.builtin').git_status()<CR>", silent = true },
-    { "<leader>f", ":lua require('telescope.builtin').find_files()<CR>", silent = true },
-    { "<leader>m", ":lua require('telescope.builtin').marks()<CR>", silent = true },
-    { "<leader>r", ":lua require('telescope.builtin').live_grep()<CR>", silent = true },
-    { "<leader>h", ":lua require('telescope.builtin').help_tags()<CR>", silent = true },
-  },
-  config = function(_, opts)
-    local tele = require("telescope")
-    tele.setup(opts)
-    tele.load_extension("ui-select")
+    })
+
+    pcall(require("telescope").load_extension, "fzf")
+    pcall(require("telescope").load_extension, "ui-select")
+
+    local builtin = require("telescope.builtin")
+    vim.keymap.set("n", "<leader>b", builtin.buffers)
+    vim.keymap.set("n", "<leader>gf", builtin.git_status)
+    vim.keymap.set("n", "<leader>f", builtin.find_files)
+    vim.keymap.set("n", "<leader>m", builtin.marks)
+    vim.keymap.set("n", "<leader>/", builtin.live_grep)
+    vim.keymap.set("n", "<leader>h", builtin.help_tags)
+    vim.keymap.set("n", "<leader>r", function()
+      -- You can pass additional configuration to telescope to change theme, layout, etc.
+      builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+        winblend = 10,
+        previewer = false,
+      }))
+    end)
 
     local find_hidden = function()
       require("telescope.builtin").find_files({

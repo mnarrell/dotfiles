@@ -72,6 +72,8 @@ tasks:
       - mkdir -p {{.BIN_HOME}}
       - ln -sf {{.ROOT_DIR}}/bin {{.BIN_HOME}}
 
+  ################################################################################
+  # Coursier
   coursier:up:
     cmds:
       - curl -fL https://github.com/VirtusLab/coursier-m1/releases/latest/download/cs-aarch64-apple-darwin.gz | gzip -d > /tmp/cs
@@ -275,6 +277,20 @@ tasks:
       - rm -rf {{.XDG_CONFIG_HOME}}/homebrew
 
   ################################################################################
+  # Intellij
+  ideavim:up:
+    desc: Configures IdeaVIM
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/ideavim {{.XDG_CONFIG_HOME}}/ideavim
+      - defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
+
+  ideavim:down:
+    desc: Removes IdeaVIM configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/ideavim
+      - defaults delete com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
+
+  ################################################################################
   # Java
   java:up:
     desc: Configures the JDK
@@ -362,6 +378,11 @@ tasks:
       - rm -f {{.HOME}}/.markdownlintrc
       - npm uninstall -g markdown2confluence
 
+  mise:up:
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/mise {{.XDG_CONFIG_HOME}}/mise
+
+
   ################################################################################
   # Node
   node:up:
@@ -416,6 +437,7 @@ tasks:
       - gem uninstall neovim || true
       - rm -rf {{.HOME}}/.vimrc_background
       - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy
+      - rm -rf {{.XDG_DATA_HOME}}/nvim/mason
       - rm -rf {{.XDG_CONFIG_HOME}}/nvim
 
   ################################################################################
@@ -597,6 +619,7 @@ tasks:
       - task: go:up
       - task: helm:up
       - task: homebrew:up
+      - task: ideavim:up
       - task: java:up
       - task: kube:up
       - task: less:up

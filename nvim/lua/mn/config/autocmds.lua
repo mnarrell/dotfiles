@@ -1,10 +1,12 @@
 local autocmds = vim.api.nvim_create_augroup("auto", { clear = true })
 
+-- Save on focus lost
 vim.api.nvim_create_autocmd({ "FocusLost", "WinLeave" }, {
   command = ":silent! wa",
   group = autocmds,
 })
 
+-- Trim whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function(_)
     local pos = vim.fn.winsaveview()
@@ -25,6 +27,7 @@ vim.api.nvim_create_autocmd("VimResized", {
   group = autocmds,
 })
 
+-- Make the terminal more terminaly.
 vim.api.nvim_create_autocmd("TermOpen", {
   command = [[
     setlocal nolist nonumber norelativenumber noshowmode nospell
@@ -33,12 +36,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = autocmds,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  command = "nnoremap <buffer><silent> q :close <CR>",
-  pattern = "lspinfo",
-  group = autocmds,
-})
-
+-- Let q close these windows
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "qf",
@@ -54,6 +52,7 @@ vim.api.nvim_create_autocmd("FileType", {
   group = autocmds,
 })
 
+-- Highlight what was yanked.
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank({ timeout = 500 })

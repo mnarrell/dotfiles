@@ -1,7 +1,6 @@
 local opt = vim.opt_local
 
 opt.autoindent = true
--- opt.equalprg='yapf'
 opt.equalprg = "black --quiet -"
 opt.expandtab = true
 opt.fileformat = "unix"

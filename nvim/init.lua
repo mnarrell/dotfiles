@@ -15,11 +15,4 @@ vim.api.nvim_create_autocmd("User", {
 -- Machine local settings...
 pcall(require, "mn.local")
 
--- vim.cmd([[colorscheme kanagawa]])
 vim.cmd("colorscheme kanagawa-dragon")
--- vim.g.material_style = "darker"
--- vim.cmd("colorscheme material")
-
--- vim.api.nvim_set_hl(0, "EndOfBuffer", { link = "SignColumn" })
--- vim.api.nvim_set_hl(0, "NoText", { link = "SignColumn" })
--- vim.api.nvim_set_hl(0, "LineNr", { link = "SignColumn" })
