@@ -35,7 +35,7 @@ return {
         local toggle_diagnostics = function()
           if diagnostics_enabled then
             vim.notify("Disabling diagnostics...", vim.log.levels.INFO, { title = "LSP" })
-            vim.diagnostic.disable()
+            vim.diagnostic.enable(false)
             vim.diagnostic.reset(nil, 0)
             diagnostics_enabled = false
           else
@@ -88,13 +88,13 @@ return {
           require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
         end)
 
-        map("[d", function()
-          vim.diagnostic.goto_prev({ float = { border = "rounded" } })
-        end)
-
-        map("]d", function()
-          vim.diagnostic.goto_next({ float = { border = "rounded" } })
-        end)
+        -- map("[d", function()
+        --   vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+        -- end)
+        --
+        -- map("]d", function()
+        --   vim.diagnostic.goto_next({ float = { border = "rounded" } })
+        -- end)
 
         map("yod", toggle_diagnostics)
       end,

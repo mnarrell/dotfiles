@@ -51,4 +51,4 @@ fi;
 
 [ -z ${ZSH_PROFILE+x} ] || zprof
 
-eval "$(/opt/homebrew/bin/mise activate zsh)"
+source /opt/homebrew/opt/asdf/libexec/asdf.sh

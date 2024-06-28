@@ -15,7 +15,7 @@ return {
 
   -- Basics
   -- { "tpope/vim-abolish" },
-  -- { "tpope/vim-repeat", event = "VeryLazy" },
+  { "tpope/vim-repeat", event = "VeryLazy" },
   { "tpope/vim-surround" },
   { "tpope/vim-unimpaired" },
   -- { "tweekmonster/startuptime.vim", cmd = "StartupTime" },

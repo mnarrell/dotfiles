@@ -36,6 +36,16 @@ tasks:
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/alacritty
 
+  asdf:up:
+    desc: Configures the ASDF SDK manager
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/asdf {{.XDG_CONFIG_HOME}}/asdf
+
+  asdf:down:
+    desc: Removes the ASDF configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/asdf
+
   ################################################################################
   # Ansible
   # ansible:up:
@@ -188,25 +198,9 @@ tasks:
 
   ################################################################################
   # Golang
-  go:dist:
-    desc: Downloads a Golang distribution
-    silent: true
-    internal: true
-    vars:
-      GO_VERSION: 1.22.0
-      GO_URL: https://go.dev/dl/go{{.GO_VERSION}}.darwin-arm64.tar.gz
-    cmds:
-      - echo Installing Go {{.GO_VERSION}}
-      - curl -L {{.GO_URL}} | tar xz -C {{.HOME}}/tmp
-      - sudo mv {{.HOME}}/tmp/go /usr/local/go-{{.GO_VERSION}}
-      - sudo ln -sfn /usr/local/go-{{.GO_VERSION}} /usr/local/go
-    status:
-      - test -d /usr/local/go-{{.GO_VERSION}}
-
   go:up:
     desc: Configures the Golang development environment
     cmds:
-      - task: go:dist
       - ln -sfn {{.ROOT_DIR}}/golang {{.XDG_CONFIG_HOME}}/golang
       - ln -sfn {{.ROOT_DIR}}/golang/golangci.yml {{.HOME}}/.golangci.yml
       # - ln -sfn {{.ROOT_DIR}}/golang/revive.toml {{.XDG_CONFIG_HOME}}/revive/revive.toml
@@ -221,48 +215,17 @@ tasks:
       - rm -f {{.HOME}}/.golangci.yml
       - rm -rf {{.XDG_CONFIG_HOME}}/golang
 
-  go:destroy:
-    desc: Destroys the Golang development environment
-    cmds:
-      - task: go:down
-      - sudo rm -rf /usr/local/go*
-
   ################################################################################
   # Helm
-  helm:dist:
-    desc: Downloads a Helm binary
-    silent: true
-    internal: true
-    vars:
-      HELM_VERSION: 3.12.0
-      HELM_URL: https://get.helm.sh/helm-v{{.HELM_VERSION}}-darwin-amd64.tar.gz
-      HELM: helm-{{.HELM_VERSION}}
-    cmds:
-      - echo "Installing helm {{.HELM_VERSION}}..."
-      - curl -L {{.HELM_URL}} | tar xz -C {{.HOME}}/tmp
-      - chmod +x {{.HOME}}/tmp/darwin-amd64/helm
-      - cp {{.HOME}}/tmp/darwin-amd64/helm {{.HOME}}/.local/bin/{{.HELM}}
-      - ln -sfn {{.HOME}}/.local/bin/{{.HELM}} {{.HOME}}/.local/bin/helm
-      - rm -rf {{.HOME}}/tmp/darwin-amd64
-    status:
-      - test -f {{.HOME}}/.local/bin/{{.HELM}}
-
   helm:up:
     desc: Installs the Helm binary and configuration
     cmds:
-      - task: helm:dist
       - ln -sfn {{.ROOT_DIR}}/helm {{.XDG_CONFIG_HOME}}/helm
 
   helm:down:
     desc: Removes Helm configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/helm
-
-  helm:destroy:
-    desc: Destroys the Helm binary and configuration
-    cmds:
-      - task: helm:down
-      - rm -rf {{.HOME}}/.local/bin/helm*
 
   ################################################################################
   # Homebrew
@@ -304,39 +267,15 @@ tasks:
 
   ################################################################################
   # Kubernetes
-  kube:dist:
-    desc: Downloads a kubectl binary
-    silent: true
-    internal: true
-    vars:
-      KUBECTL_VERSION: 1.27.3
-      KUBECTL_URL: https://storage.googleapis.com/kubernetes-release/release/v{{.KUBECTL_VERSION}}/bin/darwin/amd64/kubectl
-      KUBECTL: kubectl-{{.KUBECTL_VERSION}}
-    cmds:
-      - echo "Installing kubectl {{.KUBECTL_VERSION}}..."
-      - curl {{.KUBECTL_URL}} -o {{.HOME}}/tmp/{{.KUBECTL}}
-      - chmod +x {{.HOME}}/tmp/{{.KUBECTL}}
-      - mv {{.HOME}}/tmp/{{.KUBECTL}} {{.HOME}}/.local/bin/{{.KUBECTL}}
-      - ln -sfn {{.HOME}}/.local/bin/{{.KUBECTL}} {{.HOME}}/.local/bin/kubectl
-    status:
-      - test -f {{.HOME}}/.local/bin/{{.KUBECTL}}
-
   kube:up:
     desc: Configures the Kubernetes environment
     cmds:
-      - task: kube:dist
       - ln -sfn {{.ROOT_DIR}}/kubernetes {{.XDG_CONFIG_HOME}}/kubernetes
 
   kube:down:
     desc: Removes Kubernetes configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/kubernetes
-
-  kube:destroy:
-    desc: Destroys the Kubernetes environment
-    cmds:
-      - task: kube:down
-      - rm -rf {{.HOME}}/.local/bin/kube*
 
   ################################################################################
   # Less
@@ -377,11 +316,6 @@ tasks:
     cmds:
       - rm -f {{.HOME}}/.markdownlintrc
       - npm uninstall -g markdown2confluence
-
-  mise:up:
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/mise {{.XDG_CONFIG_HOME}}/mise
-
 
   ################################################################################
   # Node

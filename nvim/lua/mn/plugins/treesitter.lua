@@ -30,6 +30,7 @@ return {
       "terraform",
       "toml",
       "vim",
+      "vimdoc",
       "yaml",
     },
     sync_install = false,
@@ -74,7 +75,6 @@ return {
     },
 
     autopairs = { enable = true },
-    autotag = { enable = true },
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)

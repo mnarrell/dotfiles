@@ -1,8 +1,0 @@
-[tools]
-  terraform='1.5.7'
-  helm='3.14.4'
-  kubectl='1.30.0'
-
-[settings.status]
-  show_env = true
-  show_tools = true
