@@ -10,8 +10,10 @@ return {
       html = { "prettierd" },
       go = { "gci", "gofumpt" },
       -- json = { "prettierd" },
+      json = { "jq" },
       -- yaml = { "prettierd" },
       markdown = { "prettierd" },
+      xml = { "xmllint" },
     },
 
     format_on_save = function(bufnr)
@@ -26,6 +28,9 @@ return {
     formatters = {
       shfmt = {
         prepend_args = { "-i", "2", "-ci" },
+      },
+      xmllint = {
+        prepend_args = { "--format", "--recover" },
       },
     },
   },

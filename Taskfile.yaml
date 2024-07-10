@@ -540,7 +540,7 @@ tasks:
     cmds:
       - task: ensure_xdg
       - task: alacritty:up
-      # - task: ansible:up
+      - task: asdf:up
       - task: bash:up
       - task: bin:up
       - task: direnv:up

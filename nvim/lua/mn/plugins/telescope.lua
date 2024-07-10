@@ -70,7 +70,7 @@ return {
     vim.keymap.set("n", "<leader>f", builtin.find_files)
     vim.keymap.set("n", "<leader>m", builtin.marks)
     vim.keymap.set("n", "<leader>/", builtin.live_grep)
-    vim.keymap.set("n", "<leader>h", builtin.help_tags)
+    vim.keymap.set("n", "<LocalLeader>h", builtin.help_tags)
     vim.keymap.set("n", "<leader>r", function()
       -- You can pass additional configuration to telescope to change theme, layout, etc.
       builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({

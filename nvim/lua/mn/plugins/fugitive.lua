@@ -10,6 +10,15 @@ return {
       { "<Leader>gb", ":Git blame<CR>", silent = true },
       { "<Leader>gs", ":Git<CR>", silent = true },
     },
+    config = function()
+      vim.api.nvim_create_user_command("Browse", function(args)
+        vim.ui.open(args.args)
+      end, {
+        desc = "Enables using GBrowse without netrw",
+        force = true,
+        nargs = 1,
+      })
+    end,
   },
   { "tpope/vim-rhubarb" },
 }

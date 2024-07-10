@@ -1,8 +1,22 @@
 return {
   -- Eyecandy
-  { "tpope/vim-vinegar" },
   { "kshenoy/vim-signature" }, -- show marks
   { "kyazdani42/nvim-web-devicons" },
+
+  {
+    "stevearc/oil.nvim",
+    keys = {
+      { "-", "<cmd>Oil<cr>" },
+    },
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
+    config = true,
+  },
+
+  { "almo7aya/openingh.nvim" },
 
   {
     "norcalli/nvim-colorizer.lua",
