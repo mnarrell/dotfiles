@@ -13,6 +13,7 @@ return {
       markdown = { "markdownlint" },
       python = { "flake8" },
       sh = { "shellcheck" },
+      sql = { "sqlfluff" },
       yaml = { "yamllint" },
       zsh = { "zsh" },
     }

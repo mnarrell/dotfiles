@@ -13,6 +13,7 @@ return {
       "bash",
       "comment",
       "dockerfile",
+      "elixir",
       "go",
       "gomod",
       "gowork",
@@ -75,6 +76,7 @@ return {
     },
 
     autopairs = { enable = true },
+    -- autotag = { enable = true },
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)

@@ -1,5 +1,6 @@
 {
 	"auths": {
+		"ghcr.io": {},
 		"hub.comcast.net": {}
 	},
 	"credsStore": "osxkeychain",

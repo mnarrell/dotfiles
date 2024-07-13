@@ -2,26 +2,13 @@
 # Taps
 ################################################################################
 
-# tap 'hashicorp/tap'
 tap 'homebrew/cask-fonts'
 # tap 'homebrew/services'
-# tap 'koekeishiya/formulae'
-# tap 'qmk/qmk'
-# tap 'osx-cross/avr'
-# tap 'osx-cross/arm'
-# tap 'snyk/tap'
-# tap '1password/tap'
 
 ################################################################################
 # Casks
 ################################################################################
 
-# cask 'basictex'
-# cask 'google-chrome', greedy: true
-# cask 'virtualbox'
-#cask 'firefox'
-#cask 'lens'
-#cask 'qmk-toolbox'
 cask '1password-cli'
 cask 'alacritty'
 cask 'alfred'
@@ -40,6 +27,7 @@ cask 'insomnia'
 cask 'istat-menus'
 cask 'jetbrains-toolbox'
 cask 'karabiner-elements'
+cask 'microsoft-remote-desktop'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
 cask 'postman'
@@ -49,6 +37,7 @@ cask 'spotify'
 cask 'steam'
 cask 'textmate'
 cask 'the-unarchiver'
+cask 'utm'
 cask 'vagrant'
 cask 'visual-studio-code'
 cask 'vlc'
@@ -57,32 +46,20 @@ cask 'vlc'
 # Simple brews
 ################################################################################
 
-# brew 'berkeley-db'
-# brew 'cmatrix'
-# brew 'dive'
-# brew 'hub'
-# brew 'java'
-# brew 'kubeseal'
-# brew 'lua@5.1'
-# brew 'nats-server'
-# brew 'postgis'
-# brew 'postgresql', restart_service: :changed
-# brew 'qmk/qmk/qmk'
-# brew 'ranger'
-# brew 'snyk'
 brew 'ack'
 brew 'age'
-brew 'certifi'
 brew 'ansible'
 brew 'ansible-lint'
 brew 'antidote'
 brew 'antlr'
+brew 'asdf'
 brew 'autoconf'
 brew 'automake'
 brew 'awscli'
 brew 'bash'
 brew 'bat'
 brew 'boost'
+brew 'certifi'
 brew 'cmake'
 brew 'colima'
 brew 'coreutils'
@@ -91,6 +68,7 @@ brew 'cryptography'
 brew 'direnv'
 brew 'docker'
 brew 'docker-buildx'
+brew 'docker-compose'
 brew 'docker-credential-helper'
 brew 'eza'
 brew 'fd'
@@ -177,7 +155,6 @@ brew 'stern'
 brew 'stow'
 brew 'tcptraceroute'
 brew 'telnet'
-brew 'terraform'
 brew 'terraform-docs'
 brew 'terragrunt'
 brew 'tflint'
@@ -221,3 +198,4 @@ mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'OneDrive (19.002.0107)', id: 823766827
 mas 'Paprika Recipe Manager 3 (3.3.4)', id: 1303222628
 mas 'WireGuard (1.0.15)', id: 1451685025
+mas 'Gapplin (3.3.0)', id: 768053424
