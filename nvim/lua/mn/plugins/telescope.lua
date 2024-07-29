@@ -3,7 +3,6 @@ return {
   event = "VimEnter",
   branch = "0.1.x",
   dependencies = {
-    -- "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
     {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -21,10 +20,8 @@ return {
       ["<C-a>"] = actions.select_all,
       ["<C-x>"] = false,
       ["<C-s>"] = actions.select_horizontal,
-      -- ["<C-y>"] = actions.send_selected_to_loclist,
-      ["<C-y>"] = actions.send_selected_to_qflist,
+      ["<C-y>"] = actions.send_selected_to_loclist,
       ["<C-d>"] = actions.delete_buffer,
-      -- ["<tab>"] = actions.toggle_selection,
       ["<esc>"] = actions.close,
     }
 

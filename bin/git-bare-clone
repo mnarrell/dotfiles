@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+trap cleanup SIGINT SIGTERM ERR EXIT
+
+cleanup() {
+  trap - SIGINT SIGTERM ERR EXIT
+}
+
+location='.bare'
+NOFORMAT='\033[0m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+
+printf "${YELLOW}Cloning bare repository to %s...${NOFORMAT}\n" $location
+git clone --bare "$1" "$location" > /dev/null
+pushd "$location" > /dev/null
+printf "${YELLOW}Adjusting origin fetch locations...${NOFORMAT}\n"
+git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+popd > /dev/null
+printf "${YELLOW}Setting .git file contents...${NOFORMAT}\n"
+echo "gitdir: ./$location" > .git
+printf "${GREEN}Success.${NOFORMAT}\n"

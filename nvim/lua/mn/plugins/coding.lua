@@ -4,4 +4,5 @@ return {
   { "cespare/vim-toml", ft = "toml" },
   { "chr4/nginx.vim", ft = "nginx" },
   { "pearofducks/ansible-vim", ft = "yaml.ansible" },
+  { "MeanderingProgrammer/markdown.nvim", ft = "markdown", config = true },
 }

@@ -80,7 +80,7 @@ tasks:
       BIN_HOME: "{{.HOME}}/.local/bin"
     cmds:
       - mkdir -p {{.BIN_HOME}}
-      - ln -sf {{.ROOT_DIR}}/bin {{.BIN_HOME}}
+      - ln -sf {{.ROOT_DIR}}/bin/* {{.BIN_HOME}}
 
   ################################################################################
   # Coursier

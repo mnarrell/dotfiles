@@ -38,7 +38,7 @@ vnoremap = =gv
 
 
 Plug 'tpope/vim-commentary'
-nnoremap cm <Plug>Commentary
-vnoremap cm <Plug>Commentary
-nnoremap cml <Action>(CommentByLineComment)
-nnoremap gcc <Plug>CommentaryLine
+nmap cm <Plug>Commentary
+vmap cm <Plug>Commentary
+nmap cml <Action>(CommentByLineComment)
+nmap gcc <Plug>CommentaryLine

@@ -45,10 +45,9 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "nvim_lsp_signature_help" },
-      }, {
         { name = "luasnip" },
-      }, {
         { name = "buffer", keyword_length = 2 },
+      }, {
         { name = "path" },
         { name = "tmux" },
       }),

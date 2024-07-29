@@ -12,7 +12,7 @@ return {
       -- json = { "prettierd" },
       json = { "jq" },
       -- yaml = { "prettierd" },
-      markdown = { "prettierd" },
+      markdown = { "prettier" },
       xml = { "xmllint" },
     },
 

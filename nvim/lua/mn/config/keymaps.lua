@@ -140,3 +140,7 @@ map("x", "al", "$o0")
 map("o", "al", ":normal val<CR>")
 
 map("o", "b", "vb") -- Make the 'b' motion inclusive
+
+map("n", "cm", "gc", { remap = true })
+map("n", "cml", ":norm gcc<CR>")
+map("v", "cm", "gc", { remap = true })

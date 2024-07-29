@@ -188,6 +188,11 @@ chars = "\u0000\u001B[C"
 key = "Right"
 mods = "Command"
 
+[[keyboard.bindings]]
+chars = "\u0000g"
+key = "G"
+mods = "Command"
+
 [mouse]
 hide_when_typing = true
 
