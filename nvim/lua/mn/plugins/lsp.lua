@@ -4,6 +4,7 @@ return {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "hrsh7th/cmp-nvim-lsp",
     { "j-hui/fidget.nvim", opts = {} },
   },
   config = function()
@@ -205,7 +206,7 @@ return {
     require("mason").setup()
 
     local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, { "stylua", "gci", "jdtls", "black", "prettier" })
+    vim.list_extend(ensure_installed, { "stylua", "gci", "jdtls", "black", "prettier", "shellcheck" })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     require("mason-lspconfig").setup({
