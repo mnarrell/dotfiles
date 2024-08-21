@@ -4,7 +4,6 @@ SYSTEM_PATH=${PATH}
 unset PATH
 
 PATH=${HOME}/.local/bin
-PATH=${PATH}:${GOROOT}/bin
 PATH=${PATH}:${GOBIN}
 PATH=${PATH}:${HOME}/.local/share/nvim/mason/bin
 PATH=${PATH}:/opt/homebrew/bin
