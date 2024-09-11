@@ -25,6 +25,11 @@ return {
       "vim",
     }
 
+    lint.linters.revive.args = {
+      "-config",
+      vim.env.XDG_CONFIG_HOME .. "/revive.toml",
+    }
+
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()
         lint.try_lint()

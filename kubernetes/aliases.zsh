@@ -17,7 +17,6 @@ fi
 alias -g k='kubectl'
 alias -g kp='k get pods -o wide'
 alias -g ks='k get services -o wide'
-alias -g kn="kubens"
 alias -g ke='k exec -it PODS -- /bin/bash'
 alias -g kevt="k get events --sort-by='.lastTimestamp'"
 alias -g kl='k logs -f PODS'

@@ -7,6 +7,7 @@
 tap 'homebrew/services'
 tap 'warrensbox/tap'
 tap 'hashicorp/tap'
+tap 'golangci/tap'
 
 ################################################################################
 # Casks
@@ -85,7 +86,7 @@ brew 'gnu-tar'
 brew 'gnu-which'
 brew 'gnutls'
 brew 'go-task'
-brew 'golangci-lint'
+brew 'golangci/tap/golangci-lint'
 brew 'gpg'
 brew 'grep'
 brew 'gzip'

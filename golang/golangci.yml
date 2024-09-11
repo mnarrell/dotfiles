@@ -21,99 +21,30 @@ linters-settings:
     block-size: 3
 
 linters:
-  enable:
-    # - wsl
-    - asasalint
-    - asciicheck
-    - bidichk
-    - bodyclose
-    - containedctx
-    - contextcheck
-    - cyclop
-    - decorder
-    - dogsled
-    - dupl
-    - dupword
-    - durationcheck
-    - errcheck
-    - errchkjson
-    - errname
-    - errorlint
+  enable-all: true
+  disable:
+    - depguard
+    - execinquery
     - exhaustive
+    - exhaustruct
     - exportloopref
-    - forbidigo
-    - forcetypeassert
-    - funlen
-    - gci
-    - ginkgolinter
-    - gocheckcompilerdirectives
-    - gochecknoinits
-    - gocognit
-    - goconst
-    - gocritic
-    - gocyclo
-    - godot
-    - godox
-    - err113
-    - gofumpt
-    - goheader
-    - goimports
-    - gomoddirectives
-    - gomodguard
-    - goprintffuncname
-    - gosec
-    - gosimple
-    - gosmopolitan
-    - govet
-    - grouper
-    - importas
-    - ineffassign
-    - interfacebloat
-    - ireturn
-    - lll
-    - loggercheck
-    - maintidx
-    - makezero
-    - mirror
-    - misspell
-    - musttag
-    - nakedret
-    - nestif
-    - nilerr
-    - nilnil
-    - nlreturn
-    - noctx
-    - nolintlint
-    - nonamedreturns
-    - nosprintfhostport
-    - paralleltest
-    - prealloc
-    - predeclared
-    - promlinter
-    - reassign
-    - revive
-    - rowserrcheck
-    - sqlclosecheck
-    - stylecheck
-    - tagliatelle
-    - tenv
-    - testableexamples
-    - testpackage
-    - thelper
-    - tparallel
-    - typecheck
-    - unconvert
-    - unparam
-    - unused
-    - usestdlibvars
-    - wastedassign
-    - whitespace
-    - wrapcheck
-    - zerologlint
+    - gochecknoglobals
+    - gomnd
+    - mnd
+    - perfsprint
+    - tagalign
+    - varnamelen
+    - wsl
 
 issues:
   max-issues-per-linter: 0  # show all results
   max-same-issues: 0
+
+  include:
+    - EXC0012
+    - EXC0013
+    - EXC0014
+    - EXC0015
 
   exclude-rules:
     # Exclude some linters from running on tests files.

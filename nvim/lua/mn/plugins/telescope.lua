@@ -20,7 +20,7 @@ return {
       ["<C-a>"] = actions.select_all,
       ["<C-x>"] = false,
       ["<C-s>"] = actions.select_horizontal,
-      ["<C-y>"] = actions.send_selected_to_loclist,
+      ["<C-y>"] = actions.send_selected_to_qflist,
       ["<C-d>"] = actions.delete_buffer,
       ["<esc>"] = actions.close,
     }
