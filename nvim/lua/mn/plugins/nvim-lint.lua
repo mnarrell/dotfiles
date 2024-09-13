@@ -20,15 +20,9 @@ return {
   end,
   init = function()
     local lint = require("lint")
-    lint.linters.luacheck.args = {
-      "--globals",
-      "vim",
-    }
 
-    lint.linters.revive.args = {
-      "-config",
-      vim.env.XDG_CONFIG_HOME .. "/revive.toml",
-    }
+    lint.linters.luacheck.args = { "--globals", "vim" }
+    lint.linters.revive.args = { "-config", vim.env.XDG_CONFIG_HOME .. "/revive.toml" }
 
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()
