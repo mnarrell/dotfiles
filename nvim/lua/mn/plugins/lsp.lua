@@ -1,5 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
+  -- event = LazyFile,
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -100,6 +101,7 @@ return {
       bashls = {},
       dockerls = {},
       gopls = {
+        cmd = { "gopls", "-remote=auto" },
         flags = {
           debounce_text_changes = 500,
         },
@@ -208,7 +210,7 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(
       ensure_installed,
-      { "stylua", "gci", "jdtls", "black", "prettier", "shellcheck", "isort", "shfmt", "luacheck" }
+      { "stylua", "gci", "jdtls", "black", "prettier", "shellcheck", "isort", "shfmt", "luacheck", "sqlfluff" }
     )
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

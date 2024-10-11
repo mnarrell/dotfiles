@@ -1,5 +1,5 @@
 return {
-  { "rebelot/kanagawa.nvim", lazy = false, priority = 1000, opts = {} },
+  { "rebelot/kanagawa.nvim", lazy = true, priority = 1000, opts = {} },
   {
     "echasnovski/mini.base16",
     enabled = false,

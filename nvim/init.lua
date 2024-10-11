@@ -16,3 +16,4 @@ vim.api.nvim_create_autocmd("User", {
 pcall(require, "mn.local")
 
 vim.cmd("colorscheme kanagawa-dragon")
+vim.api.nvim_set_hl(0, "@string.special.url", { underline = true, fg = "#949fb5" })

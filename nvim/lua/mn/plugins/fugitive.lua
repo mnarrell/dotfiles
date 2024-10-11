@@ -1,7 +1,7 @@
 return {
   {
     "tpope/vim-fugitive",
-    lazy = false,
+    event = LazyFile,
     keys = {
       { "<Leader>gd", ":Gvdiff<CR>", silent = true },
       { "<Leader>gr", ":Gread<CR> :w <CR>", silent = true },

@@ -1,5 +1,11 @@
 return {
-  { "folke/todo-comments.nvim", config = true },
+  {
+    "folke/todo-comments.nvim",
+    cmd = { "TodoTrouble", "TodoTelescope" },
+    event = LazyFile,
+    config = true,
+  },
+
   { "folke/lazydev.nvim", ft = "lua" },
   { "cespare/vim-toml", ft = "toml" },
   { "chr4/nginx.vim", ft = "nginx" },

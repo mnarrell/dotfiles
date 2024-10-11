@@ -31,3 +31,5 @@ _G.SaveAndReload = function()
     vim.cmd("luafile %")
   end
 end
+
+LazyFile = { "BufReadPost", "BufNewFile", "BufWritePre" }

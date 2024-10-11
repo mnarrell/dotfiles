@@ -1,11 +1,12 @@
 return {
   -- Eyecandy
-  { "kshenoy/vim-signature" }, -- show marks
+  { "kshenoy/vim-signature", event = "VeryLazy" }, -- show marks
   { "kyazdani42/nvim-web-devicons" },
 
   {
     "stevearc/oil.nvim",
-    lazy = false,
+    -- lazy = false,
+    event = { "VimEnter */*,.*", "BufNew */*,.*" },
     keys = {
       { "-", "<cmd>Oil<cr>" },
     },
@@ -32,8 +33,8 @@ return {
   -- { "tpope/vim-abolish" },
   { "tpope/vim-repeat", event = "VeryLazy" },
   { "tpope/vim-surround" },
-  { "tpope/vim-unimpaired" },
-  -- { "tweekmonster/startuptime.vim", cmd = "StartupTime" },
+  { "tpope/vim-unimpaired", event = "VeryLazy" },
+  { "tweekmonster/startuptime.vim", cmd = "StartupTime" },
   -- { "tpope/vim-scriptease", cmd = { "Messages", "Verbose" } },
   { "tpope/vim-eunuch", cmd = { "Rename", "Remove", "Delete", "Move", "Chmod", "Mkdir" } },
   { "wincent/loupe" },
