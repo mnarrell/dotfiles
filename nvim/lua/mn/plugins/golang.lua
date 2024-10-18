@@ -5,6 +5,8 @@ return {
   init = function()
     local g = vim.g
 
+    g.go_gopls_enabled = 0
+
     -- Basics
     g.go_addtags_transform = "camelcase"
     g.go_doc_popup_window = 1

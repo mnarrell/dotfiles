@@ -90,6 +90,10 @@ return {
         end)
 
         map("yod", toggle_diagnostics)
+
+        vim.api.nvim_create_user_command("TH", function()
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end, {})
       end,
     })
 

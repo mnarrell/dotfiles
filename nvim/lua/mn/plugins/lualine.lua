@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+  event = "VimEnter",
   opts = {
     component_separators = "d",
     section_separators = "",

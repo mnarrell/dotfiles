@@ -5,7 +5,6 @@ return {
 
   {
     "stevearc/oil.nvim",
-    -- lazy = false,
     event = { "VimEnter */*,.*", "BufNew */*,.*" },
     keys = {
       { "-", "<cmd>Oil<cr>" },
