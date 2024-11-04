@@ -212,10 +212,21 @@ return {
     require("mason").setup()
 
     local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(
-      ensure_installed,
-      { "stylua", "gci", "jdtls", "black", "prettier", "shellcheck", "isort", "shfmt", "luacheck", "sqlfluff" }
-    )
+    vim.list_extend(ensure_installed, {
+      "black",
+      "checkmake",
+      "gci",
+      "isort",
+      "jdtls",
+      "jsonlint",
+      "luacheck",
+      "prettier",
+      "shellcheck",
+      "shfmt",
+      "sqlfluff",
+      "stylua",
+      "yamllint",
+    })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     require("mason-lspconfig").setup({

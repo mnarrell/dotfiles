@@ -205,7 +205,7 @@ hide_when_typing = true
 [scrolling]
 history = 100000
 
-[shell]
+[terminal.shell]
 args = ["--login"]
 program = "/opt/homebrew/bin/zsh"
 
@@ -224,3 +224,5 @@ y = 2
 [window.position]
 x = 100
 y = 100
+
+[terminal]

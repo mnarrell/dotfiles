@@ -221,7 +221,8 @@ tasks:
     desc: Installs the Helm binary and configuration
     cmds:
       - ln -sfn {{.ROOT_DIR}}/helm {{.XDG_CONFIG_HOME}}/helm
-      - helm plugin install https://github.com/databus23/helm-diff
+      - cmd: helm plugin install https://github.com/databus23/helm-diff
+        ignore_error: true
 
   helm:down:
     desc: Removes Helm configuration
