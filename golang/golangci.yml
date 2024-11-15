@@ -24,12 +24,10 @@ linters:
   enable-all: true
   disable:
     - depguard
-    - execinquery
     - exhaustive
     - exhaustruct
     - exportloopref
     - gochecknoglobals
-    - gomnd
     - mnd
     - paralleltest
     - perfsprint

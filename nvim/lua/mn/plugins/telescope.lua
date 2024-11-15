@@ -16,6 +16,8 @@ return {
   },
   config = function()
     local actions = require("telescope.actions")
+    local open_with_trouble = require("trouble.sources.telescope").open
+
     local my_maps = {
       ["<C-a>"] = actions.select_all,
       ["<C-x>"] = false,
@@ -23,6 +25,7 @@ return {
       ["<C-y>"] = actions.send_selected_to_qflist,
       ["<C-d>"] = actions.delete_buffer,
       ["<esc>"] = actions.close,
+      ["<c-t>"] = open_with_trouble,
     }
 
     require("telescope").setup({

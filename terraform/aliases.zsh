@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 
-alias -g tf='tofu'
-alias -g tfi='tofu init'
-alias -g tfp='tofu plan'
-alias -g tfa='tofu apply'
-alias -g tfd='tofu destroy'
-alias -g tfo='tofu output'
-alias -g tfs='tofu state'
+alias -g tf='terraform'
+alias -g tfi='terraform init'
+alias -g tfp='terraform plan'
+alias -g tfa='terraform apply'
+alias -g tfd='terraform destroy'
+alias -g tfo='terraform output'
+alias -g tfs='terraform state'
 
 alias -g tg="terragrunt"
 alias -g tga="terragrunt run-all"

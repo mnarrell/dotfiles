@@ -1,15 +1,23 @@
 return {
   "folke/trouble.nvim",
+  cmd = "Trouble",
   opts = {
-    height = 20,
+    win = {
+      size = {
+        height = 20,
+      },
+    },
+    -- auto_refresh = false,
+    -- auto_preview = false,
+    -- follow = false,
+    -- restore = false,
   },
   keys = {
-    { "tt", ":Trouble todo toggle<CR>" },
-    -- { "<leader><leader>lc", "<Cmd>TroubleClose<CR>" },
-    -- { "<leader><leader>li", "<Cmd>TroubleToggle document_diagnostics<CR>" },
-    -- { "<leader><leader>lw", "<Cmd>TroubleToggle workspace_diagnostics<CR>" },
-    -- { "<leader><leader>lr", "<Cmd>TroubleToggle lsp_references<CR>" },
-    -- { "<leader><leader>lq", "<Cmd>TroubleToggle quickfix<CR>" },
-    -- { "<leader><leader>ll", "<Cmd>TroubleToggle loclist<CR>" },
+    --   { "tt", ":Trouble todo toggle<CR>" },
+    --   -- { "<leader><leader>lc", "<Cmd>TroubleClose<CR>" },
+    --   -- { "<leader><leader>li", "<Cmd>TroubleToggle document_diagnostics<CR>" },
+    --   -- { "<leader><leader>lw", "<Cmd>TroubleToggle workspace_diagnostics<CR>" },
+    { "<LocalLeader>gf", "<Cmd>Trouble lsp_references<CR>" },
+    { "<LocalLeader>q", "<Cmd>Trouble quickfix<CR>" },
   },
 }
