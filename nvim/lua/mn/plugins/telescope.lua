@@ -25,7 +25,7 @@ return {
       ["<C-y>"] = actions.send_selected_to_qflist,
       ["<C-d>"] = actions.delete_buffer,
       ["<esc>"] = actions.close,
-      ["<c-t>"] = open_with_trouble,
+      ["<C-b>"] = open_with_trouble,
     }
 
     require("telescope").setup({
