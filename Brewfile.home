@@ -31,7 +31,7 @@ cask 'gitx'
 cask 'istat-menus'
 cask 'jetbrains-toolbox'
 cask 'karabiner-elements'
-cask 'microsoft-remote-desktop'
+# cask 'microsoft-remote-desktop'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
 cask 'slack'
@@ -198,7 +198,6 @@ mas 'Pages (14.2)', id: 409201541
 # mas 'feedly (1.1)', id: 865500966
 mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
-mas 'Deliveries (3.1.1)', id: 290986013
 mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
 mas 'Marked 2 (2.5.31)', id: 890031187
 # mas 'OneDrive (19.002.0107)', id: 823766827
