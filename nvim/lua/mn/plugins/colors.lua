@@ -1,5 +1,13 @@
 return {
-  { "rebelot/kanagawa.nvim", lazy = true, priority = 1000, opts = {} },
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = true,
+    priority = 1000,
+    init = function()
+      vim.cmd("colorscheme kanagawa-dragon")
+      vim.api.nvim_set_hl(0, "@string.special.url", { underline = true, fg = "#949fb5" })
+    end,
+  },
   {
     "echasnovski/mini.base16",
     enabled = false,

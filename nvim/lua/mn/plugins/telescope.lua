@@ -78,6 +78,8 @@ return {
         previewer = false,
       }))
     end)
+    vim.keymap.set("n", "q:", builtin.command_history)
+    vim.keymap.set("n", "q/", builtin.search_history)
 
     local find_hidden = function()
       require("telescope.builtin").find_files({

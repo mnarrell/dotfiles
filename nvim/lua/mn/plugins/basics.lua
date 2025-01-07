@@ -1,14 +1,15 @@
 return {
+  -- Show marks in the sign column
+  { "kshenoy/vim-signature", event = "VeryLazy" },
+
   -- Eyecandy
-  { "kshenoy/vim-signature", event = "VeryLazy" }, -- show marks
   { "kyazdani42/nvim-web-devicons" },
 
+  -- Best file manager
   {
     "stevearc/oil.nvim",
     event = { "VimEnter */*,.*", "BufNew */*,.*" },
-    keys = {
-      { "-", "<cmd>Oil<cr>" },
-    },
+    keys = { { "-", vim.cmd.Oil } },
     opts = {
       view_options = {
         show_hidden = true,
@@ -17,8 +18,10 @@ return {
     config = true,
   },
 
+  -- Open line/file in GitHub
   { "almo7aya/openingh.nvim" },
 
+  -- Color strings
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
@@ -26,30 +29,28 @@ return {
     end,
   },
 
+  -- Convenience for building UI components.
   { "MunifTanjim/nui.nvim" },
 
-  -- Basics
-  -- { "tpope/vim-abolish" },
+  -- Allow the dot to repeat more actions
   { "tpope/vim-repeat", event = "VeryLazy" },
   { "tpope/vim-surround" },
+
+  -- Pair-wise operations. If you know, you know.
   { "tpope/vim-unimpaired", event = "VeryLazy" },
+
+  -- Profiling
   { "tweekmonster/startuptime.vim", cmd = "StartupTime" },
-  -- { "tpope/vim-scriptease", cmd = { "Messages", "Verbose" } },
-  { "tpope/vim-eunuch", cmd = { "Rename", "Remove", "Delete", "Move", "Chmod", "Mkdir" } },
+
+  -- Best search tweaks so far
   { "wincent/loupe" },
-  -- { "romainl/vim-qf" },
 
-  -- Navigation
+  -- Inspect registers
   { "gennaro-tedesco/nvim-peekup" },
-  { "markonm/traces.vim" },
-  { "godlygeek/tabular", cmd = "Tabularize" },
-  { "AndrewRadev/splitjoin.vim" },
 
-  -- {
-  --   "echasnovski/mini.nvim",
-  --   config = function()
-  --     require("mini.completion").setup()
-  --     require("mini.pairs").setup()
-  --   end,
-  -- },
+  -- Live substitute preview
+  { "markonm/traces.vim" },
+
+  -- Align things in columns
+  { "godlygeek/tabular", cmd = "Tabularize" },
 }

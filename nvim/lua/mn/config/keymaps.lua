@@ -16,7 +16,6 @@ cmd("Wqa", "wqa")
 
 cmd("GX", [[:silent !gitx]])
 cmd("TIG", [[:tabnew | terminal tig -a]])
--- cmd("ClearRegisters", [[call functions#ClearRegisters()]])
 
 cmd("AsConfluence", require("mn.tools").as_confluence)
 cmd("Base64Decode", require("mn.tools").decode_base64, { range = "%" })
@@ -25,6 +24,9 @@ cmd("Base64Decode", require("mn.tools").decode_base64, { range = "%" })
 cmd("TS", [[split | term <args>]], { nargs = "*" })
 cmd("TV", [[vsplit | term <args>]], { nargs = "*" })
 cmd("TT", [[tabnew | term <args>]], { nargs = "*" })
+cmd("ClearLoupe", function()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(LoupeClearHighlight)", true, true, true), "n", false)
+end)
 
 --------------------
 -- Normal
@@ -34,13 +36,12 @@ map("n", "Q", "<Nop>")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("n", "<Leader>o", ":only<CR>")
-map("n", "<Leader>q", ":quit<CR>")
-map("n", "<Leader>x", ":xit<CR>")
-map("n", "<Leader>v", ":vsp<CR>")
+map("n", "<Leader>o", vim.cmd.only)
+map("n", "<Leader>q", vim.cmd.quit)
+map("n", "<Leader>x", vim.cmd.xit)
+map("n", "<Leader>v", vim.cmd.vsplit)
 map("n", "<Leader>s", ":sp<CR>")
 map("n", "<Leader>k", ":bd!<CR>")
--- map("<Leader>w", ":<C-u>call functions#SaveAndExec()<CR>")
 map("n", "<Leader>w", SaveAndReload)
 
 -- Make Y behave like C and D
@@ -83,30 +84,15 @@ map("n", "]t", ":tabnext<CR>")
 map("n", "k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], { silent = true, expr = true })
 map("n", "j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { silent = true, expr = true })
 
--- This was a challenge. Not sure if it's worth it.
--- Clears search and Loupe highlights with <CR>, or <CR> if no selection...
 map("n", "<CR>", function()
-  if vim.api.nvim_get_vvar("hlsearch") ~= 0 then
-    vim.cmd("nohlsearch")
-    vim.cmd("normal! call loupe#private#clean_highlight()<CR>")
+  if vim.opt.hlsearch:get() then
+    vim.cmd.nohl()
+    vim.cmd.ClearLoupe()
+    return ""
   else
-    local key = vim.api.nvim_replace_termcodes("<CR>", true, true, true) or ""
-    vim.api.nvim_feedkeys(key, "n", true)
+    return "<CR>"
   end
-end)
-map("n", "<Esc>", "<cmd>nohlsearch<CR>")
-
-map("n", "tl", function()
-  if vim.tbl_isempty(vim.fn.getloclist(0)) then
-    vim.notify("No loclist")
-  else
-    vim.cmd("botright lopen 20")
-  end
-end)
-
-map("n", "tq", function()
-  vim.cmd("botright copen 20")
-end)
+end, { expr = true })
 
 map("n", "<Leader>t", ":tabnew<CR>")
 

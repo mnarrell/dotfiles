@@ -17,8 +17,22 @@ return {
     local lspkind = require("lspkind")
 
     cmp.setup({
+      enabled = function()
+        -- TODO: conditions?
+        return true
+      end,
       formatting = {
-        format = lspkind.cmp_format({ show_labelDetails = true }),
+        format = lspkind.cmp_format({
+          mode = "symbol_text",
+          menu = {
+            buffer = "[Buffer]",
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+            latex_symbols = "[Latex]",
+            cmdline = "[CMD]",
+          },
+        }),
       },
 
       snippet = {
@@ -31,27 +45,27 @@ return {
 
       window = { documentation = { border = "rounded" } },
 
-      mapping = cmp.mapping.preset.insert({
+      mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-e>"] = cmp.mapping.abort(),
         ["<C-X><C-O>"] = cmp.mapping.complete(),
-        -- ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        -- ["<C-e>"] = cmp.mapping.abort(),
         -- ["<c-q>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-      }),
+      },
 
-      sources = cmp.config.sources({
+      sources = {
         -- { name = "copilot" },
+        { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "nvim_lsp_signature_help" },
-        { name = "luasnip" },
-        { name = "buffer", keyword_length = 2 },
-      }, {
+        -- { name = "buffer", keyword_length = 2 },
+        { name = "buffer" },
         { name = "path" },
         { name = "tmux" },
-      }),
+      },
     })
   end,
 }

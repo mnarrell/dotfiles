@@ -8,15 +8,15 @@ return {
     open_fold_hl_timeout = 0,
   },
 
-  init = function()
-    vim.keymap.set("n", "zR", function()
-      require("ufo").openAllFolds()
-    end)
-
-    vim.keymap.set("n", "zM", function()
-      require("ufo").closeAllFolds()
-    end)
-  end,
+  -- init = function()
+  --   vim.keymap.set("n", "zR", function()
+  --     require("ufo").openAllFolds()
+  --   end)
+  --
+  --   vim.keymap.set("n", "zM", function()
+  --     require("ufo").closeAllFolds()
+  --   end)
+  -- end,
 
   config = function(_, opts)
     local ufo = require("ufo")

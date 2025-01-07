@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = autocmds,
 })
 
+-- Equalize splits when the window is resized
 vim.api.nvim_create_autocmd("VimResized", {
   command = ":wincmd =",
   group = autocmds,
@@ -47,7 +48,7 @@ vim.api.nvim_create_autocmd("FileType", {
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "q", vim.cmd.close, { buffer = event.buf, silent = true })
   end,
   group = autocmds,
 })
@@ -62,32 +63,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Disable inserting comment leader after hitting o or O or <Enter>
 vim.api.nvim_create_autocmd("FileType", {
-  -- pattern = "*",
   callback = function()
     vim.opt_local.formatoptions:remove("o")
     vim.opt_local.formatoptions:remove("r")
   end,
   group = autocmds,
-})
-
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
-  pattern = "*",
-  callback = function()
-    for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-      if vim.api.nvim_win_get_config(winid).zindex then
-        return
-      end
-    end
-    vim.diagnostic.open_float({
-      scope = "cursor",
-      focusable = false,
-      close_events = {
-        "CursorMoved",
-        "CursorMovedI",
-        "BufHidden",
-        "InsertCharPre",
-        "WinLeave",
-      },
-    })
-  end,
 })
