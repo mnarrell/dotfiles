@@ -8,6 +8,7 @@ tap 'homebrew/services'
 tap 'warrensbox/tap'
 tap 'hashicorp/tap'
 tap 'golangci/tap'
+tap 'norwoodj/tap'
 
 ################################################################################
 # Casks
@@ -55,6 +56,8 @@ cask 'vlc'
 # brew 'tflint'
 # brew 'tfsec'
 brew 'ack'
+brew 'helm-docs'
+brew 'rpm'
 brew 'age'
 brew 'ansible'
 brew 'ansible-lint'
