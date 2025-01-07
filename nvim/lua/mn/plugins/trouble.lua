@@ -1,20 +1,24 @@
 return {
-  "folke/trouble.nvim",
-  cmd = "Trouble",
-  keys = {
-    --   { "tt", ":Trouble todo toggle<CR>" },
-    { "<LocalLeader>gf", "<Cmd>Trouble lsp_references<CR>" },
-    { "<LocalLeader>q", "<Cmd>Trouble qflist open<CR>" },
-  },
-  opts = {
-    win = {
-      size = {
-        height = 20,
-      },
+  {
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    keys = {
+      { "<LocalLeader>gf", "<Cmd>Trouble lsp_references<CR>" },
+      { "<LocalLeader>q", "<Cmd>Trouble qflist open<CR>" },
     },
-    -- auto_refresh = false,
-    auto_preview = false,
-    -- follow = false,
-    -- restore = false,
+    opts = {
+      win = {
+        size = {
+          height = 20,
+        },
+      },
+      auto_preview = false,
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    cmd = { "TodoTrouble", "TodoTelescope" },
+    event = LazyFile,
+    config = true,
   },
 }

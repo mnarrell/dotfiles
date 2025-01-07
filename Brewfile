@@ -8,6 +8,7 @@ tap 'homebrew/services'
 tap 'warrensbox/tap'
 tap 'hashicorp/tap'
 tap 'golangci/tap'
+tap 'norwoodj/tap'
 
 ################################################################################
 # Casks
@@ -91,6 +92,8 @@ brew 'golangci/tap/golangci-lint'
 brew 'grep'
 brew 'gzip'
 brew 'hashicorp/tap/vault'
+brew 'minamijoyo/hcledit/hcledit'
+brew 'helm-docs'
 brew 'htop'
 brew 'httpie'
 brew 'ipcalc'
@@ -120,6 +123,7 @@ brew 'python'
 brew 'reattach-to-user-namespace'
 brew 'redis'
 brew 'rg'
+brew 'rpm'
 brew 'ruby'
 brew 'screen'
 brew 'screenresolution'
@@ -148,7 +152,7 @@ brew 'zsh'
 
 # ################################################################################
 # # Mac App Store
-mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
-mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
-mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
-mas 'Marked 2 (2.5.31)', id: 890031187
+# mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
+# mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
+# mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
+# mas 'Marked 2 (2.5.31)', id: 890031187

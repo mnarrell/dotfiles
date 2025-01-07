@@ -196,12 +196,6 @@ mods = "Command"
 [mouse]
 hide_when_typing = true
 
-# [mouse.double_click]
-# threshold = 300
-
-# [mouse.triple_click]
-# threshold = 300
-
 [scrolling]
 history = 100000
 
@@ -212,6 +206,7 @@ program = "/opt/homebrew/bin/zsh"
 [window]
 decorations = "buttonless"
 dynamic_padding = true
+option_as_alt = "OnlyLeft"
 
 [window.dimensions]
 columns = 200

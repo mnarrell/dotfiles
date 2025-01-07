@@ -1,6 +1,4 @@
 #! /usr/bin/env zsh
 
-# export GO111MODULE=on
-export GOPATH=${HOME}/src/work/go
-export GOBIN=${GOPATH}/bin
-# export GOROOT=/usr/local/go
+export GOBIN=${HOME}/.local/lib/go/bin
+export GOPATH=${XDG_DATA_HOME}/go

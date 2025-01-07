@@ -6,6 +6,7 @@ unset PATH
 PATH=${HOME}/.local/bin
 PATH=${PATH}:${GOBIN}
 PATH=${PATH}:${HOME}/.local/share/nvim/mason/bin
+PATH=${PATH}:${ASDF_DATA_DIR}/shims
 PATH=${PATH}:/opt/homebrew/bin
 PATH=${PATH}:/opt/homebrew/sbin
 PATH=${PATH}:/opt/homebrew/opt/openssh/bin

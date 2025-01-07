@@ -1,6 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
-  event = "VimEnter",
+  -- event = "VimEnter",
+  event = "VeryLazy",
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -78,6 +79,8 @@ return {
         previewer = false,
       }))
     end)
+    vim.keymap.set("n", "q;", builtin.command_history) -- I have no idea why I cant override `q:`
+    vim.keymap.set("n", "q/", builtin.search_history)
 
     local find_hidden = function()
       require("telescope.builtin").find_files({

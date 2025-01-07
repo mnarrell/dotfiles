@@ -4,3 +4,6 @@
 [submodule "zsh/base16-shell"]
 	path = zsh/base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
+[submodule "zsh/zsh-async"]
+	path = zsh/zsh-async
+	url = https://github.com/mafredri/zsh-async.git

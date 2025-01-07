@@ -26,7 +26,6 @@
   cp = cherry-pick
   fs = submodule update --remote
   it = !git init && git commit -m "root" --allow-empty
-  patch = --no-pager diff --no-color
   pu = !"git fetch origin -v; git fetch upstream -v; git merge upstream/master"
   pum = !"git fetch origin -v; git fetch upstream -v; git merge upstream/main"
   scrub = gc --aggressive --prune=now
@@ -71,8 +70,11 @@
 [credential]
   helper = osxkeychain
 
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+
 [include]
   path = ~/.private_dotfiles/git/config.local
 
-[includeif "gitdir:~/src/work/"]
+[includeIf "gitdir:~/src/work/"]
   path = ~/.private_dotfiles/git/config.work

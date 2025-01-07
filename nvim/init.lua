@@ -11,9 +11,3 @@ vim.api.nvim_create_autocmd("User", {
     require("mn.config.keymaps")
   end,
 })
-
--- Machine local settings...
-pcall(require, "mn.local")
-
-vim.cmd("colorscheme kanagawa-dragon")
-vim.api.nvim_set_hl(0, "@string.special.url", { underline = true, fg = "#949fb5" })

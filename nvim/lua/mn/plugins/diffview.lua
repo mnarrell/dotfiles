@@ -1,6 +1,10 @@
 return {
   "sindrets/diffview.nvim",
   cmd = { "DiffviewFileHistory", "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
+  keys = {
+    { "<LocalLeader>dv", ":DiffviewFileHistory %<CR>" },
+    { "<LocalLeader>dc", ":DiffviewClose<CR>" },
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
   },

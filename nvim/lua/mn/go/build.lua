@@ -44,9 +44,9 @@ local build_on_event = function(cmd, output)
 
       if not vim.tbl_isempty(output) then
         helpers.error(" build failure!")
-        vim.cmd("botright copen 20")
+        vim.cmd.Trouble("qflist", "open")
       else
-        vim.cmd("cclose")
+        vim.cmd.Trouble("qflist", "close")
         helpers.info(" build success!")
       end
     end

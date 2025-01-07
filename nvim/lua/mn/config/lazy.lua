@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("mn.plugins", {
-  -- checker = { enabled = true },
   change_detection = {
     enabled = true,
     notify = false, -- get a notification when changes are found
@@ -27,15 +26,9 @@ require("lazy").setup("mn.plugins", {
     },
     rtp = {
       disabled_plugins = {
-        -- "gzip",
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
         "rplugin",
-        -- "tarPlugin",
         "tohtml",
         "tutor",
-        -- "zipPlugin",
       },
     },
   },
