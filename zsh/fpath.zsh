@@ -7,4 +7,4 @@ for topic_folder in $XDG_CONFIG_HOME/*; do
   fi
 done
 
-fpath=("/opt/homebrew/share/zsh/site-functions", $fpath)
+fpath=("/opt/homebrew/share/zsh/site-functions" $fpath)

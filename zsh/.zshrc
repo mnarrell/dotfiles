@@ -2,10 +2,16 @@
 
 [ -z ${ZSH_PROFILE+x} ] || zmodload zsh/zprof
 
+
 ################################################################################
 export DOTFILES="$HOME/.dotfiles"
 export EDITOR="nvim"
 bindkey -v # VIM tho
+
+################################################################################
+typeset -A __MN
+__MN[ITALIC_ON]=$'\e[3m'
+__MN[ITALIC_OFF]=$'\e[23m'
 
 ################################################################################
 # All the ZSH files.
@@ -19,8 +25,9 @@ done
 
 ################################################################################
 # Load Antidote Plugins
-source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-antidote load
+# source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+# antidote load
+source ${XDG_CONFIG_HOME}/zsh/.zsh_plugins.zsh
 
 ################################################################################
 # Load everything but the env files.
@@ -40,15 +47,16 @@ mkdir -p /tmp/ssh-sockets
 # Initialize the autocompletion framework.
 autoload -Uz compinit
 
-recent=$(find ${XDG_CACHE_HOME}/zsh/zcompdump -mtime -1 2>/dev/null | wc -l)
-if [ $recent -eq 0 ]; then
-  # If there isnt a recently updated completion file (past 24hrs), create it.
+for dump in ${XDG_CACHE_HOME}/zsh/zcompdump(N.mh+24); do
+  print "Reloading Completions"
   compinit -i -d ${XDG_CACHE_HOME}/zsh/zcompdump;
-else
-  # Otherwise load this completion file.
-  compinit -C -d ${XDG_CACHE_HOME}/zsh/zcompdump;
-fi;
+done
+compinit -C -d ${XDG_CACHE_HOME}/zsh/zcompdump;
 
-[ -z ${ZSH_PROFILE+x} ] || zprof
-
+################################################################################
+# Load ASDF
 source /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+################################################################################
+# Complete profiling
+[ -z ${ZSH_PROFILE+x} ] || zprof

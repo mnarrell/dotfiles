@@ -17,10 +17,6 @@ return {
     local lspkind = require("lspkind")
 
     cmp.setup({
-      enabled = function()
-        -- TODO: conditions?
-        return true
-      end,
       formatting = {
         format = lspkind.cmp_format({
           mode = "symbol_text",
