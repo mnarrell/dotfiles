@@ -3,7 +3,7 @@ return {
   { "folke/lazydev.nvim", ft = "lua", config = true },
   {
     "neovim/nvim-lspconfig",
-    -- event = LazyFile,
+    event = LazyFile,
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -239,7 +239,7 @@ return {
       })
 
       require("mason-lspconfig").setup({
-        ensure_installed = servers,
+        ensure_installed = vim.tbl_keys(servers),
         automatic_installation = true,
         handlers = {
           function(server_name)

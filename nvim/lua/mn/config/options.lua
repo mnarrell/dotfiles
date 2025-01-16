@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.python3_host_prog = vim.fn.expand("$XDG_DATA_HOME/venvs/neovim/bin/python")
 vim.g.ruby_host_prog = vim.fn.expand("$XDG_DATA_HOME/gem/bin/neovim-ruby-host")
+vim.g.loaded_perl_provider = 0
 vim.g.vimsyn_embed = "l" -- highlight inline Lua
 
 -- netrw oddities

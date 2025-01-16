@@ -14,27 +14,33 @@ return {
       view_options = {
         show_hidden = true,
       },
+      keymaps = {
+        ["<C-h>"] = false,
+        ["<C-l>"] = false,
+        ["<C-r>"] = "actions.refresh",
+      },
     },
     config = true,
   },
 
   -- Open line/file in GitHub
-  { "almo7aya/openingh.nvim" },
+  { "almo7aya/openingh.nvim", event = "VeryLazy" },
 
   -- Color strings
   {
     "norcalli/nvim-colorizer.lua",
+    event = "VeryLazy",
     config = function()
       require("colorizer").setup()
     end,
   },
 
   -- Convenience for building UI components.
-  { "MunifTanjim/nui.nvim" },
+  { "MunifTanjim/nui.nvim", event = "VeryLazy" },
 
   -- Allow the dot to repeat more actions
   { "tpope/vim-repeat", event = "VeryLazy" },
-  { "tpope/vim-surround" },
+  { "tpope/vim-surround", event = "VeryLazy" },
 
   -- Pair-wise operations. If you know, you know.
   { "tpope/vim-unimpaired", event = "VeryLazy" },
@@ -43,13 +49,13 @@ return {
   { "tweekmonster/startuptime.vim", cmd = "StartupTime" },
 
   -- Best search tweaks so far
-  { "wincent/loupe" },
+  { "wincent/loupe", event = "VeryLazy" },
 
   -- Inspect registers
-  { "gennaro-tedesco/nvim-peekup" },
+  { "gennaro-tedesco/nvim-peekup", event = "VeryLazy" },
 
   -- Live substitute preview
-  { "markonm/traces.vim" },
+  { "markonm/traces.vim", event = "VeryLazy" },
 
   -- Align things in columns
   { "godlygeek/tabular", cmd = "Tabularize" },

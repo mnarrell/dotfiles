@@ -47,11 +47,38 @@ mkdir -p /tmp/ssh-sockets
 # Initialize the autocompletion framework.
 autoload -Uz compinit
 
-for dump in ${XDG_CACHE_HOME}/zsh/zcompdump(N.mh+24); do
+# for dump in ${XDG_CACHE_HOME}/zsh/zcompdump(N.mh+24); do
+#   print "Reloading Completions"
+#   compinit -i -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+# done
+# compinit -C -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+
+# _comp_files=(${XDG_CACHE_HOME}/zsh/zcompdump(Nm+24))
+# if (( $#_comp_files )); then
+#   echo "Reloading Completions"
+#   compinit -i -C -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+# else
+#   compinit -C -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+# fi
+
+current=${XDG_CACHE_HOME}/zsh/zcompdump-$(date '+%Y%m%d')
+if [ -f $current ]; then
+  compinit -C -d $current
+else
   print "Reloading Completions"
-  compinit -i -d ${XDG_CACHE_HOME}/zsh/zcompdump;
-done
-compinit -C -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+  rm ${XDG_CACHE_HOME}/zsh/zcompdump-* 2>/dev/null
+  compinit -i -d $current
+fi
+
+# recent=$(find ${XDG_CACHE_HOME}/zsh/zcompdump -mtime -1 2>/dev/null | wc -l)
+# if [ $recent -eq 0 ]; then
+#   print "Reloading Completions"
+#   # If there isnt a recently updated completion file (past 24hrs), create it.
+#   compinit -i -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+# else
+#   # Otherwise load this completion file.
+#   compinit -C -d ${XDG_CACHE_HOME}/zsh/zcompdump;
+# fi;
 
 ################################################################################
 # Load ASDF
