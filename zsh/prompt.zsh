@@ -125,6 +125,14 @@ function vi_mode_prompt_info() {
 }
 
 ###############################################################################
+# Show Python Virtual Env if configured via direnv.
+function show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "%F{242}($(basename $VIRTUAL_ENV))%f"
+  fi
+}
+
+###############################################################################
 # Construct the prompt
 if [[ -z $prompt_newline ]]; then
   # This variable needs to be set, usually set by promptinit.
@@ -137,6 +145,7 @@ prompt_parts=(
   "%F{blue}%2c%f"
   "\${vcs_info_msg_0_}"
   "\$(vi_mode_prompt_info)"
+  "\$(show_virtual_env)"
   "$prompt_newline"
   "%(?.%F{yellow}.%F{red})$%f "
 )

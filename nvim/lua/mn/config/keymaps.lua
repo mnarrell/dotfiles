@@ -28,6 +28,10 @@ cmd("ClearLoupe", function()
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(LoupeClearHighlight)", true, true, true), "n", false)
 end)
 
+map("n", "<A-m>", function()
+  print(vim.api.nvim_replace_termcodes("<Plug>(LoupeClearHighlight)", true, true, true))
+end)
+
 --------------------
 -- Normal
 
@@ -84,15 +88,24 @@ map("n", "]t", ":tabnext<CR>")
 map("n", "k", [[(v:count > 5 ? "m'" . v:count : '') . 'k']], { silent = true, expr = true })
 map("n", "j", [[(v:count > 5 ? "m'" . v:count : '') . 'j']], { silent = true, expr = true })
 
-map("n", "<CR>", function()
+-- map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+map({ "i", "n" }, "<esc>", function()
   if vim.opt.hlsearch:get() then
     vim.cmd.nohl()
     vim.cmd.ClearLoupe()
-    return ""
-  else
-    return "<CR>"
   end
+  return "<esc>"
 end, { expr = true })
+
+-- map("n", "<CR>", function()
+--   if vim.opt.hlsearch:get() then
+--     vim.cmd.nohl()
+--     vim.cmd.ClearLoupe()
+--     return ""
+--   else
+--     return "<CR>"
+--   end
+-- end, { expr = true })
 
 map("n", "<Leader>t", ":tabnew<CR>")
 

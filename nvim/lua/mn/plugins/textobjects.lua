@@ -1,6 +1,6 @@
 return {
-  { "christoomey/vim-sort-motion", event = "VeryLazy" },
-  { "michaeljsmith/vim-indent-object", event = "VeryLazy" },
+  { "christoomey/vim-sort-motion" },
+  { "michaeljsmith/vim-indent-object" },
   {
     "echasnovski/mini.ai",
     event = "VeryLazy",

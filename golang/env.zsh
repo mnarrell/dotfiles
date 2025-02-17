@@ -1,7 +1,18 @@
 #! /usr/bin/env zsh
 
-# export GO111MODULE=on
-# export GOROOT=/usr/local/go
+asdf_update_golang_env() {
+  local go_bin_path
+  go_bin_path="$(/opt/homebrew/bin/asdf which go 2>/dev/null)"
+  if [[ -n "${go_bin_path}" ]]; then
+    export GOROOT
+    GOROOT="$(dirname "$(dirname "${go_bin_path:A}")")"
 
-export GOPATH=${HOME}/src/work/go
-export GOBIN=${GOPATH}/bin
+    export GOPATH
+    GOPATH="$(dirname "${GOROOT:A}")/packages"
+
+    export GOBIN
+    GOBIN="$(dirname "${GOROOT:A}")/bin"
+  fi
+}
+
+asdf_update_golang_env

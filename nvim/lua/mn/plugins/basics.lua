@@ -40,7 +40,19 @@ return {
 
   -- Allow the dot to repeat more actions
   { "tpope/vim-repeat", event = "VeryLazy" },
-  { "tpope/vim-surround", event = "VeryLazy" },
+  -- { "tpope/vim-surround", event = "VeryLazy" },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = true,
+  },
+
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 
   -- Pair-wise operations. If you know, you know.
   { "tpope/vim-unimpaired", event = "VeryLazy" },

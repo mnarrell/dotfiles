@@ -10,22 +10,48 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "hrsh7th/cmp-nvim-lsp",
       { "j-hui/fidget.nvim", opts = {} },
+      "b0o/schemastore.nvim",
     },
     config = function()
       vim.diagnostic.config({
         virtual_text = false,
-        signs = true,
+        -- signs = true,
         update_in_insert = false,
         underline = true,
         severity_sort = false,
         float = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.INFO] = "𝓲 ",
+            [vim.diagnostic.severity.HINT] = "󰛩 ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.ERROR] = " ",
+            -- [vim.diagnostic.severity.INFO] = "",
+            -- [vim.diagnostic.severity.HINT] = "",
+            -- [vim.diagnostic.severity.WARN] = "",
+            -- [vim.diagnostic.severity.ERROR] = "",
+          },
+          -- numhl = {
+          --   [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+          --   [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+          --   [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+          --   [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+          -- },
+        },
       })
 
-      local signs = { Error = "✗ ", Warn = " ", Hint = "󰛩 ", Info = "𝓲 " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
+      --    diagnostics = {
+      --   Error = " ",
+      --   Warn  = " ",
+      --   Hint  = " ",
+      --   Info  = " ",
+      -- },
+
+      -- local signs = { Error = "✗ ", Warn = " ", Hint = "󰛩 ", Info = "𝓲 " }
+      -- for type, icon in pairs(signs) do
+      --   local hl = "DiagnosticSign" .. type
+      --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      -- end
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
       vim.lsp.handlers["textDocument/signatureHelp"] =
@@ -105,7 +131,17 @@ return {
       local servers = {
         ansiblels = {},
         bashls = {},
-        dockerls = {},
+        dockerls = {
+          settings = {
+            docker = {
+              languageserver = {
+                formatter = {
+                  ignoreMultilineInstructions = true,
+                },
+              },
+            },
+          },
+        },
         gopls = {
           cmd = { "gopls", "-remote=auto" },
           flags = {
@@ -149,7 +185,14 @@ return {
             },
           },
         },
-        jsonls = {},
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require("schemastore").json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
         lua_ls = {
           settings = {
             Lua = {
@@ -183,24 +226,27 @@ return {
         pyright = {},
         terraformls = {},
         tflint = {},
+        helm_ls = {},
         yamlls = {
           -- filetypes = { "yaml" },
           settings = {
             redhat = { telemetry = { enabled = false } },
             yaml = {
               schemaStore = {
-                enable = true,
-                url = "https://www.schemastore.org/api/json/catalog.json",
+                enable = false,
+                -- enable = true,
+                -- url = "https://www.schemastore.org/api/json/catalog.json",
               },
-              schemas = {
-                ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.22.0-standalone-strict/all.json"] = "/*.k8s.yaml",
-                ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/configmap.json"] = "*onfigma*.{yml,yaml}",
-                ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/deployment.json"] = "*eployment*.{yml,yaml}",
-                ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/service.json"] = "*ervic*.{yml,yaml}",
-                ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/ingress.json"] = "*ngres*.{yml,yaml}",
-                ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/secret.json"] = "*ecre*.{yml,yaml}",
-                ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/statefulset.json"] = "*stateful*.{yml,yaml}",
-              },
+              -- schemas = {
+              --   ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.22.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/configmap.json"] = "*onfigma*.{yml,yaml}",
+              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/deployment.json"] = "*eployment*.{yml,yaml}",
+              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/service.json"] = "*ervic*.{yml,yaml}",
+              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/ingress.json"] = "*ngres*.{yml,yaml}",
+              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/secret.json"] = "*ecre*.{yml,yaml}",
+              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/statefulset.json"] = "*stateful*.{yml,yaml}",
+              -- },
+              schemas = require("schemastore").yaml.schemas(),
               format = { enabled = false },
               validate = true,
               completion = true,
