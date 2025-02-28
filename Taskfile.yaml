@@ -256,18 +256,6 @@ tasks:
       - defaults delete com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 
   ################################################################################
-  # Java
-  java:up:
-    desc: Configures the JDK
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/java {{.XDG_CONFIG_HOME}}/java
-
-  java:down:
-    desc: Removes Java configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/java
-
-  ################################################################################
   # K8S
   k9s:up:
     desc: Configures K9S
@@ -568,7 +556,6 @@ tasks:
       - task: helm:up
       - task: homebrew:up
       - task: ideavim:up
-      - task: java:up
       - task: k9s:up
       - task: kube:up
       - task: less:up

@@ -44,18 +44,5 @@ done
 mkdir -p /tmp/ssh-sockets
 
 ################################################################################
-# Initialize the autocompletion framework.
-autoload -Uz compinit
-
-current=${XDG_CACHE_HOME}/zsh/zcompdump-$(date '+%Y%m%d')
-if [ -f $current ]; then
-  compinit -C -d $current
-else
-  print "Reloading Completions"
-  rm ${XDG_CACHE_HOME}/zsh/zcompdump-* 2>/dev/null
-  compinit -i -d $current
-fi
-
-################################################################################
 # Complete profiling
 [ -z ${ZSH_PROFILE+x} ] || zprof
