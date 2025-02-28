@@ -14,6 +14,19 @@ __MN[ITALIC_ON]=$'\e[3m'
 __MN[ITALIC_OFF]=$'\e[23m'
 
 ################################################################################
+# Initialize the autocompletion framework.
+autoload -Uz compinit
+
+current=${XDG_CACHE_HOME}/zsh/zcompdump-$(date '+%Y%m%d')
+if [ -f $current ]; then
+  compinit -C -d $current
+else
+  print "Reloading Completions"
+  rm ${XDG_CACHE_HOME}/zsh/zcompdump-* 2>/dev/null
+  compinit -i -d $current
+fi
+
+################################################################################
 # All the ZSH files.
 config_files=($XDG_CONFIG_HOME/*/*.zsh)
 
