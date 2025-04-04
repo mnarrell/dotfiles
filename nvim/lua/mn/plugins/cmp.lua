@@ -12,6 +12,7 @@ return {
     "andersevenrud/cmp-tmux",
     "onsails/lspkind-nvim",
   },
+  enabled = false,
   config = function()
     local cmp = require("cmp")
     -- local lspkind = require("lspkind")

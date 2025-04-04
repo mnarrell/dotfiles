@@ -8,11 +8,18 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      "hrsh7th/cmp-nvim-lsp",
+      "saghen/blink.cmp",
       { "j-hui/fidget.nvim", opts = {} },
       "b0o/schemastore.nvim",
     },
     config = function()
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+      vim.lsp.handlers["textDocument/signatureHelp"] =
+        vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+      local auGroup = vim.api.nvim_create_augroup("lsp", { clear = true })
+
+      -- Diagnostics
       vim.diagnostic.config({
         virtual_text = false,
         -- signs = true,
@@ -26,62 +33,31 @@ return {
             [vim.diagnostic.severity.HINT] = "󰛩 ",
             [vim.diagnostic.severity.WARN] = " ",
             [vim.diagnostic.severity.ERROR] = " ",
-            -- [vim.diagnostic.severity.INFO] = "",
-            -- [vim.diagnostic.severity.HINT] = "",
-            -- [vim.diagnostic.severity.WARN] = "",
-            -- [vim.diagnostic.severity.ERROR] = "",
           },
-          -- numhl = {
-          --   [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
-          --   [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
-          --   [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
-          --   [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
-          -- },
         },
       })
 
-      --    diagnostics = {
-      --   Error = " ",
-      --   Warn  = " ",
-      --   Hint  = " ",
-      --   Info  = " ",
-      -- },
+      local show_line_diagnostics = function()
+        vim.diagnostic.open_float({
+          focusable = false,
+          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+          border = "rounded",
+          -- border = "single",
+          source = true, -- show source in diagnostic popup window
+          prefix = " ",
+        })
+      end
 
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-      vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+      vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
+        group = auGroup,
+        callback = show_line_diagnostics,
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
-        callback = function(event)
-          local diagnostics_enabled = true
-
-          local toggle_diagnostics = function()
-            if diagnostics_enabled then
-              vim.notify("Disabling diagnostics...", vim.log.levels.INFO, { title = "LSP" })
-              vim.diagnostic.enable(false)
-              vim.diagnostic.reset(nil, 0)
-              diagnostics_enabled = false
-            else
-              vim.notify("Enabling diagnostics...", vim.log.levels.INFO, { title = "LSP" })
-              vim.diagnostic.enable()
-              diagnostics_enabled = true
-            end
-          end
-
-          local show_line_diagnostics = function()
-            vim.diagnostic.open_float({
-              focusable = false,
-              close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-              border = "rounded",
-              -- border = "single",
-              source = true, -- show source in diagnostic popup window
-              prefix = " ",
-            })
-          end
-
+        group = auGroup,
+        callback = function(args)
           local map = function(lhs, rhs)
-            vim.keymap.set("n", lhs, rhs, { buffer = event.buf, silent = true })
+            vim.keymap.set("n", lhs, rhs, { buffer = args.buf, silent = true })
           end
 
           -- vim.keymap.set("n", "<C-d>", "<Cmd>Telescope diagnostics<CR>", { desc = "search lsp diagnostics" })
@@ -92,7 +68,7 @@ return {
           map("<C-s>", vim.lsp.buf.signature_help)
           map("<Leader>D", vim.lsp.buf.type_definition)
           map("gr", vim.lsp.buf.rename)
-          map("<leader>ld", show_line_diagnostics)
+          -- map("<leader>ld", show_line_diagnostics)
           map("<Leader>ll", "<cmd>Trouble diagnostics toggle<cr>")
           map("<LocalLeader>a", vim.lsp.buf.code_action)
           map("gi", require("telescope.builtin").lsp_implementations)
@@ -111,16 +87,11 @@ return {
             require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
           end)
 
-          map("yod", toggle_diagnostics)
-
           vim.api.nvim_create_user_command("TH", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
           end, {})
         end,
       })
-
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
       local servers = {
         ansiblels = {},
@@ -277,6 +248,9 @@ return {
           "yamllint",
         },
       })
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 
       require("mason-lspconfig").setup({
         ensure_installed = vim.tbl_keys(servers),
