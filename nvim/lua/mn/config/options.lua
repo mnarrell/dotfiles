@@ -26,7 +26,6 @@ vim.opt.copyindent = true -- Copy the structure of the indent
 vim.opt.diffopt:append(",vertical")
 vim.opt.expandtab = true -- Insert spaces as the tab characters
 vim.opt.fileformat = "unix" -- UNIX EOL characters
-vim.opt.foldlevelstart = 100 -- open all folds by default
 vim.opt.hidden = true -- allow for unsaved buffers in the background
 vim.opt.joinspaces = false -- Use one space, not two, after eunctuation.
 vim.opt.linebreak = true -- Wrap long lines at a character in 'breakat'
@@ -56,6 +55,16 @@ vim.opt.visualbell = true -- stop annoying beeping for non error errors
 vim.opt.whichwrap = [[b,h,l,s,<,>,[,],~]] -- allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 vim.opt.wildignore = "*/.git,tmp/backup,*/tmp/swap" -- patterns to ignore during file navigation
 vim.opt.wildmode = "longest:full,full" -- shell like autocomplete to unambiguous portion
+
+-- Folding
+vim.opt.foldlevelstart = 100 -- open all folds by default
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldcolumn = "0"
+vim.opt.fillchars:append({ fold = " " })
 
 vim.opt.completeopt = "menu,menuone,noselect"
 -- vim.opt.completeopt = "menuone,noinsert,noselect"
