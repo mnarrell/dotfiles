@@ -40,6 +40,10 @@
 
 [diff]
   tool = opendiff
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 
 [difftool]
   prompt = false
@@ -78,3 +82,10 @@
 
 [includeIf "gitdir:~/src/work/"]
   path = ~/.private_dotfiles/git/config.work
+
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname

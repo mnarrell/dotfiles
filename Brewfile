@@ -155,4 +155,4 @@ brew 'zsh'
 # mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 # mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
 # mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
-# mas 'Marked 2 (2.5.31)', id: 890031187
+mas 'Marked 2 (2.5.31)', id: 890031187
