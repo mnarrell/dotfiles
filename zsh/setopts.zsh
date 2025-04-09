@@ -19,3 +19,4 @@ setopt histignorespace      # dont record commands starting with a space
 setopt histverify           # confirm history expansion (!$, !!, !foo)
 setopt ignoreeof            # prevent accidental C-d from exiting shell
 setopt sharehistory         # share history across shells
+setopt extendedglob         # allow for fancy file/dir globbing
