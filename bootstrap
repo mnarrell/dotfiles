@@ -18,6 +18,7 @@ echo ''
 echo "Setting PATH..."
 echo ''
 
+# shellcheck disable=SC1091
 source zsh/path.zsh
 
 echo "Installing Git submodules..."
