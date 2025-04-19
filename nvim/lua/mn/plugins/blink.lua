@@ -1,11 +1,11 @@
 return {
   "saghen/blink.cmp",
-  -- lazy = false, -- lazy loading handled internally
   event = "VimEnter",
   dependencies = {
-    { "L3MON4D3/LuaSnip" },
+    "L3MON4D3/LuaSnip",
     "mgalliou/blink-cmp-tmux",
     "folke/lazydev.nvim",
+    "giuxtaposition/blink-cmp-copilot",
   },
   version = "*",
   opts = {
@@ -19,18 +19,12 @@ return {
         border = "rounded",
         scrollbar = false,
         draw = {
-          -- treesitter = { "lsp" },
-          -- columns = {
-          --   { "label", "label_description", gap = 1 },
-          --   { "kind_icon", "kind" },
-          --   { "source_name" },
-          -- },
           treesitter = { "lsp" },
           columns = {
             { "kind_icon", gap = 1 },
             { "label", gap = 4 },
-            { "kind", "source_name" },
-            { "label_description" },
+            { "kind", "source_name", gap = 1 },
+            { "label_description", gap = 1 },
           },
           -- gap = 1,
         },
@@ -59,6 +53,7 @@ return {
     snippets = { preset = "luasnip" },
 
     sources = {
+      -- default = { "lazydev", "lsp", "path", "snippets", "buffer", "tmux", "copilot" },
       default = { "lazydev", "lsp", "path", "snippets", "buffer", "tmux" },
       providers = {
         lazydev = {
@@ -66,22 +61,28 @@ return {
           module = "lazydev.integrations.blink",
           score_offset = 100, -- show at a higher priority than lsp
         },
-        snippets = { min_keyword_length = 3, score_offset = 5 },
-        lsp = { min_keyword_length = 4, score_offset = 4 },
+        copilot = {
+          name = "copilot",
+          module = "blink-cmp-copilot",
+          score_offset = 5,
+          async = true,
+          fallbacks = { "lsp" },
+        },
+        snippets = { score_offset = 5 },
+        lsp = { score_offset = 4 },
         path = { score_offset = 3 },
-        buffer = { min_keyword_length = 5, score_offset = 2 },
+        buffer = { score_offset = 2 },
         tmux = {
           module = "blink-cmp-tmux",
           name = "tmux",
           score_offset = 1,
-          -- default options
+          min_keyword_length = 4,
           opts = {
-            all_panes = false,
-            capture_history = false,
-            -- only suggest completions from `tmux` if the `trigger_chars` are
-            -- used
-            triggered_only = false,
-            trigger_chars = { "." },
+            all_panes = true,
+            -- capture_history = false,
+            -- triggered_only = false,
+            -- triggered_only = true,
+            -- trigger_chars = { "\\" },
           },
         },
       },
