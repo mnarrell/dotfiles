@@ -8,7 +8,7 @@ return {
       python = { "black", "isort" },
       hcl = { "terragrunt_hclfmt" },
       html = { "prettierd" },
-      go = { "gci", "gofumpt" },
+      go = { "goimports", "gci", "gofumpt" },
       json = { "jq" },
       -- yaml = { "prettierd" },
       markdown = { "prettier" },
@@ -21,7 +21,7 @@ return {
         return
       end
 
-      return { timeout_ms = 500, lsp_fallback = true }
+      return { timeout_ms = 1000, lsp_fallback = true }
     end,
 
     formatters = {

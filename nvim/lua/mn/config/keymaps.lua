@@ -131,4 +131,5 @@ map("o", "b", "vb") -- Make the 'b' motion inclusive
 
 map("n", "cm", "gc", { remap = true })
 map("n", "cml", ":norm gcc<CR>")
+map("n", "dcm", "dgc", { remap = true })
 map("v", "cm", "gc", { remap = true })

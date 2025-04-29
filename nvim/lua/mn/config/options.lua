@@ -23,7 +23,7 @@ vim.opt.clipboard = "unnamed,unnamedplus" -- use the system clipboards
 vim.opt.cmdwinheight = 20 -- Make the command window height more tolerable
 vim.opt.complete = ".,b,k,kspell" -- Where to find completion candidates
 vim.opt.copyindent = true -- Copy the structure of the indent
-vim.opt.diffopt:append(",vertical")
+-- vim.opt.diffopt:append(",vertical")
 vim.opt.expandtab = true -- Insert spaces as the tab characters
 vim.opt.fileformat = "unix" -- UNIX EOL characters
 vim.opt.hidden = true -- allow for unsaved buffers in the background
@@ -64,7 +64,27 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = ""
 vim.opt.foldcolumn = "0"
-vim.opt.fillchars:append({ fold = " " })
+-- vim.opt.fillchars:append({ fold = " " })
+vim.opt.fillchars = {
+  fold = " ",
+  diff = "╱",
+  vert = "|",
+  eob = " ", -- suppress ~ at EndOfBuffer
+  msgsep = "‾", -- separator between messages
+  foldopen = "", -- fold open
+  foldclose = "", -- fold close
+  foldsep = "│", -- separator between folds
+}
+
+vim.opt.diffopt = {
+  "internal",
+  "filler",
+  "closeoff",
+  "context:12",
+  "algorithm:histogram",
+  "linematch:200",
+  "indent-heuristic",
+}
 
 vim.opt.completeopt = "menu,menuone,noselect"
 -- vim.opt.completeopt = "menuone,noinsert,noselect"
@@ -78,9 +98,9 @@ vim.o.grepformat = "%f:%l:%c:%m"
 -- vim.opt.listchars = "nbsp:⦸,tab:▷┅,extends:»,precedes:«,trail:•"
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
-vim.opt.fillchars:append("fold: ")
-vim.opt.fillchars:append("vert:|")
-vim.opt.fillchars:append("diff: ")
+-- vim.opt.fillchars:append("fold: ")
+-- vim.opt.fillchars:append("vert:|")
+-- vim.opt.fillchars:append("diff: ")
 
 -- vim.opt.shortmess = vim.o.shortmess .. 'c' -- don't give |ins-completion-menu| messages
 vim.opt.shortmess:append("c")
