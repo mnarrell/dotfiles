@@ -9,7 +9,7 @@ return {
       hcl = { "terragrunt_hclfmt" },
       html = { "prettierd" },
       go = { "goimports", "gci", "gofumpt" },
-      json = { "jq" },
+      -- json = { "jq" },
       -- yaml = { "prettierd" },
       markdown = { "prettier" },
       xml = { "xmllint" },
