@@ -9,7 +9,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       -- "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
-      { "j-hui/fidget.nvim", opts = {} },
+      -- { "j-hui/fidget.nvim", opts = {} },
       "b0o/schemastore.nvim",
     },
     config = function()
@@ -67,7 +67,7 @@ return {
           map("<c-]>", vim.lsp.buf.definition)
           map("<C-s>", vim.lsp.buf.signature_help)
           map("<Leader>D", vim.lsp.buf.type_definition)
-          map("gr", vim.lsp.buf.rename)
+          -- map("gr", vim.lsp.buf.rename)
           -- map("<leader>ld", show_line_diagnostics)
           map("<Leader>ll", "<cmd>Trouble diagnostics toggle<cr>")
           map("<LocalLeader>a", vim.lsp.buf.code_action)
