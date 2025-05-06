@@ -2,13 +2,13 @@ return {
   "L3MON4D3/LuaSnip",
   lazy = true,
   config = function()
-    local ls = require("luasnip")
+    local ls = require "luasnip"
 
-    ls.add_snippets("all", R("mn.snips.all"))
-    ls.add_snippets("go", R("mn.snips.go"))
-    ls.add_snippets("lua", R("mn.snips.lua"))
-    ls.add_snippets("markdown", R("mn.snips.markdown"))
-    ls.add_snippets("sh", R("mn.snips.sh"))
+    ls.add_snippets("all", R "snippets.all")
+    ls.add_snippets("go", R "snippets.go")
+    ls.add_snippets("lua", R "snippets.lua")
+    ls.add_snippets("markdown", R "snippets.markdown")
+    ls.add_snippets("sh", R "snippets.sh")
 
     -- <c-k> is my expansion key
     -- this will expand the current item or jump to the next item within the snippet.

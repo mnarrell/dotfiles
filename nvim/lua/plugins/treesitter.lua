@@ -5,13 +5,14 @@ return {
   dependencies = {
     -- "nvim-treesitter/nvim-treesitter-textobjects",
     -- "nvim-treesitter/nvim-treesitter-refactor",
-    "mrjones2014/nvim-ts-rainbow",
+    "HiPhish/rainbow-delimiters.nvim",
     { "windwp/nvim-ts-autotag", config = true },
   },
   opts = {
     ensure_installed = {
       "bash",
       "comment",
+      "diff",
       "dockerfile",
       "elixir",
       "gitignore",

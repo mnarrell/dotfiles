@@ -1,4 +1,4 @@
-local icons = require("mn.icons")
+local icons = require "icons"
 
 ---@type table<string, string?>
 local progress_status = {
@@ -142,10 +142,6 @@ return {
       lualine_x = { "filetype" },
       lualine_y = { "progress", "location", right_component },
       lualine_z = {},
-    },
-    inactive_sections = {
-      lualine_c = {},
-      lualine_x = {},
     },
   },
 }

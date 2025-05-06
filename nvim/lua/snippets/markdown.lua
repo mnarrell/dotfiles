@@ -20,11 +20,4 @@ local markdown = {
   s({ trig = "link", name = "Link" }, fmt("[{}]({})", { i(1, "Text"), i(2, "http://www.url.com") })),
 }
 
-local yes, private = pcall(require, "mn.snips.markdown_private")
-if yes then
-  for _, v in ipairs(private) do
-    table.insert(markdown, v)
-  end
-end
-
 return markdown

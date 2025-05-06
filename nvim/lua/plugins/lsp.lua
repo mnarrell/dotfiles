@@ -5,8 +5,8 @@ return {
     "neovim/nvim-lspconfig",
     event = LazyFile,
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      { "mason-org/mason.nvim", version = "1.11.0" },
+      { "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
       -- "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
       -- { "j-hui/fidget.nvim", opts = {} },
@@ -20,7 +20,7 @@ return {
       local auGroup = vim.api.nvim_create_augroup("lsp", { clear = true })
 
       -- Diagnostics
-      vim.diagnostic.config({
+      vim.diagnostic.config {
         virtual_text = false,
         -- signs = true,
         update_in_insert = false,
@@ -35,17 +35,17 @@ return {
             [vim.diagnostic.severity.ERROR] = " ",
           },
         },
-      })
+      }
 
       local show_line_diagnostics = function()
-        vim.diagnostic.open_float({
+        vim.diagnostic.open_float {
           focusable = false,
           close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
           border = "rounded",
           -- border = "single",
           source = true, -- show source in diagnostic popup window
           prefix = " ",
-        })
+        }
       end
 
       vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
@@ -80,11 +80,11 @@ return {
           map("<Localleader>l", vim.lsp.codelens.run)
 
           map("<Leader>lf", function()
-            vim.lsp.buf.format({ timeout_ms = 6000 })
+            vim.lsp.buf.format { timeout_ms = 6000 }
           end)
 
           map("de", function()
-            require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
+            require("telescope.builtin").lsp_definitions { jump_type = "vsplit" }
           end)
 
           vim.api.nvim_create_user_command("TH", function()
@@ -257,9 +257,9 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 
-      require("mason-lspconfig").setup({
+      require("mason-lspconfig").setup {
         ensure_installed = vim.tbl_keys(servers),
-        automatic_installation = true,
+        automatic_installation = true,        
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -267,7 +267,7 @@ return {
             require("lspconfig")[server_name].setup(server)
           end,
         },
-      })
+      }
     end,
   },
 }

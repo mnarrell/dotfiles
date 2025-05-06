@@ -1,0 +1,1 @@
+../../../../.private_dotfiles/nvim/snippets/all_private.lua

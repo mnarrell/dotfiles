@@ -17,8 +17,7 @@ cmd("Wqa", "wqa")
 cmd("GX", [[:silent !gitx]])
 cmd("TIG", [[:tabnew | terminal tig -a]])
 
-cmd("AsConfluence", require("mn.tools").as_confluence)
-cmd("Base64Decode", require("mn.tools").decode_base64, { range = "%" })
+cmd("Base64Decode", Base64Decode, { range = "%" })
 
 -- Terminals bro
 cmd("TS", [[split | term <args>]], { nargs = "*" })
