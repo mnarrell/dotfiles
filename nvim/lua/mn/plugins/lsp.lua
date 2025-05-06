@@ -7,7 +7,7 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      -- "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
       { "j-hui/fidget.nvim", opts = {} },
       "b0o/schemastore.nvim",
@@ -110,33 +110,32 @@ return {
         gopls = {
           cmd = { "gopls", "-remote=auto" },
           flags = {
-            debounce_text_changes = 500,
+            debounce_text_changes = 150,
           },
           settings = {
             -- buildFlags = { "tools" },
             gopls = {
-              -- codelenses = {
-              --   -- kttps://github.com/golang/tools/blob/master/gopls/doc/settings.md#code-lenses
-              --   gc_details = true, -- Toggle the calculation of gc annotations
-              --   generate = true, -- Runs go generate for a given directory
-              --   regenerate_cgo = true, -- Regenerates cgo definitions
-              --   test = true, -- Runs go test for a specific set of test or benchmark functions
-              --   tidy = true, -- Runs go mod tidy for a module
-              --   upgrade_dependency = true, -- Upgrades a dependency in the go.mod file for a module
-              --   vendor = true, -- Runs go mod vendor for a module
-              -- },
-              -- semanticTokens = true,
-              -- usePlaceholders = true,
+              gofumpt = true,
+              codelenses = {
+                -- kttps://github.com/golang/tools/blob/master/gopls/doc/settings.md#code-lenses
+                gc_details = true, -- Toggle the calculation of gc annotations
+                generate = true, -- Runs go generate for a given directory
+                regenerate_cgo = true, -- Regenerates cgo definitions
+                test = true, -- Runs go test for a specific set of test or benchmark functions
+                tidy = true, -- Runs go mod tidy for a module
+                upgrade_dependency = true, -- Upgrades a dependency in the go.mod file for a module
+                vendor = true, -- Runs go mod vendor for a module
+              },
               analyses = {
                 -- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
-                --   nilness = true,
                 --   shadow = true,
+                nilness = true,
                 unusedparams = true,
                 unusedwrite = true,
+                unreachable = true,
                 useany = true,
                 unusedvariable = true,
               },
-              staticcheck = true,
               hints = {
                 assignVariableTypes = true,
                 compositeLiteralFields = true,
@@ -146,7 +145,13 @@ return {
                 parameterNames = true,
                 rangeVariableTypes = true,
               },
-              -- diagnosticsDelay = "500ms",
+              diagnosticsDelay = "500ms",
+              -- semanticTokens = true,
+              usePlaceholders = true,
+              staticcheck = true,
+              completeUnimported = true,
+              matcher = "fuzzy",
+              symbolMatcher = "fuzzy",
             },
           },
         },
@@ -231,23 +236,23 @@ return {
 
       require("mason").setup()
 
-      require("mason-tool-installer").setup({
-        ensure_installed = {
-          "black",
-          "checkmake",
-          "gci",
-          "isort",
-          "jdtls",
-          "jsonlint",
-          "luacheck",
-          "prettier",
-          "shellcheck",
-          "shfmt",
-          "sqlfluff",
-          "stylua",
-          "yamllint",
-        },
-      })
+      -- require("mason-tool-installer").setup({
+      --   ensure_installed = {
+      --     "black",
+      --     "checkmake",
+      --     "gci",
+      --     "isort",
+      --     "jdtls",
+      --     "jsonlint",
+      --     "luacheck",
+      --     "prettier",
+      --     "shellcheck",
+      --     "shfmt",
+      --     "sqlfluff",
+      --     "stylua",
+      --     "yamllint",
+      --   },
+      -- })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
