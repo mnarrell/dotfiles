@@ -28,10 +28,6 @@ cmd("ClearLoupe", function()
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(LoupeClearHighlight)", true, true, true), "n", false)
 end)
 
-map("n", "<A-m>", function()
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(LoupeClearHighlight)", true, true, true), "n", false)
-end)
-
 --------------------
 -- Normal
 
