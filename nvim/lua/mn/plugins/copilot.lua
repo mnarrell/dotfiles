@@ -8,7 +8,8 @@ return {
     opts = {
       panel = { enabled = false },
       suggestion = {
-        auto_trigger = true,
+        -- auto_trigger = true,
+        auto_trigger = false,
         -- Use alt to interact with Copilot.
         keymap = {
           accept = "<M-y>",
@@ -19,6 +20,9 @@ return {
           -- dismiss = "/",
         },
       },
+      -- should_attach = function()
+      --   return false
+      -- end,
     },
     -- config = function()
     --   require("copilot").setup({
