@@ -4,11 +4,11 @@ return {
     lazy = true,
     priority = 1000,
     init = function()
-      vim.cmd("colorscheme kanagawa-dragon")
+      vim.cmd "colorscheme kanagawa-dragon"
       vim.api.nvim_set_hl(0, "@string.special.url", { underline = true, fg = "#949fb5" })
     end,
     config = function()
-      require("kanagawa").setup({
+      require("kanagawa").setup {
         -- compile = true,
         -- functionStyle = { bold = true },
         -- dimInactive = true,
@@ -38,7 +38,7 @@ return {
             BlinkCmpMenuBorder = { bg = "NONE" },
           }
         end,
-      })
+      }
     end,
   },
   {
@@ -46,7 +46,7 @@ return {
     enabled = false,
     version = false,
     config = function()
-      require("mini.base16").setup({
+      require("mini.base16").setup {
         palette = {
           base00 = "#1d1f21",
           base01 = "#282a2e",
@@ -66,7 +66,7 @@ return {
           base0F = "#a3685a",
         },
         use_cterm = true,
-      })
+      }
     end,
   },
 }

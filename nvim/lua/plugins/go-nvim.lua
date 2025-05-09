@@ -3,7 +3,7 @@ return {
   -- enabled = false,
   dependencies = {
     "ray-x/guihua.lua",
-    "neovim/nvim-lspconfig",
+    -- "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },
   -- enabled = false,

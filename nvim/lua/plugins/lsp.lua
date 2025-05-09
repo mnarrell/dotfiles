@@ -3,6 +3,7 @@ return {
   -- { "folke/lazydev.nvim", ft = "lua", config = true },
   {
     "neovim/nvim-lspconfig",
+    enabled = false,
     dependencies = {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",

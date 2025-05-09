@@ -17,12 +17,13 @@ require "options"
 require "keymaps"
 require "autocmds"
 
+
 ---@type LazySpec
 local plugins = "plugins"
 
 require("lazy").setup(plugins, {
   ui = { border = "rounded" },
-  install = { missing = false },
+  -- install = { missing = false },
   change_detection = { notify = false },
   rocks = { enabled = false },
   performance = {
@@ -35,3 +36,5 @@ require("lazy").setup(plugins, {
     },
   },
 })
+
+require "wellsp"
