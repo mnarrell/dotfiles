@@ -56,4 +56,38 @@ M.misc = {
   dashed_bar = "┊",
 }
 
+M.signs = {
+  GitAdded = "",
+  GitModified = "",
+  GitRemoved = "",
+  GitRenamed = "",
+  Running = "",
+  PassCheck = "",
+  CheckAlt = " ",
+  Forbidden = "",
+  FolderClosed = "",
+  FolderOpen = "",
+  FolderEmpty = "",
+  FolderEmptyOpen = "",
+  LightBulb = "",
+  Config = "",
+  Branch = "",
+  Code = " ",
+  Package = " ",
+  Keyboard = " ",
+  File = " ",
+  Vim = " ",
+  QuestionMark = " ",
+  Loading = " ",
+  Cmd = " ",
+  Event = " ",
+  Init = " ",
+  Expanded = "",
+  Collapsed = "",
+  Bookmark = "",
+  PendingSave = "",
+  Left = "",
+  Right = "",
+}
+
 return M

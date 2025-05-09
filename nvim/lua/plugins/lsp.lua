@@ -1,15 +1,12 @@
 return {
   -- Let Folke configure lua-language-server
-  { "folke/lazydev.nvim", ft = "lua", config = true },
+  -- { "folke/lazydev.nvim", ft = "lua", config = true },
   {
     "neovim/nvim-lspconfig",
-    event = LazyFile,
     dependencies = {
-      { "mason-org/mason.nvim", version = "1.11.0" },
-      { "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
-      -- "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
       "saghen/blink.cmp",
-      -- { "j-hui/fidget.nvim", opts = {} },
       "b0o/schemastore.nvim",
     },
     config = function()
@@ -94,82 +91,82 @@ return {
       })
 
       local servers = {
-        ansiblels = {},
-        bashls = {},
-        dockerls = {
-          settings = {
-            docker = {
-              languageserver = {
-                formatter = {
-                  ignoreMultilineInstructions = true,
-                },
-              },
-            },
-          },
-        },
-        gopls = {
-          cmd = { "gopls", "-remote=auto" },
-          flags = {
-            debounce_text_changes = 150,
-          },
-          settings = {
-            -- buildFlags = { "tools" },
-            gopls = {
-              gofumpt = true,
-              codelenses = {
-                -- kttps://github.com/golang/tools/blob/master/gopls/doc/settings.md#code-lenses
-                gc_details = true, -- Toggle the calculation of gc annotations
-                generate = true, -- Runs go generate for a given directory
-                regenerate_cgo = true, -- Regenerates cgo definitions
-                test = true, -- Runs go test for a specific set of test or benchmark functions
-                tidy = true, -- Runs go mod tidy for a module
-                upgrade_dependency = true, -- Upgrades a dependency in the go.mod file for a module
-                vendor = true, -- Runs go mod vendor for a module
-              },
-              analyses = {
-                -- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
-                --   shadow = true,
-                nilness = true,
-                unusedparams = true,
-                unusedwrite = true,
-                unreachable = true,
-                useany = true,
-                unusedvariable = true,
-              },
-              hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-              },
-              diagnosticsDelay = "500ms",
-              -- semanticTokens = true,
-              usePlaceholders = true,
-              staticcheck = true,
-              completeUnimported = true,
-              matcher = "fuzzy",
-              symbolMatcher = "fuzzy",
-            },
-          },
-        },
-        jsonls = {
-          settings = {
-            json = {
-              schemas = require("schemastore").json.schemas(),
-              validate = { enable = true },
-            },
-          },
-        },
-        lua_ls = {
-          settings = {
-            Lua = {
-              diagnostics = { disable = { "missing-fields" } },
-            },
-          },
-        },
+        -- ansiblels = {},
+        -- bashls = {},
+        -- dockerls = {
+        --   settings = {
+        --     docker = {
+        --       languageserver = {
+        --         formatter = {
+        --           ignoreMultilineInstructions = true,
+        --         },
+        --       },
+        --     },
+        --   },
+        -- },
+        -- gopls = {
+        --   cmd = { "gopls", "-remote=auto" },
+        --   flags = {
+        --     debounce_text_changes = 150,
+        --   },
+        --   settings = {
+        --     -- buildFlags = { "tools" },
+        --     gopls = {
+        --       gofumpt = true,
+        --       codelenses = {
+        --         -- kttps://github.com/golang/tools/blob/master/gopls/doc/settings.md#code-lenses
+        --         gc_details = true, -- Toggle the calculation of gc annotations
+        --         generate = true, -- Runs go generate for a given directory
+        --         regenerate_cgo = true, -- Regenerates cgo definitions
+        --         test = true, -- Runs go test for a specific set of test or benchmark functions
+        --         tidy = true, -- Runs go mod tidy for a module
+        --         upgrade_dependency = true, -- Upgrades a dependency in the go.mod file for a module
+        --         vendor = true, -- Runs go mod vendor for a module
+        --       },
+        --       analyses = {
+        --         -- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
+        --         --   shadow = true,
+        --         nilness = true,
+        --         unusedparams = true,
+        --         unusedwrite = true,
+        --         unreachable = true,
+        --         useany = true,
+        --         unusedvariable = true,
+        --       },
+        --       hints = {
+        --         assignVariableTypes = true,
+        --         compositeLiteralFields = true,
+        --         compositeLiteralTypes = true,
+        --         constantValues = true,
+        --         functionTypeParameters = true,
+        --         parameterNames = true,
+        --         rangeVariableTypes = true,
+        --       },
+        --       diagnosticsDelay = "500ms",
+        --       -- semanticTokens = true,
+        --       usePlaceholders = true,
+        --       staticcheck = true,
+        --       completeUnimported = true,
+        --       matcher = "fuzzy",
+        --       symbolMatcher = "fuzzy",
+        --     },
+        --   },
+        -- },
+        -- jsonls = {
+        --   settings = {
+        --     json = {
+        --       schemas = require("schemastore").json.schemas(),
+        --       validate = { enable = true },
+        --     },
+        --   },
+        -- },
+        -- lua_ls = {
+        --   settings = {
+        --     Lua = {
+        --       diagnostics = { disable = { "missing-fields" } },
+        --     },
+        --   },
+        -- },
         -- lua_ls = {
         --   settings = {
         --     Lua = {
@@ -193,80 +190,72 @@ return {
         --     },
         --   },
         -- },
-        pyright = {},
-        terraformls = {},
-        tflint = {},
-        helm_ls = {},
-        yamlls = {
-          -- filetypes = { "yaml" },
-          settings = {
-            redhat = { telemetry = { enabled = false } },
-            yaml = {
-              schemaStore = {
-                enable = false,
-                -- enable = true,
-                -- url = "https://www.schemastore.org/api/json/catalog.json",
-              },
-              -- schemas = {
-              --   ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.22.0-standalone-strict/all.json"] = "/*.k8s.yaml",
-              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/configmap.json"] = "*onfigma*.{yml,yaml}",
-              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/deployment.json"] = "*eployment*.{yml,yaml}",
-              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/service.json"] = "*ervic*.{yml,yaml}",
-              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/ingress.json"] = "*ngres*.{yml,yaml}",
-              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/secret.json"] = "*ecre*.{yml,yaml}",
-              --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/statefulset.json"] = "*stateful*.{yml,yaml}",
-              -- },
-              schemas = require("schemastore").yaml.schemas(),
-              format = { enabled = false },
-              validate = true,
-              completion = true,
-              hover = true,
-            },
-          },
-          capabilities = {
-            textDocument = {
-              foldingRange = {
-                dynamicRegistration = false,
-                lineFoldingOnly = true,
-              },
-            },
-          },
-        },
+        -- pyright = {},
+        -- terraformls = {},
+        -- tflint = {},
+        -- helm_ls = {},
+        -- yamlls = {
+        --   -- filetypes = { "yaml" },
+        --   settings = {
+        --     redhat = { telemetry = { enabled = false } },
+        --     yaml = {
+        --       schemaStore = {
+        --         enable = false,
+        --         -- enable = true,
+        --         -- url = "https://www.schemastore.org/api/json/catalog.json",
+        --       },
+        --       -- schemas = {
+        --       --   ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.22.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+        --       --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/configmap.json"] = "*onfigma*.{yml,yaml}",
+        --       --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/deployment.json"] = "*eployment*.{yml,yaml}",
+        --       --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/service.json"] = "*ervic*.{yml,yaml}",
+        --       --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/ingress.json"] = "*ngres*.{yml,yaml}",
+        --       --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/secret.json"] = "*ecre*.{yml,yaml}",
+        --       --   ["https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/statefulset.json"] = "*stateful*.{yml,yaml}",
+        --       -- },
+        --       schemas = require("schemastore").yaml.schemas(),
+        --       format = { enabled = false },
+        --       validate = true,
+        --       completion = true,
+        --       hover = true,
+        --     },
+        --   },
+        --   capabilities = {
+        --     textDocument = {
+        --       foldingRange = {
+        --         dynamicRegistration = false,
+        --         lineFoldingOnly = true,
+        --       },
+        --     },
+        --   },
+        -- },
       }
 
+      -- local server_configs = vim
+      --   .iter(vim.api.nvim_get_runtime_file("lsp/*.lua", true))
+      --   :map(function(file)
+      --     return vim.fn.fnamemodify(file, ":t:r")
+      --   end)
+      --   :totable()
+      --
+      -- LOG(vim.inspect(server_configs))
+
       require("mason").setup()
-
-      -- require("mason-tool-installer").setup({
-      --   ensure_installed = {
-      --     "black",
-      --     "checkmake",
-      --     "gci",
-      --     "isort",
-      --     "jdtls",
-      --     "jsonlint",
-      --     "luacheck",
-      --     "prettier",
-      --     "shellcheck",
-      --     "shfmt",
-      --     "sqlfluff",
-      --     "stylua",
-      --     "yamllint",
-      --   },
-      -- })
-
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
-
       require("mason-lspconfig").setup {
-        ensure_installed = vim.tbl_keys(servers),
-        automatic_installation = true,        
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end,
+        ensure_installed = {
+          "ansiblels",
+          "bashls",
+          "dockerls",
+          "gopls",
+          "helm_ls",
+          "jsonls",
+          "lua_ls",
+          "terraformls",
+          "tflint",
+          "yamlls",
         },
+        automatic_enable = true,
+        automatic_installation = true,
       }
     end,
   },

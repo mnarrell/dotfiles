@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 require "options"
 require "keymaps"
 require "autocmds"
--- require "wellsp"
 
 ---@type LazySpec
 local plugins = "plugins"
