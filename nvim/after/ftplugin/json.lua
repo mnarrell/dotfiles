@@ -1,7 +1,7 @@
-local opt = vim.opt_local
+-- local opt = vim.opt_local
 
-opt.equalprg = "jq ."
-opt.formatprg = "jq ."
+-- opt.equalprg = "jq ."
+-- opt.formatprg = "jq ."
 
 -- When creating a new line with o, make sure there is a trailing comma on the current line
 vim.keymap.set("n", "o", function()
