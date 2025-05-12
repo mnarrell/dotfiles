@@ -17,7 +17,6 @@ require "options"
 require "keymaps"
 require "autocmds"
 
-
 ---@type LazySpec
 local plugins = "plugins"
 
@@ -37,4 +36,4 @@ require("lazy").setup(plugins, {
   },
 })
 
-require "wellsp"
+require "lsp"

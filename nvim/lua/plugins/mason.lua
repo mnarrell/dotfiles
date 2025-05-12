@@ -21,5 +21,21 @@ return {
       },
     },
   },
-  { "mason-org/mason-lspconfig.nvim" },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = {
+        "ansible-language-server",
+        "bash-language-server",
+        "dockerfile-language-server",
+        "gopls",
+        "helm-ls",
+        "json-lsp",
+        "lua-language-server",
+        "terraform-ls",
+        "tflint",
+        "yaml-language-server",
+      },
+    },
+  },
 }
