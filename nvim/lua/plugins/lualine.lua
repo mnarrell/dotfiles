@@ -113,18 +113,18 @@ local lsp_component = {
   ignore_lsp = { "copilot" },
 }
 
-local lsp_prog = {
-  "lsp_progress",
-  display_components = { { "title", "percentage", "message" } },
-  separators = {
-    component = " ",
-    progress = " | ",
-    percentage = { pre = "", post = "%% " },
-    title = { pre = "", post = ": " },
-    message = { commenced = "In Progress", completed = "Completed" },
-  },
-  timer = { progress_enddelay = 500 },
-}
+-- local lsp_prog = {
+--   "lsp_progress",
+--   display_components = { { "title", "percentage", "message" } },
+--   separators = {
+--     component = " ",
+--     progress = " | ",
+--     percentage = { pre = "", post = "%% " },
+--     title = { pre = "", post = ": " },
+--     message = { commenced = "In Progress", completed = "Completed" },
+--   },
+--   timer = { progress_enddelay = 500 },
+-- }
 
 local right_component = {
   function()
@@ -135,7 +135,8 @@ local right_component = {
 
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" },
+  -- dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VimEnter",
   opts = {
     options = {
@@ -150,8 +151,8 @@ return {
         end,
       } },
       lualine_b = { branch_component, filename_component, searchcount_component },
-      -- lualine_c = { diagnostics_component, lsp_component, lsp_progress_component },
-      lualine_c = { diagnostics_component, lsp_prog },
+      lualine_c = { diagnostics_component, lsp_component, lsp_progress_component },
+      -- lualine_c = { diagnostics_component, lsp_prog },
       -- lualine_x = { "encoding", "fileformat", "filetype" },
       lualine_x = { "filetype" },
       lualine_y = { "progress", "location", right_component },
