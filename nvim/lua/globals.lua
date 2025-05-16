@@ -41,29 +41,13 @@ Base64Decode = function()
   vim.cmd([[noau normal! gv"vy]])
   local cmd = string.format("echo -n %s | base64 -d", vim.fn.getreg("v"))
   local decoded = vim.fn.systemlist(cmd)
-  local popup = require("nui.popup")
-  local event = require("nui.utils.autocmd").event
 
-  local win = popup({
-    enter = true,
-    focusable = true,
-    border = {
-      style = "rounded",
-    },
-    position = "50%",
-    size = {
-      width = "40%",
-      height = "60%",
-    },
+  Snacks.win({
+    text = decoded,
+    width = 0.4,
+    height = 0.6,
+    border = "rounded",
   })
-
-  win:mount()
-
-  win:on(event.BufLeave, function()
-    win:unmount()
-  end)
-
-  vim.api.nvim_buf_set_lines(win.bufnr, 0, 1, false, decoded)
 end
 
 LazyFile = { "BufReadPost", "BufNewFile", "BufWritePre" }

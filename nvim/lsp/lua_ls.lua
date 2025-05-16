@@ -7,7 +7,6 @@ return {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },
   root_markers = { ".luarc.json", ".luarc.jsonc" },
-  -- NOTE: These will be merged with the configuration file.
   settings = {
     Lua = {
       completion = { callSnippet = "Replace" },
