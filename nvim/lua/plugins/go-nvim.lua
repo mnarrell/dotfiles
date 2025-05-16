@@ -10,6 +10,7 @@ return {
   config = function()
     require("go").setup({
       diagnostic = false,
+      textobjects = false,
     })
 
     -- local format_group = vim.api.nvim_create_augroup("goimports", {})

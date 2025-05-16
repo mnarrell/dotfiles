@@ -15,7 +15,7 @@ return {
           --   i = { "@block.inner", "@conditional.inner", "@loop.inner" },
           -- }, {}),
           f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-          -- d = ai.gen_spec.treesitter({ a = "@comment.outer", i = "@comment.inner" }, {}),
+          c = ai.gen_spec.treesitter({ a = "@comment.outer", i = "@comment.inner" }, {}),
           a = ai.gen_spec.treesitter({ a = "@parameter.outer", i = "@parameter.inner" }, {}),
         },
       }

@@ -23,9 +23,6 @@ return {
     config = true,
   },
 
-  -- Open line/file in GitHub
-  { "almo7aya/openingh.nvim", event = "VeryLazy" },
-
   -- Color strings
   {
     "norcalli/nvim-colorizer.lua",
@@ -35,12 +32,9 @@ return {
     end,
   },
 
-  -- Convenience for building UI components.
-  { "MunifTanjim/nui.nvim", event = "VeryLazy" },
-
   -- Allow the dot to repeat more actions
   { "tpope/vim-repeat", event = "VeryLazy" },
-  -- { "tpope/vim-surround", event = "VeryLazy" },
+
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -64,7 +58,7 @@ return {
   { "wincent/loupe", event = "VeryLazy" },
 
   -- Inspect registers
-  { "gennaro-tedesco/nvim-peekup", event = "VeryLazy" },
+  -- { "gennaro-tedesco/nvim-peekup", event = "VeryLazy" },
 
   -- Live substitute preview
   { "markonm/traces.vim", event = "VeryLazy" },

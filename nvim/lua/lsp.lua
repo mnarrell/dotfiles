@@ -5,47 +5,42 @@ local auGroup = vim.api.nvim_create_augroup("lsp", { clear = true })
 --- Sets up LSP keymaps and autocommands for the given buffer.
 ---@param client vim.lsp.Client
 ---@param bufnr integer
-local function on_attach(client, bufnr)
+local on_attach = function(client, bufnr)
   ---@param lhs string
   ---@param rhs string|function
   local map = function(lhs, rhs)
     vim.keymap.set("n", lhs, rhs, { buffer = bufnr, silent = true })
   end
 
-  -- map("gD", vim.lsp.buf.declaration)
+  vim.lsp.inlay_hint.enable(false)
+
   -- map("<c-]>", vim.lsp.buf.definition)
-  -- map("<C-s>", vim.lsp.buf.signature_help)
+  -- map("gD", vim.lsp.buf.declaration)
   -- map("<Leader>D", vim.lsp.buf.type_definition)
-  -- -- map("gr", vim.lsp.buf.rename)
-  -- -- map("<leader>ld", show_line_diagnostics)
-  -- map("<Leader>ll", "<cmd>Trouble diagnostics toggle<cr>")
-  -- map("<LocalLeader>a", vim.lsp.buf.code_action)
-  -- map("gi", require("telescope.builtin").lsp_implementations)
   -- map("gf", require("telescope.builtin").lsp_references)
-  -- map("<leader>li", require("telescope.builtin").lsp_incoming_calls)
-  -- map("<leader>lo", require("telescope.builtin").lsp_outgoing_calls)
+  -- map("grr", require("telescope.builtin").lsp_references)
+  -- map("gri", require("telescope.builtin").lsp_implementations)
   -- map("<LocalLeader>s", require("telescope.builtin").lsp_document_symbols)
   -- map("<LocalLeader>w", require("telescope.builtin").lsp_dynamic_workspace_symbols)
-  -- map("<Localleader>l", vim.lsp.codelens.run)
 
-  -- map("gf", require("telescope.builtin").lsp_references)
-  map("grr", require("telescope.builtin").lsp_references)
-  map("gri", require("telescope.builtin").lsp_implementations)
-
-  map("<leader>li", require("telescope.builtin").lsp_incoming_calls)
-  map("<leader>lo", require("telescope.builtin").lsp_outgoing_calls)
-
-  map("<LocalLeader>s", require("telescope.builtin").lsp_document_symbols)
-  map("<LocalLeader>w", require("telescope.builtin").lsp_dynamic_workspace_symbols)
+  -- stylua: ignore start
+  map("<Leader>ll", "<cmd>Trouble diagnostics toggle<cr>")
+  map("c-]", function() Snacks.picker.lsp_definitions() end)
+  map("gD", function() Snacks.picker.lsp_declarations() end)
+  map("<Leader>D", function() Snacks.picker.lsp_type_definitions() end)
+  map("grr", function() Snacks.picker.lsp_references() end)
+  map("gri", function() Snacks.picker.lsp_implementations() end)
+  map("<LocalLeader>s", function() Snacks.picker.lsp_symbols() end)
+  map("<LocalLeader>w", function() Snacks.picker.lsp_workspace_symbols() end)
   map("<Localleader>l", vim.lsp.codelens.run)
   map("<LocalLeader>d", "<cmd>Trouble diagnostics toggle<cr>")
-  map("<LocalLeader>f", function()
-    vim.lsp.buf.format { timeout_ms = 6000 }
-  end)
+  map("<LocalLeader>f", function() vim.lsp.buf.format({ timeout_ms = 6000 }) end)
+  -- stylua: ignore end
 
   if client:supports_method(methods.textDocument_definition) then
     map("de", function()
-      require("telescope.builtin").lsp_definitions { jump_type = "vsplit" }
+      Snacks.picker.lsp_definitions({ confirm = "vsplit" })
+      -- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
     end)
   end
 
@@ -75,25 +70,25 @@ end
 local hover = vim.lsp.buf.hover
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.lsp.buf.hover = function()
-  return hover {
+  return hover({
     max_height = math.floor(vim.o.lines * 0.5),
     max_width = math.floor(vim.o.columns * 0.4),
     border = "rounded",
-  }
+  })
 end
 
 local signature_help = vim.lsp.buf.signature_help
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.lsp.buf.signature_help = function()
-  return signature_help {
+  return signature_help({
     max_height = math.floor(vim.o.lines * 0.5),
     max_width = math.floor(vim.o.columns * 0.4),
     border = "rounded",
-  }
+  })
 end
 
 -- Diagnostics.
-vim.diagnostic.config {
+vim.diagnostic.config({
   virtual_text = false,
   update_in_insert = false,
   underline = true,
@@ -106,19 +101,19 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.ERROR] = diagnostic_icons.ERROR,
     },
   },
-}
+})
 
 -- Show diagnostics.
 vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
   group = auGroup,
   callback = function()
-    vim.diagnostic.open_float {
+    vim.diagnostic.open_float({
       focusable = false,
       close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
       border = "rounded",
       source = true, -- show source in diagnostic popup window
       prefix = " ",
-    }
+    })
   end,
 })
 

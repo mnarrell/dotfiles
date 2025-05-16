@@ -1,4 +1,4 @@
-local icons = require "icons"
+local icons = require("icons")
 
 ---@type table<string, string?>
 local progress_status = {
@@ -8,7 +8,7 @@ local progress_status = {
 }
 
 vim.api.nvim_create_autocmd("LspProgress", {
-  group = vim.api.nvim_create_augroup("mariasolos/statusline", { clear = true }),
+  group = vim.api.nvim_create_augroup("mn/statusline", { clear = true }),
   desc = "Update LSP progress in statusline",
   pattern = { "begin", "end" },
   callback = function(args)
@@ -110,7 +110,7 @@ local diagnostics_component = {
 
 local lsp_component = {
   "lsp_status",
-  ignore_lsp = { "copilot" },
+  -- ignore_lsp = { "copilot" },
 }
 
 -- local lsp_prog = {
