@@ -3,15 +3,15 @@ return {
   event = { "BufWritePre" },
   opts = {
     formatters_by_ft = {
-      lua = { "stylua" },
-      sh = { "shellharden", "shfmt" },
-      python = { "black", "isort" },
+      go = { "goimports", "gci", "gofumpt" },
       hcl = { "terragrunt_hclfmt" },
       html = { "prettierd" },
-      go = { "goimports", "gci", "gofumpt" },
       json = { "jq" },
-      -- yaml = { "prettierd" },
+      lua = { "stylua" },
       markdown = { "prettier" },
+      python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+      sh = { "shellharden", "shfmt" },
+      toml = { "taplo" },
       xml = { "xmllint" },
     },
 

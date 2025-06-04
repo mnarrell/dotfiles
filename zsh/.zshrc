@@ -37,13 +37,6 @@ antidote load
 source ${XDG_CONFIG_HOME}/zsh/.zsh_plugins.zsh
 
 ################################################################################
-# Load everything else.
-remaining=($XDG_CONFIG_HOME/^zsh/(^env).zsh)
-for r in ${remaining}; do
-  source $r
-done
-
-################################################################################
 # Initialize the autocompletion framework.
 current=${XDG_CACHE_HOME}/zsh/zcompdump-$(date '+%Y%m%d')
 if [ -f $current ]; then
@@ -53,6 +46,13 @@ else
   rm ${XDG_CACHE_HOME}/zsh/zcompdump-* 2>/dev/null
   compinit -i -d $current
 fi
+
+################################################################################
+# Load everything else.
+remaining=($XDG_CONFIG_HOME/^zsh/(^env).zsh)
+for r in ${remaining}; do
+  source $r
+done
 
 ################################################################################
 # Prepare for persistent ssh sessions

@@ -143,6 +143,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return
     end
 
+    if client.name == "ruff" then
+      -- Disable hover in favor of LSP.
+      client.server_capabilities.hoverProvider = false
+    end
+
     on_attach(client, args.buf)
   end,
 })

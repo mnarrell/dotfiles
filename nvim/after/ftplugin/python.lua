@@ -1,7 +1,7 @@
 local opt = vim.opt_local
 
 opt.autoindent = true
-opt.equalprg = "black --quiet -"
+opt.equalprg = "ruff format -q -"
 opt.expandtab = true
 opt.fileformat = "unix"
 opt.shiftwidth = 4

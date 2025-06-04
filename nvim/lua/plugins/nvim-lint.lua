@@ -19,7 +19,6 @@ return {
       lua = { "luacheck" },
       make = { "checkmake" },
       markdown = { "markdownlint" },
-      python = { "flake8" },
       sh = { "shellcheck" },
       sql = { "sqlfluff" },
       yaml = { "yamllint" },

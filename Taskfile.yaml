@@ -403,20 +403,6 @@ tasks:
       - rm -rf {{.XDG_CACHE_HOME}}/psql
 
   ################################################################################
-  # Python
-  python:up:
-    desc: Configures Python
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/python {{.XDG_CONFIG_HOME}}/python
-      - ln -sf {{.ROOT_DIR}}/python/flake8.toml {{.XDG_CONFIG_HOME}}/flake8
-
-  python:down:
-    desc: Removes Python configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/python
-      - rm {{.XDG_CONFIG_HOME}}/flake8
-
-  ################################################################################
   # Readline
   readline:up:
     desc: Configures Readline
@@ -438,6 +424,18 @@ tasks:
     desc: Removes Ripgrep configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/ripgrep
+
+  ################################################################################
+  # Ruff
+  ruff:up:
+    desc: Configures Ruff
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/ruff {{.XDG_CONFIG_HOME}}/ruff
+
+  ruff:down:
+    desc: Removes Ruff configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/ruff
 
   ################################################################################
   # Taskfile
@@ -565,9 +563,9 @@ tasks:
       - task: nvim:up
       - task: pip:up
       - task: psql:up
-      - task: python:up
       - task: readline:up
       - task: ripgrep:up
+      - task: ruff:up
       - task: task:up
       - task: terraform:up
       - task: tig:up
