@@ -85,7 +85,12 @@
 
 [column]
   ui = auto
+
 [branch]
   sort = -committerdate
+
 [tag]
   sort = version:refname
+
+[gpg]
+  format = ssh
