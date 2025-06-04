@@ -1,8 +1,8 @@
 return {
   "nvim-telescope/telescope.nvim",
-  -- event = "VimEnter",
   event = "VeryLazy",
-  branch = "0.1.x",
+  enabled = false,
+  -- branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
@@ -65,22 +65,22 @@ return {
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
 
-    local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<leader>b", builtin.buffers)
-    vim.keymap.set("n", "<leader>gf", builtin.git_status)
-    vim.keymap.set("n", "<leader>f", builtin.find_files)
-    vim.keymap.set("n", "<leader>m", builtin.marks)
-    vim.keymap.set("n", "<leader>/", builtin.live_grep)
-    vim.keymap.set("n", "<LocalLeader>h", builtin.help_tags)
-    vim.keymap.set("n", "<leader>r", function()
-      -- You can pass additional configuration to telescope to change theme, layout, etc.
-      builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-        winblend = 10,
-        previewer = false,
-      }))
-    end)
-    vim.keymap.set("n", "q;", builtin.command_history) -- I have no idea why I cant override `q:`
-    vim.keymap.set("n", "q/", builtin.search_history)
+    -- local builtin = require "telescope.builtin"
+    -- vim.keymap.set("n", "<leader>b", builtin.buffers)
+    -- vim.keymap.set("n", "<leader>gf", builtin.git_status)
+    -- vim.keymap.set("n", "<leader>f", builtin.find_files)
+    -- vim.keymap.set("n", "<leader>m", builtin.marks)
+    -- vim.keymap.set("n", "<leader>/", builtin.live_grep)
+    -- vim.keymap.set("n", "<LocalLeader>h", builtin.help_tags)
+    -- vim.keymap.set("n", "<leader>r", function()
+    --   -- You can pass additional configuration to telescope to change theme, layout, etc.
+    --   builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
+    --     winblend = 10,
+    --     previewer = false,
+    --   })
+    -- end)
+    -- vim.keymap.set("n", "q;", builtin.command_history) -- I have no idea why I cant override `q:`
+    -- vim.keymap.set("n", "q/", builtin.search_history)
 
     local find_hidden = function()
       require("telescope.builtin").find_files({

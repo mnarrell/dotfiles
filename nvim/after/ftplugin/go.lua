@@ -4,14 +4,15 @@ opt.expandtab = false
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
+opt.formatprg = "par -w78rs"
 
 -- Support
 local is_test = function(filename)
-  return filename:find "_test%.go$"
+  return filename:find("_test%.go$")
 end
 
 local is_source = function(filename)
-  return filename:find "%.go$"
+  return filename:find("%.go$")
 end
 
 local info = function(msg)
@@ -27,14 +28,14 @@ local alternate = function(filename)
   if is_test(filename) then
     return string.gsub(filename, "_test.go", ".go")
   elseif is_source(filename) then
-    return vim.fn.expand "%:r" .. "_test.go"
+    return vim.fn.expand("%:r") .. "_test.go"
   else
     vim.notify("not a go file", vim.lsp.log_levels.ERROR)
   end
 end
 
 local switch = function(cmd)
-  local alt_file = alternate(vim.fn.expand "%")
+  local alt_file = alternate(vim.fn.expand("%"))
   if not vim.fn.filereadable(alt_file) and not vim.fn.bufexists(alt_file) then
     vim.notify("couldn't find " .. alt_file, vim.lsp.log_levels.ERROR)
     return
@@ -89,14 +90,14 @@ local build_on_event = function(cmd, output)
       -- P "output: "
       -- P(output)
 
-      vim.api.nvim_command "doautocmd QuickFixCmdPost"
+      vim.api.nvim_command("doautocmd QuickFixCmdPost")
 
       if not vim.tbl_isempty(output) then
-        error " build failure!"
+        error(" build failure!")
         vim.cmd.Trouble("qflist", "open")
       else
         vim.cmd.Trouble("qflist", "close")
-        info " build success!"
+        info(" build success!")
       end
     end
   end
@@ -111,13 +112,13 @@ local build = function()
   local cmd = { "go" }
   if is_test(bufname) then
     -- If we're on a test file, build the test command.
-    for _, v in ipairs { "test", "-c", bufname } do
+    for _, v in ipairs({ "test", "-c", bufname }) do
       table.insert(cmd, v)
     end
   else
     -- Otherwise build the build command.
     local modpath = vim.fs.dirname(vim.fs.find({ "go.mod" }, { path = bufname, upward = true })[1])
-    for _, v in ipairs { "build", modpath .. "/..." } do
+    for _, v in ipairs({ "build", modpath .. "/..." }) do
       table.insert(cmd, v)
     end
   end
@@ -140,19 +141,19 @@ local cmd = function(lhs, rhs)
 end
 
 cmd("A", function()
-  switch ""
+  switch("")
 end)
 
 cmd("AS", function()
-  switch "split"
+  switch("split")
 end)
 
 cmd("AV", function()
-  switch "vsplit"
+  switch("vsplit")
 end)
 
 cmd("AT", function()
-  switch "tabe"
+  switch("tabe")
 end)
 
 -- Mappings

@@ -4,14 +4,14 @@ return {
     "nvim-lua/plenary.nvim",
   },
   ft = { "scala", "sbt" },
-  opts = function()
-    local metals_config = require("metals").bare_config()
-    local support = require("mn.lsp.support")
-    metals_config.on_attach = support.on_attach
-    metals_config.capabilities = support.capabilities()
-
-    return metals_config
-  end,
+  -- opts = function()
+  --   local metals_config = require("metals").bare_config()
+  --   local support = require("mn.lsp.support")
+  --   metals_config.on_attach = support.on_attach
+  --   metals_config.capabilities = support.capabilities()
+  --
+  --   return metals_config
+  -- end,
   keys = {
     { "<leader>lmc", ":lua require('telescope').extensions.metals.commands()<CR>", silent = true },
   },

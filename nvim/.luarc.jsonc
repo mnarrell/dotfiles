@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "diagnostics.globals": [
+    "Snacks"
+  ],
+  "workspace": {
+    "checkThirdParty": false,
+    "library": [
+      // Runtime and builtin libraries.
+      "$VIMRUNTIME/lua",
+      "${3rd}/luv/library",
+      // Extra configuration helpers.
+      "lua/icons.lua",
+      "lua/lsp.lua",
+      // Include some plugins for API completion.
+      "$XDG_DATA_HOME/nvim/lazy/LuaSnip/lua",
+      "$XDG_DATA_HOME/nvim/lazy/blink.cmp/lua",
+      "$XDG_DATA_HOME/nvim/lazy/conform.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/diffview.nvim/lua",
+      // "$XDG_DATA_HOME/nvim/lazy/fzf-lua/lua",
+      "$XDG_DATA_HOME/nvim/lazy/lazy.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/nvim-autopairs/lua",
+      "$XDG_DATA_HOME/nvim/lazy/nvim-web-devicons/lua",
+      "$XDG_DATA_HOME/nvim/lazy/quicker.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/snacks.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/telescope.nvim/lua"
+    ]
+  }
+}

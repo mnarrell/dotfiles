@@ -1,4 +1,4 @@
-local icons = require "icons"
+local icons = require("icons")
 
 ---@type table<string, string?>
 local progress_status = {
@@ -8,7 +8,7 @@ local progress_status = {
 }
 
 vim.api.nvim_create_autocmd("LspProgress", {
-  group = vim.api.nvim_create_augroup("mariasolos/statusline", { clear = true }),
+  group = vim.api.nvim_create_augroup("mn/statusline", { clear = true }),
   desc = "Update LSP progress in statusline",
   pattern = { "begin", "end" },
   callback = function(args)
@@ -110,8 +110,21 @@ local diagnostics_component = {
 
 local lsp_component = {
   "lsp_status",
-  ignore_lsp = { "copilot" },
+  -- ignore_lsp = { "copilot" },
 }
+
+-- local lsp_prog = {
+--   "lsp_progress",
+--   display_components = { { "title", "percentage", "message" } },
+--   separators = {
+--     component = " ",
+--     progress = " | ",
+--     percentage = { pre = "", post = "%% " },
+--     title = { pre = "", post = ": " },
+--     message = { commenced = "In Progress", completed = "Completed" },
+--   },
+--   timer = { progress_enddelay = 500 },
+-- }
 
 local right_component = {
   function()
@@ -122,6 +135,7 @@ local right_component = {
 
 return {
   "nvim-lualine/lualine.nvim",
+  -- dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VimEnter",
   opts = {
@@ -138,6 +152,7 @@ return {
       } },
       lualine_b = { branch_component, filename_component, searchcount_component },
       lualine_c = { diagnostics_component, lsp_component, lsp_progress_component },
+      -- lualine_c = { diagnostics_component, lsp_prog },
       -- lualine_x = { "encoding", "fileformat", "filetype" },
       lualine_x = { "filetype" },
       lualine_y = { "progress", "location", right_component },

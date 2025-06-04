@@ -93,10 +93,10 @@ end, { expr = true })
 
 map("n", "<Leader>t", ":tabnew<CR>")
 
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map("n", "<M-k>", "<cmd>resize +5<cr>", { desc = "Increase window height" })
+map("n", "<M-j>", "<cmd>resize -5<cr>", { desc = "Decrease window height" })
+map("n", "<M-h>", "<cmd>vertical resize -5<cr>", { desc = "Decrease window width" })
+map("n", "<M-l>", "<cmd>vertical resize +5<cr>", { desc = "Increase window width" })
 
 --------------------
 -- Terminal

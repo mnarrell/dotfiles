@@ -3,13 +3,15 @@ return {
   -- enabled = false,
   dependencies = {
     "ray-x/guihua.lua",
-    "neovim/nvim-lspconfig",
+    -- "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },
   -- enabled = false,
   config = function()
     require("go").setup({
       diagnostic = false,
+      textobjects = false,
+      lsp_inlay_hints = { enable = false },
     })
 
     -- local format_group = vim.api.nvim_create_augroup("goimports", {})

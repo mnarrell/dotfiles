@@ -1,3 +1,5 @@
+local arrows = require("icons").arrows
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.python3_host_prog = vim.env.XDG_DATA_HOME .. "/venvs/neovim/bin/python"
@@ -57,23 +59,23 @@ vim.opt.wildignore = "*/.git,tmp/backup,*/tmp/swap" -- patterns to ignore during
 vim.opt.wildmode = "longest:full,full" -- shell like autocomplete to unambiguous portion
 
 -- Folding
-vim.opt.foldlevelstart = 100 -- open all folds by default
-vim.opt.foldenable = true
+vim.opt.foldlevelstart = 99 -- open all folds by default
+-- vim.opt.foldenable = true
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = ""
-vim.opt.foldcolumn = "0"
--- vim.opt.fillchars:append({ fold = " " })
+-- vim.opt.foldcolumn = "1"
+vim.opt.foldcolumn = "auto:9"
 vim.opt.fillchars = {
   fold = " ",
   diff = "╱",
   vert = "|",
   eob = " ", -- suppress ~ at EndOfBuffer
   msgsep = "‾", -- separator between messages
-  foldopen = "", -- fold open
-  foldclose = "", -- fold close
-  foldsep = "│", -- separator between folds
+  foldopen = arrows.down,
+  foldclose = arrows.right,
+  foldsep = " ", -- separator between folds
 }
 
 vim.opt.diffopt = {
@@ -97,10 +99,6 @@ vim.o.grepformat = "%f:%l:%c:%m"
 
 -- vim.opt.listchars = "nbsp:⦸,tab:▷┅,extends:»,precedes:«,trail:•"
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-
--- vim.opt.fillchars:append("fold: ")
--- vim.opt.fillchars:append("vert:|")
--- vim.opt.fillchars:append("diff: ")
 
 -- vim.opt.shortmess = vim.o.shortmess .. 'c' -- don't give |ins-completion-menu| messages
 vim.opt.shortmess:append("c")

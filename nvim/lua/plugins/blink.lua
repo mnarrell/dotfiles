@@ -5,7 +5,6 @@ return {
     "L3MON4D3/LuaSnip",
     "mgalliou/blink-cmp-tmux",
     "folke/lazydev.nvim",
-    "giuxtaposition/blink-cmp-copilot",
   },
   version = "*",
   opts = {
@@ -50,9 +49,27 @@ return {
     appearance = {
       use_nvim_cmp_as_default = false,
       nerd_font_variant = "mono",
+      kind_icons = require("icons").symbol_kinds,
     },
 
     snippets = { preset = "luasnip" },
+
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+
+    signature = { enabled = true, window = { border = "rounded" } },
+
+    cmdline = {
+      completion = {
+        menu = {
+          draw = {
+            columns = {
+              { "kind_icon", gap = 1 },
+              { "label", gap = 4 },
+            },
+          },
+        },
+      },
+    },
 
     sources = {
       -- default = { "lazydev", "lsp", "path", "snippets", "buffer", "tmux", "copilot" },
@@ -62,13 +79,6 @@ return {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           score_offset = 100, -- show at a higher priority than lsp
-        },
-        copilot = {
-          name = "copilot",
-          module = "blink-cmp-copilot",
-          score_offset = 5,
-          async = true,
-          fallbacks = { "lsp" },
         },
         snippets = { score_offset = 5 },
         lsp = { score_offset = 4 },
@@ -89,9 +99,5 @@ return {
         },
       },
     },
-
-    fuzzy = { implementation = "prefer_rust_with_warning" },
-
-    signature = { enabled = true, window = { border = "rounded" } },
   },
 }

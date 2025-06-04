@@ -26,7 +26,6 @@ return {
     opts = {
       ensure_installed = {
         "ansible-language-server",
-        "basedpyright",
         "bash-language-server",
         "dockerfile-language-server",
         "gopls",
