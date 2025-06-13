@@ -26,7 +26,8 @@
       "$XDG_DATA_HOME/nvim/lazy/nvim-web-devicons/lua",
       "$XDG_DATA_HOME/nvim/lazy/quicker.nvim/lua",
       "$XDG_DATA_HOME/nvim/lazy/snacks.nvim/lua",
-      "$XDG_DATA_HOME/nvim/lazy/telescope.nvim/lua"
+      "$XDG_DATA_HOME/nvim/lazy/telescope.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/flash.nvim/lua"
     ]
   }
 }

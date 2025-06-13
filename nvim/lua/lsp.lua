@@ -24,15 +24,14 @@ local on_attach = function(client, bufnr)
   -- map("<LocalLeader>w", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 
   -- stylua: ignore start
-  map("<Leader>ll", "<cmd>Trouble diagnostics toggle<cr>")
-  map("c-]", function() Snacks.picker.lsp_definitions() end)
+  map("<c-]>", function() Snacks.picker.lsp_definitions() end)
   map("gD", function() Snacks.picker.lsp_declarations() end)
   map("<Leader>D", function() Snacks.picker.lsp_type_definitions() end)
   map("grr", function() Snacks.picker.lsp_references() end)
   map("gri", function() Snacks.picker.lsp_implementations() end)
   map("<LocalLeader>s", function() Snacks.picker.lsp_symbols() end)
   map("<LocalLeader>w", function() Snacks.picker.lsp_workspace_symbols() end)
-  map("<Localleader>l", vim.lsp.codelens.run)
+  map("<LocalLeader>l", vim.lsp.codelens.run)
   map("<LocalLeader>d", "<cmd>Trouble diagnostics toggle<cr>")
   map("<LocalLeader>f", function() vim.lsp.buf.format({ timeout_ms = 6000 }) end)
   -- stylua: ignore end
@@ -43,6 +42,10 @@ local on_attach = function(client, bufnr)
       -- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
     end)
   end
+
+  vim.api.nvim_create_user_command("TD", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+  end, {})
 
   -- if client:supports_method(methods.textDocument_documentHighlight) then
   --   local under_cursor_hl_group = vim.api.nvim_create_augroup("mn/cursor_highlights", { clear = false })
@@ -68,7 +71,8 @@ local on_attach = function(client, bufnr)
 
   if client:supports_method("textDocument/foldingRange") then
     local win = vim.api.nvim_get_current_win()
-    vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    -- vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
   end
 end
 

@@ -42,10 +42,10 @@ return {
       additional_vim_regex_highlighting = false,
     },
 
-    -- indent = {
-    --   enable = true,
-    --   disable = { "yaml", "go" },
-    -- },
+    indent = {
+      enable = true,
+      disable = { "yaml", "go" },
+    },
 
     -- custom_captures = {
     --   ["comment"] = "Comment",
@@ -59,32 +59,32 @@ return {
 
     -- context_commentstring = { enable = true },
 
-    textobjects = {
-      move = {
-        enable = true,
-        set_jumps = true, -- whether to set jumps in the jumplist
-        goto_next_start = {
-          ["]]"] = "@function.outer",
-        },
-        goto_previous_start = {
-          ["[["] = "@function.outer",
-        },
-      },
-      --   select = {
-      --     enable = true,
-      --     lookahead = true,
-      --     keymaps = {
-      --       -- ["af"] = "@function.outer",
-      --       -- ["if"] = "@function.inner",
-      --       -- ["ac"] = "@class.outer",
-      --       -- ["ic"] = "@class.inner",
-      --       -- ["ab"] = "@block.outer",
-      --       -- ["ib"] = "@block.inner",
-      --       -- ["aa"] = "@parameter.outer",
-      --       -- ["ia"] = "@parameter.inner",
-      --     },
-      --   },
-    },
+    -- textobjects = {
+    --   move = {
+    --     enable = true,
+    --     set_jumps = true, -- whether to set jumps in the jumplist
+    --     goto_next_start = {
+    --       ["]]"] = "@function.outer",
+    --     },
+    --     goto_previous_start = {
+    --       ["[["] = "@function.outer",
+    --     },
+    --   },
+    --   select = {
+    --     enable = true,
+    --     lookahead = true,
+    --     keymaps = {
+    --       --       -- ["af"] = "@function.outer",
+    --       --       -- ["if"] = "@function.inner",
+    --       --       -- ["ac"] = "@class.outer",
+    --       --       -- ["ic"] = "@class.inner",
+    --       --       -- ["ab"] = "@block.outer",
+    --       --       -- ["ib"] = "@block.inner",
+    --       ["aa"] = "@parameter.outer",
+    --       ["ia"] = "@parameter.inner",
+    --     },
+    --   },
+    -- },
 
     -- autopairs = { enable = true },
     -- autotag = { enable = true },

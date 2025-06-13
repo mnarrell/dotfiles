@@ -1,7 +1,7 @@
 return {
   "fatih/vim-go",
   build = ":GoUpdateBinaries",
-  enabled = false,
+  -- enabled = false,
   ft = "go",
   init = function()
     local g = vim.g

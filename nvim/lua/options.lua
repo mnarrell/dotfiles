@@ -65,16 +65,16 @@ vim.opt.foldlevel = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = ""
-vim.opt.foldcolumn = "1"
+vim.opt.foldcolumn = "0"
 vim.opt.fillchars = {
-  fold = " ",
   diff = "╱",
-  vert = "|",
   eob = " ", -- suppress ~ at EndOfBuffer
-  msgsep = "‾", -- separator between messages
-  foldopen = arrows.down,
+  fold = " ",
   foldclose = arrows.right,
+  foldopen = arrows.down,
   foldsep = " ", -- separator between folds
+  msgsep = "‾", -- separator between messages
+  vert = "|",
 }
 
 vim.opt.diffopt = {
