@@ -1,6 +1,6 @@
 return {
   -- Show marks in the sign column
-  { "kshenoy/vim-signature", event = "VeryLazy" },
+  -- { "kshenoy/vim-signature", event = "VeryLazy" },
 
   -- Eyecandy
   { "kyazdani42/nvim-web-devicons" },

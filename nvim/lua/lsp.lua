@@ -24,11 +24,11 @@ local on_attach = function(client, bufnr)
   -- map("<LocalLeader>w", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 
   -- stylua: ignore start
-  map("<c-]>", function() Snacks.picker.lsp_definitions() end)
+  map("<c-]>", function() Snacks.picker.lsp_definitions({jump = { tagstack = true, reuse_win = false }}) end)
   map("gD", function() Snacks.picker.lsp_declarations() end)
   map("<Leader>D", function() Snacks.picker.lsp_type_definitions() end)
-  map("grr", function() Snacks.picker.lsp_references() end)
-  map("gri", function() Snacks.picker.lsp_implementations() end)
+  map("grr", function() Snacks.picker.lsp_references({jump = { tagstack = true, reuse_win = false }}) end)
+  map("gri", function() Snacks.picker.lsp_implementations({jump = { tagstack = true, reuse_win = false }}) end)
   map("<LocalLeader>s", function() Snacks.picker.lsp_symbols() end)
   map("<LocalLeader>w", function() Snacks.picker.lsp_workspace_symbols() end)
   map("<LocalLeader>l", vim.lsp.codelens.run)
@@ -38,7 +38,7 @@ local on_attach = function(client, bufnr)
 
   if client:supports_method(methods.textDocument_definition) then
     map("de", function()
-      Snacks.picker.lsp_definitions({ confirm = "vsplit" })
+      Snacks.picker.lsp_definitions({ confirm = "vsplit", jump = { tagstack = true, reuse_win = false } })
       -- require("telescope.builtin").lsp_definitions({ jump_type = "vsplit" })
     end)
   end

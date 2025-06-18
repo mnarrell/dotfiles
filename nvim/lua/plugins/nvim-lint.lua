@@ -1,3 +1,5 @@
+-- nvim-lint makes some linters report diagnostics.
+
 local yamllint_args = function()
   local root_path = vim.fs.root(0, ".yamllint.yaml")
   if root_path then

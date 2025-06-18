@@ -2,7 +2,13 @@ return {
   { "cespare/vim-toml", ft = "toml" },
   { "chr4/nginx.vim", ft = "nginx" },
   { "pearofducks/ansible-vim", ft = "yaml.ansible" },
-  { "MeanderingProgrammer/markdown.nvim", ft = "markdown", config = true },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {
+      file_types = { "markdown", "copilot-chat", "Avante" },
+    },
+    ft = { "markdown", "copilot-chat", "Avante" },
+  },
   { "pedrohdz/vim-yaml-folds", ft = "yaml" },
   { "towolf/vim-helm", ft = "helm" },
   {
