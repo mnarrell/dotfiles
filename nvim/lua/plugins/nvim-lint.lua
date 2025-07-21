@@ -21,6 +21,7 @@ return {
       lua = { "luacheck" },
       make = { "checkmake" },
       markdown = { "markdownlint" },
+      python = { "ruff" },
       sh = { "shellcheck" },
       sql = { "sqlfluff" },
       yaml = { "yamllint" },

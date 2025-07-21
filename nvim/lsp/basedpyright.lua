@@ -32,11 +32,20 @@ return {
     ".git",
   },
   settings = {
-    basedpyright = {
-      disableOrganizeImports = true,
-      analysis = {
-        -- Ignore all files for analysis to exclusively use Ruff for linting
-        ignore = { "*" },
+    --   basedpyright = {
+    --     disableOrganizeImports = true,
+    --     analysis = {
+    --       -- Ignore all files for analysis to exclusively use Ruff for linting
+    --       ignore = { "*" },
+    --     },
+    --   },
+    {
+      basedpyright = {
+        analysis = {
+          autoSearchPaths = true,
+          diagnosticMode = "openFilesOnly",
+          useLibraryCodeForTypes = true,
+        },
       },
     },
   },

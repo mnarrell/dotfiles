@@ -13,6 +13,7 @@ cask 'alacritty'
 cask 'alfred'
 cask 'balenaetcher'
 cask 'bartender'
+cask 'basictex'
 cask 'better-window-manager'
 cask 'bruno'
 cask 'coconutbattery'
@@ -41,6 +42,7 @@ cask 'vlc'
 # Simple brews
 ################################################################################
 
+# brew 'postgis'
 brew 'ack'
 brew 'age'
 brew 'ansible'
@@ -107,7 +109,6 @@ brew 'pcre'
 brew 'perl'
 brew 'pinentry-mac'
 brew 'pipx'
-brew 'postgis'
 brew 'postgresql@17', restart_service: :changed
 brew 'pre-commit'
 brew 'prettier'
