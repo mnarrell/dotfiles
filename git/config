@@ -85,11 +85,11 @@
 [includeIf "gitdir:~/src/work/"]
   path = ~/.private_dotfiles/git/config.work
 
-[column]
-  ui = auto
+; [column]
+;   ui = auto
 
-[branch]
-  sort = -committerdate
+; [branch]
+;   sort = -committerdate
 
 [tag]
   sort = version:refname

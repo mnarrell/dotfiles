@@ -15,6 +15,7 @@ linters:
     - exhaustruct
     - gochecknoglobals
     - mnd
+    - noinlineerr
     - paralleltest
     - perfsprint
     - tagalign

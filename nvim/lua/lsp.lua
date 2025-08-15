@@ -32,7 +32,6 @@ local on_attach = function(client, bufnr)
   map("<LocalLeader>s", function() Snacks.picker.lsp_symbols() end)
   map("<LocalLeader>w", function() Snacks.picker.lsp_workspace_symbols() end)
   map("<LocalLeader>l", vim.lsp.codelens.run)
-  map("<LocalLeader>d", "<cmd>Trouble diagnostics toggle<cr>")
   map("<LocalLeader>f", function() vim.lsp.buf.format({ timeout_ms = 6000 }) end)
   -- stylua: ignore end
 

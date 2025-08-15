@@ -206,7 +206,7 @@ tasks:
       - ln -sfn {{.ROOT_DIR}}/golang/revive.toml {{.XDG_CONFIG_HOME}}/revive.toml
       - go install honnef.co/go/tools/cmd/staticcheck@latest
       - go install github.com/sbowman/xq@latest
-      - go install github.com/oligot/go-mod-upgrade@latest
+      # - go install github.com/oligot/go-mod-upgrade@latest
       - go install mvdan.cc/gofumpt@latest
 
   go:down:

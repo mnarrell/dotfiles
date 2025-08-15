@@ -1,22 +1,35 @@
-local ls = require "luasnip"
-local s = ls.s
+local ls = require("luasnip")
+local s = ls.snippet
 local i = ls.insert_node
 local t = ls.text_node
+local f = ls.function_node
+
+local function generate_uuid()
+  local handle = io.popen("uuidgen")
+  if not handle then
+    return "missing uuidgen"
+  end
+  local uuid = handle:read("*a")
+  handle:close()
+  return uuid:gsub("%s+", "") -- trim any whitespace
+end
 
 local all = {
-  s({ trig = "date", name = "Date", dscr = "Date in the form of YYYY-MM-DD" }, t(os.date "%Y-%m-%d")),
+  s({ trig = "date", name = "Date", dscr = "Date in the form of YYYY-MM-DD" }, t(os.date("%Y-%m-%d"))),
 
   s(
     { trig = "lorem", name = "Lorem ipsum" },
-    t "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    t(
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    )
   ),
 
   s({ trig = "MIT", name = "MIT License" }, {
     i(1, "one line to give the program's name and a brief description"),
-    t { "", "", "Copyright (c) " },
-    t(os.date "%Y"),
-    t { ", Matt Narrell", "" },
-    t {
+    t({ "", "", "Copyright (c) " }),
+    t(os.date("%Y")),
+    t({ ", Matt Narrell", "" }),
+    t({
       [[]],
       [[Permission is hereby granted, free of charge, to any person obtaining]],
       [[a copy of this software and associated documentation files (the "Software"),]],
@@ -35,8 +48,10 @@ local all = {
       [[DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,]],
       [[TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE]],
       [[OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.]],
-    },
+    }),
   }),
+
+  s({ trig = "uuid", name = "Generate UUID" }, f(generate_uuid)),
 }
 
 local yes, private = pcall(require, "snippets.all_private")

@@ -32,8 +32,9 @@ return {
       { "nvim-lua/plenary.nvim" },
     },
     opts = {
-      -- model = "claude-3.7-sonnet",
-      model = "claude-sonnet-4",
+      model = "claude-sonnet-4.5",
+      -- model = "gpt-5",
+      -- model = "gpt-5-mini",
     },
     config = true,
     event = "VeryLazy",

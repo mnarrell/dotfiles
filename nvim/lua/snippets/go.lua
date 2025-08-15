@@ -164,13 +164,12 @@ local go = {
     { trig = "tt", name = "Table tests" },
     fmt(
       [[
-        var tests = map[string]struct {{
+        tests := map[string]struct {{
           expected string
         }}{{
           "name": {{"{}"}},
         }}
         for name, tt := range tests {{
-          tt := tt
           t.Run(name, func(t *testing.T) {{
             fmt.Println(tt.expected)
             {}
