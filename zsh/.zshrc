@@ -32,8 +32,8 @@ done
 
 ################################################################################
 # Load Antidote Plugins
-source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-antidote load
+# source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+# antidote load
 source ${XDG_CONFIG_HOME}/zsh/.zsh_plugins.zsh
 
 ################################################################################

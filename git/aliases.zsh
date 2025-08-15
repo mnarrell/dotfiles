@@ -5,7 +5,6 @@
 alias tig="tig --all"
 alias tis='\tig status'
 
-alias pr='gh pr view --web'
 alias rp='gh repo view --web'
 
 function git_personal_user() {

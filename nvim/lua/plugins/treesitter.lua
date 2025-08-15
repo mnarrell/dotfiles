@@ -1,7 +1,8 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master",
+  lazy = false,
   build = ":TSUpdate",
-  event = "BufReadPost",
   dependencies = {
     "HiPhish/rainbow-delimiters.nvim",
     -- { "windwp/nvim-ts-autotag", config = true },

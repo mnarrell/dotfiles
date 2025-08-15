@@ -24,13 +24,16 @@ return {
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main",
+    -- enabled = false,
     -- version = "v3.3.0", -- Use a specific version to prevent breaking changes
+    build = "make tiktoken",
     dependencies = {
       { "zbirenbaum/copilot.lua" },
       { "nvim-lua/plenary.nvim" },
     },
     opts = {
-      model = "claude-3.7-sonnet",
+      -- model = "claude-3.7-sonnet",
+      model = "claude-sonnet-4",
     },
     config = true,
     event = "VeryLazy",

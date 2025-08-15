@@ -7,6 +7,7 @@
 [core]
   abbrev = 12
   ignorecase = false
+  compression = 9
 
 [color]
   branch = auto
@@ -19,6 +20,7 @@
 [alias]
   br = branch
   cb = !git checkout $(git branch | fzf)
+  ct = !git checkout $(git tag | fzf)
   ci = commit
   cm = !git add -A && git commit -m
   co = checkout
@@ -94,3 +96,7 @@
 
 [gpg]
   format = ssh
+
+[maintenance]
+  auto = true
+  strategy = incremental
