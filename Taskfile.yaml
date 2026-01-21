@@ -361,6 +361,7 @@ tasks:
       - "{{.XDG_DATA_HOME}}/venvs/neovim/bin/pip3 install -r {{.ROOT_DIR}}/nvim/requirements.txt"
       - npm install -g neovim
       - gem install neovim
+      - gem install logger
       - nvim --headless "+Lazy! sync" +qa
 
   nvim:down:
