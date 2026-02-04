@@ -5,8 +5,7 @@ return {
   opts = {
     formatters_by_ft = {
       go = { "goimports", "gci", "gofumpt" },
-      hcl = { "terragrunt_hclfmt" },
-      html = { "prettierd" },
+      terraform = { "tofu_fmt" },
       json = { "jq" },
       lua = { "stylua" },
       markdown = { "prettier" },

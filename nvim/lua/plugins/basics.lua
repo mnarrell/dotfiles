@@ -1,7 +1,4 @@
 return {
-  -- Show marks in the sign column
-  -- { "kshenoy/vim-signature", event = "VeryLazy" },
-
   -- Eyecandy
   { "kyazdani42/nvim-web-devicons" },
 
@@ -56,9 +53,6 @@ return {
 
   -- Best search tweaks so far
   { "wincent/loupe", event = "VeryLazy" },
-
-  -- Inspect registers
-  -- { "gennaro-tedesco/nvim-peekup", event = "VeryLazy" },
 
   -- Live substitute preview
   { "markonm/traces.vim", event = "VeryLazy" },

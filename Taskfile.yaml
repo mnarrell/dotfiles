@@ -378,6 +378,18 @@ tasks:
       - rm -rf {{.XDG_CONFIG_HOME}}/nvim
 
   ################################################################################
+  # Terraform
+  opentofu:up:
+    desc: "Links OpenTofu configuration"
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/opentofu {{.XDG_CONFIG_HOME}}/opentofu
+
+  opentofu:down:
+    desc: "Removes OpenTofu configuration link"
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/opentofu
+
+  ################################################################################
   # Pip
   pip:up:
     desc: Configures Pip
@@ -562,13 +574,13 @@ tasks:
       - task: node:up
       - task: npm:up
       - task: nvim:up
+      - task: opentofu:up
       - task: pip:up
       - task: psql:up
       - task: readline:up
       - task: ripgrep:up
       - task: ruff:up
       - task: task:up
-      - task: terraform:up
       - task: tig:up
       - task: tmux:up
       - task: vagrant:up

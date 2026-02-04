@@ -11,13 +11,5 @@ return {
   },
   { "pedrohdz/vim-yaml-folds", ft = "yaml" },
   { "towolf/vim-helm", ft = "helm" },
-  {
-    "hashivim/vim-terraform",
-    ft = { "terraform", "hcl" },
-    init = function()
-      vim.g.terraform_align = 1
-      vim.g.terraform_fmt_on_save = 1
-    end,
-  },
   { "varnishcache-friends/vim-varnish", ft = "vcl" },
 }
