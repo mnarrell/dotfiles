@@ -1,17 +1,14 @@
--- Formatters
 return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
   opts = {
     formatters_by_ft = {
       go = { "goimports", "gci", "gofumpt" },
-      terraform = { "tofu_fmt" },
       json = { "jq" },
       lua = { "stylua" },
       markdown = { "prettier" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       sh = { "shellharden", "shfmt" },
-      toml = { "taplo" },
       xml = { "xmllint" },
     },
 
