@@ -2,9 +2,6 @@
 .netrwbook
 .netrwhist*
 
-docker/.buildNodeID
-docker/.token_seed
-docker/.token_seed.lock
 docker/buildx/*
 docker/cli-plugins/*
 docker/config.json
@@ -15,10 +12,6 @@ git/config.work
 
 helm/repositories*
 
-nvim/lua/mn/local.lua
-nvim/lua/mn/lsp/*private.lua
-nvim/lua/mn/snips/*private.lua
-nvim/plugin/packer_compiled.lua
 nvim/spell/
 nvim/spell/en.utf-8.add.spl
 

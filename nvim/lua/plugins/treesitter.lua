@@ -14,7 +14,6 @@ return {
       "gowork",
       "helm",
       "json",
-      "jsonc",
       "lua",
       "regex",
       "ruby",

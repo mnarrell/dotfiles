@@ -1,0 +1,10 @@
+[project]
+name = "nvim"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "msgpack>=1.1.2",
+    "neovim>=0.3.1",
+    "pynvim>=0.6.0",
+    "vim-vint>=0.3.21",
+]

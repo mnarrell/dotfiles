@@ -36,6 +36,8 @@ tasks:
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/alacritty
 
+  ################################################################################
+  ## ASDF
   asdf:up:
     desc: Configures the ASDF SDK manager
     cmds:
@@ -45,18 +47,6 @@ tasks:
     desc: Removes the ASDF configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/asdf
-
-  ################################################################################
-  # Ansible
-  # ansible:up:
-  #   desc: Configures Ansible
-  #   cmds:
-  #     - pip3 install -U ansible
-  #
-  # ansible:down:
-  #   desc: Removes Ansible configuration
-  #   cmds:
-  #     - pip3 uninstall -y ansible
 
   ################################################################################
   # Bash
@@ -81,35 +71,6 @@ tasks:
     cmds:
       - mkdir -p {{.BIN_HOME}}
       - ln -sf {{.ROOT_DIR}}/bin/* {{.BIN_HOME}}
-
-  ################################################################################
-  # Coursier
-  coursier:up:
-    cmds:
-      - curl -fL https://github.com/VirtusLab/coursier-m1/releases/latest/download/cs-aarch64-apple-darwin.gz | gzip -d > /tmp/cs
-      - chmod +x /tmp/cs
-      - (xattr -d com.apple.quarantine /tmp/cs || true)
-      - /tmp/cs setup
-    status:
-      - test -d {{.HOME}}/Library/Application\ Support/Coursier/bin
-
-  coursier:down:
-    cmds:
-      - rm -rf {{.HOME}}/Library/Caches/Coursier
-      - rm -rf {{.HOME}}/Library/Application\ Support/Coursier
-
-
-  ################################################################################
-  # Direnv
-  direnv:up:
-    desc: Configures Direnv
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/direnv {{.XDG_CONFIG_HOME}}/direnv
-
-  direnv:down:
-    desc: Removes Direnv configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/direnv
 
   ################################################################################
   # Docker
@@ -206,7 +167,6 @@ tasks:
       - ln -sfn {{.ROOT_DIR}}/golang/revive.toml {{.XDG_CONFIG_HOME}}/revive.toml
       - go install honnef.co/go/tools/cmd/staticcheck@latest
       - go install github.com/sbowman/xq@latest
-      # - go install github.com/oligot/go-mod-upgrade@latest
       - go install mvdan.cc/gofumpt@latest
 
   go:down:
@@ -256,7 +216,7 @@ tasks:
       - defaults delete com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 
   ################################################################################
-  # K8S
+  # K9S
   k9s:up:
     desc: Configures K9S
     cmds:
@@ -278,18 +238,6 @@ tasks:
     desc: Removes Kubernetes configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/kubernetes
-
-  ################################################################################
-  # Less
-  less:up:
-    desc: Configures the Less binary
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/less {{.XDG_CONFIG_HOME}}/less
-
-  less:down:
-    desc: Removes Less configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/less
 
   ################################################################################
   # MacOS
@@ -357,24 +305,23 @@ tasks:
     desc: Configures Neovim
     cmds:
       - ln -sfn {{.ROOT_DIR}}/nvim {{.XDG_CONFIG_HOME}}/nvim
-      - python -m venv {{.XDG_DATA_HOME}}/venvs/neovim
-      - "{{.XDG_DATA_HOME}}/venvs/neovim/bin/pip3 install -r {{.ROOT_DIR}}/nvim/requirements.txt"
+      - uv sync --project {{.ROOT_DIR}}/nvim
+      # - python -m venv {{.XDG_DATA_HOME}}/venvs/neovim
+      # - "{{.XDG_DATA_HOME}}/venvs/neovim/bin/pip3 install -r {{.ROOT_DIR}}/nvim/requirements.txt"
       - npm install -g neovim
       - gem install neovim
       - gem install logger
-      - nvim --headless "+Lazy! sync" +qa
+      # - nvim --headless "+Lazy! sync" +qa
 
   nvim:down:
     desc: Removes Neovim configuration
     cmds:
-      - "{{.XDG_DATA_HOME}}/venvs/neovim/bin/pip3 uninstall -y -r {{.ROOT_DIR}}/nvim/requirements.txt"
-      - rm -rf {{.XDG_DATA_HOME}}/venvs/neovim
       - rm -rf {{.XDG_CONFIG_HOME}}/nvim
+      - rm -rf {{.ROOT_DIR}}/nvim/.venv
       - npm uninstall -g neovim
       - gem uninstall neovim || true
       - rm -rf {{.HOME}}/.vimrc_background
-      - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy
-      - rm -rf {{.XDG_DATA_HOME}}/nvim/mason
+      - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy      
       - rm -rf {{.XDG_CONFIG_HOME}}/nvim
 
   ################################################################################
@@ -390,18 +337,6 @@ tasks:
       - rm -rf {{.XDG_CONFIG_HOME}}/opentofu
 
   ################################################################################
-  # Pip
-  pip:up:
-    desc: Configures Pip
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/pip {{.XDG_CONFIG_HOME}}/pip
-
-  pip:down:
-    desc: Removes Pip configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/pip
-
-  ################################################################################
   # PSQL
   psql:up:
     desc: Configures PSQL
@@ -414,18 +349,6 @@ tasks:
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/psql
       - rm -rf {{.XDG_CACHE_HOME}}/psql
-
-  ################################################################################
-  # Readline
-  readline:up:
-    desc: Configures Readline
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/readline {{.XDG_CONFIG_HOME}}/readline
-
-  readline:down:
-    desc: Removes Readline configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/readline
 
   ################################################################################
   ripgrep:up:
@@ -461,18 +384,6 @@ tasks:
     desc: Removes Taskfile configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/task
-
-  ################################################################################
-  # Terraform
-  terraform:up:
-    desc: "Links Terraform configuration"
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/terraform {{.XDG_CONFIG_HOME}}/terraform
-
-  terraform:down:
-    desc: "Removes Terraform configuration link"
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/terraform
 
   ################################################################################
   # TIG
@@ -556,7 +467,6 @@ tasks:
       - task: asdf:up
       - task: bash:up
       - task: bin:up
-      - task: direnv:up
       - task: docker:up
       - task: fd:up
       - task: fzf:up
@@ -569,20 +479,17 @@ tasks:
       - task: ideavim:up
       - task: k9s:up
       - task: kube:up
-      - task: less:up
       - task: markdown:up
       - task: node:up
       - task: npm:up
       - task: nvim:up
       - task: opentofu:up
-      - task: pip:up
       - task: psql:up
-      - task: readline:up
       - task: ripgrep:up
       - task: ruff:up
       - task: task:up
       - task: tig:up
       - task: tmux:up
-      - task: vagrant:up
+      #- task: vagrant:up
       - task: yamllint:up
       - task: zsh:up

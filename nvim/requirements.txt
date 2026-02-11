@@ -1,4 +1,0 @@
-msgpack
-neovim
-pynvim
-vim-vint
