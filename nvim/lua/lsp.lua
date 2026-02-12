@@ -69,9 +69,13 @@ end
 local diagnostic_icons = require("icons").diagnostics
 vim.diagnostic.config({
   virtual_text = false,
+  virtual_lines = false,
+  severity_sort = true,
   update_in_insert = false,
-  underline = true,
-  float = true,
+  float = { border = "rounded", source = "if_many" },
+  underline = { severity = vim.diagnostic.severity.ERROR },
+  -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
+  jump = { float = true },
   signs = {
     text = {
       [vim.diagnostic.severity.INFO] = diagnostic_icons.INFO,

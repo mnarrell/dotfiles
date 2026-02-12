@@ -1,5 +1,10 @@
 local arrows = require("icons").arrows
 
+-- use the system clipboards
+vim.schedule(function()
+  vim.o.clipboard = "unnamed,unnamedplus"
+end)
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.python3_host_prog = vim.env.XDG_CONFIG_HOME .. "/nvim/.venv/bin/python"
@@ -21,7 +26,6 @@ vim.o.wrap = false -- Do not wrap lines by default
 
 vim.o.backspace = "indent,eol,start" -- Make the backspace key sane
 vim.o.breakindent = true -- wrapped lines have same indent level
-vim.o.clipboard = "unnamed,unnamedplus" -- use the system clipboards
 vim.o.cmdwinheight = 20 -- Make the command window height more tolerable
 vim.o.complete = ".,b,k,kspell" -- Where to find completion candidates
 vim.o.copyindent = true -- Copy the structure of the indent
@@ -87,7 +91,8 @@ vim.opt.diffopt = {
   "indent-heuristic",
 }
 
-vim.o.completeopt = "menu,menuone,noselect"
+vim.o.completeopt = "menu,menuone,noselect,popup"
+-- vim.o.completeopt = "menu,menuone,noselect"
 -- vim.o.completeopt = "menuone,noinsert,noselect"
 
 vim.o.formatprg = "par -w78rs"

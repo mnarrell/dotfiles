@@ -119,9 +119,6 @@ tasks:
   gem:up:
     desc: Configures Rubygems
     cmds:
-      - ln -sfn {{.ROOT_DIR}}/gem {{.XDG_CONFIG_HOME}}/gem
-      - mkdir -p {{.XDG_DATA_HOME}}/gem
-      - mkdir -p {{.XDG_CACHE_HOME}}/gem
       - gem update --system
       - gem update
       - gem cleanup
@@ -129,9 +126,7 @@ tasks:
   gem:down:
     desc: Removes Gems configuration
     cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/gem
-      - rm -rf {{.XDG_DATA_HOME}}/gem
-      - rm -rf {{.XDG_CACHE_HOME}}/gem
+      - gem uninstall -aIx
 
   ################################################################################
   # Git
@@ -168,6 +163,8 @@ tasks:
       - go install honnef.co/go/tools/cmd/staticcheck@latest
       - go install github.com/sbowman/xq@latest
       - go install mvdan.cc/gofumpt@latest
+      - go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
+
 
   go:down:
     desc: Removes Golang configuration
@@ -306,12 +303,9 @@ tasks:
     cmds:
       - ln -sfn {{.ROOT_DIR}}/nvim {{.XDG_CONFIG_HOME}}/nvim
       - uv sync --project {{.ROOT_DIR}}/nvim
-      # - python -m venv {{.XDG_DATA_HOME}}/venvs/neovim
-      # - "{{.XDG_DATA_HOME}}/venvs/neovim/bin/pip3 install -r {{.ROOT_DIR}}/nvim/requirements.txt"
       - npm install -g neovim
       - gem install neovim
       - gem install logger
-      # - nvim --headless "+Lazy! sync" +qa
 
   nvim:down:
     desc: Removes Neovim configuration
@@ -321,11 +315,11 @@ tasks:
       - npm uninstall -g neovim
       - gem uninstall neovim || true
       - rm -rf {{.HOME}}/.vimrc_background
-      - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy      
+      - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy
       - rm -rf {{.XDG_CONFIG_HOME}}/nvim
 
   ################################################################################
-  # Terraform
+  # OpenTofu
   opentofu:up:
     desc: "Links OpenTofu configuration"
     cmds:
@@ -414,21 +408,6 @@ tasks:
       - rm -rf {{.HOME}}/.terminfo
 
   ################################################################################
-  # Vagrant
-  vagrant:up:
-    desc: Configures Vagrant
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/vagrant {{.XDG_CONFIG_HOME}}/vagrant
-      - mkdir -p {{.XDG_DATA_HOME}}/vagrant
-      - vagrant plugin install vagrant-hosts
-
-  vagrant:down:
-    desc: Removes Vagrant configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/vagrant
-      - rm -rf {{.XDG_DATA_HOME}}/vagrant
-
-  ################################################################################
   # YAML Lint
   yamllint:up:
     desc: Configures YAML Lint
@@ -490,6 +469,5 @@ tasks:
       - task: task:up
       - task: tig:up
       - task: tmux:up
-      #- task: vagrant:up
       - task: yamllint:up
       - task: zsh:up

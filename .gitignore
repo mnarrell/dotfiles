@@ -2,6 +2,7 @@
 .netrwbook
 .netrwhist*
 
+docker/.token*
 docker/buildx/*
 docker/cli-plugins/*
 docker/config.json

@@ -10,26 +10,29 @@ tap 'weaveworks/tap'
 # Casks
 ################################################################################
 
+#cask 'bruno'
+#cask 'gitx'
+#cask 'microsoft-remote-desktop'
+#cask 'omnidisksweeper'
+#cask 'omnigraffle'
 cask '1password-cli'
 cask 'alacritty'
 cask 'alfred'
-#cask 'balenaetcher'
-#cask 'bruno'
+cask 'appcleaner'
+cask 'balenaetcher'
 cask 'discord'
 cask 'dropbox'
 cask 'font-meslo-for-powerline'
 cask 'font-meslo-lg-nerd-font'
 cask 'font-roboto-mono-nerd-font'
 cask 'font-sauce-code-pro-nerd-font'
-#cask 'gitx'
 cask 'istat-menus'
 cask 'jetbrains-toolbox'
 cask 'karabiner-elements'
-#cask 'microsoft-remote-desktop'
-#cask 'omnidisksweeper'
-#cask 'omnigraffle'
+cask 'rectangle-pro'
 cask 'slack'
 cask 'steam'
+cask 'thaw'
 cask 'utm'
 cask 'visual-studio-code'
 
@@ -68,7 +71,6 @@ brew 'gnu-tar'
 brew 'gnu-which'
 brew 'gnutls'
 brew 'go-task'
-brew 'golangci-lint'
 brew 'grep'
 brew 'gzip'
 brew 'helmfile'
@@ -121,13 +123,8 @@ brew 'zsh'
 # Mac App Store
 ################################################################################
 
-# mas 'Keynote (9.1)', id: 409183694
-# mas 'Microsoft Remote Desktop (10.3.11)', id: 1295203466
-# mas 'Numbers (6.1)', id: 409203825
-# mas 'Pages (14.2)', id: 409201541
-#mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
 #mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
-#mas 'Marked 2 (2.5.31)', id: 890031187
+mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'Paprika Recipe Manager', id: 1303222628
 mas 'WireGuard', id: 1451685025

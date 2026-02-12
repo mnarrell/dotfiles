@@ -4,9 +4,9 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    -- gitbrowse = { enabled = true },
-    -- statuscolumn = { enabled = true },
     picker = {
+      enabled = true,
+      ui_select = true, -- Enables snacks as the replacement for vim.ui.select
       sources = {
         buffers = {
           layout = {
@@ -14,10 +14,6 @@ return {
             preview = false,
           },
         },
-      },
-      enabled = true,
-      debug = {
-        -- scores = true,
       },
     },
   },
