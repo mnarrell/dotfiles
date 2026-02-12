@@ -1,24 +1,50 @@
-set show-changes = no
+# Vim-style keybindings for Tig
+#
+# To use these keybindings copy the file to your HOME directory and include
+# it from your ~/.tigrc file:
+#
+#	$ cp contrib/vim.tigrc ~/.tigrc.vim
+#	$ echo "source ~/.tigrc.vim" >> ~/.tigrc
 
-set line-graphics = utf-8
-set main-view = id:yes date:relative author:full commit-title:yes,graph,refs,overflow=no
-set main-options = -n 1000
+bind generic h scroll-left
+bind generic j move-down
+bind generic k move-up
+bind generic l scroll-right
 
 bind generic g  none
+bind generic gg move-first-line
+bind generic gj next
+bind generic gk previous
+bind generic gp parent
+bind generic gP back
+bind generic gn view-next
+
+bind main    G  none
+bind generic G  move-last-line
+
 bind generic <C-f> move-page-down
 bind generic <C-b> move-page-up
+
+bind status  u  none
+bind stage   u  none
 bind generic uu status-update
 bind generic ur status-revert
 bind generic um status-merge
 bind generic ul stage-update-line
 bind generic us stage-split-chunk
+
 bind generic c  none
 bind generic cc !git commit
 bind generic ca !?@git commit --amend --no-edit
 
-bind main gg move-first-line
-bind status  u  none
-bind stage   u  none
+bind generic K view-help
+bind generic <C-w><C-w> view-next
+
+set line-graphics = utf-8
+
+set main-view = id:yes date:relative author:full commit-title:yes,graph,refs,overflow=no
+set main-options = -n 1000
+
 
 ################################################################################
 # Custom mappings
@@ -44,3 +70,4 @@ bind stash P !@git stash pop
 bind status D !@?rm %(file)
 bind status I !sh -c "echo %(file) >> .gitignore"
 bind status S !@git stash save
+
