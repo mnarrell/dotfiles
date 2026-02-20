@@ -2,6 +2,8 @@ return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
   opts = {
+    -- notify_on_error = false,
+    -- notify_no_formatters = false,
     formatters_by_ft = {
       go = { "goimports", "gci", "gofumpt" },
       json = { "jq" },
@@ -31,7 +33,7 @@ return {
     },
   },
   init = function()
-    -- vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-    vim.o.formatexpr = ""
+    vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    -- vim.o.formatexpr = ""
   end,
 }

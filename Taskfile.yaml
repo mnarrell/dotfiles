@@ -323,7 +323,7 @@ tasks:
       - npm uninstall -g neovim
       - gem uninstall neovim || true
       - rm -rf {{.HOME}}/.vimrc_background
-      - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy      
+      - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy
       - rm -rf {{.XDG_CONFIG_HOME}}/nvim
 
   ################################################################################
