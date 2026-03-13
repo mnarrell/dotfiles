@@ -5,9 +5,11 @@ vim.filetype.add({
     ["main.yaml"] = "yaml.ansible",
   },
   pattern = {
-    ["Brewfile.*"] = "ruby",
-    [".*/git/config.*"] = "gitconfig",
+    ["*.tf"] = "terrraform",
     [".*/%.kube/config"] = "yaml",
+    [".*/git/config.*"] = "gitconfig",
+    [".*/playbooks/.*%.yaml"] = "yaml.ansible",
     [".*/templates/.*%.yaml"] = "helm",
+    ["Brewfile.*"] = "ruby",
   },
 })

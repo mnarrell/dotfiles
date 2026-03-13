@@ -10,7 +10,7 @@ tap 'weaveworks/tap'
 # Casks
 ################################################################################
 
-#cask 'bruno'
+# cask 'karabiner-elements'
 #cask 'gitx'
 #cask 'microsoft-remote-desktop'
 #cask 'omnidisksweeper'
@@ -20,6 +20,8 @@ cask 'alacritty'
 cask 'alfred'
 cask 'appcleaner'
 cask 'balenaetcher'
+# cask 'bartender'
+cask 'bruno'
 cask 'discord'
 cask 'dropbox'
 cask 'font-meslo-for-powerline'
@@ -28,7 +30,7 @@ cask 'font-roboto-mono-nerd-font'
 cask 'font-sauce-code-pro-nerd-font'
 cask 'istat-menus'
 cask 'jetbrains-toolbox'
-cask 'karabiner-elements'
+cask 'mullvad-vpn'
 cask 'rectangle-pro'
 cask 'slack'
 cask 'steam'
@@ -124,7 +126,7 @@ brew 'zsh'
 ################################################################################
 
 mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
-#mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
 mas 'Marked 2 (2.5.31)', id: 890031187
 mas 'Paprika Recipe Manager', id: 1303222628
+mas 'Windows App', id: 1295203466
 mas 'WireGuard', id: 1451685025
