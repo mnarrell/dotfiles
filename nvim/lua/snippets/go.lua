@@ -161,17 +161,17 @@ local go = {
   ),
 
   s(
-    { trig = "tt", name = "Table tests" },
+    { trig = "cases", name = "Test cases" },
     fmt(
       [[
-        tests := map[string]struct {{
+        cases := map[string]struct {{
           expected string
         }}{{
           "name": {{"{}"}},
         }}
-        for name, tt := range tests {{
+        for name, c := range cases {{
           t.Run(name, func(t *testing.T) {{
-            fmt.Println(tt.expected)
+            fmt.Println(c.expected)
             {}
           }})
         }}

@@ -21,7 +21,7 @@ return {
   s({ trig = "elif", name = "else branch" }, { t("elif [[ "), i(1, "conditional"), t({ " ]]l then", "	" }), i(0) }),
 
   s(
-    { trig = "fori", name = "For lop with index" },
+    { trig = "fori", name = "For loop with index" },
     fmt(
       [[
         for (( {} = 0; {} < {}; {}++ )); do

@@ -20,7 +20,7 @@ return {
         return
       end
 
-      return { timeout_ms = 1000, lsp_fallback = true }
+      return { timeout_ms = 3000, lsp_fallback = true }
     end,
 
     formatters = {
@@ -32,8 +32,4 @@ return {
       },
     },
   },
-  init = function()
-    -- vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-    -- vim.o.formatexpr = ""
-  end,
 }

@@ -16,6 +16,8 @@ alias dri='docker rmi --force $(docker images -q)'
 alias -g IMAGES='$(docker images --format table | fzf-tmux --header-lines=1 | awk "{print \$1 \":\" \$2}")'
 alias -g CONTAINERS='$(docker ps -a | fzf-tmux --header-lines=1 --reverse --multi --cycle | awk "{print \$1}")'
 
+alias bootstrap_colima='colima start --cpu 4 --memory 6 --disk 30 --arch aarch64 --vm-type=vz --vz-rosetta'
+
 function dp() {
   docker system prune -f
 }
