@@ -27,15 +27,15 @@ return {
         },
       },
 
-      -- documentation = {
-      --    auto_show = true,
-      --    auto_show_delay_ms = 500,
-      --    window = {
-      --      border = "rounded",
-      --      max_width = math.floor(vim.o.columns * 0.4),
-      --      max_height = math.floor(vim.o.lines * 0.5),
-      --    },
-      --  },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 500,
+        window = {
+          border = "rounded",
+          max_width = math.floor(vim.o.columns * 0.4),
+          max_height = math.floor(vim.o.lines * 0.5),
+        },
+      },
 
       -- accept = {
       --   auto_brackets = {
