@@ -3,7 +3,7 @@ name = "nvim"
 version = "0.1.0"
 requires-python = ">=3.14"
 dependencies = [
-    "msgpack>=1.2.0",
+    "msgpack>=1.2.1",
     "neovim>=0.3.1",
     "pynvim>=0.6.0",
     "vim-vint>=0.3.21",
