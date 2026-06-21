@@ -11,16 +11,14 @@ tap 'weaveworks/tap'
 ################################################################################
 
 # cask 'karabiner-elements'
-#cask 'gitx'
-#cask 'microsoft-remote-desktop'
-#cask 'omnidisksweeper'
-#cask 'omnigraffle'
+# cask 'omnidisksweeper'
+# cask 'omnigraffle'
 cask '1password-cli'
 cask 'alacritty'
 cask 'alfred'
+cask 'antigravity-cli'
 cask 'appcleaner'
 cask 'balenaetcher'
-# cask 'bartender'
 cask 'bruno'
 cask 'discord'
 cask 'dropbox'
@@ -28,6 +26,8 @@ cask 'font-meslo-for-powerline'
 cask 'font-meslo-lg-nerd-font'
 cask 'font-roboto-mono-nerd-font'
 cask 'font-sauce-code-pro-nerd-font'
+cask 'gitx'
+cask 'google-drive'
 cask 'istat-menus'
 cask 'jetbrains-toolbox'
 cask 'mullvad-vpn'
@@ -42,6 +42,9 @@ cask 'visual-studio-code'
 # Simple brews
 ################################################################################
 
+#brew 'prettier'
+#brew 'screen'
+#brew 'talhelper'
 brew 'age'
 brew 'ansible'
 brew 'ansible-lint'
@@ -91,9 +94,7 @@ brew 'openssl'
 brew 'par'
 brew 'perl'
 brew 'pre-commit'
-#brew 'prettier'
 brew 'rg'
-#brew 'screen'
 brew 'shellcheck'
 brew 'shfmt'
 brew 'sops'
@@ -101,7 +102,6 @@ brew 'ssh-copy-id'
 brew 'stern'
 brew 'stow'
 brew 'stylua'
-#brew 'talhelper'
 brew 'talosctl'
 brew 'telnet'
 brew 'terraform-docs'
@@ -113,6 +113,7 @@ brew 'tree'
 brew 'tree-sitter'
 brew 'tree-sitter-cli'
 brew 'uv'
+brew 'viddy'
 brew 'watch'
 brew 'weaveworks/tap/gitops'
 brew 'wget'
@@ -125,8 +126,15 @@ brew 'zsh'
 # Mac App Store
 ################################################################################
 
+mas '1Password for Safari', id: 1569813296
 mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
 mas 'Marked 2 (2.5.31)', id: 890031187
+mas 'Numbers', id: 361304891
+mas 'Pages', id: 361309726
 mas 'Paprika Recipe Manager', id: 1303222628
+mas 'Parcel', id: 375589283
 mas 'Windows App', id: 1295203466
 mas 'WireGuard', id: 1451685025
+mas 'Xcode', id: 497799835
+mas 'uBlock Origin Lite', id: 6745342698
+mas 'wBlock', id: 6746388723
