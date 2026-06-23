@@ -33,6 +33,7 @@ return {
         "helm-ls",
         "json-lsp",
         "lua-language-server",
+        "tflint",
         "tofu-ls",
         "yaml-language-server",
       },

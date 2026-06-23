@@ -24,6 +24,7 @@ return {
       python = { "ruff" },
       sh = { "shellcheck" },
       sql = { "sqlfluff" },
+      terraform = { "tflint" },
       yaml = { "yamllint" },
       zsh = { "zsh" },
     },
