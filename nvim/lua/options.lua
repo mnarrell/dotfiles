@@ -16,7 +16,23 @@ vim.g.vimsyn_embed = "l" -- highlight inline Lua
 vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro rnu"
 vim.g.netrw_silent = 1
 
+-- Prefer Homebrew zsh, but fall back to any zsh on PATH so `:!`/`:terminal`
+-- keep working on Intel macs and Linux (where the brew prefix differs).
+for _, sh in ipairs({ "/opt/homebrew/bin/zsh", "/usr/local/bin/zsh" }) do
+  if vim.fn.executable(sh) == 1 then
+    vim.o.shell = sh
+    break
+  end
+end
+if vim.o.shell == "" or vim.fn.executable(vim.o.shell) == 0 then
+  if vim.fn.executable("zsh") == 1 then
+    vim.o.shell = "zsh"
+  end
+end
+
 vim.o.termguicolors = true
+
+vim.o.winborder = "rounded" -- default border for floating windows (hover, signature, diagnostics, etc.)
 
 vim.o.linebreak = true -- wrap long lines at characters in 'breakat'
 vim.o.number = true -- show line number
@@ -37,8 +53,7 @@ vim.o.joinspaces = false -- Use one space, not two, after eunctuation.
 -- vim.o.list = true -- show whitespace
 vim.o.modeline = false -- Don't allow text to manipulate the editor
 vim.o.mouse = "a" -- allow the mouse in all modes
-vim.o.scrolloff = 10 -- start scrolling 10 lines before edge of viewport
-vim.o.shell = "/opt/homebrew/bin/zsh" -- ZSH
+vim.o.scrolloff = 10 -- start scrolling 3 lines before edge of viewport
 vim.o.shiftround = true -- always indent by multiple of shiftwidth
 vim.o.shiftwidth = 2 -- spaces per tab (when shifting)
 vim.o.showbreak = "⤷ " -- line wrap indicator

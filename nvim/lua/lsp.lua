@@ -1,6 +1,33 @@
 local methods = vim.lsp.protocol.Methods
 local auGroup = vim.api.nvim_create_augroup("lsp", { clear = true })
 
+-- Global, diagnostics-related user commands (created once, not per attach).
+vim.api.nvim_create_user_command("TD", function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
+
+vim.api.nvim_create_user_command("TH", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle inlay hints" })
+
+--- Reconfigure the attached basedpyright client(s) with a new python path.
+---@param opts table command options; opts.args holds the path
+local function set_python_path(opts)
+  local path = opts.args
+  local clients = vim.lsp.get_clients({
+    bufnr = vim.api.nvim_get_current_buf(),
+    name = "basedpyright",
+  })
+  for _, client in ipairs(clients) do
+    if client.settings then
+      client.settings.python = vim.tbl_deep_extend("force", client.settings.python or {}, { pythonPath = path })
+    else
+      client.config.settings = vim.tbl_deep_extend("force", client.config.settings, { python = { pythonPath = path } })
+    end
+    client.notify("workspace/didChangeConfiguration", { settings = nil })
+  end
+end
+
 --- Sets up LSP keymaps and autocommands for the given buffer.
 ---@param client vim.lsp.Client
 ---@param bufnr integer
@@ -29,29 +56,28 @@ local on_attach = function(client, bufnr)
     end)
   end
 
-  vim.api.nvim_create_user_command("TD", function()
-    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-  end, {})
-
-  if client:supports_method(methods.textDocument_inlayHint) then
-    vim.api.nvim_create_user_command("TH", function()
-      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-    end, {})
+  if client.name == "basedpyright" then
+    vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightSetPythonPath", set_python_path, {
+      desc = "Reconfigure basedpyright with the provided python path",
+      nargs = 1,
+      complete = "file",
+    })
   end
 
-  if client:supports_method("textDocument/foldingRange") then
+  if client:supports_method(methods.textDocument_foldingRange) then
     local win = vim.api.nvim_get_current_win()
     vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
   end
 end
 
+-- Cap hover/signature window size. Borders come from the global `winborder`
+-- option (set in options.lua), so they are intentionally not specified here.
 local hover = vim.lsp.buf.hover
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.lsp.buf.hover = function()
   return hover({
     max_height = math.floor(vim.o.lines * 0.5),
     max_width = math.floor(vim.o.columns * 0.4),
-    border = "rounded",
   })
 end
 
@@ -61,7 +87,6 @@ vim.lsp.buf.signature_help = function()
   return signature_help({
     max_height = math.floor(vim.o.lines * 0.5),
     max_width = math.floor(vim.o.columns * 0.4),
-    border = "rounded",
   })
 end
 
@@ -72,7 +97,7 @@ vim.diagnostic.config({
   virtual_lines = false,
   severity_sort = true,
   update_in_insert = false,
-  float = { border = "rounded", source = "if_many" },
+  float = { source = "if_many" },
   underline = { severity = vim.diagnostic.severity.ERROR },
   -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
   jump = { float = true },
@@ -98,7 +123,6 @@ vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
     vim.diagnostic.open_float({
       focusable = false,
       close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-      border = "rounded",
       source = true, -- show source in diagnostic popup window
       prefix = " ",
     })

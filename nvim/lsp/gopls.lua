@@ -25,7 +25,6 @@ local settings = {
       unusedparams = true,
       unusedwrite = true,
       unreachable = true,
-      useany = true,
       unusedvariable = true,
     },
     hints = {

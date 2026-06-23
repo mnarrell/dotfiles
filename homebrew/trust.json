@@ -1,7 +1,0 @@
-{
-  "trustedtaps": [
-    "fluxcd/tap",
-    "siderolabs/tap",
-    "weaveworks/tap"
-  ]
-}

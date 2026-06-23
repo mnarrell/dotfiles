@@ -2,10 +2,9 @@ return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
   opts = {
-    -- notify_on_error = false,
-    -- notify_no_formatters = false,
     formatters_by_ft = {
-      go = { "goimports", "gci", "gofumpt" },
+      ["terraform-vars"] = { "tofu_fmt" },
+      go = { "gofumpt" },
       hcl = { "tofu_fmt" },
       json = { "jq" },
       lua = { "stylua" },
@@ -13,7 +12,6 @@ return {
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       sh = { "shellharden", "shfmt" },
       terraform = { "tofu_fmt" },
-      ["terraform-vars"] = { "tofu_fmt" },
       xml = { "xmllint" },
       yaml = { "prettier" },
     },
@@ -24,7 +22,7 @@ return {
         return
       end
 
-      return { timeout_ms = 3000, lsp_fallback = true }
+      return { timeout_ms = 3000, lsp_format = "fallback" }
     end,
 
     formatters = {

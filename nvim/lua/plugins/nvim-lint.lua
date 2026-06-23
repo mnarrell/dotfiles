@@ -1,13 +1,5 @@
 -- nvim-lint makes some linters report diagnostics.
 
-local yamllint_args = function()
-  local root_path = vim.fs.root(0, ".yamllint.yaml")
-  if root_path then
-    return { "-c", root_path }
-  end
-  return {}
-end
-
 return {
   "mfussenegger/nvim-lint",
   event = LazyFile,
@@ -30,7 +22,9 @@ return {
     },
     custom_args = {
       luacheck = { "--globals", "vim" },
-      yamllint = yamllint_args(),
+      -- yamllint auto-discovers `.yamllint{,.yaml,.yml}` from the CWD upward,
+      -- so no `-c` is needed here. Overriding `args` would also drop yamllint's
+      -- required `--format parsable -` and break diagnostic parsing.
       -- revive = { "-config", vim.env.XDG_CONFIG_HOME .. "/revive.toml" },
     },
   },
