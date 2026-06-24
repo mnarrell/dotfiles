@@ -165,7 +165,6 @@ tasks:
     cmds:
       - ln -sfn {{.ROOT_DIR}}/golang {{.XDG_CONFIG_HOME}}/golang
       - ln -sfn {{.ROOT_DIR}}/golang/golangci.yml {{.HOME}}/.golangci.yml
-      - ln -sfn {{.ROOT_DIR}}/golang/revive.toml {{.XDG_CONFIG_HOME}}/revive.toml
       - go install honnef.co/go/tools/cmd/staticcheck@latest
       - go install github.com/sbowman/xq@latest
       - go install mvdan.cc/gofumpt@latest
