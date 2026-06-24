@@ -42,6 +42,8 @@ tasks:
     desc: Configures the ASDF SDK manager
     cmds:
       - ln -sfn {{.ROOT_DIR}}/asdf {{.XDG_CONFIG_HOME}}/asdf
+      - cmd: asdf completion zsh > {{.ROOT_DIR}}/asdf/_asdf
+        ignore_error: true
 
   asdf:down:
     desc: Removes the ASDF configuration
@@ -80,6 +82,10 @@ tasks:
       - ln -sfn {{.ROOT_DIR}}/docker {{.XDG_CONFIG_HOME}}/docker
       - mkdir -p {{.XDG_CONFIG_HOME}}/docker/cli-plugins
       - ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx {{.XDG_CONFIG_HOME}}/docker/cli-plugins/docker-buildx
+      - cmd: docker completion zsh > {{.ROOT_DIR}}/docker/_docker
+        ignore_error: true
+      - cmd: colima completion zsh > {{.ROOT_DIR}}/docker/_colima
+        ignore_error: true
 
   docker:down:
     desc: Removes Docker configuration
@@ -166,8 +172,6 @@ tasks:
       - go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
       - go install golang.org/x/vuln/cmd/govulncheck@latest
 
-
-
   go:down:
     desc: Removes Golang configuration
     cmds:
@@ -181,6 +185,8 @@ tasks:
     cmds:
       - ln -sfn {{.ROOT_DIR}}/helm {{.XDG_CONFIG_HOME}}/helm
       - cmd: helm plugin install https://github.com/databus23/helm-diff
+        ignore_error: true
+      - cmd: helm completion zsh > {{.ROOT_DIR}}/helm/_helm
         ignore_error: true
 
   helm:down:
@@ -232,6 +238,11 @@ tasks:
     desc: Configures the Kubernetes environment
     cmds:
       - ln -sfn {{.ROOT_DIR}}/kubernetes {{.XDG_CONFIG_HOME}}/kubernetes
+      # Regenerate the zsh completions from the installed binaries (prevents drift).
+      - cmd: kubectl completion zsh > {{.ROOT_DIR}}/kubernetes/_kubectl
+        ignore_error: true
+      - cmd: k3d completion zsh > {{.ROOT_DIR}}/kubernetes/_k3d
+        ignore_error: true
 
   kube:down:
     desc: Removes Kubernetes configuration
