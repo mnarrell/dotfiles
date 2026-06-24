@@ -1,12 +1,12 @@
 #! /usr/bin/env zsh
 
-alias -g tf='tofu'
-alias -g tfi='tofu init'
-alias -g tfp='tofu plan'
-alias -g tfa='tofu apply'
-alias -g tfd='tofu destroy'
-alias -g tfo='tofu output'
-alias -g tfs='tofu state'
+alias tf='tofu'
+alias tfi='tofu init'
+alias tfp='tofu plan'
+alias tfa='tofu apply'
+alias tfd='tofu destroy'
+alias tfo='tofu output'
+alias tfs='tofu state'
 
 function tgc() {
   fd -H -I .terra -x rm -rf
