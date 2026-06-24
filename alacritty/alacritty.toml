@@ -99,7 +99,7 @@ key = "J"
 mods = "Command"
 
 [[keyboard.bindings]]
-chars = "\u0000j"
+chars = "\u0000k"
 key = "K"
 mods = "Command"
 

@@ -348,7 +348,7 @@ tasks:
 
   ################################################################################
   ripgrep:up:
-    desc: Configures Readline
+    desc: Configures Ripgrep
     cmds:
       - ln -sfn {{.ROOT_DIR}}/ripgrep {{.XDG_CONFIG_HOME}}/ripgrep
 

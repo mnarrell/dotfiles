@@ -16,14 +16,14 @@ base_repo=$(sed -rn 's#.+/(.+).git$#\1#p' <<< "$1")
 mkdir "$base_repo"
 pushd "$base_repo" > /dev/null
 
-printf "%sCloning bare repository to %s/%s...%s\n" "${YELLOW}", "${NOFORMAT}", "$base_repo" $location
+printf "%sCloning bare repository to %s/%s...%s\n" "${YELLOW}" "$base_repo" "$location" "${NOFORMAT}"
 git clone --bare "$1" "$location" > /dev/null
 pushd "$location" > /dev/null
 
-printf "%sAdjusting origin fetch locations...%s\n" "${YELLOW}", "${NOFORMAT}"
+printf "%sAdjusting origin fetch locations...%s\n" "${YELLOW}" "${NOFORMAT}"
 git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 popd > /dev/null
 
-printf "%sSetting .git file contents...%s\n", "${YELLOW}", "${NOFORMAT}"
+printf "%sSetting .git file contents...%s\n" "${YELLOW}" "${NOFORMAT}"
 echo "gitdir: ./$location" > .git
-printf "%sSuccess.%s\n", "${GREEN}", "${NOFORMAT}"
+printf "%sSuccess.%s\n" "${GREEN}" "${NOFORMAT}"

@@ -25,13 +25,13 @@ alias sudo="sudo -E -s "
 alias watch="watch --color "
 alias dump_completions="rm -v ${XDG_CACHE_HOME}/zsh/zcompdump*"
 
-if [ $+commands[eza] ]; then
+if (( $+commands[eza] )); then
   alias ls="eza"
   alias ll="eza -lg --git --icons --no-user --time-style long-iso"
   alias la="eza -laag --git --icons --no-user --time-style long-iso"
 else
   if [ "$(uname -s)" = "Darwin" ]; then
-    if [ $+commands[gls] ]; then
+    if (( $+commands[gls] )); then
       alias ls="gls --color=tty --quoting-style=literal -h"
     else
       alias ls="ls -FG"
