@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#! /usr/bin/env zsh
 
 # fpath: add a topic folder only when it actually ships autoload/completion
 # functions (files beginning with `_`, eg. `_kubectl`), so compinit scans far

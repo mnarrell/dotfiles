@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # setopt no_global_rcs
 
 # setopt correctall           # argument auto-correction

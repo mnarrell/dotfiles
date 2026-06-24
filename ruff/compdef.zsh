@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 _uv_run_mod() {
   if [[ "$words[2]" == "run" && "$words[CURRENT]" != -* ]]; then
     _arguments '*:filename:_files'

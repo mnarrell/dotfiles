@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   function zle-line-init() {
     echoti smkx

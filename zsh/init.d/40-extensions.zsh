@@ -1,3 +1,5 @@
+#! /usr/bin/env zsh
+
 # Base 16 colors because baller
 [ "$PS1" != "" ] && [ -s "$BASE16_SHELL"/profile_helper.sh ] && source "$BASE16_SHELL/profile_helper.sh"
 
