@@ -417,7 +417,9 @@ tasks:
     desc: Removes TMUX configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/tmux
-      - rm -rf {{.HOME}}/.terminfo
+      # Remove only the entry tmux:up compiled ('t' -> 0x74 bucket), not the whole
+      # ~/.terminfo dir (which holds other entries, eg. alacritty).
+      - rm -f {{.HOME}}/.terminfo/74/tmux-256color
 
   ################################################################################
   # YAML Lint

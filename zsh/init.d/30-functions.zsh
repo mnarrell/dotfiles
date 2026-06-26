@@ -17,13 +17,14 @@ function fg-bg() {
 zle -N fg-bg
 bindkey '^Z' fg-bg
 
-# Execute `ls -lh` after cd-ing to a directory
+# List directory contents after cd-ing to a directory
 function auto-ls-after-cd() {
   emulate -L zsh
-  # Only in response to a user-initiated `cd`, not indirectly (eg. via another
-  # function).
   if [ "$ZSH_EVAL_CONTEXT" = "toplevel:shfunc" ]; then
-    ls -lh
+    # `emulate -L zsh` disables alias expansion, and this file is loaded before
+    # `aliases.zsh` anyway, so reuse the `ll` alias's definition at runtime via
+    # the `$aliases` parameter rather than duplicating its flags here.
+    eval "${aliases[ll]:-ls -lh}"
   fi
 }
 add-zsh-hook chpwd auto-ls-after-cd

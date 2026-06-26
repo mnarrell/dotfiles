@@ -20,48 +20,4 @@ return {
       },
     },
   },
-
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
-    -- enabled = false,
-    -- version = "v3.3.0", -- Use a specific version to prevent breaking changes
-    build = "make tiktoken",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    opts = {
-      model = "claude-sonnet-4.5",
-      -- model = "gpt-5",
-      -- model = "gpt-5-mini",
-    },
-    config = true,
-    event = "VeryLazy",
-    keys = {
-      -- Show prompts actions with telescope
-      {
-        "<leader>ap",
-        function()
-          require("CopilotChat").select_prompt({
-            context = {
-              "buffers",
-            },
-          })
-        end,
-        desc = "CopilotChat - Prompt actions",
-      },
-      {
-        "<leader>ap",
-        function()
-          require("CopilotChat").select_prompt()
-        end,
-        mode = "x",
-        desc = "CopilotChat - Prompt actions",
-      },
-      -- Code related commands
-      { "<leader>al", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
-      { "<leader>at", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
-    },
-  },
 }

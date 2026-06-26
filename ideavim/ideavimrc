@@ -22,7 +22,7 @@ nnoremap <leader>x :action SaveAll<CR> :action CloseEditor<CR>
 nnoremap <leader>f :action SearchEverywhere<CR>
 nnoremap J :action EditorJoinLines<CR>
 nnoremap <leader>w :action SaveAll<CR>
-inoremap <C-y> :action EditorChooseLookupItemReplace<CR>
+inoremap <C-y> <Action>(EditorChooseLookupItemReplace)
 nnoremap <leader>lf :action ReformatCode<CR>
 nnoremap <leader>v :action SplitVertically<CR>
 nnoremap <leader>s :action SplitHorizontally<CR>
