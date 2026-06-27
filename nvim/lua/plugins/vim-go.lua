@@ -20,6 +20,6 @@ return {
     -- Formatting
     -- g.go_fmt_command = "gopls"
     g.go_fmt_fail_silently = 1
-    g.go_imports_autosave = 1
+    g.go_imports_autosave = 0
   end,
 }

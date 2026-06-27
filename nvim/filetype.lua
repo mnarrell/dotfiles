@@ -9,6 +9,7 @@ vim.filetype.add({
     ["main.yaml"] = "yaml.ansible",
   },
   pattern = {
+    ["*.tf"] = "terraform",
     [".*/%.kube/config"] = "yaml",
     [".*/git/config.*"] = "gitconfig",
     [".*/playbooks/.*%.yaml"] = "yaml.ansible",

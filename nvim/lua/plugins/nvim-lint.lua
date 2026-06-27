@@ -12,7 +12,7 @@ return {
   "mfussenegger/nvim-lint",
   event = LazyFile,
   opts = {
-    events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+    events = { "BufWritePost" },
     linters_by_ft = {
       Dockerfile = { "hadolint" },
       ansible = { "ansible_lint" },

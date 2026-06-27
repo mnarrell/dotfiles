@@ -80,7 +80,7 @@
   insteadOf = https://github.com/
 
 [include]
-  path = ~/.private_dotfiles/git/config.work
+  path = ~/.private_dotfiles/git/config.local
 
 [tag]
   sort = version:refname
