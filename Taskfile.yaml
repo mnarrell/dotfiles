@@ -22,8 +22,9 @@ tasks:
   ################################################################################
   ## Alacritty
   alacritty:up:
-    desc: Configures the Alacritty terminal
+    desc: Installs/upgrades and configures the Alacritty terminal
     cmds:
+      - "{{.ROOT_DIR}}/alacritty/install"
       - ln -sfn {{.ROOT_DIR}}/alacritty {{.XDG_CONFIG_HOME}}/alacritty
       # - git clone https://github.com/alacritty/alacritty.git {{.HOME}}/tmp/alacritty
       # - tic -xe alacritty,alacritty-direct {{.HOME}}/tmp/alacritty/extra/alacritty.info
@@ -198,7 +199,15 @@ tasks:
   homebrew:up:
     desc: Configures the Homebrew environment
     cmds:
-      - ln -sfn {{.ROOT_DIR}}/homebrew {{.XDG_CONFIG_HOME}}/homebrew
+      - |
+        # Transition from old whole-directory symlink to per-file symlinks
+        if [ -L "{{.XDG_CONFIG_HOME}}/homebrew" ]; then
+          rm "{{.XDG_CONFIG_HOME}}/homebrew"
+        fi
+      - mkdir -p {{.XDG_CONFIG_HOME}}/homebrew
+      - ln -sfn {{.ROOT_DIR}}/homebrew/aliases.zsh {{.XDG_CONFIG_HOME}}/homebrew/aliases.zsh
+      - ln -sfn {{.ROOT_DIR}}/homebrew/reapply-tmux-3.7.sh {{.XDG_CONFIG_HOME}}/homebrew/reapply-tmux-3.7.sh
+      - cp -n {{.ROOT_DIR}}/homebrew/trust.json {{.XDG_CONFIG_HOME}}/homebrew/trust.json
 
   homebrew:down:
     desc: Removes Homebrew configuration

@@ -11,3 +11,5 @@ go.work*
 .mise.toml
 .venv
 mn.conf
+
+**/.claude/settings.local.json

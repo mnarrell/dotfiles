@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# Install or upgrade Alacritty from its signed GitHub release .dmg.
+
+set -Eeuo pipefail
+trap cleanup SIGINT SIGTERM ERR EXIT
+
+repo='alacritty/alacritty'
+app='/Applications/Alacritty.app'
+tmp=''
+
+NOFORMAT=$'\033[0m'
+GREEN=$'\033[0;32m'
+YELLOW=$'\033[1;33m'
+
+cleanup() {
+  trap - SIGINT SIGTERM ERR EXIT
+  if [[ -n "$tmp" ]]; then
+    [[ -d "$tmp/mnt" ]] && hdiutil detach "$tmp/mnt" -quiet 2>/dev/null || true
+    rm -rf "$tmp"
+  fi
+}
+
+tag=$(gh release view --repo "$repo" --json tagName -q .tagName)
+latest=${tag#v}
+current=$("$app/Contents/MacOS/alacritty" --version 2>/dev/null | awk '{print $2}' || true)
+
+if [[ "$current" == "$latest" ]]; then
+  printf "%sAlacritty %s is up to date.%s\n" "${GREEN}" "$current" "${NOFORMAT}"
+  exit 0
+fi
+
+printf "%sInstalling Alacritty %s (current: %s)...%s\n" \
+  "${YELLOW}" "$latest" "${current:-none}" "${NOFORMAT}"
+
+tmp=$(mktemp -d)
+gh release download "$tag" --repo "$repo" --pattern '*.dmg' --dir "$tmp"
+
+hdiutil attach "$tmp"/*.dmg -nobrowse -quiet -mountpoint "$tmp/mnt"
+rm -rf "$app"
+cp -R "$tmp/mnt/Alacritty.app" /Applications/
+hdiutil detach "$tmp/mnt" -quiet
+xattr -dr com.apple.quarantine "$app"
+
+printf "%sInstalled Alacritty %s.%s\n" "${GREEN}" "$latest" "${NOFORMAT}"
