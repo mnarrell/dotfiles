@@ -48,10 +48,8 @@ local settings = {
 
 ---@type vim.lsp.Config
 return {
-  cmd = { "gopls", "-remote=auto" },
+  cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = function(fname)
-    return vim.fs.root(fname, { "go.work", "go.mod", ".git" })
-  end,
+  root_markers = { "go.work", "go.mod", ".git" },
   settings = settings,
 }
