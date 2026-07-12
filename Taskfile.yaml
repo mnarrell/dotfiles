@@ -368,6 +368,19 @@ tasks:
       - rm -rf {{.XDG_CONFIG_HOME}}/opentofu
 
   ################################################################################
+  # OpenCode
+  opencode:up:
+    desc: Configures OpenCode
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/opencode {{.XDG_CONFIG_HOME}}/opencode
+      - npm install --prefix {{.ROOT_DIR}}/opencode
+
+  opencode:down:
+    desc: Removes OpenCode configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/opencode
+
+  ################################################################################
   # PSQL
   psql:up:
     desc: Configures PSQL
@@ -503,6 +516,7 @@ tasks:
       - task: npm:up
       - task: nvim:up
       - task: opentofu:up
+      - task: opencode:up
       - task: psql:up
       - task: ripgrep:up
       - task: ruff:up
