@@ -13,7 +13,7 @@ return {
       lua = { "luacheck" },
       make = { "checkmake" },
       markdown = { "markdownlint" },
-      python = { "ruff" },
+      -- python = { "ruff" },
       sh = { "shellcheck" },
       sql = { "sqlfluff" },
       terraform = { "tflint" },

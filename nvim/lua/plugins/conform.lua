@@ -4,6 +4,7 @@ return {
   opts = {
     formatters_by_ft = {
       ["terraform-vars"] = { "tofu_fmt" },
+      dockerfile = { "dockerfmt" },
       go = { "goimports", "gofumpt" },
       hcl = { "tofu_fmt" },
       json = { "jq" },
