@@ -64,7 +64,11 @@ local on_attach = function(client, bufnr)
     })
   end
 
-  if client:supports_method(methods.textDocument_foldingRange) then
+  -- helm-ls (via its embedded yaml-language-server) may advertise foldingRange,
+  -- but its ranges only cover the YAML surface and miss template blocks. Let the
+  -- tree-sitter `helm` foldexpr (set in after/ftplugin/helm.lua) own folding for
+  -- helm buffers instead.
+  if client:supports_method(methods.textDocument_foldingRange) and vim.bo[bufnr].filetype ~= "helm" then
     local win = vim.api.nvim_get_current_win()
     vim.wo[win].foldexpr = "v:lua.vim.lsp.foldexpr()"
   end
