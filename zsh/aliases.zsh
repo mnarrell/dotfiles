@@ -23,6 +23,7 @@ alias rsync-synchronize="rsync -avzu --delete --progress -h"
 alias rsync-update="rsync -avzu --progress -h"
 alias sudo="sudo -E -s "
 alias watch="watch --color "
+alias viddy='viddy '
 alias dump_completions="rm -v ${XDG_CACHE_HOME}/zsh/zcompdump*"
 
 if (( $+commands[eza] )); then
