@@ -14,6 +14,12 @@ end
 cmd("Wq", "wq")
 cmd("Wqa", "wqa")
 
+cmd("CopyPath", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  vim.notify(path, vim.log.levels.INFO, { title = "Path copied" })
+end)
+
 cmd("GX", [[:silent !gitx]])
 cmd("TIG", [[:tabnew | terminal tig -a]])
 
