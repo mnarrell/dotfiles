@@ -16,6 +16,7 @@ return {
       "hcl",
       "helm",
       "json",
+      "jsonc",
       "lua",
       "python",
       "regex",

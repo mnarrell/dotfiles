@@ -8,6 +8,7 @@ return {
       go = { "goimports", "gofumpt" },
       hcl = { "tofu_fmt" },
       json = { "jq" },
+      jsonc = { "prettier" },
       lua = { "stylua" },
       markdown = { "prettier" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
