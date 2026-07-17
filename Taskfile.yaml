@@ -23,12 +23,15 @@ tasks:
   ## Alacritty
   alacritty:up:
     desc: Installs/upgrades and configures the Alacritty terminal
+    vars:
+      ALACRITTY_APP: /Applications/Alacritty.app
     cmds:
       - "{{.ROOT_DIR}}/alacritty/install"
       - ln -sfn {{.ROOT_DIR}}/alacritty {{.XDG_CONFIG_HOME}}/alacritty
-      # - git clone https://github.com/alacritty/alacritty.git {{.HOME}}/tmp/alacritty
-      # - tic -xe alacritty,alacritty-direct {{.HOME}}/tmp/alacritty/extra/alacritty.info
-      # - rm -rf {{.HOME}}/tmp/alacritty
+      # Install terminfo from the app bundle so $TERM=alacritty works inside tmux.
+      - mkdir -p {{.HOME}}/.terminfo/61
+      - cp {{.ALACRITTY_APP}}/Contents/Resources/61/alacritty {{.HOME}}/.terminfo/61/alacritty
+      - cp {{.ALACRITTY_APP}}/Contents/Resources/61/alacritty-direct {{.HOME}}/.terminfo/61/alacritty-direct
       - defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
       - defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
 
@@ -36,6 +39,8 @@ tasks:
     desc: Removes Alacritty configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/alacritty
+      - rm -f {{.HOME}}/.terminfo/61/alacritty
+      - rm -f {{.HOME}}/.terminfo/61/alacritty-direct
 
   ################################################################################
   ## ASDF
@@ -148,6 +153,18 @@ tasks:
       - rm -rf {{.XDG_CONFIG_HOME}}/git
 
   ################################################################################
+  ## Ghostty
+  ghostty:up:
+    desc: Installs/upgrades and configures the Ghostty terminal
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/ghostty {{.XDG_CONFIG_HOME}}/ghostty
+
+  ghostty:down:
+    desc: Removes Ghostty configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/ghostty
+
+  ################################################################################
   # GNU binaries
   gnu:up:
     desc: Configures GNU binaries
@@ -207,7 +224,6 @@ tasks:
         fi
       - mkdir -p {{.XDG_CONFIG_HOME}}/homebrew
       - ln -sfn {{.ROOT_DIR}}/homebrew/aliases.zsh {{.XDG_CONFIG_HOME}}/homebrew/aliases.zsh
-      - ln -sfn {{.ROOT_DIR}}/homebrew/reapply-tmux-3.7.sh {{.XDG_CONFIG_HOME}}/homebrew/reapply-tmux-3.7.sh
       - cp -n {{.ROOT_DIR}}/homebrew/trust.json {{.XDG_CONFIG_HOME}}/homebrew/trust.json
 
   homebrew:down:
@@ -338,7 +354,6 @@ tasks:
       - gem uninstall neovim || true
       - rm -rf {{.HOME}}/.vimrc_background
       - rm -rf {{.XDG_DATA_HOME}}/nvim/lazy
-      - rm -rf {{.XDG_CONFIG_HOME}}/nvim
 
   ################################################################################
   # OpenTofu
@@ -468,6 +483,7 @@ tasks:
       - task: ensure_xdg
       - task: alacritty:up
       - task: asdf:up
+      - task: ghostty:up
       - task: bash:up
       - task: bin:up
       - task: docker:up

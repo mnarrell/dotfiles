@@ -1,0 +1,94 @@
+# ── Colors (Tomorrow Night) ──────────────────────────────────────────────────
+background = 1d1f21
+foreground = c5c8c6
+
+cursor-color = c5c8c6
+cursor-text  = 1d1f21
+
+# Normal (0-7)
+palette = 0=#1d1f21
+palette = 1=#cc6666
+palette = 2=#b5bd68
+palette = 3=#f0c674
+palette = 4=#81a2be
+palette = 5=#b294bb
+palette = 6=#8abeb7
+palette = 7=#c5c8c6
+
+# Bright (8-15)
+palette = 8=#969896
+palette = 9=#cc6666
+palette = 10=#b5bd68
+palette = 11=#f0c674
+palette = 12=#81a2be
+palette = 13=#b294bb
+palette = 14=#8abeb7
+palette = 15=#ffffff
+
+# Indexed extras (16-21)
+palette = 16=#de935f
+palette = 17=#a3685a
+palette = 18=#282a2e
+palette = 19=#373b41
+palette = 20=#b4b7b4
+palette = 21=#e0e0e0
+
+# Bold text does not use the bright color variants
+bold-is-bright = false
+
+# ── Font ─────────────────────────────────────────────────────────────────────
+font-family  = MesloLGM Nerd Font Mono
+font-size    = 12
+
+# ── Shell ────────────────────────────────────────────────────────────────────
+command = /opt/homebrew/bin/zsh --login
+
+# ── Window ───────────────────────────────────────────────────────────────────
+# hidden = no titlebar traffic-light buttons; equivalent to alacritty
+# decorations = "buttonless"
+macos-titlebar-style = hidden
+window-padding-x      = 2
+window-padding-y      = 2
+window-padding-balance = true
+
+# ── Mouse ────────────────────────────────────────────────────────────────────
+mouse-hide-while-typing = true
+
+# ── Scrollback ───────────────────────────────────────────────────────────────
+scrollback-limit = 100000
+
+# ── macOS Option key ─────────────────────────────────────────────────────────
+# Left Option acts as Alt/Meta; right retains macOS compose behavior.
+# Equivalent to alacritty option_as_alt = "OnlyLeft"
+macos-option-as-alt = left
+
+# ── Key bindings ─────────────────────────────────────────────────────────────
+# All bindings send tmux prefix (Ctrl+Space = \x00) + key, mirroring the
+# alacritty keyboard.bindings passthrough pattern.
+#
+# Note: Cmd+H is macOS "Hide app" at the system level and may not be
+# interceptable depending on your macOS version.
+keybind = super+t=text:\x00c
+keybind = super+s=text:\x00-
+keybind = super+shift+s=text:\x00\\
+keybind = super+h=text:\x00h
+keybind = super+j=text:\x00j
+keybind = super+k=text:\x00k
+keybind = super+l=text:\x00l
+keybind = super+x=text:\x00x
+keybind = super+z=text:\x00z
+keybind = super+comma=text:\x00,
+keybind = super+one=text:\x001
+keybind = super+two=text:\x002
+keybind = super+three=text:\x003
+keybind = super+four=text:\x004
+keybind = super+five=text:\x005
+keybind = super+six=text:\x006
+keybind = super+seven=text:\x007
+keybind = super+eight=text:\x008
+keybind = super+nine=text:\x009
+keybind = super+down=text:\x00\x1b[B
+keybind = super+up=text:\x00\x1b[A
+keybind = super+left=text:\x00\x1b[D
+keybind = super+right=text:\x00\x1b[C
+keybind = super+g=text:\x00g
