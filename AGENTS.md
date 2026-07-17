@@ -11,10 +11,9 @@ task <tool>:up       # Link one tool (e.g., task nvim:up)
 task --list          # Show all tasks
 ```
 
-## Architecture: immediate symlinks + phase-based ZSH loader
+## Architecture
 
-**Deployment pattern:** `task <tool>:up` runs `ln -sfn $DOTFILES/<dir> $XDG_CONFIG_HOME/<dir>`. Edits to repo files
-take effect on next shell session.
+**Deployment:** `task <tool>:up` runs `ln -sfn $DOTFILES/<dir> $XDG_CONFIG_HOME/<dir>`. Edits take effect on next shell session.
 
 **ZSH init (Taskfile.yaml defines order; phases source from `$XDG_CONFIG_HOME/*/<phase>.zsh`):**
 
@@ -26,7 +25,7 @@ take effect on next shell session.
 - `init.zsh` — hooks, prompt, keybinds, setopts
 - `aliases.zsh` — aliases and functions
 
-## Critical gotchas
+## ZSH phase rules
 
 1. **`zsh/` sources first in every phase** — it resets `$path` from scratch. If a tool's `path.zsh` runs before `zsh/path.zsh`,
    its PATH contribution gets wiped out. `.zshrc` enforces this via explicit prefix test, not glob negation.
@@ -34,7 +33,7 @@ take effect on next shell session.
 2. **Never re-declare `typeset -gU path PATH fpath MANPATH` in phase files** — at global scope in `.zshrc` only.
    A bare `typeset` in a phase function creates a local copy, silently discarding all tool contributions.
 
-3. **Phase-sensitive exports:** `env.zsh` runs first. If a tool needs an export to be available to later phases (e.g.,
+3. **Phase-sensitive exports:** `env.zsh` runs first. If a tool needs an export available to later phases (e.g.,
    `golang/env.zsh` sets `$GOBIN`, then `golang/path.zsh` uses it), put the export in `env.zsh`, not `path.zsh`.
 
 4. **`zsh/init.d/` ordering:** Use numeric prefixes (`10-setopts.zsh`, `20-history.zsh`, etc.) for explicit init order.
@@ -44,14 +43,24 @@ take effect on next shell session.
    (checked via mtime). Compiled to `.zwc` in background. The dump file name keys on `$ZSH_VERSION`, not date, so
    rebuilds are stable across days and don't require date commands.
 
-## Neovim (`nvim/`)
+## Adding a new tool
+
+1. Create a directory in the repo root (e.g., `mytool/`).
+2. Add phase files as needed: `env.zsh`, `path.zsh`, `completions.zsh`, etc.
+3. Follow ZSH phase rules above (exports in `env.zsh`, PATH in `path.zsh`).
+4. Add a `task mytool:up` target to `Taskfile.yaml` if it needs install steps beyond symlinking.
+5. Test with `task mytool:up` and verify in a new shell session.
+
+## Tool reference
+
+### Neovim (`nvim/`)
 
 - `task nvim:up` runs `uv sync --project nvim` (Python >=3.14) + npm/gem neovim providers
 - Plugins managed by lazy.nvim; `lazy-lock.json` is committed
 - Lua formatted with stylua (120 col, 2-space, sorted requires); config: `nvim/stylua.toml`
 - LSPs one-per-file in `nvim/lsp/*.lua`; core config in `nvim/lua/`
 
-## Go
+### Go
 
-Tools installed by `task go:up` (gofumpt, golangci-lint v2, staticcheck, govulncheck).
-Config: `golang/golangci.yml`, `golang/revive.toml`; symlinked to `~/.golangci.yml`.
+- Tools installed by `task go:up` (gofumpt, golangci-lint v2, staticcheck, govulncheck)
+- Config: `golang/golangci.yml`, `golang/revive.toml`; symlinked to `~/.golangci.yml`

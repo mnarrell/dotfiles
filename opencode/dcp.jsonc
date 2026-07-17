@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Opencode-DCP/opencode-dynamic-context-pruning/master/dcp.schema.json",
+  "enabled": true,
+  "autoUpdate": true,
+  "debug": false,
+  "pruneNotification": "detailed",
+  "pruneNotificationType": "chat",
+
+  // Slash command configuration for manual DCP control (e.g. /dcp sweep, /dcp status).
+  "commands": {
+    "enabled": true,
+    // Tools listed here will never have their outputs pruned by /dcp commands.
+    // Useful for tools whose results you always want to keep accessible.
+    "protectedTools": [],
+  },
+
+  // When manualMode is enabled, DCP does not compress autonomously — you must trigger it
+  // explicitly with /dcp commands. Useful when you want full control over what gets pruned.
+  // Leave disabled for normal use; autonomous compression is the whole point.
+  "manualMode": {
+    "enabled": false,
+    // When manual mode is on, this keeps deduplication and error pruning running
+    // automatically even though compression is manual. Generally leave this true —
+    // those strategies are low-risk and save tokens without judgment calls.
+    "automaticStrategies": true,
+  },
+
+  // Protect a tool's output from compression for N turns after it was invoked.
+  // Useful when you need a tool result to stay verbatim in context for a few steps
+  // before it becomes safe to summarize. Disabled here — DCP's compression judgment
+  // is usually sufficient without explicit turn protection.
+  "turnProtection": {
+    "enabled": false,
+    "turns": 4,
+  },
+
+  // File paths (matched against tool parameters.filePath) that should never be pruned.
+  // Use glob patterns. For example: ["**/AGENTS.md", "**/opencode.jsonc"]
+  // Empty means no file-based protection beyond what DCP decides on its own.
+  "protectedFilePatterns": [],
+
+  "compress": {
+    // How compression works structurally:
+    // "range" — collapses a span of messages into a single block summary. This is the
+    //   standard mode and produces high-fidelity summaries that retain key findings.
+    // "message" — compresses individual messages. Experimental; not recommended.
+    "mode": "range",
+    "permission": "allow",
+    "showCompression": false,
+
+    // Allow summary tokens to extend the effective context limit beyond maxContextLimit.
+    // Summaries are dense and space-efficient; this lets them count toward extra capacity
+    // rather than crowding out live context. Recommended: true.
+    "summaryBuffer": true,
+
+    // Compression becomes aggressive above this context fill level.
+    // DCP will fire strong nudges on every Nth fetch (see nudgeFrequency) to push
+    // the model toward compressing. 90% leaves a comfortable buffer before hard limits.
+    // Accepts a percentage of the model's context window, or a raw token count.
+    "maxContextLimit": "90%",
+
+    // Below this fill level, periodic compression reminders are suppressed.
+    // Above it, reminders are injected to keep compression on the model's radar.
+    // 70% is a reasonable middle ground — proactive but not noisy.
+    // Accepts a percentage of the model's context window, or a raw token count.
+    "minContextLimit": "70%",
+
+    // How often the above-maxContextLimit nudge fires, in fetches.
+    // 1 = every fetch, 5 = every 5th fetch. Higher values are less aggressive.
+    // 5 is a reasonable balance between persistence and noise.
+    "nudgeFrequency": 5,
+
+    // After this many tool/model iterations since the last user message,
+    // start injecting a reminder to compress. Prevents runaway long-running
+    // agentic tasks from blowing out context without any compression signal.
+    "iterationNudgeThreshold": 15,
+
+    // How strongly the post-user-message compression nudge pushes the model.
+    // "strong" — model is very likely to compress immediately after a user message
+    // "soft"   — model considers compressing but isn't strongly directed to
+    // "soft" is appropriate here — let the model compress when context warrants it,
+    // not reflexively after every message.
+    "nudgeForce": "soft",
+
+    // Tools listed here will always have their completed outputs appended verbatim
+    // to the compression summary, even if they fall within the compressed range.
+    // Use this for tools whose full output you never want summarized away.
+    "protectedTools": [],
+
+    // When true, text wrapped in <protect>...</protect> tags is excluded from compression.
+    // Useful for preserving specific output snippets. Off by default.
+    "protectTags": false,
+
+    // When true, your own messages are never compressed away.
+    // Warning: if you paste large blocks of text into a prompt, they will persist
+    // in context indefinitely and consume tokens permanently. Leave false.
+    "protectUserMessages": false,
+  },
+
+  // Automatic pruning strategies that run continuously, independent of compression.
+  "strategies": {
+    // Remove duplicate tool calls where the same tool was called with identical
+    // arguments more than once. Keeps only the most recent result.
+    // This is almost always safe and saves meaningful tokens on repetitive tasks.
+    "deduplication": {
+      "enabled": true,
+      // Tools listed here are exempt from deduplication even if called identically.
+      "protectedTools": [],
+    },
+
+    // After a tool call errors, its input payload is often large and no longer useful.
+    // This prunes the input of errored tool calls after N turns, keeping the error
+    // message but dropping the bloat. Safe to leave on.
+    "purgeErrors": {
+      "enabled": true,
+      // How many turns to wait before pruning an errored tool's input.
+      // 4 gives the model a few chances to react to the error before the input disappears.
+      "turns": 4,
+      // Tools listed here will never have their error inputs pruned.
+      "protectedTools": [],
+    },
+  },
+}
