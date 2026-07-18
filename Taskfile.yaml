@@ -374,11 +374,23 @@ tasks:
     cmds:
       - ln -sfn {{.ROOT_DIR}}/opencode {{.XDG_CONFIG_HOME}}/opencode
       - npm install --prefix {{.ROOT_DIR}}/opencode
+      - npm --prefix {{.ROOT_DIR}}/opencode approve-scripts msgpackr-extract@3.0.4
+      # Make opencode skills and AGENTS.md available to Claude Code (~/.claude/).
+      - mkdir -p {{.HOME}}/.claude/skills
+      - |
+        for skill in {{.ROOT_DIR}}/opencode/skills/*/; do
+          ln -sfn "$skill" {{.HOME}}/.claude/skills/$(basename "$skill")
+        done
+      - ln -sfn {{.ROOT_DIR}}/opencode/AGENTS.md {{.HOME}}/.claude/AGENTS.md
+      # Claude Code reads CLAUDE.md, not AGENTS.md — import our global instructions.
+      - echo '@AGENTS.md' > {{.HOME}}/.claude/CLAUDE.md
 
   opencode:down:
     desc: Removes OpenCode configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/opencode
+      - rm -rf {{.HOME}}/.claude/skills
+      - rm -f {{.HOME}}/.claude/AGENTS.md {{.HOME}}/.claude/CLAUDE.md
 
   ################################################################################
   # PSQL

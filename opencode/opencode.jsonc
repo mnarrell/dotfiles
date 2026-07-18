@@ -2,8 +2,25 @@
   "$schema": "https://opencode.ai/config.json",
   "lsp": true,
   "formatter": true,
+  "small_model": "ollama/gemma3:12b",
 
   // DCP (Dynamic Context Pruning): surgical mid-session context management.
   // Configured via dcp.jsonc. Prefer this over OpenCode's built-in compaction.
   "plugin": ["@tarquinen/opencode-dcp"],
+
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (mini)",
+      "options": {
+        "baseURL": "http://mini:11434/v1"
+      },
+      "models": {
+        "qwen2.5:14b": { "name": "Qwen 2.5 14B" },
+        "qwen2.5-coder:14b": { "name": "Qwen 2.5 Coder 14B" },
+        "qwen3:14b": { "name": "Qwen 3 14B" },
+        "gemma3:12b": { "name": "Gemma 3 12B" }
+      }
+    }
+  }
 }
