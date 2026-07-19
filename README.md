@@ -1,6 +1,6 @@
 # dotfiles
 
- [![Build Status](https://travis-ci.org/mnarrell/dotfiles.svg?branch=master)](https://travis-ci.org/mnarrell/dotfiles)
+[![Build Status](https://travis-ci.org/mnarrell/dotfiles.svg?branch=master)](https://travis-ci.org/mnarrell/dotfiles)
 
 ## Inspiration
 
@@ -16,3 +16,5 @@ Inspired by and/or stolen from people a lot smarter than myself:
 - [tpope/tpope](https://github.com/tpope/tpope)
 
 ... and many others.
+
+delete me
