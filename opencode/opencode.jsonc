@@ -27,6 +27,7 @@
     "external_directory": {
       "~/.worktrees/**": "allow",
       "~/.ssh/config": "allow",
+      "/tmp/**": "allow",
     },
     "bash": {
       "git commit *": "ask",
