@@ -22,4 +22,21 @@
       },
     },
   },
+
+  "permission": {
+    "external_directory": {
+      "~/.worktrees/**": "allow",
+      "~/.ssh/config": "allow",
+      "/tmp/**": "allow",
+    },
+    "bash": {
+      "git commit *": "ask",
+      "git push *": "ask",
+      "git merge * main": "ask",
+      "git merge * --into main": "ask",
+      "gh pr merge * --base main": "ask",
+      "git *": "allow",
+      "*": "ask",
+    },
+  },
 }

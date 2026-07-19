@@ -104,6 +104,7 @@ You MUST NOT take destructive or irreversible actions without explicit, direct a
 - `git checkout` — overwriting unsaved changes
 - `git reset --hard` — resetting the working tree
 - `git force push`
+- `git merge` into `main` or `gh pr merge` targeting `main` — requires explicit user approval
 
 ### External Systems
 
@@ -134,6 +135,10 @@ You MUST NOT take destructive or irreversible actions without explicit, direct a
   acceptable.)
 - When a command fails, run it with `--help` to learn the correct flags and options, as they may have changed. If that
   doesn't help, use `--version` along with web search to find the right approach.
+
+## Git conventions
+
+- `git push` must always specify the remote and refspec explicitly (e.g., `git push origin <branch>`). Bare `git push` is disallowed (`push.default = nothing`).
 
 ## Prefer Existing Tools
 
