@@ -27,6 +27,16 @@ snip git branch
 | Show merged into main | `snip git branch --merged main` |
 | Show unmerged | `snip git branch --no-merged` |
 
+## Pushing
+
+`push.default` is set to `nothing` — always specify the remote and branch explicitly.
+
+| Task | Command |
+|---|---|
+| Push current branch | `snip git push origin <branch>` |
+| Push and set upstream | `snip git push -u origin <branch>` |
+| Push to main | `snip git push origin HEAD:main` |
+
 ## Worktrees
 
 | Task | Command |
