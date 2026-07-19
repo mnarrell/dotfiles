@@ -104,6 +104,7 @@ You MUST NOT take destructive or irreversible actions without explicit, direct a
 - `git checkout` — overwriting unsaved changes
 - `git reset --hard` — resetting the working tree
 - `git force push`
+- `git merge` into `main` or `gh pr merge` targeting `main` — requires explicit user approval
 
 ### External Systems
 
