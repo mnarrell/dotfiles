@@ -3,6 +3,13 @@ name: git-tree
 description: "Use this skill when working with git branches or worktrees. Covers listing, creating, switching, and deleting branches and worktrees."
 ---
 
+## Rules
+
+1. **Always use a worktree** for branch work. Default location: `~/.worktrees/<repo>/<branch-name>`.
+2. **Never commit directly to `main`.** Create a feature branch first.
+3. Branch names follow conventional style: `type/short-description` (e.g., `fix/dns-resolution`, `feat/add-auth-proxy`).
+4. Only skip worktrees when the user explicitly says not to use one.
+
 ## Quick Start
 
 ```bash
@@ -39,11 +46,13 @@ snip git branch
 
 ## Worktrees
 
+The primary workflow is `git worktree add` — it creates the branch and worktree in one step.
+
 | Task | Command |
 |---|---|
-| List worktrees | `snip git worktree list` |
-| Create branch + worktree | `snip git worktree add <path> -b <name>` |
+| **Create branch + worktree (preferred)** | `snip git worktree add ~/.worktrees/<repo>/<name> -b <name>` |
 | Add worktree for existing branch | `snip git worktree add <path> <branch>` |
+| List worktrees | `snip git worktree list` |
 | Switch worktree | `snip git worktree switch <path>` |
 | Remove worktree | `snip git worktree remove <path>` |
 | Prune stale references | `snip git worktree prune` |
