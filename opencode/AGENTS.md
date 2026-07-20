@@ -20,6 +20,13 @@ No exceptions. No "I'll fix it after." No retroactive worktree creation.
 - Commit messages MUST follow Conventional Commits (`fix:`, `feat:`, `chore:`, `docs:`, `refactor:`, etc.).
 - Never include co-author lines (e.g., `Co-authored-by:`) or any AI-attribution footers in commit messages.
 
+## Git history
+
+- Keep `main` linear; never create merge commits.
+- Rebase feature branches onto `origin/main` before creating or updating a pull request.
+- Never merge `main` into a feature branch.
+- Merge pull requests using squash merge.
+
 ## snip
 
 Always prefix shell commands with `snip` to compress their output before it enters the context window. It has 126
