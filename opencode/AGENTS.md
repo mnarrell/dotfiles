@@ -1,9 +1,21 @@
 # AGENTS.md
 
+## Pre-flight checklist (MANDATORY — before every file edit or write)
+
+Before editing or writing ANY file, you MUST:
+
+1. Run `git branch --show-current`
+2. If on `main` → STOP. You MUST create a worktree first:
+   `git worktree add ~/.worktrees/<repo>/<branch-name> -b <branch-name>`
+3. If on a feature branch → confirm it's a worktree via `git worktree list`
+4. Only then proceed with the edit
+
+No exceptions. No "I'll fix it after." No retroactive worktree creation.
+
 ## Git workflow
 
 - Always create and work on a feature branch. Never commit directly to `main`.
-- Always use a worktree for branch work. Default worktree location: `~/.worktrees/<repo>/<branch-name>`.
+- **Always use a worktree for branch work.** Default worktree location: `~/.worktrees/<repo>/<branch-name>`.
 - Branch names follow conventional style: `type/short-description` (e.g., `fix/dns-resolution`, `feat/add-auth-proxy`).
 - Commit messages MUST follow Conventional Commits (`fix:`, `feat:`, `chore:`, `docs:`, `refactor:`, etc.).
 - Never include co-author lines (e.g., `Co-authored-by:`) or any AI-attribution footers in commit messages.

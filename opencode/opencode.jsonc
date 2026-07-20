@@ -5,7 +5,7 @@
 
   // DCP (Dynamic Context Pruning): surgical mid-session context management.
   // Configured via dcp.jsonc. Prefer this over OpenCode's built-in compaction.
-  "plugin": ["@tarquinen/opencode-dcp"],
+  "plugin": ["@tarquinen/opencode-dcp", "./enforce.ts"],
 
   "provider": {
     "ollama": {
@@ -30,6 +30,7 @@
       "/tmp/**": "allow",
     },
     "bash": {
+      "git add *": "ask",
       "git commit *": "ask",
       "git push *": "ask",
       "git merge * main": "ask",
