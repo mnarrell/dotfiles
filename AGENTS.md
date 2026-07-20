@@ -11,6 +11,13 @@ task <tool>:up       # Link one tool (e.g., task nvim:up)
 task --list          # Show all tasks
 ```
 
+## Git history
+
+- Keep `main` linear; never create merge commits.
+- Rebase feature branches onto `origin/main` before creating or updating a pull request.
+- Never merge `main` into a feature branch.
+- Merge pull requests using squash merge.
+
 ## Architecture
 
 **Deployment:** `task <tool>:up` runs `ln -sfn $DOTFILES/<dir> $XDG_CONFIG_HOME/<dir>`. Edits take effect on next shell session.
