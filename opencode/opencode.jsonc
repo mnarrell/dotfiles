@@ -39,6 +39,13 @@
       "git branch --show-current": "allow",
       "git worktree list*": "allow",
 
+      "snip git status*": "allow",
+      "snip git diff*": "allow",
+      "snip git log*": "allow",
+      "snip git show*": "allow",
+      "snip git branch --show-current": "allow",
+      "snip git worktree list*": "allow",
+
       "gh auth status*": "allow",
       "gh pr list*": "allow",
       "gh pr view*": "allow",
