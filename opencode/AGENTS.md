@@ -18,11 +18,10 @@ Global operating rules. Command reference tables live in on-demand skills — `g
 
 ## Git
 
-Worktree-per-branch is **enforced** by `enforce.ts` — edits on `main` are blocked at the tool
-level. Branch, worktree, and GitHub mechanics live in the `git-tree` and `gh-cli` skills.
+Branch, worktree, and GitHub mechanics live in the `git-tree` and `gh-cli` skills.
 
-- Work on a feature branch in a worktree at `~/.worktrees/<repo>/<branch-name>`; never commit to
-  `main`.
+- Always work on a feature branch; never commit to `main`. Use a worktree
+  (`~/.worktrees/<repo>/<branch-name>`) only when explicitly asked.
 - Branch names: `type/short-description` (e.g. `fix/dns-resolution`, `feat/add-auth-proxy`).
 - Conventional Commits (`fix:`, `feat:`, `chore:`, `docs:`, `refactor:`). No co-author or
   AI-attribution footers.
