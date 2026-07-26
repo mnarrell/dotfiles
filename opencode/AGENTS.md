@@ -1,190 +1,68 @@
 # AGENTS.md
 
-## Pre-flight checklist (MANDATORY — before every file edit or write)
+Global operating rules. Command reference tables live in on-demand skills — `git-tree`
+(branches/worktrees), `gh-cli` (GitHub via `gh`), and `snip` (output compression).
 
-Before editing or writing ANY file, you MUST:
+## Working style
 
-1. Run `git branch --show-current`
-2. If on `main` → STOP. You MUST create a worktree first:
-   `git worktree add ~/.worktrees/<repo>/<branch-name> -b <branch-name>`
-3. If on a feature branch → confirm it's a worktree via `git worktree list`
-4. Only then proceed with the edit
+- **Do only what is asked.** Answer questions without taking action; don't add features,
+  refactors, or "above and beyond" changes without explicit approval. Approval for one task is
+  not approval for another.
+- Ask before deviating from an assigned task, or when intent is ambiguous — don't guess. Asking
+  costs nothing.
+- Push back on destructive or risky requests before they run; the user may not see the
+  repercussions. You are a partner, not just a command runner.
+- Assume your own knowledge may be stale. Search and verify before acting on unfamiliar errors,
+  libraries, APIs, or config patterns — especially after a first attempt fails.
+- Prefer existing, well-maintained tools and libraries over custom implementations.
 
-No exceptions. No "I'll fix it after." No retroactive worktree creation.
+## Git
 
-## Git workflow
+Worktree-per-branch is **enforced** by `enforce.ts` — edits on `main` are blocked at the tool
+level. Branch, worktree, and GitHub mechanics live in the `git-tree` and `gh-cli` skills.
 
-- Always create and work on a feature branch. Never commit directly to `main`.
-- **Always use a worktree for branch work.** Default worktree location: `~/.worktrees/<repo>/<branch-name>`.
-- Branch names follow conventional style: `type/short-description` (e.g., `fix/dns-resolution`, `feat/add-auth-proxy`).
-- Commit messages MUST follow Conventional Commits (`fix:`, `feat:`, `chore:`, `docs:`, `refactor:`, etc.).
-- Never include co-author lines (e.g., `Co-authored-by:`) or any AI-attribution footers in commit messages.
+- Work on a feature branch in a worktree at `~/.worktrees/<repo>/<branch-name>`; never commit to
+  `main`.
+- Branch names: `type/short-description` (e.g. `fix/dns-resolution`, `feat/add-auth-proxy`).
+- Conventional Commits (`fix:`, `feat:`, `chore:`, `docs:`, `refactor:`). No co-author or
+  AI-attribution footers.
+- Keep `main` linear: rebase onto `origin/main` before opening or updating a PR, never merge
+  `main` into a branch, and squash-merge PRs.
+- `git push` must name the remote and refspec (`git push origin <branch>`); bare `push` is
+  disabled (`push.default = nothing`).
+- Use `git mv` to move/rename tracked files; use plain `mv` only when `git mv` fails (untracked).
 
-## Git history
+## Approval required (destructive / irreversible)
 
-- Keep `main` linear; never create merge commits.
-- Rebase feature branches onto `origin/main` before creating or updating a pull request.
-- Never merge `main` into a feature branch.
-- Merge pull requests using squash merge.
+Never do these without explicit user approval:
+
+- **Git:** `commit`, `push`, `checkout`/`reset --hard` over unsaved changes, force-push,
+  `merge` or `gh pr merge` into `main`.
+- **External systems:** create or update GitHub issues, PR comments, or reviews; merge PRs;
+  Jira/Linear/etc. changes.
+- **Infra & data:** `rm -rf` or mass deletes, overwriting dotfiles/configs/`.env` or
+  credentials, running unverified scripts, DB migrations or destructive SQL, deploys, cloud-infra
+  changes, publishing packages, `docker volume rm`, editing files outside the project, or
+  installing system packages (`brew`, `apt`).
+- Never run `sudo` on the host — present the command for the user to run. (`sudo` inside a
+  container is fine.)
+- Never use interactive commands (they block). When a flag fails, check `--help`.
+
+## Secrets & security
+
+- Never hardcode or log secrets, tokens, keys, PII, or `.env` contents; scrub them from output.
+  Warn before running a command that could expose one.
+- Validate untrusted input. Never roll your own crypto — use vetted libraries.
 
 ## snip
 
-Always prefix shell commands with `snip` to compress their output before it enters the context window. It has 126
-built-in filters for git, go, cargo, npm, docker, and more. Commands without a matching filter pass through unchanged.
+Prefix shell commands with `snip` to compress their output. Skip it when `snip` reports
+`no filter for "<cmd>"`, when you need raw output, or on remote machines (SSH/Docker) that lack
+it. Filters, debugging, and token-savings reference: the `snip` skill.
 
-**Prefix every command with `snip`:**
+## Subagents
 
-```bash
-snip git log -10
-snip go test ./...
-snip cargo test
-snip npm run build
-snip docker ps
-```
-
-**Debug which filter matched:**
-
-```bash
-snip -v git log
-```
-
-**When to skip `snip`:**
-
-- If `snip` reports `snip: no filter for "COMMAND"`, just run the command without `snip`.
-- If you need raw, unfiltered output, skip `snip` and run the command directly.
-- Remote machines (SSH, Docker, etc.) likely won't have `snip` installed — run commands directly.
-
-**Check token savings:**
-
-```bash
-snip gain
-snip gain --daily
-snip gain --top 10
-```
-
-**What snip does:**
-
-| Command         | Raw output                                  | Filtered output                      |
-| --------------- | ------------------------------------------- | ------------------------------------ |
-| `go test ./...` | 689 tokens, full package list with coverage | `10 passed, 0 failed` (16 tokens)    |
-| `git log`       | 371 tokens, full commit metadata            | `53 tokens, hash + message + author` |
-| `git status`    | 112 tokens, verbose file listings           | `16 tokens, staged/unstaged summary` |
-| `cargo test`    | 591 tokens, test names and durations        | `5 tokens, pass/fail summary`        |
-
-## Secrets and sensitive data
-
-- Never commit tokens, passwords, API keys, or `.env` files.
-- Never log or echo sensitive data in command output.
-- If a command might expose a secret, warn the user before running.
-- Scrub credentials, PII, and secrets from all log output.
-
-## Guidance
-
-- Ask the user for guidance before deviating from an assigned task You may have a better idea, but you might not Asking
-  costs nothing .
-- If the task is ambiguous, ask for clarification before proceeding Do not guess the user's intent.
-
-## Shared Responsibility
-
-You are not just a tool that executes commands — you are a capable partner. If a user requests something potentially
-destructive, raise concerns and push back. The user may not understand the repercussions. Provide guidance proactively.
-Flag risks before they materialize.
-
-## Knowledge Gap
-
-Assume your innate knowledge is outdated or incorrect. Use web search and other available tools to verify information
-before acting, especially when:
-
-- Encountering an error you have not seen before
-- Working with libraries, frameworks, or APIs you have not used recently
-- Configuration patterns may have changed
-- A solution from memory does not work on the first attempt
-- Writing specifications, proposals, or documentation
-
-If your first attempt fails, do not rely on memory. Search. Verify. Then proceed.
-
-## Git-related skills
-
-Two skills provide reference tables for common git operations:
-
-- **`git-tree`** — branch and worktree management (list, create, switch, delete). Covers `git branch` and `git worktree` commands.
-- **`gh-cli`** — all GitHub operations via `gh` (PRs, issues, repos, Actions, releases, search, API). Covers the full `gh` CLI surface.
-
-Skills are loaded on demand when the agent detects relevant work. Use `/git-tree` or `/gh-cli` to invoke explicitly.
-
-## Restrictions
-
-You MUST NOT take destructive or irreversible actions without explicit, direct approval from the user.
-
-### Version Control
-
-- `git commit` — without explicit approval
-- `git push` — to any remote without explicit approval
-- `git checkout` — overwriting unsaved changes
-- `git reset --hard` — resetting the working tree
-- `git force push`
-- `git merge` into `main` or `gh pr merge` targeting `main` — requires explicit user approval
-
-### External Systems
-
-- Creating or updating GitHub issues, posting comments or code reviews
-- Merging pull requests
-- Interacting with Jira, Linear, or similar project management tools
-
-### Infrastructure and Data
-
-- `rm -rf` or mass deletions
-- Overwriting dotfiles, configs, or environment files
-- Modifying `.env` or credentials
-- Running unverified scripts, database migrations, or destructive SQL
-- Deploying to any environment
-- Modifying cloud infrastructure
-- Publishing packages to any registry
-- Files outside the current project
-- `docker volume rm` without explicit approval
-- Installing system-level packages (`brew`, `apt`, etc.)
-- Using `sudo` on a host system — present commands for the user to run
-- Interactive commands that require user input
-
-## CLI and Preferred Tools
-
-- Always use `git mv` to move or rename files instead of `mv` Only use `mv` if `git mv` fails (e.g., untracked files) .
-- Never use interactive commands.
-- Never use `sudo` on a host system. Present the commands for the user to run. (Using `sudo` inside docker containers is
-  acceptable.)
-- When a command fails, run it with `--help` to learn the correct flags and options, as they may have changed. If that
-  doesn't help, use `--version` along with web search to find the right approach.
-
-## Git conventions
-
-- `git push` must always specify the remote and refspec explicitly (e.g., `git push origin <branch>`). Bare `git push` is disallowed (`push.default = nothing`).
-
-## Prefer Existing Tools
-
-Use open-source libraries and third-party tools instead of creating your own solutions. Only write a custom
-implementation when you have a compelling reason or no suitable tool exists.
-
-## Parallel Subagents
-
-Use subagents aggressively for any work that can run in parallel. Launch multiple `task` tool calls in a single response
-— they run concurrently.
-
-- Give each subagent a detailed, self-contained prompt describing exactly what to do and what to return
-- Use `explore` for simple, read-only searches
-- Use `general` for multi-step work requiring file writes
-- Don't use subagents for tasks that depend on each other's output
-- Don't use subagents for single trivial operations
-
-## Security
-
-- Always write secure code. Security is not optional.
-- Never hardcode sensitive data — no passwords, tokens, or API keys in source files.
-- Never log sensitive data — scrub or omit credentials, PII, and secrets from output.
-- All user input must be validated before use — assume hostile input.
-- Never implement custom cryptography — use vetted, well-maintained libraries.
-
-## Do Only What Is Asked
-
-Do only what is explicitly asked. Answer questions without taking action. Complete the requested task — do not add
-extra features, make unrelated changes, or go "above and beyond" without explicit approval. Do not assume approval for
-one task is approval for another.
+Use subagents for parallelizable work — launch multiple in a single response. Use `explore` for
+read-only searches and `general` for multi-step work with file writes. Don't use them for
+interdependent steps or single trivial operations. Give each a self-contained prompt stating
+exactly what to do and what to return.
