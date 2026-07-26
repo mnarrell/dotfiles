@@ -30,7 +30,7 @@ task --list          # Show all tasks
 1. **`zsh/` sources first in every phase** — it resets `$path` from scratch. If a tool's `path.zsh` runs before `zsh/path.zsh`,
    its PATH contribution gets wiped out. `.zshrc` enforces this via explicit prefix test, not glob negation.
 
-2. **Never re-declare `typeset -gU path PATH fpath MANPATH` in phase files** — at global scope in `.zshrc` only.
+2. **Never re-declare `typeset -gU path PATH fpath FPATH manpath MANPATH` in phase files** — at global scope in `.zshrc` only.
    A bare `typeset` in a phase function creates a local copy, silently discarding all tool contributions.
 
 3. **Phase-sensitive exports:** `env.zsh` runs first. If a tool needs an export available to later phases (e.g.,
