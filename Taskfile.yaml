@@ -381,9 +381,8 @@ tasks:
         for skill in {{.ROOT_DIR}}/opencode/skills/*/; do
           ln -sfn "$skill" {{.HOME}}/.claude/skills/$(basename "$skill")
         done
-      - ln -sfn {{.ROOT_DIR}}/opencode/AGENTS.md {{.HOME}}/.claude/AGENTS.md
-      # Claude Code reads CLAUDE.md, not AGENTS.md — import our global instructions.
-      - echo '@AGENTS.md' > {{.HOME}}/.claude/CLAUDE.md
+      # Claude Code reads CLAUDE.md — symlink it directly to our single source.
+      - ln -sfn {{.ROOT_DIR}}/opencode/AGENTS.md {{.HOME}}/.claude/CLAUDE.md
 
   opencode:down:
     desc: Removes OpenCode configuration
