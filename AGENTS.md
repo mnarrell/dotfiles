@@ -1,7 +1,7 @@
 # AGENTS.md
 
 macOS dotfiles deployed with `task` (Taskfile.yaml is source of truth). Symlinks config dirs into XDG locations;
-changes to repo files take effect immediately—no build step.
+config edits take effect on next shell session. Some tools require install/build steps (e.g., `nvim:up` runs `uv sync`).
 
 ## Key commands
 
@@ -13,7 +13,7 @@ task --list          # Show all tasks
 
 ## Architecture
 
-**Deployment:** `task <tool>:up` runs `ln -sfn $DOTFILES/<dir> $XDG_CONFIG_HOME/<dir>`. Edits take effect on next shell session.
+**Deployment:** `task <tool>:up` runs `ln -sfn $DOTFILES/<dir> $XDG_CONFIG_HOME/<dir>`.
 
 **ZSH init (Taskfile.yaml defines order; phases source from `$XDG_CONFIG_HOME/*/<phase>.zsh`):**
 
@@ -30,7 +30,7 @@ task --list          # Show all tasks
 1. **`zsh/` sources first in every phase** — it resets `$path` from scratch. If a tool's `path.zsh` runs before `zsh/path.zsh`,
    its PATH contribution gets wiped out. `.zshrc` enforces this via explicit prefix test, not glob negation.
 
-2. **Never re-declare `typeset -gU path PATH fpath MANPATH` in phase files** — at global scope in `.zshrc` only.
+2. **Never re-declare `typeset -gU path PATH fpath FPATH manpath MANPATH` in phase files** — at global scope in `.zshrc` only.
    A bare `typeset` in a phase function creates a local copy, silently discarding all tool contributions.
 
 3. **Phase-sensitive exports:** `env.zsh` runs first. If a tool needs an export available to later phases (e.g.,
@@ -55,12 +55,12 @@ task --list          # Show all tasks
 
 ### Neovim (`nvim/`)
 
-- `task nvim:up` runs `uv sync --project nvim` (Python >=3.14) + npm/gem neovim providers
+- `task nvim:up` runs `uv sync --project nvim` (Python >=3.14), npm/gem neovim providers
 - Plugins managed by lazy.nvim; `lazy-lock.json` is committed
 - Lua formatted with stylua (120 col, 2-space, sorted requires); config: `nvim/stylua.toml`
 - LSPs one-per-file in `nvim/lsp/*.lua`; core config in `nvim/lua/`
 
 ### Go
 
-- Tools installed by `task go:up` (gofumpt, golangci-lint v2, staticcheck, govulncheck)
-- Config: `golang/golangci.yml`, `golang/revive.toml`; symlinked to `~/.golangci.yml`
+- Tools installed by `task go:up`: gofumpt, golangci-lint v2, goimports, staticcheck, xq, govulncheck
+- Config: `golang/golangci.yml` symlinked to `~/.golangci.yml`
