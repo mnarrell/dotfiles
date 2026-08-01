@@ -1,6 +1,16 @@
 {
   "$schema": "https://opencode.ai/config.json",
 
+  "default_agent": "supervisor",
+  "agent": {
+    "plan": {
+      "model": "opencode/big-pickle",
+    },
+    "build": {
+      "model": "opencode/big-pickle",
+    },
+  },
+
   // This repository manages the XDG configuration and data locations below.
   // Narrow sensitive-directory overrides must follow the broad allows.
   "permission": {
