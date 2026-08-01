@@ -378,7 +378,10 @@ tasks:
       - mkdir -p {{.HOME}}/.claude
       - rm -rf {{.HOME}}/.claude/skills
       - ln -sfn {{.ROOT_DIR}}/opencode/skills {{.HOME}}/.claude/skills
+      - mkdir -p {{.HOME}}/.claude/agents
       - ln -sfn {{.ROOT_DIR}}/opencode/AGENTS.md {{.HOME}}/.claude/CLAUDE.md
+      - ln -sfn {{.ROOT_DIR}}/claude/agents/executor.md {{.HOME}}/.claude/agents/executor.md
+      - ln -sfn {{.ROOT_DIR}}/claude/agents/supervisor.md {{.HOME}}/.claude/agents/supervisor.md
       - ln -sfn {{.ROOT_DIR}}/claude/settings.json {{.HOME}}/.claude/settings.json
       - ln -sfn {{.ROOT_DIR}}/claude/statusline-command.sh {{.HOME}}/.claude/statusline-command.sh
 
@@ -388,6 +391,8 @@ tasks:
       - rm -f {{.XDG_CONFIG_HOME}}/opencode
       - rm -f {{.HOME}}/.claude/CLAUDE.md
       - rm -f {{.HOME}}/.claude/skills
+      - rm -f {{.HOME}}/.claude/agents/executor.md
+      - rm -f {{.HOME}}/.claude/agents/supervisor.md
       - rm -f {{.HOME}}/.claude/settings.json
       - rm -f {{.HOME}}/.claude/statusline-command.sh
 
