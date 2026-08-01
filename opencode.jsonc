@@ -1,0 +1,52 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // This repository manages the XDG configuration and data locations below.
+  // Narrow sensitive-directory overrides must follow the broad allows.
+  "permission": {
+    "read": {
+      "~/.dotfiles/**": "allow",
+      "~/.config/**": "allow",
+      "~/.local/bin/**": "allow",
+      "~/.local/share/**": "allow",
+      "~/.local/state/**": "allow",
+      "~/.cache/**": "allow",
+      "~/tmp/xdg_runtime/**": "allow",
+      "~/.claude/**": "allow",
+      "~/.terminfo/**": "allow",
+
+      "~/.config/op/**": "deny",
+      "~/.config/comcast/**": "ask",
+    },
+    "edit": {
+      "~/.dotfiles/**": "allow",
+      "~/.config/**": "allow",
+      "~/.local/bin/**": "allow",
+      "~/.local/share/**": "allow",
+      "~/.local/state/**": "allow",
+      "~/.cache/**": "allow",
+      "~/tmp/xdg_runtime/**": "allow",
+      "~/.claude/**": "allow",
+      "~/.terminfo/**": "allow",
+
+      "~/.config/op/**": "deny",
+      "~/.config/comcast/**": "ask",
+    },
+    "external_directory": {
+      "*": "ask",
+      "~/.dotfiles/**": "allow",
+      "~/.worktrees/**": "allow",
+      "~/.config/**": "allow",
+      "~/.local/bin/**": "allow",
+      "~/.local/share/**": "allow",
+      "~/.local/state/**": "allow",
+      "~/.cache/**": "allow",
+      "~/tmp/xdg_runtime/**": "allow",
+      "~/.claude/**": "allow",
+      "~/.terminfo/**": "allow",
+
+      "~/.config/op/**": "deny",
+      "~/.config/comcast/**": "ask",
+    },
+  },
+}
