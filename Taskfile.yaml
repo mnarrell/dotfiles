@@ -411,7 +411,6 @@ tasks:
           fi
           ln -s "$expected" "$target"
         }
-        link_expected "$claude/AGENTS.md" "$source"
         link_expected "$claude/CLAUDE.md" "$source"
         for skill in {{.ROOT_DIR}}/opencode/skills/*/; do
           name=$(basename "$skill")
@@ -433,7 +432,6 @@ tasks:
           fi
         }
         unlink_expected "{{.XDG_CONFIG_HOME}}/opencode" "{{.ROOT_DIR}}/opencode"
-        unlink_expected "$HOME/.claude/AGENTS.md" "{{.ROOT_DIR}}/opencode/AGENTS.md"
         unlink_expected "$HOME/.claude/CLAUDE.md" "{{.ROOT_DIR}}/opencode/AGENTS.md"
         for skill in {{.ROOT_DIR}}/opencode/skills/*/; do
           name=$(basename "$skill")
