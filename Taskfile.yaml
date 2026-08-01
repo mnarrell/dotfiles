@@ -375,7 +375,6 @@ tasks:
     cmds:
       - ln -sfn {{.ROOT_DIR}}/opencode {{.XDG_CONFIG_HOME}}/opencode
       - npm install --prefix {{.ROOT_DIR}}/opencode
-      - npm --prefix {{.ROOT_DIR}}/opencode approve-scripts msgpackr-extract@3.0.4
       - mkdir -p {{.HOME}}/.claude
       - rm -rf {{.HOME}}/.claude/skills
       - ln -sfn {{.ROOT_DIR}}/opencode/skills {{.HOME}}/.claude/skills
