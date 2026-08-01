@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git branch *)",
+      "Bash(git worktree *)",
+      "Bash(git stash *)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git add *)",
+      "Bash(git rebase *)",
+      "Bash(git cherry-pick *)",
+      "Bash(gh *)",
+      "Bash(snip *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Read",
+      "Glob",
+      "Grep",
+      "WebSearch"
+    ],
+    "deny": [],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git merge * main)",
+      "Bash(git merge * --into main)",
+      "Bash(gh pr merge * --base main)"
+    ]
+  },
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "effortLevel": "high",
+  "theme": "dark",
+  "remoteControlAtStartup": false,
+  "agentPushNotifEnabled": true
+}

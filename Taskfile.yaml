@@ -370,26 +370,77 @@ tasks:
   ################################################################################
   # OpenCode
   opencode:up:
-    desc: Configures OpenCode
+    desc: Configures OpenCode and Claude Code
+    deps: [ensure_xdg]
     cmds:
-      - ln -sfn {{.ROOT_DIR}}/opencode {{.XDG_CONFIG_HOME}}/opencode
+      - |
+        set -eu
+        link="{{.ROOT_DIR}}/opencode"
+        target="{{.XDG_CONFIG_HOME}}/opencode"
+        if [ -L "$target" ]; then
+          current=$(readlink "$target")
+          if [ "$current" != "$link" ]; then
+            printf 'conflict: %s is linked to %s; expected %s\n' "$target" "$current" "$link" >&2
+            exit 1
+          fi
+        elif [ -e "$target" ]; then
+          printf 'conflict: %s exists and is not the managed symlink; move it manually, then retry\n' "$target" >&2
+          exit 1
+        else
+          ln -s "$link" "$target"
+        fi
       - npm install --prefix {{.ROOT_DIR}}/opencode
       - npm --prefix {{.ROOT_DIR}}/opencode approve-scripts msgpackr-extract@3.0.4
-      # Make opencode skills and AGENTS.md available to Claude Code (~/.claude/).
-      - mkdir -p {{.HOME}}/.claude/skills
       - |
+        set -eu
+        source="{{.ROOT_DIR}}/opencode/AGENTS.md"
+        claude="$HOME/.claude"
+        mkdir -p "$claude/skills"
+        link_expected() {
+          target="$1"
+          expected="$2"
+          if [ -L "$target" ]; then
+            current=$(readlink "$target")
+            if [ "$current" = "$expected" ]; then return; fi
+            printf 'conflict: %s is linked to %s; expected %s\n' "$target" "$current" "$expected" >&2
+            exit 1
+          fi
+          if [ -e "$target" ]; then
+            printf 'conflict: %s is a regular file or directory; move it manually, then retry\n' "$target" >&2
+            exit 1
+          fi
+          ln -s "$expected" "$target"
+        }
+        link_expected "$claude/AGENTS.md" "$source"
+        link_expected "$claude/CLAUDE.md" "$source"
         for skill in {{.ROOT_DIR}}/opencode/skills/*/; do
-          ln -sfn "$skill" {{.HOME}}/.claude/skills/$(basename "$skill")
+          name=$(basename "$skill")
+          link_expected "$claude/skills/$name" "{{.ROOT_DIR}}/opencode/skills/$name"
         done
-      # Claude Code reads CLAUDE.md — symlink it directly to our single source.
-      - ln -sfn {{.ROOT_DIR}}/opencode/AGENTS.md {{.HOME}}/.claude/CLAUDE.md
+        link_expected "$claude/settings.json" "{{.ROOT_DIR}}/claude/settings.json"
+        link_expected "$claude/statusline-command.sh" "{{.ROOT_DIR}}/claude/statusline-command.sh"
 
   opencode:down:
-    desc: Removes OpenCode configuration
+    desc: Removes only matching OpenCode and Claude Code links
     cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/opencode
-      - rm -rf {{.HOME}}/.claude/skills
-      - rm -f {{.HOME}}/.claude/AGENTS.md {{.HOME}}/.claude/CLAUDE.md
+      - |
+        set -eu
+        unlink_expected() {
+          target="$1"
+          expected="$2"
+          if [ -L "$target" ] && [ "$(readlink "$target")" = "$expected" ]; then
+            rm "$target"
+          fi
+        }
+        unlink_expected "{{.XDG_CONFIG_HOME}}/opencode" "{{.ROOT_DIR}}/opencode"
+        unlink_expected "$HOME/.claude/AGENTS.md" "{{.ROOT_DIR}}/opencode/AGENTS.md"
+        unlink_expected "$HOME/.claude/CLAUDE.md" "{{.ROOT_DIR}}/opencode/AGENTS.md"
+        for skill in {{.ROOT_DIR}}/opencode/skills/*/; do
+          name=$(basename "$skill")
+          unlink_expected "$HOME/.claude/skills/$name" "{{.ROOT_DIR}}/opencode/skills/$name"
+        done
+        unlink_expected "$HOME/.claude/settings.json" "{{.ROOT_DIR}}/claude/settings.json"
+        unlink_expected "$HOME/.claude/statusline-command.sh" "{{.ROOT_DIR}}/claude/statusline-command.sh"
 
   ################################################################################
   # PSQL
