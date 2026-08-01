@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "additionalDirectories": [
+      "~/.config",
+      "~/.local/bin",
+      "~/.local/share",
+      "~/.local/state",
+      "~/.cache",
+      "~/tmp/xdg_runtime",
+      "~/.claude",
+      "~/.terminfo",
+      "~/.worktrees"
+    ],
+    "allow": [
+      "Read(~/.dotfiles/**)",
+      "Edit(~/.dotfiles/**)",
+      "Read(~/.config/**)",
+      "Edit(~/.config/**)",
+      "Read(~/.local/bin/**)",
+      "Edit(~/.local/bin/**)",
+      "Read(~/.local/share/**)",
+      "Edit(~/.local/share/**)",
+      "Read(~/.local/state/**)",
+      "Edit(~/.local/state/**)",
+      "Read(~/.cache/**)",
+      "Edit(~/.cache/**)",
+      "Read(~/tmp/xdg_runtime/**)",
+      "Edit(~/tmp/xdg_runtime/**)",
+      "Read(~/.claude/**)",
+      "Edit(~/.claude/**)",
+      "Read(~/.terminfo/**)",
+      "Edit(~/.terminfo/**)"
+    ],
+    "deny": [
+      "Read(~/.config/op/**)",
+      "Edit(~/.config/op/**)"
+    ],
+    "ask": [
+      "Read(~/.config/comcast/**)",
+      "Edit(~/.config/comcast/**)"
+    ]
+  }
+}
