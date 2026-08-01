@@ -33,9 +33,9 @@
       "/tmp/**": "allow",
     },
     "external_directory": {
+      "*": "ask",
       "/tmp/**": "allow",
       "~/.worktrees/**": "allow",
-      "/Users/matt/.worktrees/**": "allow",
       "~/.ssh/config": "allow",
     },
     "bash": {

@@ -43,10 +43,8 @@
       "~/.config/comcast/**": "ask",
     },
     "external_directory": {
-      "*": "ask",
       "~/.dotfiles/**": "allow",
       "~/.worktrees/**": "allow",
-      "/Users/matt/.worktrees/**": "allow",
       "~/.config/**": "allow",
       "~/.local/bin/**": "allow",
       "~/.local/share/**": "allow",
