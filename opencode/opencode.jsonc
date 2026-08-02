@@ -5,7 +5,8 @@
 
   // DCP (Dynamic Context Pruning): surgical mid-session context management.
   // Configured via dcp.jsonc. Prefer this over OpenCode's built-in compaction.
-  "plugin": ["@tarquinen/opencode-dcp"],
+  // opencode-snip: auto-prefix bash commands with `snip` to compress output.
+  "plugin": ["@tarquinen/opencode-dcp", "opencode-snip@latest"],
 
   "default_agent": "supervisor",
   "agent": {
@@ -59,6 +60,20 @@
       "snip tree *": "allow",
       "snip stat *": "allow",
       "snip diff *": "allow",
+      "snip fd *": "allow",
+      "snip cat *": "allow",
+      "snip head *": "allow",
+      "snip tail *": "allow",
+      "snip which *": "allow",
+      "snip date": "allow",
+      "snip date *": "allow",
+      "snip sort": "allow",
+      "snip grep *": "allow",
+      "snip sed *": "allow",
+      "snip awk *": "allow",
+      "snip cut *": "allow",
+      "snip echo *": "allow",
+      "snip sort *": "allow",
 
       "snip git status*": "allow",
       "snip git diff*": "allow",
@@ -75,6 +90,11 @@
       "snip git ls-remote *": "allow",
       "snip git merge-base *": "allow",
       "snip git fetch origin main": "allow",
+      "snip git rev-parse *": "allow",
+      "snip git rev-list *": "allow",
+      "snip git for-each-ref *": "allow",
+      "snip git ls-files *": "allow",
+      "snip git config --get*": "allow",
 
       "snip gh pr list*": "allow",
       "snip gh pr view*": "allow",
@@ -86,12 +106,20 @@
       "snip gh repo view*": "allow",
       "snip gh run list*": "allow",
       "snip gh run view*": "allow",
+      "snip gh auth status*": "allow",
+      "snip gh release list*": "allow",
+      "snip gh release view*": "allow",
+      "snip gh search *": "allow",
+      "snip gh workflow list*": "allow",
+      "snip gh workflow view*": "allow",
+      "snip gh label list*": "allow",
 
       "snip task --list*": "allow",
       "snip kubectl get *": "allow",
       "snip kubectl diff *": "allow",
       "snip kubectl version *": "allow",
       "snip kubectl api-resources *": "allow",
+      "snip helmfile * template *": "allow",
 
       // Read-only commands without a snip filter.
       "fd *": "allow",

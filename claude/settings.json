@@ -1,6 +1,19 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "agent": "supervisor",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "snip hook"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "additionalDirectories": ["/tmp", "/Users/matt/.worktrees"],
     "allow": [
@@ -16,6 +29,20 @@
       "Bash(snip tree *)",
       "Bash(snip stat *)",
       "Bash(snip diff *)",
+      "Bash(snip fd *)",
+      "Bash(snip cat *)",
+      "Bash(snip head *)",
+      "Bash(snip tail *)",
+      "Bash(snip which *)",
+      "Bash(snip date)",
+      "Bash(snip date *)",
+      "Bash(snip sort)",
+      "Bash(snip grep *)",
+      "Bash(snip sed *)",
+      "Bash(snip awk *)",
+      "Bash(snip cut *)",
+      "Bash(snip echo *)",
+      "Bash(snip sort *)",
 
       "Bash(snip git status*)",
       "Bash(snip git diff*)",
@@ -32,6 +59,11 @@
       "Bash(snip git ls-remote *)",
       "Bash(snip git merge-base *)",
       "Bash(snip git fetch origin main)",
+      "Bash(snip git rev-parse *)",
+      "Bash(snip git rev-list *)",
+      "Bash(snip git for-each-ref *)",
+      "Bash(snip git ls-files *)",
+      "Bash(snip git config --get*)",
 
       "Bash(snip gh pr list*)",
       "Bash(snip gh pr view*)",
@@ -43,12 +75,20 @@
       "Bash(snip gh repo view*)",
       "Bash(snip gh run list*)",
       "Bash(snip gh run view*)",
+      "Bash(snip gh auth status*)",
+      "Bash(snip gh release list*)",
+      "Bash(snip gh release view*)",
+      "Bash(snip gh search *)",
+      "Bash(snip gh workflow list*)",
+      "Bash(snip gh workflow view*)",
+      "Bash(snip gh label list*)",
 
       "Bash(snip task --list*)",
       "Bash(snip kubectl get *)",
       "Bash(snip kubectl diff *)",
       "Bash(snip kubectl version *)",
       "Bash(snip kubectl api-resources *)",
+      "Bash(snip helmfile * template *)",
 
       "Bash(fd *)",
       "Bash(cat *)",
