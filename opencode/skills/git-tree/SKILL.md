@@ -5,10 +5,10 @@ description: "Use this skill when working with git branches or worktrees. Covers
 
 ## Rules
 
-1. **Always use a worktree** for branch work. Default location: `~/.worktrees/<repo>/<branch-name>`.
-2. **Never commit directly to `main`.** Create a feature branch first.
+1. **Create a feature branch first; never commit directly to `main`.**
+2. **Use a worktree only when the user asks for one, or when multiple workers run in parallel on the same repository.**
+   Default location: `~/.worktrees/<repo>/<branch-name>`.
 3. Branch names follow conventional style: `type/short-description` (e.g., `fix/dns-resolution`, `feat/add-auth-proxy`).
-4. Only skip worktrees when the user explicitly says not to use one.
 
 ## Quick Start
 
@@ -46,11 +46,12 @@ snip git branch
 
 ## Worktrees
 
-The primary workflow is `git worktree add` — it creates the branch and worktree in one step.
+Worktrees are opt-in — use them only when asked, or when multiple workers run in parallel on the same repository.
+`git worktree add` creates the branch and worktree in one step.
 
 | Task | Command |
 |---|---|
-| **Create branch + worktree (preferred)** | `snip git worktree add ~/.worktrees/<repo>/<name> -b <name>` |
+| Create branch + worktree | `snip git worktree add ~/.worktrees/<repo>/<name> -b <name>` |
 | Add worktree for existing branch | `snip git worktree add <path> <branch>` |
 | List worktrees | `snip git worktree list` |
 | Switch worktree | `snip git worktree switch <path>` |

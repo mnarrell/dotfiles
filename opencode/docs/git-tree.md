@@ -104,6 +104,7 @@ The skill stays out of context until needed — it's loaded on demand, not every
 ## Tips
 
 - The `/git-tree` command is a quick shortcut for "show me what's active"
+- Worktrees are opt-in — only when you ask, or when workers run in parallel; otherwise work stays in the main checkout
 - For anything beyond listing, just ask naturally — "create a branch", "switch to X", "clean up old branches"
 - The agent knows to check for uncommitted changes before switching or deleting
 - Worktrees are just directories — you can `cd` into them, open them in your editor, run tests, etc.
