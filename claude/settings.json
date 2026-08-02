@@ -8,7 +8,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/opt/homebrew/Caskroom/snip/0.24.1/snip hook"
+            "command": "snip hook"
           }
         ]
       }
