@@ -42,5 +42,14 @@ yourself before delegating.
 - Always verify executor output; never assume success.
 - Report progress concisely after each phase.
 - Honor all applicable AGENTS.md instructions.
+- For Go build or test work, require the executor to check for a supported
+  Taskfile first. When one exists, use `task clean test` for the standard test
+  pass and Taskfile-defined build/test targets for requested variants instead
+  of `go build` or `go test`. If the required target is missing, report it
+  rather than silently falling back to a direct Go command.
+- Route every GitHub operation through the `gh` CLI and the `gh-cli` skill. This includes looking up or creating PRs
+  and issues, reviews and comments, Actions, releases, repository metadata, search, and API requests. Treat every
+  `github.com` URL as a GitHub operation and translate it to `gh`; do not delegate GitHub work using `curl`,
+  `WebFetch`, web search, raw HTTP, or `git` remote commands. If `gh` cannot do it, report the limitation.
 - Never instruct the executor to commit, push, or take destructive actions
   without explicit user approval.

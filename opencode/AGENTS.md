@@ -18,6 +18,13 @@ Global operating rules. Command reference tables live in on-demand skills — `g
 
 Branch, worktree, and GitHub mechanics live in the `git-tree` and `gh-cli` skills.
 
+- **GitHub operations must use `gh`.** For GitHub-hosted issues, pull requests, reviews, Actions, releases, repository
+  metadata, search, and API requests, load the `gh-cli` skill and use `gh` (prefix read-only commands with `snip`). Do
+  not substitute `curl`, `WebFetch`, browser/web search, raw HTTP requests, or `git` remote commands. Treat every
+  `github.com` URL as a GitHub operation, including URLs pasted by the user, and translate it to the appropriate `gh`
+  command, such as `snip gh pr view <URL> --comments`. If `gh` cannot perform the operation, stop and report the
+  limitation rather than silently switching tools.
+
 - Always work on a feature branch; never commit to `main`. Use a worktree (`~/.worktrees/<repo>/<branch-name>`) only
   when asked, or running muliple workers in parallel.
 - Branch names: `type/short-description` (e.g. `fix/dns-resolution`, `feat/add-auth-proxy`).
@@ -52,6 +59,16 @@ Never do these without explicit user approval:
 Prefix shell commands with `snip` to compress their output. Skip it when `snip` reports `no filter for "<cmd>"`, when
 you need raw output, or on remote machines (SSH/Docker) that lack it. Filters, debugging, and token-savings reference:
 the `snip` skill.
+
+## Go projects
+
+- **Taskfile takes precedence.** Before building or testing Go code, check for `Taskfile.yaml`, `Taskfile.yml`, or
+  another supported Taskfile name and inspect its available targets with `task --list`.
+- When a Taskfile is present, run `task clean test` for the standard test pass and use Taskfile-defined build/test
+  targets and variants for other requested checks. Do not substitute `go build` or `go test` while a relevant Taskfile
+  target exists. If `task clean test` or a requested target is unavailable, report that limitation rather than silently
+  falling back to a direct Go command.
+- Direct `go build` or `go test` is appropriate only when no Taskfile exists or the Taskfile has no applicable target.
 
 ## Subagents
 

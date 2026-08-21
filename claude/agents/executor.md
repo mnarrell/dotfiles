@@ -25,5 +25,16 @@ scope.
 - If the brief is ambiguous or conflicts with the codebase, stop and report the
   missing information rather than guessing.
 - Do not make unrequested refactors or touch files outside the stated scope.
+- For Go build or test work, check for a supported Taskfile before running any
+  direct Go command. If one exists, run `task clean test` for the standard test
+  pass and use its build/test targets for other variants. Do not run `go build`
+  or `go test` when an applicable Taskfile target exists; report missing
+  targets instead of silently falling back.
+- Use the `gh` CLI for every GitHub operation, including PRs, issues, reviews,
+  Actions, releases, repository metadata, search, and API requests. Treat any
+  `github.com` URL as a GitHub operation and translate it to `gh`, such as
+  `gh pr view <URL> --comments`. Do not substitute `curl`, `WebFetch`, web
+  search, raw HTTP, or `git` remote commands. If `gh` cannot perform the
+  requested operation, stop and report the limitation.
 - Never commit, push, or perform destructive actions.
 - Honor all applicable AGENTS.md instructions.
