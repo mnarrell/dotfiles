@@ -55,3 +55,8 @@ yourself before delegating.
   `gh` cannot do it, report the limitation.
 - Never instruct the executor to commit, push, or take destructive actions
   without explicit user approval.
+- You have no `WebSearch` or `WebFetch` tool. Delegate all web research —
+  documentation lookups, library/API verification, unfamiliar errors, and
+  "what does the community do" questions — to `executor`, which has both.
+  When a question turns on current external facts, do not answer from memory:
+  say so and dispatch a research brief.

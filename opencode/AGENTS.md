@@ -72,6 +72,7 @@ the `snip` skill.
 
 ## Subagents
 
-Use subagents for parallelizable work — launch multiple in a single response. Use `explore` for read-only searches and
-`general` for multi-step work with file writes. Don't use them for interdependent steps or single trivial operations.
-Give each a self-contained prompt stating exactly what to do and what to return.
+Use subagents for parallelizable work — launch multiple in a single response. The only subagent available is
+`executor`; delegate both read-only searches and multi-step work with file writes to it. Don't use it for
+interdependent steps or single trivial operations. Give each a self-contained prompt stating exactly what to do and
+what to return.
