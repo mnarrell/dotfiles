@@ -1,26 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "agent": "supervisor",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "snip hook"
-          }
-        ]
-      }
-    ]
-  },
   "permissions": {
-    "additionalDirectories": ["/tmp", "/Users/matt/.worktrees"],
     "allow": [
       "Read(~/.ssh/config)",
       "Read(//tmp/**)",
       "Edit(//tmp/**)",
-
       "Bash(snip rg *)",
       "Bash(snip wc *)",
       "Bash(snip ls)",
@@ -43,7 +27,6 @@
       "Bash(snip cut *)",
       "Bash(snip echo *)",
       "Bash(snip sort *)",
-
       "Bash(snip git status*)",
       "Bash(snip git diff*)",
       "Bash(snip git log*)",
@@ -64,7 +47,6 @@
       "Bash(snip git for-each-ref *)",
       "Bash(snip git ls-files *)",
       "Bash(snip git config --get*)",
-
       "Bash(snip gh pr list*)",
       "Bash(snip gh pr view*)",
       "Bash(snip gh pr checks*)",
@@ -82,7 +64,6 @@
       "Bash(snip gh workflow list*)",
       "Bash(snip gh workflow view*)",
       "Bash(snip gh label list*)",
-
       "Bash(snip task --list*)",
       "Bash(snip task clean*)",
       "Bash(snip task test*)",
@@ -92,10 +73,11 @@
       "Bash(snip kubectl version *)",
       "Bash(snip kubectl api-resources *)",
       "Bash(snip helmfile * template *)",
-
       "WebSearch"
     ],
-    "deny": ["Edit(~/.ssh/config)"],
+    "deny": [
+      "Edit(~/.ssh/config)"
+    ],
     "ask": [
       "Bash(git commit *)",
       "Bash(git push *)",
@@ -109,15 +91,33 @@
       "Bash(git worktree prune*)",
       "Bash(gh api *)",
       "Bash(gh pr merge *)"
+    ],
+    "additionalDirectories": [
+      "/tmp",
+      "/Users/matt/.worktrees"
     ]
   },
   "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "snip hook"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
-  "effortLevel": "high",
-  "theme": "dark",
+  "effortLevel": "medium",
+  "agent": "supervisor",
+  "theme": "dark-ansi",
   "remoteControlAtStartup": false,
   "agentPushNotifEnabled": true
 }
