@@ -96,12 +96,12 @@ tasks:
   # FZF
   fzf:up:
     desc: Configures FZF fuzzy finder
-    vars:
-      FZF_HOME:
-        sh: brew --prefix
     cmds:
+      # No `fzf/install` step: it only generates fzf.zsh/fzf.bash wrappers that
+      # nothing sources. fzf/init.zsh loads the integration directly from the
+      # binary with `source <(fzf --zsh)`, which is always current, and the
+      # bash config here never referenced fzf at all.
       - ln -sfn {{.ROOT_DIR}}/fzf {{.XDG_CONFIG_HOME}}/fzf
-      - "{{.FZF_HOME}}/opt/fzf/install --all --xdg --no-update-rc"
 
   fzf:down:
     desc: Removes FZF configuration
@@ -184,8 +184,16 @@ tasks:
     desc: Installs the Helm binary and configuration
     cmds:
       - ln -sfn {{.ROOT_DIR}}/helm {{.XDG_CONFIG_HOME}}/helm
-      - cmd: helm plugin install https://github.com/databus23/helm-diff
-        ignore_error: true
+      # helm 4 verifies plugin provenance by default and helm-diff publishes
+      # none, so --verify=false is required or the install fails outright.
+      # Guarded on both "helm not installed yet" (fresh machine, before
+      # `brew bundle`) and "already installed" (re-installing exits 1), so no
+      # ignore_error is needed to mask either -- which means a genuine install
+      # failure still fails the task instead of passing silently.
+      - cmd: |
+          command -v helm >/dev/null 2>&1 || exit 0
+          helm plugin list 2>/dev/null | grep -q '^diff' && exit 0
+          helm plugin install https://github.com/databus23/helm-diff --verify=false
 
   helm:down:
     desc: Removes Helm configuration
