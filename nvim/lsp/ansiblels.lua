@@ -14,7 +14,9 @@ return {
   settings = {
     ansible = {
       python = {
-        interpreterPath = "python",
+        -- python3, not python: Homebrew's python@3.14 (which ansible itself
+        -- depends on) ships python3 but no unversioned python shim.
+        interpreterPath = "python3",
       },
       ansible = {
         path = "ansible",
