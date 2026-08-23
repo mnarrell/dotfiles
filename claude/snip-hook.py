@@ -95,7 +95,7 @@ def safe_command(command: str) -> bool:
     if args[0] == "go" and len(args) > 1:
         return args[1] in {"build", "test", "vet", "version"}
 
-    if args[0] in {"terraform", "tofu"} and len(args) > 1:
+    if args[0] == "tofu" and len(args) > 1:
         if args[1] == "init":
             return not any(
                 arg in {"-backend-config", "--backend-config"}

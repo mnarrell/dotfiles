@@ -1,7 +1,7 @@
 # Harness Rules
 
 Detailed workflows live in on-demand skills: `git-tree`, `gh-cli`, `snip`, `go`,
-`terraform`, `kubernetes`, `handoff`, and `permission-policy`.
+`opentofu`, `kubernetes`, `handoff`, and `permission-policy`.
 
 ## Working Style
 
@@ -28,6 +28,6 @@ interactive commands.
 - For public GitHub pages, files, documentation, and artifacts, use HTTPS through WebFetch. When authentication, private content, account-scoped data, or structured GitHub operations are needed, use `gh` automatically; load `gh-cli` for its workflow. GitHub writes always require approval.
 - OpenCode and Claude transparently run the approved shell catalog through `snip`. Issue normal commands; use the `snip` skill only for raw output, debugging, or an unavailable integration.
 - Load `git-tree` for branch or worktree operations, `go` for Go work,
-  `terraform` for Terraform/OpenTofu work, `kubernetes` for Kubernetes work, and
+  `opentofu` for OpenTofu work, `kubernetes` for Kubernetes work, and
   `handoff` for structured agent handoffs.
 - Use harness-specific agent and tool adapters only where their capabilities differ.
