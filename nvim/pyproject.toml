@@ -8,3 +8,11 @@ dependencies = [
     "pynvim>=0.6.0",
     "vim-vint>=0.3.21",
 ]
+
+[tool.uv]
+# Build this venv against uv's own CPython, never a system one. Homebrew's
+# python@3.14 exists only as substrate for ansible, pre-commit and yamllint,
+# so it moves when those formulae move -- and the venv's interpreter symlink
+# breaks with it. That is exactly how this venv broke when asdf's python was
+# removed. uv downloads a managed interpreter if none is present.
+python-preference = "only-managed"
