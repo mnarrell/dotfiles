@@ -303,6 +303,20 @@ tasks:
       - npm uninstall -g markdown2confluence
 
   ################################################################################
+  # Mise
+  mise:up:
+    desc: Configures the mise SDK manager
+    cmds:
+      # No completion regeneration: mise comes from Homebrew, which ships its
+      # own _mise in site-functions and wins on fpath anyway.
+      - ln -sfn {{.ROOT_DIR}}/mise {{.XDG_CONFIG_HOME}}/mise
+
+  mise:down:
+    desc: Removes the mise configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/mise
+
+  ################################################################################
   # Node
   node:up:
     desc: Configures NodeJS
@@ -540,6 +554,7 @@ tasks:
       - task: k9s:up
       - task: kube:up
       - task: markdown:up
+      - task: mise:up
       - task: node:up
       - task: npm:up
       - task: nvim:up
