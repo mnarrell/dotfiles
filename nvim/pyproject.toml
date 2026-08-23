@@ -6,7 +6,6 @@ dependencies = [
     "msgpack>=1.2.1",
     "neovim>=0.3.1",
     "pynvim>=0.6.0",
-    "vim-vint>=0.3.21",
 ]
 
 [tool.uv]
