@@ -5,4 +5,4 @@
 # form respects the `typeset -U path` dedup configured in zsh/path.zsh; the
 # (N-/) qualifier drops the entry if the dir doesn't exist yet (N = nullglob,
 # - = follow symlinks, / = directory only).
-path=($path ${GOBIN}(N-/))
+path=(${GOBIN}(N-/) $path)
