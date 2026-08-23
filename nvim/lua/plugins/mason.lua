@@ -11,9 +11,11 @@ local signs = require("icons").signs
 --   Homebrew  Anything also useful from a terminal or CI: shellcheck, shfmt,
 --             jq, prettier, stylua, yamllint, sqlfluff, and the linters
 --             hadolint + markdownlint.
---   asdf      The Go toolchain (gopls, gofumpt, gci, goimports, revive) via
---             `task go:up`. Deliberately absent here: asdf's shims sit ahead
---             of Mason on PATH, so a Mason copy would only be dead weight.
+--   mise      The Go toolchain itself; the Go tools (gopls, gofumpt, gci,
+--             goimports, revive) are `go install`ed into $GOBIN by
+--             `task go:up`. Deliberately absent here: golang/path.zsh puts
+--             $GOBIN ahead of Mason on PATH, so a Mason copy would only be
+--             dead weight.
 --   uv        ruff, installed to ~/.local/bin; left out for the same reason.
 
 -- Maps each `lsp/<name>.lua` config to the Mason package that provides its

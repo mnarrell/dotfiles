@@ -5,8 +5,8 @@
 # substrate for other formulae and can move whenever those formulae need them
 # to, so they can't be pinned. Tools where latest is always fine belong to
 # Homebrew instead, and Python is managed per-project by uv.
-#
-# Note: mise also loads ~/.tool-versions as a global config file, and it takes
-# precedence over this one, so a tool must leave there as it arrives here.
 
 [tools]
+go = "1.27.0"
+node = "26.7.0"
+ruby = "4.0.6"
