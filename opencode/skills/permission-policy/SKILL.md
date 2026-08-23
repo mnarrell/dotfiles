@@ -131,13 +131,12 @@ to fix a prompt authorizes analysis, not a permission broadening.
 
 ## Apply After Approval
 
-After explicit approval, make the smallest edits needed with `apply_patch`.
-Keep the four files conceptually aligned while preserving tool-specific syntax
-and unrelated settings. Do not create a generator or duplicate the policy into
-another source-of-truth file unless the user explicitly requests that design.
-
-Never commit, push, create a PR, or modify GitHub state unless the user gives a
-separate explicit instruction for that operation.
+After explicit approval, make the smallest edits needed with the harness's
+native editing tools. Keep the four files conceptually aligned while preserving
+tool-specific syntax and unrelated settings. Do not create a generator or
+duplicate the policy into another source of truth unless the user explicitly
+requests that design. Follow the global approval boundary for commits, pushes,
+and GitHub state changes.
 
 ## Validate
 
@@ -146,6 +145,7 @@ Run the checks relevant to the files changed:
 ```bash
 jq empty claude/settings.json
 jq empty .claude/settings.json
+python3 -m py_compile claude/snip-hook.py
 opencode debug config
 ```
 

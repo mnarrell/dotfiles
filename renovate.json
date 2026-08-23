@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/opencode/opencode\\.jsonc$/"],
+      "matchStrings": [
+        "// renovate: datasource=npm depName=(?<depName>[^\\s]+)[ \\t]*\\r?\\n[ \\t]*\\\"[^\\\"]+@(?<currentValue>[^\\\"]+)\\\""
+      ],
+      "datasourceTemplate": "npm",
+      "versioningTemplate": "npm"
+    }
+  ]
+}
