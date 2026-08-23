@@ -97,7 +97,7 @@
       "/Users/matt/.worktrees"
     ]
   },
-  "model": "opus",
+  "model": "sonnet",
   "hooks": {
     "PreToolUse": [
       {
@@ -106,6 +106,18 @@
           {
             "type": "command",
             "command": "snip hook"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/matt/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
           }
         ]
       }

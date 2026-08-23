@@ -1,0 +1,41 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+space"
+new_tab = "prefix+c"
+split_vertical = ["prefix+v", "prefix+backslash"]
+split_horizontal = "prefix+minus"
+focus_pane_left = ["prefix+h", "alt+left"]
+focus_pane_down = ["prefix+j", "alt+down"]
+focus_pane_up = ["prefix+k", "alt+up"]
+focus_pane_right = ["prefix+l", "alt+right"]
+resize_pane_left = "prefix+left"
+resize_pane_down = "prefix+down"
+resize_pane_up = "prefix+up"
+resize_pane_right = "prefix+right"
+zoom = "prefix+z"
+close_pane = "prefix+x"
+switch_tab = "prefix+1..9"
+rename_tab = ["prefix+shift+t", "prefix+comma"]
+reload_config = "prefix+r"
+
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "tig status"
+description = "Open tig status in a popup"
+width = "80%"
+height = "80%"
+
+[theme]
+name = "kanagawa"
+auto_switch = false
+
+[ui.sound]
+enabled = true
+
+[ui.toast]
+delivery = "off"
+
+[ui]
+show_agent_labels_on_pane_borders = false

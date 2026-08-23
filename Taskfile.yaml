@@ -458,6 +458,20 @@ tasks:
       - rm -rf {{.XDG_DATA_HOME}}/tig
 
   ################################################################################
+  # HERDR
+  herdr:up:
+    desc: Configures Herdr
+    deps: [ensure_xdg]
+    cmds:
+      - mkdir -p {{.XDG_CONFIG_HOME}}/herdr
+      - ln -sfn {{.ROOT_DIR}}/herdr/config.toml {{.XDG_CONFIG_HOME}}/herdr/config.toml
+
+  herdr:down:
+    desc: Removes Herdr configuration link
+    cmds:
+      - rm -f {{.XDG_CONFIG_HOME}}/herdr/config.toml
+
+  ################################################################################
   # TMUX
   tmux:up:
     desc: Configures TMUX
@@ -536,6 +550,7 @@ tasks:
       - task: ruff:up
       - task: task:up
       - task: tig:up
+      - task: herdr:up
       - task: tmux:up
       - task: yamllint:up
       - task: zsh:up
