@@ -8,7 +8,7 @@ end)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.python3_host_prog = vim.env.XDG_CONFIG_HOME .. "/nvim/.venv/bin/python"
-vim.g.ruby_host_prog = vim.env.XDG_DATA_HOME .. "/asdf/shims/ruby"
+vim.g.ruby_host_prog = vim.env.XDG_DATA_HOME .. "/mise/shims/ruby"
 vim.g.loaded_perl_provider = 0
 vim.g.vimsyn_embed = "l" -- highlight inline Lua
 
