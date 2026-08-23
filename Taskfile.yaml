@@ -43,18 +43,6 @@ tasks:
       - rm -f {{.HOME}}/.terminfo/61/alacritty-direct
 
   ################################################################################
-  ## ASDF
-  asdf:up:
-    desc: Configures the ASDF SDK manager
-    cmds:
-      - ln -sfn {{.ROOT_DIR}}/asdf {{.XDG_CONFIG_HOME}}/asdf
-
-  asdf:down:
-    desc: Removes the ASDF configuration
-    cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/asdf
-
-  ################################################################################
   # Bash
   bash:up:
     desc: Configures the Bash shell
@@ -524,7 +512,6 @@ tasks:
     cmds:
       - task: ensure_xdg
       - task: alacritty:up
-      - task: asdf:up
       - task: ghostty:up
       - task: bash:up
       - task: bin:up

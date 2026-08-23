@@ -19,13 +19,11 @@ SYSTEM_PATH=${PATH}
 # GNU userland and Go's bin are added by gnu/path.zsh and golang/path.zsh.
 path=(
   ${HOME}/.local/bin
-  # mise shims ahead of asdf's. Interactive shells get real (non-shim) paths
-  # from mise/init.zsh's `mise activate`, which prepends at each prompt; this
-  # dir is what non-interactive children (task, scripts, nvim's `:!`) inherit,
-  # since they never source the init phase. Ordering matters while both
-  # managers are installed: a tool that has moved to mise must win.
+  # Interactive shells get real (non-shim) tool paths from mise/init.zsh's
+  # `mise activate`, which prepends at each prompt. This shims dir is what
+  # non-interactive children (task, scripts, nvim's `:!`) inherit, since they
+  # never source the init phase.
   ${MISE_DATA_DIR}/shims(N-/)
-  ${ASDF_DATA_DIR}/shims(N-/)
   ${HOME}/.local/share/nvim/mason/bin(N-/)
   /opt/homebrew/bin(N-/)
   /opt/homebrew/sbin(N-/)
