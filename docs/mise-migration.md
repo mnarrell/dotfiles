@@ -129,18 +129,35 @@ helm plugin list                              # diff present
 ## Rolling back
 
 `git revert` is not sufficient. It restores the repo but not machine state —
-asdf would still be uninstalled and `~/.tool-versions` still deleted. A real
-rollback is:
+asdf would still be uninstalled and `~/.tool-versions` still deleted.
+
+The `~/.tool-versions` asdf managed, immediately before any of this began,
+pinned these seven:
+
+```text
+golang 1.27.0
+helm 4.2.4
+kubectl 1.36.4
+nodejs 26.7.0
+opentofu 1.12.6
+python 3.14.7
+ruby 4.0.6
+```
+
+It is recorded here rather than kept as a file because a stray
+`.tool-versions` anywhere in a directory you work from would be read by mise
+and would override `mise/config.toml` — the exact trap described above. To
+restore it:
 
 ```bash
 brew install asdf
-cp ~/.tool-versions.bak ~/.tool-versions
-asdf plugin add golang && asdf plugin add nodejs   # and so on per tool
+for t in golang helm kubectl nodejs opentofu python ruby; do asdf plugin add "$t"; done
+# recreate ~/.tool-versions from the block above
 asdf install
 ```
 
-Keep `~/.tool-versions.bak` somewhere durable if you want a genuine escape
-hatch — it lives in `$HOME`, is untracked, and is one `rm` from gone.
+Note that the versions above are a snapshot, not a supported combination in
+perpetuity — asdf plugins fetch from upstream, and old releases do get pulled.
 
 ---
 
