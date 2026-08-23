@@ -79,8 +79,21 @@ step 2 did not take effect.
 
 ### 5. Remove asdf
 
-`brew bundle` never uninstalls anything, so dropping `brew 'asdf'` from the
-Brewfiles does **not** remove it from any machine. Do it explicitly:
+Plain `brew bundle` only installs, so dropping `brew 'asdf'` from the Brewfiles
+does not remove it from any machine.
+
+`brew bundle cleanup` does remove formulae that are no longer listed, but it
+removes **everything** unlisted, not just asdf — including anything installed
+ad hoc. Always read the dry run first:
+
+```bash
+brew bundle cleanup           # dry run: lists what would go
+brew bundle cleanup --force   # only if that list is entirely expected
+```
+
+Formulae kept as dependencies of listed ones are safe, so `helm` survives via
+`helmfile`. Directly installed tools that never made it into a Brewfile do not.
+For a single formula, the targeted removal avoids the blast radius entirely:
 
 ```bash
 brew uninstall asdf
