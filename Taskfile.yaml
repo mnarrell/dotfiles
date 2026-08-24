@@ -379,6 +379,7 @@ tasks:
       - ln -sfn {{.ROOT_DIR}}/claude/agents {{.HOME}}/.claude/agents
       - ln -sfn {{.ROOT_DIR}}/opencode/AGENTS.md {{.HOME}}/.claude/CLAUDE.md
       - ln -sfn {{.ROOT_DIR}}/claude/settings.json {{.HOME}}/.claude/settings.json
+      - ln -sfn {{.ROOT_DIR}}/claude/snip-hook.py {{.HOME}}/.claude/snip-hook.py
       - ln -sfn {{.ROOT_DIR}}/claude/statusline-command.sh {{.HOME}}/.claude/statusline-command.sh
 
   opencode:down:
@@ -389,6 +390,7 @@ tasks:
       - rm -f {{.HOME}}/.claude/skills
       - rm -f {{.HOME}}/.claude/agents
       - rm -f {{.HOME}}/.claude/settings.json
+      - rm -f {{.HOME}}/.claude/snip-hook.py
       - rm -f {{.HOME}}/.claude/statusline-command.sh
 
   ################################################################################

@@ -1,45 +1,29 @@
 ---
 name: snip
-description: "Compress shell-command output with `snip` before it enters context. Covers when to prefix vs. skip it, debugging which filter matched, and checking token savings."
+description: "Use when output compression needs debugging, bypassing, or verification in the configured snip integrations."
 ---
 
-## Rule
+## Configured Integrations
 
-Prefix shell commands with `snip` to compress their output before it enters the context
-window. `snip` has 126 built-in filters (git, go, cargo, npm, docker, and more); commands
-without a matching filter pass through unchanged.
+OpenCode uses a pinned `opencode-snip` plugin. Claude Code uses
+`~/.claude/snip-hook.py`, which permits transparent rewrites only for the explicit
+safe and routine command catalog. Issue ordinary commands; do not manually prefix
+them with `snip`.
 
-```bash
-snip git log -10
-snip go test ./...
-snip cargo test
-snip npm run build
-snip docker ps
-```
+Commands outside Claude's catalog keep their normal permission flow and may run
+unfiltered. This protects Git, GitHub, and shell mutations from the hook's automatic
+approval behavior.
 
-## When to skip
+## Exceptions
 
-- `snip` reports `snip: no filter for "<cmd>"` — rerun without `snip`.
-- You need raw, unfiltered output.
-- Remote machines (SSH, Docker) that don't have `snip` installed.
+- Use `snip proxy -- <command>` when raw output is required.
+- On remote machines without `snip`, run the command normally.
+- A command without a matching filter passes through unchanged.
 
-## Debug which filter matched
+## Diagnostics
 
 ```bash
-snip -v git log
+snip check -- <command>
+snip -v <command>
+snip hook-audit
 ```
-
-## Token savings
-
-```bash
-snip gain            # total saved
-snip gain --daily
-snip gain --top 10
-```
-
-| Command         | Raw output                                  | Filtered output                      |
-| --------------- | ------------------------------------------- | ------------------------------------ |
-| `go test ./...` | 689 tokens, full package list with coverage | `10 passed, 0 failed` (16 tokens)    |
-| `git log`       | 371 tokens, full commit metadata            | 53 tokens (hash + message + author)  |
-| `git status`    | 112 tokens, verbose file listings           | 16 tokens (staged/unstaged summary)  |
-| `cargo test`    | 591 tokens, test names and durations        | 5 tokens (pass/fail summary)         |

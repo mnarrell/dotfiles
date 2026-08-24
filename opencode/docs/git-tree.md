@@ -47,21 +47,21 @@ You don't have to use the command. Just ask in plain language — the agent load
 
 ### "what branches are active?"
 
-The agent runs `snip git worktree list` and `snip git branch -v`, then presents a clean summary.
+The agent runs `git worktree list` and `git branch -v`, then presents a clean summary.
 
 ### "create a worktree for the auth feature"
 
 The agent runs:
 
 ```bash
-snip git worktree add ../project-auth -b feat/auth
+git worktree add ../project-auth -b feat/auth
 ```
 
 It creates both the branch and the worktree in one step, then tells you where the new directory is.
 
 ### "switch to the auth worktree"
 
-The agent finds the right worktree and runs `snip git worktree switch` or `snip git checkout` as appropriate.
+The agent finds the right worktree and runs `git worktree switch` or `git checkout` as appropriate.
 
 ### "what's stale?"
 
@@ -72,17 +72,18 @@ The agent checks each branch's last commit age and how far behind main it is, th
 The agent removes the worktree (if it exists) and deletes the merged branch:
 
 ```bash
-snip git worktree remove ../project-auth
-snip git branch -d feat/auth
+git worktree remove ../project-auth
+git branch -d feat/auth
 ```
 
-### "review my teammate's PR"
+### "review my teammate's branch"
 
-The agent fetches their branch and creates a temporary worktree:
+For an existing Git remote, the agent fetches the branch and creates a temporary
+worktree. This is Git transport, not GitHub web or API access:
 
 ```bash
-snip git fetch origin feat/teammate-feature
-snip git worktree add ../review feat/teammate-feature
+git fetch origin feat/teammate-feature
+git worktree add ../review feat/teammate-feature
 ```
 
 You review in `../review`, then tell the agent to clean up when done.
@@ -94,7 +95,7 @@ You review in `../review`, then tell the agent to clean up when done.
 1. You type something about branches/worktrees
 2. Agent recognizes the intent and loads the `git-tree` skill
 3. The skill provides reference tables of git commands
-4. Agent executes the right commands via `bash`, prefixing with `snip`
+4. The harness transparently compresses approved command output
 5. Results are presented in a clean format
 
 The skill stays out of context until needed — it's loaded on demand, not every session.

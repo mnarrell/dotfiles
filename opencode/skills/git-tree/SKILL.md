@@ -1,67 +1,28 @@
 ---
 name: git-tree
-description: "Use this skill when working with git branches or worktrees. Covers listing, creating, switching, and deleting branches and worktrees."
+description: "Use for Git branch or worktree operations, including creation, switching, deletion, and PR preparation."
 ---
 
-## Rules
+## Branch Workflow
 
-1. **Create a feature branch first; never commit directly to `main`.**
-2. **Use a worktree only when the user asks for one, or when multiple workers run in parallel on the same repository.**
-   Default location: `~/.worktrees/<repo>/<branch-name>`.
-3. Branch names follow conventional style: `type/short-description` (e.g., `fix/dns-resolution`, `feat/add-auth-proxy`).
+Create a feature branch before making changes; never commit directly to `main`.
+Use `type/short-description` names, such as `fix/dns-resolution`. Before opening or
+updating a PR, rebase onto `origin/main`; keep `main` linear and squash-merge PRs.
 
-## Quick Start
+Use a worktree only when the user asks or concurrent workers need isolated checkouts.
+The default location is `~/.worktrees/<repo>/<branch-name>`.
+
+## Inspection
 
 ```bash
-snip git worktree list
-snip git branch
+git status --short
+git branch -v
+git worktree list
 ```
 
-## Branches
+## State Changes
 
-| Task | Command |
-|---|---|
-| List local branches | `snip git branch` |
-| List all (incl. remote) | `snip git branch -a` |
-| Create + switch | `snip git checkout -b <name>` |
-| Create only | `snip git branch <name>` |
-| Switch | `snip git checkout <name>` |
-| Delete (merged) | `snip git branch -d <name>` |
-| Delete (force) | `snip git branch -D <name>` |
-| Rename | `snip git branch -m <old> <new>` |
-| Last commit age | `snip git log -1 --format='%ar' <branch>` |
-| Commits ahead of main | `snip git rev-list --count main..<branch>` |
-| Show merged into main | `snip git branch --merged main` |
-| Show unmerged | `snip git branch --no-merged` |
-
-## Pushing
-
-`push.default` is set to `nothing` — always specify the remote and branch explicitly.
-
-| Task | Command |
-|---|---|
-| Push current branch | `snip git push origin <branch>` |
-| Push and set upstream | `snip git push -u origin <branch>` |
-| Push to main | `snip git push origin HEAD:main` |
-
-## Worktrees
-
-Worktrees are opt-in — use them only when asked, or when multiple workers run in parallel on the same repository.
-`git worktree add` creates the branch and worktree in one step.
-
-| Task | Command |
-|---|---|
-| Create branch + worktree | `snip git worktree add ~/.worktrees/<repo>/<name> -b <name>` |
-| Add worktree for existing branch | `snip git worktree add <path> <branch>` |
-| List worktrees | `snip git worktree list` |
-| Switch worktree | `snip git worktree switch <path>` |
-| Remove worktree | `snip git worktree remove <path>` |
-| Prune stale references | `snip git worktree prune` |
-
-## Tips
-
-- Worktrees share `.git` — commits and history are visible across all of them
-- A branch checked out in a worktree cannot be `checkout`ed elsewhere; use `git worktree switch`
-- Run `git worktree prune` after manually deleting worktree directories
-- `git worktree list --porcelain` gives machine-readable output
-- Each worktree can have its own uncommitted changes without affecting others
+- Inspect status before switching branches or worktrees. Ask before a checkout that could overwrite changes.
+- Ask before deleting branches or worktrees, pruning worktrees, committing, pushing, merging, or force operations.
+- Use `git push origin <branch>` or `git push -u origin <branch>`; never use a bare push.
+- Use `git mv` for tracked-file moves. Use plain `mv` only for untracked files or after `git mv` fails.
