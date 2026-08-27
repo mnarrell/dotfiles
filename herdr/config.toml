@@ -19,6 +19,40 @@ switch_tab = "prefix+1..9"
 rename_tab = ["prefix+shift+t", "prefix+comma"]
 reload_config = "prefix+r"
 
+# Sessions / workspaces
+goto               = "prefix+s"
+workspace_picker   = "prefix+w"
+new_workspace      = "prefix+shift+n"
+rename_workspace   = "prefix+shift+r"
+close_workspace    = "prefix+shift+x"
+previous_workspace = "prefix+["
+next_workspace     = "prefix+]"
+
+# Navigate mode
+navigate_workspace_up   = "k"
+navigate_workspace_down = "j"
+
+# Worktrees
+new_worktree    = "prefix+shift+g"
+open_worktree   = "prefix+shift+o"
+remove_worktree = "prefix+shift+d"
+
+# Tab navigation
+previous_tab      = "prefix+p"
+next_tab          = "prefix+n"
+move_tab_previous = "prefix+<"
+move_tab_next     = "prefix+>"
+
+# Pane extras
+rename_pane     = "prefix+shift+p"
+copy_mode       = "prefix+u"
+edit_scrollback = "prefix+e"
+
+# UI / global
+toggle_sidebar = "prefix+b"
+detach         = "prefix+d"
+help           = "prefix+?"
+
 [[keys.command]]
 key = "prefix+g"
 type = "popup"
@@ -35,7 +69,14 @@ auto_switch = false
 enabled = true
 
 [ui.toast]
-delivery = "off"
+delivery = "system"
 
 [ui]
 show_agent_labels_on_pane_borders = false
+
+agent_panel_sort = "spaces"
+[worktrees]
+directory = "~/.herdr/worktrees"
+
+[session]
+resume_agents_on_restore = true

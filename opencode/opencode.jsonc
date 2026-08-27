@@ -54,6 +54,10 @@
       "/tmp/**": "allow",
       "~/.worktrees/**": "allow",
       "~/.ssh/config": "allow",
+      "~/src/**": "allow",
+      "~/.private_dotfiles/**": "allow",
+      "~/.local/share/mise/**": "allow",
+      "~/tmp/xdg_runtime/**": "allow",
     },
     "bash": {
       "*": "ask",

@@ -41,6 +41,7 @@
       "~/.local/state/**": "allow",
       "~/.cache/**": "allow",
       "~/tmp/xdg_runtime/**": "allow",
+      "/tmp/**": "allow",
       "~/.claude/**": "allow",
       "~/.terminfo/**": "allow",
 
