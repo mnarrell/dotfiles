@@ -377,7 +377,7 @@ tasks:
       - ln -sfn {{.ROOT_DIR}}/opencode/skills {{.HOME}}/.claude/skills
       - rm -rf {{.HOME}}/.claude/agents
       - ln -sfn {{.ROOT_DIR}}/claude/agents {{.HOME}}/.claude/agents
-      - ln -sfn {{.ROOT_DIR}}/opencode/AGENTS.md {{.HOME}}/.claude/CLAUDE.md
+      - ln -sfn {{.ROOT_DIR}}/claude/CLAUDE.md {{.HOME}}/.claude/CLAUDE.md
       - ln -sfn {{.ROOT_DIR}}/claude/settings.json {{.HOME}}/.claude/settings.json
       - ln -sfn {{.ROOT_DIR}}/claude/snip-hook.py {{.HOME}}/.claude/snip-hook.py
       - ln -sfn {{.ROOT_DIR}}/claude/statusline-command.sh {{.HOME}}/.claude/statusline-command.sh
