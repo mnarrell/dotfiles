@@ -1,29 +1,10 @@
 ---
 description: Performs bounded, read-only web research and returns concise evidence-backed synthesis.
 mode: subagent
-model: openai/gpt-5.6-luna
 permission:
   edit: deny
   bash:
     "*": "deny"
-    "gh auth status*": "allow"
-    "gh pr list*": "allow"
-    "gh pr view*": "allow"
-    "gh pr checks*": "allow"
-    "gh pr diff*": "allow"
-    "gh pr status*": "allow"
-    "gh issue list*": "allow"
-    "gh issue view*": "allow"
-    "gh repo list*": "allow"
-    "gh repo view*": "allow"
-    "gh run list*": "allow"
-    "gh run view*": "allow"
-    "gh release list*": "allow"
-    "gh release view*": "allow"
-    "gh search *": "allow"
-    "gh workflow list*": "allow"
-    "gh workflow view*": "allow"
-    "gh label list*": "allow"
     "snip gh auth status*": "allow"
     "snip gh pr list*": "allow"
     "snip gh pr view*": "allow"
