@@ -3,21 +3,21 @@ name: snip
 description: "Use when output compression needs debugging, bypassing, or verification in the configured snip integrations."
 ---
 
-## Configured Integrations
+## OpenCode integration
 
-OpenCode uses a pinned `opencode-snip` plugin. Claude Code uses
-`~/.claude/snip-hook.py`, which permits transparent rewrites only for the explicit
-safe and routine command catalog. Issue ordinary commands; do not manually prefix
-them with `snip`.
+Issue ordinary raw shell commands. The repo-local OpenCode rewrite hook adds
+`snip ` only to eligible nonempty simple Bash commands, before OpenCode's native
+permission and external-directory checks. It leaves a whole command raw when it
+contains a compound operator or any ambiguous shell syntax.
 
-Commands outside Claude's catalog keep their normal permission flow and may run
-unfiltered. This protects Git, GitHub, and shell mutations from the hook's automatic
-approval behavior.
+A manual `snip` prefix is not inherently trusted: it must still match the
+applicable command-specific permission rule. Restart OpenCode after changing the
+plugin or its configuration.
 
 ## Exceptions
 
 - Use `snip proxy -- <command>` when raw output is required.
-- On remote machines without `snip`, run the command normally.
+- On remote machines without the local rewrite hook, run the command normally.
 - A command without a matching filter passes through unchanged.
 
 ## Diagnostics

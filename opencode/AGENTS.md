@@ -26,7 +26,12 @@ interactive commands.
 ## Routing
 
 - For public GitHub pages, files, documentation, and artifacts, use HTTPS through WebFetch. When authentication, private content, account-scoped data, or structured GitHub operations are needed, use `gh` automatically; load `gh-cli` for its workflow. GitHub writes always require approval.
-- OpenCode and Claude transparently run the approved shell catalog through `snip`. Issue normal commands; use the `snip` skill only for raw output, debugging, or an unavailable integration.
+- In OpenCode, issue ordinary raw shell commands. The repo-local rewrite hook
+  conservatively prefixes eligible simple Bash commands with `snip ` before
+  native permission and external-directory evaluation. Compound or ambiguous
+  commands stay raw in full. A manual `snip` prefix is not inherently trusted;
+  it remains subject to command-specific permissions. Use `snip proxy -- <command>`
+  only as the raw-output escape hatch. Restart OpenCode after changing this hook.
 - Load `git-tree` for branch or worktree operations, `go` for Go work,
   `opentofu` for OpenTofu work, `kubernetes` for Kubernetes work, and
   `handoff` for structured agent handoffs.
