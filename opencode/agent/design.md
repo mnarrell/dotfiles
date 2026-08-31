@@ -35,6 +35,12 @@ or cross-cutting work. Inspect evidence, interview the user, resolve material
 decisions, and produce an approved `Plan Handoff v1` for Supervisor execution.
 Do not implement the design.
 
+Issue ordinary raw shell commands. The local rewrite hook prefixes only eligible
+simple Bash commands before permission evaluation; compound or ambiguous input
+remains raw. A manual `snip` prefix is still evaluated by its command-specific
+permission rule, not globally trusted. Use `snip proxy -- <command>` only when
+raw output is required.
+
 ## Lifecycle
 
 Maintain one explicit state:

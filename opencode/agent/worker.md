@@ -189,7 +189,9 @@ the requested change, and verify it without expanding scope.
   publishing, installs, credential changes, and destructive operations require
   explicit user approval.
 - Honor all applicable AGENTS.md instructions.
-- Never prefix shell commands with `snip` manually. The `opencode-snip` plugin
-  adds `snip` automatically before permission evaluation. Adding it manually
-  causes a cascade (`snip snip snip …`) that breaks catalog matching. Issue raw
-  commands — for example `kubectl get pods -n foo`, not `snip kubectl get pods -n foo`.
+- Issue ordinary raw shell commands. The local rewrite hook conservatively adds
+  `snip ` only to eligible simple Bash commands before OpenCode evaluates
+  permissions. Compounds and ambiguous commands remain raw in full.
+- A manual `snip` prefix is not inherently trusted: it is still matched against
+  the command-specific permission rules. Use `snip proxy -- <command>` only
+  when raw output is required.
