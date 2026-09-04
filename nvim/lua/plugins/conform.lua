@@ -10,7 +10,7 @@ return {
       json = { "jq" },
       jsonc = { "prettier" },
       lua = { "stylua" },
-      markdown = { "prettier" },
+      markdown = { "prettier_markdown" },
       python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
       sh = { "shellharden", "shfmt" },
       terraform = { "tofu_fmt" },
@@ -28,6 +28,10 @@ return {
     end,
 
     formatters = {
+      prettier_markdown = {
+        inherit = "prettier",
+        prepend_args = { "--print-width", "120", "--prose-wrap", "always" },
+      },
       shfmt = {
         prepend_args = { "-i", "2", "-ci" },
       },
