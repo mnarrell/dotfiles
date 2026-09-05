@@ -357,6 +357,7 @@ tasks:
   opentofu:up:
     desc: "Links OpenTofu configuration"
     cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/opentofu
       - ln -sfn {{.ROOT_DIR}}/opentofu {{.XDG_CONFIG_HOME}}/opentofu
 
   opentofu:down:
@@ -370,6 +371,7 @@ tasks:
     desc: Configures OpenCode and Claude Code
     deps: [ensure_xdg]
     cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/opencode
       - ln -sfn {{.ROOT_DIR}}/opencode {{.XDG_CONFIG_HOME}}/opencode
       - npm install --prefix {{.ROOT_DIR}}/opencode
       - mkdir -p {{.HOME}}/.claude

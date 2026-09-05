@@ -44,8 +44,14 @@
       },
       "models": {
         "qwen2.5:14b": { "name": "Qwen 2.5 14B" },
-        "qwen2.5-coder:14b": { "name": "Qwen 2.5 Coder 14B" },
-        "qwen3:14b": { "name": "Qwen 3 14B" },
+        "qwen2.5-coder:14b": {
+          "name": "Qwen 2.5 Coder 14B",
+          "limit": { "context": 16384, "output": 4096 },
+        },
+        "qwen3:14b": {
+          "name": "Qwen 3 14B",
+          "limit": { "context": 16384, "output": 4096 },
+        },
         "gemma3:12b": { "name": "Gemma 3 12B" },
       },
     },
