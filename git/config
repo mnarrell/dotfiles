@@ -19,7 +19,7 @@
 
 [alias]
   br = branch
-  cb = !git checkout $(git branch | fzf)
+  cb = !git checkout --ignore-other-worktrees $(git branch --format='%(refname:short)' | fzf)
   ct = !git checkout $(git tag | fzf)
   ci = commit
   cm = !git add -A && git commit -m
