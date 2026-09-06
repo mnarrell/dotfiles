@@ -14,6 +14,7 @@ permission:
     "snip ls": allow
     "snip ls *": allow
     "snip rg *": allow
+    "snip fd *": allow
     "snip wc *": allow
     "snip tree": allow
     "snip tree *": allow
@@ -25,7 +26,6 @@ permission:
     "snip which *": allow
     "snip date": allow
     "snip date *": allow
-    "snip grep *": allow
     "snip cut *": allow
 
     "snip git status*": allow
@@ -159,6 +159,10 @@ permission:
     "go test*": deny
     "snip go build*": deny
     "snip go test*": deny
+    "find*": deny
+    "snip find*": deny
+    "grep*": deny
+    "snip grep*": deny
 ---
 
 You are the Worker: a lean implementation agent used either directly or for a

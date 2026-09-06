@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Read(~/.ssh/config)",
       "Read(//tmp/**)",
@@ -249,6 +248,7 @@
       "Bash(tofu init *--migrate-state*)",
       "Bash(tofu plan *-generate-config-out*)"
     ],
+    "defaultMode": "auto",
     "additionalDirectories": [
       "/tmp",
       "/Users/matt/.worktrees",
@@ -258,7 +258,7 @@
       "~/tmp/xdg_runtime"
     ]
   },
-  "model": "sonnet",
+  "model": "opus[1m]",
   "hooks": {
     "PreToolUse": [
       {

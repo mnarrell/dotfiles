@@ -18,6 +18,9 @@ infrastructure changes, package publishing, destructive data operations, system-
 installation, credential or `.env` changes, or mass deletion. Do not run host `sudo` or
 interactive commands.
 
+When a user approves a commit, do not add AI-authorship or attribution lines, including
+`Co-authored-by` trailers, to the commit message.
+
 ## Security
 
 - Never expose or hardcode secrets, tokens, keys, PII, or `.env` contents. Warn before a command could expose them.
