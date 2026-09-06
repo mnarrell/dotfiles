@@ -6,7 +6,6 @@ vim.filetype.add({
   filename = {
     ["staticcheck.conf"] = "toml",
     [".envrc"] = "direnv",
-    ["main.yaml"] = "yaml.ansible",
     -- Chart metadata is plain YAML (schema-validated by yaml-language-server),
     -- never a Go template, so keep it off the `helm` filetype.
     ["Chart.yaml"] = "yaml",
@@ -16,7 +15,7 @@ vim.filetype.add({
     ["*.tf"] = "terraform",
     [".*/%.kube/config"] = "yaml",
     [".*/git/config.*"] = "gitconfig",
-    [".*/playbooks/.*%.yaml"] = "yaml.ansible",
+    [".*/ansible/.*%.ya?ml"] = "ansible",
     -- Helm charts: everything under templates/ is a Go template. Both the YAML
     -- manifests (deployment.yaml) and the mustache-like partials (_helpers.tpl)
     -- use the `helm` filetype so the tree-sitter `helm` parser injects YAML into

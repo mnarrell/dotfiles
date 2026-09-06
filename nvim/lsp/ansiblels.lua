@@ -27,12 +27,12 @@ return {
       validation = {
         enabled = true,
         lint = {
-          enabled = true,
+          enabled = false,
           path = "ansible-lint",
         },
       },
     },
   },
-  filetypes = { "yaml.ansible" },
+  filetypes = { "ansible" },
   root_markers = { "ansible.cfg", ".ansible-lint" },
 }

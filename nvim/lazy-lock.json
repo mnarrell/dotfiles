@@ -1,6 +1,5 @@
 {
   "LuaSnip": { "branch": "master", "commit": "0abc8f390b278c3b4aabc4c004ac8a088b65cf24" },
-  "ansible-vim": { "branch": "master", "commit": "6c42a448e30bc48ae98792bce38970148b0e3c9d" },
   "blink-cmp-tmux": { "branch": "main", "commit": "112ddbf2e09d9cb4736de70dd01eb9654cf01d70" },
   "blink.cmp": { "branch": "main", "commit": "78336bc89ee5365633bcf754d93df01678b5c08f" },
   "codecompanion.nvim": { "branch": "main", "commit": "a61730e84f92453390a4e1250482033482c33e84" },
