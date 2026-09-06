@@ -79,6 +79,11 @@ key = "T"
 mods = "Command"
 
 [[keyboard.bindings]]
+chars = "\u0000N"
+key = "A"
+mods = "Command"
+
+[[keyboard.bindings]]
 chars = "\u0000-"
 key = "S"
 mods = "Command"
@@ -219,4 +224,3 @@ y = 2
 [window.position]
 x = 100
 y = 100
-
