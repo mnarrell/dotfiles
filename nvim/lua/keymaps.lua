@@ -79,7 +79,7 @@ map("n", "_vd", ":set filetype=vimdoc<CR>")
 map("n", "_xm", ":set filetype=xml<CR>")
 map("n", "_ya", ":set filetype=yaml<CR>")
 map("n", "_zs", ":set filetype=zsh<CR>")
-map("n", "_an", ":set filetype=yaml.ansible<CR>")
+map("n", "_an", ":set filetype=ansible<CR>")
 map("n", "_ng", ":set filetype=nginx<CR>")
 
 -- Navigate between tabpages

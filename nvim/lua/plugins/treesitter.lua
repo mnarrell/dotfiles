@@ -32,10 +32,9 @@ return {
     ts.setup()
     ts.install(parsers)
 
-    -- `values*.yaml` uses the compound filetype `yaml.helm-values` so helm-ls
-    -- can attach; map it back to the `yaml` parser so the FileType autocmd below
-    -- (which resolves via `get_lang`) still starts tree-sitter for those buffers.
-    vim.treesitter.language.register("yaml", "yaml.helm-values")
+    -- `ansible` and `values*.yaml` share the YAML parser. The latter uses the
+    -- compound filetype `yaml.helm-values` so helm-ls can attach.
+    vim.treesitter.language.register("yaml", { "ansible", "yaml.helm-values" })
 
     -- Start treesitter for any buffer whose language has a parser available,
     -- not just the statically-installed set above (covers parsers added later

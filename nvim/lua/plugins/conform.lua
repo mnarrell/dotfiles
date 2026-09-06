@@ -3,6 +3,7 @@ return {
   event = { "BufWritePre" },
   opts = {
     formatters_by_ft = {
+      ansible = { "prettier" },
       ["terraform-vars"] = { "tofu_fmt" },
       dockerfile = { "dockerfmt" },
       go = { "goimports", "gofumpt" },
