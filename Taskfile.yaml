@@ -67,6 +67,33 @@ tasks:
       - ln -sf {{.ROOT_DIR}}/bin/* {{.BIN_HOME}}
 
   ################################################################################
+  # Claude Code
+  claude:up:
+    desc: Configures Claude Code
+    deps: [ensure_xdg]
+    cmds:
+      - mkdir -p {{.HOME}}/.claude
+      - ln -sfn {{.ROOT_DIR}}/claude/agents {{.HOME}}/.claude/agents
+      - ln -sfn {{.ROOT_DIR}}/claude/CLAUDE.md {{.HOME}}/.claude/CLAUDE.md
+      - ln -sfn {{.ROOT_DIR}}/claude/settings.json {{.HOME}}/.claude/settings.json
+      - ln -sfn {{.ROOT_DIR}}/claude/snip-hook.py {{.HOME}}/.claude/snip-hook.py
+      - ln -sfn {{.ROOT_DIR}}/claude/statusline-command.sh {{.HOME}}/.claude/statusline-command.sh
+      # Link each skill, not the directory, so skills from other sources can
+      # live in ~/.claude/skills alongside these.
+      - mkdir -p {{.HOME}}/.claude/skills
+      - ln -sfn {{.ROOT_DIR}}/claude/skills/* {{.HOME}}/.claude/skills
+
+  claude:down:
+    desc: Removes only matching Claude Code links
+    cmds:
+      - rm -f {{.HOME}}/.claude/CLAUDE.md
+      - rm -f {{.HOME}}/.claude/agents
+      - rm -f {{.HOME}}/.claude/settings.json
+      - rm -f {{.HOME}}/.claude/snip-hook.py
+      - rm -f {{.HOME}}/.claude/statusline-command.sh
+      - for s in {{.ROOT_DIR}}/claude/skills/*/; do rm -f {{.HOME}}/.claude/skills/$(basename $s); done
+
+  ################################################################################
   # Docker
   docker:up:
     desc: Configures the Docker engine
@@ -206,10 +233,6 @@ tasks:
     desc: Configures the Homebrew environment
     cmds:
       - |
-        # Transition from old whole-directory symlink to per-file symlinks
-        if [ -L "{{.XDG_CONFIG_HOME}}/homebrew" ]; then
-          rm "{{.XDG_CONFIG_HOME}}/homebrew"
-        fi
       - mkdir -p {{.XDG_CONFIG_HOME}}/homebrew
       - ln -sfn {{.ROOT_DIR}}/homebrew/aliases.zsh {{.XDG_CONFIG_HOME}}/homebrew/aliases.zsh
       - cp -n {{.ROOT_DIR}}/homebrew/trust.json {{.XDG_CONFIG_HOME}}/homebrew/trust.json
@@ -357,7 +380,6 @@ tasks:
   opentofu:up:
     desc: "Links OpenTofu configuration"
     cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/opentofu
       - ln -sfn {{.ROOT_DIR}}/opentofu {{.XDG_CONFIG_HOME}}/opentofu
 
   opentofu:down:
@@ -368,36 +390,22 @@ tasks:
   ################################################################################
   # OpenCode
   opencode:up:
-    desc: Configures OpenCode and Claude Code
+    desc: Configures OpenCode
     deps: [ensure_xdg]
     cmds:
-      - rm -rf {{.XDG_CONFIG_HOME}}/opencode
       - ln -sfn {{.ROOT_DIR}}/opencode {{.XDG_CONFIG_HOME}}/opencode
       - npm install --prefix {{.ROOT_DIR}}/opencode
-      - mkdir -p {{.HOME}}/.claude
-      - rm -rf {{.HOME}}/.claude/agents
-      - ln -sfn {{.ROOT_DIR}}/claude/agents {{.HOME}}/.claude/agents
-      - ln -sfn {{.ROOT_DIR}}/claude/CLAUDE.md {{.HOME}}/.claude/CLAUDE.md
-      - ln -sfn {{.ROOT_DIR}}/claude/settings.json {{.HOME}}/.claude/settings.json
-      - ln -sfn {{.ROOT_DIR}}/claude/snip-hook.py {{.HOME}}/.claude/snip-hook.py
-      - ln -sfn {{.ROOT_DIR}}/claude/statusline-command.sh {{.HOME}}/.claude/statusline-command.sh
 
   opencode:down:
-    desc: Removes only matching OpenCode and Claude Code links
+    desc: Removes OpenCode configuration
     cmds:
       - rm -f {{.XDG_CONFIG_HOME}}/opencode
-      - rm -f {{.HOME}}/.claude/CLAUDE.md
-      - rm -f {{.HOME}}/.claude/agents
-      - rm -f {{.HOME}}/.claude/settings.json
-      - rm -f {{.HOME}}/.claude/snip-hook.py
-      - rm -f {{.HOME}}/.claude/statusline-command.sh
 
   ################################################################################
   # PI Coding Agent
   pi:up:
     desc: Configures the PI Coding Agent
     cmds:
-      - rm -rf {{.HOME}}/.pi
       - ln -sfn {{.ROOT_DIR}}/pi {{.HOME}}/.pi
 
   pi:down:
@@ -444,18 +452,18 @@ tasks:
 
   ################################################################################
   # Agent Skills
+  # OpenCode and pi both read ~/.agents/skills, so they share one pair of tasks.
+  # Claude Code reads only ~/.claude/skills; see claude:up.
   skills:up:
-    desc: Links shared Agent Skills into every harness's skill location
-    deps: [ensure_xdg]
+    desc: Links Agent Skills into ~/.agents/skills for OpenCode and pi
     cmds:
-      - ln -sfn {{.ROOT_DIR}}/agents {{.XDG_CONFIG_HOME}}/agents
-      - zsh -c "source {{.ROOT_DIR}}/agents/aliases.zsh && link_skills"
+      - mkdir -p {{.HOME}}/.agents/skills
+      - ln -sfn {{.ROOT_DIR}}/agents/skills/* {{.HOME}}/.agents/skills
 
   skills:down:
     desc: Removes this repo's Agent Skills links, leaving other sources in place
     cmds:
-      - zsh -c "source {{.ROOT_DIR}}/agents/aliases.zsh && link_skills --unlink"
-      - rm -f {{.XDG_CONFIG_HOME}}/agents
+      - for s in {{.ROOT_DIR}}/agents/skills/*/; do rm -f {{.HOME}}/.agents/skills/$(basename $s); done
 
   ################################################################################
   # Taskfile
@@ -552,6 +560,7 @@ tasks:
       - task: ghostty:up
       - task: bash:up
       - task: bin:up
+      - task: claude:up
       - task: docker:up
       - task: fd:up
       - task: fzf:up
