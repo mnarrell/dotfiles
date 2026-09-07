@@ -375,8 +375,6 @@ tasks:
       - ln -sfn {{.ROOT_DIR}}/opencode {{.XDG_CONFIG_HOME}}/opencode
       - npm install --prefix {{.ROOT_DIR}}/opencode
       - mkdir -p {{.HOME}}/.claude
-      - rm -rf {{.HOME}}/.claude/skills
-      - ln -sfn {{.ROOT_DIR}}/opencode/skills {{.HOME}}/.claude/skills
       - rm -rf {{.HOME}}/.claude/agents
       - ln -sfn {{.ROOT_DIR}}/claude/agents {{.HOME}}/.claude/agents
       - ln -sfn {{.ROOT_DIR}}/claude/CLAUDE.md {{.HOME}}/.claude/CLAUDE.md
@@ -389,7 +387,6 @@ tasks:
     cmds:
       - rm -f {{.XDG_CONFIG_HOME}}/opencode
       - rm -f {{.HOME}}/.claude/CLAUDE.md
-      - rm -f {{.HOME}}/.claude/skills
       - rm -f {{.HOME}}/.claude/agents
       - rm -f {{.HOME}}/.claude/settings.json
       - rm -f {{.HOME}}/.claude/snip-hook.py
@@ -444,6 +441,21 @@ tasks:
     desc: Removes Ruff configuration
     cmds:
       - rm -rf {{.XDG_CONFIG_HOME}}/ruff
+
+  ################################################################################
+  # Agent Skills
+  skills:up:
+    desc: Links shared Agent Skills into every harness's skill location
+    deps: [ensure_xdg]
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/agents {{.XDG_CONFIG_HOME}}/agents
+      - zsh -c "source {{.ROOT_DIR}}/agents/aliases.zsh && link_skills"
+
+  skills:down:
+    desc: Removes this repo's Agent Skills links, leaving other sources in place
+    cmds:
+      - zsh -c "source {{.ROOT_DIR}}/agents/aliases.zsh && link_skills --unlink"
+      - rm -f {{.XDG_CONFIG_HOME}}/agents
 
   ################################################################################
   # Taskfile
@@ -563,6 +575,7 @@ tasks:
       - task: psql:up
       - task: ripgrep:up
       - task: ruff:up
+      - task: skills:up
       - task: task:up
       - task: tig:up
       - task: herdr:up

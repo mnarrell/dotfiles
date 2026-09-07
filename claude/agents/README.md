@@ -78,6 +78,6 @@ resolve the ambiguity yourself first, or just do it directly.
 None of the above is for deciding *what to build*. For materially ambiguous
 or cross-cutting work — architecture, migrations, security boundaries,
 irreversible choices — invoke the `design` skill before any of this. See
-`opencode/skills/design/SKILL.md` for exactly how it's invoked and what it
+`agents/skills/design/SKILL.md` for exactly how it's invoked and what it
 does; implementation afterward happens directly in this conversation, per the
 first line of this file.
