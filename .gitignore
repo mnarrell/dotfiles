@@ -62,3 +62,4 @@ claude/settings.json.pre-ai-config
 claude/statusline-command.sh.pre-ai-config
 claude/settings.local.json
 claude/settings.*.local.json
+pi/agent/auth.json

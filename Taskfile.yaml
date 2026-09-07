@@ -396,6 +396,19 @@ tasks:
       - rm -f {{.HOME}}/.claude/statusline-command.sh
 
   ################################################################################
+  # PI Coding Agent
+  pi:up:
+    desc: Configures the PI Coding Agent
+    cmds:
+      - rm -rf {{.HOME}}/.pi
+      - ln -sfn {{.ROOT_DIR}}/pi {{.HOME}}/.pi
+
+  pi:down:
+    desc: Removes the PI Coding Agent
+    cmds:
+      - rm -rf {{.HOME}}/.pi
+
+  ################################################################################
   # PSQL
   psql:up:
     desc: Configures PSQL
@@ -546,6 +559,7 @@ tasks:
       - task: nvim:up
       - task: opentofu:up
       - task: opencode:up
+      - task: pi:up
       - task: psql:up
       - task: ripgrep:up
       - task: ruff:up
