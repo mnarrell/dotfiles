@@ -31,7 +31,7 @@ return {
     formatters = {
       prettier_markdown = {
         inherit = "prettier",
-        prepend_args = { "--print-width", "120", "--prose-wrap", "always" },
+        prepend_args = { "--print-width", "120" },
       },
       shfmt = {
         prepend_args = { "-i", "2", "-ci" },
