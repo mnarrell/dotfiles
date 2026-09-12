@@ -506,6 +506,20 @@ tasks:
       - rm -f {{.XDG_CONFIG_HOME}}/herdr/config.toml
 
   ################################################################################
+  # WORKMUX
+  workmux:up:
+    desc: Configures workmux
+    deps: [ensure_xdg]
+    cmds:
+      - mkdir -p {{.XDG_CONFIG_HOME}}/workmux
+      - ln -sfn {{.ROOT_DIR}}/workmux/config.yaml {{.XDG_CONFIG_HOME}}/workmux/config.yaml
+
+  workmux:down:
+    desc: Removes workmux configuration link
+    cmds:
+      - rm -f {{.XDG_CONFIG_HOME}}/workmux/config.yaml
+
+  ################################################################################
   # TMUX
   tmux:up:
     desc: Configures TMUX
