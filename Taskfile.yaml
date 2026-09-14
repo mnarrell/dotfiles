@@ -560,6 +560,18 @@ tasks:
       - rm -rf {{.XDG_CONFIG_HOME}}/yamllint
 
   ################################################################################
+  # Zoxide
+  zoxide:up:
+    desc: Configures zoxide
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/zoxide {{.XDG_CONFIG_HOME}}/zoxide
+
+  zoxide:down:
+    desc: Removes zoxide configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/zoxide
+
+  ################################################################################
   # ZSH
   zsh:up:
     desc: Configures ZSH
@@ -605,8 +617,8 @@ tasks:
       - task: npm:up
       - task: nvim:up
       - task: opentofu:up
-      - task: opencode:up
-      - task: pi:up
+      # - task: opencode:up
+      # - task: pi:up
       - task: psql:up
       - task: ripgrep:up
       - task: ruff:up
@@ -616,4 +628,5 @@ tasks:
       - task: herdr:up
       - task: tmux:up
       - task: yamllint:up
+      - task: zoxide:up
       - task: zsh:up
