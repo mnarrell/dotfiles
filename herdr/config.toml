@@ -2,40 +2,32 @@ onboarding = false
 
 [keys]
 prefix = "ctrl+space"
-new_tab = "prefix+c"
-split_vertical = ["prefix+v", "prefix+backslash"]
-split_horizontal = "prefix+minus"
-focus_pane_left = ["prefix+h", "alt+left"]
-focus_pane_down = ["prefix+j", "alt+down"]
-focus_pane_up = ["prefix+k", "alt+up"]
-focus_pane_right = ["prefix+l", "alt+right"]
-resize_pane_left = "prefix+left"
-resize_pane_down = "prefix+down"
-resize_pane_up = "prefix+up"
-resize_pane_right = "prefix+right"
-zoom = "prefix+z"
-close_pane = "prefix+x"
-switch_tab = "prefix+1..9"
-rename_tab = ["prefix+shift+t", "prefix+comma"]
-reload_config = "prefix+r"
 
-# Sessions / workspaces
-goto               = "prefix+s"
-workspace_picker   = "prefix+w"
-new_workspace      = "prefix+shift+n"
-rename_workspace   = "prefix+shift+r"
-close_workspace    = "prefix+shift+x"
-previous_workspace = "prefix+["
-next_workspace     = "prefix+]"
-
-# Navigate mode
-navigate_workspace_up   = "k"
-navigate_workspace_down = "j"
-
-# Worktrees
-new_worktree    = "prefix+shift+g"
-open_worktree   = "prefix+shift+o"
-remove_worktree = "prefix+shift+d"
+################################################################################
+# Prefix layer -- panes, tabs, splits.
+#
+# Driven from Alacritty, which rewrites Cmd chords into "\u0000<key>" (NUL is
+# ctrl+space, the prefix). So Cmd+S sends prefix+minus, Cmd+H sends prefix+h,
+# and so on -- the muscle memory is Cmd, the wire format is prefix.
+# See alacritty/alacritty.toml [[keyboard.bindings]].
+new_tab          = "prefix+c"                          # Cmd+T
+split_vertical   = ["prefix+v", "prefix+backslash"]    # Cmd+Shift+S
+split_horizontal = "prefix+minus"                      # Cmd+S
+focus_pane_left  = "prefix+h"                          # Cmd+H
+focus_pane_down  = "prefix+j"                          # Cmd+J
+focus_pane_up    = "prefix+k"                          # Cmd+K
+focus_pane_right = "prefix+l"                          # Cmd+L
+# NOTE: alt+arrows used to alias these. Dropped so that alt means exactly one
+# thing -- the layer above the pane. Panes are Cmd+H/J/K/L. To restore, append
+# "alt+left" / "alt+down" / "alt+up" / "alt+right" to the four lines above.
+resize_pane_left  = "prefix+left"                      # Cmd+Left
+resize_pane_down  = "prefix+down"                      # Cmd+Down
+resize_pane_up    = "prefix+up"                        # Cmd+Up
+resize_pane_right = "prefix+right"                     # Cmd+Right
+zoom       = "prefix+z"                                # Cmd+Z
+close_pane = "prefix+x"                                # Cmd+X
+switch_tab = "prefix+1..9"                             # Cmd+1..9
+rename_tab = ["prefix+shift+t", "prefix+comma"]        # Cmd+,
 
 # Tab navigation
 previous_tab      = "prefix+p"
@@ -48,10 +40,60 @@ rename_pane     = "prefix+shift+p"
 copy_mode       = "prefix+u"
 edit_scrollback = "prefix+e"
 
+# Workspace lifecycle (create/rename/close -- navigation lives on alt, below).
+new_workspace    = "prefix+shift+n"
+rename_workspace = "prefix+shift+w"   # herdr default; frees prefix+shift+r
+close_workspace  = "prefix+shift+d"   # herdr default; frees prefix+shift+x
+
 # UI / global
-toggle_sidebar = "prefix+b"
+toggle_sidebar = ["prefix+b", "alt+s"]
 detach         = "prefix+d"
 help           = "prefix+?"
+reload_config  = "prefix+shift+r"     # herdr default; frees prefix+r
+
+################################################################################
+# Alt layer -- everything ABOVE the pane: workspaces, agents, pickers.
+#
+# Prefix-free, because these are the "where am I / who needs me" keys and
+# shouldn't cost two keystrokes. Safe to claim the whole alt namespace here:
+#   - alacritty sets option_as_alt = "OnlyLeft", so LEFT alt sends a real Meta
+#     (ESC-prefixed) sequence instead of composing a character. Right alt is
+#     untouched and still composes.
+#   - zsh runs `bindkey -v` (zsh/.zshrc), so the emacs meta bindings
+#     (alt+b backward-word, alt+f forward-word, alt+. insert-last-word, ...)
+#     are inert. Nothing downstream wants these chords.
+#
+# Mnemonics: w=workspace, g=goto, s=sidebar, a=attention, n/p=next/prev,
+# o=other, j/k=vim down/up.
+
+# Pickers
+workspace_picker = ["prefix+w", "alt+w"]   # w-orkspace picker
+goto             = "alt+g"                 # g-oto; frees prefix+s for settings
+
+# Agents -- the reason herdr replaced workmux.
+open_notification_target = ["prefix+o", "alt+a"]  # a-ttention: jump to whatever just pinged
+next_agent     = "alt+n"                          # n-ext agent
+previous_agent = "alt+p"                          # p-revious agent
+
+# Workspaces (vertical, matching the sidebar and navigate mode)
+next_workspace     = ["prefix+]", "alt+j"]
+previous_workspace = ["prefix+[", "alt+k"]
+
+# Bounce back after chasing an agent.
+last_pane = "alt+o"                        # o-ther
+
+# Numbered jumps. Workspaces get the cheap row; agents sit one modifier out,
+# since alt+a already covers the urgent "who needs me" case.
+indexed.workspaces = "alt"                 # alt+1..9      -> workspace 1-9
+indexed.agents     = "ctrl+alt"            # ctrl+alt+1..9 -> agent 1-9
+
+# Navigate mode
+navigate_workspace_up   = "k"
+navigate_workspace_down = "j"
+
+# Worktrees: deliberately unbound. worktrunk owns worktree lifecycle
+# (`wt switch --create`, `wt switch`, `wt remove`), and its hooks open/close the
+# herdr workspace. See docs/agent-workflow-migration.md.
 
 [[keys.command]]
 key = "prefix+g"
@@ -77,7 +119,8 @@ show_agent_labels_on_pane_borders = false
 agent_panel_sort = "spaces"
 [worktrees]
 # Shared with worktrunk (worktrunk/config.toml `worktree-path`) so a worktree
-# created with herdr's own prefix+shift+g lands beside those created with `wt`.
+# created from herdr's UI lands beside those created with `wt`. The keybindings
+# for this are unbound on purpose -- see the worktree note in [keys] above.
 directory = "~/.worktrees"
 
 [session]

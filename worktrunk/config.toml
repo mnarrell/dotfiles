@@ -52,3 +52,26 @@ pre-remove = "~/.config/worktrunk/hooks/herdr-close.sh {{ worktree_path }}"
 # pre-commit  =
 # post-commit =
 # post-remove =
+
+################################################################################
+# Per-project overrides.
+#
+# `{{ repo }}` is the checkout's directory name, so a dotted repo lands in a
+# hidden directory -- ~/.worktrees/.dotfiles/ rather than ~/.worktrees/dotfiles/.
+# There is no filter that strips a leading dot (`sanitize` keeps it,
+# `sanitize_db` mangles it to `_dotfiles_yes`), and no template variable exposes
+# the remote-derived identifier, which is already dot-free. So the two dotted
+# repos are pinned explicitly.
+#
+# Keys are worktrunk project identifiers, not paths. Find one with:
+#
+#   wt config show | grep Identifier
+#
+# These tables must stay at the end of the file: the hooks above are bare
+# top-level keys, and TOML assigns any bare key to the most recent table header.
+
+[projects."github.com/mnarrell/dotfiles"]
+worktree-path = "~/.worktrees/dotfiles/{{ branch | sanitize }}"
+
+[projects."github.com/mnarrell/private_dotfiles"]
+worktree-path = "~/.worktrees/private_dotfiles/{{ branch | sanitize }}"
