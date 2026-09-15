@@ -67,29 +67,37 @@ reload_config  = "prefix+shift+r"     # herdr default; frees prefix+r
 # o=other, j/k=vim down/up.
 
 # Pickers
-workspace_picker = ["prefix+w", "alt+w"]   # w-orkspace picker
-goto             = "alt+g"                 # g-oto; frees prefix+s for settings
+workspace_picker = ["prefix+w", "alt+w"]
+goto             = ["prefix+t", "alt+g"]      # plumbing for Option+g
 
 # Agents -- the reason herdr replaced workmux.
-open_notification_target = ["prefix+o", "alt+a"]  # a-ttention: jump to whatever just pinged
-next_agent     = "alt+n"                          # n-ext agent
-previous_agent = "alt+p"                          # p-revious agent
+open_notification_target = ["prefix+o", "alt+a"]  # jump to whatever just pinged
+next_agent     = ["prefix+a", "alt+n"]
+previous_agent = ["prefix+i", "alt+p"]   # alt+p is display-only: Alacritty
+                                         # rewrites it, herdr cannot match it,
+                                         # but it may render in the ? popup.
 
 # Workspaces (vertical, matching the sidebar and navigate mode)
 next_workspace     = ["prefix+]", "alt+j"]
 previous_workspace = ["prefix+[", "alt+k"]
 
 # Bounce back after chasing an agent.
-last_pane = "alt+o"                        # o-ther
+last_pane = ["prefix+m", "alt+o"]             # plumbing for Option+o
 
 # Numbered jumps. Workspaces get the cheap row; agents sit one modifier out,
 # since alt+a already covers the urgent "who needs me" case.
-indexed.workspaces = "alt"                 # alt+1..9      -> workspace 1-9
-indexed.agents     = "ctrl+alt"            # ctrl+alt+1..9 -> agent 1-9
+switch_workspace = "prefix+shift+1..9"
+focus_agent      = "prefix+ctrl+1..9"
 
 # Navigate mode
 navigate_workspace_up   = "k"
 navigate_workspace_down = "j"
+# Panes move off j/k so workspaces can have them. h/l keep the left/right
+# arrows as permanent aliases; tab still cycles panes.
+navigate_pane_up   = ""
+navigate_pane_down = ""
+navigate_pane_left  = "h"
+navigate_pane_right = "l"
 
 # Worktrees: deliberately unbound. worktrunk owns worktree lifecycle
 # (`wt switch --create`, `wt switch`, `wt remove`), and its hooks open/close the

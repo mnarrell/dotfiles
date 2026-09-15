@@ -53,17 +53,18 @@ wt switch --create fix/dns
 | `workmux remove` | `wt remove` |
 | `workmux merge` | `wt merge` |
 | `workmux list` | `wt list` (or `wt list --full` for CI status) |
-| `workmux dashboard` (`prefix+a`) | herdr sidebar — `alt+s` |
-| `workmux list` picker (`prefix+A`) | herdr workspace picker — `alt+w` |
+| `workmux dashboard` (`prefix+a`) | herdr sidebar — `Option+s` |
+| `workmux list` picker (`prefix+A`) | herdr workspace navigation — `Option+w` |
 | `workmux status` | `herdr workspace list` |
 | status in tmux window bar | herdr sidebar + system toast |
 | — | `wt switch pr:123`, LLM commit messages, CI status |
 
 herdr's prefix is `ctrl+space`, matching the old tmux prefix, and Alacritty
-rewrites `Cmd` chords onto it — so panes, tabs and splits keep their existing
-muscle memory. Workspaces, agents and pickers live on a prefix-free `alt` layer;
-`alt+a` jumps straight to whichever agent raised the last toast. See
-[herdr-keymap.md](herdr-keymap.md).
+rewrites both `Cmd` and `Option` chords onto it — so panes, tabs and splits keep
+their existing muscle memory, and workspaces, agents and navigation get a
+single-modifier `Option` layer. `Option+a` jumps straight to whichever agent
+raised the last toast. The rewrite is load-bearing: herdr does not match `alt`
+chords delivered from Alacritty at all. See [herdr-keymap.md](herdr-keymap.md).
 
 ## Hooks
 

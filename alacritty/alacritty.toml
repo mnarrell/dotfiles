@@ -224,3 +224,61 @@ y = 2
 [window.position]
 x = 100
 y = 100
+
+################################################################################
+# herdr alt layer.
+#
+# herdr 0.9.0 does not match alt chords delivered as legacy ESC-prefixed Meta,
+# which is what Alacritty sends (verified: left Option+w arrives as ESC then w).
+# Neither side exposes a keyboard-protocol setting, so rather than binding alt
+# in herdr, Option chords are rewritten here into prefix sequences -- the same
+# trick the Command bindings above use. \u0000 is NUL = ctrl+space = the herdr
+# prefix, so herdr just sees an ordinary prefix chord.
+#
+# Keep in sync with [keys] in herdr/config.toml: the character after \u0000 in
+# each `chars` value is the herdr binding it triggers.
+
+[[keyboard.bindings]]
+chars = "\u0000w"   # workspace_picker
+key = "W"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0000o"   # open_notification_target -- attention
+key = "A"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0000a"   # next_agent
+key = "N"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0000i"   # previous_agent
+key = "P"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0000]"   # next_workspace
+key = "J"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0000["   # previous_workspace
+key = "K"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0000b"   # toggle_sidebar
+key = "S"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0000t"   # goto
+key = "G"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u0000m"   # last_pane -- other
+key = "O"
+mods = "Alt"
