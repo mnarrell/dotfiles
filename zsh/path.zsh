@@ -25,11 +25,12 @@ path=(
   # never source the init phase.
   ${MISE_DATA_DIR}/shims(N-/)
   ${HOME}/.local/share/nvim/mason/bin(N-/)
+  ${HOME}/.opencode/bin(N-/)
   /opt/homebrew/bin(N-/)
   /opt/homebrew/sbin(N-/)
   /opt/homebrew/opt/openssh/bin(N-/)
   /opt/homebrew/opt/openssl/bin(N-/)
-  /opt/homebrew/opt/postgresql@17/bin(N-/)
+  /opt/homebrew/opt/postgresql@18/bin(N-/)
   /Library/TeX/texbin(N-/)
   /usr/local/bin
   /usr/local/sbin
