@@ -34,8 +34,15 @@ wt switch --create fix/dns
   one global root, split by project and branch. Already granted in
   `claude/settings.json`, so agents working inside a worktree need no extra
   permission. `sanitize` flattens `feat/dns` to `feat-dns` rather than nesting.
+- **Dotted repos are pinned explicitly.** `{{ repo }}` is the checkout's
+  directory name, so `.dotfiles` would land in a hidden `~/.worktrees/.dotfiles/`.
+  No filter strips a leading dot and no variable exposes the remote-derived
+  identifier (which is already dot-free), so `.dotfiles` and `.private_dotfiles`
+  get `[projects."<id>"]` overrides at the end of `worktrunk/config.toml`. Find
+  an identifier with `wt config show | grep Identifier`.
 - **herdr's own `[worktrees] directory`** points at the same root, so a worktree
-  made with herdr's `prefix+shift+g` lands beside those made with `wt`.
+  made from herdr's UI lands beside those made with `wt`. The `new_worktree`
+  keybinding is deliberately unbound — `wt` is the one path that runs the hooks.
 
 ## Command equivalence
 
@@ -46,14 +53,17 @@ wt switch --create fix/dns
 | `workmux remove` | `wt remove` |
 | `workmux merge` | `wt merge` |
 | `workmux list` | `wt list` (or `wt list --full` for CI status) |
-| `workmux dashboard` (`prefix+a`) | herdr sidebar — `prefix+b` |
-| `workmux list` picker (`prefix+A`) | herdr workspace picker — `prefix+w` |
+| `workmux dashboard` (`prefix+a`) | herdr sidebar — `alt+s` |
+| `workmux list` picker (`prefix+A`) | herdr workspace picker — `alt+w` |
 | `workmux status` | `herdr workspace list` |
 | status in tmux window bar | herdr sidebar + system toast |
 | — | `wt switch pr:123`, LLM commit messages, CI status |
 
-herdr's prefix is `ctrl+space`, matching the old tmux prefix. Full keymap in
-`herdr/config.toml`.
+herdr's prefix is `ctrl+space`, matching the old tmux prefix, and Alacritty
+rewrites `Cmd` chords onto it — so panes, tabs and splits keep their existing
+muscle memory. Workspaces, agents and pickers live on a prefix-free `alt` layer;
+`alt+a` jumps straight to whichever agent raised the last toast. See
+[herdr-keymap.md](herdr-keymap.md).
 
 ## Hooks
 
