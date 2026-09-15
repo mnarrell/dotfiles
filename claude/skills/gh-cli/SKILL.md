@@ -11,7 +11,7 @@ authentication, or needs structured GitHub functionality, use `gh` without askin
 again. Run `gh auth status` only when the authenticated fallback is needed.
 
 This routing applies to GitHub web and API access. Standard Git transport, such as
-fetching an existing remote branch, remains a Git workflow; load `git-tree` when it
+fetching an existing remote branch, remains a Git workflow; load `git-branch` when it
 involves branches or worktrees.
 
 All GitHub state changes require explicit user approval. Treat `gh api` as approval

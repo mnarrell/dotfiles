@@ -132,3 +132,200 @@ faked with a stub agent. It needs a live trial.
 Open question for the live trial: whether workmux's own status tracking is
 sufficient, or whether tmux-agent-sidebar's deeper event coverage is worth
 running instead. Both write to tmux; running both at once would conflict.
+
+---
+
+# Follow-up: the live trial, 2026-09-14
+
+The trial the original evaluation deferred has now run, on real work rather than
+a stub agent. It answered the open question above, and in doing so invalidated
+the recommendation. Star counts and push dates below re-verified via the GitHub
+API on 2026-09-14, same method as the original.
+
+## What the trial found
+
+**Attention routing does not work across tmux sessions, and no tmux-native tool
+can make it.**
+
+workmux's status indicator works by appending to `window-status-format`:
+
+```tmux
+set -g window-status-format '#I:#W#{?@workmux_status, #{@workmux_status},}...'
+```
+
+tmux only renders the window list for the session you are attached to, and the
+workmux docs confirm the modification "happens once per session and only affects
+the current tmux session". So an agent finishing in a window belonging to
+another session is invisible. This is a tmux constraint, not a workmux defect —
+`window-status-format` is session-scoped by design, so every tool in the
+status-plugin category inherits the same ceiling.
+
+workmux has no system notification for agent state at all. The only
+`--notification` flag in its entire surface is on `workmux merge`.
+
+What does cross the boundary, and what it costs:
+
+| Mechanism | Scope | Shape |
+|---|---|---|
+| `window-status-format` indicator | current session only | push |
+| `workmux dashboard` (bound to `prefix+a`) | all sessions (`F` filters) | **pull** — only when the popup is open |
+| `workmux sidebar` | all sessions by default | push, but a permanently occupied pane |
+
+The sidebar is the only built-in push mechanism that spans sessions, and it buys
+that by giving up a pane in every window. Session mode (`mode: session`) does not
+help: it changes which tmux object a worktree maps to, not the scope of the
+status bar.
+
+## The second constraint: three harnesses
+
+This setup runs **Claude Code, opencode, and pi**. That requirement eliminates
+most of the category outright — far more decisively than any feature comparison.
+
+Ruled out for missing pi support:
+
+| Tool | Stars | Last push | Harnesses |
+|---|---|---|---|
+| [hiroppy/tmux-agent-sidebar] | 528 | 2026-09-10 | Claude, opencode |
+| [samleeney/tmux-agent-status] | 276 | 2026-09-10 | Claude, Codex (no license file) |
+| [gavraz/recon] | 263 | 2026-07-17 | Claude Code only |
+| [accessd/tmux-agent-indicator] | 92 | 2026-08-14 | Claude, Codex, opencode |
+| [CRThaze/tmux-handlr] | 0 | 2026-09-14 | excludes `pi` by default — 2-char name is false-positive-prone |
+
+Note that tmux-agent-sidebar, the original evaluation's runner-up, is ruled out
+here. Its deeper event coverage is real but it never gained a pi adapter.
+
+Surviving tools with native Claude + opencode + pi:
+
+| Tool | Stars | Last push | Verdict |
+|---|---|---|---|
+| workmux | 2,582 | 2026-09-14 | incumbent; cannot notify across sessions |
+| [YoanWai/agent-manager] | 459 | 2026-09-14 | **private tmux server `agentmgr`** — the agent-deck disqualifier |
+| [Ataraxy-Labs/opensessions] | 1,227 | 2026-06-23 | has `integrations/pi-extension/`; **no license file**; stale |
+| [Gentleman-Programming/gentle-agent-state] | 54 | 2026-07-01 | installs to the exact three adapter paths already in use; status only; stale |
+| [alexei-led/ccgram] | 265 | 2026-09-14 | Telegram bridge; pi yes, **opencode no** |
+
+`gentle-agent-state` was the one genuine find — it writes to
+`~/.pi/agent/extensions/`, `~/.config/opencode/plugins/`, and merges hooks into
+`~/.claude/settings.json`, the identical three-point shape already in use, with
+per-agent opt-in flags. Paired with a lifecycle-only tool it would reconstitute
+the whole setup. It was rejected on maintenance risk: 54 stars and untouched
+since 2026-07-01 is a worse bet than what it would replace, and the original
+evaluation's own conclusion was "do not hand-write the status feed, rent it".
+
+## worktrunk: different category, not an upgrade
+
+[max-sixty/worktrunk] (7,654 stars, pushed 2026-09-14, Rust, MIT OR Apache-2.0)
+prompted this review by looking more featured. It is a git worktree *lifecycle*
+CLI — `switch/list/merge/remove`, branch-name-as-identity with generated paths,
+create/pre-merge/post-merge hooks, LLM commit messages, `wt switch pr:123`, CI
+status and AI summaries in `wt list --full`, APFS-cloned build caches,
+`hash_port` for per-worktree dev servers.
+
+It has **no multiplexer management and no agent status tracking**. Its demos use
+Zellij; tmux "integration" is `tmux new-session -d -s foo "wt switch --create foo
+-x claude"` — you drive tmux yourself. Adopting it would mean losing the entire
+attention-routing layer to gain git-side polish. Its features are real and
+workmux lacks them, but they are not the problem this evaluation exists to solve.
+
+## herdr, reconsidered
+
+[herdrdev/herdr] — 38,516 stars, Apache-2.0, Rust, pushed 2026-09-14. Local
+install is 0.9.0, up from the 0.8.2 benchmarked originally, still present in all
+three Brewfiles with a fully configured `~/.config/herdr/config.toml`.
+
+It does the thing tmux cannot. From the v0.9.0 configuration docs:
+
+> Herdr can notify you when a background agent finishes or needs input
+
+```toml
+[ui.toast]
+delivery = "herdr"        # or "terminal" (works over SSH), "system" (OS), "off"
+delay_seconds = 1
+```
+
+On macOS, `system` delivery uses `terminal-notifier` and the notification can
+activate the hosting terminal on click. Separate sounds for finished vs
+needs-input (`done_path` / `request_path`), with per-agent overrides. Crucially,
+**Herdr suppresses popups for the active tab** — it notifies about exactly the
+agents you are not looking at. That is the cross-session problem solved by
+design rather than worked around.
+
+Harness coverage is 17 integrations, well beyond anything else surveyed.
+`herdr integration status` locally:
+
+```
+pi:       current (v8)
+claude:   outdated (v8 < v9)
+opencode: outdated (v10 < v11)
+```
+
+Two `herdr integration install` calls restore it.
+
+**The cost has not changed.** herdr is a terminal workspace manager — a tmux
+replacement, not a plugin. The "parallel universe of session state" objection
+that opened this branch still applies in full:
+
+- `tmux/tmux.conf` dashboard (`prefix+a`) and picker (`prefix+A`) become dead config
+- the `dots` session, tpm plugins, and anything assuming one tmux server
+- `workmux resurrect`, and tmux's two decades of hardening
+
+Harness-glue churn also continues: opencode's plugin moved v10 → v11 and
+Claude's v8 → v9 in the ten days since the original evaluation. The difference
+is that herdr versions and installs that glue itself.
+
+## Revised recommendation
+
+**herdr, if cross-session agent notification is a firm requirement.**
+
+The original evaluation was not wrong on its own terms — it explicitly listed
+end-to-end attention routing as untested and requiring a live trial. The trial
+has now run and failed on that criterion. The premise was the error, not the
+analysis: tmux-native was never able to deliver cross-session attention routing,
+because tmux itself cannot.
+
+So the choice is between two coherent positions, and it is a genuine trade:
+
+- **Stay on workmux** and accept that notification is session-scoped —
+  acceptable if worktrees for the projects being watched live in one session, or
+  if the always-on sidebar is tolerable. Keeps the whole tmux ecosystem.
+- **Return to herdr** and accept that it owns the terminal. Gets real system
+  notifications, 17 harnesses, remote/SSH sessions, and a maintained integration
+  layer. Costs the tmux-native bindings and ecosystem.
+
+Not recommended either way: worktrunk as a workmux replacement (wrong category),
+agent-manager and agent-deck (private tmux servers), gentle-agent-state
+(maintenance risk), claude-squad (still no scriptable CLI, still AGPL, last push
+2026-08-20).
+
+If herdr is adopted, the leftover workmux adapters
+(`opencode/plugins/workmux-status.ts`, `pi/agent/extensions/workmux-status.ts`),
+the five `workmux set-window-status` hooks in `claude/settings.json`, and the
+tmux bindings at `tmux/tmux.conf:152-155` all become dead and should be removed
+in the same change. The herdr adapters for opencode and pi are still in the tree
+and still current-ish, so the two setups have been running side by side.
+
+## Decision, 2026-09-14
+
+**herdr for the workspace surface, worktrunk for git worktree lifecycle.**
+Cross-session notification was a firm requirement, so the second option above
+was taken and workmux was fully retired in the same change.
+
+worktrunk was not adopted *instead of* workmux — it is a different category, and
+the earlier "not an upgrade" finding stands. It is adopted alongside herdr
+because herdr does not do git worktree lifecycle well, with worktrunk hooks
+opening and closing herdr workspaces so the two stay in sync.
+
+Implementation, command equivalence, and the revert procedure:
+[agent-workflow-migration.md](agent-workflow-migration.md).
+
+[hiroppy/tmux-agent-sidebar]: https://github.com/hiroppy/tmux-agent-sidebar
+[samleeney/tmux-agent-status]: https://github.com/samleeney/tmux-agent-status
+[gavraz/recon]: https://github.com/gavraz/recon
+[accessd/tmux-agent-indicator]: https://github.com/accessd/tmux-agent-indicator
+[CRThaze/tmux-handlr]: https://github.com/CRThaze/tmux-handlr
+[YoanWai/agent-manager]: https://github.com/YoanWai/agent-manager
+[Ataraxy-Labs/opensessions]: https://github.com/Ataraxy-Labs/opensessions
+[Gentleman-Programming/gentle-agent-state]: https://github.com/Gentleman-Programming/gentle-agent-state
+[alexei-led/ccgram]: https://github.com/alexei-led/ccgram
+[max-sixty/worktrunk]: https://github.com/max-sixty/worktrunk
+[herdrdev/herdr]: https://github.com/herdrdev/herdr
