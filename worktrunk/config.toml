@@ -1,0 +1,54 @@
+# worktrunk -- git worktree lifecycle.
+#
+# worktrunk owns worktree creation, switching and teardown; herdr is the
+# surface that displays them and notifies when their agents finish. The hooks
+# below are the seam between the two. See docs/agent-workflow-migration.md.
+
+# Worktrees live under a single global root, separated by project and branch.
+# This matches the root already granted in claude/settings.json, so agents
+# working inside a worktree need no additional permission.
+#
+#   ~/.worktrees/homelab/feat-dynamic-dns
+#
+# `sanitize` turns a slashed branch (feat/dynamic-dns) into a single path
+# segment (feat-dynamic-dns) rather than nesting an extra directory.
+worktree-path = "~/.worktrees/{{ repo }}/{{ branch | sanitize }}"
+
+################################################################################
+# Hooks
+#
+# Hook bodies live in worktrunk/hooks/ as standalone scripts rather than inline
+# commands, so they can be run and debugged directly without going through
+# `wt`. Every hook is best-effort and exits 0 -- `pre-*` hooks are BLOCKING and
+# a nonzero exit aborts the operation, so a stopped herdr server must never be
+# able to wedge `wt remove`.
+#
+# Template variables: {{ worktree_path }} {{ repo_path }} {{ repo }}
+#                     {{ branch }} {{ base }} {{ commit }} {{ cwd }}
+# Full context also arrives as JSON on stdin.
+
+# A new worktree was created -- open and focus its herdr workspace.
+post-start = "~/.config/worktrunk/hooks/herdr-open.sh {{ worktree_path }} {{ repo_path }} {{ branch }}"
+
+# Switched to an existing worktree -- focus its workspace, or open one if the
+# workspace was closed. Without this, the integration only works on creation.
+post-switch = "~/.config/worktrunk/hooks/herdr-open.sh {{ worktree_path }} {{ repo_path }} {{ branch }}"
+
+# About to delete the checkout -- close its workspace first so herdr is not
+# left holding a dead path.
+pre-remove = "~/.config/worktrunk/hooks/herdr-close.sh {{ worktree_path }}"
+
+################################################################################
+# Available but deliberately unwired. Uncomment to enable.
+#
+# post-merge is the known gap: `wt merge` tears the worktree down without
+# closing its herdr workspace. Enable it if merging becomes the habitual
+# teardown path rather than `wt remove`.
+#
+# post-merge  = "~/.config/worktrunk/hooks/herdr-close.sh {{ worktree_path }}"
+# pre-merge   =
+# pre-start   =
+# pre-switch  =
+# pre-commit  =
+# post-commit =
+# post-remove =

@@ -1,6 +1,6 @@
 # Harness Rules
 
-Detailed workflows live in on-demand skills: `git-tree`, `gh-cli`, `snip`, `go`,
+Detailed workflows live in on-demand skills: `git-branch`, `gh-cli`, `snip`, `go`,
 `opentofu`, `kubernetes`, `handoff`, and `permission-policy`.
 
 ## Working Style
@@ -35,7 +35,7 @@ When a user approves a commit, do not add AI-authorship or attribution lines, in
   commands stay raw in full. A manual `snip` prefix is not inherently trusted;
   it remains subject to command-specific permissions. Use `snip proxy -- <command>`
   only as the raw-output escape hatch. Restart OpenCode after changing this hook.
-- Load `git-tree` for branch or worktree operations, `go` for Go work,
+- Load `git-branch` for branch operations, `go` for Go work,
   `opentofu` for OpenTofu work, `kubernetes` for Kubernetes work, and
   `handoff` for structured agent handoffs.
 - Use harness-specific agent and tool adapters only where their capabilities differ.

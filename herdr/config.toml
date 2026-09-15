@@ -76,7 +76,9 @@ show_agent_labels_on_pane_borders = false
 
 agent_panel_sort = "spaces"
 [worktrees]
-directory = "~/.herdr/worktrees"
+# Shared with worktrunk (worktrunk/config.toml `worktree-path`) so a worktree
+# created with herdr's own prefix+shift+g lands beside those created with `wt`.
+directory = "~/.worktrees"
 
 [session]
 resume_agents_on_restore = true

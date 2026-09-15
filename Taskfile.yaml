@@ -518,6 +518,21 @@ tasks:
       - rm -f {{.XDG_CONFIG_HOME}}/herdr/config.toml
 
   ################################################################################
+  # WORKTRUNK
+  # The whole directory is linked, not just config.toml: the hooks in
+  # worktrunk/hooks/ are referenced from config.toml by their installed path.
+  worktrunk:up:
+    desc: Configures worktrunk
+    deps: [ensure_xdg]
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/worktrunk {{.XDG_CONFIG_HOME}}/worktrunk
+
+  worktrunk:down:
+    desc: Removes worktrunk configuration link
+    cmds:
+      - rm -f {{.XDG_CONFIG_HOME}}/worktrunk
+
+  ################################################################################
   # TMUX
   tmux:up:
     desc: Configures TMUX
@@ -612,6 +627,7 @@ tasks:
       - task: task:up
       - task: tig:up
       - task: herdr:up
+      - task: worktrunk:up
       - task: tmux:up
       - task: yamllint:up
       - task: zoxide:up
