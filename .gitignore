@@ -64,3 +64,5 @@ claude/settings.local.json
 claude/settings.*.local.json
 pi/agent/auth.json
 pi/agent/sessions/
+
+karabiner/automatic_backups/

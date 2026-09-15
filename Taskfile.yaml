@@ -257,6 +257,18 @@ tasks:
       - defaults delete com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
 
   ################################################################################
+  # Karabiner-Elements
+  karabiner:up:
+    desc: Configures Karabiner-Elements
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/karabiner {{.XDG_CONFIG_HOME}}/karabiner
+
+  karabiner:down:
+    desc: Removes Karabiner-Elements configuration
+    cmds:
+      - rm -rf {{.XDG_CONFIG_HOME}}/karabiner
+
+  ################################################################################
   # K9S
   k9s:up:
     desc: Configures K9S
