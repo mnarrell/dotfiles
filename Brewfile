@@ -120,7 +120,6 @@ brew 'postgresql@18', restart_service: :changed
 brew 'pre-commit'
 brew 'prettier'
 brew 'python'
-brew 'raine/workmux/workmux'
 brew 'reattach-to-user-namespace'
 brew 'rg'
 brew 'rpm'
