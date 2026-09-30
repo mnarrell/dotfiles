@@ -37,6 +37,7 @@ post-switch = "~/.config/worktrunk/hooks/herdr-open.sh {{ worktree_path }} {{ re
 # About to delete the checkout -- close its workspace first so herdr is not
 # left holding a dead path.
 pre-remove = "~/.config/worktrunk/hooks/herdr-close.sh {{ worktree_path }}"
+skip-commit-generation-prompt = true
 
 ################################################################################
 # Available but deliberately unwired. Uncomment to enable.

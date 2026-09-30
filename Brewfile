@@ -119,6 +119,7 @@ brew 'postgis'
 brew 'postgresql@18', restart_service: :changed
 brew 'pre-commit'
 brew 'prettier'
+brew 'pwgen'
 brew 'python'
 brew 'reattach-to-user-namespace'
 brew 'rg'
