@@ -43,13 +43,13 @@ edit_scrollback = "prefix+e"
 # Workspace lifecycle (create/rename/close -- navigation lives on alt, below).
 new_workspace    = "prefix+shift+n"
 rename_workspace = "prefix+shift+w"   # herdr default; frees prefix+shift+r
-close_workspace  = "prefix+shift+d"   # herdr default; frees prefix+shift+x
+close_workspace  = "prefix+shift+x"
 
 # UI / global
 toggle_sidebar = ["prefix+b", "alt+s"]
 detach         = "prefix+d"
 help           = "prefix+?"
-reload_config  = "prefix+shift+r"     # herdr default; frees prefix+r
+# reload_config: unbound. Use the CLI reload command instead.
 
 ################################################################################
 # Alt layer -- everything ABOVE the pane: workspaces, agents, pickers.
@@ -110,6 +110,40 @@ command = "tig status"
 description = "Open tig status in a popup"
 width = "80%"
 height = "80%"
+
+# Override herdr's built-in "new worktree" key (prefix+shift+g) with worktrunk's
+# default-branch switch/create picker:
+[[keys.command]]
+key = "prefix+shift+g"
+type = "plugin_action"
+command = "worktrunk.open"
+description = "Worktree: switch / create from default branch"
+
+# Optional: bind current-branch creation separately.
+[[keys.command]]
+key = "prefix+shift+c"
+type = "plugin_action"
+command = "worktrunk.open-current"
+description = "Worktree: switch / create from current branch"
+
+# Optional: include remote-tracking branches for this picker.
+[[keys.command]]
+key = "prefix+shift+r"
+type = "plugin_action"
+command = "worktrunk.open-with-remotes"
+description = "Worktree: switch / create from local or remote branches"
+
+[[keys.command]]
+key = "prefix+shift+d"
+type = "plugin_action"
+command = "worktrunk.remove"
+description = "Worktree: remove"
+
+[[keys.command]]
+key = "prefix+shift+m"
+type = "plugin_action"
+command = "worktrunk.merge"
+description = "Worktree: merge into the target branch"
 
 [theme]
 name = "kanagawa"
