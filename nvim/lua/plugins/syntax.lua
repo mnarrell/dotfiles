@@ -6,7 +6,7 @@ return {
     opts = {
       file_types = { "markdown" },
     },
-    ft = { "markdown", "copilot-chat", "Avante" },
+    ft = { "markdown" },
   },
   { "pedrohdz/vim-yaml-folds", ft = "yaml" },
   { "towolf/vim-helm", ft = "helm" },

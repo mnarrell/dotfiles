@@ -49,7 +49,11 @@ close_workspace  = "prefix+shift+x"
 toggle_sidebar = ["prefix+b", "alt+s"]
 detach         = "prefix+d"
 help           = "prefix+?"
-# reload_config: unbound. Use the CLI reload command instead.
+# reload_config: unbound. Use the CLI reload command instead. (Must be
+# explicitly unset here -- defining a [[keys.command]] on the same chord does
+# NOT override a built-in action's default binding; herdr keeps the built-in
+# and silently disables the conflicting custom command.)
+reload_config = ""
 
 ################################################################################
 # Alt layer -- everything ABOVE the pane: workspaces, agents, pickers.

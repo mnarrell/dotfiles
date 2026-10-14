@@ -1,5 +1,5 @@
 local allow = function()
-  vim.fn.system({ "direnv", "allow", vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.") })
+  vim.fn.system({ "direnv", "allow", vim.fn.fnamemodify(vim.fn.expand("%"), ":p") })
   vim.schedule(function()
     vim.notify("direnv updated...", vim.log.levels.INFO)
   end)

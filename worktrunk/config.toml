@@ -27,17 +27,48 @@ worktree-path = "~/.worktrees/{{ repo }}/{{ branch | sanitize }}"
 #                     {{ branch }} {{ base }} {{ commit }} {{ cwd }}
 # Full context also arrives as JSON on stdin.
 
-# A new worktree was created -- open and focus its herdr workspace.
-post-start = "~/.config/worktrunk/hooks/herdr-open.sh {{ worktree_path }} {{ repo_path }} {{ branch }}"
-
 # Switched to an existing worktree -- focus its workspace, or open one if the
 # workspace was closed. Without this, the integration only works on creation.
+# Deliberately NOT extended with copy-ignored/direnv: an existing worktree
+# already has its files, and re-copying on every switch risks clobbering
+# local changes with stale content from the primary checkout.
 post-switch = "~/.config/worktrunk/hooks/herdr-open.sh {{ worktree_path }} {{ repo_path }} {{ branch }}"
 
 # About to delete the checkout -- close its workspace first so herdr is not
 # left holding a dead path.
 pre-remove = "~/.config/worktrunk/hooks/herdr-close.sh {{ worktree_path }}"
 skip-commit-generation-prompt = true
+
+# post-start runs as a sequential pipeline (`[[post-start]]`, not a table) so
+# that a new worktree gets its gitignored files (including .envrc) copied from
+# the primary checkout, then has that .envrc trusted by direnv, before herdr
+# opens a workspace for it. post-start is backgrounded and logged (`wt config
+# state logs`), so a failure partway through cannot wedge `wt` itself -- it
+# just means a later step (e.g. herdr-open) does not run for that worktree.
+#
+# NOTE: these three [[post-start]] blocks, and the [step.copy-ignored] table
+# above them, must stay at the very end of the file (just before the
+# deliberately-commented-out section and the [projects...] tables, which are
+# themselves pinned to the end for the same reason). TOML assigns any bare
+# key following a table header to that table, so scalar keys like
+# `post-switch` above must come before, not after, an array-of-tables.
+
+[step.copy-ignored]
+# Only exclude path-keyed or trivially-rebuilt caches. Everything else
+# (node_modules/, target/, vendor/, etc.) is cheap to copy because worktrunk
+# reflinks on APFS (copy-on-write, no extra disk).
+exclude = [".direnv/", ".venv/", "__pycache__/", ".pytest_cache/", ".mypy_cache/", ".ruff_cache/", ".terraform/"]
+
+[[post-start]]
+copy = "wt step copy-ignored"
+
+[[post-start]]
+# `direnv allow` exits 1 when there is no .envrc, which would abort this
+# pipeline. direnv-allow.sh always exits 0 so repos without .envrc are a no-op.
+direnv = "~/.config/worktrunk/hooks/direnv-allow.sh {{ worktree_path }}"
+
+[[post-start]]
+herdr = "~/.config/worktrunk/hooks/herdr-open.sh {{ worktree_path }} {{ repo_path }} {{ branch }}"
 
 ################################################################################
 # Available but deliberately unwired. Uncomment to enable.
