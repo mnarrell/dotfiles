@@ -1,6 +1,6 @@
 #! /usr/bin/env zsh
 
-function k() { kubecolor --force-colors "$@" }
+alias k='kubecolor --force-colors'
 alias kp='k get pods -o wide'
 alias ks='k get services -o wide'
 alias ke='k exec -it PODS -- /bin/bash'

@@ -6,6 +6,6 @@
 #
 # Guard on $+commands[zoxide] rather than `command -v` (bash-ism) so a machine
 # without zoxide installed still starts cleanly.
-if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh)"
+if (($+commands[zoxide])); then
+  eval "$(zoxide init zsh --cmd cd)"
 fi
