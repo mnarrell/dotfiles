@@ -1,0 +1,9 @@
+# workmux -- used here only for agent status: its harness hooks, the sidebar
+# (Option+s) and the dashboard (Option+d). Worktrees belong to worktrunk, so
+# workmux's add/open/merge/remove/close are never used.
+#
+# Reference: `workmux config reference`.
+
+# The terminal font (MesloLGM Nerd Font) has the icons; answering this here
+# skips the first-run prompt that otherwise blocks the dashboard.
+nerdfont: true

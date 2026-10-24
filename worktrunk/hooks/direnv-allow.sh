@@ -6,7 +6,7 @@
 #
 # Wired as the second step of worktrunk's post-start pipeline, after
 # copy-ignored copies gitignored files (including .envrc) from the primary
-# checkout and before herdr-open opens a workspace. Pipeline steps run
+# checkout and before the worktree's tmux window opens. Pipeline steps run
 # sequentially and a nonzero exit would abort later steps, so this must never
 # fail for any reason -- a worktree with no .envrc, or no direnv binary
 # installed, is simply a no-op.

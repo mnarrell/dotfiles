@@ -1,0 +1,9 @@
+# sesh -- tmux session manager.
+#
+# One session per project; windows and panes inside it are managed by hand.
+# Worktrees become extra windows in that session via worktrunk hooks
+# (worktrunk/config.toml), never through sesh's own worktree support, which
+# stays unused so worktrunk is the only thing that manages worktrees.
+
+[default_session]
+preview_command = "eza --all --git --icons --color=always --group-directories-first {}"

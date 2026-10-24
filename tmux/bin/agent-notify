@@ -1,0 +1,118 @@
+#! /usr/bin/env bash
+#
+# Native macOS notifications for workmux agent status.
+#
+#   agent-notify    run the watcher (started once per tmux server by agent.conf)
+#
+# workmux tracks agents (its hooks for Claude Code, opencode and pi) and shows
+# them in its sidebar and dashboard, but has no desktop notifications. This
+# fills that gap: every 2s it reads `workmux status --all --json` for this
+# tmux server and, when an agent moves to waiting or done, raises a
+# notification titled with the agent and subtitled "session › window".
+# Clicking it switches tmux to that pane and brings Alacritty forward. When
+# the agent moves on, its notification is withdrawn. Nothing is sent for an
+# agent you are already looking at.
+#
+# Each agent gets its own icon when agent-notifier-build has made a notifier
+# for it; otherwise plain terminal-notifier is used.
+#
+# One watcher per tmux server (a lock in $TMPDIR); it exits with the server.
+
+set -u
+
+command -v workmux >/dev/null 2>&1 || exit 0
+command -v terminal-notifier >/dev/null 2>&1 || exit 0
+[ -n "${TMUX:-}" ] || exit 0
+
+tmux_bin="$(command -v tmux)"
+socket="${TMUX%%,*}"
+notifiers="${XDG_DATA_HOME:-$HOME/.local/share}/tmux-agents"
+
+lock="${TMPDIR:-/tmp}/agent-notify.$(printf '%s' "$socket" | cksum | cut -d' ' -f1).lock"
+mkdir "$lock" 2>/dev/null || {
+	kill -0 "$(cat "$lock/pid" 2>/dev/null)" 2>/dev/null && exit 0
+	rm -rf "$lock"
+	mkdir "$lock" 2>/dev/null || exit 0
+}
+echo $$ >"$lock/pid"
+trap 'rm -rf "$lock"' EXIT
+
+notifier_for() {
+	local n="$notifiers/$1-notifier.app/Contents/MacOS/terminal-notifier"
+	[ -x "$n" ] && echo "$n" || echo terminal-notifier
+}
+
+# withdraw <pane>: only the bundle that posted a notification can remove it.
+withdraw() {
+	local n
+	for n in terminal-notifier "$notifiers"/*-notifier.app/Contents/MacOS/terminal-notifier; do
+		[ "$n" = terminal-notifier ] || [ -x "$n" ] || continue
+		"$n" -remove "tmux:$socket:$1" >/dev/null 2>&1
+	done
+}
+
+# In front of you: active pane of the active window, in a session whose
+# client has terminal focus.
+visible() {
+	local session
+	session=$(tmux display-message -p -t "$1" '#{?#{&&:#{pane_active},#{window_active}},#{session_name},}' 2>/dev/null)
+	[ -n "$session" ] || return 1
+	tmux list-clients -F '#{client_session}	#{client_flags}' 2>/dev/null |
+		awk -F'\t' -v s="$session" '$1 == s && $2 ~ /(^|,)focused(,|$)/ { found = 1 } END { exit !found }'
+}
+
+notify() { # pane status kind session window place title
+	local pane="$1" status="$2" kind="$3" session="$4" window="$5" place="$6" title="$7"
+	visible "$pane" && return
+	[ -n "$kind" ] || kind=$(tmux display-message -p -t "$pane" '#{pane_current_command}' 2>/dev/null)
+	local head body sound=()
+	case "$status" in
+	# Distinct sounds, so you can tell "needs you" from "finished" by ear.
+	waiting) head="${kind:-agent} needs you" body="${title:-Waiting for input}" sound=(-sound default) ;;
+	done) head="${kind:-agent} finished" body="${title:-Done}" sound=(-sound Glass) ;;
+	esac
+	[ -n "$place" ] && body="$place · $body"
+	local target
+	printf -v target '%q -S %q switch-client -t %q' "$tmux_bin" "$socket" "$pane"
+	"$(notifier_for "$kind")" \
+		-group "tmux:$socket:$pane" \
+		-title "$head" \
+		-subtitle "$session › $window" \
+		-message "$body" \
+		-execute "$target" \
+		-activate org.alacritty \
+		"${sound[@]}" >/dev/null 2>&1
+}
+
+declare -A last=()
+first=1
+while tmux has-session 2>/dev/null; do
+	declare -A now=()
+	while IFS=$'\x1f' read -r pane status kind session window place title; do
+		[ -n "$pane" ] || continue
+		now[$pane]="$status"
+		prev="${last[$pane]:-}"
+		[ "$status" = "$prev" ] && continue
+		[ -n "$first" ] && continue # the first read is only a baseline
+		case "$status" in
+		waiting | done) notify "$pane" "$status" "$kind" "$session" "$window" "$place" "$title" ;;
+		*) [ -n "$prev" ] && withdraw "$pane" ;;
+		esac
+	done < <(
+		workmux status --all --json 2>/dev/null | jq -r '.agents[]? | [
+			.pane_id, .status, (.agent_kind // ""), .session, .window_name,
+			([.project, .worktree] | map(select(. != null)) | unique | join("/")),
+			(.title // "")
+		] | join("\u001f")' 2>/dev/null
+	)
+	# Agents that disappeared take their notifications with them.
+	for pane in "${!last[@]}"; do
+		[ -n "${now[$pane]:-}" ] || withdraw "$pane"
+	done
+	unset last
+	declare -A last=()
+	for pane in "${!now[@]}"; do last[$pane]="${now[$pane]}"; done
+	unset now
+	first=""
+	sleep 2
+done

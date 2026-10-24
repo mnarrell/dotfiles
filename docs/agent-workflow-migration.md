@@ -1,154 +1,114 @@
-# Migrating the agent workflow: workmux → herdr + worktrunk
+# Agent workflow: tmux + sesh + worktrunk + workmux
 
-Date: 2026-09-14. Supersedes the workmux setup recorded in
-[agent-coordinator-eval.md](agent-coordinator-eval.md).
+Date: 2026-10-24. Supersedes the herdr setup this document described before
+(see its git history); herdr itself stays installed as a fallback.
+
+This is the why and the wiring. For keys, daily use, troubleshooting and
+setting up a new Mac, see the guide: [agent-workflow.md](agent-workflow.md).
 
 ## Why
 
-workmux showed agent status by appending to tmux's `window-status-format`.
-tmux only renders the window list for the session you are attached to, so an
-agent finishing in **another session was invisible** — and workmux has no
-system notification for agent state at all. That is a tmux constraint, not a
-workmux defect, so no tmux plugin could fix it.
+herdr fixed the two things a plain tmux setup lacked: agents finishing in
+another session were invisible, and nothing raised an OS notification. Both
+are now covered natively in tmux, by off-the-shelf tools plus one small
+script:
 
-herdr is a terminal workspace manager rather than a tmux plugin. All workspaces
-live under one server with one UI, so it can notify across all of them, and it
-suppresses popups for the active tab — alerting on exactly the agents you are
-*not* watching. It also carries integrations for all three harnesses in use
-(Claude Code, opencode, pi), which nothing in the tmux plugin ecosystem does.
-
-herdr does not do git worktree lifecycle well, so worktrunk (`wt`) owns that.
+- **Cross-session visibility:** workmux's sidebar and dashboard list agents
+  from every session, not just the attached one (the old workmux problem was
+  its window-status icons, which tmux only draws for the attached session).
+- **Notifications:** workmux has none, so `tmux/bin/agent-notify` watches
+  `workmux status --json` and raises native macOS notifications.
 
 ## Shape
 
-**worktrunk drives herdr.** `wt` is what you type; hooks keep herdr in sync.
-
-```
-wt switch --create fix/dns
-  └─ creates ~/.worktrees/<repo>/fix-dns
-  └─ post-start hook → herdr worktree open --focus
-       └─ herdr workspace, agent status, system toast on completion
-```
-
-- **Worktree root**: `~/.worktrees/{{ repo }}/{{ branch | sanitize }}` —
-  one global root, split by project and branch. Already granted in
-  `claude/settings.json`, so agents working inside a worktree need no extra
-  permission. `sanitize` flattens `feat/dns` to `feat-dns` rather than nesting.
-- **Dotted repos are pinned explicitly.** `{{ repo }}` is the checkout's
-  directory name, so `.dotfiles` would land in a hidden `~/.worktrees/.dotfiles/`.
-  No filter strips a leading dot and no variable exposes the remote-derived
-  identifier (which is already dot-free), so `.dotfiles` and `.private_dotfiles`
-  get `[projects."<id>"]` overrides at the end of `worktrunk/config.toml`. Find
-  an identifier with `wt config show | grep Identifier`.
-- **herdr's own `[worktrees] directory`** points at the same root, so a worktree
-  made from herdr's UI lands beside those made with `wt`. The `new_worktree`
-  keybinding is deliberately unbound — `wt` is the one path that runs the hooks.
-
-## Command equivalence
-
-| Old (workmux) | New |
-|---|---|
-| `workmux add <branch>` | `wt switch --create <branch>` |
-| `workmux open <handle>` | `wt switch <branch>` |
-| `workmux remove` | `wt remove` |
-| `workmux merge` | `wt merge` |
-| `workmux list` | `wt list` (or `wt list --full` for CI status) |
-| `workmux dashboard` (`prefix+a`) | herdr sidebar — `Option+s` |
-| `workmux list` picker (`prefix+A`) | herdr workspace navigation — `Option+w` |
-| `workmux status` | `herdr workspace list` |
-| status in tmux window bar | herdr sidebar + system toast |
-| — | `wt switch pr:123`, LLM commit messages, CI status |
-
-herdr's prefix is `ctrl+space`, matching the old tmux prefix, and Alacritty
-rewrites both `Cmd` and `Option` chords onto it — so panes, tabs and splits keep
-their existing muscle memory, and workspaces, agents and navigation get a
-single-modifier `Option` layer. `Option+a` jumps straight to whichever agent
-raised the last toast. The rewrite is load-bearing: herdr does not match `alt`
-chords delivered from Alacritty at all. See [herdr-keymap.md](herdr-keymap.md).
-
-## Hooks
-
-Hook bodies are standalone scripts in `worktrunk/hooks/`, not inline commands,
-so they can be run and debugged directly:
-
-```bash
-./worktrunk/hooks/herdr-open.sh <worktree_path> <repo_path> <branch>
-./worktrunk/hooks/herdr-close.sh <worktree_path>
-```
-
-Wired in `worktrunk/config.toml`:
-
-| Hook | Script | Why |
+| Need | Tool | Config |
 |---|---|---|
-| `post-start` | `herdr-open.sh` | new worktree → open + focus its workspace |
-| `post-switch` | `herdr-open.sh` | existing worktree → focus it (without this the integration only works on creation) |
+| One session per project | sesh | `sesh/sesh.toml` |
+| Worktrees, one tmux window each | worktrunk | `worktrunk/config.toml` hooks |
+| Agent status, sidebar, dashboard | workmux | `workmux/config.yaml`, harness hooks below |
+| macOS notifications | `tmux/bin/agent-notify` | started by `tmux/agent.conf` |
 
-`pre-remove` deliberately remains disabled. It runs before `wt` has confirmed
-that it can delete the checkout, so using it to close the workspace makes a
-failed removal (for example, a dirty or apparently-unmerged worktree) look
-successful in herdr while its directory remains. The bound `worktrunk.remove`
-plugin action runs `wt remove --foreground` and closes the native workspace
-only after that command succeeds.
+workmux is used for status only. Its worktree commands (`add`, `open`,
+`merge`, `remove`, `close`) are never used; worktrunk owns worktrees.
 
-Every other hook type is listed commented-out in the config; enabling one is
-uncommenting a line.
+## Keys
 
-### Two things that are easy to get wrong
+The ⌥ keys (see the guide) are bound in `tmux/agent.conf`. Alacritty sends
+left Option as plain Meta (`option_as_alt = "OnlyLeft"`) and must not also
+rewrite those chords: the old herdr Option layer turned ⌥k into prefix+[
+(copy-mode) and so on, and Alacritty runs every matching binding, so both
+fired.
 
-**`herdr worktree open` needs `--cwd` as well as `--path`.** `--cwd` names the
-parent repo so herdr can resolve which repository the checkout belongs to.
-Passing `--path` alone returns `worktree_not_found`.
+## Agent status hooks
 
-**Lifecycle hooks must not turn cleanup into a failed operation.**
-`herdr-close.sh` therefore exits 0 on every path: missing binary, stopped
-server, missing `jq`, or bad arguments. Keep this property when editing it.
+The same hooks workmux's own integrations install, kept in this repo so
+`workmux setup` never runs (it is interactive and rewrites
+`~/.claude/settings.json`):
 
-`herdr workspace close` takes a `workspace_id`, not a path, so `herdr-close.sh`
-resolves it by matching `.worktree.checkout_path` in `herdr workspace list`
-JSON.
+- **Claude Code:** five hooks in `claude/settings.json`, copied from
+  workmux's Claude plugin (`.claude-plugin/plugin.json`).
+- **opencode:** `opencode/plugins/workmux-status.ts`, loaded automatically.
+- **pi:** `pi/agent/extensions/workmux-status.ts`, linked into
+  `~/.pi/agent/extensions/` by `task workmux:up` (`~/.pi` itself is not linked
+  from this repo; it holds `auth.json`).
 
-### GitHub UI merges
+The plugin files are copied unchanged from workmux v0.1.277
+(`resources/opencode/plugins/`, `resources/pi/extensions/`). On a workmux
+upgrade, re-copy them from the matching tag. All of them are silent no-ops
+outside tmux.
 
-Merging a PR in GitHub is supported by `wt remove`; worktrunk checks the
-default branch (and its upstream when it is ahead) for ordinary, rebase, and
-squash merges. Fetch first if the local remote-tracking branch is stale. If it
-still considers the branch unmerged, do not force the removal unless that is
-intentional: the plugin leaves the workspace open and shows worktrunk's error.
+## Notifications
 
-`wt merge` remains a separate teardown path. The plugin's merge action handles
-its own successful removal and workspace close; no lifecycle hook is needed.
+`agent-notify` runs once per tmux server (a lock in `$TMPDIR`; it exits with
+the server) and diffs `workmux status --all --json` every 2s. Each agent's
+icon comes from its own copy of terminal-notifier, built by
+`tmux/bin/agent-notifier-build` (run by `task tmux:up`): macOS takes a
+notification's icon from the sending app, with no per-notification override.
 
-## What changed in this repo
+### Things that are easy to get wrong
 
-**Added** — `worktrunk/config.toml`, `worktrunk/hooks/`,
-`zsh/init.d/60-worktrunk.zsh` (shell integration, `eval`'d at init like the
-direnv hook so it tracks the installed version rather than going stale).
+- **Terminal notifications (OSC 9/777) are not an option:** Alacritty does
+  not support them, and a detached session has no terminal to send them to.
+- **First notification permission:** terminal-notifier asks only when it is
+  launched through LaunchServices; `agent-notifier-build` does that.
+- **`run-shell` output lands on your pane:** anything a `run-shell` job
+  prints, or a nonzero exit (e.g. the watcher being stopped), is shown in view
+  mode over the current pane. The watcher is started silent.
+- **Alacritty can't override an imported binding:** every matching binding
+  runs, so the herdr Option layer had to be removed, not shadowed.
+- **workmux's first run asks about Nerd Font icons** and blocks the dashboard
+  until answered; `workmux/config.yaml` sets `nerdfont: true`.
 
-**Removed** — `workmux/`, both `workmux-status` adapters, the five
-`workmux set-window-status` / `register-agent` hooks in `claude/settings.json`,
-and the `prefix+a` / `prefix+A` bindings in `tmux/tmux.conf`.
+## worktrunk hooks
 
-**Renamed** — the `git-tree` skill is now `git-branch` and covers branch
-hygiene only. Worktree placement is a human decision, not something the skill
-directs.
+| Hook | Effect |
+|---|---|
+| `post-start`, `post-switch` | focus the branch's window in the project session, or open a plain one; the primary checkout is window 1 |
+| `post-remove` | close the branch's window, only after the checkout is gone |
 
-**tmux stays installed.** Only the workmux bindings were removed. It remains
-available for remote SSH work and as an immediate fallback.
+`wt merge` does not close the window; a commented `post-merge` line enables
+that.
+
+## herdr fallback
+
+herdr, its config (`herdr/`), its task and its harness integrations are still
+in place; only its worktrunk hooks and Alacritty Option layer were removed.
+To use it again:
+
+1. Restore the Option layer: `git show <this commit>^:alacritty/alacritty.toml`
+   has the nine `\u0000<key>` bindings at the end.
+2. Re-add the herdr steps to `worktrunk/config.toml` (`herdr-open.sh` in
+   `post-switch` and the last `[[post-start]]`; the scripts are still in
+   `worktrunk/hooks/`).
+3. Run `herdr`.
 
 ## Revert
 
-tmux is untouched, so the old workflow is one `tmux` invocation away even
-before reverting anything.
-
 ```bash
 git revert <commit>
-task workmux:up          # restored by the revert
-brew install raine/workmux/workmux
-workmux setup            # re-installs the status hooks
+task alacritty:up worktrunk:up tmux:up claude:up
+task sesh:down workmux:down
 ```
 
-Then set `herdr/config.toml` `[worktrees] directory` back if you want herdr's
-own worktrees separated again. Existing worktrees survive either direction —
-only the tooling around them changes.
-
-To drop worktrunk: `task worktrunk:down && brew uninstall worktrunk`.
+To drop the tools: `brew uninstall sesh workmux terminal-notifier` and remove
+`~/.local/share/tmux-agents/` (the icon copies).

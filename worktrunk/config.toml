@@ -1,8 +1,13 @@
 # worktrunk -- git worktree lifecycle.
 #
-# worktrunk owns worktree creation, switching and teardown; herdr is the
-# surface that displays them and notifies when their agents finish. The hooks
-# below are the seam between the two. See docs/agent-workflow-migration.md.
+# worktrunk owns worktree creation, switching and teardown; tmux shows each
+# worktree as a window in its project's session (sessions come from sesh).
+# The hooks below are the seam between the two. See
+# docs/agent-workflow-migration.md.
+#
+# herdr is kept installed as a fallback but no longer wired here: its hook
+# scripts stay in worktrunk/hooks/ (herdr-open.sh, herdr-close.sh), and the
+# revert section of the doc above says how to wire them back.
 
 # Worktrees live under a single global root, separated by project and branch.
 # This matches the root already granted in claude/settings.json, so agents
@@ -17,38 +22,36 @@ worktree-path = "~/.worktrees/{{ repo }}/{{ branch | sanitize }}"
 ################################################################################
 # Hooks
 #
-# Hook bodies live in worktrunk/hooks/ as standalone scripts rather than inline
-# commands, so they can be run and debugged directly without going through
-# `wt`. Every hook is best-effort and exits 0 -- `pre-*` hooks are BLOCKING and
-# a nonzero exit aborts the operation, so a stopped herdr server must never be
-# able to wedge `wt remove`.
+# Every hook is best-effort and must not fail the operation -- `pre-*` hooks
+# are BLOCKING and a nonzero exit aborts it. The tmux hooks are inline and do
+# nothing outside tmux.
 #
 # Template variables: {{ worktree_path }} {{ repo_path }} {{ repo }}
 #                     {{ branch }} {{ base }} {{ commit }} {{ cwd }}
 # Full context also arrives as JSON on stdin.
 
-# Switched to an existing worktree -- focus its workspace, or open one if the
-# workspace was closed. Without this, the integration only works on creation.
+# Switched to a worktree: focus its window (named after the branch) in the
+# current project session, or open a new one there. The primary checkout is
+# the session's first window.
 # Deliberately NOT extended with copy-ignored/direnv: an existing worktree
 # already has its files, and re-copying on every switch risks clobbering
 # local changes with stale content from the primary checkout.
-post-switch = "~/.config/worktrunk/hooks/herdr-open.sh {{ worktree_path }} {{ repo_path }} {{ branch }}"
+post-switch = '''[ -n "$TMUX" ] || exit 0; if [ {{ worktree_path }} = {{ repo_path }} ]; then tmux select-window -t :^; else tmux select-window -t '={{ branch | sanitize }}' 2>/dev/null || tmux new-window -n '{{ branch | sanitize }}' -c {{ worktree_path }}; fi'''
 
-# Do not close herdr from `pre-remove`. That hook runs before `wt` verifies it
-# can delete the checkout; closing there makes a refused removal (dirty or
-# apparently-unmerged worktree) look successful in herdr while its directory
-# remains. The herdr worktrunk plugin closes the workspace only after its
-# foreground `wt remove` succeeds.
-#
-# pre-remove = "~/.config/worktrunk/hooks/herdr-close.sh {{ worktree_path }}"
+# Close the worktree's window -- from post-remove, not pre-remove: pre-remove
+# runs before `wt` verifies it can delete the checkout, so closing there would
+# lose the window of a refused removal (dirty or apparently-unmerged worktree)
+# whose directory remains.
+post-remove = "tmux kill-window -t '={{ branch | sanitize }}' 2>/dev/null || true"
+
 skip-commit-generation-prompt = true
 
 # post-start runs as a sequential pipeline (`[[post-start]]`, not a table) so
 # that a new worktree gets its gitignored files (including .envrc) copied from
-# the primary checkout, then has that .envrc trusted by direnv, before herdr
-# opens a workspace for it. post-start is backgrounded and logged (`wt config
-# state logs`), so a failure partway through cannot wedge `wt` itself -- it
-# just means a later step (e.g. herdr-open) does not run for that worktree.
+# the primary checkout, then has that .envrc trusted by direnv, before its
+# tmux window opens. post-start is backgrounded and logged (`wt config state
+# logs`), so a failure partway through cannot wedge `wt` itself -- it just
+# means a later step does not run for that worktree.
 #
 # NOTE: these three [[post-start]] blocks, and the [step.copy-ignored] table
 # above them, must stay at the very end of the file (just before the
@@ -72,22 +75,22 @@ copy = "wt step copy-ignored"
 direnv = "~/.config/worktrunk/hooks/direnv-allow.sh {{ worktree_path }}"
 
 [[post-start]]
-herdr = "~/.config/worktrunk/hooks/herdr-open.sh {{ worktree_path }} {{ repo_path }} {{ branch }}"
+# Same command as post-switch: open the new worktree's window.
+tmux = '''[ -n "$TMUX" ] || exit 0; if [ {{ worktree_path }} = {{ repo_path }} ]; then tmux select-window -t :^; else tmux select-window -t '={{ branch | sanitize }}' 2>/dev/null || tmux new-window -n '{{ branch | sanitize }}' -c {{ worktree_path }}; fi'''
 
 ################################################################################
 # Available but deliberately unwired. Uncomment to enable.
 #
 # post-merge is the known gap: `wt merge` tears the worktree down without
-# closing its herdr workspace. Enable it if merging becomes the habitual
-# teardown path rather than `wt remove`.
+# closing its tmux window. Enable it if merging becomes the habitual teardown
+# path rather than `wt remove`.
 #
-# post-merge  = "~/.config/worktrunk/hooks/herdr-close.sh {{ worktree_path }}"
+# post-merge  = "tmux kill-window -t '={{ branch | sanitize }}' 2>/dev/null || true"
 # pre-merge   =
 # pre-start   =
 # pre-switch  =
 # pre-commit  =
 # post-commit =
-# post-remove =
 
 ################################################################################
 # Per-project overrides.

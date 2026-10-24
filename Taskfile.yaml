@@ -539,6 +539,9 @@ tasks:
     cmds:
       - ln -sfn {{.ROOT_DIR}}/tmux {{.XDG_CONFIG_HOME}}/tmux
       - tic -xe tmux-256color {{.ROOT_DIR}}/tmux/tmux-256color.src
+      # Per-agent notification icons (tmux/agent.conf). Keeps existing ones,
+      # so re-runs do not raise the macOS permission prompts again.
+      - '{{.ROOT_DIR}}/tmux/bin/agent-notifier-build'
 
   tmux:down:
     desc: Removes TMUX configuration
@@ -547,6 +550,39 @@ tasks:
       # Remove only the entry tmux:up compiled ('t' -> 0x74 bucket), not the whole
       # ~/.terminfo dir (which holds other entries, eg. alacritty).
       - rm -f {{.HOME}}/.terminfo/74/tmux-256color
+
+  ################################################################################
+  # SESH
+  # One tmux session per project; see sesh/sesh.toml.
+  sesh:up:
+    desc: Configures sesh
+    deps: [ensure_xdg]
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/sesh {{.XDG_CONFIG_HOME}}/sesh
+
+  sesh:down:
+    desc: Removes sesh configuration link
+    cmds:
+      - rm -f {{.XDG_CONFIG_HOME}}/sesh
+
+  ################################################################################
+  # WORKMUX
+  # Agent status only (sidebar, dashboard); worktrunk owns worktrees. Its hooks
+  # are declared in claude/settings.json and opencode/plugins/; pi's ~/.pi is
+  # not linked from this repo (it holds auth.json), so only the extension is.
+  workmux:up:
+    desc: Configures workmux status tracking
+    deps: [ensure_xdg]
+    cmds:
+      - ln -sfn {{.ROOT_DIR}}/workmux {{.XDG_CONFIG_HOME}}/workmux
+      - mkdir -p {{.HOME}}/.pi/agent/extensions
+      - ln -sfn {{.ROOT_DIR}}/pi/agent/extensions/workmux-status.ts {{.HOME}}/.pi/agent/extensions/workmux-status.ts
+
+  workmux:down:
+    desc: Removes workmux configuration links
+    cmds:
+      - rm -f {{.XDG_CONFIG_HOME}}/workmux
+      - rm -f {{.HOME}}/.pi/agent/extensions/workmux-status.ts
 
   ################################################################################
   # YAML Lint
@@ -628,6 +664,8 @@ tasks:
       - task: tig:up
       - task: herdr:up
       - task: worktrunk:up
+      - task: sesh:up
+      - task: workmux:up
       - task: tmux:up
       - task: yamllint:up
       - task: zoxide:up
