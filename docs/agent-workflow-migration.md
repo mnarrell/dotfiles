@@ -82,7 +82,13 @@ Wired in `worktrunk/config.toml`:
 |---|---|---|
 | `post-start` | `herdr-open.sh` | new worktree → open + focus its workspace |
 | `post-switch` | `herdr-open.sh` | existing worktree → focus it (without this the integration only works on creation) |
-| `pre-remove` | `herdr-close.sh` | close the workspace before the checkout is deleted, so herdr is not left holding a dead path |
+
+`pre-remove` deliberately remains disabled. It runs before `wt` has confirmed
+that it can delete the checkout, so using it to close the workspace makes a
+failed removal (for example, a dirty or apparently-unmerged worktree) look
+successful in herdr while its directory remains. The bound `worktrunk.remove`
+plugin action runs `wt remove --foreground` and closes the native workspace
+only after that command succeeds.
 
 Every other hook type is listed commented-out in the config; enabling one is
 uncommenting a line.
@@ -93,21 +99,24 @@ uncommenting a line.
 parent repo so herdr can resolve which repository the checkout belongs to.
 Passing `--path` alone returns `worktree_not_found`.
 
-**`pre-*` hooks are blocking — a nonzero exit aborts the operation.** Both
-scripts therefore exit 0 on every path: missing binary, stopped server, missing
-`jq`, bad arguments. A convenience hook must never be able to wedge
-`wt remove`. Keep this property when editing them.
+**Lifecycle hooks must not turn cleanup into a failed operation.**
+`herdr-close.sh` therefore exits 0 on every path: missing binary, stopped
+server, missing `jq`, or bad arguments. Keep this property when editing it.
 
 `herdr workspace close` takes a `workspace_id`, not a path, so `herdr-close.sh`
 resolves it by matching `.worktree.checkout_path` in `herdr workspace list`
 JSON.
 
-### Known gap
+### GitHub UI merges
 
-`post-merge` is **not** wired. `wt merge` tears down the worktree without
-closing its herdr workspace, leaving one pointing at a deleted path. The config
-stubs it; enable it if `wt merge` becomes the habitual teardown path rather
-than `wt remove`.
+Merging a PR in GitHub is supported by `wt remove`; worktrunk checks the
+default branch (and its upstream when it is ahead) for ordinary, rebase, and
+squash merges. Fetch first if the local remote-tracking branch is stale. If it
+still considers the branch unmerged, do not force the removal unless that is
+intentional: the plugin leaves the workspace open and shows worktrunk's error.
+
+`wt merge` remains a separate teardown path. The plugin's merge action handles
+its own successful removal and workspace close; no lifecycle hook is needed.
 
 ## What changed in this repo
 

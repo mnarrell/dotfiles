@@ -4,10 +4,10 @@
 #
 #   herdr-close.sh <worktree_path>
 #
-# Wired to worktrunk's pre-remove hook. `pre-*` hooks are BLOCKING -- a nonzero
-# exit aborts the operation -- so this must never fail for any reason. Without
-# it, `wt remove` deletes the checkout and leaves a herdr workspace pointing at
-# a path that no longer exists.
+# Available for a post-remove hook. It must never fail: hook errors should not
+# turn an already-removed checkout into a failed lifecycle operation. The herdr
+# worktrunk plugin invokes equivalent cleanup itself, but only after its
+# foreground `wt remove` succeeds.
 #
 # `herdr workspace close` takes a workspace_id, not a path, so the id is
 # resolved from `herdr workspace list` by matching .worktree.checkout_path.
@@ -22,10 +22,10 @@ command -v "$herdr_bin" >/dev/null 2>&1 || exit 0
 command -v jq >/dev/null 2>&1 || exit 0
 
 workspace_id=$(
-  "$herdr_bin" workspace list 2>/dev/null |
-    jq -r --arg p "$worktree_path" \
-      '.result.workspaces[]? | select(.worktree.checkout_path == $p) | .workspace_id' |
-    head -1
+	"$herdr_bin" workspace list 2>/dev/null |
+		jq -r --arg p "$worktree_path" \
+			'.result.workspaces[]? | select(.worktree.checkout_path == $p) | .workspace_id' |
+		head -1
 )
 
 [ -n "$workspace_id" ] && "$herdr_bin" workspace close "$workspace_id" >/dev/null 2>&1
