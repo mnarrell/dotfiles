@@ -70,7 +70,8 @@ tasks:
   # Claude Code
   claude:up:
     desc: Configures Claude Code
-    deps: [ensure_xdg]
+    # skills:up provides ~/.agents/AGENTS.md, which claude/CLAUDE.md imports.
+    deps: [ensure_xdg, skills:up]
     cmds:
       - mkdir -p {{.HOME}}/.claude
       - ln -sfn {{.ROOT_DIR}}/claude/agents {{.HOME}}/.claude/agents
@@ -81,7 +82,7 @@ tasks:
       # Link each skill, not the directory, so skills from other sources can
       # live in ~/.claude/skills alongside these.
       - mkdir -p {{.HOME}}/.claude/skills
-      - ln -sfn {{.ROOT_DIR}}/claude/skills/* {{.HOME}}/.claude/skills
+      - ln -sfn {{.ROOT_DIR}}/agents/skills/* {{.HOME}}/.claude/skills
 
   claude:down:
     desc: Removes only matching Claude Code links
@@ -91,7 +92,7 @@ tasks:
       - rm -f {{.HOME}}/.claude/settings.json
       - rm -f {{.HOME}}/.claude/snip-hook.py
       - rm -f {{.HOME}}/.claude/statusline-command.sh
-      - for s in {{.ROOT_DIR}}/claude/skills/*/; do rm -f {{.HOME}}/.claude/skills/$(basename $s); done
+      - for s in {{.ROOT_DIR}}/agents/skills/*/; do rm -f {{.HOME}}/.claude/skills/$(basename $s); done
 
   ################################################################################
   # Docker
@@ -463,18 +464,22 @@ tasks:
       - rm -rf {{.XDG_CONFIG_HOME}}/ruff
 
   ################################################################################
-  # Agent Skills
-  # OpenCode and pi both read ~/.agents/skills, so they share one pair of tasks.
-  # Claude Code reads only ~/.claude/skills; see claude:up.
+  # Agent Skills and shared harness rules
+  # agents/ is the single source for every harness. OpenCode and pi read
+  # ~/.agents/skills; Claude Code reads only ~/.claude/skills (see claude:up).
+  # ~/.agents/AGENTS.md is imported by claude/CLAUDE.md and opencode.jsonc;
+  # pi reads it through the pi/agent/AGENTS.md symlink.
   skills:up:
-    desc: Links Agent Skills into ~/.agents/skills for OpenCode and pi
+    desc: Links Agent Skills and shared rules into ~/.agents
     cmds:
       - mkdir -p {{.HOME}}/.agents/skills
+      - ln -sfn {{.ROOT_DIR}}/agents/AGENTS.md {{.HOME}}/.agents/AGENTS.md
       - ln -sfn {{.ROOT_DIR}}/agents/skills/* {{.HOME}}/.agents/skills
 
   skills:down:
-    desc: Removes this repo's Agent Skills links, leaving other sources in place
+    desc: Removes this repo's Agent Skills and rules links, leaving other sources in place
     cmds:
+      - rm -f {{.HOME}}/.agents/AGENTS.md
       - for s in {{.ROOT_DIR}}/agents/skills/*/; do rm -f {{.HOME}}/.agents/skills/$(basename $s); done
 
   ################################################################################
