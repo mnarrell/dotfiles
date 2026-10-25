@@ -1,7 +1,7 @@
 ---
 name: researcher
 description: Performs bounded, read-only web research and returns concise evidence-backed synthesis.
-model: sonnet
+model: haiku
 tools: WebFetch, WebSearch, Read, Glob, Grep, Bash
 disallowedTools: Agent, Edit, Write
 permissionMode: dontAsk
