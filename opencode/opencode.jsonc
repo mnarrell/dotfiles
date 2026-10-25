@@ -3,6 +3,10 @@
   "lsp": true,
   "formatter": true,
 
+  // Shared harness rules (dotfiles agents/AGENTS.md, linked by `task skills:up`).
+  // This AGENTS.md holds only OpenCode-specific additions.
+  "instructions": ["{env:HOME}/.agents/AGENTS.md"],
+
   // DCP (Dynamic Context Pruning): surgical mid-session context management.
   // Configured via dcp.jsonc. Prefer this over OpenCode's built-in compaction.
   "plugin": [
