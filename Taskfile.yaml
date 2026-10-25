@@ -568,21 +568,18 @@ tasks:
   ################################################################################
   # WORKMUX
   # Agent status only (sidebar, dashboard); worktrunk owns worktrees. Its hooks
-  # are declared in claude/settings.json and opencode/plugins/; pi's ~/.pi is
-  # not linked from this repo (it holds auth.json), so only the extension is.
+  # live with each harness's config: claude/settings.json, opencode/plugins/
+  # and pi/agent/extensions/ (deployed by claude:up, opencode:up and pi:up).
   workmux:up:
     desc: Configures workmux status tracking
     deps: [ensure_xdg]
     cmds:
       - ln -sfn {{.ROOT_DIR}}/workmux {{.XDG_CONFIG_HOME}}/workmux
-      - mkdir -p {{.HOME}}/.pi/agent/extensions
-      - ln -sfn {{.ROOT_DIR}}/pi/agent/extensions/workmux-status.ts {{.HOME}}/.pi/agent/extensions/workmux-status.ts
 
   workmux:down:
-    desc: Removes workmux configuration links
+    desc: Removes workmux configuration link
     cmds:
       - rm -f {{.XDG_CONFIG_HOME}}/workmux
-      - rm -f {{.HOME}}/.pi/agent/extensions/workmux-status.ts
 
   ################################################################################
   # YAML Lint

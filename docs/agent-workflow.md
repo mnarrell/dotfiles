@@ -99,7 +99,7 @@ plain Meta (`option_as_alt = "OnlyLeft"`) with no bindings of its own.
 
 | Symptom | Check |
 |---|---|
-| No notification at all | Inside tmux, `workmux status --all --json` should list the agent. If not, its hooks are missing (re-run `task claude:up` / `opencode:up` / `workmux:up`, then restart the agent). |
+| No notification at all | Inside tmux, `workmux status --all --json` should list the agent. If not, its hooks are missing (re-run `task claude:up` / `opencode:up` / `pi:up`, then restart the agent). |
 | Agent listed, still nothing | `pgrep -fl agent-notify` should show one watcher. If not, reload tmux (prefix `r`). Then `terminal-notifier -diagnose`. |
 | Notification disappears | Its entry in System Settings → Notifications is on *Banners*; use *Alerts*. |
 | Plain icon instead of the agent's | `tmux/bin/agent-notifier-build --force`, then allow and set to *Alerts* again. |
@@ -137,8 +137,7 @@ repo.
    terminal-notifier's icon.
 
 4. **Deploy the dotfiles.** Links tmux, sesh, workmux, worktrunk, Alacritty
-   and Claude Code config, links the pi extension into `~/.pi`, and builds the
-   per-agent notifiers.
+   and Claude Code config, and builds the per-agent notifiers.
 
    ```bash
    task
@@ -147,11 +146,11 @@ repo.
    macOS asks once per notifier ("Claude (tmux)", "OpenCode (tmux)",
    "pi (tmux)") whether it may send notifications: allow each.
 
-5. **opencode** is not in the default run; link its config (which includes
-   the workmux plugin) separately:
+5. **opencode and pi** are not in the default run; link their config (which
+   includes the workmux plugin and extension) separately:
 
    ```bash
-   task opencode:up
+   task opencode:up pi:up
    ```
 
 6. **tmux plugins.** tpm is not installed by any task:
