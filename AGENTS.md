@@ -3,17 +3,7 @@
 macOS dotfiles deployed with `task` (Taskfile.yaml is source of truth). Symlinks config dirs into XDG locations;
 config edits take effect on next shell session. Some tools require install/build steps (e.g., `nvim:up` runs `uv sync`).
 
-## Key commands
-
-```bash
-task                  # Deploy all (default task)
-task <tool>:up       # Link one tool (e.g., task nvim:up)
-task --list          # Show all tasks
-```
-
 ## Architecture
-
-**Deployment:** `task <tool>:up` runs `ln -sfn $DOTFILES/<dir> $XDG_CONFIG_HOME/<dir>`.
 
 **ZSH init (Taskfile.yaml defines order; phases source from `$XDG_CONFIG_HOME/*/<phase>.zsh`):**
 
@@ -50,17 +40,3 @@ task --list          # Show all tasks
 3. Follow ZSH phase rules above (exports in `env.zsh`, PATH in `path.zsh`).
 4. Add a `task mytool:up` target to `Taskfile.yaml` if it needs install steps beyond symlinking.
 5. Test with `task mytool:up` and verify in a new shell session.
-
-## Tool reference
-
-### Neovim (`nvim/`)
-
-- `task nvim:up` runs `uv sync --project nvim` (Python >=3.14), npm/gem neovim providers
-- Plugins managed by lazy.nvim; `lazy-lock.json` is committed
-- Lua formatted with stylua (120 col, 2-space, sorted requires); config: `nvim/stylua.toml`
-- LSPs one-per-file in `nvim/lsp/*.lua`; core config in `nvim/lua/`
-
-### Go
-
-- Tools installed by `task go:up`: gofumpt, golangci-lint v2, goimports, staticcheck, xq, govulncheck
-- Config: `golang/golangci.yml` symlinked to `~/.golangci.yml`
