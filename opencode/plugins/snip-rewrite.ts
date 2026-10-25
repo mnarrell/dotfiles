@@ -129,25 +129,51 @@ function isEligibleSimpleCommand(command: string): boolean {
   return firstToken !== "snip" && !INELIGIBLE_COMMANDS.has(firstToken);
 }
 
-type ToolInput = { tool?: string };
-type ToolOutput = { args?: { command?: unknown } };
+type ToolExecuteBeforeEvent = {
+  tool: string;
+  input: unknown;
+};
+
+/** Candidate field names for the shell command inside a tool's `input`. The
+ * exact v2 field name for the shell tool's input is not independently
+ * confirmed beyond the v1 `command` convention, so each is checked
+ * defensively; none matching is a safe no-op. */
+const COMMAND_FIELDS = ["command", "cmd", "script"] as const;
+
+/** Shell tool ids observed across v1 ("bash") and v2 (binary-confirmed
+ * `opencode.tool.shell`, effective short id likely "shell"). Accept either
+ * defensively. */
+const SHELL_TOOL_IDS = new Set(["shell", "bash"]);
 
 /** Hook adapter kept separate so tests can exercise fail-open behavior. */
-function rewriteBashToolArgs(input: ToolInput, output: ToolOutput): void {
+function rewriteBashToolArgs(event: ToolExecuteBeforeEvent): void {
   try {
-    if (input.tool !== "bash" || typeof output.args?.command !== "string") return;
-    output.args.command = rewriteCommand(output.args.command);
+    if (!SHELL_TOOL_IDS.has(event.tool) || typeof event.input !== "object" || event.input === null) return;
+    const input = event.input as Record<string, unknown>;
+    for (const field of COMMAND_FIELDS) {
+      if (typeof input[field] === "string") {
+        input[field] = rewriteCommand(input[field] as string);
+        return;
+      }
+    }
   } catch {
     // A hook must never interfere with OpenCode's normal execution path.
   }
 }
 
-const snipRewritePlugin = Object.assign(async () => ({
-  "tool.execute.before": async (input: ToolInput, output: ToolOutput) => {
-    rewriteBashToolArgs(input, output);
-  },
-}), { isEligibleSimpleCommand, rewriteBashToolArgs, rewriteCommand });
+type ToolDomain = {
+  hook: (name: "execute.before", callback: (event: ToolExecuteBeforeEvent) => void | Promise<void>) => Promise<unknown>;
+};
 
-// OpenCode requires a function export; attach pure helpers to its default export
-// so the auto-loader does not mistake them for independent plugins.
+const snipRewritePlugin = {
+  id: "snip-rewrite",
+  setup: async (context: { tool: ToolDomain }) => {
+    await context.tool.hook("execute.before", rewriteBashToolArgs);
+  },
+  // Exposed for tests; not part of the OpenCode plugin contract.
+  isEligibleSimpleCommand,
+  rewriteBashToolArgs,
+  rewriteCommand,
+};
+
 export default snipRewritePlugin;
