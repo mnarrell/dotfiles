@@ -27,6 +27,7 @@ opencode/npm-shrinkwrap.json
 opencode/bun.lock*
 opencode/auth.json
 opencode/auth/
+opencode/service.json
 opencode/cache/
 opencode/data/
 opencode/log/

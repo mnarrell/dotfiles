@@ -59,17 +59,23 @@ describe("rewriteCommand", () => {
 });
 
 describe("rewriteBashToolArgs", () => {
-  test("changes Bash only and fails open when mutation fails", () => {
-    const bash = { args: { command: "git status" } };
-    rewriteBashToolArgs({ tool: "bash" }, bash);
-    expect(bash.args.command).toBe("snip git status");
+  test("changes shell tools only and fails open when mutation fails", () => {
+    for (const tool of ["shell", "bash"]) {
+      const event = { tool, input: { command: "git status" } };
+      rewriteBashToolArgs(event);
+      expect(event.input.command).toBe("snip git status");
+    }
 
-    const other = { args: { command: "git status" } };
-    rewriteBashToolArgs({ tool: "read" }, other);
-    expect(other.args.command).toBe("git status");
+    const other = { tool: "read", input: { command: "git status" } };
+    rewriteBashToolArgs(other);
+    expect(other.input.command).toBe("git status");
 
-    const frozen = Object.freeze({ args: Object.freeze({ command: "git status" }) });
-    expect(() => rewriteBashToolArgs({ tool: "bash" }, frozen)).not.toThrow();
-    expect(frozen.args.command).toBe("git status");
+    const missing = { tool: "shell", input: { path: "x" } };
+    rewriteBashToolArgs(missing);
+    expect(missing.input).toEqual({ path: "x" });
+
+    const frozen = { tool: "shell", input: Object.freeze({ command: "git status" }) };
+    expect(() => rewriteBashToolArgs(frozen)).not.toThrow();
+    expect(frozen.input.command).toBe("git status");
   });
 });
