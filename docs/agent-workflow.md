@@ -153,6 +153,10 @@ repo.
    task opencode:up pi:up
    ```
 
+   On the work Mac (opencode only), link opencode from
+   `~/src/opencode-config-work` instead (`task opencode:up` there); it carries
+   the same `plugins/workmux-status/`.
+
 6. **tmux plugins.** tpm is not installed by any task:
 
    ```bash

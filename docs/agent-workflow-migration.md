@@ -47,12 +47,13 @@ The same hooks workmux's own integrations install, kept in this repo so
 
 - **Claude Code:** five hooks in `claude/settings.json`, copied from
   workmux's Claude plugin (`.claude-plugin/plugin.json`).
-- **opencode:** `opencode/plugins/workmux-status.ts`, loaded automatically.
+- **opencode:** `opencode/plugins/workmux-status/` (workmux's opencode 2.x
+  plugin), loaded automatically.
 - **pi:** `pi/agent/extensions/workmux-status.ts`, loaded automatically
   (`~/.pi` links to `pi/` in this repo).
 
 The plugin files are copied unchanged from workmux v0.1.277
-(`resources/opencode/plugins/`, `resources/pi/extensions/`). On a workmux
+(`resources/opencode/v2/workmux-status/`, `resources/pi/extensions/`). On a workmux
 upgrade, re-copy them from the matching tag. All of them are silent no-ops
 outside tmux.
 
