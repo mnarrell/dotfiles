@@ -91,9 +91,11 @@ that.
 
 ## herdr fallback
 
-herdr, its config (`herdr/`), its task and its harness integrations are still
-in place; only its worktrunk hooks and Alacritty Option layer were removed.
-To use it again:
+herdr, its config (`herdr/`), its task and its Claude Code and pi
+integrations are still in place; its worktrunk hooks, Alacritty Option layer
+and opencode plugins were removed (the opencode ones were opencode 1.x
+plugins; `herdr integration install opencode` writes current ones). To use
+it again:
 
 1. Restore the Option layer: `git show <this commit>^:alacritty/alacritty.toml`
    has the nine `\u0000<key>` bindings at the end.
