@@ -1,6 +1,6 @@
 # OS reinstall: Claude and OpenCode state
 
-Date: 2026-10-30. Machine: `felix` (uses `Brewfile.home`).
+Date: 2026-10-30. Machine: `felix` (uses `Brewfile`).
 
 How to carry Claude Code and OpenCode state across a wipe and clean macOS
 install. Config itself lives in `dotfiles` and `private_dotfiles`, both clean
@@ -225,7 +225,7 @@ Run these in Ghostty, not in a terminal inside Claude.app: step 2 quits it.
     Desktop, go-task, stow, gh, node).
 
     ```bash
-    brew bundle --file=~/.dotfiles/Brewfile.home
+    brew bundle --file=~/.dotfiles/Brewfile
     ```
 
 11. **Deploy the dotfiles**, then OpenCode's config (not in the default run).

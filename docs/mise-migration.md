@@ -45,8 +45,7 @@ Nothing in this repo can prevent that — the file must be deleted by hand.
 
 ```bash
 git -C ~/.dotfiles pull
-brew bundle            # HOMEBREW_BUNDLE_FILE is set per-machine by .envrc
-                       # installs mise, helm, kubernetes-cli
+brew bundle            # uses the standard Brewfile; installs mise, helm, kubernetes-cli
 ```
 
 ### 2. Delete the stale version file

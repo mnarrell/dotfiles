@@ -1,16 +1,29 @@
 ################################################################################
+# Taps
+################################################################################
+
+tap 'siderolabs/tap'
+tap 'fluxcd/tap'
+tap 'weaveworks/tap'
+tap 'raine/workmux'
+
+################################################################################
 # Casks
 ################################################################################
 
 cask '1password-cli'
 cask 'alfred'
 cask 'appcleaner'
+cask 'aptakube'
 cask 'balenaetcher'
 cask 'bartender'
 cask 'basictex'
 cask 'better-window-manager'
 cask 'bruno'
+cask 'claude'
+cask 'claude-code'
 cask 'coconutbattery'
+cask 'discord'
 cask 'dropbox'
 cask 'edouard-claude/tap/snip'
 cask 'font-jetbrains-mono-nerd-font'
@@ -20,25 +33,30 @@ cask 'font-roboto-mono-nerd-font'
 cask 'font-sauce-code-pro-nerd-font'
 cask 'ghostty'
 cask 'gitx'
+cask 'google-drive'
 cask 'istat-menus'
 cask 'jetbrains-toolbox'
 cask 'karabiner-elements'
+cask 'mullvad-vpn'
 cask 'omnidisksweeper'
 cask 'omnigraffle'
 cask 'opencode-desktop'
+cask 'rectangle-pro'
 cask 'slack'
+cask 'steam'
 cask 'thaw'
 cask 'the-unarchiver'
 cask 'utm'
 cask 'visual-studio-code'
 cask 'vlc'
+cask 'wezterm'
+cask 'wispr-flow'
 
 
 ################################################################################
 # Simple brews
 ################################################################################
 
-# brew 'opencode'
 brew 'ack'
 brew 'actionlint'
 brew 'age'
@@ -61,12 +79,14 @@ brew 'dockerfmt'
 brew 'eza'
 brew 'fd'
 brew 'findutils'
+brew 'fluxcd/tap/flux'
 brew 'fzf'
 brew 'gawk'
 brew 'gci'
 brew 'gettext'
 brew 'gh'
 brew 'git'
+brew 'git-extras'
 brew 'gitleaks'
 brew 'gnu-getopt'
 brew 'gnu-indent'
@@ -81,6 +101,7 @@ brew 'hadolint'
 brew 'hcledit'
 brew 'helm'
 brew 'helm-docs'
+brew 'helmfile'
 brew 'herdr'
 brew 'htop'
 brew 'httpie'
@@ -91,10 +112,12 @@ brew 'jsonlint'
 brew 'k3d'
 brew 'k9s'
 brew 'kubecolor'
+brew 'kubeconform'
 brew 'kubectx'
 brew 'kubernetes-cli'
 brew 'lazygit'
 brew 'less'
+brew 'libyaml'
 brew 'luacheck'
 brew 'luarocks'
 brew 'make'
@@ -104,6 +127,7 @@ brew 'mise'
 brew 'ninja'
 brew 'nmap'
 brew 'node'
+brew 'opencode'
 brew 'openssh'
 brew 'openssl'
 brew 'opentofu'
@@ -140,9 +164,11 @@ brew 'ssh-copy-id'
 brew 'stern'
 brew 'stow'
 brew 'stylua'
+brew 'talosctl'
 brew 'telnet'
 brew 'terminal-notifier'
 brew 'terraform-docs'
+brew 'tfsec'
 brew 'terragrunt'
 brew 'tig'
 brew 'tmux'
@@ -153,6 +179,7 @@ brew 'uv'
 brew 'varnish'
 brew 'viddy'
 brew 'watch'
+brew 'weaveworks/tap/gitops'
 brew 'wget'
 brew 'worktrunk'
 brew 'xdg-ninja'
@@ -168,5 +195,15 @@ brew 'zsh'
 # mas 'Blackmagic Disk Speed Test (3.2)', id: 425264550
 # mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
 # mas 'HP Smart for Desktop (5.6.1)', id: 1474276998
+mas '1Password for Safari', id: 1569813296
+mas 'Dark Reader for Safari (1.4.2)', id: 1438243180
 mas 'Marked 2 (2.5.31)', id: 890031187
+mas 'Numbers', id: 361304891
+mas 'Pages', id: 361309726
+mas 'Paprika Recipe Manager', id: 1303222628
+mas 'Parcel', id: 375589283
+mas 'Windows App', id: 1295203466
+mas 'WireGuard', id: 1451685025
 mas 'Xcode', id: 497799835
+mas 'uBlock Origin Lite', id: 6745342698
+mas 'wBlock', id: 6746388723

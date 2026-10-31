@@ -122,8 +122,8 @@ repo.
    cd ~/.dotfiles && source bootstrap
    ```
 
-2. **Install packages** from the Brewfile for this machine (`Brewfile`,
-   `Brewfile.home` or `Brewfile.mini`). This brings tmux, sesh, workmux (from
+2. **Install packages** from the Brewfile for this machine (`Brewfile` or
+   `Brewfile.mini`). This brings tmux, sesh, workmux (from
    the `raine/workmux` tap), worktrunk, terminal-notifier, zoxide, fzf, eza
    and jq.
 
